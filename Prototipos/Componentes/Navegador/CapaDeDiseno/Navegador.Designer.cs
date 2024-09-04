@@ -248,7 +248,7 @@
 			this.Btn_Consultar.TabIndex = 5;
 			this.Btn_Consultar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
 			this.Btn_Consultar.UseVisualStyleBackColor = false;
-			this.Btn_Consultar.Click += new System.EventHandler(this.Btn_Consultar_Click);
+			//this.Btn_Consultar.Click += new System.EventHandler(this.Btn_Consultar_Click);
 			// 
 			// Btn_Eliminar
 			// 

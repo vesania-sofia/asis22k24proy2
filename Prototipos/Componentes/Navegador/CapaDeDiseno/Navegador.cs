@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CapaDeLogica;
-using CapaDatos;
+//using CapaDatos;
 
 namespace CapaDeDiseno
 {
@@ -40,12 +40,12 @@ namespace CapaDeDiseno
         Color Cfuente = Color.White;
         Color nuevoColor = Color.White;
         bool presionado = false;
-        sentencia sn = new sentencia(); //objeto del componente de seguridad para obtener el método de la bitácora
+        //sentencia sn = new sentencia(); //objeto del componente de seguridad para obtener el método de la bitácora
         string idUsuario = "";
         string idAplicacion = "";
         //las siguientes dos variables son para el método botonesYPermisos();
-        string userActivo = ""; //1
-        string aplActivo = "";  //2
+        //string userActivo = ""; //1
+        //string aplActivo = "";  //2
         string idyuda;
         string AsRuta;
         string AsIndice;
@@ -86,7 +86,7 @@ namespace CapaDeDiseno
                     string EstadoOK = logic.TestEstado(tabla);
                     if (EstadoOK == "" && correcto == 0)
                     {
-                        Asayuda = logic.verificacion("");
+                        //Asayuda = logic.verificacion("");
                         if (Asayuda == "0")
                         {
                             MessageBox.Show("No se encontró ningún registro en la tabla Ayuda");
@@ -894,7 +894,7 @@ namespace CapaDeDiseno
 			//query += campos + whereQuery + ";";
 			query += whereQuery + ";";
 			Console.Write(query);
-            sn.insertarBitacora(idUsuario, "Se eliminó un registro", tabla);
+            //sn.insertarBitacora(idUsuario, "Se eliminó un registro", tabla);
             return query;
         }
 
@@ -977,7 +977,7 @@ namespace CapaDeDiseno
             campos = campos.TrimEnd(' ');
             campos = campos.TrimEnd(',');
             query += campos + ");";
-            sn.insertarBitacora(idUsuario, "Se creó un nuevo registro", tabla);
+            //sn.insertarBitacora(idUsuario, "Se creó un nuevo registro", tabla);
             return query;
         }
 
@@ -1141,7 +1141,7 @@ namespace CapaDeDiseno
             query += campos + whereQuery + ";";
 			//contenido.Text = query;
 			
-            sn.insertarBitacora(idUsuario, "Se actualizó un registro", tabla);
+            //sn.insertarBitacora(idUsuario, "Se actualizó un registro", tabla);
             return query;
         }
 
@@ -1181,7 +1181,7 @@ namespace CapaDeDiseno
             string[] Tipos = logic.tipos(tabla);
 
             //codigo para aplicar el autoincrementable             
-            string[] Extras = logic.extras(tabla);
+            //string[] Extras = logic.extras(tabla);
             bool tipoInt = false;
             bool ExtraAI = false;
 			string auxId = "";
@@ -1190,13 +1190,13 @@ namespace CapaDeDiseno
 			if (Tipos[0] == "int")
             {
                 tipoInt = true;
-				if (Extras[0] == "auto_increment")
+				/*if (Extras[0] == "auto_increment")
 				{
 					ExtraAI = true;
 					 auxId = (logic.lastID(tabla));
 					auxLastId = Int32.Parse(auxId);
 
-				}
+				}*/
 			}
            
 
@@ -1420,7 +1420,7 @@ namespace CapaDeDiseno
             botonesYPermisos();
             presionado = true;            
         }
-
+/*
         private void Btn_Consultar_Click(object sender, EventArgs e)
         {
 			//DLL DE CONSULTAS
@@ -1445,7 +1445,7 @@ namespace CapaDeDiseno
 			//habilitar y deshabilitar según Usuario
 			botonesYPermisos();
         }
-
+*/
         private void Btn_Imprimir_Click(object sender, EventArgs e)
         {
 			//DLL DE IMPRESION, FORATO DE REPORTES.
@@ -2022,8 +2022,8 @@ namespace CapaDeDiseno
                     MessageBox.Show("Tabla Vacía! Debe ingresa registros!");
                     try
                     {
-                        sentencia sent = new sentencia();
-                        if (sent.consultarPermisos(idUsuario, idAplicacion, 1) == true)
+                       // sentencia sent = new sentencia();
+                        /*if (sent.consultarPermisos(idUsuario, idAplicacion, 1) == true)
                         {
                             MessageBox.Show("Si tiene permisos para ingresar");
                             Btn_Ingresar.Enabled = true;
@@ -2031,7 +2031,7 @@ namespace CapaDeDiseno
                         else
                         {
                             MessageBox.Show("NO tiene permisos paraINGRESAR");
-                        }
+                        }*/
                     }
                     catch (Exception exx)
                     {
@@ -2041,9 +2041,9 @@ namespace CapaDeDiseno
                 else
                 {
                     //validamos con TRY CATCH por si llegará a existir un problema 
-                    try
+                   /* try
                     {
-                        sentencia sen = new sentencia();
+                        //sentencia sen = new sentencia();
                         string[] permisosText = { "INGRESAR", "CONSULTAR", "MODIFICAR", "ELIMINAR", "IMPRIMIR" };
                         for (int i = 1; i < 6; i++)
                         {
@@ -2087,13 +2087,13 @@ namespace CapaDeDiseno
                                         MessageBox.Show("Entro al case default! NO TIENE PERMISO! Por favor hablar con Administrador!"); break;
                                 }
                             }
-                            /* 1 ingresar - 2 consultar - 3 modificar - 4 eliminar - 5 imprimir */
+                            // 1 ingresar - 2 consultar - 3 modificar - 4 eliminar - 5 imprimir 
                         }
                     }
                     catch (Exception ex)
                     {
                         MessageBox.Show("Surgió el siguiente problema: " + ex);
-                    }
+                    }*/
                 }
             }
             catch (Exception ex)
@@ -2121,7 +2121,7 @@ namespace CapaDeDiseno
                     Btn_Siguiente.Enabled = false;
                     Btn_FlechaFin.Enabled = false;
                     MessageBox.Show("Tabla Vacía! Debe ingresar un registro!");
-                    try
+                   /* try
                     {
                         sentencia sent = new sentencia();
                         if (sent.consultarPermisos(userActivo, appActivo, 1) == true)
@@ -2137,18 +2137,18 @@ namespace CapaDeDiseno
                     catch (Exception exx)
                     {
                         MessageBox.Show("Estamos en Tabla Vacía! Determinanos si el usuario Activo puede ingresar! ERROR: " + exx);
-                    }
+                    }*/
                 }
                 else
                 {
                     //validamos con TRY CATCH por si llegará a existir un problema 
                     try
                     {
-                        sentencia sen = new sentencia();
+                        //sentencia sen = new sentencia();
                         string[] permisosText = { "INGRESAR", "CONSULTAR", "MODIFICAR", "ELIMINAR", "IMPRIMIR" };
                         for (int i = 1; i < 6; i++)
                         {
-                            if (sen.consultarPermisos(userActivo, appActivo, i) == true)
+                           /* if (sen.consultarPermisos(userActivo, appActivo, i) == true)
                             {
                                 //mostramos un mensaje para indicar que si tiene permiso
                                 //MessageBox.Show("Tiene permiso para " + permisosText[i - 1]);
@@ -2188,7 +2188,8 @@ namespace CapaDeDiseno
                                         MessageBox.Show("Entro al case default! NO TIENE PERMISO! Por favor hablar con Administrador!"); break;
                                 }
                             }
-                            /* 1 ingresar - 2 consultar - 3 modificar - 4 eliminar - 5 imprimir */
+                            // 1 ingresar - 2 consultar - 3 modificar - 4 eliminar - 5 imprimir 
+                           */
                         }
                     }
                     catch (Exception ex)

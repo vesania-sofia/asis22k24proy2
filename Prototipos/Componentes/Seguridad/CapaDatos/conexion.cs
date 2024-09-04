@@ -12,7 +12,7 @@ namespace CapaDatos
     {
         public OdbcConnection conectar()
         {
-            OdbcConnection conectar = new OdbcConnection("Dsn=seguridad");
+            OdbcConnection conectar = new OdbcConnection("Dsn=Prueba1");
 
             try
             {
