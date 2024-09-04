@@ -5,9 +5,39 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.Odbc;
 
+//Capa modelo desarrollada por Carlos González 9959-20-6164
+
 namespace Capa_Modelo_Consulta
 {
-    class consultaConexion
+    public class consultaConexion
     {
+        public OdbcConnection connection()
+        {
+            //Se requiere colocar el nombre del DSN
+            //Escoger un DSN para todos, hablar en clase
+            OdbcConnection conn = new OdbcConnection("Dsn= COLOCAR NOMBRE DSN ");
+            try
+            {
+                conn.Open();
+            }
+            catch (OdbcException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            return conn;
+        }
+
+
+        public void disconnect(OdbcConnection conn)
+        {
+            try
+            {
+                conn.Close();
+            }
+            catch (OdbcException)
+            {
+                Console.WriteLine("No Conectó");
+            }
+        }
     }
 }
