@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Capa_Controlador_Consulta;
 using System.Data.Odbc;
+using System.Data;
 
 namespace Capa_Vista_Consulta
 {
@@ -32,6 +33,17 @@ namespace Capa_Vista_Consulta
             gbEditarOrden.Enabled = false;
         }
         string consulta = "";
+        private void btnNuevo_Click(object sender, EventArgs e)
+        {
+            //boton agregar, consulta simple
+            string[] datos = { txtNombreConsulta.Text, chbTodosCampos.Text, txtQueryFinal.Text };
+            string[] tipos = { "nombre_consulta", "tipo_consulta", "consulta_SQLE", "consulta_estatus" };
+            csControlador.ingresar(tipos, datos, "tbl_consultaInteligente");
+          
+            txtQuery.Text = (txtNombreConsulta.Text + "+" + chbTodosCampos.Text + "+" + txtQueryFinal.Text + "+" + "1" + "+");
+            string columnasbd = cboCampos.Text;
+        }
+
         private void ConsultaInteligente_Load(object sender, EventArgs e)
         {
 
@@ -67,11 +79,6 @@ namespace Capa_Vista_Consulta
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void groupBox3_Enter(object sender, EventArgs e)
         {
 
@@ -88,6 +95,11 @@ namespace Capa_Vista_Consulta
         }
 
         private void chbEditarDescendente_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnEditarLogico_Click(object sender, EventArgs e)
         {
 
         }

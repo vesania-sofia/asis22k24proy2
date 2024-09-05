@@ -29,8 +29,6 @@ namespace Capa_Vista_Consulta
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TextBox txtQuery;
-            System.Windows.Forms.TextBox txtQueryFinal;
             System.Windows.Forms.TextBox txtQuery1;
             System.Windows.Forms.TextBox txtQueryEditado;
             System.Windows.Forms.TextBox txtQueryEditadoFinal;
@@ -141,14 +139,14 @@ namespace Capa_Vista_Consulta
             this.label21 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.tabBuscar = new System.Windows.Forms.TabPage();
+            this.cboQuery3 = new System.Windows.Forms.ComboBox();
             this.dgvEliminarBuscarConsulta = new System.Windows.Forms.DataGridView();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnActualizar = new System.Windows.Forms.Button();
             this.btnBuscarQuery = new System.Windows.Forms.Button();
             this.label17 = new System.Windows.Forms.Label();
-            this.cboQuery3 = new System.Windows.Forms.ComboBox();
-            txtQuery = new System.Windows.Forms.TextBox();
-            txtQueryFinal = new System.Windows.Forms.TextBox();
+            this.txtQuery = new System.Windows.Forms.TextBox();
+            this.txtQueryFinal = new System.Windows.Forms.TextBox();
             txtQuery1 = new System.Windows.Forms.TextBox();
             txtQueryEditado = new System.Windows.Forms.TextBox();
             txtQueryEditadoFinal = new System.Windows.Forms.TextBox();
@@ -173,24 +171,6 @@ namespace Capa_Vista_Consulta
             this.tabBuscar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEliminarBuscarConsulta)).BeginInit();
             this.SuspendLayout();
-            // 
-            // txtQuery
-            // 
-            txtQuery.Location = new System.Drawing.Point(526, 67);
-            txtQuery.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            txtQuery.Multiline = true;
-            txtQuery.Name = "txtQuery";
-            txtQuery.Size = new System.Drawing.Size(271, 142);
-            txtQuery.TabIndex = 12;
-            // 
-            // txtQueryFinal
-            // 
-            txtQueryFinal.Location = new System.Drawing.Point(563, 593);
-            txtQueryFinal.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            txtQueryFinal.Multiline = true;
-            txtQueryFinal.Name = "txtQueryFinal";
-            txtQueryFinal.Size = new System.Drawing.Size(392, 115);
-            txtQueryFinal.TabIndex = 14;
             // 
             // txtQuery1
             // 
@@ -234,10 +214,10 @@ namespace Capa_Vista_Consulta
             // 
             // tabCreacion
             // 
+            this.tabCreacion.Controls.Add(this.txtQueryFinal);
             this.tabCreacion.Controls.Add(this.chbCondiciones);
             this.tabCreacion.Controls.Add(this.btnCancelar);
             this.tabCreacion.Controls.Add(this.btnCrear);
-            this.tabCreacion.Controls.Add(txtQueryFinal);
             this.tabCreacion.Controls.Add(this.label14);
             this.tabCreacion.Controls.Add(this.gbOrdenar);
             this.tabCreacion.Controls.Add(this.gbCondiciones);
@@ -603,8 +583,8 @@ namespace Capa_Vista_Consulta
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtQuery);
             this.groupBox1.Controls.Add(this.btnCancelarSimple);
-            this.groupBox1.Controls.Add(txtQuery);
             this.groupBox1.Controls.Add(this.btnAgregarConsultaSimple);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.btnNuevo);
@@ -664,7 +644,7 @@ namespace Capa_Vista_Consulta
             this.btnNuevo.TabIndex = 9;
             this.btnNuevo.Text = "Agregar";
             this.btnNuevo.UseVisualStyleBackColor = true;
-            this.btnNuevo.Click += new System.EventHandler(this.button1_Click);
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
             // txtAlias
             // 
@@ -1141,6 +1121,7 @@ namespace Capa_Vista_Consulta
             this.btnEditarLogico.TabIndex = 16;
             this.btnEditarLogico.Text = "Agregar ";
             this.btnEditarLogico.UseVisualStyleBackColor = true;
+            this.btnEditarLogico.Click += new System.EventHandler(this.btnEditarLogico_Click);
             // 
             // txtEditarValorLogico
             // 
@@ -1377,6 +1358,14 @@ namespace Capa_Vista_Consulta
             this.tabBuscar.Text = "Buscar-Eliminar";
             this.tabBuscar.UseVisualStyleBackColor = true;
             // 
+            // cboQuery3
+            // 
+            this.cboQuery3.FormattingEnabled = true;
+            this.cboQuery3.Location = new System.Drawing.Point(165, 35);
+            this.cboQuery3.Name = "cboQuery3";
+            this.cboQuery3.Size = new System.Drawing.Size(274, 24);
+            this.cboQuery3.TabIndex = 16;
+            // 
             // dgvEliminarBuscarConsulta
             // 
             this.dgvEliminarBuscarConsulta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -1427,13 +1416,21 @@ namespace Capa_Vista_Consulta
             this.label17.TabIndex = 3;
             this.label17.Text = "Nombre Consulta";
             // 
-            // cboQuery3
+            // txtQuery
             // 
-            this.cboQuery3.FormattingEnabled = true;
-            this.cboQuery3.Location = new System.Drawing.Point(165, 35);
-            this.cboQuery3.Name = "cboQuery3";
-            this.cboQuery3.Size = new System.Drawing.Size(274, 24);
-            this.cboQuery3.TabIndex = 16;
+            this.txtQuery.Location = new System.Drawing.Point(583, 76);
+            this.txtQuery.Multiline = true;
+            this.txtQuery.Name = "txtQuery";
+            this.txtQuery.Size = new System.Drawing.Size(231, 118);
+            this.txtQuery.TabIndex = 14;
+            // 
+            // txtQueryFinal
+            // 
+            this.txtQueryFinal.Location = new System.Drawing.Point(562, 605);
+            this.txtQueryFinal.Multiline = true;
+            this.txtQueryFinal.Name = "txtQueryFinal";
+            this.txtQueryFinal.Size = new System.Drawing.Size(391, 85);
+            this.txtQueryFinal.TabIndex = 31;
             // 
             // ConsultaInteligente
             // 
@@ -1598,5 +1595,7 @@ namespace Capa_Vista_Consulta
         private System.Windows.Forms.Button btnCancelarEditarOrdenar;
         private System.Windows.Forms.Button btnEditarOrdenar;
         private System.Windows.Forms.ComboBox cboQuery3;
+        private System.Windows.Forms.TextBox txtQuery;
+        private System.Windows.Forms.TextBox txtQueryFinal;
     }
 }
