@@ -7,8 +7,6 @@ using System.Data;
 using System.Data.Odbc;
 using System.Windows.Forms;
 
-//Capa modelo desarrollada por Carlos González 9959-20-6164
-
 namespace Capa_Modelo_Consulta
 {
     public class consultaSentencias
