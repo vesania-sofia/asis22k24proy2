@@ -34,6 +34,7 @@ namespace Capa_Vista_Consulta
             System.Windows.Forms.TextBox txtQueryEditadoFinal;
             this.Consulta = new System.Windows.Forms.TabControl();
             this.tabCreacion = new System.Windows.Forms.TabPage();
+            this.txtQueryFinal = new System.Windows.Forms.TextBox();
             this.chbCondiciones = new System.Windows.Forms.CheckBox();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnCrear = new System.Windows.Forms.Button();
@@ -68,6 +69,7 @@ namespace Capa_Vista_Consulta
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtQuery = new System.Windows.Forms.TextBox();
             this.btnCancelarSimple = new System.Windows.Forms.Button();
             this.btnAgregarConsultaSimple = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
@@ -145,8 +147,6 @@ namespace Capa_Vista_Consulta
             this.btnActualizar = new System.Windows.Forms.Button();
             this.btnBuscarQuery = new System.Windows.Forms.Button();
             this.label17 = new System.Windows.Forms.Label();
-            this.txtQuery = new System.Windows.Forms.TextBox();
-            this.txtQueryFinal = new System.Windows.Forms.TextBox();
             txtQuery1 = new System.Windows.Forms.TextBox();
             txtQueryEditado = new System.Windows.Forms.TextBox();
             txtQueryEditadoFinal = new System.Windows.Forms.TextBox();
@@ -231,9 +231,16 @@ namespace Capa_Vista_Consulta
             this.tabCreacion.Text = "Creacion";
             this.tabCreacion.UseVisualStyleBackColor = true;
             // 
+            // txtQueryFinal
+            // 
+            this.txtQueryFinal.Location = new System.Drawing.Point(562, 605);
+            this.txtQueryFinal.Multiline = true;
+            this.txtQueryFinal.Name = "txtQueryFinal";
+            this.txtQueryFinal.Size = new System.Drawing.Size(391, 85);
+            this.txtQueryFinal.TabIndex = 31;
+            // 
             // chbCondiciones
             // 
-            this.chbCondiciones.AutoCheck = false;
             this.chbCondiciones.AutoSize = true;
             this.chbCondiciones.Location = new System.Drawing.Point(21, 281);
             this.chbCondiciones.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -252,6 +259,7 @@ namespace Capa_Vista_Consulta
             this.btnCancelar.TabIndex = 29;
             this.btnCancelar.Text = "Borrar";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnCrear
             // 
@@ -317,7 +325,6 @@ namespace Capa_Vista_Consulta
             // 
             // chbOrdenDescendente
             // 
-            this.chbOrdenDescendente.AutoCheck = false;
             this.chbOrdenDescendente.AutoSize = true;
             this.chbOrdenDescendente.Location = new System.Drawing.Point(11, 38);
             this.chbOrdenDescendente.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -372,6 +379,7 @@ namespace Capa_Vista_Consulta
             this.btnCancelarOrden.TabIndex = 27;
             this.btnCancelarOrden.Text = "Cancelar";
             this.btnCancelarOrden.UseVisualStyleBackColor = true;
+            this.btnCancelarOrden.Click += new System.EventHandler(this.btnCancelarOrden_Click);
             // 
             // btnAgregarOrden
             // 
@@ -424,6 +432,7 @@ namespace Capa_Vista_Consulta
             this.btnCancelarComparacion.TabIndex = 25;
             this.btnCancelarComparacion.Text = "Cancelar";
             this.btnCancelarComparacion.UseVisualStyleBackColor = true;
+            this.btnCancelarComparacion.Click += new System.EventHandler(this.btnCancelarComparacion_Click);
             // 
             // btnAgregarComparacion
             // 
@@ -434,6 +443,7 @@ namespace Capa_Vista_Consulta
             this.btnAgregarComparacion.TabIndex = 24;
             this.btnAgregarComparacion.Text = "Agregar ";
             this.btnAgregarComparacion.UseVisualStyleBackColor = true;
+            this.btnAgregarComparacion.Click += new System.EventHandler(this.btnAgregarComparacion_Click);
             // 
             // txtValorComparador
             // 
@@ -517,6 +527,7 @@ namespace Capa_Vista_Consulta
             this.btnCancelarLogica.TabIndex = 17;
             this.btnCancelarLogica.Text = "Cancelar";
             this.btnCancelarLogica.UseVisualStyleBackColor = true;
+            this.btnCancelarLogica.Click += new System.EventHandler(this.btnCancelarLogica_Click);
             // 
             // brnAgregarLogica
             // 
@@ -606,6 +617,14 @@ namespace Capa_Vista_Consulta
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "General-Consulta Simple";
             // 
+            // txtQuery
+            // 
+            this.txtQuery.Location = new System.Drawing.Point(583, 76);
+            this.txtQuery.Multiline = true;
+            this.txtQuery.Name = "txtQuery";
+            this.txtQuery.Size = new System.Drawing.Size(231, 118);
+            this.txtQuery.TabIndex = 14;
+            // 
             // btnCancelarSimple
             // 
             this.btnCancelarSimple.Location = new System.Drawing.Point(840, 128);
@@ -615,6 +634,7 @@ namespace Capa_Vista_Consulta
             this.btnCancelarSimple.TabIndex = 13;
             this.btnCancelarSimple.Text = "Cancelar";
             this.btnCancelarSimple.UseVisualStyleBackColor = true;
+            this.btnCancelarSimple.Click += new System.EventHandler(this.btnCancelarSimple_Click);
             // 
             // btnAgregarConsultaSimple
             // 
@@ -674,7 +694,6 @@ namespace Capa_Vista_Consulta
             // 
             // chbTodosCampos
             // 
-            this.chbTodosCampos.AutoCheck = false;
             this.chbTodosCampos.AutoSize = true;
             this.chbTodosCampos.Location = new System.Drawing.Point(184, 173);
             this.chbTodosCampos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -900,7 +919,6 @@ namespace Capa_Vista_Consulta
             // 
             // chbEditarDescendente
             // 
-            this.chbEditarDescendente.AutoCheck = false;
             this.chbEditarDescendente.AutoSize = true;
             this.chbEditarDescendente.Location = new System.Drawing.Point(11, 38);
             this.chbEditarDescendente.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -1287,7 +1305,6 @@ namespace Capa_Vista_Consulta
             // 
             // chbEditarTodosCampos
             // 
-            this.chbEditarTodosCampos.AutoCheck = false;
             this.chbEditarTodosCampos.AutoSize = true;
             this.chbEditarTodosCampos.Location = new System.Drawing.Point(184, 164);
             this.chbEditarTodosCampos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -1415,22 +1432,6 @@ namespace Capa_Vista_Consulta
             this.label17.Size = new System.Drawing.Size(117, 17);
             this.label17.TabIndex = 3;
             this.label17.Text = "Nombre Consulta";
-            // 
-            // txtQuery
-            // 
-            this.txtQuery.Location = new System.Drawing.Point(583, 76);
-            this.txtQuery.Multiline = true;
-            this.txtQuery.Name = "txtQuery";
-            this.txtQuery.Size = new System.Drawing.Size(231, 118);
-            this.txtQuery.TabIndex = 14;
-            // 
-            // txtQueryFinal
-            // 
-            this.txtQueryFinal.Location = new System.Drawing.Point(562, 605);
-            this.txtQueryFinal.Multiline = true;
-            this.txtQueryFinal.Name = "txtQueryFinal";
-            this.txtQueryFinal.Size = new System.Drawing.Size(391, 85);
-            this.txtQueryFinal.TabIndex = 31;
             // 
             // ConsultaInteligente
             // 

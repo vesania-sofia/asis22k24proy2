@@ -20,13 +20,20 @@ namespace Capa_Modelo_Consulta
             this.conn = new consultaConexion();
             baseDatos = this.conn.connection().Database;
         }
+
+        /*
+         Modificado por Carlos González 
+         */
+
         public OdbcDataAdapter buscartbl(string BD)
         {
-            string sql = "SELECT TABLE_NAME From INFORMATION_SCHEMA.TABLES  WHERE TABLE_SCHEMA = '" + BD + "'";
+            // Usa el esquema correcto para seleccionar las tablas del esquema dado
+            string sql = "SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = '" + BD + "'";
             OdbcDataAdapter datatable = new OdbcDataAdapter(sql, con.connection());
 
             return datatable;
         }
+
         //insertar datos
         public void insertar(string dato, string tipo, string tabla)
         {
@@ -42,6 +49,40 @@ namespace Capa_Modelo_Consulta
             }
 
         }
+        public List<string> ObtenerColumnas(string tabla)
+        {
+            List<string> columns = new List<string>();
+
+            try
+            {
+                // Usa la variable 'baseDatos' ya definida en la clase
+                string query = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS " +
+                               "WHERE TABLE_SCHEMA = '" + baseDatos + "' AND TABLE_NAME = '" + tabla + "';";
+
+                // Ejecutamos el comando con la conexión activa
+                using (OdbcCommand cmd = new OdbcCommand(query, this.conn.connection()))
+                {
+                    OdbcDataReader reader = cmd.ExecuteReader();
+
+                    // Añadimos las columnas a la lista
+                    while (reader.Read())
+                    {
+                        string column = reader.GetString(0);
+                        columns.Add(column);
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error al obtener columnas: " + e.Message);
+            }
+
+            return columns;
+        }
+
+        /*
+         Fin de la participación de Carlos González
+         */
 
         //modificar
         public void actualizar(string dato, string condicion, string tabla)
@@ -75,28 +116,6 @@ namespace Capa_Modelo_Consulta
         {
             OdbcDataAdapter datatable = new OdbcDataAdapter(sql, con.connection());
             return datatable;
-        }
-
-        public List<string> ObtenerColumnas(string tabla)
-        {
-
-            List<string> columns = new List<string>();
-            try
-            {
-                string query = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = '" + baseDatos + "' AND TABLE_NAME='" + tabla + "';";
-                OdbcCommand cmd = new OdbcCommand(query, this.conn.connection());
-                OdbcDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
-                {
-                    string column = reader.GetString(0);
-                    columns.Add(column);
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-            return columns;
         }
 
         public string ObtenerTipoDeDato(string seleccion, string tablaN1)
