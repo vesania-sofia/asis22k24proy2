@@ -19,6 +19,8 @@ namespace CapaDeDiseno
         Form cerrar;
         int correcto = 0;
         string tabla = "def";
+        string tabla1 = "def";
+        string tabla2 = "def";
         string nomForm;
         int pos = 8;
 		string idRepo = "";
@@ -33,6 +35,7 @@ namespace CapaDeDiseno
         string[] tablaCombo = new string[30];
         string[] campoCombo = new string[30];
         string[] listaItems = new string[30];
+        string queryFactura;
         int posCombo = 10;
         int noCombo = 0;
         int noComboAux = 0;
@@ -53,6 +56,10 @@ namespace CapaDeDiseno
         // string rutaa;
         Font fuente = new Font("Century Gothic", 13.0f, FontStyle.Regular, GraphicsUnit.Pixel); //objeto para definir el tipo y tamaño de fuente de los labels
         ToolTip ayuda_tp = new ToolTip();
+        private string idFactura;
+        private string monto;
+        private string nombreCliente;
+
         public Navegador()
         {
             InitializeComponent();
@@ -72,7 +79,14 @@ namespace CapaDeDiseno
            ayuda_tp.SetToolTip(Btn_Ayuda, "Ayuda del formulario");
             ayuda_tp.SetToolTip(Btn_Salir, "Salir del formulario");
         }
+        public void Guardar()
+        {
+            string queryVenta = crearInsertVenta();  // Llamas al método que construye la consulta de inserción de venta
+            string queryFactura = crearInsertFactura();  // Llamas al método que construye la consulta de inserción de factura
 
+            // Inserta los datos en ambas tablas
+            logic.insertarVentaYFactura(queryVenta, queryFactura);
+        }
         private void Navegador_Load(object sender, EventArgs e)
         {
             colorDialog1.Color = nuevoColor;
@@ -347,6 +361,15 @@ namespace CapaDeDiseno
         {
             tabla = table;
         }
+        public void asignar1Tabla(string table)
+        {
+            tabla1 = table;
+        }
+        public void asignar2Tabla(string table)
+        {
+            tabla2= table;
+        }
+
         public void asignarNombreForm(string nom)
         {
             nomForm = nom;
@@ -537,10 +560,10 @@ namespace CapaDeDiseno
                 {
                     if (estado == 1)
                     {
-                        componente.Text = "Activado";
-                        componente.BackColor = Color.Green;
+                        componente.Text = "Desactivado";
+                        componente.BackColor = Color.Red;
                         //estado++;
-                        estado = 1;
+                        estado = 0;
                     }
                     else 
                     {
@@ -724,14 +747,14 @@ namespace CapaDeDiseno
                 combols++;
             }
 
-            if (comboVacio!=false)
+           /* if (comboVacio!=false)
             {
                 DialogResult validacion = MessageBox.Show("La tabla " + tabla + "No tiene registros en el campo asociado al comboBox\n Solucione este problema...", "Verificación de requisitos", MessageBoxButtons.OK);
                 if (validacion == DialogResult.OK)
                 {
                     Application.Exit();
                 }
-            }
+            }*/
           
             ComboBox cb = new ComboBox();
             Point p = new Point(x + 125 + pos, y * pos);
@@ -900,7 +923,11 @@ namespace CapaDeDiseno
 
         string crearInsert()// crea el query de insert
         {
+            queryFactura= crearInsertFactura();
             string query = "INSERT INTO " + tabla + " VALUES (";
+            
+
+
             int posCampo = 0;
 			int i = 0;
             string campos = "";
@@ -977,11 +1004,44 @@ namespace CapaDeDiseno
             campos = campos.TrimEnd(' ');
             campos = campos.TrimEnd(',');
             query += campos + ");";
+            if (tabla == "venta")
+            {
+                try
+                {
+                    logic.insertarVentaYFactura(query, queryFactura); // Ejecutar las dos consultas
+                    return query + "\n" + queryFactura; // Retornar ambos queries para depuración si lo deseas
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error al insertar en venta o factura: " + ex.Message);
+                    return "Error al insertar en venta o factura: " + ex.Message;
+                }
+            }
+            else
+            {
+                // Si no es venta, devolver solo la consulta normal
+               
+            }
             //sn.insertarBitacora(idUsuario, "Se creó un nuevo registro", tabla);
             return query;
+
         }
+        private string crearInsertFactura()
+        {
+            string idFactura = obtenerDatoCampos(1);  // ID Factura (asume que se captura del formulario)
+            string monto = obtenerDatoCampos(2);      // Mismo monto que venta
+            string nombreCliente = obtenerDatoCampos(3);  // Mismo cliente que venta
+            string estado = "1";     // Estado, igual que venta
 
+            // Asegúrate de que el campo id_venta no exista en la tabla factura si no es necesario
+            string queryFactura = "INSERT INTO factura (id_factura, monto, nombre_cliente, estado) VALUES (";
+            queryFactura += "'" + idFactura + "', ";  // ID Factura
+            queryFactura += "'" + monto + "', ";      // Monto
+            queryFactura += "'" + nombreCliente + "', ";  // Cliente
+            queryFactura += "'" + estado + "');";     // Estado
 
+            return queryFactura;  // Devolver la consulta generada
+        }
         string crearUpdate()// crea el query de update
         {
             string query = "UPDATE " + tabla + " SET ";
@@ -1145,6 +1205,46 @@ namespace CapaDeDiseno
             return query;
         }
 
+        string crearUpdateDosTablas(string condicionTabla1, string condicionTabla2)
+        {
+            // Iniciar la transacción
+            string query = "START TRANSACTION; ";
+
+            // Update para la primera tabla
+            string queryTabla1 = "UPDATE " + tabla1 + " SET ";
+            string camposTabla1 = "";
+
+            foreach (Control componente in Controls)
+            {
+                if (componente is TextBox || componente is DateTimePicker || componente is ComboBox)
+                {
+                    camposTabla1 += componente.Name + " = '" + componente.Text + "', ";
+                }
+            }
+
+            camposTabla1 = camposTabla1.TrimEnd(',', ' ');
+            queryTabla1 += camposTabla1 + " WHERE " + condicionTabla1 + ";";
+
+            // Update para la segunda tabla
+            string queryTabla2 = "UPDATE " + tabla2 + " SET ";
+            string camposTabla2 = "";
+
+            foreach (Control componente in Controls)
+            {
+                if (componente is TextBox || componente is DateTimePicker || componente is ComboBox)
+                {
+                    camposTabla2 += componente.Name + " = '" + componente.Text + "', ";
+                }
+            }
+
+            camposTabla2 = camposTabla2.TrimEnd(',', ' ');
+            queryTabla2 += camposTabla2 + " WHERE " + condicionTabla2 + ";";
+
+            // Combinar ambas actualizaciones en la transacción
+            query += queryTabla1 + " " + queryTabla2 + " COMMIT;";
+
+            return query;
+        }
         public void guardadoforsozo()
         {
             logic.nuevoQuery(crearInsert());
@@ -1249,6 +1349,11 @@ namespace CapaDeDiseno
             habilitarcampos_y_botones();
             activar = 1;
             int i = 0;
+
+
+
+
+
 			string[] Tipos = logic.tipos(tabla);
 			int numCombo = 0;
 			foreach (Control componente in Controls)
@@ -1883,9 +1988,15 @@ namespace CapaDeDiseno
                 {
                     case 1:
                         logic.nuevoQuery(crearUpdate());
+
                         break;
                     case 2:
                         logic.nuevoQuery(crearInsert());
+                        if (tabla == "venta")
+                        {
+                            logic.insertarVentaYFactura(crearInsert(), queryFactura);
+                        }
+                        
                         Btn_Anterior.Enabled = true;
                         Btn_Siguiente.Enabled = true;
                         Btn_FlechaInicio.Enabled = true;
@@ -1893,6 +2004,7 @@ namespace CapaDeDiseno
                         Btn_Modificar.Enabled = true;
                         break;
                     default:
+                        MessageBox.Show("Opción no válida.");
                         break;
                 }
             }
@@ -1930,6 +2042,21 @@ namespace CapaDeDiseno
             botonesYPermisos();
 
         }
+        private string crearInsertVenta()
+        {
+            string nuevoIdVenta = logic.lastID("venta");  // Obtener el ID de la tabla venta
+
+            string query = "INSERT INTO venta (id_venta, monto, nombre_cliente, nombre_empleado, estado) VALUES (";
+            query += "'" + nuevoIdVenta + "', ";
+            query += "'" + obtenerDatoCampos(2) + "', ";  // Monto
+            query += "'" + obtenerDatoCampos(3) + "', ";  // Nombre cliente
+            query += "'" + obtenerDatoCampos(4) + "', ";  // Nombre empleado
+            query += "'" + obtenerDatoCampos(5) + "');";  // Estado
+            return query;
+        }
+
+        // Aquí está la función crearInsertFactura
+       
 
         private void DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {

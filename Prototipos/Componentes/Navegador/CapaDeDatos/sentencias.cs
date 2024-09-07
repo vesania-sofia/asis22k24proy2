@@ -90,6 +90,30 @@ namespace CapaDeDatos
             catch (Exception ex) { Console.WriteLine(ex.Message.ToString() + " \nError en obtenerTipo, revise los parámetros de la tabla  \n -" + tabla.ToUpper() + "\n -"); }
             return Campos;// devuelve un arreglo con los tiposlos campos
         }
+        public int getLastInsertedId()
+        {
+            int lastId = 0;
+
+            try
+            {
+                // Abre la conexión y ejecuta la consulta para obtener el último ID generado
+                OdbcCommand command = new OdbcCommand("SELECT LAST_INSERT_ID();", cn.probarConexion());
+                object result = command.ExecuteScalar();
+
+                // Si el resultado no es nulo, conviértelo a un entero
+                if (result != null)
+                {
+                    lastId = Convert.ToInt32(result);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al obtener el último ID insertado: " + ex.Message);
+            }
+
+            return lastId; // Devolver el último ID insertado
+        }
+
         public int contarReg(string idindice)// metodo  que obtinene el contenio de una tabla
         {
             int Campos = 0;
@@ -426,6 +450,40 @@ namespace CapaDeDatos
             }
             catch (OdbcException ex) { Console.WriteLine(ex.ToString()); }
 
+        }
+
+        public void insertarVenta(string queryVenta)
+        {
+            try
+            {
+                OdbcCommand consulta = new OdbcCommand(queryVenta, cn.probarConexion());
+                consulta.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al insertar en venta: " + ex.Message);
+            }
+        }
+
+        // Método para insertar en la tabla "factura"
+        public void insertarFactura(string queryFactura)
+        {
+            try
+            {
+                OdbcCommand consulta = new OdbcCommand(queryFactura, cn.probarConexion());
+                consulta.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al insertar en factura: " + ex.Message);
+            }
+        }
+
+        // Método para manejar ambas inserciones
+        public void insertarVentaYFactura(string queryVenta, string queryFactura)
+        {
+            insertarFactura(queryFactura);
+            insertarVenta(queryVenta);
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using CapaDeDatos;
 using System.Data;
 using System.Data.Odbc;
-using CapaDatos;
+
 
 namespace CapaDeLogica
 {
@@ -69,6 +69,10 @@ namespace CapaDeLogica
         {
             return sn.ProbarTabla(tabla);
         }
+        public void insertarVentaYFactura(string queryVenta, string queryFactura)
+        {
+            sn.insertarVentaYFactura(queryVenta, queryFactura);  // Llamamos al método en la capa de datos
+        }
         public string TestEstado(string tabla)
         {
             return sn.ProbarEstado(tabla);
@@ -76,6 +80,11 @@ namespace CapaDeLogica
         public int TestRegistros(string tabla)
         {
             return sn.ProbarRegistros(tabla);
+        }
+        public int obtenerUltimoIdInsertado()
+        {
+            // Llamar al método en la capa de datos para obtener el último ID insertado
+            return sn.getLastInsertedId();
         }
         /*
         public int obtenerMaxId(string tabla)
