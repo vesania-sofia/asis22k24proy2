@@ -19,7 +19,7 @@ namespace CapaDeDiseno
         Form cerrar;
         int correcto = 0;
         string tabla = "def";
-        string tabla1 = "def";
+        string otratabla = "def";
         string tabla2 = "def";
         string nomForm;
         int pos = 8;
@@ -78,14 +78,6 @@ namespace CapaDeDiseno
             ayuda_tp.SetToolTip(Btn_FlechaFin, "Fin de la tabla");
            ayuda_tp.SetToolTip(Btn_Ayuda, "Ayuda del formulario");
             ayuda_tp.SetToolTip(Btn_Salir, "Salir del formulario");
-        }
-        public void Guardar()
-        {
-            string queryVenta = crearInsertVenta();  // Llamas al método que construye la consulta de inserción de venta
-            string queryFactura = crearInsertFactura();  // Llamas al método que construye la consulta de inserción de factura
-
-            // Inserta los datos en ambas tablas
-            logic.insertarVentaYFactura(queryVenta, queryFactura);
         }
         private void Navegador_Load(object sender, EventArgs e)
         {
@@ -361,13 +353,10 @@ namespace CapaDeDiseno
         {
             tabla = table;
         }
-        public void asignar1Tabla(string table)
-        {
-            tabla1 = table;
-        }
+      
         public void asignar2Tabla(string table)
         {
-            tabla2= table;
+            otratabla= table;
         }
 
         public void asignarNombreForm(string nom)
@@ -921,111 +910,45 @@ namespace CapaDeDiseno
             return query;
         }
 
-        string crearInsert()// crea el query de insert
+        string crearInsert(string nombretabla)
         {
-            queryFactura= crearInsertFactura();
-            string query = "INSERT INTO " + tabla + " VALUES (";
-            
-
+            string query = "INSERT INTO " + nombretabla + " (";
+            string valores = "VALUES (";
 
             int posCampo = 0;
-			int i = 0;
             string campos = "";
+            string valoresCampos = "";
+
             foreach (Control componente in Controls)
             {
-                if (componente is TextBox || componente is DateTimePicker || componente is ComboBox )
+                if (componente is TextBox || componente is DateTimePicker || componente is ComboBox)
                 {
+                    // Obtener el nombre del campo correspondiente y su valor
+                    string nombreCampo = logic.campos(nombretabla)[posCampo];
+                    string valorCampo = componente.Text;
 
-                    switch (tipoCampo[posCampo])
+                    // Agregar campo y valor si no está vacío
+                    if (!string.IsNullOrEmpty(valorCampo))
                     {
-                        case "Text":
-							if (componente is ComboBox)
-							{
-
-								if (modoCampoCombo[i] == 1)
-								{
-									campos += "'" + logic.llaveCampolo(tablaCombo[i],campoCombo[i],componente.Text) + "' , ";
-								}
-								else
-								{
-									campos += "'" + componente.Text + "' , ";
-								}
-
-								i++;
-							}
-							else
-							{
-								campos += "'" + componente.Text + "' , ";
-							}
-						
-
-							break;
-                        case "Num":
-							if (componente is ComboBox)
-							{
-
-								if (modoCampoCombo[i] == 1)
-								{
-									campos +=  logic.llaveCampolo(tablaCombo[i], campoCombo[i], componente.Text) + " , ";
-								}
-								else
-								{
-									campos += componente.Text + " , ";
-								}
-
-								i++;
-							}
-							else
-							{
-								campos += componente.Text + " , ";
-							}
-						
-
-
-                            break;
+                        campos += nombreCampo + ", ";
+                        valoresCampos += "'" + valorCampo + "', ";
                     }
-                    posCampo++;
 
-                }
-                if (componente is Button)
-                {
-                    switch (tipoCampo[posCampo])
-                    {
-                        case "Num":
-                            campos += "'" + estado + "' , ";
-                           // campos += "' 0 ' , ";
-                            break;
-                          
-                    }
                     posCampo++;
                 }
+            }
 
-            }
-            campos = campos.TrimEnd(' ');
-            campos = campos.TrimEnd(',');
-            query += campos + ");";
-            if (tabla == "venta")
-            {
-                try
-                {
-                    logic.insertarVentaYFactura(query, queryFactura); // Ejecutar las dos consultas
-                    return query + "\n" + queryFactura; // Retornar ambos queries para depuración si lo deseas
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("Error al insertar en venta o factura: " + ex.Message);
-                    return "Error al insertar en venta o factura: " + ex.Message;
-                }
-            }
-            else
-            {
-                // Si no es venta, devolver solo la consulta normal
-               
-            }
-            //sn.insertarBitacora(idUsuario, "Se creó un nuevo registro", tabla);
+            // Eliminar las últimas comas y cerrar las instrucciones
+            campos = campos.TrimEnd(' ', ',');
+            valoresCampos = valoresCampos.TrimEnd(' ', ',');
+
+            query += campos + ") " + valores + valoresCampos + ");";
+
             return query;
-
         }
+
+
+
         private string crearInsertFactura()
         {
             string idFactura = obtenerDatoCampos(1);  // ID Factura (asume que se captura del formulario)
@@ -1205,49 +1128,10 @@ namespace CapaDeDiseno
             return query;
         }
 
-        string crearUpdateDosTablas(string condicionTabla1, string condicionTabla2)
-        {
-            // Iniciar la transacción
-            string query = "START TRANSACTION; ";
-
-            // Update para la primera tabla
-            string queryTabla1 = "UPDATE " + tabla1 + " SET ";
-            string camposTabla1 = "";
-
-            foreach (Control componente in Controls)
-            {
-                if (componente is TextBox || componente is DateTimePicker || componente is ComboBox)
-                {
-                    camposTabla1 += componente.Name + " = '" + componente.Text + "', ";
-                }
-            }
-
-            camposTabla1 = camposTabla1.TrimEnd(',', ' ');
-            queryTabla1 += camposTabla1 + " WHERE " + condicionTabla1 + ";";
-
-            // Update para la segunda tabla
-            string queryTabla2 = "UPDATE " + tabla2 + " SET ";
-            string camposTabla2 = "";
-
-            foreach (Control componente in Controls)
-            {
-                if (componente is TextBox || componente is DateTimePicker || componente is ComboBox)
-                {
-                    camposTabla2 += componente.Name + " = '" + componente.Text + "', ";
-                }
-            }
-
-            camposTabla2 = camposTabla2.TrimEnd(',', ' ');
-            queryTabla2 += camposTabla2 + " WHERE " + condicionTabla2 + ";";
-
-            // Combinar ambas actualizaciones en la transacción
-            query += queryTabla1 + " " + queryTabla2 + " COMMIT;";
-
-            return query;
-        }
+       
         public void guardadoforsozo()
         {
-            logic.nuevoQuery(crearInsert());
+            logic.nuevoQuery(crearInsert(tabla));
             foreach (Control componente in Controls)
             {
                 if (componente is TextBox || componente is DateTimePicker || componente is ComboBox)
@@ -1970,78 +1854,123 @@ namespace CapaDeDiseno
 
         private void Btn_Guardar_Click(object sender, EventArgs e)
         {
-            bool lleno =true;
+            bool lleno = true;
+
+            // Verificar si todos los controles tienen valores
             foreach (Control componente in Controls)
             {
                 if (componente is TextBox || componente is DateTimePicker || componente is ComboBox)
                 {
-                    if (componente.Text=="")
+                    if (string.IsNullOrEmpty(componente.Text))
                     {
                         lleno = false;
+                        break;
                     }
                 }
-
             }
-            if (lleno==true)
+
+            if (lleno)
             {
                 switch (activar)
                 {
                     case 1:
+                        // Si está en modo de actualización
                         logic.nuevoQuery(crearUpdate());
-
                         break;
+
                     case 2:
-                        logic.nuevoQuery(crearInsert());
-                        if (tabla == "venta")
+                        // Si está en modo de inserción
+                        string queryPrimeraTabla = crearInsert(tabla);
+
+                        List<string> queries = new List<string>();
+
+                        // Inserta en la primera tabla
+                        logic.nuevoQuery(queryPrimeraTabla);
+
+                        // Verificar si hay una segunda tabla para insertar
+                        if (!string.IsNullOrEmpty(otratabla))
                         {
-                            logic.insertarVentaYFactura(crearInsert(), queryFactura);
+                            // Obtener las columnas y propiedades de la segunda tabla
+                            List<(string nombreColumna, bool esAutoIncremental)> columnasSegundaTabla = logic.obtenerColumnasYPropiedadesLogica(otratabla);
+
+                            // Crear la lista de valores a insertar para la segunda tabla
+                            List<string> valoresSegundaTabla = new List<string>();
+                            int pos = 1;
+
+                            foreach (var columna in columnasSegundaTabla)
+                            {
+                                if (columna.esAutoIncremental)
+                                {
+                                    // Omitir la columna si es autoincremental
+                                    continue;
+                                }
+
+                                // Obtener el valor de cada campo desde la posición en los controles
+                                string valorCampo = obtenerDatoCampos(pos);
+                                valoresSegundaTabla.Add($"'{valorCampo}'");
+                                pos++;
+                            }
+
+                            // Crear el query de inserción para la segunda tabla
+                            string camposQuery = string.Join(", ", columnasSegundaTabla.Where(c => !c.esAutoIncremental).Select(c => c.nombreColumna));
+                            string valoresQuery = string.Join(", ", valoresSegundaTabla);
+                            string querySegundaTabla = $"INSERT INTO {otratabla} ({camposQuery}) VALUES ({valoresQuery});";
+
+                            // Ejecutar el query para la segunda tabla
+                            queries.Add(querySegundaTabla);
                         }
-                        
+                        logic.insertarDatosEnDosTablas(queries);
+                        // Habilitar y deshabilitar botones después de la inserción
                         Btn_Anterior.Enabled = true;
                         Btn_Siguiente.Enabled = true;
                         Btn_FlechaInicio.Enabled = true;
                         Btn_FlechaFin.Enabled = true;
                         Btn_Modificar.Enabled = true;
                         break;
+
                     default:
                         MessageBox.Show("Opción no válida.");
                         break;
                 }
+
+                // Actualizar DataGridView después de la inserción
+                actualizardatagriew();
+
+                // Cargar los datos en los controles si hay registros en la tabla
+                if (logic.TestRegistros(tabla) > 0)
+                {
+                    int i = 0;
+                    foreach (Control componente in Controls)
+                    {
+                        if (componente is TextBox || componente is DateTimePicker || componente is ComboBox)
+                        {
+                            componente.Text = dataGridView1.CurrentRow.Cells[i].Value.ToString();
+                            componente.Enabled = false;
+                            i++;
+                        }
+                    }
+                }
+
+                // Deshabilitar campos y botones
+                deshabilitarcampos_y_botones();
+
+                // Habilitar/deshabilitar botones según sea necesario
+                Btn_Guardar.Enabled = false;
+                Btn_Eliminar.Enabled = true;
+                Btn_Cancelar.Enabled = false;
+                Btn_Modificar.Enabled = true;
+                Btn_Ingresar.Enabled = true;
+                Btn_Refrescar.Enabled = true;
+
+                // Configurar permisos según el usuario
+                botonesYPermisos();
             }
             else
             {
                 MessageBox.Show("Por favor llene todos los campos...");
             }
-           
-            actualizardatagriew();            
-            if (logic.TestRegistros(tabla)>0)
-            {
-                int i = 0;
-                foreach (Control componente in Controls)
-                {
-                    if (componente is TextBox || componente is DateTimePicker || componente is ComboBox)
-                    {
-                        componente.Text = dataGridView1.CurrentRow.Cells[i].Value.ToString();
-						componente.Enabled = false;
-						i++;
-                    }
-
-                }
-            }
-           
-            deshabilitarcampos_y_botones();
-           
-            Btn_Guardar.Enabled = false;
-            Btn_Eliminar.Enabled = true;
-            Btn_Cancelar.Enabled = false;
-            Btn_Modificar.Enabled = true;
-            Btn_Ingresar.Enabled = true;
-            Btn_Refrescar.Enabled = true;            
-
-            //habilitar y deshabilitar según Usuario
-            botonesYPermisos();
-
         }
+
         private string crearInsertVenta()
         {
             string nuevoIdVenta = logic.lastID("venta");  // Obtener el ID de la tabla venta
