@@ -38,7 +38,6 @@
             this.btn_cancel = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtdesc = new System.Windows.Forms.TextBox();
-            this.txtnombre = new System.Windows.Forms.TextBox();
             this.txtcodigo = new System.Windows.Forms.TextBox();
             this.gbestado = new System.Windows.Forms.GroupBox();
             this.rbinhabilitado = new System.Windows.Forms.RadioButton();
@@ -46,6 +45,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.txtnombre = new System.Windows.Forms.TextBox();
             this.tbx_buscarmodulo = new System.Windows.Forms.TextBox();
             this.btn_bsucarmodulo = new System.Windows.Forms.Button();
             this.gbbuscar = new System.Windows.Forms.GroupBox();
@@ -155,12 +155,12 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.txtdesc);
-            this.groupBox2.Controls.Add(this.txtnombre);
             this.groupBox2.Controls.Add(this.txtcodigo);
             this.groupBox2.Controls.Add(this.gbestado);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.label1);
+            this.groupBox2.Controls.Add(this.txtnombre);
             this.groupBox2.Location = new System.Drawing.Point(23, 123);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
@@ -180,15 +180,6 @@
             this.txtdesc.TabIndex = 2;
             this.txtdesc.Tag = "2";
             // 
-            // txtnombre
-            // 
-            this.txtnombre.Location = new System.Drawing.Point(248, 102);
-            this.txtnombre.Margin = new System.Windows.Forms.Padding(4);
-            this.txtnombre.Name = "txtnombre";
-            this.txtnombre.Size = new System.Drawing.Size(296, 30);
-            this.txtnombre.TabIndex = 1;
-            this.txtnombre.Tag = "1";
-            // 
             // txtcodigo
             // 
             this.txtcodigo.Location = new System.Drawing.Point(248, 54);
@@ -196,6 +187,7 @@
             this.txtcodigo.Name = "txtcodigo";
             this.txtcodigo.Size = new System.Drawing.Size(132, 30);
             this.txtcodigo.TabIndex = 4;
+            this.txtcodigo.TextChanged += new System.EventHandler(this.txtcodigo_TextChanged);
             // 
             // gbestado
             // 
@@ -263,6 +255,15 @@
             this.label1.Size = new System.Drawing.Size(172, 25);
             this.label1.TabIndex = 0;
             this.label1.Text = "Codigo de Modulo";
+            // 
+            // txtnombre
+            // 
+            this.txtnombre.Location = new System.Drawing.Point(248, 102);
+            this.txtnombre.Margin = new System.Windows.Forms.Padding(4);
+            this.txtnombre.Name = "txtnombre";
+            this.txtnombre.Size = new System.Drawing.Size(296, 30);
+            this.txtnombre.TabIndex = 1;
+            this.txtnombre.Tag = "1";
             // 
             // tbx_buscarmodulo
             // 

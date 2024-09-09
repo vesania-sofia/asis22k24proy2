@@ -364,9 +364,9 @@ namespace CapaLogica
 
         //######################################### EDITADO POR: ALEJANDRO BARREDA MENDOZA ############################################
         //+1 modulos
-
+        //Trabajado por María José Véliz Ochoa, 9959-21-5909
         public DataTable validarIDModulos()
-        {
+        {   
             try
             {
                 OdbcDataAdapter dtValidarIDModulo = sn.validarIDModulos();
@@ -380,7 +380,7 @@ namespace CapaLogica
                 return null;
             }
         }
-
+        // termina
 
         //--------mantenimiento perfiles
 
@@ -453,22 +453,22 @@ namespace CapaLogica
 
         }
 
-	
-        public DataTable ingresarmodulos(string codigo, string nombre, string descripcion, string estado)
+        //Trabajado por María José Véliz Ochoa, 9959-21-5909
+        public bool ingresarmodulos(string codigo, string nombre, string descripcion, string estado)
         {
             try
             {
-                OdbcDataAdapter ingresomodulo = sn.insertarModulo(codigo, nombre, descripcion, estado);
-                DataTable tablemodulos = new DataTable();
-                ingresomodulo.Fill(tablemodulos);
-                return tablemodulos;
+                // Ejecutar la inserción
+                sn.insertarModulo(codigo, nombre, descripcion, estado);
+                return true;
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
-                return null;
+                
+                Console.WriteLine("Error al insertar el módulo: " + ex.Message);
+                return false;
             }
-        }
+        } // termina
 
 
 
@@ -488,22 +488,27 @@ namespace CapaLogica
             }
         }
 
+        //Trabajado por María José Véliz Ochoa, 9959-21-5909
         public DataTable ConsultaLogicaModulo(string ID_modulo)
         {
             try
             {
-                OdbcDataAdapter cmpsModulos = sn.ConsultarModulos(ID_modulo);
-                DataTable tablaModulos = new DataTable();
-                cmpsModulos.Fill(tablaModulos);
-                return tablaModulos;
+                using (OdbcDataAdapter cmpsModulos = sn.ConsultarModulos(ID_modulo))
+                {
+                    DataTable tablaModulos = new DataTable();
+                    cmpsModulos.Fill(tablaModulos);
+                    return tablaModulos;
+                }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
+
                 Console.WriteLine(ex);
                 return null;
             }
         }
-        
+        // termina
+
 
         public DataTable Actualizarmodulo(string ID_modulo,string nombre, string descripcion, string estado)
         {

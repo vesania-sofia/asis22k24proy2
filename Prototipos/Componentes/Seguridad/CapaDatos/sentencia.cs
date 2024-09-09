@@ -35,10 +35,10 @@ namespace CapaDatos
 
         public OdbcDataAdapter consultarModulos()
         {
-            cn.conectar();
-            string sqlModulos = "SELECT nombre_modulo FROM tbl_modulo WHERE estado_modulo = 1";
-            OdbcDataAdapter dataModulos = new OdbcDataAdapter(sqlModulos, cn.conectar());
-            insertarBitacora(idUsuario, "Realizo una consulta a modulos", "tbl_modulos");
+            OdbcConnection conexion = cn.conectar();
+            string sqlModulos = "SELECT nombre_modulo FROM tbl_modulos WHERE estado_modulo = 1";
+            OdbcDataAdapter dataModulos = new OdbcDataAdapter(sqlModulos, conexion);
+            insertarBitacora(idUsuario, "Realizó una consulta a módulos", "tbl_modulos");
             return dataModulos;
         }
 
@@ -353,13 +353,13 @@ namespace CapaDatos
 
 
         //########################### EDICION: ALEJANDRO BARREDA MENDOZA #####################################################
-
+        //Trabajado por María José Véliz Ochoa, 9959-21-5909
         public OdbcDataAdapter validarIDModulos()
         {
             try
             {
 
-                string sqlIDmodulo = "SELECT MAX(PK_id_Modulo)+1 FROM tbl_modulo";
+                string sqlIDmodulo = "SELECT MAX(Pk_id_modulo)+1 FROM tbl_modulos";
                 OdbcDataAdapter dataIDmodulo = new OdbcDataAdapter(sqlIDmodulo, cn.conectar());
                 return dataIDmodulo;
 
@@ -370,6 +370,7 @@ namespace CapaDatos
                 return null;
             }
         }
+        // termina 
 
         public OdbcDataAdapter validarIDperfiles()
         {
@@ -436,24 +437,43 @@ namespace CapaDatos
             }
         }
 
-
-        public OdbcDataAdapter insertarModulo(string codigo, string nombre, string descripcion, string estado)
+        //Trabajado por María José Véliz Ochoa 9959-21-5909
+        //se optó por usar OdbcCommand en lugar de OdbcDataAdapter, cambió estructura
+        public void insertarModulo(string codigo, string nombre, string descripcion, string estado)
         {
-            cn.conectar();
             try
             {
-                string sqlModulos = "INSERT INTO tbl_modulo (PK_id_Modulo, nombre_modulo,descripcion_modulo,estado_modulo) VALUES ('" + codigo + "','" + nombre + "', '" + descripcion + "', " + estado + ");";
-                OdbcDataAdapter datainsertarmodulo = new OdbcDataAdapter(sqlModulos, cn.conectar());
-                insertarBitacora(idUsuario, "Inserto un nuevo modulo: " + codigo + " - " + nombre , "tbl_modulo");
-                return datainsertarmodulo;
+                // Crear la conexión y el comando
+                using (OdbcConnection connection = cn.conectar())
+                {
+                    string query = "INSERT INTO tbl_modulos (" +
+                                   "Pk_id_modulos, " +
+                                   "nombre_modulo, " +
+                                   "descripcion_modulo, " +
+                                   "estado_modulo) " +
+                                   "VALUES (?, ?, ?, ?)";
+
+                    using (OdbcCommand cmd = new OdbcCommand(query, connection))
+                    {
+                        // Agregar los parámetros al comando
+                        cmd.Parameters.AddWithValue("@Pk_id_modulo", codigo);
+                        cmd.Parameters.AddWithValue("@nombre_modulo", nombre);
+                        cmd.Parameters.AddWithValue("@descripcion_modulo", descripcion);
+                        cmd.Parameters.AddWithValue("@estado_modulo", estado);
+
+                        // Ejecutar el comando
+                        cmd.ExecuteNonQuery();
+
+                        insertarBitacora(idUsuario, "Inserto un nuevo modulo: " + codigo + " - " + nombre, "tbl_modulos");
+                    }
+                }
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
-                return null;
+                MessageBox.Show("Error al insertar módulo: " + ex.Message);
             }
-            }
-
+        }
+        // termina
 
         //------------
 
@@ -502,11 +522,11 @@ namespace CapaDatos
 
 
         //------------Para formulario Mantenimiento Modulos---------
-
+        //Trabajado por María José Véliz Ochoa, 9959-21-5909
         public OdbcDataAdapter ConsultarModulos(string modulo)
         {
             cn.conectar();
-            string sqlModulos = "SELECT * FROM tbl_modulo WHERE PK_Id_Modulo = " + modulo ;
+            string sqlModulos = "SELECT * FROM tbl_modulos WHERE Pk_id_modulos = " + modulo ;
             insertarBitacora(idUsuario, "Realizo una consulta a modulos", "tbl_modulos");
             OdbcDataAdapter dataTable = new OdbcDataAdapter(sqlModulos, cn.conectar());
             return dataTable;
@@ -519,7 +539,7 @@ namespace CapaDatos
             try
             {
                 cn.conectar();
-                string sqlactualizarmodulo = "UPDATE tbl_modulo SET nombre_modulo = '" + nombre + "', descripcion_modulo = '" + descripcion + "', estado_modulo = '" + estado+"' WHERE PK_id_Modulo ='" + ID_modulo+"'";
+                string sqlactualizarmodulo = "UPDATE tbl_modulos SET nombre_modulo = '" + nombre + "', descripcion_modulo = '" + descripcion + "', estado_modulo = '" + estado+"' WHERE PK_id_Modulo ='" + ID_modulo+"'";
                 OdbcDataAdapter dataTable = new OdbcDataAdapter(sqlactualizarmodulo, cn.conectar());
                 insertarBitacora(idUsuario, "Actualizo un modulo: " + ID_modulo + " - " + nombre, "tbl_modulos");
                 return dataTable;
@@ -530,6 +550,7 @@ namespace CapaDatos
                 return null;
             }
             }
+        // termina
         // ########### FIN EDICION POR ALEJANDRO BARREDA ##########################################
 
 
