@@ -208,5 +208,221 @@ namespace Capa_Vista_Consulta
             chbOrdenAscendente.Checked = false;
             chbOrdenDescendente.Checked = false;
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //Cambios por Sebastian Luna 
+
+        consultaControlador cn = new consultaControlador();
+
+        public void llenarse(string tabla, string campo1, string campo2)
+        {
+
+            string tbl = tabla;
+            string cmp1 = campo1;
+            string cmp2 = campo2;
+
+
+
+            cboQuery3.ValueMember = "numero";
+            cboQuery3.DisplayMember = "nombre";
+
+            string[] items = cn.items(tabla, campo1, campo2);
+
+
+
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] != null)
+                {
+                    if (items[i] != "")
+                    {
+                        cboQuery3.Items.Add(items[i]);
+                    }
+                }
+
+            }
+
+            var dt2 = cn.enviar(tabla, campo1, campo2);
+            AutoCompleteStringCollection coleccion = new AutoCompleteStringCollection();
+            foreach (DataRow row in dt2.Rows)
+            {
+
+                coleccion.Add(Convert.ToString(row[campo1]) + "-" + Convert.ToString(row[campo2]));
+                coleccion.Add(Convert.ToString(row[campo2]) + "-" + Convert.ToString(row[campo1]));
+
+
+            }
+
+            cboQuery3.AutoCompleteCustomSource = coleccion;
+            cboQuery3.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cboQuery3.AutoCompleteSource = AutoCompleteSource.CustomSource;
+
+
+        }
+
+        public void llenarse2(string tabla, string campo1, string campo2)
+        {
+
+            string tbl = tabla;
+            string cmp1 = campo1;
+            string cmp2 = campo2;
+
+
+
+            cboQuery1.ValueMember = "numero";
+            cboQuery1.DisplayMember = "nombre";
+
+            string[] items = cn.items(tabla, campo1, campo2);
+
+
+
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] != null)
+                {
+                    if (items[i] != "")
+                    {
+                        cboQuery1.Items.Add(items[i]);
+                    }
+                }
+
+            }
+
+            var dt2 = cn.enviar(tabla, campo1, campo2);
+            AutoCompleteStringCollection coleccion = new AutoCompleteStringCollection();
+            foreach (DataRow row in dt2.Rows)
+            {
+
+                coleccion.Add(Convert.ToString(row[campo1]) + "-" + Convert.ToString(row[campo2]));
+                coleccion.Add(Convert.ToString(row[campo2]) + "-" + Convert.ToString(row[campo1]));
+
+
+            }
+
+            cboQuery1.AutoCompleteCustomSource = coleccion;
+            cboQuery1.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cboQuery1.AutoCompleteSource = AutoCompleteSource.CustomSource;
+
+
+        }
+        //Fin sebastian Luna
+        private void cboQuery3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
+    
 }
