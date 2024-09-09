@@ -346,7 +346,6 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frm_aplicaciones";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Mantenimiento de Aplicaciones";
             this.gb_buscar.ResumeLayout(false);
             this.gb_buscar.PerformLayout();
             this.groupBox1.ResumeLayout(false);
