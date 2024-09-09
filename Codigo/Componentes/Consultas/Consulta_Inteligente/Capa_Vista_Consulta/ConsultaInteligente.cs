@@ -418,7 +418,7 @@ namespace Capa_Vista_Consulta
 
 
         }
-        //Fin sebastian Luna
+        //Fin participacion sebastian Luna
         private void cboQuery3_SelectedIndexChanged(object sender, EventArgs e)
         {
 
