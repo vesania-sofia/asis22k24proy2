@@ -391,13 +391,14 @@ namespace CapaDatos
         //###################  termina lo que hizo  Karla  Sofia Gómez Tobar #######################
 
 
-        //CAMBIOS REALIZADOS POR JOSUÉ DAVID PAZ GOMEZ
+
+        //Trabajado por María José Véliz Ochoa, 9959-21-5909
         public OdbcDataAdapter validarIDModulos()
         {
             try
             {
 
-                string sqlIDmodulo = "SELECT MAX(Pk_id_modulos)+1 FROM Tbl_modulos";
+                string sqlIDmodulo = "SELECT MAX(Pk_id_modulo)+1 FROM tbl_modulos";
                 OdbcDataAdapter dataIDmodulo = new OdbcDataAdapter(sqlIDmodulo, cn.conectar());
                 return dataIDmodulo;
 
@@ -408,6 +409,7 @@ namespace CapaDatos
                 return null;
             }
         }
+        // termina
 
         public OdbcDataAdapter validarIDperfiles()
         {
@@ -475,7 +477,8 @@ namespace CapaDatos
             }
         }
 
-        //*************************ACA EMPIEZA LA SEGUNDA PARTE DE MODIFICACIONES DE JOSUÉ DAVID PAZ GÓMEZ***********************
+        //Trabajado por María José Véliz Ochoa 9959-21-5909
+        //se optó por usar OdbcCommand en lugar de OdbcDataAdapter, cambió estructura
         public void insertarModulo(string codigo, string nombre, string descripcion, string estado)
         {
             try
@@ -483,7 +486,7 @@ namespace CapaDatos
                 // Crear la conexión y el comando
                 using (OdbcConnection connection = cn.conectar())
                 {
-                    string query = "INSERT INTO Tbl_modulos (" +
+                    string query = "INSERT INTO tbl_modulos (" +
                                    "Pk_id_modulos, " +
                                    "nombre_modulo, " +
                                    "descripcion_modulo, " +
@@ -501,8 +504,7 @@ namespace CapaDatos
                         // Ejecutar el comando
                         cmd.ExecuteNonQuery();
 
-                        // Opcional: Insertar en la bitácora si se desea
-                        insertarBitacora(idUsuario, "Inserto un nuevo modulo: " + codigo + " - " + nombre, "Tbl_modulos");
+                        insertarBitacora(idUsuario, "Inserto un nuevo modulo: " + codigo + " - " + nombre, "tbl_modulos");
                     }
                 }
             }
@@ -511,8 +513,7 @@ namespace CapaDatos
                 MessageBox.Show("Error al insertar módulo: " + ex.Message);
             }
         }
-
-        //*******************************ACA TERMINA LA SEGUNDA PARTE ACTUALIZADA POR JOSUÉ DAVID PAZ GÓMEZ****************************************
+        // termina
         //------------
 
         public OdbcDataAdapter insertarPermisosPerfilA(string codigoPerfil, string nombreAplicacion, string ingresar, string consulta, string modificar, string eliminar, string imprimir)
@@ -559,16 +560,16 @@ namespace CapaDatos
         }
 
 
-      
 
+        //Trabajado por María José Véliz Ochoa, 9959-21-5909
         public OdbcDataAdapter ConsultarModulos(string modulo)
         {
             cn.conectar();
-            string sqlModulos = "SELECT * FROM tbl_modulos WHERE Pk_id_modulos = " + modulo ;
+            string sqlModulos = "SELECT * FROM tbl_modulos WHERE Pk_id_modulos = " + modulo;
             insertarBitacora(idUsuario, "Realizo una consulta a modulos", "tbl_modulos");
             OdbcDataAdapter dataTable = new OdbcDataAdapter(sqlModulos, cn.conectar());
             return dataTable;
-        }
+        } //termina
 
         //###############ALYSON RODRIGUEZ BOTON ACTUALIZAR : creo que solo cambie que el nombre de la tabla estuviera bien
         public OdbcDataAdapter ActualizarModulo(string ID_modulo, string nombre, string descripcion, string estado)
