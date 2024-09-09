@@ -22,11 +22,12 @@ namespace CapaDatos
         {
 
         }
-
+        //Kateryn De Leon
+        //buscar usuarios
         public OdbcDataAdapter consultarUsuarios()
         {
             cn.conectar();
-            string sqlUsuarios = "SELECT PK_id_usuario FROM tbl_usuario WHERE estado_usuario = 1";
+            string sqlUsuarios = "SELECT PK_id_usuario FROM tbl_usuario WHERE estado_usuario = 1 "; //WHERE estado_usuario = 1
             OdbcDataAdapter dataUsuarios = new OdbcDataAdapter(sqlUsuarios, cn.conectar());
             insertarBitacora(idUsuario, "Realizo una consulta a usuarios", "tbl_usuario");
             return dataUsuarios;
@@ -193,40 +194,81 @@ namespace CapaDatos
             }
         }
 
-
-        public OdbcDataAdapter ActualizarUsuario(string idUsuario, string nombreUsuario, string apellidoUsuario, string clave, string estado)
+        //MODIFICAR USUARIO
+        //KATERYN DE LEON
+        public OdbcDataAdapter ActualizarUsuario(string nombre, string apellido, string correo, string pregunta, string respuesta)
         {
+
+            OdbcConnection connection = cn.conectar();
+            string sqlactualizarUsuario = "UPDATE tbl_usuarios SET nombre_usuario = '" + nombre + "', apellido_usuario = '" + apellido + "', email_usuario = '" + correo + "', pregunta= '" + pregunta + "' , respuesta = '" + respuesta + "' WHERE PK_id_usuario = ?";
+
+            OdbcCommand command = new OdbcCommand(sqlactualizarUsuario, connection);
+
             try
             {
-                cn.conectar();
-                string sqlactualizarUsuario = "UPDATE tbl_usuario SET nombre_usuario = '" + nombreUsuario + "', apellido_usuarios = '" + apellidoUsuario + "', estado_usuario = '" + estado + "' WHERE PK_id_usuario ='" + idUsuario + "'";
-                OdbcDataAdapter dataTable = new OdbcDataAdapter(sqlactualizarUsuario, cn.conectar());
-                insertarBitacora(idUsuario, "Actualizo un usuario: " + idUsuario + " - " + nombreUsuario, "tbl_usuario");
-                return dataTable;
+                // Ejecutar la consulta de inserción
+                command.ExecuteNonQuery();
+                MessageBox.Show("Usuario insertado correctamente");
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
-                return null;
+                // Manejo de errores
+                MessageBox.Show("Error al insertar usuario: " + ex.Message);
             }
+            finally
+            {
+                // Cerrar la conexión
+                connection.Close();
+            }
+
+
+            OdbcDataAdapter dataTable = new OdbcDataAdapter(sqlactualizarUsuario, cn.conectar());
+            //insertarBitacora(idUsuario, "Actualizo un usuario: " + idUsuario + " - " + nombreUsuario, "tbl_usuario");
+            return dataTable;
+
         }
 
 
         /*-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
-        /*---------------------------------------------------------------Creador: Diego Gomez-----------------------------------------------------------------------------*/
-
-        public OdbcDataAdapter insertarusuario(string id, string nombre, string apellido, string clave, int boton)
+        /*---------------------------------------------------------------Creador: Diego Gomez-----------------------------------------------------------------------------*/    //AGREGAR
+        //KATERYN DE LEON
+        public OdbcDataAdapter insertarusuario(string nombre, string apellido, string id, string clave, string correo, string fecha, string estadousuario, string pregunta, string respuesta)//int boton
         {
-            cn.conectar();
+            // Conectar a la base de datos
+            OdbcConnection connection = cn.conectar();
 
-            string sqlusuarios = "INSERT into tbl_usuario (PK_id_usuario,nombre_usuario,apellido_usuarios,password_usuario,estado_usuario) " +
-            "VALUES ('" + id + "','" + nombre + "','" + apellido + "','" + clave + "', '1')";
+            // Consulta SQL con concatenación de valores (esto es menos seguro, pero funciona en tu caso)
+            string sqlusuarios = "INSERT INTO tbl_usuarios (nombre_usuario, apellido_usuario, username_usuario, password_usuario, email_usuario, ultima_conexion_usuario, estado_usuario, pregunta, respuesta) " +
+                                 "VALUES ('" + nombre + "', '" + apellido + "', '" + id + "', '" + clave + "', '" + correo + "', '" + fecha + "', '" + estadousuario + "', '" + pregunta + "', '" + respuesta + "')";
+
+
+            // Crear el comando y asignar la conexión
+            OdbcCommand command = new OdbcCommand(sqlusuarios, connection);
+
+            try
+            {
+                // Ejecutar la consulta de inserción
+                command.ExecuteNonQuery();
+                MessageBox.Show("Usuario insertado correctamente");
+            }
+            catch (Exception ex)
+            {
+                // Manejo de errores
+                MessageBox.Show("Error al insertar usuario: " + ex.Message);
+            }
+            finally
+            {
+                // Cerrar la conexión
+                connection.Close();
+            }
             OdbcDataAdapter datausuarios = new OdbcDataAdapter(sqlusuarios, cn.conectar());
             return datausuarios;
 
 
         }
+
+
 
         public OdbcDataAdapter insertarclaves(string id, string nombre, string apellido, string clave)
         {
@@ -310,11 +352,33 @@ namespace CapaDatos
 
         }
 
+        //Kateryn De León
+        //MOSTRAR PARA  EL BOTON BUSCAR 
         public OdbcDataAdapter mostrar(string id)
         {
+            OdbcConnection connection = cn.conectar();
 
-            cn.conectar();
-            string sqlusuarios = "SELECT PK_id_usuario, nombre_usuario, apellido_usuarios, password_usuario FROM tbl_usuario where PK_id_usuario = '" + id + "'";
+            string sqlusuarios = "SELECT pk_id_usuario, nombre_usuario, apellido_usuario, username_usuario, password_usuario, email_usuario, ultima_conexion_usuario, estado_usuario,pregunta,respuesta  FROM tbl_usuarios where pk_id_usuario = '" + id + "'";
+
+            OdbcCommand command = new OdbcCommand(sqlusuarios, connection);
+
+            try
+            {
+                // Ejecutar la consulta de inserción
+                command.ExecuteNonQuery();
+
+            }
+            catch (Exception ex)
+            {
+                // Manejo de errores
+                MessageBox.Show("Error al insertar usuario: " + ex.Message);
+            }
+            finally
+            {
+                // Cerrar la conexión
+                connection.Close();
+            }
+
             OdbcDataAdapter datausuarios = new OdbcDataAdapter(sqlusuarios, cn.conectar());
 
             if (datausuarios == null)

@@ -185,12 +185,13 @@ namespace CapaLogica
         /*----------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
         /*---------------------------------------------------------------Creador: Diego Gomez-----------------------------------------------------------------------------*/
-
-        public DataTable usuarios(string id, string nombre, string apellido, string clave, int boton)
+        // cambiado ingresar datos
+        //Kateryn de leon
+        public DataTable usuarios(string nombre, string apellido, string id, string clave, string correo, string fecha, string estadousuario, string pregunta, string respuesta)//int boton
         {
             try
             {
-                OdbcDataAdapter dtusuario = sn.insertarusuario(id, nombre, apellido, clave, boton);
+                OdbcDataAdapter dtusuario = sn.insertarusuario(nombre, apellido, id, clave, correo, fecha, estadousuario, pregunta, respuesta);//boton
                 DataTable tableusuarios = new DataTable();
                 dtusuario.Fill(tableusuarios);
                 return tableusuarios;
@@ -201,6 +202,7 @@ namespace CapaLogica
                 return null;
             }
         }
+        //ACA 
 
         public DataTable clave(string id, string nombre, string apellido, string clave)
         {
@@ -300,6 +302,8 @@ namespace CapaLogica
             }
         }
 
+        //BUSCARRRRRR
+        //kateryn de leon
         public DataTable buscar(string id)
         {
             try
