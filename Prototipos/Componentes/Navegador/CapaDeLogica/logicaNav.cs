@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using CapaDeDatos;
 using System.Data;
 using System.Data.Odbc;
-using CapaDatos;
+
 
 namespace CapaDeLogica
 {
@@ -70,6 +70,14 @@ namespace CapaDeLogica
         {
             return sn.ProbarTabla(tabla);
         }
+        
+
+        public List<(string nombreColumna, bool esAutoIncremental)> obtenerColumnasYPropiedadesLogica(string nombreTabla)
+        {
+            // Llamada al método en la capa de datos
+            return sn.obtenerColumnasYPropiedades(nombreTabla);
+        }
+
         public string TestEstado(string tabla)
         {
             return sn.ProbarEstado(tabla);
@@ -77,6 +85,11 @@ namespace CapaDeLogica
         public int TestRegistros(string tabla)
         {
             return sn.ProbarRegistros(tabla);
+        }
+        public int obtenerUltimoIdInsertado()
+        {
+            // Llamar al método en la capa de datos para obtener el último ID insertado
+            return sn.getLastInsertedId();
         }
         /*
         public int obtenerMaxId(string tabla)
@@ -146,6 +159,18 @@ namespace CapaDeLogica
 		public void nuevoQuery(String query)//trasporta el query de la capa de disenio a Datos
         {
             sn.ejecutarQuery(query);
+        }
+
+        public void insertarDatosEnDosTablas(List<string> queries)
+        {
+            // Verificar si hay consultas válidas
+            if (queries == null || queries.Count == 0)
+            {
+                throw new ArgumentException("Debe haber al menos una consulta válida para ejecutar.");
+            }
+
+            // Llamar al método de transacción con la lista de queries
+            sn.ejecutarQueryConTransaccion(queries);
         }
 
 

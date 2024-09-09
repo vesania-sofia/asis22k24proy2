@@ -90,6 +90,30 @@ namespace CapaDeDatos
             catch (Exception ex) { Console.WriteLine(ex.Message.ToString() + " \nError en obtenerTipo, revise los parámetros de la tabla  \n -" + tabla.ToUpper() + "\n -"); }
             return Campos;// devuelve un arreglo con los tiposlos campos
         }
+        public int getLastInsertedId()
+        {
+            int lastId = 0;
+
+            try
+            {
+                // Abre la conexión y ejecuta la consulta para obtener el último ID generado
+                OdbcCommand command = new OdbcCommand("SELECT LAST_INSERT_ID();", cn.probarConexion());
+                object result = command.ExecuteScalar();
+
+                // Si el resultado no es nulo, conviértelo a un entero
+                if (result != null)
+                {
+                    lastId = Convert.ToInt32(result);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al obtener el último ID insertado: " + ex.Message);
+            }
+
+            return lastId; // Devolver el último ID insertado
+        }
+
         public int contarReg(string idindice)// metodo  que obtinene el contenio de una tabla
         {
             int Campos = 0;
@@ -248,7 +272,7 @@ namespace CapaDeDatos
             return registros;
         }
 
-        public string[] obtenerCampos(string tabla)//metodo que obtiene la lista de los campos que requiere una tabla
+        public string[] obtenerCampos(string tabla)
         {
             string[] Campos = new string[30];
             int i = 0;
@@ -259,14 +283,79 @@ namespace CapaDeDatos
 
                 while (reader.Read())
                 {
-                    Campos[i] = reader.GetValue(0).ToString();
+                    Campos[i] = reader.GetValue(0).ToString();  // Obtenemos el nombre de la columna
                     i++;
-
                 }
             }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message.ToString() + " \nError en asignarCombo, revise los parámetros \n -" + tabla);
+            }
+            return Campos;  // Devolver un arreglo con los nombres de las columnas
+        }
 
-            catch (Exception ex) { Console.WriteLine(ex.Message.ToString() + " \nError en asignarCombo, revise los parámetros \n -" + tabla); }
-            return Campos;// devuelve un arrgeglo con los campos
+
+        public List<(string nombreColumna, bool esAutoIncremental)> obtenerColumnasYPropiedades(string nombreTabla)
+        {
+            List<(string, bool)> columnas = new List<(string, bool)>();
+
+            try
+            {
+                string query = $"SHOW COLUMNS FROM {nombreTabla};";  // Consulta MySQL para obtener las columnas y propiedades
+                OdbcCommand comando = new OdbcCommand(query, cn.probarConexion());
+                OdbcDataReader lector = comando.ExecuteReader();
+
+                while (lector.Read())
+                {
+                    string nombreColumna = lector.GetString(0);  // Nombre de la columna
+                    string columnaExtra = lector.GetString(5);   // Información adicional (e.g. AUTO_INCREMENT)
+
+                    bool esAutoIncremental = columnaExtra.Contains("auto_increment");  // Detectar si es autoincremental
+                    columnas.Add((nombreColumna, esAutoIncremental));
+                }
+
+                lector.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al obtener columnas: " + ex.Message);
+            }
+
+            return columnas;
+        }
+
+        public void ejecutarQueryConTransaccion(List<string> queries)
+        {
+            OdbcConnection connection = cn.probarConexion();
+            OdbcTransaction transaction = null;
+
+            try
+            {
+                // Iniciar la transacción
+                transaction = connection.BeginTransaction();
+
+                foreach (string query in queries)
+                {
+                    OdbcCommand command = new OdbcCommand(query, connection, transaction);
+                    command.ExecuteNonQuery();
+                }
+
+                // Confirmar la transacción
+                transaction.Commit();
+            }
+            catch (Exception ex)
+            {
+                // Si algo falla, revertir los cambios
+                if (transaction != null)
+                {
+                    transaction.Rollback();
+                }
+                Console.WriteLine("Error en la transacción: " + ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
         }
 
         public string[] ObtenerTipo(string tabla)//metodo que obtiene la lista de los tipos de campos que requiere una tabla
@@ -427,5 +516,12 @@ namespace CapaDeDatos
             catch (OdbcException ex) { Console.WriteLine(ex.ToString()); }
 
         }
+
+      
+
+        // Método para insertar en la tabla "factura"
+      
+
+        // Método para manejar ambas inserciones
     }
 }
