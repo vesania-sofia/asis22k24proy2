@@ -7,30 +7,29 @@ namespace CapaLogica
 {
     public class ProcedimientoLogin
     {
+        //Fernando García - 0901-21-581
         public bool llamarProcedimiento(string usuario, string clave)
         {
             try
             {
                 conexion con = new conexion();
-                OdbcCommand cmd = new OdbcCommand("{ call procedimientoLogin (?,?)}", con.conectar());
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add("@usuario", OdbcType.Text).Value = usuario;
-                cmd.Parameters.Add("@clave", OdbcType.Text).Value = clave;
-
-                OdbcDataReader reader = cmd.ExecuteReader();
-
-                if (reader.HasRows)
+                using (OdbcCommand cmd = new OdbcCommand("CALL procedimientoLogin(?, ?)", con.conectar()))
                 {
-                    cmd.Connection.Close();
-                    reader.Close();
-                    return true;
-                }
-                else{
-                    cmd.Connection.Close();
-                    reader.Close();
-                    return false ;
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("@usuario", OdbcType.VarChar).Value = usuario;
+                    cmd.Parameters.Add("@clave", OdbcType.VarChar).Value = clave;
+
+                    using (OdbcDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            string resultado = reader.GetString(0);
+                            return resultado == "Inicio de sesión exitoso";
+                        }
+                    }
                 }
 
+                return false;
             }
             catch (OdbcException ex)
             {
@@ -41,5 +40,5 @@ namespace CapaLogica
             }
 
         }
-    }
+    }///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 }
