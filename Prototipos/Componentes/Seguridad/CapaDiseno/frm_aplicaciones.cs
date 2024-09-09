@@ -76,11 +76,46 @@ namespace CapaDiseno
         {
 
         }
-
+        //aqui inica lo que hizo Carlos Hernandez
         private void btn_eliminar_Click(object sender, EventArgs e)
         {
+            string idaplicacion = txt_idaplicacion.Text.Trim();
+            string descripcion = txt_descripcion.Text.Trim();
+            string aplicacion = txt_idaplicacion.Text.Trim();
+
+            txt_buscar.Enabled = true;
+            btn_bsucarap.Enabled = true;
+            btn_modif.Enabled = false;
+            btn_nuevo.Enabled = false;
+            txt_idaplicacion.Enabled = false;
+            txt_descripcion.Enabled = false;
+            Gpb_estado.Enabled = false;
+
+            try
+            {
+               
+                DataTable dtusuario = logic.eliminaraplicaciones(idaplicacion, descripcion, aplicacion);
+
+                if (dtusuario == null || dtusuario.Rows.Count == 0)
+                {
+                    MessageBox.Show("No se eliminaron registros.");
+                }
+                else
+                {
+                    MessageBox.Show("Registro eliminado exitosamente.");
+                }
+            }
+            catch (Exception ex)
+            {
+               
+                MessageBox.Show($"Ocurrió un error: {ex.Message}");
+            }
+            txt_idaplicacion.Text = "";
+            limpiar();
 
         }
+        //aqui termina la parte de Carlos Hernandez
+
         //###################  lo que hizo Karla  Sofia Gómez Tobar #######################
         private void btn_cancel_Click(object sender, EventArgs e)
         {
@@ -106,10 +141,46 @@ namespace CapaDiseno
             this.Close();
         }
         //###################  termina lo que hizo  Karla  Sofia Gómez Tobar #######################
+
+        //esto fue echo por Carlos hernandez
         private void btn_modif_Click(object sender, EventArgs e)
         {
-
+            string idaplicacion = txt_idaplicacion.Text.Trim();
+            string descripcion = txt_descripcion.Text.Trim();
+            string aplicacion = txt_idaplicacion.Text.Trim();
+            if (string.IsNullOrWhiteSpace(idaplicacion) ||
+                string.IsNullOrWhiteSpace(descripcion) || string.IsNullOrWhiteSpace(aplicacion))
+            {
+                MessageBox.Show("Faltan campos por llenar.");
+                return;
+            }
+            txt_buscar.Enabled = false;
+            btn_bsucarap.Enabled = true;
+            btn_modif.Enabled = true;
+            btn_nuevo.Enabled = true;
+            txt_idaplicacion.Enabled = false;
+            txt_descripcion.Enabled = true;
+            txt_idaplicacion.Enabled = true;
+            try
+            {
+                DataTable resultado = logic.modificaraplicaciones(idaplicacion, descripcion, aplicacion);
+                if (resultado != null && resultado.Rows.Count > 0)
+                {
+                    MessageBox.Show("Registro modificado exitosamente.");
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo modificar el registro.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ocurrió un error durante la modificación: {ex.Message}");
+            }
+            txt_idaplicacion.Text = "";
+            limpiar();
         }
+        //termina lo que hizo carlos hernandez 
 
 
         //###################  lo que hizo Karla  Sofia Gómez Tobar #######################
