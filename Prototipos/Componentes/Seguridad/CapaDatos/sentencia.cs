@@ -64,7 +64,7 @@ namespace CapaDatos
                     sCodigoModulo = almacena.GetString(0);
                 }
 
-                string sqlAplicaciones = "SELECT nombre_aplicacion FROM tbl_aplicacion WHERE PK_id_Modulo = '"+sCodigoModulo+"' ";
+                string sqlAplicaciones = "SELECT nombre_aplicacion FROM tbl_aplicacion WHERE PK_id_Modulo = '" + sCodigoModulo + "' ";
                 OdbcDataAdapter dataAplicaciones = new OdbcDataAdapter(sqlAplicaciones, cn.conectar());
 
                 almacena.Close();
@@ -72,10 +72,10 @@ namespace CapaDatos
                 insertarBitacora(idUsuario, "Realizo una consulta a aplicaciones", "tbl_aplicacion");
                 return dataAplicaciones;
 
-               
+
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex);
                 return null;
@@ -96,8 +96,8 @@ namespace CapaDatos
                     sCodigoAplicacion = almacena.GetString(0);
                 }
 
-                string sqlInsertarPermisosUA = "INSERT INTO tbl_usuario_aplicacion(PK_id_usuario, PK_id_aplicacion, ingresar, consulta, modificar, eliminar, imprimir) VALUES ('"+codigoUsuario+"', '"+sCodigoAplicacion+"', '"+ingresar+"', '"+consulta+"', '"+modificar+"', '"+eliminar+"', '"+imprimir+"');";
-                insertarBitacora(idUsuario, "Asigno aplicacion: " + nombreAplicacion+ " a usuario: "  + codigoUsuario, "tbl_usuario_aplicacion");
+                string sqlInsertarPermisosUA = "INSERT INTO tbl_usuario_aplicacion(PK_id_usuario, PK_id_aplicacion, ingresar, consulta, modificar, eliminar, imprimir) VALUES ('" + codigoUsuario + "', '" + sCodigoAplicacion + "', '" + ingresar + "', '" + consulta + "', '" + modificar + "', '" + eliminar + "', '" + imprimir + "');";
+                insertarBitacora(idUsuario, "Asigno aplicacion: " + nombreAplicacion + " a usuario: " + codigoUsuario, "tbl_usuario_aplicacion");
                 OdbcDataAdapter dataPermisosUA = new OdbcDataAdapter(sqlInsertarPermisosUA, cn.conectar());
 
 
@@ -106,7 +106,7 @@ namespace CapaDatos
 
                 return dataPermisosUA;
 
-                
+
 
             }
             catch (Exception ex)
@@ -126,7 +126,7 @@ namespace CapaDatos
                 insertarBitacora(idUsuario, "Realizo una consulta a perfiles", "tbl_perfil");
                 return dataPerfilUsuario;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex);
                 return null;
@@ -142,7 +142,7 @@ namespace CapaDatos
                 insertarBitacora(idUsuario, "Elimino perfil: " + codigoPerfil + " a usuario: " + nombreUsuario, "tbl_usuario_perfil");
                 return dataEliminarPerfilUsuario;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex);
                 return null;
@@ -169,7 +169,7 @@ namespace CapaDatos
                 insertarBitacora(idUsuario, "Asigno perfil: " + codigoPerfil + " a usuario: " + nombreUsuario, "tbl_usuario_perfil");
                 return dataInsertarPerfilUsuario;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex);
                 return null;
@@ -180,10 +180,10 @@ namespace CapaDatos
         {
             try
             {
-                
-                 string sqlIDAplicacion = "SELECT MAX(PK_id_aplicacion)+1 FROM tbl_aplicacion";
-                 OdbcDataAdapter dataIDAplicacion = new OdbcDataAdapter(sqlIDAplicacion, cn.conectar());
-                 return dataIDAplicacion;
+
+                string sqlIDAplicacion = "SELECT MAX(PK_id_aplicacion)+1 FROM tbl_aplicacion";
+                OdbcDataAdapter dataIDAplicacion = new OdbcDataAdapter(sqlIDAplicacion, cn.conectar());
+                return dataIDAplicacion;
 
             }
             catch (Exception ex)
@@ -194,7 +194,7 @@ namespace CapaDatos
         }
 
 
-        public OdbcDataAdapter ActualizarUsuario(string idUsuario, string nombreUsuario, string apellidoUsuario,string clave, string estado)
+        public OdbcDataAdapter ActualizarUsuario(string idUsuario, string nombreUsuario, string apellidoUsuario, string clave, string estado)
         {
             try
             {
@@ -220,10 +220,10 @@ namespace CapaDatos
         {
             cn.conectar();
 
-              string sqlusuarios = "INSERT into tbl_usuario (PK_id_usuario,nombre_usuario,apellido_usuarios,password_usuario,estado_usuario) " +
-              "VALUES ('" + id + "','" + nombre + "','" + apellido + "','" + clave + "', '1')";
-               OdbcDataAdapter datausuarios = new OdbcDataAdapter(sqlusuarios, cn.conectar());
-              return datausuarios;
+            string sqlusuarios = "INSERT into tbl_usuario (PK_id_usuario,nombre_usuario,apellido_usuarios,password_usuario,estado_usuario) " +
+            "VALUES ('" + id + "','" + nombre + "','" + apellido + "','" + clave + "', '1')";
+            OdbcDataAdapter datausuarios = new OdbcDataAdapter(sqlusuarios, cn.conectar());
+            return datausuarios;
 
 
         }
@@ -240,14 +240,14 @@ namespace CapaDatos
         public OdbcDataAdapter update(string usuario)
         {
             cn.conectar();
-            string sqlconsulta = "select PK_id_perfil FROM tbl_usuario_perfil where PK_id_usuario = '"+usuario+"'";
+            string sqlconsulta = "select PK_id_perfil FROM tbl_usuario_perfil where PK_id_usuario = '" + usuario + "'";
             OdbcDataAdapter dataconsulta = new OdbcDataAdapter(sqlconsulta, cn.conectar());
             return dataconsulta;
-           
+
         }
 
 
-        public OdbcDataAdapter clienteupdate(string clave,string usuario)
+        public OdbcDataAdapter clienteupdate(string clave, string usuario)
         {
             cn.conectar();
             MessageBox.Show("Contraseña Actualizada");
@@ -303,7 +303,7 @@ namespace CapaDatos
 
         public OdbcDataAdapter eliminaraplicacion(string idaplicacion, string modulo, string descripcion, string aplicacion)
         {
-            
+
             string sqleliminar = "update tbl_aplicacion set PK_id_aplicacion='" + idaplicacion + "',PK_id_modulo='" + modulo + "',nombre_aplicacion='" + aplicacion + "',descripcion_aplicacion='" + descripcion + "',estado_aplicacion='0' WHERE PK_id_aplicacion='" + idaplicacion + "'";
             OdbcDataAdapter dataeliminar = new OdbcDataAdapter(sqleliminar, cn.conectar());
             return dataeliminar;
@@ -398,7 +398,7 @@ namespace CapaDatos
             {
                 string sqlPerfil = "INSERT INTO tbl_perfil_encabezado (PK_id_Perfil, nombre_perfil,descripcion_perfil,estado_perfil) VALUES ('" + codigo + "','" + nombre + "', '" + descripcion + "', " + estado + ");";
                 OdbcDataAdapter datainsertarperfil = new OdbcDataAdapter(sqlPerfil, cn.conectar());
-                insertarBitacora(idUsuario, "Inserto un nuevo perfil: "  + codigo + " - " + nombre , "tbl_perfil");
+                insertarBitacora(idUsuario, "Inserto un nuevo perfil: " + codigo + " - " + nombre, "tbl_perfil");
                 return datainsertarperfil;
             }
             catch (Exception ex)
@@ -444,7 +444,7 @@ namespace CapaDatos
             {
                 string sqlModulos = "INSERT INTO tbl_modulo (PK_id_Modulo, nombre_modulo,descripcion_modulo,estado_modulo) VALUES ('" + codigo + "','" + nombre + "', '" + descripcion + "', " + estado + ");";
                 OdbcDataAdapter datainsertarmodulo = new OdbcDataAdapter(sqlModulos, cn.conectar());
-                insertarBitacora(idUsuario, "Inserto un nuevo modulo: " + codigo + " - " + nombre , "tbl_modulo");
+                insertarBitacora(idUsuario, "Inserto un nuevo modulo: " + codigo + " - " + nombre, "tbl_modulo");
                 return datainsertarmodulo;
             }
             catch (Exception ex)
@@ -452,7 +452,7 @@ namespace CapaDatos
                 Console.WriteLine(ex);
                 return null;
             }
-            }
+        }
 
 
         //------------
@@ -506,7 +506,7 @@ namespace CapaDatos
         public OdbcDataAdapter ConsultarModulos(string modulo)
         {
             cn.conectar();
-            string sqlModulos = "SELECT * FROM tbl_modulo WHERE PK_Id_Modulo = " + modulo ;
+            string sqlModulos = "SELECT * FROM tbl_modulo WHERE PK_Id_Modulo = " + modulo;
             insertarBitacora(idUsuario, "Realizo una consulta a modulos", "tbl_modulos");
             OdbcDataAdapter dataTable = new OdbcDataAdapter(sqlModulos, cn.conectar());
             return dataTable;
@@ -519,7 +519,7 @@ namespace CapaDatos
             try
             {
                 cn.conectar();
-                string sqlactualizarmodulo = "UPDATE tbl_modulo SET nombre_modulo = '" + nombre + "', descripcion_modulo = '" + descripcion + "', estado_modulo = '" + estado+"' WHERE PK_id_Modulo ='" + ID_modulo+"'";
+                string sqlactualizarmodulo = "UPDATE tbl_modulo SET nombre_modulo = '" + nombre + "', descripcion_modulo = '" + descripcion + "', estado_modulo = '" + estado + "' WHERE PK_id_Modulo ='" + ID_modulo + "'";
                 OdbcDataAdapter dataTable = new OdbcDataAdapter(sqlactualizarmodulo, cn.conectar());
                 insertarBitacora(idUsuario, "Actualizo un modulo: " + ID_modulo + " - " + nombre, "tbl_modulos");
                 return dataTable;
@@ -529,7 +529,7 @@ namespace CapaDatos
                 Console.WriteLine(ex);
                 return null;
             }
-            }
+        }
         // ########### FIN EDICION POR ALEJANDRO BARREDA ##########################################
 
 
@@ -543,7 +543,7 @@ namespace CapaDatos
             try
             {
                 ds = new DataSet();
-                dat = new OdbcDataAdapter("SELECT PK_id_bitacora as Id, PK_id_usuario as Usuario, fecha, hora, host, ip, accion, tabla from tbl_bitacora"
+                dat = new OdbcDataAdapter("SELECT PK_id_bitacora as Id, FK_id_usuario as Usuario, fecha_bitacora, hora_bitacora, host_bitacora, ip_bitacora, accion_bitacora from tbl_bitacora"
                 , cn.conectar());
                 dat.Fill(ds);
             }
@@ -563,48 +563,62 @@ namespace CapaDatos
         {
             try
             {
+                string ipLocal = ObtenerDireccionIPLocal();
+                string nombreHost = Dns.GetHostName();
 
-                IPHostEntry hostEntry;
-                string localIP = "";
-                hostEntry = Dns.GetHostEntry(Dns.GetHostName());
-                foreach (IPAddress ip in hostEntry.AddressList)
+                using (OdbcConnection conexion = cn.conectar())
                 {
-                    if (ip.AddressFamily.ToString() == "InterNetwork")
+                    string obtenerIdUsuarioQuery = "SELECT Pk_id_usuario FROM Tbl_usuarios WHERE nombre_usuario = ?";
+                    OdbcCommand obtenerIdUsuarioCmd = new OdbcCommand(obtenerIdUsuarioQuery, conexion);
+                    obtenerIdUsuarioCmd.Parameters.AddWithValue("?", idUsuario);
+
+
+
+                    object resultado = obtenerIdUsuarioCmd.ExecuteScalar();
+                    if (resultado != null)
                     {
-                        localIP = ip.ToString();
+                        string usuario = resultado.ToString();
+
+                        string consulta = @"INSERT INTO tbl_bitacora 
+                                (Fk_id_usuario, fecha_bitacora, hora_bitacora, host_bitacora, ip_bitacora, accion_bitacora) 
+                                VALUES (?, ?, ?, ?, ?, ?)";
+
+                        using (OdbcCommand cmd = new OdbcCommand(consulta, conexion))
+                        {
+                            cmd.Parameters.AddWithValue("?", usuario);
+                            cmd.Parameters.AddWithValue("?", DateTime.Now.ToString("yyyy-MM-dd"));
+                            cmd.Parameters.AddWithValue("?", DateTime.Now.ToString("HH:mm:ss"));
+                            cmd.Parameters.AddWithValue("?", nombreHost);
+                            cmd.Parameters.AddWithValue("?", ipLocal);
+                            cmd.Parameters.AddWithValue("?", accion);
+
+                            cmd.ExecuteNonQuery();
+                        }
                     }
                 }
-
-                string host = Dns.GetHostName();
-                IPAddress[] IP = Dns.GetHostAddresses(host);
-                OdbcCommand cmd;
-                cmd = new OdbcCommand("INSERT INTO tbl_bitacora (" +
-                      "PK_id_usuario , " +
-                      " fecha , " +
-                      " hora , " +
-                      " host , " +
-                      " ip, " +
-                      " accion ," +
-                      " tabla ) " +
-                      "VALUES ('" +
-                      idUsuario +
-                       "' , '" + DateTime.Now.ToString("yyy/MM/dd") +
-                       "' , '" + DateTime.Now.ToString("hh:mm:ss") +
-                       "' , '" + host +
-                       "' , '" + localIP +
-                       "' , '" + accion +
-                       "' , '" + tabla +
-                       "') "
-                      , cn.conectar());
-                cmd.ExecuteNonQuery();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
-            }
-
-
+                // Registrar la excepción o manejarla apropiadamente
+                MessageBox.Show("Error al insertar en la bitácora: " + ex.Message);
+                // Opcionalmente, relanzar la excepción si desea que el código que llama la maneje
+                // throw;
+            }
         }
+        private string ObtenerDireccionIPLocal()
+        {
+            var host = Dns.GetHostEntry(Dns.GetHostName());
+            foreach (var ip in host.AddressList)
+            {
+                if (ip.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
+                {
+                    return ip.ToString();
+                }
+            }
+            return "No se pudo determinar la dirección IP local";
+        }
+
+
 
         public bool consultarPermisos(string idUsuario, string idAplicacion, int tipoPermiso)
         {
@@ -618,7 +632,7 @@ namespace CapaDatos
                         OdbcCommand sql = new OdbcCommand("Select ingresar from tbl_usuario_aplicacion WHERE PK_id_usuario= '" + idUsuario + "' AND PK_id_aplicacion ='" + idAplicacion + "'", cn.conectar());
                         OdbcDataReader almacena = sql.ExecuteReader();
 
-                        if(almacena.Read() == true)
+                        if (almacena.Read() == true)
                         {
                             if (almacena.GetString(0) == "1")
                             {
@@ -647,8 +661,8 @@ namespace CapaDatos
 
                     case 2:
 
-                         sql = new OdbcCommand("Select consultar from tbl_usuario_aplicacion WHERE PK_id_usuario= '" + idUsuario + "' AND PK_id_aplicacion ='" + idAplicacion + "'", cn.conectar());
-                         almacena = sql.ExecuteReader();
+                        sql = new OdbcCommand("Select consultar from tbl_usuario_aplicacion WHERE PK_id_usuario= '" + idUsuario + "' AND PK_id_aplicacion ='" + idAplicacion + "'", cn.conectar());
+                        almacena = sql.ExecuteReader();
 
                         if (almacena.Read() == true)
                         {

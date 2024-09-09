@@ -108,5 +108,23 @@ namespace CapaDiseno
             Help.ShowHelp(this, "C:\\Ayuda_Seguridad\\" + "ayudaLogin.chm", "login.html");
 
         }
+
+        private void Btn_olvidocontrasenia_Click(object sender, EventArgs e)
+        {
+            // Mostrar el formulario de entrada con una pregunta
+            using (var frm_cambio_contrasenia = new frm_cambio_contrasenia("Por favor, ingresa tu usuario:"))
+            {
+                if (frm_cambio_contrasenia.ShowDialog() == DialogResult.OK)
+                {
+                    // Obtener el resultado del formulario
+                    string nombre = frm_cambio_contrasenia.Resultado;
+                    MessageBox.Show("El nombre ingresado es: " + nombre);
+                }
+                /*else
+                {
+                    MessageBox.Show("Entrada cancelada.");
+                }*/
+            }
+        }
     }
 }
