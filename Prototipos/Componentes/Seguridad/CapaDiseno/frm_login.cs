@@ -29,6 +29,7 @@ namespace CapaDiseno
             return nombreUsuario;
         }
 
+        //Fernando García 0901-21-581//
         private void Btn_entrar_Click(object sender, EventArgs e)
         {
             ProcedimientoLogin procedimientoLogin = new ProcedimientoLogin();
@@ -51,9 +52,16 @@ namespace CapaDiseno
 
                         if (bExisteUsuario)
                         {
-                            this.Close();
+                            
+                            // Ocultar el formulario de login en lugar de cerrarlo
+                            this.Hide();
+
                             sentencia s = new sentencia();
                             s.insertarBitacora(Txt_usuario.Text.Trim(), "Se logeo al sistema", "Login");
+
+                            // Pasa el nombre de usuario al constructor de MDI_Seguridad
+                            MDI_Seguridad formMDI = new MDI_Seguridad(Txt_usuario.Text);
+                            formMDI.Show();
 
                         }
                         else
@@ -70,6 +78,7 @@ namespace CapaDiseno
                 }
             }
         }
+
 
         private void Btn_cancelar_Click(object sender, EventArgs e)
         {
