@@ -99,7 +99,8 @@ namespace CapaDiseno
             }
         }
 
-
+        // termina
+        //María José para deshabilitar txt código
         private void Btn_cancel_Click(object sender, EventArgs e)
         {
             limpiar();
@@ -116,7 +117,7 @@ namespace CapaDiseno
             btn_eliminar.Enabled = false; //se agrega
 
         }
-
+        // termina
         private void Button1_Click(object sender, EventArgs e)
         {
             limpiar();
@@ -139,6 +140,7 @@ namespace CapaDiseno
             btn_eliminar.Enabled = false; //se agrega
         }
 
+        //Trabajado por María José Véliz Ochoa, 9959-21-5909
         private void Btn_bsucarmodulo_Click(object sender, EventArgs e)
         {
             string modulo = tbx_buscarmodulo.Text;
@@ -148,7 +150,7 @@ namespace CapaDiseno
                 MessageBox.Show("Por favor, ingrese un ID de módulo.");
                 return;
             }
-
+            //Para errores null del DataTable
             try
             {
                 DataTable dtModulos = logic.ConsultaLogicaModulo(modulo);
@@ -160,7 +162,7 @@ namespace CapaDiseno
                 }
 
                 foreach (DataRow row in dtModulos.Rows)
-                {
+                {// Asigna el valor de cada columna a su respectivo control en la interfaz si no es nulo
                     if (row[0] != DBNull.Value) txtcodigo.Text = row[0].ToString();
                     if (row[1] != DBNull.Value) txtnombre.Text = row[1].ToString();
                     if (row[2] != DBNull.Value) txtdesc.Text = row[2].ToString();
@@ -198,7 +200,7 @@ namespace CapaDiseno
             }
         }
 
-
+        // termina
 
 
         private void Btn_actualizar_Click(object sender, EventArgs e)
@@ -261,6 +263,7 @@ namespace CapaDiseno
 
         }
 
+        //Trabajado por María José Véliz Ochoa, 9959-21-5909
         private void Btn_nuevo_Click(object sender, EventArgs e)
         {
             btn_nuevo.Enabled = false;
@@ -273,10 +276,12 @@ namespace CapaDiseno
             txtdesc.Enabled = true;
             btn_ingresar.Enabled = true;
             btn_cancel.Enabled = true;
+            //habilitando para ingresar id
             txtcodigo.Enabled = true;
             btn_eliminar.Enabled = false; //se agrega
 
 
+            //para errores tipo null
             try
             {
                 DataTable dtValidarID = logic.validarIDModulos();
@@ -306,6 +311,7 @@ namespace CapaDiseno
         {
             Help.ShowHelp(this, "C:\\Ayuda_Seguridad\\" + "MantenimientoModulos.chm", "AyudaMantenimientoModulos.html");
         }
+        //termina
 
         private void txtcodigo_TextChanged(object sender, EventArgs e)
         {
