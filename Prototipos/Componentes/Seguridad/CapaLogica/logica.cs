@@ -312,11 +312,29 @@ namespace CapaLogica
             }
         }
 
-        public DataTable eliminaraplicaciones(string idaplicacion, string modulo, string descripcion, string aplicacion)
+        //Esta parte fue echa por Carlos Hernandez
+        public DataTable modificaraplicaciones(string idaplicacion, string descripcion, string aplicacion)
         {
             try
             {
-                OdbcDataAdapter dteliminar = sn.eliminaraplicacion(idaplicacion, modulo, descripcion, aplicacion);
+                OdbcDataAdapter dtModificar = sn.modificaraplicaciones(idaplicacion, descripcion, aplicacion);
+                DataTable tableModificar = new DataTable();
+                dtModificar.Fill(tableModificar);
+                return tableModificar;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al modificar la aplicación: {ex.Message}");
+                return null;
+            }
+        }
+        //termina lo que hizo carlos hernandez 
+
+        public DataTable eliminaraplicaciones(string idaplicacion, string descripcion, string aplicacion)
+        {
+            try
+            {
+                OdbcDataAdapter dteliminar = sn.eliminaraplicacion(idaplicacion, descripcion, aplicacion);
                 DataTable tableliminar = new DataTable();
                 dteliminar.Fill(tableliminar);
                 return tableliminar;

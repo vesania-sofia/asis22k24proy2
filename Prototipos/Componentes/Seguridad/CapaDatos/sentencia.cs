@@ -340,10 +340,22 @@ namespace CapaDatos
 
         }
 
-        public OdbcDataAdapter eliminaraplicacion(string idaplicacion, string modulo, string descripcion, string aplicacion)
+        // Esta parte fue echa por Carlos Hernandez
+        public OdbcDataAdapter modificaraplicaciones(string idaplicacion, string descripcion, string aplicacion)
         {
-            
-            string sqleliminar = "update tbl_aplicacion set PK_id_aplicacion='" + idaplicacion + "',PK_id_modulo='" + modulo + "',nombre_aplicacion='" + aplicacion + "',descripcion_aplicacion='" + descripcion + "',estado_aplicacion='0' WHERE PK_id_aplicacion='" + idaplicacion + "'";
+            string sqlModificar = "UPDATE Tbl_aplicaciones SET nombre_aplicacion = '" + aplicacion +
+                                  "', descripcion_aplicacion = '" + descripcion +
+                                  "' WHERE Pk_id_aplicacion = '" + idaplicacion + "'";
+            OdbcDataAdapter dataModificar = new OdbcDataAdapter(sqlModificar, cn.conectar());
+
+            return dataModificar;
+        }
+        //termina lo que hizo carlos hernandez 
+
+
+        public OdbcDataAdapter eliminaraplicacion(string idaplicacion,  string descripcion, string aplicacion)
+        {
+            string sqleliminar = "update tbl_aplicacion set PK_id_aplicacion='" + idaplicacion +  "',nombre_aplicacion='" + aplicacion + "',descripcion_aplicacion='" + descripcion + "',estado_aplicacion='0' WHERE PK_id_aplicacion='" + idaplicacion + "'";
             OdbcDataAdapter dataeliminar = new OdbcDataAdapter(sqleliminar, cn.conectar());
             return dataeliminar;
 
