@@ -34,6 +34,7 @@ namespace CapaDeLogica
             DataTable table = new DataTable();
             dt.Fill(table);
             return table;
+
         }
 
 
@@ -99,7 +100,7 @@ namespace CapaDeLogica
         }
         public string[] tipos(string tabla)
         {
-            string[] Tipos = sn.obtenerTipo(tabla);
+            string[] Tipos = sn.ObtenerTipo(tabla);
 
             return Tipos;
         }

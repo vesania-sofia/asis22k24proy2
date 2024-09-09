@@ -214,6 +214,10 @@ namespace CapaDeDiseno
                     }
                 }
             }
+            else
+            {
+                MessageBox.Show("Tabla actual: " + tabla);
+            }
             //botonesYPermisosInicial(userActivo, aplActivo);
             //registros();
         }
@@ -446,6 +450,7 @@ namespace CapaDeDiseno
                 lb.Font = fuente;
                 lb.ForeColor = Cfuente;
                 this.Controls.Add(lb);
+
                 if (LLaves[i]=="PRI" && i!=0)
                 {
                     LLaves[i] = "MUL";
@@ -455,7 +460,11 @@ namespace CapaDeDiseno
                 {
                     case "int":
                         tipoCampo[noCampos - 1] = "Num";
-                        if (LLaves[i] != "MUL") { crearTextBoxnumerico(Campos[i]); } else { crearComboBox(Campos[i]); }
+                        if (LLaves[i] != "MUL") { 
+                            crearTextBoxnumerico(Campos[i]); 
+                        } 
+                        else { 
+                            crearComboBox(Campos[i]); }
                         
                         break;
                     case "varchar":
@@ -469,12 +478,14 @@ namespace CapaDeDiseno
                         if (LLaves[i] != "MUL")
                         {crearDateTimePicker(Campos[i]);} else { crearComboBox(Campos[i]); }
                         break;
+
                     case "datetime":
                         tipoCampo[noCampos - 1] = "Text";
                         if (LLaves[i] != "MUL")
                         { crearDateTimePicker(Campos[i]); }
                         else { crearComboBox(Campos[i]); }
                         break;
+
                     case "text":
                         tipoCampo[noCampos - 1] = "Text";
                         if (LLaves[i] != "MUL")
