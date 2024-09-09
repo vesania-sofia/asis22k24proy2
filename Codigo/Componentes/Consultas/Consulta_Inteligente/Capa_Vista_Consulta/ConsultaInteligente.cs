@@ -19,6 +19,8 @@ namespace Capa_Vista_Consulta
         string tablabusqueda;
         private string[] datos;
         private string[] tipos;
+        private string consultaSeleccionada;
+
         public ConsultaInteligente()
         {
             InitializeComponent();
@@ -30,12 +32,16 @@ namespace Capa_Vista_Consulta
             cboTabla.SelectedIndexChanged += new EventHandler(cboTabla_SelectedIndexChanged);
             gbCondiciones.Enabled = false;
             gbOrdenar.Enabled = false;
-            gbListadoConsultas.Enabled = false;
+            gbListadoConsultas.Enabled = true;
             gbEditarLogica.Enabled = false;
             gbEditarOrden.Enabled = false;
+            csControlador.obtenerNombresConsultas(cboQuery1);
+            cboQuery2.SelectedIndexChanged += new EventHandler(cboConsultas_SelectedIndexChanged);
+            csControlador.obtenerNombresConsultas(cboQuery3);
+            cboQuery3.SelectedIndexChanged += new EventHandler(cboConsultas_SelectedIndexChanged);
         }
         string consulta = "";
-        string tabla = "tbl_consultasInteligentes";
+        string tabla = "tbl_consultaInteligente";
         private void cboTabla_SelectedIndexChanged(object sender, EventArgs e)
         {
             // Verifica si se ha seleccionado una tabla
@@ -155,8 +161,7 @@ namespace Capa_Vista_Consulta
 
         private void btnAgregarComparacion_Click(object sender, EventArgs e)
         {
-            // Procesar los datos en la tabla correspondiente
-            csControlador.ingresarQuery(tipos, datos, tabla);
+            
         }
 
         private void btnCancelarSimple_Click(object sender, EventArgs e)
@@ -208,5 +213,330 @@ namespace Capa_Vista_Consulta
             chbOrdenAscendente.Checked = false;
             chbOrdenDescendente.Checked = false;
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /*Cambios por Sebastian Luna 
+
+        consultaControlador cn = new consultaControlador();
+
+        public void llenarse(string tabla, string campo1, string campo2)
+        {
+
+            string tbl = tabla;
+            string cmp1 = campo1;
+            string cmp2 = campo2;
+
+
+
+            cboQuery3.ValueMember = "numero";
+            cboQuery3.DisplayMember = "nombre";
+
+            string[] items = cn.items(tabla, campo1, campo2);
+
+
+
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] != null)
+                {
+                    if (items[i] != "")
+                    {
+                        cboQuery3.Items.Add(items[i]);
+                    }
+                }
+
+            }
+
+            var dt2 = cn.enviar(tabla, campo1, campo2);
+            AutoCompleteStringCollection coleccion = new AutoCompleteStringCollection();
+            foreach (DataRow row in dt2.Rows)
+            {
+
+                coleccion.Add(Convert.ToString(row[campo1]) + "-" + Convert.ToString(row[campo2]));
+                coleccion.Add(Convert.ToString(row[campo2]) + "-" + Convert.ToString(row[campo1]));
+
+
+            }
+
+            cboQuery3.AutoCompleteCustomSource = coleccion;
+            cboQuery3.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cboQuery3.AutoCompleteSource = AutoCompleteSource.CustomSource;
+
+
+        }
+
+        public void llenarse2(string tabla, string campo1, string campo2)
+        {
+
+            string tbl = tabla;
+            string cmp1 = campo1;
+            string cmp2 = campo2;
+
+
+
+            cboQuery1.ValueMember = "numero";
+            cboQuery1.DisplayMember = "nombre";
+
+            string[] items = cn.items(tabla, campo1, campo2);
+
+
+
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] != null)
+                {
+                    if (items[i] != "")
+                    {
+                        cboQuery1.Items.Add(items[i]);
+                    }
+                }
+
+            }
+
+            var dt2 = cn.enviar(tabla, campo1, campo2);
+            AutoCompleteStringCollection coleccion = new AutoCompleteStringCollection();
+            foreach (DataRow row in dt2.Rows)
+            {
+
+                coleccion.Add(Convert.ToString(row[campo1]) + "-" + Convert.ToString(row[campo2]));
+                coleccion.Add(Convert.ToString(row[campo2]) + "-" + Convert.ToString(row[campo1]));
+
+
+            }
+
+            cboQuery1.AutoCompleteCustomSource = coleccion;
+            cboQuery1.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cboQuery1.AutoCompleteSource = AutoCompleteSource.CustomSource;
+
+
+        }
+        Fin participacion sebastian Luna*/
+        private void cboConsultas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Captura el nombre de la consulta seleccionada
+            string nombreConsulta = cboQuery1.Text;
+            string nombreConsulta1 = cboQuery3.Text;
+
+            // Guardar el nombre de la consulta en una variable de instancia
+            consultaSeleccionada = nombreConsulta;
+            consultaSeleccionada = nombreConsulta1;
+        }
+        private void cboQuery3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAgregarConsultaSimple_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCrear_Click(object sender, EventArgs e)
+        {
+            // Procesar los datos en la tabla correspondiente
+            csControlador.ingresarQuery(tipos, datos, tabla);
+        }
+
+        private void cboTabla_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cboQuery2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Captura el nombre de la consulta seleccionada
+            string nombreConsulta = cboQuery1.Text;
+            string nombreConsulta1 = cboQuery3.Text;
+
+            // Guardar el nombre de la consulta en una variable de instancia
+            consultaSeleccionada = nombreConsulta;
+            consultaSeleccionada = nombreConsulta1;
+        }
     }
+    
 }

@@ -170,5 +170,313 @@ namespace Capa_Modelo_Consulta
             }
             return dt;
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /*modficado por Sebastian Luna
+        public string[] llenarCmb(string tabla, string campo1, string campo2)
+        {
+
+            string[] Campos = new string[300];
+            string[] auto = new string[300];
+            int i = 0;
+            string sql = "SELECT " + campo1 + "," + campo2 + " FROM " + tabla + " where estado = 1 ;";
+
+            try
+            {
+                OdbcCommand command = new OdbcCommand(sql, conn.connection());
+                OdbcDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+
+                    Campos[i] = reader.GetValue(0).ToString() + "-" + reader.GetValue(1).ToString();
+                    i++;
+
+
+                }
+
+
+
+
+            }
+            catch (Exception ex) { Console.WriteLine(ex.Message.ToString() + " \nError en asignarCombo, revise los parametros \n -" + tabla + "\n -" + campo1); }
+
+
+            return Campos;
+
+
+
+        }
+
+        public DataTable obtener(string tabla, string campo1, string campo2)
+        {
+
+            string sql = "SELECT " + campo1 + "," + campo2 + " FROM " + tabla + " where estado = 1  ;";
+
+            OdbcCommand command = new OdbcCommand(sql, conn.connection());
+            OdbcDataAdapter adaptador = new OdbcDataAdapter(command);
+            DataTable dt = new DataTable();
+            adaptador.Fill(dt);
+
+
+            return dt;
+        }//Fin de participacion de sebastian luna*/
+
+        public List<string> ObtenerNombresConsultas()
+        {
+            List<string> nombresConsultas = new List<string>();
+
+            try
+            {
+                // Consulta para obtener solo los nombres de las consultas
+                string query = "SELECT nombre_consulta FROM tbl_consultaInteligente;";
+
+                // Ejecutamos el comando con la conexión activa
+                using (OdbcCommand cmd = new OdbcCommand(query, this.conn.connection()))
+                {
+                    OdbcDataReader reader = cmd.ExecuteReader();
+
+                    // Añadimos los nombres de consulta a la lista
+                    while (reader.Read())
+                    {
+                        string nombreConsulta = reader.GetString(0);
+                        nombresConsultas.Add(nombreConsulta);
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error al obtener nombres de consultas: " + e.Message);
+            }
+
+            return nombresConsultas;
+        }
     }
+
+
 }
