@@ -307,7 +307,7 @@ namespace Capa_Modelo_Consulta
 
 
 
-        //modficado por Sebastian Luna
+        /*modficado por Sebastian Luna
         public string[] llenarCmb(string tabla, string campo1, string campo2)
         {
 
@@ -354,8 +354,38 @@ namespace Capa_Modelo_Consulta
 
 
             return dt;
+        }//Fin de participacion de sebastian luna*/
+
+        public List<string> ObtenerNombresConsultas()
+        {
+            List<string> nombresConsultas = new List<string>();
+
+            try
+            {
+                // Consulta para obtener solo los nombres de las consultas
+                string query = "SELECT nombre_consulta FROM tbl_consultaInteligente;";
+
+                // Ejecutamos el comando con la conexión activa
+                using (OdbcCommand cmd = new OdbcCommand(query, this.conn.connection()))
+                {
+                    OdbcDataReader reader = cmd.ExecuteReader();
+
+                    // Añadimos los nombres de consulta a la lista
+                    while (reader.Read())
+                    {
+                        string nombreConsulta = reader.GetString(0);
+                        nombresConsultas.Add(nombreConsulta);
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error al obtener nombres de consultas: " + e.Message);
+            }
+
+            return nombresConsultas;
         }
     }
-    //Fin de participacion de sebastian luna
+
 
 }

@@ -19,6 +19,8 @@ namespace Capa_Vista_Consulta
         string tablabusqueda;
         private string[] datos;
         private string[] tipos;
+        private string consultaSeleccionada;
+
         public ConsultaInteligente()
         {
             InitializeComponent();
@@ -30,12 +32,16 @@ namespace Capa_Vista_Consulta
             cboTabla.SelectedIndexChanged += new EventHandler(cboTabla_SelectedIndexChanged);
             gbCondiciones.Enabled = false;
             gbOrdenar.Enabled = false;
-            gbListadoConsultas.Enabled = false;
+            gbListadoConsultas.Enabled = true;
             gbEditarLogica.Enabled = false;
             gbEditarOrden.Enabled = false;
+            csControlador.obtenerNombresConsultas(cboQuery1);
+            cboQuery2.SelectedIndexChanged += new EventHandler(cboConsultas_SelectedIndexChanged);
+            csControlador.obtenerNombresConsultas(cboQuery3);
+            cboQuery3.SelectedIndexChanged += new EventHandler(cboConsultas_SelectedIndexChanged);
         }
         string consulta = "";
-        string tabla = "tbl_consultasInteligentes";
+        string tabla = "tbl_consultaInteligente";
         private void cboTabla_SelectedIndexChanged(object sender, EventArgs e)
         {
             // Verifica si se ha seleccionado una tabla
@@ -155,8 +161,7 @@ namespace Capa_Vista_Consulta
 
         private void btnAgregarComparacion_Click(object sender, EventArgs e)
         {
-            // Procesar los datos en la tabla correspondiente
-            csControlador.ingresarQuery(tipos, datos, tabla);
+            
         }
 
         private void btnCancelarSimple_Click(object sender, EventArgs e)
@@ -323,7 +328,7 @@ namespace Capa_Vista_Consulta
 
 
 
-        //Cambios por Sebastian Luna 
+        /*Cambios por Sebastian Luna 
 
         consultaControlador cn = new consultaControlador();
 
@@ -418,10 +423,47 @@ namespace Capa_Vista_Consulta
 
 
         }
-        //Fin participacion sebastian Luna
+        Fin participacion sebastian Luna*/
+        private void cboConsultas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Captura el nombre de la consulta seleccionada
+            string nombreConsulta = cboQuery1.Text;
+            string nombreConsulta1 = cboQuery3.Text;
+
+            // Guardar el nombre de la consulta en una variable de instancia
+            consultaSeleccionada = nombreConsulta;
+            consultaSeleccionada = nombreConsulta1;
+        }
         private void cboQuery3_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnAgregarConsultaSimple_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCrear_Click(object sender, EventArgs e)
+        {
+            // Procesar los datos en la tabla correspondiente
+            csControlador.ingresarQuery(tipos, datos, tabla);
+        }
+
+        private void cboTabla_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cboQuery2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Captura el nombre de la consulta seleccionada
+            string nombreConsulta = cboQuery1.Text;
+            string nombreConsulta1 = cboQuery3.Text;
+
+            // Guardar el nombre de la consulta en una variable de instancia
+            consultaSeleccionada = nombreConsulta;
+            consultaSeleccionada = nombreConsulta1;
         }
     }
     

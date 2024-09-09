@@ -302,7 +302,7 @@ namespace Capa_Controlador_Consulta
 
 
 
-        //Creado por Sebastian Luna
+        /*Creado por Sebastian Luna
 
         consultaSentencias sn = new consultaSentencias();
 
@@ -324,6 +324,20 @@ namespace Capa_Controlador_Consulta
 
             return dt1;
         }
-        //Fin participacion Sebastian Luna
+        //Fin participacion Sebastian Luna*/
+        public void obtenerNombresConsultas(ComboBox comboBoxConsultas)
+        {
+            // Recibimos la lista de nombres de consultas desde el modelo
+            List<string> nombresConsultas = csSentencias.ObtenerNombresConsultas();
+
+            // Limpiamos el ComboBox antes de añadir nuevos nombres
+            comboBoxConsultas.Items.Clear();
+
+            // Añadimos cada nombre de consulta al ComboBox
+            foreach (string nombreConsulta in nombresConsultas)
+            {
+                comboBoxConsultas.Items.Add(nombreConsulta);
+            }
+        }
     }
 }
