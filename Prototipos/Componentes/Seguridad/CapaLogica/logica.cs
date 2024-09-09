@@ -364,7 +364,7 @@ namespace CapaLogica
 
         //######################################### EDITADO POR: ALEJANDRO BARREDA MENDOZA ############################################
         //+1 modulos
-        //Trabajado por María José Véliz Ochoa, 9959-21-5909
+
         public DataTable validarIDModulos()
         {   
             try
@@ -380,7 +380,7 @@ namespace CapaLogica
                 return null;
             }
         }
-        // termina
+
 
         //--------mantenimiento perfiles
 
@@ -453,22 +453,24 @@ namespace CapaLogica
 
         }
 
-        //Trabajado por María José Véliz Ochoa, 9959-21-5909
+
         public bool ingresarmodulos(string codigo, string nombre, string descripcion, string estado)
         {
             try
             {
                 // Ejecutar la inserción
                 sn.insertarModulo(codigo, nombre, descripcion, estado);
+
+                // Si llegamos aquí, la inserción fue exitosa
                 return true;
             }
             catch (Exception ex)
             {
-                
+                // Logear el error o mostrar un mensaje
                 Console.WriteLine("Error al insertar el módulo: " + ex.Message);
                 return false;
             }
-        } // termina
+        }
 
 
 
@@ -488,7 +490,6 @@ namespace CapaLogica
             }
         }
 
-        //Trabajado por María José Véliz Ochoa, 9959-21-5909
         public DataTable ConsultaLogicaModulo(string ID_modulo)
         {
             try
@@ -507,7 +508,7 @@ namespace CapaLogica
                 return null;
             }
         }
-        // termina
+
 
 
         public DataTable Actualizarmodulo(string ID_modulo,string nombre, string descripcion, string estado)
@@ -535,7 +536,25 @@ namespace CapaLogica
         {
             return sn.consultarBitacora();
         }
-     
+
+        //ELIMINAR MODULO ALYSON ##########################################
+        public DataTable EliminarModulo(string ID_modulo, string nombre, string descripcion, string estado)
+        {
+            try
+            {
+                OdbcDataAdapter dtmodulo = sn.EliminarModulo(ID_modulo, nombre, descripcion, estado);
+                DataTable tablamodulos = new DataTable();
+                dtmodulo.Fill(tablamodulos);
+                return tablamodulos;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return null;
+            }
+        }
+        //FIN ####################################################################
+
 
     }
 

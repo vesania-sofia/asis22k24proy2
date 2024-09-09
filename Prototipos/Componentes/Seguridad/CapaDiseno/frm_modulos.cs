@@ -22,6 +22,7 @@ namespace CapaDiseno
             btn_modif.Enabled = false;
             btn_actualizar.Enabled = false;
             btn_cancel.Enabled = false;
+            btn_eliminar.Enabled = false; //se agrega
             logic = new logica(idUsuario);
             txtcodigo.Enabled = false;
             txtnombre.Enabled = false;
@@ -45,15 +46,14 @@ namespace CapaDiseno
             txtcodigo.Focus();
         }
 
-     
-        //Trabajado por María José Véliz Ochoa, 9959-21-5909
+
 
         private void Btn_ingresar_Click(object sender, EventArgs e)
         {
             txtnombre.Enabled = false;
             txtdesc.Enabled = false;
 
-       
+
             if (txtnombre.Text == "")
             {
                 MessageBox.Show("Falta Nombre de Modulo");
@@ -79,7 +79,7 @@ namespace CapaDiseno
                     estado = "1";
                 }
 
-               if (rbinhabilitado.Checked)
+                if (rbinhabilitado.Checked)
                 {
                     estado = "0";
                 }
@@ -95,11 +95,11 @@ namespace CapaDiseno
                 btn_nuevo.Enabled = true;
                 btn_ingresar.Enabled = false;
                 txtcodigo.Enabled = false;
-
+                btn_eliminar.Enabled = false; //se agrega
             }
         }
-        // termina
-        //María José para deshabilitar txt código
+
+
         private void Btn_cancel_Click(object sender, EventArgs e)
         {
             limpiar();
@@ -113,9 +113,9 @@ namespace CapaDiseno
             btn_nuevo.Enabled = true;
             gbestado.Enabled = false;
             txtcodigo.Enabled = false;
+            btn_eliminar.Enabled = false; //se agrega
 
         }
-        // termina
 
         private void Button1_Click(object sender, EventArgs e)
         {
@@ -123,22 +123,22 @@ namespace CapaDiseno
             this.Close();
         }
 
+        //ALYSON ################## se agrega boton eliminar
         private void Btn_modif_Click(object sender, EventArgs e)
         {
             txtcodigo.Enabled = false;
             btn_cancel.Enabled = true;
             btn_actualizar.Enabled = true;
-           btn_modif.Enabled = false;
+            btn_modif.Enabled = false;
             txtnombre.Enabled = true;
             txtdesc.Enabled = true;
             rbhabilitado.Enabled = true;
             rbinhabilitado.Enabled = true;
-        btn_nuevo.Enabled = false;
+            btn_nuevo.Enabled = false;
             gbestado.Enabled = true;
+            btn_eliminar.Enabled = false; //se agrega
         }
 
-
-        //Trabajado por María José Véliz Ochoa, 9959-21-5909
         private void Btn_bsucarmodulo_Click(object sender, EventArgs e)
         {
             string modulo = tbx_buscarmodulo.Text;
@@ -148,7 +148,7 @@ namespace CapaDiseno
                 MessageBox.Show("Por favor, ingrese un ID de módulo.");
                 return;
             }
-           //Para errores null del DataTable
+
             try
             {
                 DataTable dtModulos = logic.ConsultaLogicaModulo(modulo);
@@ -158,9 +158,9 @@ namespace CapaDiseno
                     MessageBox.Show("No se encontraron módulos.");
                     return;
                 }
-            
+
                 foreach (DataRow row in dtModulos.Rows)
-                {// Asigna el valor de cada columna a su respectivo control en la interfaz si no es nulo
+                {
                     if (row[0] != DBNull.Value) txtcodigo.Text = row[0].ToString();
                     if (row[1] != DBNull.Value) txtnombre.Text = row[1].ToString();
                     if (row[2] != DBNull.Value) txtdesc.Text = row[2].ToString();
@@ -187,7 +187,9 @@ namespace CapaDiseno
                 txtdesc.Enabled = false;
                 rbhabilitado.Enabled = false;
                 rbinhabilitado.Enabled = false;
-                //btn_eliminar.Enabled = true;
+                btn_cancel.Enabled = true;
+                btn_eliminar.Enabled = true; //se agrega
+
             }
             catch (Exception ex)
             {
@@ -196,7 +198,7 @@ namespace CapaDiseno
             }
         }
 
-        // termina
+
 
 
         private void Btn_actualizar_Click(object sender, EventArgs e)
@@ -249,6 +251,7 @@ namespace CapaDiseno
                 txtcodigo.Enabled = false;
                 txtnombre.Enabled = false;
                 txtdesc.Enabled = false;
+                btn_eliminar.Enabled = false; //se agrega  ALyson #####################
                 limpiar();
             }
         }
@@ -258,7 +261,6 @@ namespace CapaDiseno
 
         }
 
-        //Trabajado por María José Véliz Ochoa, 9959-21-5909
         private void Btn_nuevo_Click(object sender, EventArgs e)
         {
             btn_nuevo.Enabled = false;
@@ -271,10 +273,10 @@ namespace CapaDiseno
             txtdesc.Enabled = true;
             btn_ingresar.Enabled = true;
             btn_cancel.Enabled = true;
-            //habilitando para ingresar id
             txtcodigo.Enabled = true;
+            btn_eliminar.Enabled = false; //se agrega
 
-            //para errores tipo null
+
             try
             {
                 DataTable dtValidarID = logic.validarIDModulos();
@@ -309,6 +311,63 @@ namespace CapaDiseno
         {
 
         }
+
+
+        //BOTON ELIMINAR ALYSON #######################################
+        private void Btn_eliminar_Click(object sender, EventArgs e)
+        {
+            // Deshabilitar botones y campos según sea necesario
+            btn_nuevo.Enabled = true;
+            btn_actualizar.Enabled = false;
+            gbbuscar.Enabled = true;
+            btn_modif.Enabled = false;
+            rbhabilitado.Checked = false;
+            gbestado.Enabled = false;
+            txtnombre.Enabled = false;
+            txtdesc.Enabled = false;
+            btn_ingresar.Enabled = false;
+            btn_cancel.Enabled = false;
+            txtcodigo.Enabled = false;
+            btn_eliminar.Enabled = false; 
+
+            // Validar el estado seleccionado
+            string estado;
+            if (rbhabilitado.Checked)
+            {
+                estado = "1"; // Habilitado
+            }
+            else if (rbinhabilitado.Checked)
+            {
+                estado = "0"; // Inhabilitado
+            }
+            else
+            {
+                // Asignar un valor predeterminado si ninguno está seleccionado
+                estado = "0"; // O "1", dependiendo de tu lógica
+            }
+
+            // Validar que se haya ingresado el ID del módulo
+            if (string.IsNullOrEmpty(txtcodigo.Text))
+            {
+                MessageBox.Show("Falta ID del Módulo");
+                return; // Salir del método si falta el ID
+            }
+
+            try
+            {
+                // Llamar al método de la lógica de negocio para realizar el borrado lógico
+                logic.EliminarModulo(txtcodigo.Text.ToString(), txtnombre.Text.ToString(), txtdesc.Text.ToString(), estado);
+
+                MessageBox.Show("Módulo eliminado correctamente.");
+                limpiar(); // Limpia los campos del formulario
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al intentar eliminar el módulo: " + ex.Message);
+            }
+        }
+        // FIN BOTON ELIMINAR ####################################
+
+
     }
 }
-// termina

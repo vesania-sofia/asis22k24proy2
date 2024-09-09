@@ -31,6 +31,7 @@
             this.btn_ingresar = new System.Windows.Forms.Button();
             this.btn_modif = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btn_eliminar = new System.Windows.Forms.Button();
             this.btn_nuevo = new System.Windows.Forms.Button();
             this.btn_actualizar = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -58,7 +59,7 @@
             // 
             // btn_ingresar
             // 
-            this.btn_ingresar.Location = new System.Drawing.Point(21, 102);
+            this.btn_ingresar.Location = new System.Drawing.Point(21, 68);
             this.btn_ingresar.Margin = new System.Windows.Forms.Padding(4);
             this.btn_ingresar.Name = "btn_ingresar";
             this.btn_ingresar.Size = new System.Drawing.Size(100, 30);
@@ -70,7 +71,7 @@
             // 
             // btn_modif
             // 
-            this.btn_modif.Location = new System.Drawing.Point(21, 208);
+            this.btn_modif.Location = new System.Drawing.Point(21, 169);
             this.btn_modif.Margin = new System.Windows.Forms.Padding(4);
             this.btn_modif.Name = "btn_modif";
             this.btn_modif.Size = new System.Drawing.Size(100, 30);
@@ -81,6 +82,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btn_eliminar);
             this.groupBox1.Controls.Add(this.btn_nuevo);
             this.groupBox1.Controls.Add(this.btn_actualizar);
             this.groupBox1.Controls.Add(this.button1);
@@ -97,9 +99,19 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Opciones";
             // 
+            // btn_eliminar
+            // 
+            this.btn_eliminar.Location = new System.Drawing.Point(21, 217);
+            this.btn_eliminar.Name = "btn_eliminar";
+            this.btn_eliminar.Size = new System.Drawing.Size(100, 30);
+            this.btn_eliminar.TabIndex = 7;
+            this.btn_eliminar.Text = "Eliminar";
+            this.btn_eliminar.UseVisualStyleBackColor = true;
+            this.btn_eliminar.Click += new System.EventHandler(this.Btn_eliminar_Click);
+            // 
             // btn_nuevo
             // 
-            this.btn_nuevo.Location = new System.Drawing.Point(21, 44);
+            this.btn_nuevo.Location = new System.Drawing.Point(21, 23);
             this.btn_nuevo.Margin = new System.Windows.Forms.Padding(4);
             this.btn_nuevo.Name = "btn_nuevo";
             this.btn_nuevo.Size = new System.Drawing.Size(100, 30);
@@ -111,7 +123,7 @@
             // 
             // btn_actualizar
             // 
-            this.btn_actualizar.Location = new System.Drawing.Point(21, 158);
+            this.btn_actualizar.Location = new System.Drawing.Point(21, 115);
             this.btn_actualizar.Margin = new System.Windows.Forms.Padding(4);
             this.btn_actualizar.Name = "btn_actualizar";
             this.btn_actualizar.Size = new System.Drawing.Size(100, 30);
@@ -143,7 +155,7 @@
             // 
             // btn_cancel
             // 
-            this.btn_cancel.Location = new System.Drawing.Point(21, 258);
+            this.btn_cancel.Location = new System.Drawing.Point(21, 267);
             this.btn_cancel.Margin = new System.Windows.Forms.Padding(4);
             this.btn_cancel.Name = "btn_cancel";
             this.btn_cancel.Size = new System.Drawing.Size(100, 30);
@@ -185,7 +197,7 @@
             this.txtcodigo.Location = new System.Drawing.Point(248, 54);
             this.txtcodigo.Margin = new System.Windows.Forms.Padding(4);
             this.txtcodigo.Name = "txtcodigo";
-            this.txtcodigo.Size = new System.Drawing.Size(132, 30);
+            this.txtcodigo.Size = new System.Drawing.Size(132, 22);
             this.txtcodigo.TabIndex = 4;
             this.txtcodigo.TextChanged += new System.EventHandler(this.txtcodigo_TextChanged);
             // 
@@ -208,7 +220,7 @@
             this.rbinhabilitado.Location = new System.Drawing.Point(284, 69);
             this.rbinhabilitado.Margin = new System.Windows.Forms.Padding(4);
             this.rbinhabilitado.Name = "rbinhabilitado";
-            this.rbinhabilitado.Size = new System.Drawing.Size(136, 29);
+            this.rbinhabilitado.Size = new System.Drawing.Size(95, 20);
             this.rbinhabilitado.TabIndex = 1;
             this.rbinhabilitado.TabStop = true;
             this.rbinhabilitado.Text = "Inhabilitado";
@@ -220,7 +232,7 @@
             this.rbhabilitado.Location = new System.Drawing.Point(89, 69);
             this.rbhabilitado.Margin = new System.Windows.Forms.Padding(4);
             this.rbhabilitado.Name = "rbhabilitado";
-            this.rbhabilitado.Size = new System.Drawing.Size(123, 29);
+            this.rbhabilitado.Size = new System.Drawing.Size(88, 20);
             this.rbhabilitado.TabIndex = 0;
             this.rbhabilitado.TabStop = true;
             this.rbhabilitado.Text = "Habilitado";
@@ -232,7 +244,7 @@
             this.label3.Location = new System.Drawing.Point(60, 146);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(114, 25);
+            this.label3.Size = new System.Drawing.Size(80, 16);
             this.label3.TabIndex = 2;
             this.label3.Text = "Descripción";
             // 
@@ -242,7 +254,7 @@
             this.label2.Location = new System.Drawing.Point(60, 106);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(81, 25);
+            this.label2.Size = new System.Drawing.Size(57, 16);
             this.label2.TabIndex = 1;
             this.label2.Text = "Nombre";
             // 
@@ -252,7 +264,7 @@
             this.label1.Location = new System.Drawing.Point(60, 58);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(172, 25);
+            this.label1.Size = new System.Drawing.Size(119, 16);
             this.label1.TabIndex = 0;
             this.label1.Text = "Codigo de Modulo";
             // 
@@ -261,7 +273,7 @@
             this.txtnombre.Location = new System.Drawing.Point(248, 102);
             this.txtnombre.Margin = new System.Windows.Forms.Padding(4);
             this.txtnombre.Name = "txtnombre";
-            this.txtnombre.Size = new System.Drawing.Size(296, 30);
+            this.txtnombre.Size = new System.Drawing.Size(296, 22);
             this.txtnombre.TabIndex = 1;
             this.txtnombre.Tag = "1";
             // 
@@ -270,7 +282,7 @@
             this.tbx_buscarmodulo.Location = new System.Drawing.Point(95, 44);
             this.tbx_buscarmodulo.Margin = new System.Windows.Forms.Padding(4);
             this.tbx_buscarmodulo.Name = "tbx_buscarmodulo";
-            this.tbx_buscarmodulo.Size = new System.Drawing.Size(296, 30);
+            this.tbx_buscarmodulo.Size = new System.Drawing.Size(296, 22);
             this.tbx_buscarmodulo.TabIndex = 6;
             // 
             // btn_bsucarmodulo
@@ -312,7 +324,7 @@
             // 
             // frm_modulos
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(838, 514);
             this.Controls.Add(this.btn_ayuda);
@@ -360,5 +372,6 @@
         private System.Windows.Forms.Button btn_actualizar;
         private System.Windows.Forms.Button btn_nuevo;
         private System.Windows.Forms.Button btn_ayuda;
+        private System.Windows.Forms.Button btn_eliminar;
     }
 }
