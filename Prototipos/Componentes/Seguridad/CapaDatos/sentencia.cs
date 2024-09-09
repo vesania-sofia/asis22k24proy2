@@ -1,4 +1,4 @@
-﻿using System;
+﻿    using System;
 using System.Data.Odbc;
 using System.Windows.Forms;
 using System.Net;
@@ -395,12 +395,13 @@ namespace CapaDatos
 
         //########################### EDICION: ALEJANDRO BARREDA MENDOZA #####################################################
 
+        //CAMBIOS REALIZADOS POR JOSUÉ DAVID PAZ GOMEZ
         public OdbcDataAdapter validarIDModulos()
         {
             try
             {
 
-                string sqlIDmodulo = "SELECT MAX(Pk_id_modulos)+1 FROM tbl_modulos";
+                string sqlIDmodulo = "SELECT MAX(Pk_id_modulos)+1 FROM Tbl_modulos";
                 OdbcDataAdapter dataIDmodulo = new OdbcDataAdapter(sqlIDmodulo, cn.conectar());
                 return dataIDmodulo;
 
@@ -417,7 +418,7 @@ namespace CapaDatos
             try
             {
 
-                string sqlIDperfil = "SELECT MAX(PK_id_perfil)+1 FROM tbl_perfil_encabezado";
+                string sqlIDperfil = "SELECT MAX(Pk_id_perfil)+1 FROM Tbl_perfiles";
                 OdbcDataAdapter dataIDperfil = new OdbcDataAdapter(sqlIDperfil, cn.conectar());
                 return dataIDperfil;
 
@@ -437,9 +438,9 @@ namespace CapaDatos
             cn.conectar();
             try
             {
-                string sqlPerfil = "INSERT INTO tbl_perfil_encabezado (PK_id_Perfil, nombre_perfil,descripcion_perfil,estado_perfil) VALUES ('" + codigo + "','" + nombre + "', '" + descripcion + "', " + estado + ");";
+                string sqlPerfil = "INSERT INTO Tbl_perfiles (Pk_id_Perfil, nombre_perfil, descripcion_perfil, estado_perfil) VALUES ('" + codigo + "','" + nombre + "', '" + descripcion + "', " + estado + ");";
                 OdbcDataAdapter datainsertarperfil = new OdbcDataAdapter(sqlPerfil, cn.conectar());
-                insertarBitacora(idUsuario, "Inserto un nuevo perfil: "  + codigo + " - " + nombre , "tbl_perfil");
+                insertarBitacora(idUsuario, "Inserto un nuevo perfil: "  + codigo + " - " + nombre , "Tbl_perfiles");
                 return datainsertarperfil;
             }
             catch (Exception ex)
@@ -448,6 +449,7 @@ namespace CapaDatos
                 return null;
             }
         }
+        //*****************ACA TERMINA LA PRIMERA PARTE ACTUALIZADA POR JOSUÉ DAVID PAZ GÓMEZ*************************
 
         public OdbcDataAdapter ConsultarPerfil(string perfil)
         {
@@ -477,7 +479,7 @@ namespace CapaDatos
             }
         }
 
-
+        //*************************ACA EMPIEZA LA SEGUNDA PARTE DE MODIFICACIONES DE JOSUÉ DAVID PAZ GÓMEZ***********************
         public void insertarModulo(string codigo, string nombre, string descripcion, string estado)
         {
             try
@@ -485,7 +487,7 @@ namespace CapaDatos
                 // Crear la conexión y el comando
                 using (OdbcConnection connection = cn.conectar())
                 {
-                    string query = "INSERT INTO tbl_modulos (" +
+                    string query = "INSERT INTO Tbl_modulos (" +
                                    "Pk_id_modulos, " +
                                    "nombre_modulo, " +
                                    "descripcion_modulo, " +
@@ -504,7 +506,7 @@ namespace CapaDatos
                         cmd.ExecuteNonQuery();
 
                         // Opcional: Insertar en la bitácora si se desea
-                        insertarBitacora(idUsuario, "Inserto un nuevo modulo: " + codigo + " - " + nombre, "tbl_modulos");
+                        insertarBitacora(idUsuario, "Inserto un nuevo modulo: " + codigo + " - " + nombre, "Tbl_modulos");
                     }
                 }
             }
@@ -514,7 +516,7 @@ namespace CapaDatos
             }
         }
 
-
+        //*******************************ACA TERMINA LA SEGUNDA PARTE ACTUALIZADA POR JOSUÉ DAVID PAZ GÓMEZ****************************************
         //------------
 
         public OdbcDataAdapter insertarPermisosPerfilA(string codigoPerfil, string nombreAplicacion, string ingresar, string consulta, string modificar, string eliminar, string imprimir)
