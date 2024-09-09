@@ -51,10 +51,14 @@ namespace CapaDiseno
 
                         if (bExisteUsuario)
                         {
-                            this.Close();
+                            this.Hide();
+
                             sentencia s = new sentencia();
                             s.insertarBitacora(Txt_usuario.Text.Trim(), "Se logeo al sistema", "Login");
 
+                            // pasa el nombre de usuario al contructor de MDI_Seguridad
+                            MDI_Seguridad mDI_Seguridad = new MDI_Seguridad(Txt_usuario.Text);
+                            mDI_Seguridad.Show();
                         }
                         else
                         {

@@ -51,14 +51,17 @@
             this.btn_actualizar = new System.Windows.Forms.Button();
             this.btn_nuevo = new System.Windows.Forms.Button();
             this.btn_cancel = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.button5 = new System.Windows.Forms.Button();
             this.gb_buscar.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.Gpb_estado.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // btn_ingresar
             // 
-            this.btn_ingresar.Location = new System.Drawing.Point(688, 225);
+            this.btn_ingresar.Location = new System.Drawing.Point(36, 86);
             this.btn_ingresar.Margin = new System.Windows.Forms.Padding(4);
             this.btn_ingresar.Name = "btn_ingresar";
             this.btn_ingresar.Size = new System.Drawing.Size(79, 35);
@@ -70,7 +73,7 @@
             // 
             // btn_modif
             // 
-            this.btn_modif.Location = new System.Drawing.Point(688, 268);
+            this.btn_modif.Location = new System.Drawing.Point(36, 141);
             this.btn_modif.Margin = new System.Windows.Forms.Padding(4);
             this.btn_modif.Name = "btn_modif";
             this.btn_modif.Size = new System.Drawing.Size(79, 35);
@@ -129,7 +132,7 @@
             // 
             // btn_eliminar
             // 
-            this.btn_eliminar.Location = new System.Drawing.Point(688, 353);
+            this.btn_eliminar.Location = new System.Drawing.Point(36, 253);
             this.btn_eliminar.Margin = new System.Windows.Forms.Padding(4);
             this.btn_eliminar.Name = "btn_eliminar";
             this.btn_eliminar.Size = new System.Drawing.Size(79, 35);
@@ -180,6 +183,7 @@
             this.groupBox1.Controls.Add(this.txt_descripcion);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.txt_idaplicacion);
+            this.groupBox1.Controls.Add(this.btn_salir);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(58, 156);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
@@ -231,7 +235,7 @@
             // 
             // btn_salir
             // 
-            this.btn_salir.Location = new System.Drawing.Point(688, 438);
+            this.btn_salir.Location = new System.Drawing.Point(558, 269);
             this.btn_salir.Margin = new System.Windows.Forms.Padding(4);
             this.btn_salir.Name = "btn_salir";
             this.btn_salir.Size = new System.Drawing.Size(79, 35);
@@ -247,7 +251,7 @@
             this.Gpb_estado.Controls.Add(this.Rdb_inactivo);
             this.Gpb_estado.Controls.Add(this.Rdb_activo);
             this.Gpb_estado.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Gpb_estado.Location = new System.Drawing.Point(83, 417);
+            this.Gpb_estado.Location = new System.Drawing.Point(58, 425);
             this.Gpb_estado.Margin = new System.Windows.Forms.Padding(4);
             this.Gpb_estado.Name = "Gpb_estado";
             this.Gpb_estado.Padding = new System.Windows.Forms.Padding(4);
@@ -294,7 +298,7 @@
             // 
             // btn_actualizar
             // 
-            this.btn_actualizar.Location = new System.Drawing.Point(688, 311);
+            this.btn_actualizar.Location = new System.Drawing.Point(36, 197);
             this.btn_actualizar.Margin = new System.Windows.Forms.Padding(4);
             this.btn_actualizar.Name = "btn_actualizar";
             this.btn_actualizar.Size = new System.Drawing.Size(79, 34);
@@ -305,7 +309,7 @@
             // 
             // btn_nuevo
             // 
-            this.btn_nuevo.Location = new System.Drawing.Point(688, 187);
+            this.btn_nuevo.Location = new System.Drawing.Point(36, 32);
             this.btn_nuevo.Margin = new System.Windows.Forms.Padding(4);
             this.btn_nuevo.Name = "btn_nuevo";
             this.btn_nuevo.Size = new System.Drawing.Size(79, 30);
@@ -317,7 +321,7 @@
             // 
             // btn_cancel
             // 
-            this.btn_cancel.Location = new System.Drawing.Point(688, 396);
+            this.btn_cancel.Location = new System.Drawing.Point(36, 306);
             this.btn_cancel.Margin = new System.Windows.Forms.Padding(4);
             this.btn_cancel.Name = "btn_cancel";
             this.btn_cancel.Size = new System.Drawing.Size(79, 34);
@@ -326,32 +330,56 @@
             this.btn_cancel.UseVisualStyleBackColor = true;
             this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.btn_cancel);
+            this.groupBox2.Controls.Add(this.button5);
+            this.groupBox2.Controls.Add(this.btn_nuevo);
+            this.groupBox2.Controls.Add(this.btn_eliminar);
+            this.groupBox2.Controls.Add(this.btn_modif);
+            this.groupBox2.Controls.Add(this.btn_actualizar);
+            this.groupBox2.Controls.Add(this.btn_ingresar);
+            this.groupBox2.Location = new System.Drawing.Point(686, 141);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox2.Size = new System.Drawing.Size(144, 360);
+            this.groupBox2.TabIndex = 252;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Opciones";
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(581, 46);
+            this.button5.Margin = new System.Windows.Forms.Padding(4);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(95, 30);
+            this.button5.TabIndex = 4;
+            this.button5.Text = "Salir";
+            this.button5.UseVisualStyleBackColor = true;
+            // 
             // frm_aplicaciones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(838, 514);
-            this.Controls.Add(this.btn_cancel);
-            this.Controls.Add(this.btn_nuevo);
-            this.Controls.Add(this.btn_actualizar);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btn_ayuda);
-            this.Controls.Add(this.btn_ingresar);
-            this.Controls.Add(this.btn_modif);
             this.Controls.Add(this.gb_buscar);
-            this.Controls.Add(this.btn_eliminar);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.btn_salir);
             this.Controls.Add(this.Gpb_estado);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frm_aplicaciones";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Mantenimiento de Aplicaciones";
             this.gb_buscar.ResumeLayout(false);
             this.gb_buscar.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.Gpb_estado.ResumeLayout(false);
             this.Gpb_estado.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -381,5 +409,7 @@
         private System.Windows.Forms.Button btn_actualizar;
         private System.Windows.Forms.Button btn_nuevo;
         private System.Windows.Forms.Button btn_cancel;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button button5;
     }
 }

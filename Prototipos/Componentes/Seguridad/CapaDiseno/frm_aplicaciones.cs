@@ -85,24 +85,27 @@ namespace CapaDiseno
         private void btn_cancel_Click(object sender, EventArgs e)
         {
             limpiar();
+            btn_nuevo.Enabled = true;
+            gb_buscar.Enabled = true;
+            btn_bsucarap.Enabled = true;
             btn_cancel.Enabled = false;
             btn_ingresar.Enabled = false;
             btn_actualizar.Enabled = false;
             btn_modif.Enabled = false;
-            btn_nuevo.Enabled = true;
-            btn_bsucarap.Enabled = true;
             txt_idaplicacion.Enabled = false;
             txt_nombre.Enabled = false;
             txt_descripcion.Enabled = false;
             Gpb_estado.Enabled = false;
 
+
         }
-        //###################  termina lo que hizo  Karla  Sofia Gómez Tobar #######################
+       
         private void btn_salir_Click_1(object sender, EventArgs e)
         {
-
+            limpiar();
+            this.Close();
         }
-
+        //###################  termina lo que hizo  Karla  Sofia Gómez Tobar #######################
         private void btn_modif_Click(object sender, EventArgs e)
         {
 
@@ -176,12 +179,12 @@ namespace CapaDiseno
         //###################  lo que hizo Karla  Sofia Gómez Tobar #######################
         private void btn_nuevo_Click(object sender, EventArgs e)
         {
+            Rdb_activo.Checked = true;
+            Gpb_estado.Enabled = true;
             btn_nuevo.Enabled = false;
             btn_actualizar.Enabled = false;
             gb_buscar.Enabled = false;
             btn_modif.Enabled = false;
-            Rdb_activo.Checked = true;
-            Gpb_estado.Enabled = true;
             btn_ingresar.Enabled = true;
             btn_cancel.Enabled = true;
             txt_idaplicacion.Enabled = true;
