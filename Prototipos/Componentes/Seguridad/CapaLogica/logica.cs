@@ -313,36 +313,42 @@ namespace CapaLogica
         }
 
         //Esta parte fue echa por Carlos Hernandez
-        public DataTable modificaraplicaciones(string idaplicacion, string descripcion, string aplicacion)
+        public DataTable actualizaraplicaciones(string codigo, string nombre, string descripcion, string estado)
         {
             try
             {
-                OdbcDataAdapter dtModificar = sn.modificaraplicaciones(idaplicacion, descripcion, aplicacion);
-                DataTable tableModificar = new DataTable();
-                dtModificar.Fill(tableModificar);
-                return tableModificar;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error al modificar la aplicación: {ex.Message}");
-                return null;
-            }
-        }
-        //termina lo que hizo carlos hernandez 
-
-        public DataTable eliminaraplicaciones(string idaplicacion, string descripcion, string aplicacion)
-        {
-            try
-            {
-                OdbcDataAdapter dteliminar = sn.eliminaraplicacion(idaplicacion, descripcion, aplicacion);
-                DataTable tableliminar = new DataTable();
-                dteliminar.Fill(tableliminar);
-                return tableliminar;
+                OdbcDataAdapter dtModificar = sn.actualizaraplicacion(codigo, nombre, descripcion, estado);
+                DataTable tableAplicacion = new DataTable();
+                dtModificar.Fill(tableAplicacion);
+                return tableAplicacion;
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex);
                 return null;
+            }
+        }
+        //termina lo que hizo carlos hernandez 
+
+        public bool eliminaraplicaciones(string codigo)
+        {
+            try
+            {
+                bool result = sn.eliminaraplicacion(codigo);
+                if (result)
+                {
+                    MessageBox.Show("Perfil eliminado correctamente.");
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo eliminar el perfil.");
+                }
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return false;
             }
         }
 

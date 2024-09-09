@@ -74,44 +74,89 @@ namespace CapaDiseno
 
         private void btn_actualizar_Click(object sender, EventArgs e)
         {
-
-        }
-        //aqui inica lo que hizo Carlos Hernandez
-        private void btn_eliminar_Click(object sender, EventArgs e)
-        {
-            string idaplicacion = txt_idaplicacion.Text.Trim();
-            string descripcion = txt_descripcion.Text.Trim();
-            string aplicacion = txt_idaplicacion.Text.Trim();
-
-            txt_buscar.Enabled = true;
-            btn_bsucarap.Enabled = true;
-            btn_modif.Enabled = false;
-            btn_nuevo.Enabled = false;
-            txt_idaplicacion.Enabled = false;
-            txt_descripcion.Enabled = false;
-            Gpb_estado.Enabled = false;
-
-            try
+            
+            if (txt_nombre.Text == "")
             {
-               
-                DataTable dtusuario = logic.eliminaraplicaciones(idaplicacion, descripcion, aplicacion);
 
-                if (dtusuario == null || dtusuario.Rows.Count == 0)
+                MessageBox.Show("Falta Nombre de Aplicacion");
+                btn_nuevo.Enabled = true;
+                txt_nombre.Enabled = false;
+                txt_descripcion.Enabled = false;
+            }
+            else if (txt_descripcion.Text == "")
+            {
+                MessageBox.Show("Falta Descripcion de Aplicacion");
+                btn_nuevo.Enabled = true;
+                txt_nombre.Enabled = false;
+                txt_descripcion.Enabled = false;
+            }
+
+            else
+            {
+                string estado = "";
+                if (Rdb_activo.Checked)
                 {
-                    MessageBox.Show("No se eliminaron registros.");
+                    estado = "1";
+                }
+
+                if (Rdb_inactivo.Checked)
+                {
+                    estado = "0";
                 }
                 else
                 {
-                    MessageBox.Show("Registro eliminado exitosamente.");
+                    estado = "1";
+                }
+
+                logic.actualizaraplicaciones(txt_idaplicacion.Text.ToString(), txt_nombre.Text.ToString(), txt_descripcion.Text.ToString(), estado.ToString());
+                MessageBox.Show("Modulo Modificado Correctamente");
+                limpiar();
+                btn_cancel.Enabled = false;
+                btn_bsucarap.Enabled = true;
+                btn_nuevo.Enabled = true;
+                btn_ingresar.Enabled = false;
+                btn_actualizar.Enabled = false;
+                btn_modif.Enabled = false;
+                btn_eliminar.Enabled = false;
+                txt_idaplicacion.Enabled = false;
+                txt_nombre.Enabled = false;
+                txt_descripcion.Enabled = false;
+                Gpb_estado.Enabled = false;
+            }
+          }
+
+
+        //aqui inica lo que hizo Carlos Hernandez
+        private void btn_eliminar_Click(object sender, EventArgs e)
+        {
+
+            if (!string.IsNullOrEmpty(txt_idaplicacion.Text))
+            {
+                // Confirmar antes de eliminar
+                var confirmResult = MessageBox.Show("¿Estás seguro de eliminar este perfil?",
+                                                    "Confirmar Eliminación",
+                                                    MessageBoxButtons.YesNo);
+
+                if (confirmResult == DialogResult.Yes)
+                {
+                    // Llamar al método de la capa lógica para eliminar el perfil
+                    logic.eliminaraplicaciones(txt_idaplicacion.Text);
+
+                    // Opcionalmente, puedes desactivar botones o limpiar campos después de la eliminación
+                    txt_buscar.Enabled = true;
+                    btn_bsucarap.Enabled = false;
+                    btn_modif.Enabled = false;
+                    btn_nuevo.Enabled = true;
+                    txt_idaplicacion.Enabled = false;
+                    txt_descripcion.Enabled = false;
+                    Gpb_estado.Enabled = false;
+                    limpiar();  // Limpiar campos
                 }
             }
-            catch (Exception ex)
+            else
             {
-               
-                MessageBox.Show($"Ocurrió un error: {ex.Message}");
+                MessageBox.Show("No se ha seleccionado un perfil para eliminar.");
             }
-            txt_idaplicacion.Text = "";
-            limpiar();
 
         }
         //aqui termina la parte de Carlos Hernandez
@@ -145,40 +190,20 @@ namespace CapaDiseno
         //esto fue echo por Carlos hernandez
         private void btn_modif_Click(object sender, EventArgs e)
         {
-            string idaplicacion = txt_idaplicacion.Text.Trim();
-            string descripcion = txt_descripcion.Text.Trim();
-            string aplicacion = txt_idaplicacion.Text.Trim();
-            if (string.IsNullOrWhiteSpace(idaplicacion) ||
-                string.IsNullOrWhiteSpace(descripcion) || string.IsNullOrWhiteSpace(aplicacion))
-            {
-                MessageBox.Show("Faltan campos por llenar.");
-                return;
-            }
-            txt_buscar.Enabled = false;
-            btn_bsucarap.Enabled = true;
-            btn_modif.Enabled = true;
-            btn_nuevo.Enabled = true;
+
+            Rdb_activo.Checked = true;
+            Gpb_estado.Enabled = true;
+            btn_nuevo.Enabled = false;
+            btn_actualizar.Enabled = true;
+            gb_buscar.Enabled = false;
+            btn_modif.Enabled = false;
+            btn_ingresar.Enabled = false;
+            btn_cancel.Enabled = true;
             txt_idaplicacion.Enabled = false;
+            txt_nombre.Enabled = true;
             txt_descripcion.Enabled = true;
-            txt_idaplicacion.Enabled = true;
-            try
-            {
-                DataTable resultado = logic.modificaraplicaciones(idaplicacion, descripcion, aplicacion);
-                if (resultado != null && resultado.Rows.Count > 0)
-                {
-                    MessageBox.Show("Registro modificado exitosamente.");
-                }
-                else
-                {
-                    MessageBox.Show("No se pudo modificar el registro.");
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Ocurrió un error durante la modificación: {ex.Message}");
-            }
-            txt_idaplicacion.Text = "";
-            limpiar();
+
+           
         }
         //termina lo que hizo carlos hernandez 
 
@@ -232,6 +257,7 @@ namespace CapaDiseno
                 txt_descripcion.Enabled = false;
                 Rdb_activo.Enabled = false;
                 Rdb_inactivo.Enabled = false;
+                btn_eliminar.Enabled = true;
             }
             catch (Exception ex)
             {
