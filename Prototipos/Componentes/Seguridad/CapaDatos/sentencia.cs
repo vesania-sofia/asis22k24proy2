@@ -212,6 +212,47 @@ namespace CapaDatos
         }
 
 
+        /* Creado por Emerzon Garcia */
+
+        public bool EliminarPerfil1(string ID_perfil)
+        {
+            try
+            {
+                // Conectar a la base de datos
+                cn.conectar();
+
+                // Crear la consulta SQL para eliminar
+                string sqlEliminarPerfil = "DELETE FROM Tbl_perfiles WHERE PK_id_perfil = ?";
+
+                // Usar OdbcCommand para ejecutar el DELETE
+                using (OdbcCommand cmd = new OdbcCommand(sqlEliminarPerfil, cn.conectar()))
+                {
+                    // Agregar parámetro para evitar inyecciones SQL
+                    cmd.Parameters.AddWithValue("@ID_perfil", ID_perfil);
+
+                    // Ejecutar la consulta
+                    int rowsAffected = cmd.ExecuteNonQuery();
+
+                    // Insertar en bitácora si la eliminación fue exitosa
+                    if (rowsAffected > 0)
+                    {
+                        insertarBitacora(idUsuario, "Eliminó un perfil: " + ID_perfil, "tbl_perfil");
+                        return true; // Indica que la eliminación fue exitosa
+                    }
+                    else
+                    {
+                        return false; // No se afectó ninguna fila
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return false;
+            }
+        }
+
+
         /*-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
         /*---------------------------------------------------------------Creador: Diego Gomez-----------------------------------------------------------------------------*/
