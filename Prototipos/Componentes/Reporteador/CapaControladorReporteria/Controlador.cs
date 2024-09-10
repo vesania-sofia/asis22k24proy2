@@ -30,11 +30,11 @@ namespace CapaControladorReporteria
             {
                 if (datosReporte[i].Length < 1)
                 {
-                    MessageBox.Show("Existen campos que no pueden esatar vacios", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Existen campos que no pueden estar vacios", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return 0;
                 }
             }
-            //luego craemos una variable plana con todos los datos del arreglo para agregarlo al sql de guardar reporte
+            //luego creamos una variable plana con todos los datos del arreglo para agregarlo al sql de guardar reporte
             for (int i = 0; i <= datosReporte.Length - 2; i++)
             {
                 campos = campos +"'" +datosReporte[i] + "',";
