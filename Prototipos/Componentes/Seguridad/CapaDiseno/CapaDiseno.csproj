@@ -193,5 +193,14 @@
   <ItemGroup>
     <None Include="Resources\bill.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logotipo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\usuario.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bloquear.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

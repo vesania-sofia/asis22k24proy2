@@ -30,7 +30,15 @@ namespace CapaDiseno
         }
 
         //Fernando García 0901-21-581//
-        private void Btn_entrar_Click(object sender, EventArgs e)
+
+
+        private void Frm_login_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            
+        }
+
+
+        private void Btn_entrar_Click_1(object sender, EventArgs e)
         {
             ProcedimientoLogin procedimientoLogin = new ProcedimientoLogin();
 
@@ -52,7 +60,7 @@ namespace CapaDiseno
 
                         if (bExisteUsuario)
                         {
-                            
+
                             // Ocultar el formulario de login en lugar de cerrarlo
                             this.Hide();
 
@@ -79,13 +87,12 @@ namespace CapaDiseno
             }
         }
 
-
-        private void Btn_cancelar_Click(object sender, EventArgs e)
+        private void Btn_cancelar_Click_1(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
-        private void Cb_ver_password_CheckedChanged(object sender, EventArgs e)
+        private void Cb_ver_password_CheckedChanged_1(object sender, EventArgs e)
         {
             if (Cb_ver_password.Checked == false)
             {
@@ -97,19 +104,12 @@ namespace CapaDiseno
             }
         }
 
-
-        private void Frm_login_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            
-        }
-
-        private void Btn_ayuda_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
             Help.ShowHelp(this, "C:\\Ayuda_Seguridad\\" + "ayudaLogin.chm", "login.html");
-
         }
 
-        private void Btn_olvidocontrasenia_Click(object sender, EventArgs e)
+        private void Btn_olvidocontrasenia_Click_1(object sender, EventArgs e)
         {
             // Mostrar el formulario de entrada con una pregunta
             using (var frm_cambio_contrasenia = new frm_cambio_contrasenia("Por favor, ingresa tu usuario:"))
