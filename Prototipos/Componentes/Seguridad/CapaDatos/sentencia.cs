@@ -240,14 +240,35 @@ namespace CapaDatos
         //KATERYN DE LEON
 
         //--------------------------------------------------------------- Inicio: Marco Monroy ---------------------------------------------------------------
+        public OdbcDataAdapter insertarusuario(string nombre, string apellido, string id, string clave, string correo, string fecha, string estadousuario, string pregunta, string respuesta)
+        {
+            // Consulta SQL con concatenación de valores (esto es menos seguro, pero funciona en tu caso)
+            string sqlusuarios = "INSERT INTO tbl_usuarios (nombre_usuario, apellido_usuario, username_usuario, password_usuario, email_usuario, ultima_conexion_usuario, estado_usuario, pregunta, respuesta) " +
+                                 "VALUES ('" + nombre + "', '" + apellido + "', '" + id + "', '" + clave + "', '" + correo + "', '" + fecha + "', '" + estadousuario + "', '" + pregunta + "', '" + respuesta + "')";
+
+            // Crear el comando y asignar la conexión
+            OdbcDataAdapter datausuarios = new OdbcDataAdapter(sqlusuarios, cn.conectar());
+
+            try
+            {
+
+                return datausuarios; // Retorna si la inserción fue exitosa
+            }
+            catch (Exception ex)
+            {
+                // Capturar cualquier excepción y manejarla
+                Console.WriteLine("Error al insertar el usuario: " + ex.Message);
+
+                // Retornar null o manejar de acuerdo a tus necesidades
+                return null;
+            }
+        }
 
 
-        
-
-        //--------------------------------------------------------------- Fin: Marco Monroy ---------------------------------------------------------------
+    //--------------------------------------------------------------- Fin: Marco Monroy ---------------------------------------------------------------
 
 
-        public OdbcDataAdapter insertarclaves(string id, string nombre, string apellido, string clave)
+    public OdbcDataAdapter insertarclaves(string id, string nombre, string apellido, string clave)
         {
             cn.conectar();
             MessageBox.Show("Contraseña Actualizada");
