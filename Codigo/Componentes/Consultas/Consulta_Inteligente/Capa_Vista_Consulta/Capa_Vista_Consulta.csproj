@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C13A3DCC-1028-46CF-84DA-56C299439EA7}</ProjectGuid>
+    <ProjectGuid>{C10B1B01-6725-4ED9-98BF-C2CA2B67B4FA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Capa_VistaConsultas</RootNamespace>
-    <AssemblyName>Capa_VistaConsultas</AssemblyName>
+    <RootNamespace>Capa_Vista_Consulta</RootNamespace>
+    <AssemblyName>Capa_Vista_Consulta</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -31,55 +31,33 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Capa_ControladorConsultas">
-      <HintPath>..\Capa_Controlador\bin\Debug\Capa_ControladorConsultas.dll</HintPath>
+    <Reference Include="Capa_Controlador_Consulta">
+      <HintPath>..\Capa_Controlador_Consulta\bin\Debug\Capa_Controlador_Consulta.dll</HintPath>
     </Reference>
-    <Reference Include="FontAwesome.Sharp, Version=6.6.0.0, Culture=neutral, PublicKeyToken=d16d1e4e568ec10f, processorArchitecture=MSIL">
-      <HintPath>..\packages\FontAwesome.Sharp.6.6.0\lib\net472\FontAwesome.Sharp.dll</HintPath>
-    </Reference>
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
-    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Busqueda_Simple.cs">
+    <Compile Include="ConsultaInteligente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Busqueda_Simple.designer.cs">
-      <DependentUpon>Busqueda_Simple.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BusquedaInteligente.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="BusquedaInteligente.designer.cs">
-      <DependentUpon>BusquedaInteligente.cs</DependentUpon>
+    <Compile Include="ConsultaInteligente.Designer.cs">
+      <DependentUpon>ConsultaInteligente.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Busqueda_Simple.resx">
-      <DependentUpon>Busqueda_Simple.cs</DependentUpon>
+    <EmbeddedResource Include="ConsultaInteligente.resx">
+      <DependentUpon>ConsultaInteligente.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="BusquedaInteligente.resx">
-      <DependentUpon>BusquedaInteligente.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Connected Services\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
