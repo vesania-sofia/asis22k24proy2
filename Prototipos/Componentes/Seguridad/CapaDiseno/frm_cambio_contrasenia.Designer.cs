@@ -43,13 +43,15 @@ namespace CapaDiseno
             // 
             // Btn_confirmar
             // 
-            this.Btn_confirmar.BackColor = System.Drawing.Color.Firebrick;
-            this.Btn_confirmar.Font = new System.Drawing.Font("Candara", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_confirmar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Btn_confirmar.Location = new System.Drawing.Point(207, 238);
-            this.Btn_confirmar.Margin = new System.Windows.Forms.Padding(2);
+            this.Btn_confirmar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(177)))), ((int)(((byte)(252)))));
+            this.Btn_confirmar.FlatAppearance.BorderSize = 0;
+            this.Btn_confirmar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_confirmar.Font = new System.Drawing.Font("Haettenschweiler", 16F);
+            this.Btn_confirmar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.Btn_confirmar.Location = new System.Drawing.Point(276, 293);
+            this.Btn_confirmar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Btn_confirmar.Name = "Btn_confirmar";
-            this.Btn_confirmar.Size = new System.Drawing.Size(120, 38);
+            this.Btn_confirmar.Size = new System.Drawing.Size(160, 47);
             this.Btn_confirmar.TabIndex = 233;
             this.Btn_confirmar.Tag = "1";
             this.Btn_confirmar.Text = "Confirmar";
@@ -59,26 +61,29 @@ namespace CapaDiseno
             // Txt_confirmacion
             // 
             this.Txt_confirmacion.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.Txt_confirmacion.Location = new System.Drawing.Point(310, 199);
+            this.Txt_confirmacion.Location = new System.Drawing.Point(413, 245);
+            this.Txt_confirmacion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Txt_confirmacion.Name = "Txt_confirmacion";
-            this.Txt_confirmacion.Size = new System.Drawing.Size(180, 20);
+            this.Txt_confirmacion.Size = new System.Drawing.Size(239, 22);
             this.Txt_confirmacion.TabIndex = 232;
             // 
             // Txt_contrasenia
             // 
             this.Txt_contrasenia.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.Txt_contrasenia.Location = new System.Drawing.Point(310, 157);
+            this.Txt_contrasenia.Location = new System.Drawing.Point(413, 193);
+            this.Txt_contrasenia.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Txt_contrasenia.Name = "Txt_contrasenia";
-            this.Txt_contrasenia.Size = new System.Drawing.Size(180, 20);
+            this.Txt_contrasenia.Size = new System.Drawing.Size(239, 22);
             this.Txt_contrasenia.TabIndex = 231;
             // 
             // Lbl_confirmacion
             // 
             this.Lbl_confirmacion.AutoSize = true;
             this.Lbl_confirmacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_confirmacion.Location = new System.Drawing.Point(44, 198);
+            this.Lbl_confirmacion.Location = new System.Drawing.Point(59, 244);
+            this.Lbl_confirmacion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Lbl_confirmacion.Name = "Lbl_confirmacion";
-            this.Lbl_confirmacion.Size = new System.Drawing.Size(102, 20);
+            this.Lbl_confirmacion.Size = new System.Drawing.Size(127, 25);
             this.Lbl_confirmacion.TabIndex = 230;
             this.Lbl_confirmacion.Text = "Confirmación";
             // 
@@ -86,39 +91,44 @@ namespace CapaDiseno
             // 
             this.Lbl_contrasenia.AutoSize = true;
             this.Lbl_contrasenia.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_contrasenia.Location = new System.Drawing.Point(44, 156);
+            this.Lbl_contrasenia.Location = new System.Drawing.Point(59, 192);
+            this.Lbl_contrasenia.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Lbl_contrasenia.Name = "Lbl_contrasenia";
-            this.Lbl_contrasenia.Size = new System.Drawing.Size(141, 20);
+            this.Lbl_contrasenia.Size = new System.Drawing.Size(176, 25);
             this.Lbl_contrasenia.TabIndex = 229;
             this.Lbl_contrasenia.Text = "Nueva Contraseña";
             // 
             // Txt_color
             // 
             this.Txt_color.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.Txt_color.Location = new System.Drawing.Point(310, 67);
+            this.Txt_color.Location = new System.Drawing.Point(413, 82);
+            this.Txt_color.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Txt_color.Name = "Txt_color";
-            this.Txt_color.Size = new System.Drawing.Size(180, 20);
+            this.Txt_color.Size = new System.Drawing.Size(239, 22);
             this.Txt_color.TabIndex = 228;
             // 
             // Lbl_pregunta
             // 
             this.Lbl_pregunta.AutoSize = true;
             this.Lbl_pregunta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_pregunta.Location = new System.Drawing.Point(39, 66);
+            this.Lbl_pregunta.Location = new System.Drawing.Point(52, 81);
+            this.Lbl_pregunta.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Lbl_pregunta.Name = "Lbl_pregunta";
-            this.Lbl_pregunta.Size = new System.Drawing.Size(192, 20);
+            this.Lbl_pregunta.Size = new System.Drawing.Size(238, 25);
             this.Lbl_pregunta.TabIndex = 227;
             this.Lbl_pregunta.Text = "¿Cuál es tu color favorito?";
             // 
             // Btn_verificar
             // 
-            this.Btn_verificar.BackColor = System.Drawing.Color.Firebrick;
-            this.Btn_verificar.Font = new System.Drawing.Font("Candara", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_verificar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Btn_verificar.Location = new System.Drawing.Point(207, 101);
-            this.Btn_verificar.Margin = new System.Windows.Forms.Padding(2);
+            this.Btn_verificar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(177)))), ((int)(((byte)(252)))));
+            this.Btn_verificar.FlatAppearance.BorderSize = 0;
+            this.Btn_verificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_verificar.Font = new System.Drawing.Font("Haettenschweiler", 16F);
+            this.Btn_verificar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.Btn_verificar.Location = new System.Drawing.Point(276, 124);
+            this.Btn_verificar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Btn_verificar.Name = "Btn_verificar";
-            this.Btn_verificar.Size = new System.Drawing.Size(120, 38);
+            this.Btn_verificar.Size = new System.Drawing.Size(160, 47);
             this.Btn_verificar.TabIndex = 226;
             this.Btn_verificar.Tag = "1";
             this.Btn_verificar.Text = "Verificar";
@@ -128,26 +138,29 @@ namespace CapaDiseno
             // Txt_pregunta
             // 
             this.Txt_pregunta.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.Txt_pregunta.Location = new System.Drawing.Point(310, 20);
+            this.Txt_pregunta.Location = new System.Drawing.Point(413, 25);
+            this.Txt_pregunta.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Txt_pregunta.Name = "Txt_pregunta";
-            this.Txt_pregunta.Size = new System.Drawing.Size(180, 20);
+            this.Txt_pregunta.Size = new System.Drawing.Size(239, 22);
             this.Txt_pregunta.TabIndex = 225;
             // 
             // Lbl_color
             // 
             this.Lbl_color.AutoSize = true;
             this.Lbl_color.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_color.Location = new System.Drawing.Point(39, 19);
+            this.Lbl_color.Location = new System.Drawing.Point(52, 23);
+            this.Lbl_color.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Lbl_color.Name = "Lbl_color";
-            this.Lbl_color.Size = new System.Drawing.Size(154, 20);
+            this.Lbl_color.Size = new System.Drawing.Size(192, 25);
             this.Lbl_color.TabIndex = 224;
             this.Lbl_color.Text = "¿Cuál es tu usuario?";
             // 
             // frm_cambio_contrasenia
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(554, 287);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.ClientSize = new System.Drawing.Size(739, 353);
             this.Controls.Add(this.Btn_confirmar);
             this.Controls.Add(this.Txt_confirmacion);
             this.Controls.Add(this.Txt_contrasenia);
@@ -158,6 +171,7 @@ namespace CapaDiseno
             this.Controls.Add(this.Btn_verificar);
             this.Controls.Add(this.Txt_pregunta);
             this.Controls.Add(this.Lbl_color);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frm_cambio_contrasenia";
             this.Text = "frm_cambio_contrasenia";
             this.Load += new System.EventHandler(this.frm_cambio_contrasenia_Load);
