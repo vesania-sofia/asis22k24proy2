@@ -20,6 +20,7 @@ namespace Capa_Vista_Consulta
         private string[] datos;
         private string[] tipos;
         private string consultaSeleccionada;
+        
 
         public ConsultaInteligente()
         {
@@ -39,6 +40,7 @@ namespace Capa_Vista_Consulta
             cboQuery2.SelectedIndexChanged += new EventHandler(cboConsultas_SelectedIndexChanged);
             csControlador.obtenerNombresConsultas(cboQuery3);
             cboQuery3.SelectedIndexChanged += new EventHandler(cboConsultas_SelectedIndexChanged);
+           
         }
         string consulta = "";
         string tabla = "tbl_consultaInteligente";
