@@ -1,5 +1,4 @@
-﻿using CrystalDecisions.CrystalReports.Engine;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,15 +8,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CrystalDecisions.CrystalReports.Engine;
 
 namespace CapaVistaReporteria
 {
     public partial class visualizar : Form
     {
-        public visualizar()
-        {
-            InitializeComponent();
-        }
         public visualizar(String texto)
         {
             InitializeComponent();
@@ -31,7 +27,6 @@ namespace CapaVistaReporteria
             try
             {
                 crystalrpt.Load(Path.GetFullPath("..\\..\\..\\..\\..\\..\\..\\Reportes\\" + direccion_reporte.Text));
-                crystalrpt.Refresh();
                 crystalReportViewer1.ReportSource = crystalrpt;
                 crystalReportViewer1.Refresh();
             }
@@ -40,8 +35,5 @@ namespace CapaVistaReporteria
                 MessageBox.Show("Error, no se puede encontrar el reporte en su equipo, verifique la ruta");
             }
         }
-
-
-
     }
 }
