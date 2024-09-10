@@ -50,7 +50,6 @@
             this.btn_ingresar = new System.Windows.Forms.Button();
             this.btn_modif = new System.Windows.Forms.Button();
             this.btn_ayuda = new System.Windows.Forms.Button();
-            this.btn_eli = new System.Windows.Forms.Button();
             this.gbbuscar.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.gbestado.SuspendLayout();
@@ -86,7 +85,7 @@
             this.tbx_buscarperfil.Location = new System.Drawing.Point(95, 44);
             this.tbx_buscarperfil.Margin = new System.Windows.Forms.Padding(4);
             this.tbx_buscarperfil.Name = "tbx_buscarperfil";
-            this.tbx_buscarperfil.Size = new System.Drawing.Size(296, 26);
+            this.tbx_buscarperfil.Size = new System.Drawing.Size(296, 22);
             this.tbx_buscarperfil.TabIndex = 6;
             // 
             // groupBox2
@@ -121,7 +120,7 @@
             this.txtnombre.Location = new System.Drawing.Point(248, 102);
             this.txtnombre.Margin = new System.Windows.Forms.Padding(4);
             this.txtnombre.Name = "txtnombre";
-            this.txtnombre.Size = new System.Drawing.Size(296, 26);
+            this.txtnombre.Size = new System.Drawing.Size(296, 22);
             this.txtnombre.TabIndex = 5;
             // 
             // txtcodigo
@@ -129,7 +128,7 @@
             this.txtcodigo.Location = new System.Drawing.Point(248, 54);
             this.txtcodigo.Margin = new System.Windows.Forms.Padding(4);
             this.txtcodigo.Name = "txtcodigo";
-            this.txtcodigo.Size = new System.Drawing.Size(132, 26);
+            this.txtcodigo.Size = new System.Drawing.Size(132, 22);
             this.txtcodigo.TabIndex = 4;
             // 
             // gbestado
@@ -151,7 +150,7 @@
             this.rbinhabilitado.Location = new System.Drawing.Point(284, 69);
             this.rbinhabilitado.Margin = new System.Windows.Forms.Padding(4);
             this.rbinhabilitado.Name = "rbinhabilitado";
-            this.rbinhabilitado.Size = new System.Drawing.Size(114, 24);
+            this.rbinhabilitado.Size = new System.Drawing.Size(95, 20);
             this.rbinhabilitado.TabIndex = 1;
             this.rbinhabilitado.TabStop = true;
             this.rbinhabilitado.Text = "Inhabilitado";
@@ -163,7 +162,7 @@
             this.rbhabilitado.Location = new System.Drawing.Point(89, 69);
             this.rbhabilitado.Margin = new System.Windows.Forms.Padding(4);
             this.rbhabilitado.Name = "rbhabilitado";
-            this.rbhabilitado.Size = new System.Drawing.Size(105, 24);
+            this.rbhabilitado.Size = new System.Drawing.Size(88, 20);
             this.rbhabilitado.TabIndex = 0;
             this.rbhabilitado.TabStop = true;
             this.rbhabilitado.Text = "Habilitado";
@@ -175,7 +174,7 @@
             this.label3.Location = new System.Drawing.Point(60, 146);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(99, 20);
+            this.label3.Size = new System.Drawing.Size(80, 16);
             this.label3.TabIndex = 2;
             this.label3.Text = "Descripción";
             // 
@@ -185,7 +184,7 @@
             this.label2.Location = new System.Drawing.Point(60, 106);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(68, 20);
+            this.label2.Size = new System.Drawing.Size(57, 16);
             this.label2.TabIndex = 1;
             this.label2.Text = "Nombre";
             // 
@@ -195,13 +194,12 @@
             this.label1.Location = new System.Drawing.Point(60, 58);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(126, 20);
+            this.label1.Size = new System.Drawing.Size(103, 16);
             this.label1.TabIndex = 0;
             this.label1.Text = "Codigo de perfil";
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.btn_eli);
             this.groupBox1.Controls.Add(this.btn_nuevo);
             this.groupBox1.Controls.Add(this.btn_actualizar);
             this.groupBox1.Controls.Add(this.button1);
@@ -231,7 +229,7 @@
             // 
             // btn_actualizar
             // 
-            this.btn_actualizar.Location = new System.Drawing.Point(21, 127);
+            this.btn_actualizar.Location = new System.Drawing.Point(21, 137);
             this.btn_actualizar.Margin = new System.Windows.Forms.Padding(4);
             this.btn_actualizar.Name = "btn_actualizar";
             this.btn_actualizar.Size = new System.Drawing.Size(100, 30);
@@ -242,7 +240,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(21, 321);
+            this.button1.Location = new System.Drawing.Point(21, 309);
             this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(100, 30);
@@ -263,7 +261,7 @@
             // 
             // btn_cancel
             // 
-            this.btn_cancel.Location = new System.Drawing.Point(21, 268);
+            this.btn_cancel.Location = new System.Drawing.Point(21, 258);
             this.btn_cancel.Margin = new System.Windows.Forms.Padding(4);
             this.btn_cancel.Name = "btn_cancel";
             this.btn_cancel.Size = new System.Drawing.Size(100, 30);
@@ -274,7 +272,7 @@
             // 
             // btn_ingresar
             // 
-            this.btn_ingresar.Location = new System.Drawing.Point(21, 80);
+            this.btn_ingresar.Location = new System.Drawing.Point(21, 83);
             this.btn_ingresar.Margin = new System.Windows.Forms.Padding(4);
             this.btn_ingresar.Name = "btn_ingresar";
             this.btn_ingresar.Size = new System.Drawing.Size(100, 30);
@@ -285,7 +283,7 @@
             // 
             // btn_modif
             // 
-            this.btn_modif.Location = new System.Drawing.Point(21, 175);
+            this.btn_modif.Location = new System.Drawing.Point(21, 199);
             this.btn_modif.Margin = new System.Windows.Forms.Padding(4);
             this.btn_modif.Name = "btn_modif";
             this.btn_modif.Size = new System.Drawing.Size(100, 30);
@@ -307,22 +305,11 @@
             this.btn_ayuda.UseVisualStyleBackColor = true;
             this.btn_ayuda.Click += new System.EventHandler(this.Btn_ayuda_Click);
             // 
-            // btn_eli
-            // 
-            this.btn_eli.Location = new System.Drawing.Point(21, 222);
-            this.btn_eli.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_eli.Name = "btn_eli";
-            this.btn_eli.Size = new System.Drawing.Size(100, 30);
-            this.btn_eli.TabIndex = 9;
-            this.btn_eli.Text = "Eliminar";
-            this.btn_eli.UseVisualStyleBackColor = true;
-            this.btn_eli.Click += new System.EventHandler(this.btn_eli_Click);
-            // 
             // frm_perfiles_mantenimiento
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(868, 551);
+            this.ClientSize = new System.Drawing.Size(838, 514);
             this.Controls.Add(this.btn_ayuda);
             this.Controls.Add(this.gbbuscar);
             this.Controls.Add(this.groupBox2);
@@ -368,6 +355,5 @@
         private System.Windows.Forms.Button btn_modif;
         private System.Windows.Forms.Button btn_nuevo;
         private System.Windows.Forms.Button btn_ayuda;
-        private System.Windows.Forms.Button btn_eli;
     }
 }

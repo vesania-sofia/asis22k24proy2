@@ -27,7 +27,6 @@ namespace CapaDiseno
             txtdesc.Enabled = false;
             btn_ingresar.Enabled = false;
             gbestado.Enabled = false;
-            btn_eli.Enabled = false;   // se agrega el boton eliminar 
 
         }
 
@@ -51,7 +50,6 @@ namespace CapaDiseno
         {
             string perfil = tbx_buscarperfil.Text;
             bool modificar = false;
-            bool eliminar = false;
             try
             {
                 DataTable dtModulos = logic.ConsultaLogicaPerfil(perfil);
@@ -60,7 +58,6 @@ namespace CapaDiseno
                 {
                     if (row[0] != null)
                         modificar = true;
-                        eliminar = true;
 
                     txtcodigo.Text = (row[0].ToString());
                     txtnombre.Text = (row[1].ToString());
@@ -89,18 +86,6 @@ namespace CapaDiseno
                     rbhabilitado.Enabled = false;
                     rbinhabilitado.Enabled = false;
                 }
-
-                if (eliminar == true)             // se crean las ventanas aviertas para el boton eliminar 
-                {
-                    btn_eli.Enabled = true;
-                    btn_ingresar.Enabled = false;
-                    txtcodigo.Enabled = false;
-                    txtnombre.Enabled = false;
-                    txtdesc.Enabled = false;
-                    rbhabilitado.Enabled = false;
-                    rbinhabilitado.Enabled = false;
-                }
-
                 else
                 {
                     btn_modif.Enabled = false;
@@ -286,39 +271,6 @@ namespace CapaDiseno
         private void Btn_ayuda_Click(object sender, EventArgs e)
         {
             Help.ShowHelp(this, "C:\\Ayuda_Seguridad\\" + "MantenimientoPerfiles.chm", "AyudaMantenimientoPerfiles.html");
-        }
-
-        /* creado por Emerzon Garcia */
-
-        private void btn_eli_Click(object sender, EventArgs e)
-        {
-            if (!string.IsNullOrEmpty(txtcodigo.Text))
-            {
-                // Confirmar antes de eliminar
-                var confirmResult = MessageBox.Show("¿Estás seguro de eliminar este perfil?",
-                                                    "Confirmar Eliminación",
-                                                    MessageBoxButtons.YesNo);
-
-                if (confirmResult == DialogResult.Yes)
-                {
-                    // Llamar al método de la capa lógica para eliminar el perfil
-                    logic.Eliminarperfil(txtcodigo.Text);
-
-                    // Opcionalmente, puedes desactivar botones o limpiar campos después de la eliminación
-                    btn_modif.Enabled = false;
-                    btn_actualizar.Enabled = false;
-                    btn_cancel.Enabled = false;
-                    btn_ingresar.Enabled = false;
-                    btn_nuevo.Enabled = true;
-                    txtcodigo.Enabled = false;
-                    gbestado.Enabled = false;  // Desactiva el grupo de radio buttons
-                    limpiar();  // Limpiar campos
-                }
-            }
-            else
-            {
-                MessageBox.Show("No se ha seleccionado un perfil para eliminar.");
-            }
         }
     }
 }
