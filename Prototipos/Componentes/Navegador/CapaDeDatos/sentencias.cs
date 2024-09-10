@@ -145,7 +145,7 @@ namespace CapaDeDatos
                     Campos = reader.GetValue(0).ToString();
             }
             catch (Exception ex) { Console.WriteLine(ex.Message.ToString() + " \nError en obtenerTipo, revise los parámetros de la tabla  \n -" + tabla.ToUpper() + "\n -"); }
-            return Campos;// devuelve un arreglo con los tiposlos campos
+            return Campos;// devuelve un arreglo con los tipos de campos
         }       
 
         public string modRuta(string idindice)// metodo  que obtinene el contenio de una tabla
@@ -358,7 +358,7 @@ namespace CapaDeDatos
             }
         }
 
-        public string[] obtenerTipo(string tabla)//metodo que obtiene la lista de los tipos de campos que requiere una tabla
+        public string[] ObtenerTipo(string tabla)//metodo que obtiene la lista de los tipos de campos que requiere una tabla
         {
             string[] Campos = new string[30];
             int i = 0;
