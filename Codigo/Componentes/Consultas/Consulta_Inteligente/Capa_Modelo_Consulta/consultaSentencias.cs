@@ -85,11 +85,12 @@ namespace Capa_Modelo_Consulta
          */
 
         //modificar
-        public void actualizar(string dato, string condicion, string tabla)
+        public void actualizar(string setClause, string tabla, string condicion)
         {
             try
             {
-                string sql = "Update " + tabla + " " + dato + " where " + condicion;
+                // Construir la consulta UPDATE con la cláusula SET y la condición WHERE
+                string sql = $"UPDATE {tabla} SET {setClause} WHERE {condicion}";
                 OdbcCommand cmd = new OdbcCommand(sql, con.connection());
                 cmd.ExecuteNonQuery();
             }
@@ -97,6 +98,9 @@ namespace Capa_Modelo_Consulta
             {
                 Console.WriteLine(e.Message);
             }
+
+            //////////////// FIN SALVADOR MARTÍNEZ ////////////////
+
 
 
         }

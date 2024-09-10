@@ -152,275 +152,8 @@ namespace Capa_Controlador_Consulta
         // Fin de la participación de Carlos González
 
 
+        //////////////////// // SALVADOR MARTÍNEZ // PESTAÑA EDITAR ////////////////////
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        /*Creado por Sebastian Luna
-
-        consultaSentencias sn = new consultaSentencias();
-
-        public string[] items(string tabla, string campo1, string campo2)
-        {
-            string[] Items = sn.llenarCmb(tabla, campo1, campo2);
-
-            return Items;
-
-
-        }
-
-        public DataTable enviar(string tabla, string campo1, string campo2)
-        {
-
-
-
-            var dt1 = sn.obtener(tabla, campo1, campo2);
-
-            return dt1;
-        }
-        //Fin participacion Sebastian Luna*/
         public void obtenerNombresConsultas(ComboBox comboBoxConsultas)
         {
             // Recibimos la lista de nombres de consultas desde el modelo
@@ -435,5 +168,359 @@ namespace Capa_Controlador_Consulta
                 comboBoxConsultas.Items.Add(nombreConsulta);
             }
         }
+
+        public void actualizarQuery(string[] tipos, string[] datos, string tabla)
+        {
+            {
+                // Datos del arreglo, con corrección en el índice de query
+                string nombreConsulta = datos[0];
+                string tipoConsulta = datos[1];
+                string tblConsultada = datos[2];
+                string query = datos[4]; // Se asume que la query está en la posición 4
+                string datoQueryGenerado = "SELECT ";
+                string status = datos[5];
+                string fragmentoActual = "";
+                bool esCampo = true;
+
+                foreach (char c in query)
+                {
+                    if (c == '+')
+                    {
+                        fragmentoActual = fragmentoActual.Trim();
+
+                        if (!string.IsNullOrEmpty(fragmentoActual))
+                        {
+                            if (esCampo)
+                            {
+                                datoQueryGenerado += $"{fragmentoActual} AS "; // Es un campo
+                            }
+                            else
+                            {
+                                datoQueryGenerado += $"{fragmentoActual}, "; // Es un alias
+                            }
+                            esCampo = !esCampo; // Alternar entre campo y alias
+                            fragmentoActual = ""; // Reiniciar el fragmento
+                        }
+                    }
+                    else
+                    {
+                        fragmentoActual += c; // Agregar el carácter actual al fragmento
+                    }
+                }
+
+                // Procesar el último fragmento si hay un alias pendiente
+                if (!string.IsNullOrEmpty(fragmentoActual.Trim()))
+                {
+                    if (esCampo)
+                    {
+                        datoQueryGenerado += $"{fragmentoActual}"; // Si falta procesar un campo
+                    }
+                    else
+                    {
+                        datoQueryGenerado += $"{fragmentoActual}"; // Si falta procesar un alias
+                    }
+                }
+
+                // Remover la última coma y agregar el FROM
+                datoQueryGenerado = datoQueryGenerado.TrimEnd(',', ' ') + $" FROM {tblConsultada};";
+
+                // Mostrar el query generado
+                Console.WriteLine($"Query generado: {datoQueryGenerado}");
+
+                // Construir la cláusula SET para el método de actualización
+                string setClause = $"consulta_SQLE = '{datoQueryGenerado}'";
+
+                // Construir la condición WHERE para la actualización
+                string condicion = $"nombre_consulta = '{nombreConsulta}'";
+
+                // Llamar a la capa de modelo para actualizar la consulta
+                csSentencias.actualizar(setClause, tabla, condicion);
+
+            }
+        }
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            /*Creado por Sebastian Luna
+
+            consultaSentencias sn = new consultaSentencias();
+
+            public string[] items(string tabla, string campo1, string campo2)
+            {
+                string[] Items = sn.llenarCmb(tabla, campo1, campo2);
+
+                return Items;
+
+
+            }
+
+            public DataTable enviar(string tabla, string campo1, string campo2)
+            {
+
+
+
+                var dt1 = sn.obtener(tabla, campo1, campo2);
+
+                return dt1;
+            }
+            //Fin participacion Sebastian Luna*/
+           /* public void obtenerNombresConsultas(ComboBox comboBoxConsultas)
+        {
+            // Recibimos la lista de nombres de consultas desde el modelo
+            List<string> nombresConsultas = csSentencias.ObtenerNombresConsultas();
+
+            // Limpiamos el ComboBox antes de añadir nuevos nombres
+            comboBoxConsultas.Items.Clear();
+
+            // Añadimos cada nombre de consulta al ComboBox
+            foreach (string nombreConsulta in nombresConsultas)
+            {
+                comboBoxConsultas.Items.Add(nombreConsulta);*/
+            
+        }
     }
-}
+
+
+          
