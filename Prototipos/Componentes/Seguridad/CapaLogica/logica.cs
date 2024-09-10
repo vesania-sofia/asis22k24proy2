@@ -2,6 +2,7 @@
 using System.Data;
 using CapaDatos;
 using System.Data.Odbc;
+using System.Windows.Forms;
 
 namespace CapaLogica
 {
@@ -164,23 +165,21 @@ namespace CapaLogica
             }
         }
 
-        public DataTable ActualizarUsuario(string idUsuario, string nombreUsuario, string apellidoUsuario,string clave, string estado)
+        //---------------------------------------------------- Inicio: GABRIELA SUC ---------------------------------------------------- 
+        public void ActualizarUsuario(int idUsuario, string nombre, string apellido, string correo, string estado, string pregunta, string respuesta)
         {
             try
             {
-                OdbcDataAdapter dtactualizarUsuario = sn.ActualizarUsuario(idUsuario, nombreUsuario, apellidoUsuario,clave, estado);
-                DataTable tableUsuariosActualizacion = new DataTable();
-                dtactualizarUsuario.Fill(tableUsuariosActualizacion);
-                return tableUsuariosActualizacion;
+                // Se llama a la capa de datos para actualizar el usuario
+                int filasAfectadas = sn.ActualizarUsuario(idUsuario, nombre, apellido, correo, estado, pregunta, respuesta);
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
-                return null;
+                MessageBox.Show("Error en la capa lógica al actualizar: " + ex.Message);
             }
-
-
         }
+        //---------------------------------------------------- Fin: GABRIELA SUC ---------------------------------------------------- 
+
 
         /*----------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
@@ -270,21 +269,14 @@ namespace CapaLogica
             }
         }
 
-        public DataTable eliminar(string id, string nombre, string apellido, string clave)
+        //---------------------------------------------------- Inicio: GABRIELA SUC ---------------------------------------------------- 
+
+        public int eliminarusuario(int idUsuario)
         {
-            try
-            {
-                OdbcDataAdapter dteliminar = sn.eliminarusuario(id, nombre, apellido, clave);
-                DataTable tableliminar = new DataTable();
-                dteliminar.Fill(tableliminar);
-                return tableliminar;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex);
-                return null;
-            }
+            return sn.eliminarusuario(idUsuario.ToString()); // Llamar al método de la capa de datos y devolver el número de filas afectadas
         }
+
+        //---------------------------------------------------- Fin: GABRIELA SUC ---------------------------------------------------- 
 
         public DataTable eliminaraplicaciones(string idaplicacion, string modulo, string descripcion, string aplicacion)
         {

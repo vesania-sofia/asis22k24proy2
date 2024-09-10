@@ -111,10 +111,10 @@ namespace CapaDiseno
                     foreach (DataRow dt in dtusuario.Rows)
                     {
                         txt_id.Text = (dt[0].ToString());
-                        txt_nomb.Text = (dt[1].ToString());
+                        txt_nomb.Text = (dt[3].ToString());
                         txt_apellido.Text = (dt[2].ToString());
 
-                        txt_nombreusername.Text = (dt[3].ToString());
+                        txt_nombreusername.Text = (dt[1].ToString());
 
 
                         txt_clave.Text = (dt[4].ToString());
@@ -128,6 +128,19 @@ namespace CapaDiseno
                     }
                     // Mensaje indicando que los datos fueron buscados correctamente
                     MessageBox.Show("Los datos fueron buscados correctamente.");
+
+                    txt_nomb.Enabled = true;
+                    txt_apellido.Enabled = true;
+                    txt_correo.Enabled = true;
+                    txt_estadousuario.Enabled = true;
+                    txt_pregunta.Enabled = true;
+                    txt_respuesta.Enabled = true;
+                    button3.Enabled = true;
+                    button2.Enabled = true;
+                    btn_salir.Enabled = true;
+                    btn_guardar.Enabled = true;
+                    button4.Enabled = true;
+
                 }
             }
             catch (Exception ex)
@@ -158,9 +171,9 @@ namespace CapaDiseno
 
         private void Frm_usuarios_Load(object sender, EventArgs e)
         {
-            txt_buscar.Enabled = false;
+            txt_buscar.Enabled = true;
             txt_id.Enabled = false;
-            btn_buscar.Enabled = false;
+            btn_buscar.Enabled = true;
             txt_nombreusername.Enabled = false;
             txt_clave.Enabled = false;
             txt_apellido.Enabled = false;
@@ -175,65 +188,93 @@ namespace CapaDiseno
         }
 
 
+        //---------------------------------------------------- Inicio: GABRIELA SUC ----------------------------------------------------
 
         private void Button2_Click(object sender, EventArgs e)
         {
-            //boton_eliminar ELIMINAR
+            DialogResult result = MessageBox.Show("¿Está seguro de que desea eliminar este usuario?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
-            id = txt_nomb.Text;
-            nombre = txt_apellido.Text;
-            apellido = txt_nombreusername.Text;
-            clave = txt_clave.Text;
-            //NUEVOS CAMPOS
-            correo = txt_correo.Text;
-
-            txt_clave.Enabled = false;
-            txt_nomb.Enabled = false;
-            txt_apellido.Enabled = false;
-            txt_nombreusername.Enabled = false;
-
-            txt_buscar.Enabled = true;
-            button3.Enabled = false;
-            button4.Enabled = false;
-            btn_buscar.Enabled = false;
-            boton_eliminar = false;
-
-            txt_correo.Enabled = false;
-            txt_estadousuario.Enabled = false;
-            txt_pregunta.Enabled = false;
-            txt_respuesta.Enabled = false;
-
-
-            try
+            if (result == DialogResult.Yes)
             {
-                DataTable dtusuario = logica1.eliminar(id, nombre, apellido, clave);
+                try
+                {
+                    int idUsuario = Convert.ToInt32(txt_buscar.Text);
+                    int filasAfectadas = logica1.eliminarusuario(idUsuario);
+
+                    if (filasAfectadas > 0)
+                    {
+                        MessageBox.Show("Usuario eliminado correctamente.");
+                        limpiar(); // Limpiar los campos
+                        txt_clave.Enabled = false;
+                        txt_nombreusername.Enabled = false;
+                        txt_apellido.Enabled = false;
+                        txt_nomb.Enabled = false;
+                        txt_buscar.Enabled = true;
+                        txt_correo.Enabled = false;
+                        txt_estadousuario.Enabled = false;
+                        txt_pregunta.Enabled = false;
+                        txt_respuesta.Enabled = false;
+                        btn_guardar.Enabled = false;
+                        button3.Enabled = false;
+                        button2.Enabled = false;
+                        button4.Enabled = true;
+                        btn_salir.Enabled = true;
+                        btn_buscar.Enabled = true;
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se encontró el usuario o no fue posible eliminarlo.");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al eliminar el usuario: " + ex.Message);
+                }
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex);
-                return;
-            }
-            limpiar();
 
         }
+
+        
+
         private void Button3_Click(object sender, EventArgs e)
         {
 
-            //BOTON MODIFICAR
-            boton_modificar = true;
-            txt_clave.Enabled = false;
-            txt_nomb.Enabled = false;
-            txt_apellido.Enabled = true;
-            txt_nombreusername.Enabled = true;
+            // Botón MODIFICAR
 
-            txt_buscar.Enabled = true;
-            btn_buscar.Enabled = true;
-            button3.Enabled = false;
-            button2.Enabled = false;
-            button4.Enabled = false;
+            try
+            {
+                // Se captura el ID del usuario desde txt_buscar
+                int idUsuario = Convert.ToInt32(txt_buscar.Text);
+
+                // Se llama a la función de la capa lógica para actualizar el registro
+                logica1.ActualizarUsuario(idUsuario, txt_nomb.Text, txt_apellido.Text, txt_correo.Text, txt_estadousuario.Text, txt_pregunta.Text, txt_respuesta.Text);
+
+                MessageBox.Show("Usuario actualizado correctamente.");
+
+                // Desactivar los controles nuevamente
+                txt_clave.Enabled = false;
+                txt_nombreusername.Enabled = false;
+                txt_apellido.Enabled = false;
+                txt_nomb.Enabled = false;
+                txt_buscar.Enabled = true;
+                txt_correo.Enabled = false;
+                txt_estadousuario.Enabled = false;
+                txt_pregunta.Enabled = false;
+                txt_respuesta.Enabled = false;
+
+                limpiar(); // Limpiar los campos después de la actualización
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al actualizar el usuario: " + ex.Message);
+            }
 
 
         }
+
+        //---------------------------------------------------- Fin: GABRIELA SUC ----------------------------------------------------
+
         public string id, nombre, apellido, clave, correo, estadousuario, pregunta, respuesta;
 
         private void Btn_ayuda_Click(object sender, EventArgs e)
@@ -267,6 +308,7 @@ namespace CapaDiseno
             button2.Enabled = false;
             button3.Enabled = false;
             boton_ingreso = true;
+            btn_guardar.Enabled = true;
 
 
 
@@ -338,22 +380,7 @@ namespace CapaDiseno
                       return;
                     }
                 }
-                else if (boton_modificar == true)
-                {
-                  
-
-                    try
-                    {
-                        // Asegúrate de pasar todos los parámetros en la actualización
-                        DataTable dtUsuarioActualizar = logica1.ActualizarUsuario( nombre,  apellido, correo, pregunta, respuesta);
-                        MessageBox.Show("Usuario Actualizado");
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine(ex);
-                        return;
-                    }
-                }
+                
 
                 limpiar();
                 txt_clave.Enabled = true;
