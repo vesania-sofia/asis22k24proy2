@@ -2,6 +2,7 @@
 using System.Data;
 using CapaDatos;
 using System.Data.Odbc;
+using System.Windows.Forms;
 
 namespace CapaLogica
 {
@@ -16,7 +17,7 @@ namespace CapaLogica
         }
 
 
-        /*---------------------------------------------------------------Creador: Allan Letona-----------------------------------------------------------------------------*/
+
         public DataTable consultaLogicaUsuarios()
         {
             
@@ -67,22 +68,26 @@ namespace CapaLogica
             }
         }
 
-        public DataTable consultaLogicaAplicaciones(string nombreModulo)
+        //###################  lo que hizo Karla  Sofia Gómez Tobar #######################
+        public DataTable consultaLogicaAplicaciones(string ID_aplicacion)
         {
             try
             {
-                OdbcDataAdapter dtAplicaciones = sn.consultarAplicaciones(nombreModulo);
-                DataTable tableAplicaciones = new DataTable();
-                dtAplicaciones.Fill(tableAplicaciones);
-                return tableAplicaciones;
+                using (OdbcDataAdapter cmpsAplicaciones = sn.consultaraplicaciones(ID_aplicacion))
+                {
+                    DataTable tableAplicaciones = new DataTable();
+                    cmpsAplicaciones.Fill(tableAplicaciones);
+                    return tableAplicaciones;
+                }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex);
                 return null;
 
             }
         }
+        //###################  termina lo que hizo  Karla  Sofia Gómez Tobar #######################
 
         public DataTable consultaLogicaPermisosUsuarioAplicacion(string codigoUsuario, string nombreAplicacion, string ingresar, string consulta, string modificar, string eliminar, string imprimir)
         {
@@ -148,6 +153,7 @@ namespace CapaLogica
             }
         }
 
+        //###################  lo que hizo Karla  Sofia Gómez Tobar #######################
         public DataTable validarIDAplicacion()
         {
             try
@@ -163,7 +169,7 @@ namespace CapaLogica
                 return null;
             }
         }
-
+        //###################  termina lo que hizo  Karla  Sofia Gómez Tobar #######################
         public DataTable ActualizarUsuario(string idUsuario, string nombreUsuario, string apellidoUsuario,string clave, string estado)
         {
             try
@@ -182,9 +188,32 @@ namespace CapaLogica
 
         }
 
-        /*----------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
-        /*---------------------------------------------------------------Creador: Diego Gomez-----------------------------------------------------------------------------*/
+
+        /* creado por Emerzon Garcia  0901-21-9182 ...... */
+
+        public bool Eliminarperfil(string ID_perfil)
+        {
+            try
+            {
+                bool result = sn.EliminarPerfil1(ID_perfil);
+                if (result)
+                {
+                    MessageBox.Show("Perfil eliminado correctamente.");
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo eliminar el perfil.");
+                }
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return false;
+            }
+        }
+
 
         public DataTable usuarios(string id, string nombre, string apellido, string clave, int boton)
         {
@@ -251,23 +280,22 @@ namespace CapaLogica
         }
 
 
-        public DataTable aplicaciones(string idaplicacion, string modulo, string descripcion, string aplicacion, int boton)
+        //###################  lo que hizo Karla  Sofia Gómez Tobar #######################
+        public bool insertaraplicaciones(string codigo, string nombre, string descripcion, string estado)
         {
             try
             {
 
-                OdbcDataAdapter dtusuario = sn.insertaraplicacion(idaplicacion, modulo, descripcion, aplicacion, boton);
-                DataTable tableusuarios = new DataTable();
-                dtusuario.Fill(tableusuarios);
-                return tableusuarios;
+                sn.insertaraplicacion(codigo, nombre, descripcion, estado);
+                return true;
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
-                return null;
+                Console.WriteLine("Error al insertar el aplicacion: " + ex.Message);
+                return false;
             }
         }
-
+        //###################  termina lo que hizo  Karla  Sofia Gómez Tobar #######################
         public DataTable eliminar(string id, string nombre, string apellido, string clave)
         {
             try
@@ -284,19 +312,43 @@ namespace CapaLogica
             }
         }
 
-        public DataTable eliminaraplicaciones(string idaplicacion, string modulo, string descripcion, string aplicacion)
+        //Esta parte fue echa por Carlos Hernandez
+        public DataTable actualizaraplicaciones(string codigo, string nombre, string descripcion, string estado)
         {
             try
             {
-                OdbcDataAdapter dteliminar = sn.eliminaraplicacion(idaplicacion, modulo, descripcion, aplicacion);
-                DataTable tableliminar = new DataTable();
-                dteliminar.Fill(tableliminar);
-                return tableliminar;
+                OdbcDataAdapter dtModificar = sn.actualizaraplicacion(codigo, nombre, descripcion, estado);
+                DataTable tableAplicacion = new DataTable();
+                dtModificar.Fill(tableAplicacion);
+                return tableAplicacion;
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex);
                 return null;
+            }
+        }
+        //termina lo que hizo carlos hernandez 
+
+        public bool eliminaraplicaciones(string codigo)
+        {
+            try
+            {
+                bool result = sn.eliminaraplicacion(codigo);
+                if (result)
+                {
+                    MessageBox.Show("Perfil eliminado correctamente.");
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo eliminar el perfil.");
+                }
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return false;
             }
         }
 
@@ -342,29 +394,8 @@ namespace CapaLogica
             }
         }
 
-        public DataTable consultaLogicaaplicaciones()
-        {
 
-            try
-            {
-                OdbcDataAdapter dt = sn.consultaraplicaciones();
-                DataTable table = new DataTable();
-                dt.Fill(table);
-                return table;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex);
-                return null;
-            }
-
-        }
-
-        /*----------------------------------------------------------------------------------------------------------------------------------------------------------------*/
-
-        //######################################### EDITADO POR: ALEJANDRO BARREDA MENDOZA ############################################
-        //+1 modulos
-
+        //Trabajado por María José Véliz Ochoa, 9959-21-5909
         public DataTable validarIDModulos()
         {
             try
@@ -380,11 +411,8 @@ namespace CapaLogica
                 return null;
             }
         }
+        // termina
 
-
-        //--------mantenimiento perfiles
-
-        //+1
         public DataTable validarIDperfiles()
         {
             try
@@ -453,22 +481,23 @@ namespace CapaLogica
 
         }
 
-	
-        public DataTable ingresarmodulos(string codigo, string nombre, string descripcion, string estado)
+
+        //Trabajado por María José Véliz Ochoa, 9959-21-5909
+        public bool ingresarmodulos(string codigo, string nombre, string descripcion, string estado)
         {
             try
             {
-                OdbcDataAdapter ingresomodulo = sn.insertarModulo(codigo, nombre, descripcion, estado);
-                DataTable tablemodulos = new DataTable();
-                ingresomodulo.Fill(tablemodulos);
-                return tablemodulos;
+                // Ejecutar la inserción
+                sn.insertarModulo(codigo, nombre, descripcion, estado);
+                return true;
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
-                return null;
+
+                Console.WriteLine("Error al insertar el módulo: " + ex.Message);
+                return false;
             }
-        }
+        } // termina
 
 
 
@@ -488,22 +517,29 @@ namespace CapaLogica
             }
         }
 
+        //Trabajado por María José Véliz Ochoa, 9959-21-5909
         public DataTable ConsultaLogicaModulo(string ID_modulo)
         {
             try
             {
-                OdbcDataAdapter cmpsModulos = sn.ConsultarModulos(ID_modulo);
-                DataTable tablaModulos = new DataTable();
-                cmpsModulos.Fill(tablaModulos);
-                return tablaModulos;
+                using (OdbcDataAdapter cmpsModulos = sn.ConsultarModulos(ID_modulo))
+                {
+                    DataTable tablaModulos = new DataTable();
+                    cmpsModulos.Fill(tablaModulos);
+                    return tablaModulos;
+                }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
+
                 Console.WriteLine(ex);
                 return null;
             }
         }
-        
+        // termina
+
+
+
 
         public DataTable Actualizarmodulo(string ID_modulo,string nombre, string descripcion, string estado)
         {
@@ -522,15 +558,33 @@ namespace CapaLogica
 
             
         }
-        //######################################### FIN EDICION ALEJANDRO BARREDA ###############################
-
-        // eduardo Colon
 
         public DataSet consultaLogicaBitacora()
         {
             return sn.consultarBitacora();
         }
-     
+
+        //ELIMINAR MODULO ALYSON ##########################################
+        public DataTable EliminarModulo(string ID_modulo, string nombre, string descripcion, string estado)
+        {
+            try
+            {
+                OdbcDataAdapter dtmodulo = sn.EliminarModulo(ID_modulo, nombre, descripcion, estado);
+                DataTable tablamodulos = new DataTable();
+                dtmodulo.Fill(tablamodulos);
+                return tablamodulos;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return null;
+            }
+        }
+        //FIN ####################################################################
+
+
+
+
 
     }
 
