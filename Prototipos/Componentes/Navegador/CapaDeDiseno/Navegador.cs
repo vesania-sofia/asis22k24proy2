@@ -35,6 +35,7 @@ namespace CapaDeDiseno
         string[] tablaCombo = new string[30];
         string[] campoCombo = new string[30];
         string[] listaItems = new string[30];
+        string[] campoDisplayCombo = new string[30];
         string queryFactura;
         int posCombo = 10;
         int noCombo = 0;
@@ -377,28 +378,30 @@ namespace CapaDeDiseno
             lblTabla.Text = nomForm;
         }
 
-        public void asignarComboConTabla(string tabla, string campo, int modo)
+        public void asignarComboConTabla(string tabla, string campoClave, string campoDisplay, int modo)
         {
-			
+            // Verifica si la tabla existe
             string TablaOK = logic.TestTabla(tabla);
             if (TablaOK == "")
             {
-				modoCampoCombo[noCombo] = modo;
-				tablaCombo[noCombo] = tabla;
-                campoCombo[noCombo] = campo;
+                // Asigna los valores para el combo
+                modoCampoCombo[noCombo] = modo;
+                tablaCombo[noCombo] = tabla;
+                campoCombo[noCombo] = campoClave; // Este será el valor subyacente (id_raza)
+                campoDisplayCombo[noCombo] = campoDisplay; // Este será lo que se muestra (nombre_raza)
                 noCombo++;
             }
             else
             {
-                DialogResult validacion = MessageBox.Show(TablaOK +", o el campo seleccionado\n para el ComboBox es incorrecto", "Verificación de requisitos", MessageBoxButtons.OK);
+                // Muestra error si la tabla o campo son incorrectos
+                DialogResult validacion = MessageBox.Show(TablaOK + ", o el campo seleccionado\n para el ComboBox es incorrecto", "Verificación de requisitos", MessageBoxButtons.OK);
                 if (validacion == DialogResult.OK)
                 {
                     correcto = 1;
                 }
             }
-           
-
         }
+
 
         public void asignarColorFondo(Color nuevo)
         {
@@ -722,73 +725,39 @@ namespace CapaDeDiseno
 
         void crearComboBox(String nom)
         {
-            string[] items;
-            if (noComboAux == posCombo)
+            // Obtener los items para el ComboBox (una lista de objetos clave-valor)
+            Dictionary<string, string> items;
+            if (tablaCombo[noComboAux] != null)
             {
-                items = listaItems;
-                noComboAux++;
-             
+                items = logic.items(tablaCombo[noComboAux], campoCombo[noComboAux], campoDisplayCombo[noComboAux]);
+                if (noCombo > noComboAux) { noComboAux++; }
             }
             else
             {
-
-                if (tablaCombo[noComboAux] != null)
-                {
-                    items = logic.items(tablaCombo[noComboAux], campoCombo[noComboAux]);
-                    if (noCombo > noComboAux) { noComboAux++; }
-
-                }
-                else
-                {
-                    items = logic.items("Peliculas", "idPelicula");
-                    if (noCombo > noComboAux) { noComboAux++; }
-                }
-            }
-            int combols = 0;
-            bool comboVacio = true;
-            while (combols<items.Length)
-            {
-                if (items[combols]!="" && items[combols] !=null)
-                {
-                    comboVacio = false;
-                }
-                combols++;
+                items = logic.items("Peliculas", "idPelicula", "nombrePelicula");
+                if (noCombo > noComboAux) { noComboAux++; }
             }
 
-           /* if (comboVacio!=false)
-            {
-                DialogResult validacion = MessageBox.Show("La tabla " + tabla + "No tiene registros en el campo asociado al comboBox\n Solucione este problema...", "Verificación de requisitos", MessageBoxButtons.OK);
-                if (validacion == DialogResult.OK)
-                {
-                    Application.Exit();
-                }
-            }*/
-          
             ComboBox cb = new ComboBox();
             Point p = new Point(x + 125 + pos, y * pos);
             cb.Location = p;
             cb.Name = nom;
-            cb.Sorted = true;
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] != null)
-                {
-                    if (items[i]!="")
-                    {
-                        cb.Items.Add(items[i]);
-                    }
-                }
 
-            }
+            // Asignar el DataSource usando un BindingSource
+            BindingSource bs = new BindingSource();
+            bs.DataSource = items;
+
+            cb.DataSource = bs;  // Asignar el DataSource al ComboBox
+            cb.DisplayMember = "Value";  // Mostrar el nombre
+            cb.ValueMember = "Key";      // Guardar el ID
 
             this.Controls.Add(cb);
-            cb.KeyPress += Paravalidacombo_KeyPress;
-            this.KeyPress += Paravalidacombo_KeyPress;
             pos++;
-            
         }
 
-  
+
+
+
         void crearDateTimePicker(String nom)
         {
             DateTimePicker dtp = new DateTimePicker();
@@ -942,9 +911,19 @@ namespace CapaDeDiseno
             {
                 if (componente is TextBox || componente is DateTimePicker || componente is ComboBox)
                 {
-                    // Obtener el nombre del campo correspondiente y su valor
                     string nombreCampo = logic.campos(nombretabla)[posCampo];
-                    string valorCampo = componente.Text;
+                    string valorCampo = string.Empty;
+
+                    // Si el control es un ComboBox
+                    if (componente is ComboBox cb)
+                    {
+                        // Obtener el valor seleccionado (ID) del ComboBox
+                        valorCampo = cb.SelectedValue.ToString();  // Aquí se obtiene el ID en lugar del nombre
+                    }
+                    else
+                    {
+                        valorCampo = componente.Text;  // Para otros controles (TextBox, DateTimePicker, etc.)
+                    }
 
                     // Agregar campo y valor si no está vacío
                     if (!string.IsNullOrEmpty(valorCampo))
@@ -968,186 +947,105 @@ namespace CapaDeDiseno
 
 
 
-        private string crearInsertFactura()
-        {
-            string idFactura = obtenerDatoCampos(1);  // ID Factura (asume que se captura del formulario)
-            string monto = obtenerDatoCampos(2);      // Mismo monto que venta
-            string nombreCliente = obtenerDatoCampos(3);  // Mismo cliente que venta
-            string estado = "1";     // Estado, igual que venta
 
-            // Asegúrate de que el campo id_venta no exista en la tabla factura si no es necesario
-            string queryFactura = "INSERT INTO factura (id_factura, monto, nombre_cliente, estado) VALUES (";
-            queryFactura += "'" + idFactura + "', ";  // ID Factura
-            queryFactura += "'" + monto + "', ";      // Monto
-            queryFactura += "'" + nombreCliente + "', ";  // Cliente
-            queryFactura += "'" + estado + "');";     // Estado
 
-            return queryFactura;  // Devolver la consulta generada
-        }
-        string crearUpdate()// crea el query de update
+        string crearUpdate()
         {
+            // Inicialización de la consulta UPDATE y la cláusula WHERE
             string query = "UPDATE " + tabla + " SET ";
-            string whereQuery = " WHERE  ";
+            string whereQuery = " WHERE ";
             int posCampo = 0;
-			int i = 0;
+            int i = 0;
             string campos = "";
-            string var1 = dataGridView1.CurrentRow.Cells[i].Value.ToString();
+
+            // Recorre los controles del formulario
             foreach (Control componente in Controls)
             {
+                // Verifica si el componente es un campo relevante (TextBox, DateTimePicker, ComboBox)
                 if (componente is TextBox || componente is DateTimePicker || componente is ComboBox)
                 {
-
+                    // Para los campos que no son claves primarias
                     if (posCampo > 0)
                     {
-                        switch (tipoCampo[posCampo])
+                        string valorCampo = "";
+                        string nombreCampo = componente.Name;
+
+                        if (componente is ComboBox comboBox)
                         {
-                            case "Text":
-								if (componente is ComboBox)
-								{
-
-									if (modoCampoCombo[i] == 1)
-									{
-										campos += componente.Name + " = '" + logic.llaveCampolo(tablaCombo[i], campoCombo[i], componente.Text) + "' , ";
-									}
-									else
-									{
-										campos += componente.Name + " = '" + componente.Text + "' , ";
-									}
-
-									i++;
-								}
-								else
-								{
-									campos += componente.Name + " = '" + componente.Text + "' , ";
-								}
-							
-                                break;
-                            case "Num":
-								if (componente is ComboBox)
-								{
-
-									if (modoCampoCombo[i] == 1)
-									{
-										campos += componente.Name + " = " + logic.llaveCampolo(tablaCombo[i], campoCombo[i], componente.Text) + " , ";
-									}
-									else
-									{
-										campos += componente.Name + " = " + componente.Text + " , ";
-									}
-
-									i++;
-								}
-								else
-								{
-									campos += componente.Name + " = " + componente.Text + " , ";
-								}
-                                break;
+                            // Si es un ComboBox, manejar si tiene un valor o es una llave foránea
+                            if (modoCampoCombo[i] == 1)
+                            {
+                                valorCampo = logic.llaveCampolo(tablaCombo[i], campoCombo[i], comboBox.Text);
+                            }
+                            else
+                            {
+                                valorCampo = comboBox.SelectedValue?.ToString() ?? "";
+                            }
                         }
+                        else
+                        {
+                            // Si es un TextBox o DateTimePicker, obtener el texto
+                            valorCampo = componente.Text;
+                        }
+
+                        // Validar si es numérico o texto
+                        if (tipoCampo[posCampo] == "Num")
+                        {
+                            campos += $"{nombreCampo} = {valorCampo}, ";
+                        }
+                        else
+                        {
+                            campos += $"{nombreCampo} = '{valorCampo}', ";
+                        }
+
+                        i++;
                     }
+                    // Para la clave primaria (posición 0)
                     else
                     {
-						if (tipoCampo[0]=="Text")
-						{
-							if (componente is ComboBox)
-							{
+                        string valorClavePrimaria = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+                        string nombreClavePrimaria = componente.Name;
 
-								if (modoCampoCombo[i] == 1)
-								{
-									campos += componente.Name + " = '" + logic.llaveCampolo(tablaCombo[i], campoCombo[i], componente.Text) + "' , ";
-								}
-								else
-								{
-									campos += componente.Name + " = '" + componente.Text + "' , ";
-								}
-
-								i++;
-							}
-							else
-							{
-								campos += componente.Name + " = '" + componente.Text + "' , ";
-							}
-						}
-                        switch (tipoCampo[posCampo])
+                        if (tipoCampo[0] == "Num")
                         {
-                            case "Text":
-								if (componente is ComboBox)
-								{
-
-									if (modoCampoCombo[i] == 1)
-									{
-										whereQuery += componente.Name + " = '" + logic.llaveCampolo(tablaCombo[i], campoCombo[i], dataGridView1.CurrentRow.Cells[0].Value.ToString()) + "'";
-										 
-									}
-									else
-									{
-										whereQuery += componente.Name + " = '" + dataGridView1.CurrentRow.Cells[0].Value.ToString()+ "'";
-									}
-
-									i++;
-								}
-								else
-								{
-									whereQuery += componente.Name + " = '" + dataGridView1.CurrentRow.Cells[0].Value.ToString()+ "'";
-								}
-								
-                                break;
-                            case "Num":
-								if (componente is ComboBox)
-								{
-
-									if (modoCampoCombo[i] == 1)
-									{
-										whereQuery += componente.Name + " = " + logic.llaveCampolo(tablaCombo[i], campoCombo[i], componente.Text);
-
-									}
-									else
-									{
-										whereQuery += componente.Name + " = " + componente.Text;
-									}
-
-									i++;
-								}
-								else
-								{
-									whereQuery += componente.Name + " = " + componente.Text;
-								}
-								
-                                break;
+                            whereQuery += $"{nombreClavePrimaria} = {valorClavePrimaria}";
                         }
-                       
-
+                        else
+                        {
+                            whereQuery += $"{nombreClavePrimaria} = '{valorClavePrimaria}'";
+                        }
                     }
-                    posCampo++;                
-                }
-                if (componente is Button)
-                {
-                    switch (tipoCampo[posCampo])
-                    {
-                        
-                        case "Num":
-                            string var2 = dataGridView1.CurrentRow.Cells[posCampo].Value.ToString();
-                            campos += componente.Name + " = '" + estado + "' , ";
 
-                            break;
-
-                    }
                     posCampo++;
                 }
 
+                // Manejo de botones (ej. activado/desactivado)
+                if (componente is Button)
+                {
+                    if (tipoCampo[posCampo] == "Num")
+                    {
+                        string estadoButton = estado.ToString();
+                        campos += $"{componente.Name} = {estadoButton}, ";
+                    }
 
-
-
+                    posCampo++;
+                }
             }
-            campos = campos.TrimEnd(' ');
-            campos = campos.TrimEnd(',');
+
+            // Eliminar cualquier coma final sobrante en la cadena de campos
+            campos = campos.TrimEnd(' ', ',');
+
+            // Construcción final de la consulta
             query += campos + whereQuery + ";";
-			//contenido.Text = query;
-			
-            //sn.insertarBitacora(idUsuario, "Se actualizó un registro", tabla);
+
+            // Mostrar la consulta para depurar (opcional)
+            Console.WriteLine("Query generado para el UPDATE: " + query);
+
             return query;
         }
 
-       
+
+
         public void guardadoforsozo()
         {
             logic.nuevoQuery(crearInsert(tabla));
@@ -2218,21 +2116,6 @@ namespace CapaDeDiseno
                     MessageBoxIcon.Error
                 );
             }
-        }
-
-
-
-        private string crearInsertVenta()
-        {
-            string nuevoIdVenta = logic.lastID("venta");  // Obtener el ID de la tabla venta
-
-            string query = "INSERT INTO venta (id_venta, monto, nombre_cliente, nombre_empleado, estado) VALUES (";
-            query += "'" + nuevoIdVenta + "', ";
-            query += "'" + obtenerDatoCampos(2) + "', ";  // Monto
-            query += "'" + obtenerDatoCampos(3) + "', ";  // Nombre cliente
-            query += "'" + obtenerDatoCampos(4) + "', ";  // Nombre empleado
-            query += "'" + obtenerDatoCampos(5) + "');";  // Estado
-            return query;
         }
 
         // Aquí está la función crearInsertFactura
