@@ -8,3 +8,4 @@ CREATE TABLE tbl_regreporteria (
   estado varchar(45) NOT NULL,
   PRIMARY KEY (idregistro)
 ) ENGINE=InnoDB;
+

@@ -194,80 +194,57 @@ namespace CapaDatos
             }
         }
 
-        //MODIFICAR USUARIO
-        //KATERYN DE LEON
-        public OdbcDataAdapter ActualizarUsuario(string nombre, string apellido, string correo, string pregunta, string respuesta)
-        {
+        //---------------------------------------------------- Inicio: GABRIELA SUC ---------------------------------------------------
 
+        public int ActualizarUsuario(int id, string nombre, string apellido, string correo, string estado, string pregunta, string respuesta)
+        {
             OdbcConnection connection = cn.conectar();
-            string sqlactualizarUsuario = "UPDATE tbl_usuarios SET nombre_usuario = '" + nombre + "', apellido_usuario = '" + apellido + "', email_usuario = '" + correo + "', pregunta= '" + pregunta + "' , respuesta = '" + respuesta + "' WHERE PK_id_usuario = ?";
+            string sqlactualizarUsuario = "UPDATE tbl_usuarios SET nombre_usuario = ?, apellido_usuario = ?, email_usuario = ?, estado_usuario = ?, pregunta = ?, respuesta = ? WHERE PK_id_usuario = ?";
 
             OdbcCommand command = new OdbcCommand(sqlactualizarUsuario, connection);
 
+            // Asignar los parámetros. Usar parámetros para evitar inyección SQL
+            command.Parameters.AddWithValue("@nombre", nombre);
+            command.Parameters.AddWithValue("@apellido", apellido);
+            command.Parameters.AddWithValue("@correo", correo);
+            command.Parameters.AddWithValue("@estado", estado);
+            command.Parameters.AddWithValue("@pregunta", pregunta);
+            command.Parameters.AddWithValue("@respuesta", respuesta);
+            command.Parameters.AddWithValue("@id", id);
+
             try
             {
-                // Ejecutar la consulta de inserción
-                command.ExecuteNonQuery();
-                MessageBox.Show("Usuario insertado correctamente");
+                // Ejecutar la consulta de actualización
+                int filasAfectadas = command.ExecuteNonQuery();
+                return filasAfectadas; // Se retorna el número de filas afectadas
             }
             catch (Exception ex)
             {
-                // Manejo de errores
-                MessageBox.Show("Error al insertar usuario: " + ex.Message);
+                MessageBox.Show("Error al actualizar usuario: " + ex.Message);
+                return 0; // En caso de error, se retorna 0
             }
             finally
             {
-                // Cerrar la conexión
                 connection.Close();
             }
-
-
-            OdbcDataAdapter dataTable = new OdbcDataAdapter(sqlactualizarUsuario, cn.conectar());
-            //insertarBitacora(idUsuario, "Actualizo un usuario: " + idUsuario + " - " + nombreUsuario, "tbl_usuario");
-            return dataTable;
-
         }
+
+        //---------------------------------------------------- Fin: GABRIELA SUC ----------------------------------------------------
+
 
 
         /*-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
-        /*---------------------------------------------------------------Creador: Diego Gomez-----------------------------------------------------------------------------*/    //AGREGAR
+        /*---------------------------------------------------------------Creador: Diego Gomez-----------------------------------------------------------------------------*/
+        //AGREGAR
         //KATERYN DE LEON
-        public OdbcDataAdapter insertarusuario(string nombre, string apellido, string id, string clave, string correo, string fecha, string estadousuario, string pregunta, string respuesta)//int boton
-        {
-            // Conectar a la base de datos
-            OdbcConnection connection = cn.conectar();
 
-            // Consulta SQL con concatenación de valores (esto es menos seguro, pero funciona en tu caso)
-            string sqlusuarios = "INSERT INTO tbl_usuarios (nombre_usuario, apellido_usuario, username_usuario, password_usuario, email_usuario, ultima_conexion_usuario, estado_usuario, pregunta, respuesta) " +
-                                 "VALUES ('" + nombre + "', '" + apellido + "', '" + id + "', '" + clave + "', '" + correo + "', '" + fecha + "', '" + estadousuario + "', '" + pregunta + "', '" + respuesta + "')";
+        //--------------------------------------------------------------- Inicio: Marco Monroy ---------------------------------------------------------------
 
 
-            // Crear el comando y asignar la conexión
-            OdbcCommand command = new OdbcCommand(sqlusuarios, connection);
+        
 
-            try
-            {
-                // Ejecutar la consulta de inserción
-                command.ExecuteNonQuery();
-                MessageBox.Show("Usuario insertado correctamente");
-            }
-            catch (Exception ex)
-            {
-                // Manejo de errores
-                MessageBox.Show("Error al insertar usuario: " + ex.Message);
-            }
-            finally
-            {
-                // Cerrar la conexión
-                connection.Close();
-            }
-            OdbcDataAdapter datausuarios = new OdbcDataAdapter(sqlusuarios, cn.conectar());
-            return datausuarios;
-
-
-        }
-
+        //--------------------------------------------------------------- Fin: Marco Monroy ---------------------------------------------------------------
 
 
         public OdbcDataAdapter insertarclaves(string id, string nombre, string apellido, string clave)
@@ -333,15 +310,33 @@ namespace CapaDatos
 
         }
 
-        public OdbcDataAdapter eliminarusuario(string id, string nombre, string apellido, string clave)
+        //---------------------------------------------------- Inicio: GABRIELA SUC ----------------------------------------------------
+
+        public int eliminarusuario(string id)
         {
+            string sqleliminar = "DELETE FROM tbl_usuarios WHERE PK_id_usuario = ?";
+            // '?' es un marcador de posición para un parámetro que será reemplazado posteriormente
+            // Este método de parametrización protege contra inyecciones SQL y permite que el valor del parámetro (id) se inserte de manera segura en la consulta
 
-            MessageBox.Show("Usuario ELiminado");
-            string sqleliminar = "UPDATE tbl_usuario set PK_id_usuario='" + id + "',nombre_usuario='" + apellido + "',apellido_usuarios='" + nombre + "',password_usuario='" + clave + "',estado_usuario='0' where PK_id_usuario='" + id + "'";
-            OdbcDataAdapter dataeliminar = new OdbcDataAdapter(sqleliminar, cn.conectar());
-            return dataeliminar;
+            OdbcCommand cmd = new OdbcCommand(sqleliminar, cn.conectar());
+            cmd.Parameters.AddWithValue("@id", id);
 
+            int filasAfectadas = 0;
+
+            try
+            {
+                filasAfectadas = cmd.ExecuteNonQuery(); // Ejecutar el comando y devolver el número de filas afectadas
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al eliminar usuario: " + ex.Message);
+            }
+
+            return filasAfectadas; // Devolver el número de filas afectadas
         }
+
+        //---------------------------------------------------- Fin: GABRIELA SUC ----------------------------------------------------
+
 
         public OdbcDataAdapter eliminaraplicacion(string idaplicacion, string modulo, string descripcion, string aplicacion)
         {
