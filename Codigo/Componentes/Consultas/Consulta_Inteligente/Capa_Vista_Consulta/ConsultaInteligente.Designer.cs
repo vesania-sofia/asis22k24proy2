@@ -145,8 +145,8 @@ namespace Capa_Vista_Consulta
             this.btnActualizar = new System.Windows.Forms.Button();
             this.btnBuscarQuery = new System.Windows.Forms.Button();
             this.label17 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtQueryEditado = new System.Windows.Forms.TextBox();
+            this.txtQueryEditadoFinal = new System.Windows.Forms.TextBox();
             txtQuery1 = new System.Windows.Forms.TextBox();
             this.Consulta.SuspendLayout();
             this.tabCreacion.SuspendLayout();
@@ -828,7 +828,7 @@ namespace Capa_Vista_Consulta
             // 
             // tabEditar
             // 
-            this.tabEditar.Controls.Add(this.textBox2);
+            this.tabEditar.Controls.Add(this.txtQueryEditadoFinal);
             this.tabEditar.Controls.Add(this.btnCancelarEditar);
             this.tabEditar.Controls.Add(this.btnEditar);
             this.tabEditar.Controls.Add(this.label30);
@@ -1226,7 +1226,7 @@ namespace Capa_Vista_Consulta
             // 
             // groupBox8
             // 
-            this.groupBox8.Controls.Add(this.textBox1);
+            this.groupBox8.Controls.Add(this.txtQueryEditado);
             this.groupBox8.Controls.Add(this.btnCancelarEditarSimple);
             this.groupBox8.Controls.Add(this.btnEditarCampoSimple);
             this.groupBox8.Controls.Add(this.label18);
@@ -1453,23 +1453,23 @@ namespace Capa_Vista_Consulta
             this.label17.TabIndex = 3;
             this.label17.Text = "Nombre Consulta";
             // 
-            // textBox1
+            // txtQueryEditado
             // 
-            this.textBox1.Location = new System.Drawing.Point(413, 61);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(174, 97);
-            this.textBox1.TabIndex = 15;
+            this.txtQueryEditado.Location = new System.Drawing.Point(413, 61);
+            this.txtQueryEditado.Margin = new System.Windows.Forms.Padding(2);
+            this.txtQueryEditado.Multiline = true;
+            this.txtQueryEditado.Name = "txtQueryEditado";
+            this.txtQueryEditado.Size = new System.Drawing.Size(174, 97);
+            this.txtQueryEditado.TabIndex = 15;
             // 
-            // textBox2
+            // txtQueryEditadoFinal
             // 
-            this.textBox2.Location = new System.Drawing.Point(446, 497);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(239, 84);
-            this.textBox2.TabIndex = 35;
+            this.txtQueryEditadoFinal.Location = new System.Drawing.Point(446, 497);
+            this.txtQueryEditadoFinal.Margin = new System.Windows.Forms.Padding(2);
+            this.txtQueryEditadoFinal.Multiline = true;
+            this.txtQueryEditadoFinal.Name = "txtQueryEditadoFinal";
+            this.txtQueryEditadoFinal.Size = new System.Drawing.Size(239, 84);
+            this.txtQueryEditadoFinal.TabIndex = 35;
             // 
             // ConsultaInteligente
             // 
@@ -1637,7 +1637,7 @@ namespace Capa_Vista_Consulta
         private System.Windows.Forms.ComboBox cboQuery3;
         private System.Windows.Forms.TextBox txtQuery;
         private System.Windows.Forms.TextBox txtQueryFinal;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtQueryEditadoFinal;
+        private System.Windows.Forms.TextBox txtQueryEditado;
     }
 }
