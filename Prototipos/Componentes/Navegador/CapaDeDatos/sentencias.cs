@@ -397,32 +397,26 @@ namespace CapaDeDatos
 
             return Campos;// devuelve un arreglo con los tipos
         }
-        public string[] obtenerItems(string tabla, string campo)//metodo que obtiene la lista de los tipos de campos que requiere una tabla
+        public Dictionary<string, string> obtenerItems(string tabla, string campoClave, string campoDisplay)
         {
-
-            string[] items = new string[300];
-            int i = 0;
-
-
+            Dictionary<string, string> items = new Dictionary<string, string>();
             try
             {
-
-                OdbcCommand command = new OdbcCommand("select  " + campo + " FROM " + tabla + " WHERE estado = 1", cn.probarConexion());
+                OdbcCommand command = new OdbcCommand($"SELECT {campoClave}, {campoDisplay} FROM {tabla} WHERE estado = 1", cn.probarConexion());
                 OdbcDataReader reader = command.ExecuteReader();
 
                 while (reader.Read())
                 {
-                    items[i] = reader.GetValue(0).ToString();
-                    i++;
-
+                    items.Add(reader.GetValue(0).ToString(), reader.GetValue(1).ToString());  // id_raza -> nombre_raza
                 }
             }
-            catch (Exception ex) { Console.WriteLine(ex.Message.ToString() + " \nError en asignarCombo, revise los parametros \n -" + tabla + "\n -" + campo); }
-
-
-            return items;// devuelve un arreglo con los tipos
-
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message + " \nError en obtenerItems, revise los parámetros \n -" + tabla + "\n -" + campoClave);
+            }
+            return items;
         }
+
         string limpiarTipo(string cadena)// elimina los parentesis y tama;o de campo del tipo de campo
         {
             bool dim = false;

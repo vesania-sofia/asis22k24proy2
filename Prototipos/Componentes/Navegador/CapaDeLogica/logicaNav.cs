@@ -124,14 +124,12 @@ namespace CapaDeLogica
             return LLaves;
         }
 
-        public string[] items(string tabla, string campo)
+        public Dictionary<string, string> items(string tabla, string campoClave, string campoDisplay)
         {
-            string[] Items = sn.obtenerItems(tabla, campo);
-
-            return Items;
+            return sn.obtenerItems(tabla, campoClave, campoDisplay);
         }
 
-		public string llaveCampolo(string tabla, string campo, string valor)
+        public string llaveCampolo(string tabla, string campo, string valor)
 		{
 			string llave = sn.llaveCampo(tabla, campo, valor);
 			return llave;

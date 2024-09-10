@@ -35,6 +35,7 @@ namespace CapaDeDiseno
         string[] tablaCombo = new string[30];
         string[] campoCombo = new string[30];
         string[] listaItems = new string[30];
+        string[] campoDisplayCombo = new string[30];
         string queryFactura;
         int posCombo = 10;
         int noCombo = 0;
@@ -365,28 +366,30 @@ namespace CapaDeDiseno
             lblTabla.Text = nomForm;
         }
 
-        public void asignarComboConTabla(string tabla, string campo, int modo)
+        public void asignarComboConTabla(string tabla, string campoClave, string campoDisplay, int modo)
         {
-			
+            // Verifica si la tabla existe
             string TablaOK = logic.TestTabla(tabla);
             if (TablaOK == "")
             {
-				modoCampoCombo[noCombo] = modo;
-				tablaCombo[noCombo] = tabla;
-                campoCombo[noCombo] = campo;
+                // Asigna los valores para el combo
+                modoCampoCombo[noCombo] = modo;
+                tablaCombo[noCombo] = tabla;
+                campoCombo[noCombo] = campoClave; // Este será el valor subyacente (id_raza)
+                campoDisplayCombo[noCombo] = campoDisplay; // Este será lo que se muestra (nombre_raza)
                 noCombo++;
             }
             else
             {
-                DialogResult validacion = MessageBox.Show(TablaOK +", o el campo seleccionado\n para el ComboBox es incorrecto", "Verificación de requisitos", MessageBoxButtons.OK);
+                // Muestra error si la tabla o campo son incorrectos
+                DialogResult validacion = MessageBox.Show(TablaOK + ", o el campo seleccionado\n para el ComboBox es incorrecto", "Verificación de requisitos", MessageBoxButtons.OK);
                 if (validacion == DialogResult.OK)
                 {
                     correcto = 1;
                 }
             }
-           
-
         }
+
 
         public void asignarColorFondo(Color nuevo)
         {
@@ -703,73 +706,39 @@ namespace CapaDeDiseno
 
         void crearComboBox(String nom)
         {
-            string[] items;
-            if (noComboAux == posCombo)
+            // Obtener los items para el ComboBox (una lista de objetos clave-valor)
+            Dictionary<string, string> items;
+            if (tablaCombo[noComboAux] != null)
             {
-                items = listaItems;
-                noComboAux++;
-             
+                items = logic.items(tablaCombo[noComboAux], campoCombo[noComboAux], campoDisplayCombo[noComboAux]);
+                if (noCombo > noComboAux) { noComboAux++; }
             }
             else
             {
-
-                if (tablaCombo[noComboAux] != null)
-                {
-                    items = logic.items(tablaCombo[noComboAux], campoCombo[noComboAux]);
-                    if (noCombo > noComboAux) { noComboAux++; }
-
-                }
-                else
-                {
-                    items = logic.items("Peliculas", "idPelicula");
-                    if (noCombo > noComboAux) { noComboAux++; }
-                }
-            }
-            int combols = 0;
-            bool comboVacio = true;
-            while (combols<items.Length)
-            {
-                if (items[combols]!="" && items[combols] !=null)
-                {
-                    comboVacio = false;
-                }
-                combols++;
+                items = logic.items("Peliculas", "idPelicula", "nombrePelicula");
+                if (noCombo > noComboAux) { noComboAux++; }
             }
 
-           /* if (comboVacio!=false)
-            {
-                DialogResult validacion = MessageBox.Show("La tabla " + tabla + "No tiene registros en el campo asociado al comboBox\n Solucione este problema...", "Verificación de requisitos", MessageBoxButtons.OK);
-                if (validacion == DialogResult.OK)
-                {
-                    Application.Exit();
-                }
-            }*/
-          
             ComboBox cb = new ComboBox();
             Point p = new Point(x + 125 + pos, y * pos);
             cb.Location = p;
             cb.Name = nom;
-            cb.Sorted = true;
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] != null)
-                {
-                    if (items[i]!="")
-                    {
-                        cb.Items.Add(items[i]);
-                    }
-                }
 
-            }
+            // Asignar el DataSource usando un BindingSource
+            BindingSource bs = new BindingSource();
+            bs.DataSource = items;
+
+            cb.DataSource = bs;  // Asignar el DataSource al ComboBox
+            cb.DisplayMember = "Value";  // Mostrar el nombre
+            cb.ValueMember = "Key";      // Guardar el ID
 
             this.Controls.Add(cb);
-            cb.KeyPress += Paravalidacombo_KeyPress;
-            this.KeyPress += Paravalidacombo_KeyPress;
             pos++;
-            
         }
 
-  
+
+
+
         void crearDateTimePicker(String nom)
         {
             DateTimePicker dtp = new DateTimePicker();
@@ -923,9 +892,19 @@ namespace CapaDeDiseno
             {
                 if (componente is TextBox || componente is DateTimePicker || componente is ComboBox)
                 {
-                    // Obtener el nombre del campo correspondiente y su valor
                     string nombreCampo = logic.campos(nombretabla)[posCampo];
-                    string valorCampo = componente.Text;
+                    string valorCampo = string.Empty;
+
+                    // Si el control es un ComboBox
+                    if (componente is ComboBox cb)
+                    {
+                        // Obtener el valor seleccionado (ID) del ComboBox
+                        valorCampo = cb.SelectedValue.ToString();  // Aquí se obtiene el ID en lugar del nombre
+                    }
+                    else
+                    {
+                        valorCampo = componente.Text;  // Para otros controles (TextBox, DateTimePicker, etc.)
+                    }
 
                     // Agregar campo y valor si no está vacío
                     if (!string.IsNullOrEmpty(valorCampo))
@@ -949,22 +928,8 @@ namespace CapaDeDiseno
 
 
 
-        private string crearInsertFactura()
-        {
-            string idFactura = obtenerDatoCampos(1);  // ID Factura (asume que se captura del formulario)
-            string monto = obtenerDatoCampos(2);      // Mismo monto que venta
-            string nombreCliente = obtenerDatoCampos(3);  // Mismo cliente que venta
-            string estado = "1";     // Estado, igual que venta
 
-            // Asegúrate de que el campo id_venta no exista en la tabla factura si no es necesario
-            string queryFactura = "INSERT INTO factura (id_factura, monto, nombre_cliente, estado) VALUES (";
-            queryFactura += "'" + idFactura + "', ";  // ID Factura
-            queryFactura += "'" + monto + "', ";      // Monto
-            queryFactura += "'" + nombreCliente + "', ";  // Cliente
-            queryFactura += "'" + estado + "');";     // Estado
 
-            return queryFactura;  // Devolver la consulta generada
-        }
         string crearUpdate()// crea el query de update
         {
             string query = "UPDATE " + tabla + " SET ";
@@ -1969,19 +1934,6 @@ namespace CapaDeDiseno
             {
                 MessageBox.Show("Por favor llene todos los campos...");
             }
-        }
-
-        private string crearInsertVenta()
-        {
-            string nuevoIdVenta = logic.lastID("venta");  // Obtener el ID de la tabla venta
-
-            string query = "INSERT INTO venta (id_venta, monto, nombre_cliente, nombre_empleado, estado) VALUES (";
-            query += "'" + nuevoIdVenta + "', ";
-            query += "'" + obtenerDatoCampos(2) + "', ";  // Monto
-            query += "'" + obtenerDatoCampos(3) + "', ";  // Nombre cliente
-            query += "'" + obtenerDatoCampos(4) + "', ";  // Nombre empleado
-            query += "'" + obtenerDatoCampos(5) + "');";  // Estado
-            return query;
         }
 
         // Aquí está la función crearInsertFactura
