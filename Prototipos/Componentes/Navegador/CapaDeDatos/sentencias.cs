@@ -101,29 +101,7 @@ namespace CapaDeDatos
             catch (Exception ex) { Console.WriteLine(ex.Message.ToString() + " \nError en obtenerTipo, revise los parámetros de la tabla  \n -" + tabla.ToUpper() + "\n -"); }
             return Campos;// devuelve un arreglo con los tiposlos campos
         }
-        public int getLastInsertedId()
-        {
-            int lastId = 0;
 
-            try
-            {
-                // Abre la conexión y ejecuta la consulta para obtener el último ID generado
-                OdbcCommand command = new OdbcCommand("SELECT LAST_INSERT_ID();", cn.probarConexion());
-                object result = command.ExecuteScalar();
-
-                // Si el resultado no es nulo, conviértelo a un entero
-                if (result != null)
-                {
-                    lastId = Convert.ToInt32(result);
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Error al obtener el último ID insertado: " + ex.Message);
-            }
-
-            return lastId; // Devolver el último ID insertado
-        }
 
         public int contarReg(string idindice)// metodo  que obtinene el contenio de una tabla
         {
@@ -306,23 +284,47 @@ namespace CapaDeDatos
         }
 
 
-        public List<(string nombreColumna, bool esAutoIncremental)> obtenerColumnasYPropiedades(string nombreTabla)
+        public List<(string nombreColumna, bool esAutoIncremental, bool esClaveForanea)> obtenerColumnasYPropiedades(string nombreTabla)
         {
-            List<(string, bool)> columnas = new List<(string, bool)>();
+            List<(string, bool, bool)> columnas = new List<(string, bool, bool)>();
 
             try
             {
-                string query = $"SHOW COLUMNS FROM {nombreTabla};";  // Consulta MySQL para obtener las columnas y propiedades
-                OdbcCommand comando = new OdbcCommand(query, cn.probarConexion());
+                // Paso 1: Obtener las columnas y propiedades (como autoincremental)
+                string queryColumnas = $"SHOW COLUMNS FROM {nombreTabla};";
+                OdbcCommand comando = new OdbcCommand(queryColumnas, cn.probarConexion());
                 OdbcDataReader lector = comando.ExecuteReader();
 
+                // Crear un diccionario para almacenar las claves foráneas
+                HashSet<string> clavesForaneas = new HashSet<string>();
+
+                // Paso 2: Obtener las claves foráneas de la tabla desde INFORMATION_SCHEMA
+                string queryClavesForaneas = $@"
+                    SELECT COLUMN_NAME
+                    FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE
+                    WHERE TABLE_NAME = '{nombreTabla}' AND REFERENCED_TABLE_NAME IS NOT NULL;";
+                OdbcCommand comandoClaves = new OdbcCommand(queryClavesForaneas, cn.probarConexion());
+                OdbcDataReader lectorClaves = comandoClaves.ExecuteReader();
+
+                while (lectorClaves.Read())
+                {
+                    string nombreColumnaForanea = lectorClaves.GetString(0);
+                    clavesForaneas.Add(nombreColumnaForanea);  // Añadir la clave foránea al conjunto
+                }
+
+                lectorClaves.Close();
+
+                // Paso 3: Procesar las columnas y determinar si son autoincrementales o claves foráneas
                 while (lector.Read())
                 {
                     string nombreColumna = lector.GetString(0);  // Nombre de la columna
                     string columnaExtra = lector.GetString(5);   // Información adicional (e.g. AUTO_INCREMENT)
 
                     bool esAutoIncremental = columnaExtra.Contains("auto_increment");  // Detectar si es autoincremental
-                    columnas.Add((nombreColumna, esAutoIncremental));
+                    bool esClaveForanea = clavesForaneas.Contains(nombreColumna);  // Detectar si es clave foránea
+
+                    // Añadir la columna con sus propiedades a la lista
+                    columnas.Add((nombreColumna, esAutoIncremental, esClaveForanea));
                 }
 
                 lector.Close();
@@ -334,6 +336,7 @@ namespace CapaDeDatos
 
             return columnas;
         }
+
 
         public void ejecutarQueryConTransaccion(List<string> queries)
         {
