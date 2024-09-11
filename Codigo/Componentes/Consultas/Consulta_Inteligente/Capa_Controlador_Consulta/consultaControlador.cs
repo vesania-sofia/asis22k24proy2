@@ -19,15 +19,14 @@ namespace Capa_Controlador_Consulta
          */
 
         consultaSentencias csSentencias = new consultaSentencias();
-        public void ingresarQuery(string[] tipos, string[] datos, string tabla)
+
+        public string GenerarQuery(string[] datos)
         {
-            // Datos del arreglo, con corrección en el índice de query
-            string nombreConsulta = datos[0];
-            string tipoConsulta = datos[1];
+            // Obtener la tabla y la query de los datos pasados como parámetros
             string tblConsultada = datos[2];
-            string query = datos[4]; // Se asume que la query está en la posición 4
+            string query = datos[4];
+
             string datoQueryGenerado = "SELECT ";
-            string status = datos[5];
             string fragmentoActual = "";
             bool esCampo = true;
 
@@ -41,49 +40,71 @@ namespace Capa_Controlador_Consulta
                     {
                         if (esCampo)
                         {
-                            datoQueryGenerado += $"{fragmentoActual} AS "; // Es un campo
+                            datoQueryGenerado += $"{fragmentoActual}";
+                            esCampo = false;
                         }
                         else
                         {
-                            datoQueryGenerado += $"{fragmentoActual}, "; // Es un alias
+                            datoQueryGenerado += $" AS {fragmentoActual}, ";
+                            esCampo = true;
                         }
-                        esCampo = !esCampo; // Alternar entre campo y alias
-                        fragmentoActual = ""; // Reiniciar el fragmento
+                        fragmentoActual = "";
                     }
                 }
                 else
                 {
-                    fragmentoActual += c; // Agregar el carácter actual al fragmento
+                    fragmentoActual += c;
                 }
             }
 
-            // Procesar el último fragmento si hay un alias pendiente
+            // Procesar el último fragmento si no se ha procesado
             if (!string.IsNullOrEmpty(fragmentoActual.Trim()))
             {
                 if (esCampo)
                 {
-                    datoQueryGenerado += $"{fragmentoActual}"; // Si falta procesar un campo
+                    datoQueryGenerado += fragmentoActual;
                 }
                 else
                 {
-                    datoQueryGenerado += $"{fragmentoActual}"; // Si falta procesar un alias
+                    datoQueryGenerado += $" AS {fragmentoActual}";
                 }
             }
 
             // Remover la última coma y agregar el FROM
             datoQueryGenerado = datoQueryGenerado.TrimEnd(',', ' ') + $" FROM {tblConsultada};";
+            datos[4] = datoQueryGenerado;
 
-            // Mostrar el query generado
+            // Mostrar el query generado en consola (opcional)
             Console.WriteLine($"Query generado: {datoQueryGenerado}");
 
-            // Construir el tipo para el método de inserción
-            string tipo = string.Join(",", tipos);
+            return datoQueryGenerado;
+        }
 
-            // Construir el dato para el método de inserción
-            string dato = $"'{nombreConsulta}','{tipoConsulta}','{datoQueryGenerado}','{status}'";
+        public void InsertarDatos(string[] tipos, string[] datos, string tabla)
+        {
+            try
+            {
+                string queryGenerado = datos[4]; // Asumimos que el query ya fue generado
+                string nombreConsulta = datos[0];
+                string tipoConsulta = datos[1];
+                string status = datos[5];
 
-            // Llamar a la capa de modelo para insertar la consulta
-            csSentencias.insertar(dato, tipo, tabla);
+                // Construir el tipo para el método de inserción
+                string tipo = string.Join(",", tipos);
+
+                // Construir el dato para el método de inserción
+                string dato = $"'{nombreConsulta}','{tipoConsulta}','{queryGenerado}','{status}'";
+
+                // Llamar a la capa de modelo para insertar la consulta
+                csSentencias.insertar(dato, tipo, tabla);
+                MessageBox.Show("Datos guardados correctamente");
+            }
+            catch (Exception ex)
+            {
+                // Manejar posibles errores
+                Console.WriteLine($"Error al insertar los datos: {ex.Message}");
+                MessageBox.Show("Error al insertar, revisar Consola...","Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         public void obtenerColumbasPorTabla(ComboBox comboBoxCampos, string tabla)
@@ -118,35 +139,23 @@ namespace Capa_Controlador_Consulta
         {
             try
             {
-                // Construcción de la cadena de tipos y datos
+                // Asegúrate de construir el query solo a partir de `datos` si `tipos` no es necesario
                 string dato = "";
-                string tipo = "";
 
-                for (int x = 0; x < datos.Length; x++)
+                foreach (string datoItem in datos)
                 {
-                    if (x == datos.Length - 1) // Si es el último dato, no agregar coma
-                    {
-                        dato += "'" + datos[x] + "'";
-                        tipo += tipos[x];
-                    }
-                    else
-                    {
-                        dato += "'" + datos[x] + "',";
-                        tipo += tipos[x] + ",";
-                    }
+                    dato += "'" + datoItem + "',";
                 }
 
-                // Generar el query de inserción
-                string query = $"INSERT INTO {tabla} ({tipo}) VALUES ({dato})";
+                // Limpia la última coma
+                dato = dato.TrimEnd(',');
 
-                // Llamar a la función de inserción, asumiendo que sn tiene acceso a una conexión válida
-                //csSentencias.insertar(query);
-
-                MessageBox.Show("Dato insertado correctamente en la tabla " + tabla);
+                // Aquí podrías hacer lo que necesites con el dato y tipo (si se usa)
+                Console.WriteLine("Dato agregados correctamente");
             }
             catch (Exception e)
             {
-                MessageBox.Show("Error al insertar los datos: " + e.Message);
+                Console.WriteLine("Error al agregar los datos: " + e.Message);
             }
         }
         // Fin de la participación de Carlos González

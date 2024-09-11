@@ -11,7 +11,7 @@ namespace CapaDeDatos
     {
         public OdbcConnection probarConexion()
         {
-            OdbcConnection conn = new OdbcConnection("Dsn=ERP");// creacion de la conexion via ODBC
+            OdbcConnection conn = new OdbcConnection("Dsn=Prueba1");// creacion de la conexion via ODBC
             try
             {              
                 conn.Open();
