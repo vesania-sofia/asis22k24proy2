@@ -411,15 +411,18 @@ namespace CapaDatos
 
             return dataTable;
         }
+        //termina la parte trabajada por Josué David Paz Gómez
+
+        // Modificado por Kevin López
 
         public OdbcDataAdapter ActualizarPerfil(string ID_perfil, string nombre, string descripcion, string estado)
         {
             try
             {
                 cn.conectar();
-                string sqlactualizarperfil = "UPDATE tbl_perfiles SET nombre_perfil = '" + nombre + "', descripcion_perfil = '" + descripcion + "', estado_perfil = '" + estado + "' WHERE PK_id_perfil ='" + ID_perfil + "'";
+                string sqlactualizarperfil = "UPDATE Tbl_perfiles SET nombre_perfil = '" + nombre + "', descripcion_perfil = '" + descripcion + "', estado_perfil = '" + estado + "' WHERE Pk_id_perfil ='" + ID_perfil + "'";
                 OdbcDataAdapter dataTable = new OdbcDataAdapter(sqlactualizarperfil, cn.conectar());
-                insertarBitacora(idUsuario, "Actualizo un perfil: " + ID_perfil + " - " + nombre, "tbl_perfiles");
+                insertarBitacora(idUsuario, "Actualizo un perfil: " + ID_perfil + " - " + nombre, "Tbl_perfiles");
 
                 return dataTable;
             }
@@ -429,7 +432,7 @@ namespace CapaDatos
                 return null;
             }
         }
-        //termina la parte trabajada por Josué David Paz Gómez
+        //termina Kevin Lopez
 
         //Trabajado por María José Véliz Ochoa 9959-21-5909
         //se optó por usar OdbcCommand en lugar de OdbcDataAdapter, cambió estructura
