@@ -147,7 +147,7 @@ namespace Capa_VistaConsultas
             // 
             // bnt_buscaPor
             // 
-            this.bnt_buscaPor.IconChar = FontAwesome.Sharp.IconChar.Search;
+            this.bnt_buscaPor.IconChar = FontAwesome.Sharp.IconChar.MagnifyingGlass;
             this.bnt_buscaPor.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(180)))), ((int)(((byte)(227)))));
             this.bnt_buscaPor.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.bnt_buscaPor.IconSize = 60;
@@ -210,6 +210,7 @@ namespace Capa_VistaConsultas
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Busqueda_Simple";
             this.Text = "Consulta Usuario Simple";
+            this.Load += new System.EventHandler(this.Busqueda_Simple_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDato)).EndInit();
             this.panelResultado.ResumeLayout(false);
             this.panelResultado.PerformLayout();

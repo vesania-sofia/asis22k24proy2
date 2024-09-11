@@ -94,8 +94,11 @@ namespace CapaDeDatos
             catch (Exception ex) { Console.WriteLine(ex.Message.ToString() + " \nError en obtenerTipo, revise los parámetros de la tabla  \n -" + tabla.ToUpper() + "\n -"); }
             return Campos;// devuelve un arreglo con los tiposlos campos
         }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 104015b167db1a840b8821f59f4e6b4d168c97b3
         public int contarReg(string idindice)// metodo  que obtinene el contenio de una tabla
         {
             int Campos = 0;
@@ -127,7 +130,7 @@ namespace CapaDeDatos
                     Campos = reader.GetValue(0).ToString();
             }
             catch (Exception ex) { Console.WriteLine(ex.Message.ToString() + " \nError en obtenerTipo, revise los parámetros de la tabla  \n -" + tabla.ToUpper() + "\n -"); }
-            return Campos;// devuelve un arreglo con los tipos de campos
+            return Campos;// devuelve un arreglo con los tiposlos campos
         }       
 
         public string modRuta(string idindice)// metodo  que obtinene el contenio de una tabla
@@ -180,26 +183,26 @@ namespace CapaDeDatos
 
         }
 
-/*
+
         public string VerificacionR(string idindice)// metodo  que obtinene el contenio de una tabla
         {
 
-          
+            /*ayuda*/
             string indice = " ";
 
             OdbcCommand command = new OdbcCommand("SELECT COUNT(*) FROM ayuda", cn.probarConexion());
-            //OdbcDataReader reader = command.ExecuteReader();
+            OdbcDataReader reader = command.ExecuteReader();
             while (reader.Read())
             {
                 indice = reader.GetValue(0).ToString();
             }
-    
+
 
             return indice;// devuelve un arrgeglo con los campos
-           
+
+
         }
-        
-*/
+
 
         public string ProbarTabla(string tabla)
         {
@@ -254,7 +257,7 @@ namespace CapaDeDatos
             return registros;
         }
 
-        public string[] obtenerCampos(string tabla)
+        public string[] obtenerCampos(string tabla)//metodo que obtiene la lista de los campos que requiere una tabla
         {
             string[] Campos = new string[30];
             int i = 0;
@@ -265,17 +268,17 @@ namespace CapaDeDatos
 
                 while (reader.Read())
                 {
-                    Campos[i] = reader.GetValue(0).ToString();  // Obtenemos el nombre de la columna
+                    Campos[i] = reader.GetValue(0).ToString();
                     i++;
+
                 }
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message.ToString() + " \nError en asignarCombo, revise los parámetros \n -" + tabla);
-            }
-            return Campos;  // Devolver un arreglo con los nombres de las columnas
+
+            catch (Exception ex) { Console.WriteLine(ex.Message.ToString() + " \nError en asignarCombo, revise los parámetros \n -" + tabla); }
+            return Campos;// devuelve un arrgeglo con los campos
         }
 
+<<<<<<< HEAD
 
         public List<(string nombreColumna, bool esAutoIncremental, bool esClaveForanea)> obtenerColumnasYPropiedades(string nombreTabla)
         {
@@ -366,6 +369,9 @@ namespace CapaDeDatos
         }
 
         public string[] ObtenerTipo(string tabla)//metodo que obtiene la lista de los tipos de campos que requiere una tabla
+=======
+        public string[] obtenerTipo(string tabla)//metodo que obtiene la lista de los tipos de campos que requiere una tabla
+>>>>>>> 104015b167db1a840b8821f59f4e6b4d168c97b3
         {
             string[] Campos = new string[30];
             int i = 0;
@@ -404,26 +410,32 @@ namespace CapaDeDatos
 
             return Campos;// devuelve un arreglo con los tipos
         }
-        public Dictionary<string, string> obtenerItems(string tabla, string campoClave, string campoDisplay)
+        public string[] obtenerItems(string tabla, string campo)//metodo que obtiene la lista de los tipos de campos que requiere una tabla
         {
-            Dictionary<string, string> items = new Dictionary<string, string>();
+
+            string[] items = new string[300];
+            int i = 0;
+
+
             try
             {
-                OdbcCommand command = new OdbcCommand($"SELECT {campoClave}, {campoDisplay} FROM {tabla} WHERE estado = 1", cn.probarConexion());
+
+                OdbcCommand command = new OdbcCommand("select  " + campo + " FROM " + tabla + " WHERE estado = 1", cn.probarConexion());
                 OdbcDataReader reader = command.ExecuteReader();
 
                 while (reader.Read())
                 {
-                    items.Add(reader.GetValue(0).ToString(), reader.GetValue(1).ToString());  // id_raza -> nombre_raza
+                    items[i] = reader.GetValue(0).ToString();
+                    i++;
+
                 }
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message + " \nError en obtenerItems, revise los parámetros \n -" + tabla + "\n -" + campoClave);
-            }
-            return items;
-        }
+            catch (Exception ex) { Console.WriteLine(ex.Message.ToString() + " \nError en asignarCombo, revise los parametros \n -" + tabla + "\n -" + campo); }
 
+
+            return items;// devuelve un arreglo con los tipos
+
+        }
         string limpiarTipo(string cadena)// elimina los parentesis y tama;o de campo del tipo de campo
         {
             bool dim = false;
@@ -517,12 +529,5 @@ namespace CapaDeDatos
             catch (OdbcException ex) { Console.WriteLine(ex.ToString()); }
 
         }
-
-      
-
-        // Método para insertar en la tabla "factura"
-      
-
-        // Método para manejar ambas inserciones
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using CapaDeDatos;
 using System.Data;
 using System.Data.Odbc;
-
+using CapaDatos;
 
 namespace CapaDeLogica
 {
@@ -34,7 +34,6 @@ namespace CapaDeLogica
             DataTable table = new DataTable();
             dt.Fill(table);
             return table;
-
         }
 
 
@@ -60,16 +59,17 @@ namespace CapaDeLogica
 
             return ruta;
         }
-        /*public string verificacion(string valor)
+        public string verificacion(string valor)
         {
-        //    string indice2 = sn.VerificacionR(valor);
+            string indice2 = sn.VerificacionR(valor);
 
             return indice2;
-        }*/
+        }
         public string TestTabla(string tabla)
         {
             return sn.ProbarTabla(tabla);
         }
+<<<<<<< HEAD
 
 
         public List<(string nombreColumna, bool esAutoIncremental, bool esClaveForanea)> obtenerColumnasYPropiedadesLogica(string nombreTabla)
@@ -79,6 +79,8 @@ namespace CapaDeLogica
         }
 
 
+=======
+>>>>>>> 104015b167db1a840b8821f59f4e6b4d168c97b3
         public string TestEstado(string tabla)
         {
             return sn.ProbarEstado(tabla);
@@ -109,7 +111,7 @@ namespace CapaDeLogica
         }
         public string[] tipos(string tabla)
         {
-            string[] Tipos = sn.ObtenerTipo(tabla);
+            string[] Tipos = sn.obtenerTipo(tabla);
 
             return Tipos;
         }
@@ -121,12 +123,14 @@ namespace CapaDeLogica
             return LLaves;
         }
 
-        public Dictionary<string, string> items(string tabla, string campoClave, string campoDisplay)
+        public string[] items(string tabla, string campo)
         {
-            return sn.obtenerItems(tabla, campoClave, campoDisplay);
+            string[] Items = sn.obtenerItems(tabla, campo);
+
+            return Items;
         }
 
-        public string llaveCampolo(string tabla, string campo, string valor)
+		public string llaveCampolo(string tabla, string campo, string valor)
 		{
 			string llave = sn.llaveCampo(tabla, campo, valor);
 			return llave;
@@ -153,18 +157,6 @@ namespace CapaDeLogica
 		public void nuevoQuery(String query)//trasporta el query de la capa de disenio a Datos
         {
             sn.ejecutarQuery(query);
-        }
-
-        public void insertarDatosEnDosTablas(List<string> queries)
-        {
-            // Verificar si hay consultas válidas
-            if (queries == null || queries.Count == 0)
-            {
-                throw new ArgumentException("Debe haber al menos una consulta válida para ejecutar.");
-            }
-
-            // Llamar al método de transacción con la lista de queries
-            sn.ejecutarQueryConTransaccion(queries);
         }
 
 
