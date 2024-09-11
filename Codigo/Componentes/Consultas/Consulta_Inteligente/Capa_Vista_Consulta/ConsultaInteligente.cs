@@ -29,9 +29,9 @@ namespace Capa_Vista_Consulta
             tipos = new string[] { "nombre_consulta", "tipo_consulta", "consulta_SQLE", "consulta_estatus" };
             csControlador.CargarTablas(cboTabla, BD);
             csControlador.CargarTablas(cboEditarTabla, BD);
-            csControlador.CargarTablas(cboTabla, BD);
             cboTabla.SelectedIndexChanged += new EventHandler(cboTabla_SelectedIndexChanged);
             cboEditarTabla.SelectedIndexChanged += new EventHandler(cboTablaEditar_SelectedIndexChanged);
+            //  QUITAR "ENABLED" Y USARLOS EN UNA FUNCIÓN DE CONSULTA COMPLEJA
             gbCondiciones.Enabled = false;
             gbOrdenar.Enabled = false;
             gbListadoConsultas.Enabled = true;
@@ -177,6 +177,7 @@ namespace Capa_Vista_Consulta
             cboCampos.ResetText();
             txtAlias.Clear();
             chbTodosCampos.Checked = false;
+            txtQuery.Clear();
         }
 
         private void btnCancelarLogica_Click(object sender, EventArgs e)
@@ -218,6 +219,8 @@ namespace Capa_Vista_Consulta
             cboOrdenarCampo.ResetText();
             chbOrdenAscendente.Checked = false;
             chbOrdenDescendente.Checked = false;
+            txtQuery.Clear();
+            txtQueryFinal.Clear();
         }
 
 
@@ -607,13 +610,14 @@ namespace Capa_Vista_Consulta
 
         private void btnAgregarConsultaSimple_Click(object sender, EventArgs e)
         {
-
+            string queryGenerado = csControlador.GenerarQuery(datos);
+            txtQueryFinal.Text = queryGenerado;
         }
 
         private void btnCrear_Click(object sender, EventArgs e)
         {
             // Procesar los datos en la tabla correspondiente
-            csControlador.ingresarQuery(tipos, datos, tabla);
+            csControlador.InsertarDatos(tipos, datos, tabla);
         }
 
         private void cboTabla_SelectedIndexChanged_1(object sender, EventArgs e)
