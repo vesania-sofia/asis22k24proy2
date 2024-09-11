@@ -42,11 +42,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-
-    <Compile Include="validar_grupo5.cs" />
-    <Compile Include="logica_grupo5.cs" />
-    <Compile Include="ProcedimientoLogin_grupo5.cs" />
-
+    <Compile Include="validar.cs" />
+    <Compile Include="logica.cs" />
+    <Compile Include="ProcedimientoLogin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

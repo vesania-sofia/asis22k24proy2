@@ -73,13 +73,11 @@ namespace CapaDiseno.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-
         internal static System.Drawing.Bitmap icons8_ayuda_30 {
             get {
                 object obj = ResourceManager.GetObject("icons8-ayuda-30", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
-
     }
 }
