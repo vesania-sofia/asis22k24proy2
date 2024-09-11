@@ -2,6 +2,7 @@
 using System.Data;
 using CapaDatos;
 using System.Data.Odbc;
+using System.Windows.Forms;
 
 namespace CapaLogica
 {
@@ -281,20 +282,45 @@ namespace CapaLogica
                 return null;
             }
         }
-       
-        public DataTable eliminaraplicaciones(string idaplicacion, string modulo, string descripcion, string aplicacion)
+
+        //Esta parte fue echa por Carlos Hernandez
+        public DataTable actualizaraplicaciones(string codigo, string nombre, string descripcion, string estado)
         {
             try
             {
-                OdbcDataAdapter dteliminar = sn.eliminaraplicacion(idaplicacion, modulo, descripcion, aplicacion);
-                DataTable tableliminar = new DataTable();
-                dteliminar.Fill(tableliminar);
-                return tableliminar;
+                OdbcDataAdapter dtModificar = sn.actualizaraplicacion(codigo, nombre, descripcion, estado);
+                DataTable tableAplicacion = new DataTable();
+                dtModificar.Fill(tableAplicacion);
+                return tableAplicacion;
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex);
                 return null;
+            }
+        }
+        //termina lo que hizo carlos hernandez 
+
+
+        public bool eliminaraplicaciones(string codigo)
+        {
+            try
+            {
+                bool result = sn.eliminaraplicacion(codigo);
+                if (result)
+                {
+                    MessageBox.Show("Perfil eliminado correctamente.");
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo eliminar el perfil.");
+                }
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return false;
             }
         }
 
@@ -341,12 +367,37 @@ namespace CapaLogica
         }
 
 
+        /* creado por Emerzon Garcia  0901-21-9182 ...... */
+
+        public bool Eliminarperfil(string ID_perfil)
+        {
+            try
+            {
+                bool result = sn.EliminarPerfil1(ID_perfil);
+                if (result)
+                {
+                    MessageBox.Show("Perfil eliminado correctamente.");
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo eliminar el perfil.");
+                }
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return false;
+            }
+        }
+
 
         /*----------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
         //######################################### EDITADO POR: ALEJANDRO BARREDA MENDOZA ############################################
         //+1 modulos
 
+        //Trabajado por María José Véliz Ochoa, 9959-21-5909
         public DataTable validarIDModulos()
         {
             try
@@ -362,7 +413,7 @@ namespace CapaLogica
                 return null;
             }
         }
-
+        // termina María José
 
         //--------mantenimiento perfiles
 
@@ -435,15 +486,35 @@ namespace CapaLogica
 
         }
 
-	
-        public DataTable ingresarmodulos(string codigo, string nombre, string descripcion, string estado)
+
+        //Trabajado por María José Véliz Ochoa, 9959-21-5909
+        public bool ingresarmodulos(string codigo, string nombre, string descripcion, string estado)
         {
             try
             {
-                OdbcDataAdapter ingresomodulo = sn.insertarModulo(codigo, nombre, descripcion, estado);
-                DataTable tablemodulos = new DataTable();
-                ingresomodulo.Fill(tablemodulos);
-                return tablemodulos;
+                // Ejecutar la inserción
+                sn.insertarModulo(codigo, nombre, descripcion, estado);
+                return true;
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine("Error al insertar el módulo: " + ex.Message);
+                return false;
+            }
+        } // termina María José
+
+
+
+        //ELIMINAR MODULO ALYSON RODRÍGUEZ 9959-21-829##########################################
+        public DataTable EliminarModulo(string ID_modulo, string nombre, string descripcion, string estado)
+        {
+            try
+            {
+                OdbcDataAdapter dtmodulo = sn.EliminarModulo(ID_modulo, nombre, descripcion, estado);
+                DataTable tablamodulos = new DataTable();
+                dtmodulo.Fill(tablamodulos);
+                return tablamodulos;
             }
             catch (Exception ex)
             {
@@ -451,7 +522,7 @@ namespace CapaLogica
                 return null;
             }
         }
-
+        //FIN ALYSON RODRÍGUEZ 9959-21-829 ####################################################
 
 
         public DataTable consultaLogicaPermisosPerfilAplicacion(string codigoPerfil, string nombreAplicacion, string ingresar, string consulta, string modificar, string eliminar, string imprimir)
@@ -470,22 +541,27 @@ namespace CapaLogica
             }
         }
 
+        //Trabajado por María José Véliz Ochoa, 9959-21-5909
         public DataTable ConsultaLogicaModulo(string ID_modulo)
         {
             try
             {
-                OdbcDataAdapter cmpsModulos = sn.ConsultarModulos(ID_modulo);
-                DataTable tablaModulos = new DataTable();
-                cmpsModulos.Fill(tablaModulos);
-                return tablaModulos;
+                using (OdbcDataAdapter cmpsModulos = sn.ConsultarModulos(ID_modulo))
+                {
+                    DataTable tablaModulos = new DataTable();
+                    cmpsModulos.Fill(tablaModulos);
+                    return tablaModulos;
+                }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
+
                 Console.WriteLine(ex);
                 return null;
             }
         }
-        
+        // termina María José
+
 
         public DataTable Actualizarmodulo(string ID_modulo,string nombre, string descripcion, string estado)
         {
