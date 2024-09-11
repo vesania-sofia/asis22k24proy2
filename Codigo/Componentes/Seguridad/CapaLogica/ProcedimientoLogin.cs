@@ -12,7 +12,7 @@ namespace CapaLogica
             try
             {
                 conexion con = new conexion();
-                OdbcCommand cmd = new OdbcCommand("{ call procedimientoLogin (?,?)}", con.conectar());
+                OdbcCommand cmd = new OdbcCommand(" call procedimientoLogin (?,?)", con.conectar());
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("@usuario", OdbcType.Text).Value = usuario;
                 cmd.Parameters.Add("@clave", OdbcType.Text).Value = clave;

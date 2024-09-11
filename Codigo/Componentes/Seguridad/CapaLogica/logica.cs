@@ -16,7 +16,6 @@ namespace CapaLogica
         }
 
 
-        /*---------------------------------------------------------------Creador: Allan Letona-----------------------------------------------------------------------------*/
         public DataTable consultaLogicaUsuarios()
         {
             
@@ -66,15 +65,17 @@ namespace CapaLogica
                 return null;
             }
         }
-
-        public DataTable consultaLogicaAplicaciones(string nombreModulo)
+        //###################  lo que hizo Karla  Sofia Gómez Tobar #######################
+        public DataTable consultaLogicaAplicaciones(string ID_aplicacion)
         {
             try
             {
-                OdbcDataAdapter dtAplicaciones = sn.consultarAplicaciones(nombreModulo);
-                DataTable tableAplicaciones = new DataTable();
-                dtAplicaciones.Fill(tableAplicaciones);
-                return tableAplicaciones;
+                using (OdbcDataAdapter cmpsAplicaciones = sn.consultaraplicaciones(ID_aplicacion))
+                { 
+                    DataTable tableAplicaciones = new DataTable();
+                    cmpsAplicaciones.Fill(tableAplicaciones);
+                    return tableAplicaciones;
+                }
             }
             catch(Exception ex)
             {
@@ -83,7 +84,7 @@ namespace CapaLogica
 
             }
         }
-
+        //###################  termina lo que hizo  Karla  Sofia Gómez Tobar #######################
         public DataTable consultaLogicaPermisosUsuarioAplicacion(string codigoUsuario, string nombreAplicacion, string ingresar, string consulta, string modificar, string eliminar, string imprimir)
         {
             try
@@ -148,22 +149,24 @@ namespace CapaLogica
             }
         }
 
+
+        //###################  lo que hizo Karla  Sofia Gómez Tobar #######################
         public DataTable validarIDAplicacion()
         {
             try
             {
-                OdbcDataAdapter dtValidarIDAplicacion = sn.validarIDAplicacion();
-                DataTable tableValidacionIdAplicacion = new DataTable();
-                dtValidarIDAplicacion.Fill(tableValidacionIdAplicacion);
-                return tableValidacionIdAplicacion;
+                    OdbcDataAdapter dtValidarIDAplicacion = sn.validarIDAplicacion();
+                    DataTable tableValidacionIdAplicacion = new DataTable();
+                    dtValidarIDAplicacion.Fill(tableValidacionIdAplicacion);
+                    return tableValidacionIdAplicacion;
             }
-            catch (Exception ex)
+                     catch (Exception ex)
             {
-                Console.WriteLine(ex);
-                return null;
+                    Console.WriteLine(ex);
+                    return null;
             }
         }
-
+        //###################  termina lo que hizo  Karla  Sofia Gómez Tobar #######################
         public DataTable ActualizarUsuario(string idUsuario, string nombreUsuario, string apellidoUsuario,string clave, string estado)
         {
             try
@@ -181,10 +184,6 @@ namespace CapaLogica
 
 
         }
-
-        /*----------------------------------------------------------------------------------------------------------------------------------------------------------------*/
-
-        /*---------------------------------------------------------------Creador: Diego Gomez-----------------------------------------------------------------------------*/
 
         public DataTable usuarios(string id, string nombre, string apellido, string clave, int boton)
         {
@@ -250,23 +249,22 @@ namespace CapaLogica
             }
         }
 
-
-        public DataTable aplicaciones(string idaplicacion, string modulo, string descripcion, string aplicacion, int boton)
+        //###################  lo que hizo Karla  Sofia Gómez Tobar #######################
+        public bool insertaraplicaciones(string codigo, string nombre, string descripcion, string estado)
         {
             try
             {
 
-                OdbcDataAdapter dtusuario = sn.insertaraplicacion(idaplicacion, modulo, descripcion, aplicacion, boton);
-                DataTable tableusuarios = new DataTable();
-                dtusuario.Fill(tableusuarios);
-                return tableusuarios;
+               sn.insertaraplicacion(codigo, nombre, descripcion, estado);
+                return true;
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
-                return null;
+                Console.WriteLine("Error al insertar el aplicacion: " + ex.Message);
+                return false;
             }
         }
+        //###################  termina lo que hizo  Karla  Sofia Gómez Tobar #######################
 
         public DataTable eliminar(string id, string nombre, string apellido, string clave)
         {
@@ -283,7 +281,7 @@ namespace CapaLogica
                 return null;
             }
         }
-
+       
         public DataTable eliminaraplicaciones(string idaplicacion, string modulo, string descripcion, string aplicacion)
         {
             try
@@ -342,23 +340,7 @@ namespace CapaLogica
             }
         }
 
-        public DataTable consultaLogicaaplicaciones()
-        {
 
-            try
-            {
-                OdbcDataAdapter dt = sn.consultaraplicaciones();
-                DataTable table = new DataTable();
-                dt.Fill(table);
-                return table;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex);
-                return null;
-            }
-
-        }
 
         /*----------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 

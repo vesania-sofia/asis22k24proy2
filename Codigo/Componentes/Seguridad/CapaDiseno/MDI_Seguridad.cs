@@ -183,7 +183,7 @@ namespace CapaDiseno
         bool ventanaMostrarPerfiles = false;
         frm_perfiles_mantenimiento mostrarPerfiles = new frm_perfiles_mantenimiento();
 
-        private void PerfilesToolStripMenuItem_Click(object sender, EventArgs e)
+ /*       private void PerfilesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form frmC = Application.OpenForms.Cast<Form>().FirstOrDefault(x => x is frm_perfiles_mantenimiento);
             if (ventanaMostrarPerfiles == false || frmC == null)
@@ -241,25 +241,29 @@ namespace CapaDiseno
 
         private void AplicacionesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form frmC = Application.OpenForms.Cast<Form>().FirstOrDefault(x => x is frm_aplicaciones);
-            if (ventanaMostrarAplicaciones == false || frmC == null)
+            Form frmC = Application.OpenForms.Cast<Form>().FirstOrDefault(x => x is frm_modulos);
+            if (ventanaMostrarModulos == false || frmC == null)
             {
                 if (frmC == null)
                 {
-                    mostrarAplicaciones = new frm_aplicaciones(idUsuario);
+                    mostraraplicaciones = new frm_aplicaciones(idUsuario);
                 }
 
-                mostrarAplicaciones.MdiParent = this;
-                mostrarAplicaciones.Show();
+                mostrarModulos.MdiParent = this;
+                mostrarModulos.Show();
                 Application.DoEvents();
-                ventanaMostrarAplicaciones = true;
+                ventanaMostrarModulos = true;
             }
             else
             {
-                mostrarAplicaciones.WindowState = System.Windows.Forms.FormWindowState.Normal;
+                mostrarModulos.WindowState = System.Windows.Forms.FormWindowState.Normal;
             }
         }
 
+        bool ventanaMostrarPerfiles = false;
+        frm_perfiles_mantenimiento mostrarPerfiles = new frm_perfiles_mantenimiento();
+    }
+ */
         private void MDI_Seguridad_Load(object sender, EventArgs e)
         {
         }
@@ -292,7 +296,7 @@ namespace CapaDiseno
         bool ventanaMostrarClave = false;
         frm_cambioclave mostrarCambioClave = new frm_cambioclave();
 
-        public frm_usuarios MostrarUsuarios { get => mostrarUsuarios; set => mostrarUsuarios = value; }
+   //     public frm_usuarios MostrarUsuarios { get => mostrarUsuarios; set => mostrarUsuarios = value; }
 
         private void CambioContraseñaToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -322,6 +326,30 @@ namespace CapaDiseno
             mostrar_Bitacora.MdiParent = this;
             mostrar_Bitacora.Show();
 
+        }
+
+        bool ventanaMostrarAplicaciones = false;
+        frm_aplicaciones mostrarAplicaciones = new frm_aplicaciones();
+
+        private void aplicacionesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form frmC = Application.OpenForms.Cast<Form>().FirstOrDefault(x => x is frm_aplicaciones);
+            if (ventanaMostrarAplicaciones == false || frmC == null)
+            {
+                if (frmC == null)
+                {
+                    mostrarAplicaciones = new frm_aplicaciones(idUsuario);
+                }
+
+                mostrarAplicaciones.MdiParent = this;
+                mostrarAplicaciones.Show();
+                Application.DoEvents();
+                ventanaMostrarAplicaciones = true;
+            }
+            else
+            {
+                mostrarAplicaciones.WindowState = System.Windows.Forms.FormWindowState.Normal;
+            }
         }
     }
 }

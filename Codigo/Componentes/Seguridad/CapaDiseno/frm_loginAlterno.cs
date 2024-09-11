@@ -12,22 +12,15 @@ using CapaLogica;
 
 namespace CapaDiseno
 {
-    public partial class frm_login : Form
+    public partial class frm_loginAlterno : Form
     {
-        public string bExito = "Pendiente";
-
-        public frm_login()
+        public string bExito = "usuarios";
+        public frm_loginAlterno()
         {
             InitializeComponent();
             Txt_clave.UseSystemPasswordChar = true;
         }
 
-        string nombreUsuario = "";
-        public string obtenerNombreUsuario()
-        {
-            nombreUsuario = Txt_usuario.Text;
-            return nombreUsuario;
-        }
 
         private void Btn_entrar_Click(object sender, EventArgs e)
         {
@@ -50,15 +43,18 @@ namespace CapaDiseno
                         bool bExisteUsuario = procedimientoLogin.llamarProcedimiento(Txt_usuario.Text, Txt_clave.Text);
 
                         if (bExisteUsuario)
+
                         {
-                            this.Close();
                             sentencia s = new sentencia();
                             s.insertarBitacora(Txt_usuario.Text.Trim(), "Se logeo al sistema", "Login");
-
+                            MDI_Seguridad seguridad = new MDI_Seguridad(Txt_usuario.Text.Trim());
+                            seguridad.Show();
+                            seguridad.lbl_nombreUsuario.Text = Txt_usuario.Text;
                         }
                         else
                         {
                             MessageBox.Show("Usuario o Contraseña Incorrecta", "Verificacion de Login", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            //hacer en caso de no existe usuario o contrase;a incorrecto
                         }
 
                     }
@@ -88,10 +84,9 @@ namespace CapaDiseno
             }
         }
 
-
-        private void Frm_login_FormClosing(object sender, FormClosingEventArgs e)
+        private void Frm_loginAlterno_FormClosing(object sender, FormClosingEventArgs e)
         {
-            
+            Application.Exit();
         }
 
         private void Btn_ayuda_Click(object sender, EventArgs e)
