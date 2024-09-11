@@ -363,13 +363,14 @@ namespace CapaDatos
             }
         }
         // termina María José
-
+            
+        //HECHO POR JOSUÉ DAVID PAZ GÓMEZ 0901-21-5560
         public OdbcDataAdapter validarIDperfiles()
         {
             try
             {
 
-                string sqlIDperfil = "SELECT MAX(PK_id_perfil)+1 FROM tbl_perfil_encabezado";
+                string sqlIDperfil = "SELECT MAX(Pk_id_perfil)+1 FROM tbl_perfiles";
                 OdbcDataAdapter dataIDperfil = new OdbcDataAdapter(sqlIDperfil, cn.conectar());
                 return dataIDperfil;
 
@@ -389,9 +390,9 @@ namespace CapaDatos
             cn.conectar();
             try
             {
-                string sqlPerfil = "INSERT INTO tbl_perfil_encabezado (PK_id_Perfil, nombre_perfil,descripcion_perfil,estado_perfil) VALUES ('" + codigo + "','" + nombre + "', '" + descripcion + "', " + estado + ");";
+                string sqlPerfil = "INSERT INTO tbl_perfiles (Pk_id_Perfil, nombre_perfil, descripcion_perfil, estado_perfil) VALUES ('" + codigo + "','" + nombre + "', '" + descripcion + "', " + estado + ");";
                 OdbcDataAdapter datainsertarperfil = new OdbcDataAdapter(sqlPerfil, cn.conectar());
-                insertarBitacora(idUsuario, "Inserto un nuevo perfil: "  + codigo + " - " + nombre , "tbl_perfil");
+                insertarBitacora(idUsuario, "Inserto un nuevo perfil: "  + codigo + " - " + nombre , "tbl_perfiles");
                 return datainsertarperfil;
             }
             catch (Exception ex)
@@ -404,9 +405,9 @@ namespace CapaDatos
         public OdbcDataAdapter ConsultarPerfil(string perfil)
         {
             cn.conectar();
-            string sqlPerfil = "SELECT * FROM tbl_perfil_encabezado WHERE PK_Id_perfil = " + perfil;
+            string sqlPerfil = "SELECT * FROM tbl_perfiles WHERE Pk_Id_perfil = " + perfil;
             OdbcDataAdapter dataTable = new OdbcDataAdapter(sqlPerfil, cn.conectar());
-            insertarBitacora(idUsuario, "Realizo una consulta a perfiles ", "tbl_perfil");
+            insertarBitacora(idUsuario, "Realizo una consulta a perfiles ", "tbl_perfiles");
 
             return dataTable;
         }
@@ -416,9 +417,9 @@ namespace CapaDatos
             try
             {
                 cn.conectar();
-                string sqlactualizarperfil = "UPDATE tbl_perfil_encabezado SET nombre_perfil = '" + nombre + "', descripcion_perfil = '" + descripcion + "', estado_perfil = '" + estado + "' WHERE PK_id_perfil ='" + ID_perfil + "'";
+                string sqlactualizarperfil = "UPDATE tbl_perfiles SET nombre_perfil = '" + nombre + "', descripcion_perfil = '" + descripcion + "', estado_perfil = '" + estado + "' WHERE PK_id_perfil ='" + ID_perfil + "'";
                 OdbcDataAdapter dataTable = new OdbcDataAdapter(sqlactualizarperfil, cn.conectar());
-                insertarBitacora(idUsuario, "Actualizo un perfil: " + ID_perfil + " - " + nombre, "tbl_perfil");
+                insertarBitacora(idUsuario, "Actualizo un perfil: " + ID_perfil + " - " + nombre, "tbl_perfiles");
 
                 return dataTable;
             }
@@ -428,7 +429,7 @@ namespace CapaDatos
                 return null;
             }
         }
-
+        //termina la parte trabajada por Josué David Paz Gómez
 
         //Trabajado por María José Véliz Ochoa 9959-21-5909
         //se optó por usar OdbcCommand en lugar de OdbcDataAdapter, cambió estructura
