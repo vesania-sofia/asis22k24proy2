@@ -71,18 +71,93 @@ namespace CapaDiseno
 
         }
 
-
+        //inicia lo que hizo carlos hernandez
         private void btn_actualizar_Click(object sender, EventArgs e)
         {
+            if (txt_nombre.Text == "")
+            {
 
+                MessageBox.Show("Falta Nombre de Aplicacion");
+                btn_nuevo.Enabled = true;
+                txt_nombre.Enabled = false;
+                txt_descripcion.Enabled = false;
+            }
+            else if (txt_descripcion.Text == "")
+            {
+                MessageBox.Show("Falta Descripcion de Aplicacion");
+                btn_nuevo.Enabled = true;
+                txt_nombre.Enabled = false;
+                txt_descripcion.Enabled = false;
+            }
+
+            else
+            {
+                string estado = "";
+                if (Rdb_activo.Checked)
+                {
+                    estado = "1";
+                }
+
+                if (Rdb_inactivo.Checked)
+                {
+                    estado = "0";
+                }
+                else
+                {
+                    estado = "1";
+                }
+
+                logic.actualizaraplicaciones(txt_idaplicacion.Text.ToString(), txt_nombre.Text.ToString(), txt_descripcion.Text.ToString(), estado.ToString());
+                MessageBox.Show("Modulo Modificado Correctamente");
+                limpiar();
+                btn_cancel.Enabled = false;
+                btn_bsucarap.Enabled = true;
+                btn_nuevo.Enabled = true;
+                btn_ingresar.Enabled = false;
+                btn_actualizar.Enabled = false;
+                btn_modif.Enabled = false;
+                btn_eliminar.Enabled = false;
+                txt_idaplicacion.Enabled = false;
+                txt_nombre.Enabled = false;
+                txt_descripcion.Enabled = false;
+                Gpb_estado.Enabled = false;
+            }
         }
-
+        //empieza la parte de carlos hernandez
         private void btn_eliminar_Click(object sender, EventArgs e)
         {
 
-        }
+            if (!string.IsNullOrEmpty(txt_idaplicacion.Text))
+            {
+                // Confirmar antes de eliminar
+                var confirmResult = MessageBox.Show("¿Estás seguro de eliminar este perfil?",
+                                                    "Confirmar Eliminación",
+                                                    MessageBoxButtons.YesNo);
 
-        private void btn_cancel_Click(object sender, EventArgs e)
+                if (confirmResult == DialogResult.Yes)
+                {
+                    // Llamar al método de la capa lógica para eliminar el perfil
+                    logic.eliminaraplicaciones(txt_idaplicacion.Text);
+
+                    // Opcionalmente, puedes desactivar botones o limpiar campos después de la eliminación
+                    txt_buscar.Enabled = true;
+                    btn_bsucarap.Enabled = false;
+                    btn_modif.Enabled = false;
+                    btn_nuevo.Enabled = true;
+                    txt_idaplicacion.Enabled = false;
+                    txt_descripcion.Enabled = false;
+                    Gpb_estado.Enabled = false;
+                    limpiar();  // Limpiar campos
+                }
+            }
+            else
+            {
+                MessageBox.Show("No se ha seleccionado un perfil para eliminar.");
+            }
+        }
+            //termina lo que hizo carlos hernandez
+
+            private void btn_cancel_Click(object sender, EventArgs e)
         {
             limpiar();
             btn_cancel.Enabled = false;
@@ -102,12 +177,23 @@ namespace CapaDiseno
         {
 
         }
-
+        //lo que hizo carlos hernandez
         private void btn_modif_Click(object sender, EventArgs e)
         {
+            Rdb_activo.Checked = true;
+            Gpb_estado.Enabled = true;
+            btn_nuevo.Enabled = false;
+            btn_actualizar.Enabled = true;
+            gb_buscar.Enabled = false;
+            btn_modif.Enabled = false;
+            btn_ingresar.Enabled = false;
+            btn_cancel.Enabled = true;
+            txt_idaplicacion.Enabled = false;
+            txt_nombre.Enabled = true;
+            txt_descripcion.Enabled = true;
 
         }
-
+        //termina lo de carlos hernandez
 
         //###################  lo que hizo Karla  Sofia Gómez Tobar #######################
         private void btn_bsucarap_Click(object sender, EventArgs e)
