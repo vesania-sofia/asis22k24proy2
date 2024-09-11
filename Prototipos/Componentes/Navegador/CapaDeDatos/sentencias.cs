@@ -14,22 +14,12 @@ namespace CapaDeDatos
         //mostrar los datos en DataGridView de forma DESC y que tengan estado 1 =>Randy 
         public OdbcDataAdapter llenaTbl(string tabla)// metodo  que obtinene el contenio de una tabla
         {
-            /*string[] camposDesc = obtenerCampos(tabla); //string para almacenar los campos de OBTENERCAMPOS y utilizar el 1ro
+            string[] camposDesc = obtenerCampos(tabla); //string para almacenar los campos de OBTENERCAMPOS y utilizar el 1ro
             string sql = "SELECT * FROM " + tabla + " WHERE estado=0 || estado=1 ORDER BY " + camposDesc[0] + " DESC ;";
             //SELECT * FROM tbl_bodega WHERE estado=1 ORDER BY kbodega DESC
             OdbcDataAdapter dataTable = new OdbcDataAdapter(sql, cn.probarConexion());
-            return dataTable;*/
-            string[] camposDesc = obtenerCampos(tabla); // obtener los campos de la tabla
-                                                        // Usando JOIN para obtener los textos de las llaves foráneas
-            string sql = @"SELECT t1.*, t2.nombre_campo_relacionado 
-               FROM " + tabla + @" t1
-               LEFT JOIN tabla_relacionada t2 ON t1.id_llave_foranea = t2.id_primario
-               WHERE t1.estado=0 || t1.estado=1 
-               ORDER BY t1." + camposDesc[0] + " DESC;";
-
-            OdbcDataAdapter dataTable = new OdbcDataAdapter(sql, cn.probarConexion());
             return dataTable;
-
+         
         }
         //obtener ID siguiente => Randy             
         public string obtenerId(string tabla)
