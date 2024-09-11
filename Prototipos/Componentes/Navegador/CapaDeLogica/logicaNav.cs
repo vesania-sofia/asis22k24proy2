@@ -70,13 +70,14 @@ namespace CapaDeLogica
         {
             return sn.ProbarTabla(tabla);
         }
-        
 
-        public List<(string nombreColumna, bool esAutoIncremental)> obtenerColumnasYPropiedadesLogica(string nombreTabla)
+
+        public List<(string nombreColumna, bool esAutoIncremental, bool esClaveForanea)> obtenerColumnasYPropiedadesLogica(string nombreTabla)
         {
-            // Llamada al método en la capa de datos
+            // Llamada al método en la capa de datos, que ahora incluye la información de las claves foráneas
             return sn.obtenerColumnasYPropiedades(nombreTabla);
         }
+
 
         public string TestEstado(string tabla)
         {
@@ -85,11 +86,6 @@ namespace CapaDeLogica
         public int TestRegistros(string tabla)
         {
             return sn.ProbarRegistros(tabla);
-        }
-        public int obtenerUltimoIdInsertado()
-        {
-            // Llamar al método en la capa de datos para obtener el último ID insertado
-            return sn.getLastInsertedId();
         }
         /*
         public int obtenerMaxId(string tabla)
