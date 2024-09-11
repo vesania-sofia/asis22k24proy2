@@ -79,7 +79,67 @@ namespace Capa_Controlador_Consulta
 
             return datoQueryGenerado;
         }
+        public string GenerarQueryComplejo(string[] datosComplejos, string[] datos)
+        {
+            // Obtener la tabla y la query de los datos pasados como parámetros
 
+            // CAMBIAR DIRECCIÓN DEL ARRAY
+            string query = datosComplejos[4];
+            string querySimple = datos[4];
+
+            // CAMBIAR GENERACIÓN DE QUERY
+
+            string datoQueryGenerado = "SELECT ";
+            string fragmentoActual = "";
+            bool esCampo = true;
+
+            foreach (char c in query)
+            {
+                // COLOCAR "-" COMO PARÁMETRO DE SEPARACIÓN
+                if (c == '-')
+                {
+                    fragmentoActual = fragmentoActual.Trim();
+
+                    if (!string.IsNullOrEmpty(fragmentoActual))
+                    {
+                        if (esCampo)
+                        {
+                            datoQueryGenerado += $"{fragmentoActual}";
+                            esCampo = false;
+                        }
+                        else
+                        {
+                            datoQueryGenerado += $" AS {fragmentoActual}, ";
+                            esCampo = true;
+                        }
+                        fragmentoActual = "";
+                    }
+                }
+                else
+                {
+                    fragmentoActual += c;
+                }
+            }
+
+            // Procesar el último fragmento si no se ha procesado
+            if (!string.IsNullOrEmpty(fragmentoActual.Trim()))
+            {
+                if (esCampo)
+                {
+                    datoQueryGenerado += fragmentoActual;
+                }
+                else
+                {
+                    datoQueryGenerado += $" AS {fragmentoActual}";
+                }
+            }
+            datos[4] = datoQueryGenerado;
+
+            // Mostrar el query generado en consola (opcional)
+            Console.WriteLine($"Query generado: {datoQueryGenerado}");
+
+            return datoQueryGenerado;
+        }
         public void InsertarDatos(string[] tipos, string[] datos, string tabla)
         {
             try
@@ -151,7 +211,7 @@ namespace Capa_Controlador_Consulta
                 dato = dato.TrimEnd(',');
 
                 // Aquí podrías hacer lo que necesites con el dato y tipo (si se usa)
-                Console.WriteLine("Dato agregados correctamente");
+                Console.WriteLine("Dato agregado correctamente");
             }
             catch (Exception e)
             {

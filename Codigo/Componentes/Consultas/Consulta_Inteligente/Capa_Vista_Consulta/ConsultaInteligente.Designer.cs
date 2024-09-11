@@ -1263,6 +1263,7 @@ namespace Capa_Vista_Consulta
             this.btnEditarCampoSimple.TabIndex = 11;
             this.btnEditarCampoSimple.Text = "Agregar Campos";
             this.btnEditarCampoSimple.UseVisualStyleBackColor = true;
+            this.btnEditarCampoSimple.Click += new System.EventHandler(this.btnEditarCampoSimple_Click);
             // 
             // label18
             // 

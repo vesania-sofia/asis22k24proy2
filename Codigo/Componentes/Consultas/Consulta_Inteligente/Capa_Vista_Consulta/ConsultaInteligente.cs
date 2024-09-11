@@ -672,6 +672,11 @@ namespace Capa_Vista_Consulta
                 Console.WriteLine("No hay datos para copiar.");
             }
         }
+
+        private void btnEditarCampoSimple_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
     
