@@ -33,7 +33,6 @@ namespace Capa_Vista_Consulta
             cboTabla.SelectedIndexChanged += new EventHandler(cboTabla_SelectedIndexChanged);
             cboEditarTabla.SelectedIndexChanged += new EventHandler(cboTablaEditar_SelectedIndexChanged);
             chbCondiciones.CheckedChanged += chbCondiciones_CheckedChanged;
-            //  QUITAR "ENABLED" Y USARLOS EN UNA FUNCIÓN DE CONSULTA COMPLEJA
             gbCondiciones.Enabled = false;
             gbOrdenar.Enabled = false;
             gbListadoConsultas.Enabled = true;
@@ -45,8 +44,8 @@ namespace Capa_Vista_Consulta
             cboQuery3.SelectedIndexChanged += new EventHandler(cboConsultas_SelectedIndexChanged);*/
             csControlador.obtenerNombresConsultas(txtEditarNombreConsulta);
             txtEditarNombreConsulta.SelectedIndexChanged += new EventHandler(cboConsultas_SelectedIndexChanged);
-
-
+            llenarComboLogico(cboLogico);
+            llenarComboComparador(cboComparador);
         }
         string consulta = "";
         string tabla = "tbl_consultaInteligente";
@@ -57,7 +56,19 @@ namespace Capa_Vista_Consulta
             {
                 // Llama al método para llenar el segundo ComboBox con las columnas de la tabla seleccionada
                 csControlador.obtenerColumbasPorTabla(cboCampos, cboTabla.Text);
+                csControlador.obtenerColumbasPorTabla(cboComparadorCampo, cboTabla.Text);
+                csControlador.obtenerColumbasPorTabla(cboLogicoCampo, cboTabla.Text);
+                csControlador.obtenerColumbasPorTabla(cboOrdenarCampo, cboTabla.Text);
             }
+        }
+        private void llenarComboLogico(ComboBox comboBox1)
+        {
+            comboBox1.Items.Add("Seleccionar"); comboBox1.Items.Add("OR");
+            comboBox1.Items.Add("AND"); comboBox1.Items.Add("NOT"); comboBox1.SelectedIndex = 0;
+        }
+        private void llenarComboComparador(ComboBox comboBox1)
+        {
+            comboBox1.Items.Add("Seleccionar"); comboBox1.Items.Add("WHERE");comboBox1.SelectedIndex = 0;
         }
         private void btnNuevo_Click(object sender, EventArgs e)
         {
@@ -651,6 +662,15 @@ namespace Capa_Vista_Consulta
             gbListadoConsultas.Enabled = habilitarControles;
             gbEditarLogica.Enabled = habilitarControles;
             gbEditarOrden.Enabled = habilitarControles;
+            if (datos != null && datos.Length > 0)
+            {
+                datosComplejo = (string[])datos.Clone();
+                Console.WriteLine("Array copiado correctamente.");
+            }
+            else
+            {
+                Console.WriteLine("No hay datos para copiar.");
+            }
         }
     }
 }
