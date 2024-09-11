@@ -296,7 +296,7 @@ namespace CapaDiseno
         bool ventanaMostrarClave = false;
         frm_cambioclave mostrarCambioClave = new frm_cambioclave();
 
-   //     public frm_usuarios MostrarUsuarios { get => mostrarUsuarios; set => mostrarUsuarios = value; }
+        //     public frm_usuarios MostrarUsuarios { get => mostrarUsuarios; set => mostrarUsuarios = value; }
 
         private void CambioContraseñaToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -319,14 +319,15 @@ namespace CapaDiseno
             }
         }
 
-      
+
         private void BitacoraToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frm_mostrar_bitacora mostrar_Bitacora = new frm_mostrar_bitacora(idUsuario);
+            frm_mostrar_bitacora_grupo5 mostrar_Bitacora = new frm_mostrar_bitacora_grupo5(idUsuario);
             mostrar_Bitacora.MdiParent = this;
             mostrar_Bitacora.Show();
 
         }
+
 
         bool ventanaMostrarAplicaciones = false;
         frm_aplicaciones mostrarAplicaciones = new frm_aplicaciones();
