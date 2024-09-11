@@ -2,6 +2,7 @@
 using System.Data;
 using CapaDatos;
 using System.Data.Odbc;
+using System.Windows.Forms;
 
 namespace CapaLogica
 {
@@ -340,6 +341,30 @@ namespace CapaLogica
             }
         }
 
+
+        /* creado por Emerzon Garcia  0901-21-9182 ...... */
+
+        public bool Eliminarperfil(string ID_perfil)
+        {
+            try
+            {
+                bool result = sn.EliminarPerfil1(ID_perfil);
+                if (result)
+                {
+                    MessageBox.Show("Perfil eliminado correctamente.");
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo eliminar el perfil.");
+                }
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return false;
+            }
+        }
 
 
         /*----------------------------------------------------------------------------------------------------------------------------------------------------------------*/
