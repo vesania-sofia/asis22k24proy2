@@ -28,6 +28,7 @@ namespace CapaDiseno
             txtdesc.Enabled = false;
             btn_ingresar.Enabled = false;
             gbestado.Enabled = false;
+            btn_eliminar.Enabled = false; //se agrega ALyson Rodríguez 9959-21-820
         }
 
         public frm_modulos()
@@ -93,7 +94,9 @@ namespace CapaDiseno
                 gbbuscar.Enabled = true;
                 btn_nuevo.Enabled = true;
                 btn_ingresar.Enabled = false;
-                
+                txtcodigo.Enabled = false; // se agrega Alysom 9959-21-829
+                btn_eliminar.Enabled = false; //se agrega Alysom 9959-21-829
+
             }
         }
 
@@ -112,6 +115,7 @@ namespace CapaDiseno
             btn_nuevo.Enabled = true;
             gbestado.Enabled = false;
             txtcodigo.Enabled = false;
+            btn_eliminar.Enabled = false; //se agrega Alysom 9959-21-829
 
         }
         // termina María José
@@ -126,13 +130,14 @@ namespace CapaDiseno
             txtcodigo.Enabled = false;
             btn_cancel.Enabled = true;
             btn_actualizar.Enabled = true;
-           btn_modif.Enabled = false;
+            btn_modif.Enabled = false;
             txtnombre.Enabled = true;
             txtdesc.Enabled = true;
             rbhabilitado.Enabled = true;
             rbinhabilitado.Enabled = true;
-        btn_nuevo.Enabled = false;
+            btn_nuevo.Enabled = false;
             gbestado.Enabled = true;
+            btn_eliminar.Enabled = false; //se agrega Alysom 9959-21-829
         }
 
         //Trabajado por María José Véliz Ochoa, 9959-21-5909
@@ -185,6 +190,7 @@ namespace CapaDiseno
                 rbhabilitado.Enabled = false;
                 rbinhabilitado.Enabled = false;
                 btn_cancel.Enabled = true;
+                btn_eliminar.Enabled = true; //se agrega Alysom 9959-21-829
 
             }
             catch (Exception ex)
@@ -245,6 +251,7 @@ namespace CapaDiseno
                 txtcodigo.Enabled = false;
                 txtnombre.Enabled = false;
                 txtdesc.Enabled = false;
+                btn_eliminar.Enabled = false; //se agrega  ALyson 9959-21-829
                 limpiar();
             }
         }
@@ -269,7 +276,7 @@ namespace CapaDiseno
             btn_cancel.Enabled = true;
             //habilitando para ingresar id
             txtcodigo.Enabled = true;
-
+            btn_eliminar.Enabled = false; //se agrega  ALyson 9959-21-829
 
 
             //para errores tipo null
@@ -299,9 +306,71 @@ namespace CapaDiseno
         }
         //Termina María José
 
+
+        //BOTON ELIMINAR ALYSON Rodríguez 9959-21-829#######################################
+        private void Btn_eliminar_Click(object sender, EventArgs e)
+        {
+            // Deshabilitar botones y campos según sea necesario
+            btn_nuevo.Enabled = true;
+            btn_actualizar.Enabled = false;
+            gbbuscar.Enabled = true;
+            btn_modif.Enabled = false;
+            rbhabilitado.Checked = false;
+            gbestado.Enabled = false;
+            txtnombre.Enabled = false;
+            txtdesc.Enabled = false;
+            btn_ingresar.Enabled = false;
+            btn_cancel.Enabled = false;
+            txtcodigo.Enabled = false;
+            btn_eliminar.Enabled = false;
+
+            // Validar el estado seleccionado
+            string estado;
+            if (rbhabilitado.Checked)
+            {
+                estado = "1"; // Habilitado
+            }
+            else if (rbinhabilitado.Checked)
+            {
+                estado = "0"; // Inhabilitado
+            }
+            else
+            {
+                // Asignar un valor predeterminado si ninguno está seleccionado
+                estado = "0"; // O "1", dependiendo de tu lógica
+            }
+
+            // Validar que se haya ingresado el ID del módulo
+            if (string.IsNullOrEmpty(txtcodigo.Text))
+            {
+                MessageBox.Show("Falta ID del Módulo");
+                return; // Salir del método si falta el ID
+            }
+
+            try
+            {
+                // Llamar al método de la lógica de negocio para realizar el borrado lógico
+                logic.EliminarModulo(txtcodigo.Text.ToString(), txtnombre.Text.ToString(), txtdesc.Text.ToString(), estado);
+
+                MessageBox.Show("Módulo eliminado correctamente.");
+                limpiar(); // Limpia los campos del formulario
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al intentar eliminar el módulo: " + ex.Message);
+            }
+        }
+        // FIN BOTON ELIMINAR Alyson Rodríguez ####################################
+
+
         private void Btn_ayuda_Click(object sender, EventArgs e)
         {
             Help.ShowHelp(this, "C:\\Ayuda_Seguridad\\" + "MantenimientoModulos.chm", "AyudaMantenimientoModulos.html");
+        }
+
+        private void btn_eliminar_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -524,14 +524,14 @@ namespace CapaDatos
             return dataTable;
         } //termina María José
 
-
+        //Trabajado pos ALYSON RODRIGUEZ 9959-21-829 BOTON ACTUALIZAR
         public OdbcDataAdapter ActualizarModulo(string ID_modulo, string nombre, string descripcion, string estado)
         {
             Console.WriteLine("ESTO SE INGRESA EN LA SENTENCIA: " + ID_modulo + ", " + nombre + ", " + descripcion + ", " + estado);
             try
             {
                 cn.conectar();
-                string sqlactualizarmodulo = "UPDATE tbl_modulo SET nombre_modulo = '" + nombre + "', descripcion_modulo = '" + descripcion + "', estado_modulo = '" + estado+"' WHERE PK_id_Modulo ='" + ID_modulo+"'";
+                string sqlactualizarmodulo = "UPDATE tbl_modulos SET nombre_modulo = '" + nombre + "', descripcion_modulo = '" + descripcion + "', estado_modulo = '" + estado + "' WHERE PK_id_modulos ='" + ID_modulo + "'";
                 OdbcDataAdapter dataTable = new OdbcDataAdapter(sqlactualizarmodulo, cn.conectar());
                 insertarBitacora(idUsuario, "Actualizo un modulo: " + ID_modulo + " - " + nombre, "tbl_modulos");
                 return dataTable;
@@ -541,7 +541,48 @@ namespace CapaDatos
                 Console.WriteLine(ex);
                 return null;
             }
+        }
+        // ########### FIN  9959-21-829 ##########################################
+
+
+        //###############INICIA CÓDIGO PARA BOTON ELIMINAR ALYSON RODRÍGUEZ 
+        public OdbcDataAdapter EliminarModulo(string ID_modulo, string nombre, string descripcion, string estado)
+        {
+            Console.WriteLine("ESTO SE INGRESA EN LA SENTENCIA: " + ID_modulo + ", " + nombre + ", " + descripcion + ", " + estado);
+            try
+            {
+                using (OdbcConnection connection = cn.conectar())
+                {
+                    string sqlBorrarModulo = "UPDATE tbl_modulos SET nombre_modulo = ?, descripcion_modulo = ?, estado_modulo = '0' WHERE PK_id_modulos = ?";
+
+                    using (OdbcCommand command = new OdbcCommand(sqlBorrarModulo, connection))
+                    {
+                        // Agregar parámetros al comando
+                        command.Parameters.AddWithValue("?", nombre);
+                        command.Parameters.AddWithValue("?", descripcion);
+                        command.Parameters.AddWithValue("?", ID_modulo);
+
+                        // Crear un OdbcDataAdapter para ejecutar el comando de actualización
+                        OdbcDataAdapter adapter = new OdbcDataAdapter();
+                        adapter.UpdateCommand = command;
+
+                        // Ejecutar el comando de actualización
+                        adapter.UpdateCommand.ExecuteNonQuery();
+
+                        // Registrar la acción en la bitácora
+                        insertarBitacora(idUsuario, "Eliminó un módulo: " + ID_modulo + " - " + nombre, "tbl_modulos");
+
+                        return adapter; // Aunque no se usa típicamente así, se retorna el adaptador
+                    }
+                }
             }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al realizar el borrado lógico del módulo: " + ex.Message);
+                return null;
+            }
+        }
+        //########################FINALIZA CÓDIGO BOTÓN ELIMINAR ALYSON RODRIGUEZ
 
         public DataSet consultarBitacora()
         {
