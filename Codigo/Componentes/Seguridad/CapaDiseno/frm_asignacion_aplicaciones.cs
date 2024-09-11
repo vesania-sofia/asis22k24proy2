@@ -17,13 +17,17 @@ namespace CapaDiseno
 {
     public partial class frm_asignacion_aplicaciones : Form
     {
+
         logica_grupo5 logic;
+
         
 
         public frm_asignacion_aplicaciones(string idUsuario)
         {
             InitializeComponent();
+
             logic = new logica_grupo5(idUsuario);
+
         }
 
         public frm_asignacion_aplicaciones()

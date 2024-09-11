@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -77,11 +77,11 @@
     <Compile Include="frm_cambio_contrasenia.Designer.cs">
       <DependentUpon>frm_cambio_contrasenia.cs</DependentUpon>
     </Compile>
-    <Compile Include="frm_login_grupo5.cs">
+    <Compile Include="frm_login.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_login_grupo5.Designer.cs">
-      <DependentUpon>frm_login_grupo5.cs</DependentUpon>
+    <Compile Include="frm_login.Designer.cs">
+      <DependentUpon>frm_login.cs</DependentUpon>
     </Compile>
     <Compile Include="frm_loginAlterno.cs">
       <SubType>Form</SubType>
@@ -140,8 +140,8 @@
     <EmbeddedResource Include="frm_cambio_contrasenia.resx">
       <DependentUpon>frm_cambio_contrasenia.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_login_grupo5.resx">
-      <DependentUpon>frm_login_grupo5.cs</DependentUpon>
+    <EmbeddedResource Include="frm_login.resx">
+      <DependentUpon>frm_login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_loginAlterno.resx">
       <DependentUpon>frm_loginAlterno.cs</DependentUpon>
