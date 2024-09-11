@@ -44,10 +44,10 @@ namespace CapaVistaReporteria
             this.crystalReportViewer1.Size = new System.Drawing.Size(788, 430);
             this.crystalReportViewer1.TabIndex = 0;
             // 
-            // textBox1
+            // direccion_reporte
             // 
             this.direccion_reporte.Location = new System.Drawing.Point(478, 238);
-            this.direccion_reporte.Name = "textBox1";
+            this.direccion_reporte.Name = "direccion_reporte";
             this.direccion_reporte.Size = new System.Drawing.Size(202, 20);
             this.direccion_reporte.TabIndex = 1;
             this.direccion_reporte.Visible = false;
