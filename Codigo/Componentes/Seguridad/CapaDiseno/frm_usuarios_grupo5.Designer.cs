@@ -1,6 +1,6 @@
 ﻿namespace CapaDiseno
 {
-    partial class frm_usuarios
+    partial class frm_usuarios_grupo5
     {
         /// <summary>
         /// Required designer variable.

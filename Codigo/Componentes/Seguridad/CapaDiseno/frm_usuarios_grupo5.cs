@@ -13,7 +13,7 @@ using System.Data.Odbc;
 /*---------------------------Creador: Diego Gomez------------------------------*/
 namespace CapaDiseno
 {
-    public partial class frm_usuarios : Form
+    public partial class frm_usuarios_grupo5 : Form
     {
         logica_grupo5 logica1;
         
@@ -21,13 +21,13 @@ namespace CapaDiseno
         bool boton_eliminar = false;
         bool boton_modificar = false;
 
-        public frm_usuarios(string idUsuario)
+        public frm_usuarios_grupo5(string idUsuario)
         {
             InitializeComponent();
             logica1 = new logica_grupo5(idUsuario);
         }
 
-        public frm_usuarios()
+        public frm_usuarios_grupo5()
         {
         }
 

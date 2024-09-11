@@ -47,12 +47,6 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="frm_aplicaciones.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frm_aplicaciones.Designer.cs">
-      <DependentUpon>frm_aplicaciones.cs</DependentUpon>
-    </Compile>
     <Compile Include="frm_asignacion_aplicaciones.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,29 +89,17 @@
     <Compile Include="frm_loginAlterno.Designer.cs">
       <DependentUpon>frm_loginAlterno.cs</DependentUpon>
     </Compile>
-    <Compile Include="frm_modulos.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frm_modulos.Designer.cs">
-      <DependentUpon>frm_modulos.cs</DependentUpon>
-    </Compile>
     <Compile Include="frm_mostrar_bitacora_grupo5.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frm_mostrar_bitacora_grupo5.Designer.cs">
       <DependentUpon>frm_mostrar_bitacora_grupo5.cs</DependentUpon>
     </Compile>
-    <Compile Include="frm_perfiles_mantenimiento.cs">
+    <Compile Include="frm_usuarios_grupo5.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_perfiles_mantenimiento.Designer.cs">
-      <DependentUpon>frm_perfiles_mantenimiento.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frm_usuarios.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frm_usuarios.Designer.cs">
-      <DependentUpon>frm_usuarios.cs</DependentUpon>
+    <Compile Include="frm_usuarios_grupo5.Designer.cs">
+      <DependentUpon>frm_usuarios_grupo5.cs</DependentUpon>
     </Compile>
     <Compile Include="MDI_Seguridad.cs">
       <SubType>Form</SubType>
@@ -143,9 +125,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="frm_aplicaciones.resx">
-      <DependentUpon>frm_aplicaciones.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frm_asignacion_aplicaciones.resx">
       <DependentUpon>frm_asignacion_aplicaciones.cs</DependentUpon>
     </EmbeddedResource>
@@ -167,17 +146,11 @@
     <EmbeddedResource Include="frm_loginAlterno.resx">
       <DependentUpon>frm_loginAlterno.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_modulos.resx">
-      <DependentUpon>frm_modulos.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frm_mostrar_bitacora_grupo5.resx">
       <DependentUpon>frm_mostrar_bitacora_grupo5.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_perfiles_mantenimiento.resx">
-      <DependentUpon>frm_perfiles_mantenimiento.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frm_usuarios.resx">
-      <DependentUpon>frm_usuarios.cs</DependentUpon>
+    <EmbeddedResource Include="frm_usuarios_grupo5.resx">
+      <DependentUpon>frm_usuarios_grupo5.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MDI_Seguridad.resx">
       <DependentUpon>MDI_Seguridad.cs</DependentUpon>

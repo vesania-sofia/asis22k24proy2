@@ -213,16 +213,16 @@ namespace CapaDiseno
 
 
         bool ventanaMostrarUsuarios = false;
-        frm_usuarios mostrarUsuarios = new frm_usuarios();
+        frm_usuarios_grupo5 mostrarUsuarios = new frm_usuarios_grupo5();
 
         private void UsuariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form frmC = Application.OpenForms.Cast<Form>().FirstOrDefault(x => x is frm_usuarios);
+            Form frmC = Application.OpenForms.Cast<Form>().FirstOrDefault(x => x is frm_usuarios_grupo5);
             if (ventanaMostrarUsuarios == false || frmC == null)
             {
                 if (frmC == null)
                 {
-                    MostrarUsuarios = new frm_usuarios(idUsuario);
+                    MostrarUsuarios = new frm_usuarios_grupo5(idUsuario);
                 }
 
                 MostrarUsuarios.MdiParent = this;
@@ -292,7 +292,7 @@ namespace CapaDiseno
         bool ventanaMostrarClave = false;
         frm_cambioclave mostrarCambioClave = new frm_cambioclave();
 
-        public frm_usuarios MostrarUsuarios { get => mostrarUsuarios; set => mostrarUsuarios = value; }
+        public frm_usuarios_grupo5 MostrarUsuarios { get => mostrarUsuarios; set => mostrarUsuarios = value; }
 
         private void CambioContraseñaToolStripMenuItem_Click(object sender, EventArgs e)
         {
