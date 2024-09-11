@@ -12,23 +12,35 @@ using CapaLogica;
 
 namespace CapaDiseno
 {
-    public partial class frm_loginAlterno : Form
+    public partial class frm_login_grupo5 : Form
     {
+        public string bExito = "Pendiente";
 
-        public string bExito = "usuarios";
-
-        public frm_loginAlterno()
+        public frm_login_grupo5()
         {
             InitializeComponent();
             Txt_clave.UseSystemPasswordChar = true;
         }
 
-
-        private void Btn_entrar_Click(object sender, EventArgs e)
+        string nombreUsuario = "";
+        public string obtenerNombreUsuario()
         {
+            nombreUsuario = Txt_usuario.Text;
+            return nombreUsuario;
+        }
 
+        //Fernando García 0901-21-581//
+
+
+        private void Frm_login_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            
+        }
+
+
+        private void Btn_entrar_Click_1(object sender, EventArgs e)
+        {
             ProcedimientoLogin_grupo5 procedimientoLogin = new ProcedimientoLogin_grupo5();
-
 
             if (Txt_usuario.Text.Trim() == "")
             {
@@ -47,20 +59,22 @@ namespace CapaDiseno
                         bool bExisteUsuario = procedimientoLogin.llamarProcedimiento(Txt_usuario.Text, Txt_clave.Text);
 
                         if (bExisteUsuario)
-
                         {
 
-                            sentencia_grupo5 s = new sentencia_grupo5();
+                            // Ocultar el formulario de login en lugar de cerrarlo
+                            this.Hide();
 
+                            sentencia_grupo5 s = new sentencia_grupo5();
                             s.insertarBitacora(Txt_usuario.Text.Trim(), "Se logeo al sistema", "Login");
-                            MDI_Seguridad seguridad = new MDI_Seguridad(Txt_usuario.Text.Trim());
-                            seguridad.Show();
-                            seguridad.lbl_nombreUsuario.Text = Txt_usuario.Text;
+
+                            // Pasa el nombre de usuario al constructor de MDI_Seguridad
+                            MDI_Seguridad formMDI = new MDI_Seguridad(Txt_usuario.Text);
+                            formMDI.Show();
+
                         }
                         else
                         {
                             MessageBox.Show("Usuario o Contraseña Incorrecta", "Verificacion de Login", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                            //hacer en caso de no existe usuario o contrase;a incorrecto
                         }
 
                     }
@@ -73,12 +87,12 @@ namespace CapaDiseno
             }
         }
 
-        private void Btn_cancelar_Click(object sender, EventArgs e)
+        private void Btn_cancelar_Click_1(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
-        private void Cb_ver_password_CheckedChanged(object sender, EventArgs e)
+        private void Cb_ver_password_CheckedChanged_1(object sender, EventArgs e)
         {
             if (Cb_ver_password.Checked == false)
             {
@@ -90,15 +104,27 @@ namespace CapaDiseno
             }
         }
 
-        private void Frm_loginAlterno_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Application.Exit();
-        }
-
-        private void Btn_ayuda_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
             Help.ShowHelp(this, "C:\\Ayuda_Seguridad\\" + "ayudaLogin.chm", "login.html");
+        }
 
+        private void Btn_olvidocontrasenia_Click_1(object sender, EventArgs e)
+        {
+            // Mostrar el formulario de entrada con una pregunta
+            using (var frm_cambio_contrasenia = new frm_cambio_contrasenia("Por favor, ingresa tu usuario:"))
+            {
+                if (frm_cambio_contrasenia.ShowDialog() == DialogResult.OK)
+                {
+                    // Obtener el resultado del formulario
+                    string nombre = frm_cambio_contrasenia.Resultado;
+                    MessageBox.Show("El nombre ingresado es: " + nombre);
+                }
+                /*else
+                {
+                    MessageBox.Show("Entrada cancelada.");
+                }*/
+            }
         }
     }
 }

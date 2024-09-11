@@ -183,7 +183,9 @@ namespace CapaDiseno
         bool ventanaMostrarPerfiles = false;
         frm_perfiles_mantenimiento mostrarPerfiles = new frm_perfiles_mantenimiento();
 
- /*       private void PerfilesToolStripMenuItem_Click(object sender, EventArgs e)
+
+        private void PerfilesToolStripMenuItem_Click(object sender, EventArgs e)
+
         {
             Form frmC = Application.OpenForms.Cast<Form>().FirstOrDefault(x => x is frm_perfiles_mantenimiento);
             if (ventanaMostrarPerfiles == false || frmC == null)
@@ -207,22 +209,29 @@ namespace CapaDiseno
         private void CerrarSesionToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
-            sentencia sn = new sentencia(idUsuario);
+
+            sentencia_grupo5 sn = new sentencia_grupo5(idUsuario);
+
             sn.insertarBitacora(idUsuario, "Cerro sesion en el sistema", "Login");
         }
 
 
         bool ventanaMostrarUsuarios = false;
-        frm_usuarios mostrarUsuarios = new frm_usuarios();
+
+        frm_usuarios_grupo5 mostrarUsuarios = new frm_usuarios_grupo5();
+
 
         private void UsuariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form frmC = Application.OpenForms.Cast<Form>().FirstOrDefault(x => x is frm_usuarios);
+
             if (ventanaMostrarUsuarios == false || frmC == null)
             {
                 if (frmC == null)
                 {
-                    MostrarUsuarios = new frm_usuarios(idUsuario);
+
+                    MostrarUsuarios = new frm_usuarios_grupo5(idUsuario);
+
                 }
 
                 MostrarUsuarios.MdiParent = this;
@@ -241,29 +250,26 @@ namespace CapaDiseno
 
         private void AplicacionesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form frmC = Application.OpenForms.Cast<Form>().FirstOrDefault(x => x is frm_modulos);
-            if (ventanaMostrarModulos == false || frmC == null)
+
+            Form frmC = Application.OpenForms.Cast<Form>().FirstOrDefault(x => x is frm_aplicaciones);
+            if (ventanaMostrarAplicaciones == false || frmC == null)
             {
                 if (frmC == null)
                 {
-                    mostraraplicaciones = new frm_aplicaciones(idUsuario);
+                    mostrarAplicaciones = new frm_aplicaciones(idUsuario);
                 }
 
-                mostrarModulos.MdiParent = this;
-                mostrarModulos.Show();
+                mostrarAplicaciones.MdiParent = this;
+                mostrarAplicaciones.Show();
                 Application.DoEvents();
-                ventanaMostrarModulos = true;
+                ventanaMostrarAplicaciones = true;
             }
             else
             {
-                mostrarModulos.WindowState = System.Windows.Forms.FormWindowState.Normal;
+                mostrarAplicaciones.WindowState = System.Windows.Forms.FormWindowState.Normal;
             }
         }
 
-        bool ventanaMostrarPerfiles = false;
-        frm_perfiles_mantenimiento mostrarPerfiles = new frm_perfiles_mantenimiento();
-    }
- */
         private void MDI_Seguridad_Load(object sender, EventArgs e)
         {
         }
@@ -296,7 +302,9 @@ namespace CapaDiseno
         bool ventanaMostrarClave = false;
         frm_cambioclave mostrarCambioClave = new frm_cambioclave();
 
-   //     public frm_usuarios MostrarUsuarios { get => mostrarUsuarios; set => mostrarUsuarios = value; }
+
+        public frm_usuarios_grupo5 MostrarUsuarios { get => mostrarUsuarios; set => mostrarUsuarios = value; }
+
 
         private void CambioContraseñaToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -322,11 +330,14 @@ namespace CapaDiseno
       
         private void BitacoraToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frm_mostrar_bitacora mostrar_Bitacora = new frm_mostrar_bitacora(idUsuario);
+
+            frm_mostrar_bitacora_grupo5 mostrar_Bitacora = new frm_mostrar_bitacora_grupo5(idUsuario);
+
             mostrar_Bitacora.MdiParent = this;
             mostrar_Bitacora.Show();
 
         }
+
 
         bool ventanaMostrarAplicaciones = false;
         frm_aplicaciones mostrarAplicaciones = new frm_aplicaciones();
@@ -351,5 +362,6 @@ namespace CapaDiseno
                 mostrarAplicaciones.WindowState = System.Windows.Forms.FormWindowState.Normal;
             }
         }
+
     }
 }
