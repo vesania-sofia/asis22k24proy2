@@ -190,6 +190,11 @@ namespace Capa_VistaConsultas
         {
 
         }
+
+        private void Busqueda_Simple_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 
