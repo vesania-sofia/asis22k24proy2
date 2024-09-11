@@ -456,6 +456,25 @@ namespace CapaLogica
 
 
 
+        //ELIMINAR MODULO ALYSON RODRÍGUEZ 9959-21-829##########################################
+        public DataTable EliminarModulo(string ID_modulo, string nombre, string descripcion, string estado)
+        {
+            try
+            {
+                OdbcDataAdapter dtmodulo = sn.EliminarModulo(ID_modulo, nombre, descripcion, estado);
+                DataTable tablamodulos = new DataTable();
+                dtmodulo.Fill(tablamodulos);
+                return tablamodulos;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return null;
+            }
+        }
+        //FIN ALYSON RODRÍGUEZ 9959-21-829 ####################################################
+
+
         public DataTable consultaLogicaPermisosPerfilAplicacion(string codigoPerfil, string nombreAplicacion, string ingresar, string consulta, string modificar, string eliminar, string imprimir)
         {
             try
