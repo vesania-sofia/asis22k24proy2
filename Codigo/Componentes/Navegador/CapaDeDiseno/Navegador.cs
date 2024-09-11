@@ -1998,33 +1998,44 @@ namespace CapaDeDiseno
                             break;
 
                         case 2:
-                            // Si está en modo de inserción
-                            string queryPrimeraTabla = crearInsert(tabla);
+                            // Crear query para la primera tabla
+                         
+                                string queryPrimeraTabla = crearInsert(tabla);
+                            
+                            // Iniciar la lista de queries para la transacción
                             List<string> queries = new List<string>();
-
-                            // Inserta en la primera tabla
-                            logic.nuevoQuery(queryPrimeraTabla);
-
-                            // Verificar si hay una segunda tabla para insertar
+                           logic.nuevoQuery(queryPrimeraTabla);
+                            string ultimoIdPrimeraTabla = logic.lastID(tabla);
+                            Console.WriteLine(ultimoIdPrimeraTabla);
                             if (!string.IsNullOrEmpty(otratabla))
                             {
-                                // Obtener las columnas y propiedades de la segunda tabla
-                                List<(string nombreColumna, bool esAutoIncremental)> columnasSegundaTabla = logic.obtenerColumnasYPropiedadesLogica(otratabla);
+                                // Obtener las columnas de la segunda tabla
+                                List<(string nombreColumna, bool esAutoIncremental, bool esClaveForanea)> columnasSegundaTabla = logic.obtenerColumnasYPropiedadesLogica(otratabla);
 
-                                // Crear la lista de valores a insertar para la segunda tabla
+
+                                // Crear los valores para la segunda tabla
                                 List<string> valoresSegundaTabla = new List<string>();
                                 int pos = 1;
 
                                 foreach (var columna in columnasSegundaTabla)
                                 {
+                                    string valorCampo;
                                     if (columna.esAutoIncremental)
                                     {
-                                        // Omitir la columna si es autoincremental
                                         continue;
                                     }
+                                    if (columna.esClaveForanea)
+                                    {
+                                        // Usar el ID de la tabla relacionada
+                                         valorCampo = ultimoIdPrimeraTabla.ToString();  // Asignar el último ID insertado
+                                    }
+                                    else
+                                    {
+                                        // Usar el valor obtenido del control
+                                         valorCampo = obtenerDatoCampos(pos);  // Obtener el valor del control correspondiente
+                                    }
 
-                                    // Obtener el valor de cada campo desde la posición en los controles
-                                    string valorCampo = obtenerDatoCampos(pos);
+                                    // Si es la clave foránea, usar el último ID insertado
                                     valoresSegundaTabla.Add($"'{valorCampo}'");
                                     pos++;
                                 }
@@ -2034,26 +2045,15 @@ namespace CapaDeDiseno
                                 string valoresQuery = string.Join(", ", valoresSegundaTabla);
                                 string querySegundaTabla = $"INSERT INTO {otratabla} ({camposQuery}) VALUES ({valoresQuery});";
 
-                                // Ejecutar el query para la segunda tabla
+                                // Añadir a la lista de queries
                                 queries.Add(querySegundaTabla);
+                                
                             }
 
+                            // Ejecutar las queries dentro de una transacción
                             logic.insertarDatosEnDosTablas(queries);
 
-                            // Mensaje de éxito
-                            MessageBox.Show(
-                                "El registro ha sido guardado correctamente en el sistema.",
-                                "Guardado Exitoso",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Information
-                            );
-
-                            // Habilitar y deshabilitar botones después de la inserción
-                            Btn_Anterior.Enabled = true;
-                            Btn_Siguiente.Enabled = true;
-                            Btn_FlechaInicio.Enabled = true;
-                            Btn_FlechaFin.Enabled = true;
-                            Btn_Modificar.Enabled = true;
+                            MessageBox.Show("El registro ha sido guardado correctamente.", "Guardado Exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             break;
 
                         default:

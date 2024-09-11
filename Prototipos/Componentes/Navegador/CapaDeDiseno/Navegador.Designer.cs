@@ -58,7 +58,7 @@
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(28, 538);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
@@ -86,6 +86,7 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.142859F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.142859F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 27F));
+            this.tableLayoutPanel2.Controls.Add(this.Btn_Eliminar, 4, 0);
             this.tableLayoutPanel2.Controls.Add(this.Btn_Ayuda, 12, 0);
             this.tableLayoutPanel2.Controls.Add(this.Btn_Salir, 13, 0);
             this.tableLayoutPanel2.Controls.Add(this.Btn_FlechaFin, 11, 0);
@@ -94,13 +95,12 @@
             this.tableLayoutPanel2.Controls.Add(this.Btn_FlechaInicio, 8, 0);
             this.tableLayoutPanel2.Controls.Add(this.Btn_Refrescar, 7, 0);
             this.tableLayoutPanel2.Controls.Add(this.Btn_Consultar, 5, 0);
-            this.tableLayoutPanel2.Controls.Add(this.Btn_Eliminar, 4, 0);
             this.tableLayoutPanel2.Controls.Add(this.Btn_Cancelar, 3, 0);
             this.tableLayoutPanel2.Controls.Add(this.Btn_Guardar, 2, 0);
             this.tableLayoutPanel2.Controls.Add(this.Btn_Modificar, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.Btn_Ingresar, 0, 0);
             this.tableLayoutPanel2.Location = new System.Drawing.Point(28, 57);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -115,7 +115,7 @@
             this.Btn_Ayuda.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
             this.Btn_Ayuda.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.Btn_Ayuda.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_Ayuda.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Ayuda.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_Ayuda.ForeColor = System.Drawing.Color.Black;
             this.Btn_Ayuda.Location = new System.Drawing.Point(900, 0);
             this.Btn_Ayuda.Margin = new System.Windows.Forms.Padding(0);
@@ -133,7 +133,7 @@
             this.Btn_Salir.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
             this.Btn_Salir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.Btn_Salir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_Salir.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Salir.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_Salir.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Salir.Image")));
             this.Btn_Salir.Location = new System.Drawing.Point(975, 0);
             this.Btn_Salir.Margin = new System.Windows.Forms.Padding(0);
@@ -151,7 +151,7 @@
             this.Btn_FlechaFin.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
             this.Btn_FlechaFin.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.Btn_FlechaFin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_FlechaFin.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_FlechaFin.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_FlechaFin.Image = ((System.Drawing.Image)(resources.GetObject("Btn_FlechaFin.Image")));
             this.Btn_FlechaFin.Location = new System.Drawing.Point(825, 0);
             this.Btn_FlechaFin.Margin = new System.Windows.Forms.Padding(0);
@@ -169,7 +169,7 @@
             this.Btn_Siguiente.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
             this.Btn_Siguiente.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.Btn_Siguiente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_Siguiente.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Siguiente.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_Siguiente.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Siguiente.Image")));
             this.Btn_Siguiente.Location = new System.Drawing.Point(750, 0);
             this.Btn_Siguiente.Margin = new System.Windows.Forms.Padding(0);
@@ -187,7 +187,7 @@
             this.Btn_Anterior.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
             this.Btn_Anterior.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.Btn_Anterior.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_Anterior.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Anterior.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_Anterior.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Anterior.Image")));
             this.Btn_Anterior.Location = new System.Drawing.Point(675, 0);
             this.Btn_Anterior.Margin = new System.Windows.Forms.Padding(0);
@@ -205,7 +205,7 @@
             this.Btn_FlechaInicio.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
             this.Btn_FlechaInicio.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.Btn_FlechaInicio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_FlechaInicio.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_FlechaInicio.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_FlechaInicio.Image = ((System.Drawing.Image)(resources.GetObject("Btn_FlechaInicio.Image")));
             this.Btn_FlechaInicio.Location = new System.Drawing.Point(600, 0);
             this.Btn_FlechaInicio.Margin = new System.Windows.Forms.Padding(0);
@@ -223,7 +223,7 @@
             this.Btn_Refrescar.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
             this.Btn_Refrescar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.Btn_Refrescar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_Refrescar.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Refrescar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_Refrescar.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Refrescar.Image")));
             this.Btn_Refrescar.Location = new System.Drawing.Point(525, 0);
             this.Btn_Refrescar.Margin = new System.Windows.Forms.Padding(0);
@@ -242,7 +242,7 @@
             this.Btn_Consultar.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
             this.Btn_Consultar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.Btn_Consultar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_Consultar.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Consultar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_Consultar.Location = new System.Drawing.Point(375, 0);
             this.Btn_Consultar.Margin = new System.Windows.Forms.Padding(0);
             this.Btn_Consultar.Name = "Btn_Consultar";
@@ -258,7 +258,7 @@
             this.Btn_Eliminar.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
             this.Btn_Eliminar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.Btn_Eliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_Eliminar.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Eliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_Eliminar.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Eliminar.Image")));
             this.Btn_Eliminar.Location = new System.Drawing.Point(300, 0);
             this.Btn_Eliminar.Margin = new System.Windows.Forms.Padding(0);
@@ -276,7 +276,7 @@
             this.Btn_Cancelar.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
             this.Btn_Cancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.Btn_Cancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_Cancelar.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Cancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_Cancelar.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Cancelar.Image")));
             this.Btn_Cancelar.Location = new System.Drawing.Point(225, 0);
             this.Btn_Cancelar.Margin = new System.Windows.Forms.Padding(0);
@@ -295,7 +295,7 @@
             this.Btn_Guardar.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
             this.Btn_Guardar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.Btn_Guardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_Guardar.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Guardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_Guardar.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Guardar.Image")));
             this.Btn_Guardar.Location = new System.Drawing.Point(150, 0);
             this.Btn_Guardar.Margin = new System.Windows.Forms.Padding(0);
@@ -313,7 +313,7 @@
             this.Btn_Modificar.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
             this.Btn_Modificar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.Btn_Modificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_Modificar.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Modificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_Modificar.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Modificar.Image")));
             this.Btn_Modificar.Location = new System.Drawing.Point(75, 0);
             this.Btn_Modificar.Margin = new System.Windows.Forms.Padding(0);
@@ -331,7 +331,7 @@
             this.Btn_Ingresar.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
             this.Btn_Ingresar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.Btn_Ingresar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_Ingresar.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Ingresar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_Ingresar.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Ingresar.Image")));
             this.Btn_Ingresar.Location = new System.Drawing.Point(0, 0);
             this.Btn_Ingresar.Margin = new System.Windows.Forms.Padding(0);
@@ -353,7 +353,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 27F));
             this.tableLayoutPanel1.Controls.Add(this.lblTabla, 0, 0);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(28, 137);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -365,7 +365,7 @@
             // 
             this.lblTabla.AutoSize = true;
             this.lblTabla.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblTabla.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTabla.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTabla.Location = new System.Drawing.Point(4, 0);
             this.lblTabla.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTabla.Name = "lblTabla";
@@ -383,7 +383,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.dataGridView1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Navegador";
             this.Size = new System.Drawing.Size(1133, 800);
             this.Load += new System.EventHandler(this.Navegador_Load);
