@@ -14,7 +14,7 @@ namespace CapaDiseno
 {
     public partial class frm_loginAlterno : Form
     {
-        public string bExito = "Pendiente";
+        public string bExito = "usuarios";
         public frm_loginAlterno()
         {
             InitializeComponent();
@@ -24,7 +24,7 @@ namespace CapaDiseno
 
         private void Btn_entrar_Click(object sender, EventArgs e)
         {
-            ProcedimientoLogin_grupo5 procedimientoLogin = new ProcedimientoLogin_grupo5();
+            ProcedimientoLogin procedimientoLogin = new ProcedimientoLogin();
 
             if (Txt_usuario.Text.Trim() == "")
             {
@@ -45,7 +45,7 @@ namespace CapaDiseno
                         if (bExisteUsuario)
 
                         {
-                            sentencia_grupo5 s = new sentencia_grupo5();
+                            sentencia s = new sentencia();
                             s.insertarBitacora(Txt_usuario.Text.Trim(), "Se logeo al sistema", "Login");
                             MDI_Seguridad seguridad = new MDI_Seguridad(Txt_usuario.Text.Trim());
                             seguridad.Show();
