@@ -68,9 +68,7 @@
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Padding = new System.Windows.Forms.Padding(10, 4, 0, 4);
-
-            this.menuStrip.Size = new System.Drawing.Size(1053, 37);
-
+            this.menuStrip.Size = new System.Drawing.Size(1053, 28);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "MenuStrip";
             // 
@@ -80,20 +78,14 @@
             this.cerrarSesionToolStripMenuItem});
             this.inicioToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.inicioToolStripMenuItem.Name = "inicioToolStripMenuItem";
-
-            this.inicioToolStripMenuItem.Size = new System.Drawing.Size(73, 29);
-
+            this.inicioToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
             this.inicioToolStripMenuItem.Text = "Inicio";
             // 
             // cerrarSesionToolStripMenuItem
             // 
             this.cerrarSesionToolStripMenuItem.Name = "cerrarSesionToolStripMenuItem";
-
-            this.cerrarSesionToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
-
             this.cerrarSesionToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
             this.cerrarSesionToolStripMenuItem.Text = "Cerrar Sesion";
-
             // 
             // mantenimientosToolStripMenuItem
             // 
@@ -104,50 +96,34 @@
             this.perfilesToolStripMenuItem});
             this.mantenimientosToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mantenimientosToolStripMenuItem.Name = "mantenimientosToolStripMenuItem";
-
-            this.mantenimientosToolStripMenuItem.Size = new System.Drawing.Size(166, 29);
-
+            this.mantenimientosToolStripMenuItem.Size = new System.Drawing.Size(114, 20);
             this.mantenimientosToolStripMenuItem.Text = "Mantenimientos";
             // 
             // usuariosToolStripMenuItem
             // 
             this.usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
-
-            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(225, 34);
-            this.usuariosToolStripMenuItem.Text = "Usuarios";
-            this.usuariosToolStripMenuItem.Click += new System.EventHandler(this.UsuariosToolStripMenuItem_Click);
-
             this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.usuariosToolStripMenuItem.Text = "Usuarios";
-
             // 
             // aplicacionesToolStripMenuItem
             // 
             this.aplicacionesToolStripMenuItem.Name = "aplicacionesToolStripMenuItem";
-
-            this.aplicacionesToolStripMenuItem.Size = new System.Drawing.Size(225, 34);
+            this.aplicacionesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.aplicacionesToolStripMenuItem.Text = "Aplicaciones";
-            this.aplicacionesToolStripMenuItem.Click += new System.EventHandler(this.AplicacionesToolStripMenuItem_Click);
-
+            this.aplicacionesToolStripMenuItem.Click += new System.EventHandler(this.aplicacionesToolStripMenuItem_Click);
             // 
             // modulosToolStripMenuItem
             // 
             this.modulosToolStripMenuItem.Name = "modulosToolStripMenuItem";
-
-            this.modulosToolStripMenuItem.Size = new System.Drawing.Size(225, 34);
-
+            this.modulosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.modulosToolStripMenuItem.Text = "Modulos";
             this.modulosToolStripMenuItem.Click += new System.EventHandler(this.ModulosToolStripMenuItem_Click);
             // 
             // perfilesToolStripMenuItem
             // 
             this.perfilesToolStripMenuItem.Name = "perfilesToolStripMenuItem";
-
-            this.perfilesToolStripMenuItem.Size = new System.Drawing.Size(225, 34);
+            this.perfilesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.perfilesToolStripMenuItem.Text = "Perfiles";
-            this.perfilesToolStripMenuItem.Click += new System.EventHandler(this.PerfilesToolStripMenuItem_Click);
-
-
             // 
             // asignacionesToolStripMenuItem
             // 
@@ -157,77 +133,59 @@
             this.asignacionDeAplicacionesAPerfilesToolStripMenuItem});
             this.asignacionesToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.asignacionesToolStripMenuItem.Name = "asignacionesToolStripMenuItem";
-
-            this.asignacionesToolStripMenuItem.Size = new System.Drawing.Size(146, 29);
-
+            this.asignacionesToolStripMenuItem.Size = new System.Drawing.Size(102, 20);
             this.asignacionesToolStripMenuItem.Text = "Asignaciones";
             // 
             // asignacionDeAplicacionesAUsuariosToolStripMenuItem
             // 
             this.asignacionDeAplicacionesAUsuariosToolStripMenuItem.Name = "asignacionDeAplicacionesAUsuariosToolStripMenuItem";
-
-            this.asignacionDeAplicacionesAUsuariosToolStripMenuItem.Size = new System.Drawing.Size(452, 34);
-
+            this.asignacionDeAplicacionesAUsuariosToolStripMenuItem.Size = new System.Drawing.Size(311, 22);
             this.asignacionDeAplicacionesAUsuariosToolStripMenuItem.Text = "Asignacion de Aplicaciones a Usuarios";
             this.asignacionDeAplicacionesAUsuariosToolStripMenuItem.Click += new System.EventHandler(this.AsignacionDeAplicacionesAUsuariosToolStripMenuItem_Click);
             // 
             // asignacionDePerfilesAUsuariosToolStripMenuItem
             // 
             this.asignacionDePerfilesAUsuariosToolStripMenuItem.Name = "asignacionDePerfilesAUsuariosToolStripMenuItem";
-
-            this.asignacionDePerfilesAUsuariosToolStripMenuItem.Size = new System.Drawing.Size(452, 34);
-
+            this.asignacionDePerfilesAUsuariosToolStripMenuItem.Size = new System.Drawing.Size(311, 22);
             this.asignacionDePerfilesAUsuariosToolStripMenuItem.Text = "Asignacion de Perfiles a Usuarios";
             this.asignacionDePerfilesAUsuariosToolStripMenuItem.Click += new System.EventHandler(this.AsignacionDePerfilesAUsuariosToolStripMenuItem_Click);
             // 
             // asignacionDeAplicacionesAPerfilesToolStripMenuItem
             // 
             this.asignacionDeAplicacionesAPerfilesToolStripMenuItem.Name = "asignacionDeAplicacionesAPerfilesToolStripMenuItem";
-
-            this.asignacionDeAplicacionesAPerfilesToolStripMenuItem.Size = new System.Drawing.Size(452, 34);
+            this.asignacionDeAplicacionesAPerfilesToolStripMenuItem.Size = new System.Drawing.Size(311, 22);
             this.asignacionDeAplicacionesAPerfilesToolStripMenuItem.Text = "Asignacion de Aplicaciones a Perfiles";
-            this.asignacionDeAplicacionesAPerfilesToolStripMenuItem.Click += new System.EventHandler(this.AsignacionDeAplicacionesAPerfilesToolStripMenuItem_Click);
-
+            // 
             // cambioContraseñaToolStripMenuItem
             // 
             this.cambioContraseñaToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cambioContraseñaToolStripMenuItem.Name = "cambioContraseñaToolStripMenuItem";
-
-            this.cambioContraseñaToolStripMenuItem.Size = new System.Drawing.Size(203, 29);
+            this.cambioContraseñaToolStripMenuItem.Size = new System.Drawing.Size(139, 20);
             this.cambioContraseñaToolStripMenuItem.Text = "Cambio Contraseña";
-            this.cambioContraseñaToolStripMenuItem.Click += new System.EventHandler(this.CambioContraseñaToolStripMenuItem_Click);
-
             // 
             // bitacoraToolStripMenuItem
             // 
             this.bitacoraToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bitacoraToolStripMenuItem.Name = "bitacoraToolStripMenuItem";
-
-            this.bitacoraToolStripMenuItem.Size = new System.Drawing.Size(99, 29);
+            this.bitacoraToolStripMenuItem.Size = new System.Drawing.Size(70, 20);
             this.bitacoraToolStripMenuItem.Text = "Bitacora";
-            this.bitacoraToolStripMenuItem.Click += new System.EventHandler(this.BitacoraToolStripMenuItem_Click);
-
             // 
             // statusStrip
             // 
             this.statusStrip.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel});
-
             this.statusStrip.Location = new System.Drawing.Point(0, 727);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.Padding = new System.Windows.Forms.Padding(2, 0, 22, 0);
             this.statusStrip.Size = new System.Drawing.Size(1053, 22);
-
             this.statusStrip.TabIndex = 2;
             this.statusStrip.Text = "StatusStrip";
             // 
             // toolStripStatusLabel
             // 
             this.toolStripStatusLabel.Name = "toolStripStatusLabel";
-
-            this.toolStripStatusLabel.Size = new System.Drawing.Size(66, 25);
-
+            this.toolStripStatusLabel.Size = new System.Drawing.Size(42, 17);
             this.toolStripStatusLabel.Text = "Estado";
             // 
             // panel1
@@ -261,9 +219,7 @@
             this.lbl_nombreUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_nombreUsuario.Location = new System.Drawing.Point(79, 11);
             this.lbl_nombreUsuario.Name = "lbl_nombreUsuario";
-
-            this.lbl_nombreUsuario.Size = new System.Drawing.Size(29, 29);
-
+            this.lbl_nombreUsuario.Size = new System.Drawing.Size(19, 20);
             this.lbl_nombreUsuario.TabIndex = 1;
             this.lbl_nombreUsuario.Text = "--";
             // 
@@ -273,19 +229,15 @@
             this.lbl_usuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_usuario.Location = new System.Drawing.Point(3, 11);
             this.lbl_usuario.Name = "lbl_usuario";
-
-            this.lbl_usuario.Size = new System.Drawing.Size(102, 29);
-
+            this.lbl_usuario.Size = new System.Drawing.Size(68, 20);
             this.lbl_usuario.TabIndex = 0;
             this.lbl_usuario.Text = "Usuario:";
             // 
             // MDI_Seguridad
             // 
-
-            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1053, 1015);
-
+            this.ClientSize = new System.Drawing.Size(1053, 749);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.menuStrip);
@@ -297,9 +249,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SEGURIDAD";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-
-            this.Load += new System.EventHandler(this.MDI_Seguridad_Load);
-
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             this.statusStrip.ResumeLayout(false);

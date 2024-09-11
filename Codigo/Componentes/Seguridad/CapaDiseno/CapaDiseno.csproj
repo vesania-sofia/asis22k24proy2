@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -47,6 +47,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frm_aplicaciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_aplicaciones.Designer.cs">
+      <DependentUpon>frm_aplicaciones.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_asignacion_aplicaciones.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -71,12 +77,6 @@
     <Compile Include="frm_cambioclave.Designer.cs">
       <DependentUpon>frm_cambioclave.cs</DependentUpon>
     </Compile>
-    <Compile Include="frm_cambio_contrasenia.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frm_cambio_contrasenia.Designer.cs">
-      <DependentUpon>frm_cambio_contrasenia.cs</DependentUpon>
-    </Compile>
     <Compile Include="frm_login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -89,17 +89,29 @@
     <Compile Include="frm_loginAlterno.Designer.cs">
       <DependentUpon>frm_loginAlterno.cs</DependentUpon>
     </Compile>
-    <Compile Include="frm_mostrar_bitacora_grupo5.cs">
+    <Compile Include="frm_modulos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_mostrar_bitacora_grupo5.Designer.cs">
-      <DependentUpon>frm_mostrar_bitacora_grupo5.cs</DependentUpon>
+    <Compile Include="frm_modulos.Designer.cs">
+      <DependentUpon>frm_modulos.cs</DependentUpon>
     </Compile>
-    <Compile Include="frm_usuarios_grupo5.cs">
+    <Compile Include="frm_mostrar_bitacora.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_usuarios_grupo5.Designer.cs">
-      <DependentUpon>frm_usuarios_grupo5.cs</DependentUpon>
+    <Compile Include="frm_mostrar_bitacora.Designer.cs">
+      <DependentUpon>frm_mostrar_bitacora.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_perfiles_mantenimiento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_perfiles_mantenimiento.Designer.cs">
+      <DependentUpon>frm_perfiles_mantenimiento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_usuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_usuarios.Designer.cs">
+      <DependentUpon>frm_usuarios.cs</DependentUpon>
     </Compile>
     <Compile Include="MDI_Seguridad.cs">
       <SubType>Form</SubType>
@@ -125,6 +137,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="frm_aplicaciones.resx">
+      <DependentUpon>frm_aplicaciones.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frm_asignacion_aplicaciones.resx">
       <DependentUpon>frm_asignacion_aplicaciones.cs</DependentUpon>
     </EmbeddedResource>
@@ -137,20 +152,23 @@
     <EmbeddedResource Include="frm_cambioclave.resx">
       <DependentUpon>frm_cambioclave.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_cambio_contrasenia.resx">
-      <DependentUpon>frm_cambio_contrasenia.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frm_login.resx">
       <DependentUpon>frm_login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_loginAlterno.resx">
       <DependentUpon>frm_loginAlterno.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_mostrar_bitacora_grupo5.resx">
-      <DependentUpon>frm_mostrar_bitacora_grupo5.cs</DependentUpon>
+    <EmbeddedResource Include="frm_modulos.resx">
+      <DependentUpon>frm_modulos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_usuarios_grupo5.resx">
-      <DependentUpon>frm_usuarios_grupo5.cs</DependentUpon>
+    <EmbeddedResource Include="frm_mostrar_bitacora.resx">
+      <DependentUpon>frm_mostrar_bitacora.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_perfiles_mantenimiento.resx">
+      <DependentUpon>frm_perfiles_mantenimiento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_usuarios.resx">
+      <DependentUpon>frm_usuarios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MDI_Seguridad.resx">
       <DependentUpon>MDI_Seguridad.cs</DependentUpon>
@@ -165,15 +183,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\bill.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\logotipo.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\usuario.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\bloquear.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
