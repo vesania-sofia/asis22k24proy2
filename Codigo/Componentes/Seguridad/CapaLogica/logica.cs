@@ -282,20 +282,45 @@ namespace CapaLogica
                 return null;
             }
         }
-       
-        public DataTable eliminaraplicaciones(string idaplicacion, string modulo, string descripcion, string aplicacion)
+
+        //Esta parte fue echa por Carlos Hernandez
+        public DataTable actualizaraplicaciones(string codigo, string nombre, string descripcion, string estado)
         {
             try
             {
-                OdbcDataAdapter dteliminar = sn.eliminaraplicacion(idaplicacion, modulo, descripcion, aplicacion);
-                DataTable tableliminar = new DataTable();
-                dteliminar.Fill(tableliminar);
-                return tableliminar;
+                OdbcDataAdapter dtModificar = sn.actualizaraplicacion(codigo, nombre, descripcion, estado);
+                DataTable tableAplicacion = new DataTable();
+                dtModificar.Fill(tableAplicacion);
+                return tableAplicacion;
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex);
                 return null;
+            }
+        }
+        //termina lo que hizo carlos hernandez 
+
+
+        public bool eliminaraplicaciones(string codigo)
+        {
+            try
+            {
+                bool result = sn.eliminaraplicacion(codigo);
+                if (result)
+                {
+                    MessageBox.Show("Perfil eliminado correctamente.");
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo eliminar el perfil.");
+                }
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return false;
             }
         }
 
