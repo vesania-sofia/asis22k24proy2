@@ -20,7 +20,7 @@ namespace Capa_Controlador_Consulta
 
         consultaSentencias csSentencias = new consultaSentencias();
 
-        public string GenerarQuery(string[] datos)
+        public string GenerarQuerySimple(string[] datos)
         {
             // Obtener la tabla y la query de los datos pasados como parámetros
             string tblConsultada = datos[2];
