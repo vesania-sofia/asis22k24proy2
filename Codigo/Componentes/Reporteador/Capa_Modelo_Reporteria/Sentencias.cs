@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CapaModeloReporteria
+namespace Capa_Modelo_Reporteria
 {
     public class Sentencias
     {
@@ -55,7 +55,7 @@ namespace CapaModeloReporteria
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message.ToString() + " \nNo se puede eliminar el registro "+id_reporte+" en la tabla "+tabla_reporteria);
+                Console.WriteLine(ex.Message.ToString() + " \nNo se puede eliminar el registro " + id_reporte + " en la tabla " + tabla_reporteria);
             }
         }
         public void ModificarReporte(string ruta, string nombre_archivo, string aplicacion, string estado, string id_reporte)

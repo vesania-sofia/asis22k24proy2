@@ -5,11 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CapaModeloReporteria
+namespace Capa_Modelo_Reporteria
 {
     class Conexion
     {
-
         public OdbcConnection conexion()
         {
 
