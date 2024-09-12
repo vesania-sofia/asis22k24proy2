@@ -73,6 +73,7 @@ namespace ejecucion
                 navegador1.asignar2Tabla("registroperro");
                 navegador1.asignarNombreForm("EMPLEADOS");
                 navegador1.asignarComboConTabla("razas", "id_raza", "nombre_raza", 1);
+                navegador1.asignarforaneas("perro", "razas", "nombre_raza", "id_raza", "id_raza");
             }
             else if (tabla == "casas")
             {

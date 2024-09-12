@@ -236,11 +236,11 @@ namespace CapaDeDiseno
             }
             else
             {
-<<<<<<< Updated upstream
+
                // MessageBox.Show("Tabla actual: " + tabla);
-=======
+
                 //MessageBox.Show("Tabla actual: " + tabla);
->>>>>>> Stashed changes
+
             }
             //botonesYPermisosInicial(userActivo, aplActivo);
             //registros();
