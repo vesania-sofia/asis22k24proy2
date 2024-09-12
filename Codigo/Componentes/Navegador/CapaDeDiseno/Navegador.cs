@@ -231,7 +231,7 @@ namespace CapaDeDiseno
             }
             else
             {
-                MessageBox.Show("Tabla actual: " + tabla);
+               // MessageBox.Show("Tabla actual: " + tabla);
             }
             //botonesYPermisosInicial(userActivo, aplActivo);
             //registros();
@@ -2397,8 +2397,22 @@ namespace CapaDeDiseno
 
         private void Btn_Ayuda_Click_1(object sender, EventArgs e)
         {
-            Help.ShowHelp(this, AsRuta, AsIndice);//Abre el menu de ayuda HTML     
+            // Construir la ruta completa manualmente
+            string helpFilePath = AppDomain.CurrentDomain.BaseDirectory + "AyudaHTML/AyudaNavegador.chm";
+
+            // Verifica si el archivo existe antes de intentar abrirlo
+            if (System.IO.File.Exists(helpFilePath))
+            {
+                Help.ShowHelp(this, helpFilePath, "AyudaNav.html");
+            }
+            else
+            {
+                MessageBox.Show("No se encontró el archivo de ayuda: " + helpFilePath, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+
+
+
 
         private void Btn_MasAyuda_Click(object sender, EventArgs e)
         {
@@ -2426,6 +2440,17 @@ namespace CapaDeDiseno
         private void LblTabla_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void xd_Click(object sender, EventArgs e)
+        {
+            //Help.ShowHelp(this, AsRuta, AsIndice); Abre el menu de ayuda HTML     
+            Help.ShowHelp(this, "/AyudaHTML/AyudaNavegador.chm", "AyudaNav.html");//Abre el menu de ayuda HTML 
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            this.Hide();
         }
     }
 }
