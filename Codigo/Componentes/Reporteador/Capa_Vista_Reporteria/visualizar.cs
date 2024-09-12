@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CrystalDecisions.CrystalReports.Engine;
 
-namespace CapaVistaReporteria
+namespace Capa_Vista_Reporteria
 {
     public partial class visualizar : Form
     {

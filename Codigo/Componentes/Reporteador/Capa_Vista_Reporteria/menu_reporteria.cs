@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CapaVistaReporteria
+namespace Capa_Vista_Reporteria
 {
     public partial class menu_reporteria : Form
     {
