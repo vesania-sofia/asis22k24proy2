@@ -19,6 +19,7 @@ namespace CapaDeDatos
             //SELECT * FROM tbl_bodega WHERE estado=1 ORDER BY kbodega DESC
             OdbcDataAdapter dataTable = new OdbcDataAdapter(sql, cn.probarConexion());
             return dataTable;
+         
         }
         //obtener ID siguiente => Randy             
         public string obtenerId(string tabla)
@@ -90,6 +91,8 @@ namespace CapaDeDatos
             catch (Exception ex) { Console.WriteLine(ex.Message.ToString() + " \nError en obtenerTipo, revise los parámetros de la tabla  \n -" + tabla.ToUpper() + "\n -"); }
             return Campos;// devuelve un arreglo con los tiposlos campos
         }
+
+
         public int contarReg(string idindice)// metodo  que obtinene el contenio de una tabla
         {
             int Campos = 0;
@@ -121,7 +124,7 @@ namespace CapaDeDatos
                     Campos = reader.GetValue(0).ToString();
             }
             catch (Exception ex) { Console.WriteLine(ex.Message.ToString() + " \nError en obtenerTipo, revise los parámetros de la tabla  \n -" + tabla.ToUpper() + "\n -"); }
-            return Campos;// devuelve un arreglo con los tiposlos campos
+            return Campos;// devuelve un arreglo con los tipos de campos
         }       
 
         public string modRuta(string idindice)// metodo  que obtinene el contenio de una tabla
@@ -248,7 +251,7 @@ namespace CapaDeDatos
             return registros;
         }
 
-        public string[] obtenerCampos(string tabla)//metodo que obtiene la lista de los campos que requiere una tabla
+        public string[] obtenerCampos(string tabla)
         {
             string[] Campos = new string[30];
             int i = 0;
@@ -259,17 +262,107 @@ namespace CapaDeDatos
 
                 while (reader.Read())
                 {
-                    Campos[i] = reader.GetValue(0).ToString();
+                    Campos[i] = reader.GetValue(0).ToString();  // Obtenemos el nombre de la columna
                     i++;
-
                 }
             }
-
-            catch (Exception ex) { Console.WriteLine(ex.Message.ToString() + " \nError en asignarCombo, revise los parámetros \n -" + tabla); }
-            return Campos;// devuelve un arrgeglo con los campos
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message.ToString() + " \nError en asignarCombo, revise los parámetros \n -" + tabla);
+            }
+            return Campos;  // Devolver un arreglo con los nombres de las columnas
         }
 
-        public string[] obtenerTipo(string tabla)//metodo que obtiene la lista de los tipos de campos que requiere una tabla
+
+        public List<(string nombreColumna, bool esAutoIncremental, bool esClaveForanea)> obtenerColumnasYPropiedades(string nombreTabla)
+        {
+            List<(string, bool, bool)> columnas = new List<(string, bool, bool)>();
+
+            try
+            {
+                // Paso 1: Obtener las columnas y propiedades (como autoincremental)
+                string queryColumnas = $"SHOW COLUMNS FROM {nombreTabla};";
+                OdbcCommand comando = new OdbcCommand(queryColumnas, cn.probarConexion());
+                OdbcDataReader lector = comando.ExecuteReader();
+
+                // Crear un diccionario para almacenar las claves foráneas
+                HashSet<string> clavesForaneas = new HashSet<string>();
+
+                // Paso 2: Obtener las claves foráneas de la tabla desde INFORMATION_SCHEMA
+                string queryClavesForaneas = $@"
+                    SELECT COLUMN_NAME
+                    FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE
+                    WHERE TABLE_NAME = '{nombreTabla}' AND REFERENCED_TABLE_NAME IS NOT NULL;";
+                OdbcCommand comandoClaves = new OdbcCommand(queryClavesForaneas, cn.probarConexion());
+                OdbcDataReader lectorClaves = comandoClaves.ExecuteReader();
+
+                while (lectorClaves.Read())
+                {
+                    string nombreColumnaForanea = lectorClaves.GetString(0);
+                    clavesForaneas.Add(nombreColumnaForanea);  // Añadir la clave foránea al conjunto
+                }
+
+                lectorClaves.Close();
+
+                // Paso 3: Procesar las columnas y determinar si son autoincrementales o claves foráneas
+                while (lector.Read())
+                {
+                    string nombreColumna = lector.GetString(0);  // Nombre de la columna
+                    string columnaExtra = lector.GetString(5);   // Información adicional (e.g. AUTO_INCREMENT)
+
+                    bool esAutoIncremental = columnaExtra.Contains("auto_increment");  // Detectar si es autoincremental
+                    bool esClaveForanea = clavesForaneas.Contains(nombreColumna);  // Detectar si es clave foránea
+
+                    // Añadir la columna con sus propiedades a la lista
+                    columnas.Add((nombreColumna, esAutoIncremental, esClaveForanea));
+                }
+
+                lector.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al obtener columnas: " + ex.Message);
+            }
+
+            return columnas;
+        }
+
+
+        public void ejecutarQueryConTransaccion(List<string> queries)
+        {
+            OdbcConnection connection = cn.probarConexion();
+            OdbcTransaction transaction = null;
+
+            try
+            {
+                // Iniciar la transacción
+                transaction = connection.BeginTransaction();
+
+                foreach (string query in queries)
+                {
+                    OdbcCommand command = new OdbcCommand(query, connection, transaction);
+                    command.ExecuteNonQuery();
+                }
+
+                // Confirmar la transacción
+                transaction.Commit();
+            }
+            catch (Exception ex)
+            {
+                // Si algo falla, revertir los cambios
+                if (transaction != null)
+                {
+                    transaction.Rollback();
+                }
+                Console.WriteLine("Error en la transacción: " + ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
+        public string[] ObtenerTipo(string tabla)//metodo que obtiene la lista de los tipos de campos que requiere una tabla
         {
             string[] Campos = new string[30];
             int i = 0;
@@ -308,32 +401,26 @@ namespace CapaDeDatos
 
             return Campos;// devuelve un arreglo con los tipos
         }
-        public string[] obtenerItems(string tabla, string campo)//metodo que obtiene la lista de los tipos de campos que requiere una tabla
+        public Dictionary<string, string> obtenerItems(string tabla, string campoClave, string campoDisplay)
         {
-
-            string[] items = new string[300];
-            int i = 0;
-
-
+            Dictionary<string, string> items = new Dictionary<string, string>();
             try
             {
-
-                OdbcCommand command = new OdbcCommand("select  " + campo + " FROM " + tabla + " WHERE estado = 1", cn.probarConexion());
+                OdbcCommand command = new OdbcCommand($"SELECT {campoClave}, {campoDisplay} FROM {tabla} WHERE estado = 1", cn.probarConexion());
                 OdbcDataReader reader = command.ExecuteReader();
 
                 while (reader.Read())
                 {
-                    items[i] = reader.GetValue(0).ToString();
-                    i++;
-
+                    items.Add(reader.GetValue(0).ToString(), reader.GetValue(1).ToString());  // id_raza -> nombre_raza
                 }
             }
-            catch (Exception ex) { Console.WriteLine(ex.Message.ToString() + " \nError en asignarCombo, revise los parametros \n -" + tabla + "\n -" + campo); }
-
-
-            return items;// devuelve un arreglo con los tipos
-
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message + " \nError en obtenerItems, revise los parámetros \n -" + tabla + "\n -" + campoClave);
+            }
+            return items;
         }
+
         string limpiarTipo(string cadena)// elimina los parentesis y tama;o de campo del tipo de campo
         {
             bool dim = false;
@@ -427,5 +514,12 @@ namespace CapaDeDatos
             catch (OdbcException ex) { Console.WriteLine(ex.ToString()); }
 
         }
+
+      
+
+        // Método para insertar en la tabla "factura"
+      
+
+        // Método para manejar ambas inserciones
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using CapaDeDatos;
 using System.Data;
 using System.Data.Odbc;
-using CapaDatos;
+
 
 namespace CapaDeLogica
 {
@@ -34,6 +34,7 @@ namespace CapaDeLogica
             DataTable table = new DataTable();
             dt.Fill(table);
             return table;
+
         }
 
 
@@ -69,6 +70,15 @@ namespace CapaDeLogica
         {
             return sn.ProbarTabla(tabla);
         }
+
+
+        public List<(string nombreColumna, bool esAutoIncremental, bool esClaveForanea)> obtenerColumnasYPropiedadesLogica(string nombreTabla)
+        {
+            // Llamada al método en la capa de datos, que ahora incluye la información de las claves foráneas
+            return sn.obtenerColumnasYPropiedades(nombreTabla);
+        }
+
+
         public string TestEstado(string tabla)
         {
             return sn.ProbarEstado(tabla);
@@ -99,7 +109,7 @@ namespace CapaDeLogica
         }
         public string[] tipos(string tabla)
         {
-            string[] Tipos = sn.obtenerTipo(tabla);
+            string[] Tipos = sn.ObtenerTipo(tabla);
 
             return Tipos;
         }
@@ -111,14 +121,12 @@ namespace CapaDeLogica
             return LLaves;
         }
 
-        public string[] items(string tabla, string campo)
+        public Dictionary<string, string> items(string tabla, string campoClave, string campoDisplay)
         {
-            string[] Items = sn.obtenerItems(tabla, campo);
-
-            return Items;
+            return sn.obtenerItems(tabla, campoClave, campoDisplay);
         }
 
-		public string llaveCampolo(string tabla, string campo, string valor)
+        public string llaveCampolo(string tabla, string campo, string valor)
 		{
 			string llave = sn.llaveCampo(tabla, campo, valor);
 			return llave;
@@ -145,6 +153,18 @@ namespace CapaDeLogica
 		public void nuevoQuery(String query)//trasporta el query de la capa de disenio a Datos
         {
             sn.ejecutarQuery(query);
+        }
+
+        public void insertarDatosEnDosTablas(List<string> queries)
+        {
+            // Verificar si hay consultas válidas
+            if (queries == null || queries.Count == 0)
+            {
+                throw new ArgumentException("Debe haber al menos una consulta válida para ejecutar.");
+            }
+
+            // Llamar al método de transacción con la lista de queries
+            sn.ejecutarQueryConTransaccion(queries);
         }
 
 
