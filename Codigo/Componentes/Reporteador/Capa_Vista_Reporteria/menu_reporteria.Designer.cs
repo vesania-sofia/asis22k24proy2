@@ -1,5 +1,5 @@
 ﻿
-namespace CapaVistaReporteria
+namespace Capa_Vista_Reporteria
 {
     partial class menu_reporteria
     {
@@ -103,7 +103,7 @@ namespace CapaVistaReporteria
             // pictureBox3
             // 
             this.pictureBox3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pictureBox3.Image = global::CapaVistaReporteria.Properties.Resources.ssssss;
+            this.pictureBox3.Image = global::Capa_Vista_Reporteria.Properties.Resources.ssssss;
             this.pictureBox3.Location = new System.Drawing.Point(3, 399);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(182, 141);

@@ -1,5 +1,5 @@
 ﻿
-namespace CapaVistaReporteria
+namespace Capa_Vista_Reporteria
 {
     partial class Inicio
     {

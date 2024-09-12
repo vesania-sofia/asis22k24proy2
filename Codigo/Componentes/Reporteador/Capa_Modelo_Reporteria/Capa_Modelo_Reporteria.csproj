@@ -4,12 +4,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{63129E86-8D64-4262-BA62-E000125F4941}</ProjectGuid>
+    <ProjectGuid>{41599A04-9985-474C-BDC1-16E1C337839A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CapaModeloReporteria</RootNamespace>
-    <AssemblyName>CapaModeloReporteria</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <RootNamespace>Capa_Modelo_Reporteria</RootNamespace>
+    <AssemblyName>Capa_Modelo_Reporteria</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
   </PropertyGroup>

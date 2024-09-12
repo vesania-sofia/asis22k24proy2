@@ -4,12 +4,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2087998A-4255-456F-8E48-7143E717924B}</ProjectGuid>
+    <ProjectGuid>{FEBF7900-9CAC-44AB-8AD5-233B321225F0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CapaControladorReporteria</RootNamespace>
-    <AssemblyName>CapaControladorReporteria</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <RootNamespace>Capa_Controlador_Reporteria</RootNamespace>
+    <AssemblyName>Capa_Controlador_Reporteria</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
@@ -31,8 +31,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CapaModeloReporteria">
-      <HintPath>..\CapaModeloReporteria\bin\Debug\CapaModeloReporteria.dll</HintPath>
+    <Reference Include="Capa_Modelo_Reporteria">
+      <HintPath>..\Capa_Modelo_Reporteria\bin\Debug\Capa_Modelo_Reporteria.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
