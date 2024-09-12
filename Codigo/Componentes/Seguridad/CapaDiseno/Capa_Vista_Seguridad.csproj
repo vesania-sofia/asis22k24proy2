@@ -133,13 +133,13 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CapaDatos\Capa_Modelo.csproj">
+    <ProjectReference Include="..\CapaDatos\Capa_Modelo_Seguridad.csproj">
       <Project>{a2ff5c44-7c3e-4efb-be87-42e45018ba0f}</Project>
-      <Name>Capa_Modelo</Name>
+      <Name>Capa_Modelo_Seguridad</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CapaLogica\Capa_Controlador.csproj">
+    <ProjectReference Include="..\CapaLogica\Capa_Controlador_Seguridad.csproj">
       <Project>{72fb3838-9cdc-480c-82f6-3c7eeb115042}</Project>
-      <Name>Capa_Controlador</Name>
+      <Name>Capa_Controlador_Seguridad</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

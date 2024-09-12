@@ -48,9 +48,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CapaDatos\Capa_Modelo.csproj">
+    <ProjectReference Include="..\CapaDatos\Capa_Modelo_Seguridad.csproj">
       <Project>{a2ff5c44-7c3e-4efb-be87-42e45018ba0f}</Project>
-      <Name>Capa_Modelo</Name>
+      <Name>Capa_Modelo_Seguridad</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
