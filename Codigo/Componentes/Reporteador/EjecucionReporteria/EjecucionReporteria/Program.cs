@@ -17,7 +17,7 @@ namespace EjecucionReporteria
 
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
-                Application.Run(new CapaVistaReporteria.menu_reporteria());
+                Application.Run(new Capa_Vista_Reporteria.menu_reporteria());
 
 
         }

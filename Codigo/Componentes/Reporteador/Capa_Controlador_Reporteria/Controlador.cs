@@ -7,12 +7,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CapaControladorReporteria
+namespace Capa_Controlador_Reporteria
 {
     public class Controlador
     {
-
-        CapaModeloReporteria.Sentencias sentencias = new CapaModeloReporteria.Sentencias();
+        Capa_Modelo_Reporteria.Sentencias sentencias = new Capa_Modelo_Reporteria.Sentencias();
 
         public DataTable MostrarReportes()
         {
@@ -26,7 +25,7 @@ namespace CapaControladorReporteria
         {
             string campos = "";
             //validamos si existen campos vacios
-            for (int i = 0; i <= datosReporte.Length-1; i++)
+            for (int i = 0; i <= datosReporte.Length - 1; i++)
             {
                 if (datosReporte[i].Length < 1)
                 {
@@ -37,9 +36,9 @@ namespace CapaControladorReporteria
             //luego creamos una variable plana con todos los datos del arreglo para agregarlo al sql de guardar reporte
             for (int i = 0; i <= datosReporte.Length - 2; i++)
             {
-                campos = campos +"'" +datosReporte[i] + "',";
+                campos = campos + "'" + datosReporte[i] + "',";
             }
-            campos = campos + "'"+datosReporte[datosReporte.Length-1]+"'";
+            campos = campos + "'" + datosReporte[datosReporte.Length - 1] + "'";
             sentencias.registrarReporte(campos);
             return 1;
         }
@@ -52,7 +51,7 @@ namespace CapaControladorReporteria
                 MessageBox.Show("El campo no puede estar vacío", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             //luego rectificamos que el usuario quiere barrar el reporte
-            DialogResult result = MessageBox.Show("¿Desea eliminar el reporte #"+idReporte.Text+"?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult result = MessageBox.Show("¿Desea eliminar el reporte #" + idReporte.Text + "?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.No)
             {
                 MessageBox.Show("No se borró el registro", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -84,10 +83,10 @@ namespace CapaControladorReporteria
 
         public DataTable queryReporteria(TextBox query)
         {
-                OdbcDataAdapter data2 = sentencias.queryReportes(query.Text);
-                DataTable tabla2 = new DataTable();
-                data2.Fill(tabla2);
-                return tabla2;
+            OdbcDataAdapter data2 = sentencias.queryReportes(query.Text);
+            DataTable tabla2 = new DataTable();
+            data2.Fill(tabla2);
+            return tabla2;
         }
 
         public List<string> listadoAplicaciones()

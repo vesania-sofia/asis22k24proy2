@@ -10,11 +10,11 @@ using System.Windows.Forms.ComponentModel;
 using System.Windows.Forms;
 
 
-namespace CapaVistaReporteria
+namespace Capa_Vista_Reporteria
 {
     public partial class Inicio : Form
     {
-        CapaControladorReporteria.Controlador controlador = new CapaControladorReporteria.Controlador();
+        Capa_Controlador_Reporteria.Controlador controlador = new Capa_Controlador_Reporteria.Controlador();
         Boolean confirmRuta = true;
         public Inicio()
         {
