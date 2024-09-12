@@ -36,7 +36,12 @@ namespace CapaDeDiseno
         string[] campoCombo = new string[30];
         string[] listaItems = new string[30];
         string[] campoDisplayCombo = new string[30];
-        string queryFactura;
+
+        string tablarelacionada = "";
+        string campodescriptivo="";
+        string columnaprimararelacionada="";
+        string columnaForanea = "";
+
         int posCombo = 10;
         int noCombo = 0;
         int noComboAux = 0;
@@ -112,7 +117,7 @@ namespace CapaDeDiseno
                             if (numeroAlias()== logic.contarCampos(tabla))
                             {
                                 int i = 0;
-                                DataTable dt = logic.consultaLogica(tabla);
+                                DataTable dt = logic.consultaLogica(tabla, tablarelacionada, campodescriptivo, columnaForanea, columnaprimararelacionada);
                                 dataGridView1.DataSource = dt;
                                 int head = 0;
                                 while (head< logic.contarCampos(tabla))
@@ -231,7 +236,11 @@ namespace CapaDeDiseno
             }
             else
             {
+<<<<<<< Updated upstream
                // MessageBox.Show("Tabla actual: " + tabla);
+=======
+                //MessageBox.Show("Tabla actual: " + tabla);
+>>>>>>> Stashed changes
             }
             //botonesYPermisosInicial(userActivo, aplActivo);
             //registros();
@@ -255,7 +264,18 @@ namespace CapaDeDiseno
 
 			this.idUsuario = idUsuario;            
         }
-        
+        public void asignarforaneas(string table, string tablarela, string campodescri, string columnafora, string columnaprimaria)
+        {
+            tabla = table;
+            tablarelacionada =tablarela;
+            campodescriptivo = campodescri;
+            columnaForanea = columnafora;
+            columnaprimararelacionada = columnaprimaria;
+
+            
+
+
+        }
         public void ObtenerIdAplicacion(string idAplicacion)
         {
             this.idAplicacion = idAplicacion;            
@@ -809,7 +829,10 @@ namespace CapaDeDiseno
 
         public void actualizardatagriew()
         {
-            DataTable dt = logic.consultaLogica(tabla);
+
+            DataTable dt = logic.consultaLogica(tabla,tablarelacionada,campodescriptivo, columnaForanea, columnaprimararelacionada);
+
+            
             dataGridView1.DataSource = dt;
             int head = 0;
             while (head < logic.contarCampos(tabla))
