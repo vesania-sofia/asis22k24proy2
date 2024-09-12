@@ -2398,7 +2398,10 @@ namespace CapaDeDiseno
         private void Btn_Ayuda_Click_1(object sender, EventArgs e)
         {
             // Construir la ruta completa manualmente
-            string helpFilePath = AppDomain.CurrentDomain.BaseDirectory + "AyudaHTML/AyudaNavegador.chm";
+            string helpFilePath = AppDomain.CurrentDomain.BaseDirectory + @"..\..\AyudaHTML\AyudaNavegador.chm";
+
+            // Normaliza la ruta para obtener la absoluta correctamente
+            helpFilePath = System.IO.Path.GetFullPath(helpFilePath);
 
             // Verifica si el archivo existe antes de intentar abrirlo
             if (System.IO.File.Exists(helpFilePath))
