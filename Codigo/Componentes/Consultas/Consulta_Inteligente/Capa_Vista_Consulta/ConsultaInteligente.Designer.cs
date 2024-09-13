@@ -147,6 +147,8 @@ namespace Capa_Vista_Consulta
             this.btnActualizar = new System.Windows.Forms.Button();
             this.btnBuscarQuery = new System.Windows.Forms.Button();
             this.label17 = new System.Windows.Forms.Label();
+            this.dgvConsultar = new System.Windows.Forms.DataGridView();
+            this.btnConsultar = new System.Windows.Forms.Button();
             txtQuery1 = new System.Windows.Forms.TextBox();
             this.Consulta.SuspendLayout();
             this.tabCreacion.SuspendLayout();
@@ -168,6 +170,7 @@ namespace Capa_Vista_Consulta
             this.groupBox8.SuspendLayout();
             this.tabBuscar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEliminarBuscarConsulta)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvConsultar)).BeginInit();
             this.SuspendLayout();
             // 
             // txtQuery1
@@ -239,7 +242,7 @@ namespace Capa_Vista_Consulta
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(85, 66);
             this.btnCancelar.TabIndex = 29;
-            this.btnCancelar.Text = "Borrar";
+            this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
@@ -373,6 +376,7 @@ namespace Capa_Vista_Consulta
             this.btnAgregarOrden.TabIndex = 26;
             this.btnAgregarOrden.Text = "Agregar ";
             this.btnAgregarOrden.UseVisualStyleBackColor = true;
+            this.btnAgregarOrden.Click += new System.EventHandler(this.btnAgregarOrden_Click);
             // 
             // gbCondiciones
             // 
@@ -521,6 +525,7 @@ namespace Capa_Vista_Consulta
             this.brnAgregarLogica.TabIndex = 16;
             this.brnAgregarLogica.Text = "Agregar ";
             this.brnAgregarLogica.UseVisualStyleBackColor = true;
+            this.brnAgregarLogica.Click += new System.EventHandler(this.brnAgregarLogica_Click);
             // 
             // txtValorLogico
             // 
@@ -1443,11 +1448,33 @@ namespace Capa_Vista_Consulta
             this.label17.TabIndex = 3;
             this.label17.Text = "Nombre Consulta";
             // 
+            // dgvConsultar
+            // 
+            this.dgvConsultar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvConsultar.Location = new System.Drawing.Point(994, 25);
+            this.dgvConsultar.Name = "dgvConsultar";
+            this.dgvConsultar.RowHeadersWidth = 51;
+            this.dgvConsultar.RowTemplate.Height = 24;
+            this.dgvConsultar.Size = new System.Drawing.Size(337, 269);
+            this.dgvConsultar.TabIndex = 4;
+            // 
+            // btnConsultar
+            // 
+            this.btnConsultar.Location = new System.Drawing.Point(1114, 330);
+            this.btnConsultar.Name = "btnConsultar";
+            this.btnConsultar.Size = new System.Drawing.Size(114, 66);
+            this.btnConsultar.TabIndex = 5;
+            this.btnConsultar.Text = "Consultar";
+            this.btnConsultar.UseVisualStyleBackColor = true;
+            this.btnConsultar.Click += new System.EventHandler(this.btnConsultar_Click);
+            // 
             // ConsultaInteligente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(975, 922);
+            this.ClientSize = new System.Drawing.Size(1343, 840);
+            this.Controls.Add(this.btnConsultar);
+            this.Controls.Add(this.dgvConsultar);
             this.Controls.Add(this.Consulta);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "ConsultaInteligente";
@@ -1488,6 +1515,7 @@ namespace Capa_Vista_Consulta
             this.tabBuscar.ResumeLayout(false);
             this.tabBuscar.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEliminarBuscarConsulta)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvConsultar)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1611,5 +1639,7 @@ namespace Capa_Vista_Consulta
         private System.Windows.Forms.TextBox txtQueryFinal;
         private System.Windows.Forms.TextBox txtQueryEditadoFinal;
         private System.Windows.Forms.TextBox txtQueryEditado;
+        private System.Windows.Forms.DataGridView dgvConsultar;
+        private System.Windows.Forms.Button btnConsultar;
     }
 }

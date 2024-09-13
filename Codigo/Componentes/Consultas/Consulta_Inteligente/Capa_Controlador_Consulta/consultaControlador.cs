@@ -22,7 +22,6 @@ namespace Capa_Controlador_Consulta
 
         public string GenerarQuerySimple(string[] datos)
         {
-            // Obtener la tabla y la query de los datos pasados como parámetros
             string tblConsultada = datos[2];
             string query = datos[4];
 
@@ -81,64 +80,65 @@ namespace Capa_Controlador_Consulta
         }
         public string GenerarQueryComplejo(string[] datosComplejos, string[] datos)
         {
-            // Obtener la tabla y la query de los datos pasados como parámetros
-
-            // CAMBIAR DIRECCIÓN DEL ARRAY
-            string query = datosComplejos[4];
+            string operador = datosComplejos[0];
+            string campo = datosComplejos[1];
+            string valor = datosComplejos[2];
             string querySimple = datos[4];
 
-            // CAMBIAR GENERACIÓN DE QUERY
-
-            string datoQueryGenerado = "SELECT ";
-            string fragmentoActual = "";
-            bool esCampo = true;
-
-            foreach (char c in query)
+            // Paso 1: Identificar el tipo de operador
+            if (operador.Equals("AND", StringComparison.OrdinalIgnoreCase) ||
+                operador.Equals("OR", StringComparison.OrdinalIgnoreCase))
             {
-                // COLOCAR "-" COMO PARÁMETRO DE SEPARACIÓN
-                if (c == '-')
+                // Operador lógico: Agregar al WHERE existente o iniciar WHERE si no existe
+                if (!querySimple.ToUpper().Contains("WHERE"))
                 {
-                    fragmentoActual = fragmentoActual.Trim();
-
-                    if (!string.IsNullOrEmpty(fragmentoActual))
-                    {
-                        if (esCampo)
-                        {
-                            datoQueryGenerado += $"{fragmentoActual}";
-                            esCampo = false;
-                        }
-                        else
-                        {
-                            datoQueryGenerado += $" AS {fragmentoActual}, ";
-                            esCampo = true;
-                        }
-                        fragmentoActual = "";
-                    }
+                    querySimple += $" WHERE {campo} = {valor}";
                 }
                 else
                 {
-                    fragmentoActual += c;
+                    querySimple += $" {operador} {campo} = {valor}";
                 }
             }
-
-            // Procesar el último fragmento si no se ha procesado
-            if (!string.IsNullOrEmpty(fragmentoActual.Trim()))
+            else if (operador.Equals("NOT", StringComparison.OrdinalIgnoreCase))
             {
-                if (esCampo)
+                // Operador NOT: Debe aplicarse antes de una condición
+                if (!querySimple.ToUpper().Contains("WHERE"))
                 {
-                    datoQueryGenerado += fragmentoActual;
+                    querySimple += $" WHERE NOT ({campo} = {valor})";
                 }
                 else
                 {
-                    datoQueryGenerado += $" AS {fragmentoActual}";
+                    querySimple += $" AND NOT ({campo} = {valor})";  // NOT se añade con AND por defecto
                 }
             }
-            datos[4] = datoQueryGenerado;
+            else if (operador.Equals("WHERE", StringComparison.OrdinalIgnoreCase))
+            {
+                // Operador de comparación: Solo se permite un WHERE
+                if (!querySimple.ToUpper().Contains("WHERE"))
+                {
+                    querySimple += $" WHERE {campo} = {valor}";
+                }
+                else
+                {
+                    // Si ya hay un WHERE, combinarlo con AND por defecto
+                    querySimple += $" AND {campo} = {valor}";
+                }
+            }
+            else if (operador.Equals("ORDER BY", StringComparison.OrdinalIgnoreCase))
+            {
+                // Operador de Ordenación: Valor debe ser ASC o DESC
+                querySimple += $" ORDER BY {campo} {valor}";
+            }
+            else if (operador.Equals("GROUP BY", StringComparison.OrdinalIgnoreCase))
+            {
+                // Operador de Agrupación: No necesita un valor en el tercer espacio
+                querySimple += $" GROUP BY {campo}";
+            }
 
-            // Mostrar el query generado en consola (opcional)
-            Console.WriteLine($"Query generado: {datoQueryGenerado}");
+            // Paso 2: Mostrar el query generado en consola (opcional)
+            Console.WriteLine($"Query complejo generado: {querySimple}");
 
-            return datoQueryGenerado;
+            return querySimple;
         }
         public void InsertarDatos(string[] tipos, string[] datos, string tabla)
         {
@@ -218,6 +218,7 @@ namespace Capa_Controlador_Consulta
                 Console.WriteLine("Error al agregar los datos: " + e.Message);
             }
         }
+
         // Fin de la participación de Carlos González
 
 
