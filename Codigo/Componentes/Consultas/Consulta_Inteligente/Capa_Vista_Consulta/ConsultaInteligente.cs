@@ -18,6 +18,7 @@ namespace Capa_Vista_Consulta
         consultaControlador csControlador = new consultaControlador();
         string tablabusqueda;
         private string[] datos;
+        private string[] datosComplejo;
         private string[] tipos;
         private string consultaSeleccionada;
 
@@ -31,7 +32,7 @@ namespace Capa_Vista_Consulta
             csControlador.CargarTablas(cboEditarTabla, BD);
             cboTabla.SelectedIndexChanged += new EventHandler(cboTabla_SelectedIndexChanged);
             cboEditarTabla.SelectedIndexChanged += new EventHandler(cboTablaEditar_SelectedIndexChanged);
-            //  QUITAR "ENABLED" Y USARLOS EN UNA FUNCIÓN DE CONSULTA COMPLEJA
+            chbCondiciones.CheckedChanged += chbCondiciones_CheckedChanged;
             gbCondiciones.Enabled = false;
             gbOrdenar.Enabled = false;
             gbListadoConsultas.Enabled = true;
@@ -43,8 +44,8 @@ namespace Capa_Vista_Consulta
             cboQuery3.SelectedIndexChanged += new EventHandler(cboConsultas_SelectedIndexChanged);*/
             csControlador.obtenerNombresConsultas(txtEditarNombreConsulta);
             txtEditarNombreConsulta.SelectedIndexChanged += new EventHandler(cboConsultas_SelectedIndexChanged);
-
-
+            llenarComboLogico(cboLogico);
+            llenarComboComparador(cboComparador);
         }
         string consulta = "";
         string tabla = "tbl_consultaInteligente";
@@ -55,7 +56,19 @@ namespace Capa_Vista_Consulta
             {
                 // Llama al método para llenar el segundo ComboBox con las columnas de la tabla seleccionada
                 csControlador.obtenerColumbasPorTabla(cboCampos, cboTabla.Text);
+                csControlador.obtenerColumbasPorTabla(cboComparadorCampo, cboTabla.Text);
+                csControlador.obtenerColumbasPorTabla(cboLogicoCampo, cboTabla.Text);
+                csControlador.obtenerColumbasPorTabla(cboOrdenarCampo, cboTabla.Text);
             }
+        }
+        private void llenarComboLogico(ComboBox comboBox1)
+        {
+            comboBox1.Items.Add("Seleccionar"); comboBox1.Items.Add("OR");
+            comboBox1.Items.Add("AND"); comboBox1.Items.Add("NOT"); comboBox1.SelectedIndex = 0;
+        }
+        private void llenarComboComparador(ComboBox comboBox1)
+        {
+            comboBox1.Items.Add("Seleccionar"); comboBox1.Items.Add("WHERE");comboBox1.SelectedIndex = 0;
         }
         private void btnNuevo_Click(object sender, EventArgs e)
         {
@@ -172,6 +185,7 @@ namespace Capa_Vista_Consulta
 
         private void btnCancelarSimple_Click(object sender, EventArgs e)
         {
+            datos = new string[0];
             txtNombreConsulta.Clear();
             cboTabla.ResetText();
             cboCampos.ResetText();
@@ -182,6 +196,7 @@ namespace Capa_Vista_Consulta
 
         private void btnCancelarLogica_Click(object sender, EventArgs e)
         {
+            datos = new string[0];
             cboLogico.ResetText();
             cboLogicoCampo.ResetText();
             txtValorLogico.Clear();
@@ -189,6 +204,7 @@ namespace Capa_Vista_Consulta
 
         private void btnCancelarComparacion_Click(object sender, EventArgs e)
         {
+            datos = new string[0];
             cboComparador.ResetText();
             cboComparadorCampo.ResetText();
             txtValorComparador.Clear();
@@ -196,6 +212,7 @@ namespace Capa_Vista_Consulta
 
         private void btnCancelarOrden_Click(object sender, EventArgs e)
         {
+            datos = new string[0];
             cboOrdenar.ResetText();
             cboOrdenarCampo.ResetText();
             chbOrdenAscendente.Checked = false;
@@ -204,6 +221,7 @@ namespace Capa_Vista_Consulta
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
+            datos = new string[0];
             txtNombreConsulta.Clear();
             cboTabla.ResetText();
             cboCampos.ResetText();
@@ -610,7 +628,7 @@ namespace Capa_Vista_Consulta
 
         private void btnAgregarConsultaSimple_Click(object sender, EventArgs e)
         {
-            string queryGenerado = csControlador.GenerarQuery(datos);
+            string queryGenerado = csControlador.GenerarQuerySimple(datos);
             txtQueryFinal.Text = queryGenerado;
         }
 
@@ -636,7 +654,29 @@ namespace Capa_Vista_Consulta
             consultaSeleccionada = nombreConsulta1;
         }
 
-        
+        private void chbCondiciones_CheckedChanged(object sender, EventArgs e)
+        {
+            bool habilitarControles = chbCondiciones.Checked;
+            gbCondiciones.Enabled = habilitarControles;
+            gbOrdenar.Enabled = habilitarControles;
+            gbListadoConsultas.Enabled = habilitarControles;
+            gbEditarLogica.Enabled = habilitarControles;
+            gbEditarOrden.Enabled = habilitarControles;
+            if (datos != null && datos.Length > 0)
+            {
+                datosComplejo = (string[])datos.Clone();
+                Console.WriteLine("Array copiado correctamente.");
+            }
+            else
+            {
+                Console.WriteLine("No hay datos para copiar.");
+            }
+        }
+
+        private void btnEditarCampoSimple_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
     
