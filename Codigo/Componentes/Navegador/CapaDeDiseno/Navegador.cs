@@ -2486,5 +2486,11 @@ namespace CapaDeDiseno
         {
             this.Hide();
         }
+
+        private void Btn_Imprimir_Click_1(object sender, EventArgs e)
+        {
+            //aca va el paso al formalrio de reporteria
+            //añadan su capa vista y hagan el paso
+        }
     }
 }
