@@ -138,6 +138,7 @@ namespace Capa_Vista_Consulta
             }
             else
             {
+                datos[1] = "0";
                 Console.WriteLine("Se habilitó la consulta Compleja.");
             }
         }
@@ -148,6 +149,7 @@ namespace Capa_Vista_Consulta
             csControlador.ingresar(tipos, datosComplejo, "tbl_consultaInteligente");
             string queryGenerado = csControlador.GenerarQueryComplejo(datosComplejo, datos);
             txtQueryFinal.Clear(); txtQueryFinal.Text = queryGenerado; datosComplejo = new string[0];
+            string eliminar;
         }
 
         private void brnAgregarLogica_Click(object sender, EventArgs e)
@@ -156,6 +158,7 @@ namespace Capa_Vista_Consulta
             csControlador.ingresar(tipos, datosComplejo, "tbl_consultaInteligente");
             string queryGenerado = csControlador.GenerarQueryComplejo(datosComplejo, datos);
             txtQueryFinal.Clear();txtQueryFinal.Text = queryGenerado;datosComplejo = new string[0];
+            string eliminar;
         }
 
         private void btnAgregarConsultaSimple_Click(object sender, EventArgs e)
