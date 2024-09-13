@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CapaDeLogica;
-//using CapaDatos;
+using CapaDatos;
 
 namespace CapaDeDiseno
 {
@@ -49,7 +49,7 @@ namespace CapaDeDiseno
         Color Cfuente = Color.White;
         Color nuevoColor = Color.White;
         bool presionado = false;
-        //sentencia sn = new sentencia(); //objeto del componente de seguridad para obtener el método de la bitácora
+        sentencia sn = new sentencia(); //objeto del componente de seguridad para obtener el método de la bitácora
         string idUsuario = "";
         string idAplicacion = "";
         //las siguientes dos variables son para el método botonesYPermisos();
@@ -1286,6 +1286,7 @@ namespace CapaDeDiseno
         {
             try
             {
+                sn.insertarBitacora(idUsuario, "Se presiono el boton cancelar en " + tabla, tabla);
                 // Mostrar un mensaje de confirmación antes de cancelar la operación actual
                 DialogResult result = MessageBox.Show(
                     "Está a punto de cancelar los cambios no guardados.\n\n" +
@@ -1414,6 +1415,7 @@ namespace CapaDeDiseno
                             "Eliminación Exitosa",
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Information
+
                         );
 
                         // Restablecer el estado de los botones
@@ -1447,6 +1449,7 @@ namespace CapaDeDiseno
                 // Habilitar/deshabilitar botones según los permisos del usuario
                 botonesYPermisos();
                 presionado = true;
+                sn.insertarBitacora(idUsuario, "Se actualizo el estado en " + tabla, tabla);
             }
             catch (Exception ex)
             {
@@ -2017,7 +2020,9 @@ namespace CapaDeDiseno
                                 "Actualización Exitosa",
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Information
+
                             );
+                            sn.insertarBitacora(idUsuario, "Actualizo un registro en " + tabla, tabla);
                             break;
 
                         case 2:
@@ -2028,6 +2033,7 @@ namespace CapaDeDiseno
                             // Iniciar la lista de queries para la transacción
                             List<string> queries = new List<string>();
                            logic.nuevoQuery(queryPrimeraTabla);
+                            sn.insertarBitacora(idUsuario, "Se inserto en " + tabla, tabla);
                             string ultimoIdPrimeraTabla = logic.lastID(tabla);
                             Console.WriteLine(ultimoIdPrimeraTabla);
                             if (!string.IsNullOrEmpty(otratabla))
@@ -2070,13 +2076,15 @@ namespace CapaDeDiseno
 
                                 // Añadir a la lista de queries
                                 queries.Add(querySegundaTabla);
-                                
+
+                                // Ejecutar las queries dentro de una transacción
+                                logic.insertarDatosEnDosTablas(queries);
+
+                                sn.insertarBitacora(idUsuario, "Se inserto en " + otratabla, otratabla);
                             }
 
-                            // Ejecutar las queries dentro de una transacción
-                            logic.insertarDatosEnDosTablas(queries);
-
                             MessageBox.Show("El registro ha sido guardado correctamente.", "Guardado Exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                             break;
 
                         default:
