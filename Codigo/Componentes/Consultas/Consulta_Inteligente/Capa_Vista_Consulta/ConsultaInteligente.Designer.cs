@@ -122,7 +122,7 @@ namespace Capa_Vista_Consulta
             this.cboEditarLogico = new System.Windows.Forms.ComboBox();
             this.label28 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
-            this.txtEditarNombreConsulta = new System.Windows.Forms.ComboBox();
+            this.cboEditarNombreConsulta = new System.Windows.Forms.ComboBox();
             this.label23 = new System.Windows.Forms.Label();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.txtQueryEditado = new System.Windows.Forms.TextBox();
@@ -833,7 +833,7 @@ namespace Capa_Vista_Consulta
             this.tabEditar.Controls.Add(this.gbEditarOrden);
             this.tabEditar.Controls.Add(this.checkBox6);
             this.tabEditar.Controls.Add(this.gbEditarCondicion);
-            this.tabEditar.Controls.Add(this.txtEditarNombreConsulta);
+            this.tabEditar.Controls.Add(this.cboEditarNombreConsulta);
             this.tabEditar.Controls.Add(this.label23);
             this.tabEditar.Controls.Add(this.groupBox8);
             this.tabEditar.Location = new System.Drawing.Point(4, 22);
@@ -1212,15 +1212,15 @@ namespace Capa_Vista_Consulta
             this.label29.TabIndex = 9;
             this.label29.Text = "Operador Lógico";
             // 
-            // txtEditarNombreConsulta
+            // cboEditarNombreConsulta
             // 
-            this.txtEditarNombreConsulta.FormattingEnabled = true;
-            this.txtEditarNombreConsulta.Location = new System.Drawing.Point(325, 9);
-            this.txtEditarNombreConsulta.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.txtEditarNombreConsulta.Name = "txtEditarNombreConsulta";
-            this.txtEditarNombreConsulta.Size = new System.Drawing.Size(175, 21);
-            this.txtEditarNombreConsulta.TabIndex = 8;
-            this.txtEditarNombreConsulta.SelectedIndexChanged += new System.EventHandler(this.cboQuery2_SelectedIndexChanged);
+            this.cboEditarNombreConsulta.FormattingEnabled = true;
+            this.cboEditarNombreConsulta.Location = new System.Drawing.Point(325, 9);
+            this.cboEditarNombreConsulta.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cboEditarNombreConsulta.Name = "cboEditarNombreConsulta";
+            this.cboEditarNombreConsulta.Size = new System.Drawing.Size(175, 21);
+            this.cboEditarNombreConsulta.TabIndex = 8;
+            this.cboEditarNombreConsulta.SelectedIndexChanged += new System.EventHandler(this.cboQuery2_SelectedIndexChanged);
             // 
             // label23
             // 
@@ -1441,6 +1441,7 @@ namespace Capa_Vista_Consulta
             this.btnEliminar.TabIndex = 13;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnActualizar
             // 
@@ -1451,6 +1452,7 @@ namespace Capa_Vista_Consulta
             this.btnActualizar.TabIndex = 12;
             this.btnActualizar.Text = "Actualizar";
             this.btnActualizar.UseVisualStyleBackColor = true;
+            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
             // 
             // btnBuscarQuery
             // 
@@ -1461,6 +1463,7 @@ namespace Capa_Vista_Consulta
             this.btnBuscarQuery.TabIndex = 11;
             this.btnBuscarQuery.Text = "Buscar";
             this.btnBuscarQuery.UseVisualStyleBackColor = true;
+            this.btnBuscarQuery.Click += new System.EventHandler(this.btnBuscarQuery_Click);
             // 
             // label17
             // 
@@ -1614,7 +1617,7 @@ namespace Capa_Vista_Consulta
         private System.Windows.Forms.Button btnBuscarQuery1;
         private System.Windows.Forms.ComboBox cboQuery1;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.ComboBox txtEditarNombreConsulta;
+        private System.Windows.Forms.ComboBox cboEditarNombreConsulta;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.GroupBox groupBox8;
         private System.Windows.Forms.Button btnCancelarEditarSimple;

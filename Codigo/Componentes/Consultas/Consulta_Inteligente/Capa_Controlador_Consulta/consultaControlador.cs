@@ -614,6 +614,39 @@ namespace Capa_Controlador_Consulta
                 txtQuery1.Text = query;
             }
         }
+
+        /* public void BuscarQuery(string nombreConsulta, DataGridView dgv, TextBox txtQuery)
+         {
+             consultaSentencias csSentencias = new consultaSentencias();
+             // Obtener la consulta SQL desde la base de datos
+             string query = csSentencias.ObtenerQueryPorNombre(nombreConsulta);
+
+             if (!string.IsNullOrEmpty(query))
+             {
+                 // Mostrar la consulta SQL en el TextBox
+                 txtQuery.Text = query;
+
+                 // Ejecutar la consulta y llenar el DataGridView
+                 OdbcDataAdapter adapter = csSentencias.EjecutarQuery(query);
+                 DataTable tablaResultados = new DataTable();
+                 adapter.Fill(tablaResultados);
+             }
+             else
+             {
+                 MessageBox.Show("No se encontró la consulta.");
+             }
+         }*/
+
+        public void EliminarConsulta(string nombreConsulta)
+        {
+            // Llamar al método de la capa de modelo para actualizar el estado de la consulta
+            csSentencias.EliminarConsulta(nombreConsulta);
+
+
+        }
+
+
+
         //Fin participacion Sebastian Luna
     }
 }

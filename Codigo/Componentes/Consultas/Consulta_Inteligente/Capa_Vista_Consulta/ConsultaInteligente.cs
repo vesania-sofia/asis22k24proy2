@@ -42,8 +42,8 @@ namespace Capa_Vista_Consulta
             cboQuery1.SelectedIndexChanged += new EventHandler(cboConsultas_SelectedIndexChanged);
             csControlador.obtenerNombresConsultas(cboQuery3);
             cboQuery3.SelectedIndexChanged += new EventHandler(cboConsultas_SelectedIndexChanged);
-            csControlador.obtenerNombresConsultas(txtEditarNombreConsulta);
-            txtEditarNombreConsulta.SelectedIndexChanged += new EventHandler(cboConsultas_SelectedIndexChanged);
+            csControlador.obtenerNombresConsultas(cboEditarNombreConsulta);
+            cboEditarNombreConsulta.SelectedIndexChanged += new EventHandler(cboConsultas_SelectedIndexChanged);
             llenarComboLogico(cboLogico);
             llenarComboComparador(cboComparador);
             llenarComboOrden(cboOrdenar);
@@ -361,15 +361,16 @@ namespace Capa_Vista_Consulta
         private void cboConsultas_SelectedIndexChanged(object sender, EventArgs e)
         {
             /// Captura el nombre de la consulta seleccionada desde el ComboBox
-            consultaSeleccionada = txtEditarNombreConsulta.SelectedItem.ToString();
 
             // Captura el nombre de la consulta seleccionada
             string nombreConsulta = cboQuery1.Text;
             string nombreConsulta1 = cboQuery3.Text;
+            string nombreConsulta2 = cboEditarNombreConsulta.Text;
 
             // Guardar el nombre de la consulta en una variable de instancia
             consultaSeleccionada = nombreConsulta;
             consultaSeleccionada = nombreConsulta1;
+            consultaSeleccionada = nombreConsulta2;
 
         }
 
@@ -378,7 +379,7 @@ namespace Capa_Vista_Consulta
         {
             //boton agregar, consulta simple
             // Datos que se van a procesar
-            datos = new string[] { txtEditarNombreConsulta.Text, "0", cboEditarTabla.Text, chbTodosCampos.Text, txtQueryEditadoFinal.Text, "1" };
+            datos = new string[] { cboEditarNombreConsulta.Text, "0", cboEditarTabla.Text, chbTodosCampos.Text, txtQueryEditadoFinal.Text, "1" };
 
             // Inicializamos la variable para los campos que se mostrarán en el query
             string camposSeleccionados;
@@ -641,6 +642,54 @@ namespace Capa_Vista_Consulta
         {
             consultaControlador controlador = new consultaControlador();
             controlador.CargarQueryEnTextBox(cboQuery1, txtQuery11);
+        }
+
+        private void btnBuscarQuery_Click(object sender, EventArgs e)
+        {
+            consultaControlador controlador = new consultaControlador();
+            string querySeleccionado = cboQuery3.SelectedItem.ToString();
+            controlador.BuscarQuerySeleccionado(querySeleccionado, dgvEliminarBuscarConsulta, txtQuery11);
+
+        }
+
+        private void btnActualizar_Click(object sender, EventArgs e)
+        {
+                // Obtener el nombre de la consulta seleccionada en el ComboBox
+                string nombreConsultaSeleccionada = cboQuery3.SelectedItem?.ToString();
+
+                if (string.IsNullOrEmpty(nombreConsultaSeleccionada))
+                {
+                    MessageBox.Show("Seleccione una consulta del ComboBox.");
+                    return;
+                }
+
+                // Llamar al método del controlador para buscar y mostrar el query
+                consultaControlador controlador = new consultaControlador();
+                controlador.BuscarQuerySeleccionado(nombreConsultaSeleccionada, dgvEliminarBuscarConsulta, txtQuery11);
+            
+
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            // Obtener el nombre de la consulta seleccionada en cboQuery3
+            string consultaSeleccionada = cboQuery3.SelectedItem.ToString();
+
+            // Llamar al método de controlador para eliminar la consulta
+            if (!string.IsNullOrEmpty(consultaSeleccionada))
+            {
+                consultaControlador eliminarControlador = new consultaControlador();
+                eliminarControlador.EliminarConsulta(consultaSeleccionada);
+
+                // Refrescar el DataGridView después de eliminar la consulta
+                // Esto puede incluir la llamada al método para recargar los datos, si es necesario
+                dgvEliminarBuscarConsulta.DataSource = null; // Limpiar el DataGridView
+                                                             
+            }
+            else
+            {
+                MessageBox.Show("Por favor, seleccione una consulta para eliminar.");
+            }
         }
         //Fin participacion sebastian Luna
     }

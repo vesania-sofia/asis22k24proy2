@@ -482,6 +482,23 @@ namespace Capa_Modelo_Consulta
             return adapter;
         }
 
+        public void EliminarConsulta(string nombreConsulta)
+        {
+            try
+            {
+                string sql = "UPDATE tbl_consultaInteligente SET consulta_estatus = 0 WHERE nombre_consulta = ?";
+                using (OdbcCommand cmd = new OdbcCommand(sql, con.connection()))
+                {
+                    cmd.Parameters.AddWithValue("@nombreConsulta", nombreConsulta);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error al eliminar la consulta: " + e.Message);
+            }
+        }
+
         //Fin de participacion de sebastian luna
     }
 
