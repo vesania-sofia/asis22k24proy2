@@ -136,11 +136,6 @@ namespace Capa_Vista_Consulta
                 datos[1] = "1";
                 Console.WriteLine("Se habilitó la consulta Compleja.");
             }
-            else
-            {
-                datos[1] = "0";
-                Console.WriteLine("Se habilitó la consulta Compleja.");
-            }
         }
 
         private void btnAgregarComparacion_Click(object sender, EventArgs e)
@@ -196,7 +191,9 @@ namespace Capa_Vista_Consulta
 
         private void btnConsultar_Click(object sender, EventArgs e)
         {
-
+            consultaControlador controlador = new consultaControlador();
+            string querySeleccionado = txtNombreConsulta.Text;
+            controlador.BuscarQuerySeleccionado(querySeleccionado, dgvConsultar, txtQueryFinal);
         }
 
         private void ConsultaInteligente_Load(object sender, EventArgs e)
@@ -274,6 +271,7 @@ namespace Capa_Vista_Consulta
         {
             datos = new string[0];
             datosComplejo = new string[0];
+            txtQueryFinal.Clear();
             cboLogico.ResetText();
             cboLogicoCampo.ResetText();
             txtValorLogico.Clear();
@@ -283,6 +281,7 @@ namespace Capa_Vista_Consulta
         {
             datos = new string[0];
             datosComplejo = new string[0];
+            txtQueryFinal.Clear();
             cboComparador.ResetText();
             cboComparadorCampo.ResetText();
             txtValorComparador.Clear();
@@ -292,6 +291,7 @@ namespace Capa_Vista_Consulta
         {
             datos = new string[0];
             datosComplejo = new string[0];
+            txtQueryFinal.Clear();
             cboOrdenar.ResetText();
             cboOrdenarCampo.ResetText();
             chbOrdenAscendente.Checked = false;
@@ -633,6 +633,7 @@ namespace Capa_Vista_Consulta
 
         private void btnBuscarQuery1_Click(object sender, EventArgs e)
         {
+            
             consultaControlador controlador = new consultaControlador();
             string querySeleccionado = cboQuery1.SelectedItem.ToString();
             controlador.BuscarQuerySeleccionado(querySeleccionado, dgvConsultas, txtQuery11);
@@ -690,6 +691,16 @@ namespace Capa_Vista_Consulta
             {
                 MessageBox.Show("Por favor, seleccione una consulta para eliminar.");
             }
+        }
+
+        private void tabConsultas_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chbTodosCampos_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
         //Fin participacion sebastian Luna
     }
