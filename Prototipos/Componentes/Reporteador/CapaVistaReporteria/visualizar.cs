@@ -27,19 +27,30 @@ namespace CapaVistaReporteria
 
         public void mostrar()
         {
-            ReportDocument crystalrpt = new ReportDocument();
-            try
+            // Retroceder a la carpeta raíz del proyecto y luego entrar a la carpeta "Reportes"
+            string rutaProyecto = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\"));
+            string rutaReporte = Path.Combine(rutaProyecto, "Reportes", direccion_reporte.Text);
+
+            using (ReportDocument crystalrpt = new ReportDocument())
             {
-                crystalrpt.Load(Path.GetFullPath("..\\..\\..\\..\\..\\..\\..\\Reportes\\" + direccion_reporte.Text));
-                crystalrpt.Refresh();
-                crystalReportViewer1.ReportSource = crystalrpt;
-                crystalReportViewer1.Refresh();
-            }
-            catch
-            {
-                MessageBox.Show("Error, no se puede encontrar el reporte en su equipo, verifique la ruta");
+                try
+                {
+                    // Cargar el reporte desde la ruta especificada
+                    crystalrpt.Load(rutaReporte);
+                    crystalrpt.Refresh();
+
+                    // Asignar el reporte al visor de Crystal Reports
+                    crystalReportViewer1.ReportSource = crystalrpt;
+                    crystalReportViewer1.Refresh();
+                }
+                catch (Exception ex)
+                {
+                    // Mostrar un mensaje de error si no se puede cargar el reporte
+                    MessageBox.Show($"Error al cargar el reporte: {ex.Message}");
+                }
             }
         }
+
 
 
 
