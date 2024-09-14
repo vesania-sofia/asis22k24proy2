@@ -38,10 +38,10 @@ namespace Capa_Vista_Consulta
             gbListadoConsultas.Enabled = true;
             gbEditarLogica.Enabled = false;
             gbEditarOrden.Enabled = false;
-            /*csControlador.obtenerNombresConsultas(cboQuery1);
-            cboQuery2.SelectedIndexChanged += new EventHandler(cboConsultas_SelectedIndexChanged);
+            csControlador.obtenerNombresConsultas(cboQuery1);
+            cboQuery1.SelectedIndexChanged += new EventHandler(cboConsultas_SelectedIndexChanged);
             csControlador.obtenerNombresConsultas(cboQuery3);
-            cboQuery3.SelectedIndexChanged += new EventHandler(cboConsultas_SelectedIndexChanged);*/
+            cboQuery3.SelectedIndexChanged += new EventHandler(cboConsultas_SelectedIndexChanged);
             csControlador.obtenerNombresConsultas(txtEditarNombreConsulta);
             txtEditarNombreConsulta.SelectedIndexChanged += new EventHandler(cboConsultas_SelectedIndexChanged);
             llenarComboLogico(cboLogico);
@@ -363,6 +363,14 @@ namespace Capa_Vista_Consulta
             /// Captura el nombre de la consulta seleccionada desde el ComboBox
             consultaSeleccionada = txtEditarNombreConsulta.SelectedItem.ToString();
 
+            // Captura el nombre de la consulta seleccionada
+            string nombreConsulta = cboQuery1.Text;
+            string nombreConsulta1 = cboQuery3.Text;
+
+            // Guardar el nombre de la consulta en una variable de instancia
+            consultaSeleccionada = nombreConsulta;
+            consultaSeleccionada = nombreConsulta1;
+
         }
 
 
@@ -594,113 +602,8 @@ namespace Capa_Vista_Consulta
 
 
 
-        /*Cambios por Sebastian Luna 
-
-        consultaControlador cn = new consultaControlador();
-
-        public void llenarse(string tabla, string campo1, string campo2)
-        {
-
-            string tbl = tabla;
-            string cmp1 = campo1;
-            string cmp2 = campo2;
-
-
-
-            cboQuery3.ValueMember = "numero";
-            cboQuery3.DisplayMember = "nombre";
-
-            string[] items = cn.items(tabla, campo1, campo2);
-
-
-
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] != null)
-                {
-                    if (items[i] != "")
-                    {
-                        cboQuery3.Items.Add(items[i]);
-                    }
-                }
-
-            }
-
-            var dt2 = cn.enviar(tabla, campo1, campo2);
-            AutoCompleteStringCollection coleccion = new AutoCompleteStringCollection();
-            foreach (DataRow row in dt2.Rows)
-            {
-
-                coleccion.Add(Convert.ToString(row[campo1]) + "-" + Convert.ToString(row[campo2]));
-                coleccion.Add(Convert.ToString(row[campo2]) + "-" + Convert.ToString(row[campo1]));
-
-
-            }
-
-            cboQuery3.AutoCompleteCustomSource = coleccion;
-            cboQuery3.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            cboQuery3.AutoCompleteSource = AutoCompleteSource.CustomSource;
-
-
-        }
-
-        public void llenarse2(string tabla, string campo1, string campo2)
-        {
-
-            string tbl = tabla;
-            string cmp1 = campo1;
-            string cmp2 = campo2;
-
-
-
-            cboQuery1.ValueMember = "numero";
-            cboQuery1.DisplayMember = "nombre";
-
-            string[] items = cn.items(tabla, campo1, campo2);
-
-
-
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] != null)
-                {
-                    if (items[i] != "")
-                    {
-                        cboQuery1.Items.Add(items[i]);
-                    }
-                }
-
-            }
-
-            var dt2 = cn.enviar(tabla, campo1, campo2);
-            AutoCompleteStringCollection coleccion = new AutoCompleteStringCollection();
-            foreach (DataRow row in dt2.Rows)
-            {
-
-                coleccion.Add(Convert.ToString(row[campo1]) + "-" + Convert.ToString(row[campo2]));
-                coleccion.Add(Convert.ToString(row[campo2]) + "-" + Convert.ToString(row[campo1]));
-
-
-            }
-
-            cboQuery1.AutoCompleteCustomSource = coleccion;
-            cboQuery1.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            cboQuery1.AutoCompleteSource = AutoCompleteSource.CustomSource;
-
-
-        }
-        Fin participacion sebastian Luna*/
-        /*private void cboConsultas_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            // Captura el nombre de la consulta seleccionada
-            string nombreConsulta = cboQuery1.Text;
-            string nombreConsulta1 = cboQuery3.Text;
-
-            // Guardar el nombre de la consulta en una variable de instancia
-            consultaSeleccionada = nombreConsulta;
-            consultaSeleccionada = nombreConsulta1;
-        }
-        */
+        //Cambios por Sebastian Luna 
+        
         private void cboQuery3_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -726,6 +629,20 @@ namespace Capa_Vista_Consulta
         {
 
         }
+
+        private void btnBuscarQuery1_Click(object sender, EventArgs e)
+        {
+            consultaControlador controlador = new consultaControlador();
+            string querySeleccionado = cboQuery1.SelectedItem.ToString();
+            controlador.BuscarQuerySeleccionado(querySeleccionado, dgvConsultas, txtQuery11);
+        }
+
+        private void cboQuery1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            consultaControlador controlador = new consultaControlador();
+            controlador.CargarQueryEnTextBox(cboQuery1, txtQuery11);
+        }
+        //Fin participacion sebastian Luna
     }
 }
     
