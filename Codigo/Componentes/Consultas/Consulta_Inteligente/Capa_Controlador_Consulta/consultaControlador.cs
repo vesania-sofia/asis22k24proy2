@@ -85,6 +85,9 @@ namespace Capa_Controlador_Consulta
             string valor = datosComplejos[2];
             string querySimple = datos[4];
 
+            // Remover el punto y coma al final si existe
+            querySimple = querySimple.TrimEnd(';');
+
             // Paso 1: Identificar el tipo de operador
             if (operador.Equals("AND", StringComparison.OrdinalIgnoreCase) ||
                 operador.Equals("OR", StringComparison.OrdinalIgnoreCase))
@@ -135,9 +138,12 @@ namespace Capa_Controlador_Consulta
                 querySimple += $" GROUP BY {campo}";
             }
 
+            // Agregar el punto y coma al final
+            querySimple += ";";
+
             // Paso 2: Mostrar el query generado en consola (opcional)
             Console.WriteLine($"Query complejo generado: {querySimple}");
-
+            datos[4] = querySimple;
             return querySimple;
         }
         public void InsertarDatos(string[] tipos, string[] datos, string tabla)
