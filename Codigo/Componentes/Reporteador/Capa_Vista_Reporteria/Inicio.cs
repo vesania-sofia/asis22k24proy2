@@ -73,8 +73,7 @@ namespace Capa_Vista_Reporteria
 
         private void btn_guardar_Click(object sender, EventArgs e)
         {
-            string[] datosReporte = { txt_ruta.Text, txt_nombre.Text, txt_aplicacion.Text, txt_estado.Text };
-            controlador.guardarReporte(datosReporte);
+            controlador.guardarReporte(idReporte, txt_ruta.Text, txt_nombre.Text, txt_aplicacion.Text, txt_estado.Text);
             actualizarVistaReportes();
             confirmRuta = true;
             getId();

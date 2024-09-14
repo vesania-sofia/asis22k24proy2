@@ -23,10 +23,12 @@ namespace Capa_Vista_Reporteria
 
         public void mostrar()
         {
+            string rutaProyecto = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\..\..\..\..\"));
+            string rutaReporte = Path.Combine(rutaProyecto, "Reportes", direccion_reporte.Text);
             ReportDocument crystalrpt = new ReportDocument();
             try
             {
-                crystalrpt.Load(Path.GetFullPath("..\\..\\..\\..\\..\\..\\..\\Reportes\\" + direccion_reporte.Text));
+                crystalrpt.Load(rutaReporte);
                 crystalReportViewer1.ReportSource = crystalrpt;
                 crystalReportViewer1.Refresh();
             }
