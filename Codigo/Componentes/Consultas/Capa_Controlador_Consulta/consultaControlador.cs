@@ -245,77 +245,33 @@ namespace Capa_Controlador_Consulta
             }
         }
 
-        public void actualizarQuery(string[] tipos, string[] datos, string tabla)
+        public void ActualizarDatos(string[] tipos, string[] datos, string tabla)
         {
+            try
             {
-                // Datos del arreglo, con corrección en el índice de query
+                string queryGenerado = datos[4]; // Asumimos que el query ya fue generado
                 string nombreConsulta = datos[0];
                 string tipoConsulta = datos[1];
-                string tblConsultada = datos[2];
-                string query = datos[4]; // Se asume que la query está en la posición 4
-                string datoQueryGenerado = "SELECT ";
                 string status = datos[5];
-                string fragmentoActual = "";
-                bool esCampo = true;
-
-                foreach (char c in query)
-                {
-                    if (c == '+')
-                    {
-                        fragmentoActual = fragmentoActual.Trim();
-
-                        if (!string.IsNullOrEmpty(fragmentoActual))
-                        {
-                            if (esCampo)
-                            {
-                                datoQueryGenerado += $"{fragmentoActual} AS "; // Es un campo
-                            }
-                            else
-                            {
-                                datoQueryGenerado += $"{fragmentoActual}, "; // Es un alias
-                            }
-                            esCampo = !esCampo; // Alternar entre campo y alias
-                            fragmentoActual = ""; // Reiniciar el fragmento
-                        }
-                    }
-                    else
-                    {
-                        fragmentoActual += c; // Agregar el carácter actual al fragmento
-                    }
-                }
-
-                // Procesar el último fragmento si hay un alias pendiente
-                if (!string.IsNullOrEmpty(fragmentoActual.Trim()))
-                {
-                    if (esCampo)
-                    {
-                        datoQueryGenerado += $"{fragmentoActual}"; // Si falta procesar un campo
-                    }
-                    else
-                    {
-                        datoQueryGenerado += $"{fragmentoActual}"; // Si falta procesar un alias
-                    }
-                }
-
-                // Remover la última coma y agregar el FROM
-                datoQueryGenerado = datoQueryGenerado.TrimEnd(',', ' ') + $" FROM {tblConsultada};";
-
-                // Mostrar el query generado
-                Console.WriteLine($"Query generado: {datoQueryGenerado}");
 
                 // Construir la cláusula SET para el método de actualización
-                string setClause = $"consulta_SQLE = '{datoQueryGenerado}'";
+                // NOTA: Asegúrate de que los nombres de las columnas coincidan con los de tu base de datos.
+                string setClause = $"nombre_consulta = '{nombreConsulta}', tipo_consulta = '{tipoConsulta}', consulta_SQLE = '{queryGenerado}', consulta_estatus = '{status}'";
 
                 // Construir la condición WHERE para la actualización
                 string condicion = $"nombre_consulta = '{nombreConsulta}'";
 
-                // Llamar a la capa de modelo para actualizar la consulta
+                // Llamar al método actualizar con la cláusula SET y la condición WHERE
                 csSentencias.actualizar(setClause, tabla, condicion);
-
+                MessageBox.Show("Datos actualizados correctamente");
+            }
+            catch (Exception ex)
+            {
+                // Manejar posibles errores
+                Console.WriteLine($"Error al actualizar los datos: {ex.Message}");
+                MessageBox.Show("Error al actualizar, revisar Consola...", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-
 
 
 

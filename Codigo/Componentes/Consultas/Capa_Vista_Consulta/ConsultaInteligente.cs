@@ -47,6 +47,11 @@ namespace Capa_Vista_Consulta
             llenarComboLogico(cboLogico);
             llenarComboComparador(cboComparador);
             llenarComboOrden(cboOrdenar);
+            llenarComboLogico(cboEditarLogico);
+            llenarComboComparador(cboEditarComparador);
+            llenarComboOrden(cboEditarOrdenar);
+
+
         }
         string consulta = "";
         string tabla = "tbl_consultaInteligente";
@@ -241,20 +246,14 @@ namespace Capa_Vista_Consulta
 
         }
 
-        private void button17_Click(object sender, EventArgs e)
-        {
-
-        }
+       
 
         private void chbEditarDescendente_CheckedChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void btnEditarLogico_Click(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void btnCancelarSimple_Click(object sender, EventArgs e)
         {
@@ -332,12 +331,11 @@ namespace Capa_Vista_Consulta
             {
                 // Llama al método para llenar el segundo ComboBox con las columnas de la tabla seleccionada
                 csControlador.obtenerColumbasPorTabla(cboEditarCampo, cboEditarTabla.Text);
+                csControlador.obtenerColumbasPorTabla(cboEditarCampoComparador, cboEditarTabla.Text);
+                csControlador.obtenerColumbasPorTabla(cboEditarCampoLogico, cboEditarTabla.Text);
+                csControlador.obtenerColumbasPorTabla(cboEditarCampoOrdenar, cboEditarTabla.Text);
             }
         }
-
-
-
-
         private void btnEditar_Click_1(object sender, EventArgs e)
         {
             // Asegúrate de que consultaSeleccionada tiene un valor válido
@@ -351,11 +349,7 @@ namespace Capa_Vista_Consulta
             datos[0] = consultaSeleccionada; // Suponiendo que datos[0] es el nombre de la consulta
 
             // Procesar los datos en la tabla correspondiente
-            csControlador.actualizarQuery(tipos, datos, tabla);
-
-
-
-
+            csControlador.ActualizarDatos(tipos, datos, tabla);
     }
 
         private void cboConsultas_SelectedIndexChanged(object sender, EventArgs e)
@@ -423,22 +417,120 @@ namespace Capa_Vista_Consulta
             csControlador.ingresar(tipos, datos, "tbl_consultaInteligente");
         }
 
+        private void btnEditarCampoSimple_Click(object sender, EventArgs e)
+        {
+            string queryGenerado = csControlador.GenerarQuerySimple(datos);
+            txtQueryEditadoFinal.Text = queryGenerado;
+
+        }
 
 
+        private void button17_Click(object sender, EventArgs e)
+        {
+            datos = new string[0];
+            cboEditarTabla.ResetText();
+            cboEditarCampo.ResetText();
+            txtEditarAlias.Clear();
+            chbTodosCampos.Checked = false;
+            txtQueryEditado.Clear();
+        }
 
 
+        private void btnCancelarEditar_Click(object sender, EventArgs e)
+        {
+
+            datos = new string[0];
+            datosComplejo = new string[0];
+            cboEditarTabla.ResetText();
+            cboEditarCampo.ResetText();
+            txtEditarAlias.Clear();
+            chbEditarTodosCampos.Checked = false;
+            cboEditarLogico.ResetText();
+            cboEditarCampoLogico.ResetText();
+            txtEditarValorLogico.Clear();
+            cboEditarComparador.ResetText();
+            cboEditarCampoComparador.ResetText();
+            txtEditarValorComparacion.Clear();
+            cboEditarOrdenar.ResetText();
+            cboEditarCampoOrdenar.ResetText();
+            chbEditarAscendente.Checked = false;
+            chbEditarDescendente.Checked = false;
+            txtQueryEditado.Clear();
+            txtQueryEditadoFinal.Clear();
+
+        }
 
 
+        private void checkBox6_CheckedChanged(object sender, EventArgs e)
+        {
+            bool habilitarControles = chbCondicionesEditar.Checked;
+            gbEditarCondicion.Enabled = habilitarControles;
+            gbEditarOrden.Enabled = habilitarControles;
+            gbListadoConsultas.Enabled = habilitarControles;
+            gbEditarLogica.Enabled = habilitarControles;
+            gbEditarOrden.Enabled = habilitarControles;
+            if (datos != null && datos.Length > 0)
+            {
+                datos[1] = "1";
+                Console.WriteLine("Se habilitó la consulta Compleja.");
+            }
+
+        }
 
 
+        private void btnEditarOrdenar_Click(object sender, EventArgs e)
+        {
+            datosComplejo = new string[] { cboEditarOrdenar.Text, cboEditarCampoOrdenar.Text, "0", txtQueryEditadoFinal.Text };
+            if (cboEditarOrdenar.Text == "Ordenar")
+            {
+                if (chbEditarAscendente.Checked)
+                {
+                    datosComplejo[2] = "ASC";
+                }
+                else if (chbEditarDescendente.Checked)
+                {
+                    datosComplejo[2] = "DESC";
+                }
+                else
+                {
+                    MessageBox.Show("Si se desa agregar un ordenamiento, debe seleccionar el tipo.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            else if (cboEditarOrdenar.Text == "Agrupar")
+            {
+                datosComplejo[2] = "0";
+            }
+            else
+            {
+                MessageBox.Show("Antes de agregar debe asignar valores.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            csControlador.ingresar(tipos, datosComplejo, "tbl_consultaInteligente");
+            string queryGenerado = csControlador.GenerarQueryComplejo(datosComplejo, datos);
+            txtQueryEditadoFinal.Clear(); txtQueryEditadoFinal.Text = queryGenerado; datosComplejo = new string[0];
+        }
+
+        private void btnEditarLogico_Click(object sender, EventArgs e)
+        {
+
+            datosComplejo = new string[] { cboEditarLogico.Text, cboEditarCampoLogico.Text, txtEditarValorLogico.Text, txtQueryEditadoFinal.Text };
+            csControlador.ingresar(tipos, datosComplejo, "tbl_consultaInteligente");
+            string queryGenerado = csControlador.GenerarQueryComplejo(datosComplejo, datos);
+            txtQueryEditadoFinal.Clear(); txtQueryEditadoFinal.Text = queryGenerado; datosComplejo = new string[0];
+            string eliminar;
+        }
+
+        private void btnEditarComparacion_Click(object sender, EventArgs e)
+        {
+
+            datosComplejo = new string[] { cboEditarComparador.Text, cboEditarCampoComparador.Text, txtEditarValorComparacion.Text, txtQueryEditadoFinal.Text };
+            csControlador.ingresar(tipos, datosComplejo, "tbl_consultaInteligente");
+            string queryGenerado = csControlador.GenerarQueryComplejo(datosComplejo, datos);
+            txtQueryEditadoFinal.Clear(); txtQueryEditadoFinal.Text = queryGenerado; datosComplejo = new string[0];
+            string eliminar;
+        }
 
 
-
-
-
-
-
-
+      
 
 
 
@@ -604,7 +696,7 @@ namespace Capa_Vista_Consulta
 
 
         //Cambios por Sebastian Luna 
-        
+
         private void cboQuery3_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -626,10 +718,7 @@ namespace Capa_Vista_Consulta
             consultaSeleccionada = nombreConsulta1;
         }
 
-        private void btnEditarCampoSimple_Click(object sender, EventArgs e)
-        {
-
-        }
+       
 
         private void btnBuscarQuery1_Click(object sender, EventArgs e)
         {
@@ -702,6 +791,13 @@ namespace Capa_Vista_Consulta
         {
 
         }
+
+     
+
+
+
+
+
         //Fin participacion sebastian Luna
     }
 }
