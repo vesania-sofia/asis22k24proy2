@@ -480,36 +480,74 @@ namespace Capa_Vista_Consulta
 
         private void btnEditarOrdenar_Click(object sender, EventArgs e)
         {
+            // Verificar que se haya seleccionado una operación válida
+            if (string.IsNullOrWhiteSpace(cboEditarOrdenar.Text) || string.IsNullOrWhiteSpace(cboEditarCampoOrdenar.Text))
+            {
+                MessageBox.Show("Debe seleccionar una operación y un campo.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Inicializar el array de datos
             datosComplejo = new string[] { cboEditarOrdenar.Text, cboEditarCampoOrdenar.Text, "0", txtQueryEditadoFinal.Text };
+
+            // Verificar el tipo de operación
             if (cboEditarOrdenar.Text == "Ordenar")
             {
                 if (chbEditarAscendente.Checked)
                 {
-                    datosComplejo[2] = "ASC";
+                    datosComplejo[2] = "ASC"; // Agregar ASC si está seleccionado
                 }
                 else if (chbEditarDescendente.Checked)
                 {
-                    datosComplejo[2] = "DESC";
+                    datosComplejo[2] = "DESC"; // Agregar DESC si está seleccionado
                 }
                 else
                 {
-                    MessageBox.Show("Si se desa agregar un ordenamiento, debe seleccionar el tipo.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Si se desea agregar un ordenamiento, debe seleccionar el tipo.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
                 }
             }
             else if (cboEditarOrdenar.Text == "Agrupar")
             {
-                datosComplejo[2] = "0";
+                datosComplejo[2] = "GROUP BY"; // Indicar que es una operación de agrupamiento
             }
             else
             {
                 MessageBox.Show("Antes de agregar debe asignar valores.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
+
+            // Insertar datos
             csControlador.ingresar(tipos, datosComplejo, "tbl_consultaInteligente");
+
+            // Generar la query
             string queryGenerado = csControlador.GenerarQueryComplejo(datosComplejo, datos);
-            txtQueryEditadoFinal.Clear(); txtQueryEditadoFinal.Text = queryGenerado; datosComplejo = new string[0];
+
+            // Quitar cualquier punto y coma al final de la query antes de agregar ORDER BY o GROUP BY
+            queryGenerado = queryGenerado.TrimEnd(';');
+
+            // Agregar la cláusula de ordenamiento o agrupamiento según corresponda
+            if (cboEditarOrdenar.Text == "Ordenar")
+            {
+                queryGenerado += $" ORDER BY {cboEditarCampoOrdenar.Text} {datosComplejo[2]}";
+            }
+            else if (cboEditarOrdenar.Text == "Agrupar")
+            {
+                queryGenerado += $" GROUP BY {cboEditarCampoOrdenar.Text}";
+            }
+
+            // Asegurar que el punto y coma esté al final de la query
+            queryGenerado += ";";
+
+            // Actualizar el TextBox con la query generada
+            txtQueryEditadoFinal.Clear();
+            txtQueryEditadoFinal.Text = queryGenerado;
+
+            // Limpiar datosComplejo
+            datosComplejo = new string[0];
         }
 
-        private void btnEditarLogico_Click(object sender, EventArgs e)
+            private void btnEditarLogico_Click(object sender, EventArgs e)
         {
 
             datosComplejo = new string[] { cboEditarLogico.Text, cboEditarCampoLogico.Text, txtEditarValorLogico.Text, txtQueryEditadoFinal.Text };
