@@ -309,7 +309,6 @@ namespace Capa_Controlador_Consulta
             }
         }
 
-    
 
 
 
@@ -553,30 +552,12 @@ namespace Capa_Controlador_Consulta
 
 
 
-            /*Creado por Sebastian Luna
 
-            consultaSentencias sn = new consultaSentencias();
+        //Creado por Sebastian Luna
 
-            public string[] items(string tabla, string campo1, string campo2)
-            {
-                string[] Items = sn.llenarCmb(tabla, campo1, campo2);
 
-                return Items;
 
-
-            }
-
-            public DataTable enviar(string tabla, string campo1, string campo2)
-            {
-
-
-
-                var dt1 = sn.obtener(tabla, campo1, campo2);
-
-                return dt1;
-            }
-            //Fin participacion Sebastian Luna*/
-           /* public void obtenerNombresConsultas(ComboBox comboBoxConsultas)
+        public void obtenerNombresConsultas1(ComboBox comboBoxConsultas)
         {
             // Recibimos la lista de nombres de consultas desde el modelo
             List<string> nombresConsultas = csSentencias.ObtenerNombresConsultas();
@@ -587,10 +568,92 @@ namespace Capa_Controlador_Consulta
             // Añadimos cada nombre de consulta al ComboBox
             foreach (string nombreConsulta in nombresConsultas)
             {
-                comboBoxConsultas.Items.Add(nombreConsulta);*/
-            
+                comboBoxConsultas.Items.Add(nombreConsulta);
+
+            }
         }
+
+        
+
+        // Método para buscar y ejecutar el query seleccionado
+        public void BuscarQuerySeleccionado(string querySeleccionado, DataGridView dgvConsultas, TextBox txtQuery1)
+        {
+            consultaSentencias csSentencias = new consultaSentencias();
+            try
+            {
+
+                // 1. Obtener la cadena SQL del query seleccionado
+                string query = csSentencias.ObtenerQueryPorNombre(querySeleccionado);
+
+                // 2. Mostrar la cadena SQL en el TextBox
+                txtQuery1.Text = query;
+
+                // 3. Ejecutar el query y llenar el DataGridView con los resultados
+                OdbcDataAdapter adapter = csSentencias.EjecutarQuery(query);
+                DataTable tablaResultados = new DataTable();
+                adapter.Fill(tablaResultados);
+
+                // 4. Mostrar los resultados en el DataGridView
+                dgvConsultas.DataSource = tablaResultados;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al ejecutar el query: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // Método para obtener el nombre del query seleccionado del ComboBox
+        public void CargarQueryEnTextBox(ComboBox cboQuery1, TextBox txtQuery1)
+        {
+            // Verificar si hay un query seleccionado en el ComboBox
+            if (cboQuery1.SelectedItem != null)
+            {
+                // Mostrar la cadena generada del query seleccionado en el TextBox
+                string querySeleccionado = cboQuery1.SelectedItem.ToString();
+                string query = csSentencias.ObtenerQueryPorNombre(querySeleccionado);
+                txtQuery1.Text = query;
+            }
+        }
+
+        /* public void BuscarQuery(string nombreConsulta, DataGridView dgv, TextBox txtQuery)
+         {
+             consultaSentencias csSentencias = new consultaSentencias();
+             // Obtener la consulta SQL desde la base de datos
+             string query = csSentencias.ObtenerQueryPorNombre(nombreConsulta);
+
+             if (!string.IsNullOrEmpty(query))
+             {
+                 // Mostrar la consulta SQL en el TextBox
+                 txtQuery.Text = query;
+
+                 // Ejecutar la consulta y llenar el DataGridView
+                 OdbcDataAdapter adapter = csSentencias.EjecutarQuery(query);
+                 DataTable tablaResultados = new DataTable();
+                 adapter.Fill(tablaResultados);
+             }
+             else
+             {
+                 MessageBox.Show("No se encontró la consulta.");
+             }
+         }*/
+
+        public void EliminarConsulta(string nombreConsulta)
+        {
+            // Llamar al método de la capa de modelo para actualizar el estado de la consulta
+            csSentencias.EliminarConsulta(nombreConsulta);
+
+
+        }
+
+
+
+        //Fin participacion Sebastian Luna
     }
+}
+       
+
+    
+
 
 
           
