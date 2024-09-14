@@ -33,11 +33,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Capa_VistaConsultas">
-      <HintPath>..\..\..\..\source\repos\asis22k24proy2\Prototipos\Componentes\Consultas\Capa_Vista\bin\Debug\Capa_VistaConsultas.dll</HintPath>
-    </Reference>
     <Reference Include="Capa_Vista_Consulta">
-      <HintPath>..\..\..\..\source\repos\asis22k24proy2\Codigo\Componentes\Consultas\Consulta_Inteligente\Capa_Vista_Consulta\bin\Debug\Capa_Vista_Consulta.dll</HintPath>
+      <HintPath>..\..\Capa_Vista_Consulta\bin\Debug\Capa_Vista_Consulta.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
