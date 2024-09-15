@@ -30,6 +30,7 @@ namespace ejecucion
                 navegador1.asignarTabla("venta");
                 navegador1.asignar2Tabla("factura");
                 navegador1.asignarNombreForm("VENTAS");
+                navegador1.asignarAyuda("1");
             }
             else if (tabla == "Factura")
             {
@@ -40,6 +41,7 @@ namespace ejecucion
                 navegador1.asignarColorFuente(Color.BlueViolet);
                 navegador1.asignarTabla("factura");
                 navegador1.asignarNombreForm("FACTURAS");
+                navegador1.asignarAyuda("1");
             }
             else if (tabla == "empleados")
             {
@@ -50,6 +52,7 @@ namespace ejecucion
                 navegador1.asignarColorFuente(Color.BlueViolet);
                 navegador1.asignarTabla("empleados");
                 navegador1.asignarNombreForm("EMPLEADOS");
+                navegador1.asignarAyuda("1");
             }
            else if (tabla == "compras")
             {
@@ -61,6 +64,7 @@ namespace ejecucion
                 navegador1.asignarTabla("compra");
                 navegador1.asignar2Tabla("reserva");
                 navegador1.asignarNombreForm("EMPLEADOS");
+                navegador1.asignarAyuda("1");
             }
             else if (tabla == "perros")
             {
@@ -75,6 +79,7 @@ namespace ejecucion
                 navegador1.asignarComboConTabla("razas", "id_raza", "nombre_raza", 1);
                 //Esto se agrega para mostrar llaves en datagridview
                 navegador1.asignarforaneas("perro", "razas", "nombre_raza", "id_raza", "id_raza");
+                navegador1.asignarAyuda("1");
             }
             else if (tabla == "casas")
             {
@@ -86,6 +91,7 @@ namespace ejecucion
                 navegador1.asignarTabla("casas");
                 navegador1.asignar2Tabla("registrocasas");
                 navegador1.asignarNombreForm("EMPLEADOS");
+                navegador1.asignarAyuda("1");
             }
         }
 

@@ -38,7 +38,7 @@
       <HintPath>..\CapaDeLogica\bin\Debug\CapaDeLogica.dll</HintPath>
     </Reference>
     <Reference Include="Capa_Vista_Reporteria">
-      <HintPath>..\..\..\..\..\..\AS2_Proyecto\asis22k24proy2\Codigo\Componentes\Reporteador\Capa_Vista_Reporteria\bin\Debug\Capa_Vista_Reporteria.dll</HintPath>
+      <HintPath>..\..\Reporteador\Capa_Vista_Reporteria\bin\Debug\Capa_Vista_Reporteria.dll</HintPath>
     </Reference>
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
       <HintPath>..\packages\CrystalDecisions.CrystalReports.Engine.1.0.0\lib\CrystalDecisions.CrystalReports.Engine.dll</HintPath>
