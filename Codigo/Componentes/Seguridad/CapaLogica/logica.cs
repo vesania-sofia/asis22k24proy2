@@ -18,7 +18,7 @@ namespace CapaLogica
 
         public DataTable consultaLogicaUsuarios()
         {
-            
+
             try
             {
                 OdbcDataAdapter dtUsuario = sn.consultarUsuarios();
@@ -26,12 +26,12 @@ namespace CapaLogica
                 dtUsuario.Fill(tableUsuario);
                 return tableUsuario;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex);
                 return null;
             }
-            
+
         }
 
         public DataTable consultaLogicaModulos()
@@ -43,7 +43,7 @@ namespace CapaLogica
                 dtModulos.Fill(tableModulos);
                 return tableModulos;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex);
                 return null;
@@ -59,7 +59,7 @@ namespace CapaLogica
                 dtPerfiles.Fill(tablePerfiles);
                 return tablePerfiles;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex);
                 return null;
@@ -96,7 +96,7 @@ namespace CapaLogica
                 dtPermisosUA.Fill(tablePermisosUA);
                 return tablePermisosUA;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex);
                 return null;
@@ -112,7 +112,7 @@ namespace CapaLogica
                 dtPerfilesUsuarios.Fill(tablePerfilesUsuarios);
                 return tablePerfilesUsuarios;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex);
                 return null;
@@ -128,7 +128,7 @@ namespace CapaLogica
                 dtEliminarPerfilUsuario.Fill(tableEliminarPerfilUsuario);
                 return tableEliminarPerfilUsuario;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex);
                 return null;
@@ -144,7 +144,7 @@ namespace CapaLogica
                 dtInsertarPerfilUsuario.Fill(tableInsertarPerfilUsuario);
                 return tableInsertarPerfilUsuario;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex);
                 return null;
@@ -260,11 +260,11 @@ namespace CapaLogica
             }
         }
 
-        public DataTable updatecliente(string clave,string usuario)
+        public DataTable updatecliente(string clave, string usuario)
         {
             try
             {
-                OdbcDataAdapter dtusuario = sn.clienteupdate(clave,usuario);
+                OdbcDataAdapter dtusuario = sn.clienteupdate(clave, usuario);
                 DataTable tableusuarios = new DataTable();
                 dtusuario.Fill(tableusuarios);
                 return tableusuarios;
@@ -560,11 +560,11 @@ namespace CapaLogica
 
 
 
-        public DataTable Actualizarmodulo(string ID_modulo,string nombre, string descripcion, string estado)
+        public DataTable Actualizarmodulo(string ID_modulo, string nombre, string descripcion, string estado)
         {
             try
             {
-                OdbcDataAdapter dtmodulo = sn.ActualizarModulo(ID_modulo,nombre,descripcion,estado);
+                OdbcDataAdapter dtmodulo = sn.ActualizarModulo(ID_modulo, nombre, descripcion, estado);
                 DataTable tablamodulos = new DataTable();
                 dtmodulo.Fill(tablamodulos);
                 return tablamodulos;
@@ -573,13 +573,21 @@ namespace CapaLogica
             {
                 Console.WriteLine(ex);
                 return null;
-            } 
+            }
         }
 
+        // Fernando García - 0901-21-581 
         public DataSet consultaLogicaBitacora()
         {
             return sn.consultarBitacora();
         }
+
+        // Nuevo método para la búsqueda filtrada de bitácora
+        public DataSet consultaLogicaBitacoraFiltrada(string campo, string valor)
+        {
+            return sn.consultarBitacoraFiltrada(campo, valor);
+        }
+        //FIN ###########
 
         //ELIMINAR MODULO ALYSON ##########################################
         public DataTable EliminarModulo(string ID_modulo, string nombre, string descripcion, string estado)
