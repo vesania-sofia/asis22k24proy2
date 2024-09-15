@@ -24,43 +24,70 @@ namespace CapaDiseno
         {
         }
 
-        private void Frm_asignacion_aplicaciones_perfiles_Load(object sender, EventArgs e)
+//****************************************Kevin López***************************************************
+        // Método para cargar los perfiles
+        private void CargarPerfiles()
         {
-            //try para combobox de Perfiles
             try
             {
                 DataTable dtPerfiles = logic.consultaLogicaPerfiles();
-
+                cbo_perfiles.Items.Clear();
                 foreach (DataRow row in dtPerfiles.Rows)
                 {
-
                     cbo_perfiles.Items.Add(row[0].ToString());
                 }
-
             }
-            catch (InvalidOperationException ex)
+            catch (Exception ex)
             {
-                Console.WriteLine(ex);
+                Console.WriteLine("Error al cargar perfiles: " + ex.Message);
             }
+        }
 
-
-
-            //try para combobox de Modulos
+        // Método para cargar los módulos
+        private void CargarModulos()
+        {
             try
             {
                 DataTable dtModulos = logic.consultaLogicaModulos();
-
+                cbo_modulos.Items.Clear();
                 foreach (DataRow row in dtModulos.Rows)
                 {
                     cbo_modulos.Items.Add(row[0].ToString());
                 }
             }
-            catch (InvalidOperationException ex)
+            catch (Exception ex)
             {
-                Console.WriteLine(ex);
+                Console.WriteLine("Error al cargar módulos: " + ex.Message);
             }
         }
 
+        // Método para cargar aplicaciones según el módulo seleccionado
+        private void CargarAplicaciones()
+        {
+            try
+            {
+                DataTable dtAplicaciones = logic.consultaLogicaAplicaciones();
+                cbo_aplicaciones.Items.Clear();
+                foreach (DataRow row in dtAplicaciones.Rows)
+                {
+                    cbo_aplicaciones.Items.Add(row["nombre_aplicacion"].ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al cargar aplicaciones: " + ex.Message);
+            }
+        }
+
+        //**************************************** FIN Kevin López***************************************************
+//****************************************Kevin López***************************************************
+        private void Frm_asignacion_aplicaciones_perfiles_Load(object sender, EventArgs e)
+        {
+
+            CargarPerfiles();
+            CargarModulos();
+        }
+//****************************************FIN Kevin López***************************************************
         void limpieza()
         {
             cbo_perfiles.Text = " ";
@@ -68,30 +95,21 @@ namespace CapaDiseno
             cbo_aplicaciones.Text = " ";
         }
 
+//****************************************Kevin López***************************************************
         private void Cbo_modulos_SelectedIndexChanged(object sender, EventArgs e)
         {
-            cbo_aplicaciones.DataSource = null;
-            cbo_aplicaciones.Items.Clear();
-            cbo_aplicaciones.Text = " ";
 
-            string sNombreModulo = cbo_modulos.SelectedItem.ToString();
+            // Limpiar las aplicaciones antes de agregar nuevas
 
-
-            //try para combobox de Aplicaciones
-            try
+            if (cbo_modulos.SelectedItem != null)
             {
-                DataTable dtAplicaciones = logic.consultaLogicaAplicaciones(sNombreModulo);
-
-                foreach (DataRow row in dtAplicaciones.Rows)
-                {
-                    cbo_aplicaciones.Items.Add(row[0].ToString());
-                }
+                string nombreModulo = cbo_modulos.SelectedItem.ToString();
+                CargarAplicaciones();
             }
-            catch (InvalidOperationException ex)
-            {
-                Console.WriteLine(ex);
-            }
+            
         }
+//****************************************FIN Kevin López***************************************************
+
 
         public static int iContadorFila = 0;
 
@@ -223,6 +241,28 @@ namespace CapaDiseno
         private void Btn_ayuda_Click(object sender, EventArgs e)
         {
             Help.ShowHelp(this, "C:\\Ayuda_Seguridad\\" + "AyudaAsignacionAplicacionesPerfiles.chm", "Asignacion_Aplicaciones_Perfiles.html");
+        }
+
+        private void dgv_asignacionesperfiles_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+ //****************************************Kevin López***************************************************
+        private void cbo_aplicaciones_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            if (cbo_aplicaciones.SelectedItem != null)
+            {
+                string nombreAplicacion = cbo_aplicaciones.SelectedItem.ToString();
+                Console.WriteLine("Aplicación seleccionada: " + nombreAplicacion);
+            }
+
+        }
+//****************************************FIN Kevin López***************************************************
+        private void cbo_perfiles_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

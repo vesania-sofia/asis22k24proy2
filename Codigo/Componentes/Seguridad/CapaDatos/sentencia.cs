@@ -32,23 +32,28 @@ namespace CapaDatos
 
         }
 
+//****************************************Kevin López***************************************************
         public OdbcDataAdapter consultarModulos()
         {
             cn.conectar();
-            string sqlModulos = "SELECT nombre_modulo FROM tbl_modulo WHERE estado_modulo = 1";
+            string sqlModulos = "SELECT nombre_modulo FROM Tbl_modulos WHERE estado_modulo = 1";
             OdbcDataAdapter dataModulos = new OdbcDataAdapter(sqlModulos, cn.conectar());
-            insertarBitacora(idUsuario, "Realizo una consulta a modulos", "tbl_modulos");
+            insertarBitacora(idUsuario, "Realizo una consulta a modulos", "Tbl_modulos");
             return dataModulos;
         }
+//****************************************FIN Kevin López***************************************************
 
+//****************************************Kevin López***************************************************
         public OdbcDataAdapter consultarPerfiles()
         {
             cn.conectar();
-            string sqlPerfiles = "SELECT nombre_perfil FROM tbl_perfil_encabezado WHERE estado_perfil = 1";
+            string sqlPerfiles = "SELECT nombre_perfil FROM Tbl_perfiles WHERE estado_perfil = 1";
             OdbcDataAdapter dataPerfiles = new OdbcDataAdapter(sqlPerfiles, cn.conectar());
-            insertarBitacora(idUsuario, "Realizo una consulta a perfiles", "tbl_perfil");
+            insertarBitacora(idUsuario, "Realizo una consulta a perfiles", "Tbl_perfiles");
             return dataPerfiles;
         }
+//****************************************Kevin López***************************************************
+
 
         public OdbcDataAdapter consultarAplicaciones(string nombreModulo)
         {
@@ -511,17 +516,17 @@ namespace CapaDatos
                 return datausuarios;
         }
 
-        //###################  lo que hizo Karla  Sofia Gómez Tobar #######################
+        //****************************************Kevin López***************************************************
         public OdbcDataAdapter consultaraplicaciones(string aplicacion)
         {
             cn.conectar();
-            string sqlAplicaciones = "SELECT * FROM tbl_aplicaciones WHERE Pk_id_aplicacion = " + aplicacion;
-            insertarBitacora(idUsuario, "Realizo una consulta a aplicaciones", "tbl_aplicaciones");
+            string sqlAplicaciones = "SELECT Pk_id_aplicacion, nombre_aplicacion FROM Tbl_aplicaciones";
+            insertarBitacora(idUsuario, "Realizo una consulta a aplicaciones", "Tbl_aplicaciones");
             OdbcDataAdapter dataTable = new OdbcDataAdapter(sqlAplicaciones, cn.conectar());
             return dataTable;
         }
 
-        //###################  termina lo que hizo  Karla  Sofia Gómez Tobar #######################
+        //**************************************** FIN Kevin López***************************************************
 
         /*-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
