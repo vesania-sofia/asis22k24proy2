@@ -21,25 +21,15 @@ namespace Capa_Controlador_Reporteria
             return tabla;
         }
 
-        public int guardarReporte(String[] datosReporte)
+        public int guardarReporte(TextBox idReporte, string ruta, string nombre_archivo, string aplicacion, string estado)
         {
-            string campos = "";
-            //validamos si existen campos vacios
-            for (int i = 0; i <= datosReporte.Length - 1; i++)
+            //se valida que el textbox no este vacio o con espacios en blanco
+            if (string.IsNullOrEmpty(idReporte.Text) || string.IsNullOrEmpty(ruta) || string.IsNullOrEmpty(nombre_archivo) ||
+                string.IsNullOrEmpty(aplicacion) || string.IsNullOrEmpty(estado))
             {
-                if (datosReporte[i].Length < 1)
-                {
-                    MessageBox.Show("Existen campos que no pueden estar vacios", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return 0;
-                }
+                MessageBox.Show("Existen campos vacios, revise y vuelva a intentarlo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            //luego creamos una variable plana con todos los datos del arreglo para agregarlo al sql de guardar reporte
-            for (int i = 0; i <= datosReporte.Length - 2; i++)
-            {
-                campos = campos + "'" + datosReporte[i] + "',";
-            }
-            campos = campos + "'" + datosReporte[datosReporte.Length - 1] + "'";
-            sentencias.registrarReporte(campos);
+            sentencias.registrarReporte(idReporte.Text, ruta, nombre_archivo, aplicacion, estado);
             return 1;
         }
 
