@@ -121,21 +121,14 @@ namespace CapaDatos
 
         }
 
-        public OdbcDataAdapter mostrarPerfilesDeUsuario(string nombreUsuario)
+        //###################  lo que hizo Karla  Sofia Gómez Tobar #######################
+        public OdbcDataAdapter mostrarPerfilesDeUsuario(string TablaPerfilUsuario)
         {
-            try
-            {
-                string sqlPerfilUsuario = "SELECT PE.PK_id_perfil AS Codigo, PE.nombre_perfil AS Perfil FROM tbl_perfil_encabezado PE INNER JOIN tbl_usuario_perfil UP ON PE.PK_id_perfil = UP.PK_id_perfil WHERE PK_id_usuario = '" + nombreUsuario + "' ";
-                OdbcDataAdapter dataPerfilUsuario = new OdbcDataAdapter(sqlPerfilUsuario, cn.conectar());
-                insertarBitacora(idUsuario, "Realizo una consulta a perfiles", "tbl_perfil");
-                return dataPerfilUsuario;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex);
-                return null;
-            }
+            string sql = "SELECT * FROM " + TablaPerfilUsuario + ";";
+            OdbcDataAdapter dataTable = new OdbcDataAdapter(sql, cn.conectar());
+            return dataTable;
         }
+        //###################  termina lo que hizo  Karla  Sofia Gómez Tobar #######################
 
         public OdbcDataAdapter eliminarPerfilUsuario(string nombreUsuario, string codigoPerfil)
         {
@@ -153,32 +146,42 @@ namespace CapaDatos
             }
         }
 
-        public OdbcDataAdapter insertarPerfilUsuario(string nombreUsuario, string codigoPerfil)
+        //###################  lo que hizo Karla  Sofia Gómez Tobar #######################
+        public void insertarPerfilUsuario(string codigoUsuario, string codigoPerfil)
         {
+
+
             try
             {
-                string sCodigoPerfil = " ";
+                using (OdbcConnection connection = cn.conectar())
 
-                OdbcCommand sqlCodigoModulo = new OdbcCommand("SELECT PK_id_perfil FROM tbl_perfil_encabezado WHERE nombre_perfil = '" + codigoPerfil + "' ", cn.conectar());
-                OdbcDataReader almacena = sqlCodigoModulo.ExecuteReader();
-
-                while (almacena.Read() == true)
                 {
-                    sCodigoPerfil = almacena.GetString(0);
+                    //
+                    string query = "INSERT INTO Tbl_asignaciones_perfils_usuario(" +
+                                                     "Fk_id_usuario," +
+                                                     "Fk_id_perfil)" +
+                                                     "VALUES (?, ?) ";
+
+                    using (OdbcCommand cmd = new OdbcCommand(query, connection))
+                    {
+                        // Agregar los parámetros al comando
+                        cmd.Parameters.AddWithValue("@Fk_id_usuario", codigoUsuario);
+                        cmd.Parameters.AddWithValue("@Fk_id_perfil", codigoPerfil);
+
+                        // Ejecutar el comando
+                        cmd.ExecuteNonQuery();
+                        insertarBitacora(idUsuario, "Inserto un nuevo modulo: " + codigoUsuario + " - " + codigoPerfil, "Tbl_asignaciones_perfils_usuario");
+                    }
+
                 }
 
-
-                string sqlInsertarPerfilUsuario = "INSERT INTO tbl_usuario_perfil(PK_id_usuario, PK_id_perfil) VALUES ('" + nombreUsuario + "', '" + sCodigoPerfil + "') ";
-                OdbcDataAdapter dataInsertarPerfilUsuario = new OdbcDataAdapter(sqlInsertarPerfilUsuario, cn.conectar());
-                insertarBitacora(idUsuario, "Asigno perfil: " + codigoPerfil + " a usuario: " + nombreUsuario, "tbl_usuario_perfil");
-                return dataInsertarPerfilUsuario;
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
-                return null;
+                MessageBox.Show("Error al insertar la asignacion: " + ex.Message);
             }
         }
+        //###################  termina lo que hizo  Karla  Sofia Gómez Tobar #######################
 
         //###################  lo que hizo Karla  Sofia Gómez Tobar #######################
         public OdbcDataAdapter validarIDAplicacion()
@@ -1038,5 +1041,156 @@ namespace CapaDatos
             }
         }
         //########################FINALIZA CÓDIGO BOTÓN ELIMINAR ALYSON RODRIGUEZ
+
+
+
+
+        //###################  empieza lo que hizo Karla  Sofia Gómez Tobar #######################
+        // combo usuario y perfil
+
+        public string[] llenarCmbUsuario(string tabla, string campo1, string campo2)
+        {
+            conexion cn = new conexion();
+            string[] Campos = new string[300];
+            int i = 0;
+
+            string sql = "SELECT DISTINCT " + campo1 + "," + campo2 + " FROM " + tabla;
+
+            /* La sentencia consulta el modelo de la base de datos con cada campo */
+            try
+            {
+                // Muestra la consulta SQL antes de ejecutarla
+                Console.Write(sql);
+                MessageBox.Show(sql);
+
+                OdbcCommand command = new OdbcCommand(sql, cn.conectar());
+                OdbcDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    Campos[i] = reader.GetValue(0).ToString() + "-" + reader.GetValue(1).ToString();
+                    i++;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + "\nError en asignarCombo, revise los parámetros \n -" + tabla + "\n -" + campo1);
+            }
+
+            return Campos;
+        }
+
+
+        public DataTable obtenerUsuario(string tabla, string campo1, string campo2)
+        {
+            conexion cn = new conexion();
+            string sql = "SELECT DISTINCT " + campo1 + "," + campo2 + " FROM " + tabla;
+
+            OdbcCommand command = new OdbcCommand(sql, cn.conectar());
+            OdbcDataAdapter adaptador = new OdbcDataAdapter(command);
+            DataTable dt = new DataTable();
+            adaptador.Fill(dt);
+
+
+            return dt;
+        }
+        /****************************************************************************************************************/
+
+        public string[] llenarCmbPerfiles(string tabla, string campo1, string campo2)
+        {
+            conexion cn = new conexion();
+            string[] Campos = new string[300];
+            int i = 0;
+
+            string sql = "SELECT DISTINCT " + campo1 + "," + campo2 + " FROM " + tabla;
+
+
+            try
+            {
+
+                Console.Write(sql);
+                MessageBox.Show(sql);
+
+                OdbcCommand command = new OdbcCommand(sql, cn.conectar());
+                OdbcDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    Campos[i] = reader.GetValue(0).ToString() + "-" + reader.GetValue(1).ToString();
+                    i++;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + "\nError en asignarCombo, revise los parámetros \n -" + tabla + "\n -" + campo1);
+            }
+
+            return Campos;
+        }
+
+
+        public DataTable obtenerPerfiles(string tabla, string campo1, string campo2)
+        {
+            conexion cn = new conexion();
+            string sql = "SELECT DISTINCT " + campo1 + "," + campo2 + " FROM " + tabla;
+
+            OdbcCommand command = new OdbcCommand(sql, cn.conectar());
+            OdbcDataAdapter adaptador = new OdbcDataAdapter(command);
+            DataTable dt = new DataTable();
+            adaptador.Fill(dt);
+
+
+            return dt;
+        }
+
+        // ////////////////////////////////////////////////////////////////
+
+
+        public string[] llenarCboAsigUP(string tabla, string campo1)
+        {
+            conexion cn = new conexion();
+            string[] Campos = new string[300];
+            int i = 0;
+
+            string sql = "SELECT DISTINCT " + campo1 + " FROM " + tabla;
+
+
+            try
+            {
+
+                Console.Write(sql);
+                MessageBox.Show(sql);
+
+                OdbcCommand command = new OdbcCommand(sql, cn.conectar());
+                OdbcDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    Campos[i] = reader.GetValue(0).ToString();
+                    i++;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + "\nError en asignarCombo, revise los parámetros \n -" + tabla + "\n -" + campo1);
+            }
+
+            return Campos;
+        }
+
+
+        public DataTable obtenerAsigUP(string tabla, string campo1)
+        {
+            conexion cn = new conexion();
+            string sql = "SELECT DISTINCT " + campo1 + " FROM " + tabla;
+
+            OdbcCommand command = new OdbcCommand(sql, cn.conectar());
+            OdbcDataAdapter adaptador = new OdbcDataAdapter(command);
+            DataTable dt = new DataTable();
+            adaptador.Fill(dt);
+
+
+            return dt;
+        }
+        //###################  termina lo que hizo  Karla  Sofia Gómez Tobar #######################
+
+
     }
 }

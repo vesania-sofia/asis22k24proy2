@@ -62,11 +62,11 @@ namespace CapaDiseno
         }
 
         // Método para cargar aplicaciones según el módulo seleccionado
-        private void CargarAplicaciones()
+        /*private void CargarAplicaciones()
         {
             try
             {
-                DataTable dtAplicaciones = logic.consultaLogicaAplicaciones();
+               DataTable dtAplicaciones = logic.consultaLogicaAplicaciones();
                 cbo_aplicaciones.Items.Clear();
                 foreach (DataRow row in dtAplicaciones.Rows)
                 {
@@ -77,7 +77,7 @@ namespace CapaDiseno
             {
                 Console.WriteLine("Error al cargar aplicaciones: " + ex.Message);
             }
-        }
+        }*/
 
         //**************************************** FIN Kevin López***************************************************
 //****************************************Kevin López***************************************************
@@ -96,7 +96,7 @@ namespace CapaDiseno
         }
 
 //****************************************Kevin López***************************************************
-        private void Cbo_modulos_SelectedIndexChanged(object sender, EventArgs e)
+       /* private void Cbo_modulos_SelectedIndexChanged(object sender, EventArgs e)
         {
 
             // Limpiar las aplicaciones antes de agregar nuevas
@@ -107,7 +107,7 @@ namespace CapaDiseno
                 CargarAplicaciones();
             }
             
-        }
+        }*/
 //****************************************FIN Kevin López***************************************************
 
 

@@ -103,21 +103,17 @@ namespace CapaLogica
             }
         }
 
-        public DataTable consultaLogicaPerfilesUsuarios(string nombreUsuario)
+        //###################  lo que hizo Karla  Sofia Gómez Tobar #######################
+        public DataTable consultaLogicaPerfilesUsuarios(string TablaPerfilUsuario)
         {
-            try
-            {
-                OdbcDataAdapter dtPerfilesUsuarios = sn.mostrarPerfilesDeUsuario(nombreUsuario);
-                DataTable tablePerfilesUsuarios = new DataTable();
-                dtPerfilesUsuarios.Fill(tablePerfilesUsuarios);
-                return tablePerfilesUsuarios;
-            }
-            catch(Exception ex)
-            {
-                Console.WriteLine(ex);
-                return null;
-            }
+            DataTable table = new DataTable();
+            OdbcDataAdapter dt = sn.mostrarPerfilesDeUsuario(TablaPerfilUsuario);
+            dt.Fill(table);
+            return table;
+
+
         }
+        //###################  termina lo que hizo  Karla  Sofia Gómez Tobar #######################
 
         public DataTable consultaLogicaEliminarPerfilUsuario(string nombreUsuario, string codigoPerfil)
         {
@@ -135,21 +131,24 @@ namespace CapaLogica
             }
         }
 
-        public DataTable consultaLogicaInsertarPerfilUsuario(string nombreUsuario, string codigoPerfil)
+
+        //###################  lo que hizo Karla  Sofia Gómez Tobar #######################
+        public bool consultaLogicaInsertarPerfilUsuario(string codigoUsuario, string codigoPerfil)
         {
             try
             {
-                OdbcDataAdapter dtInsertarPerfilUsuario = sn.insertarPerfilUsuario(nombreUsuario, codigoPerfil);
-                DataTable tableInsertarPerfilUsuario = new DataTable();
-                dtInsertarPerfilUsuario.Fill(tableInsertarPerfilUsuario);
-                return tableInsertarPerfilUsuario;
+                sn.insertarPerfilUsuario(codigoUsuario, codigoPerfil);
+                return true;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                Console.WriteLine(ex);
-                return null;
+                Console.WriteLine("Error al insertar el asignacion: " + ex.Message);
+                return false;
             }
         }
+        //###################  termina lo que hizo  Karla  Sofia Gómez Tobar #######################
+
+
 
         //###################  lo que hizo Karla  Sofia Gómez Tobar #######################
         public DataTable validarIDAplicacion()
@@ -598,6 +597,76 @@ namespace CapaLogica
             }
         }
         //FIN ####################################################################
+
+
+        //###################  empieza lo que hizo Karla  Sofia Gómez Tobar #######################
+        // combo usuario y perfil 
+        public string[] itemsUsuario(string tabla, string campo1, string campo2)
+        {
+            string[] Items = sn.llenarCmbUsuario(tabla, campo1, campo2);
+
+            return Items;
+
+
+
+
+        }
+
+        public DataTable enviarUsuario(string tabla, string campo1, string campo2)
+        {
+
+
+            /**/
+            var dt1 = sn.obtenerUsuario(tabla, campo1, campo2);
+
+            return dt1;
+        }
+
+        public string[] itemsPerfiles(string tabla, string campo1, string campo2)
+        {
+            string[] Items = sn.llenarCmbPerfiles(tabla, campo1, campo2);
+
+            return Items;
+
+
+
+
+        }
+
+        public DataTable enviarPerfiles(string tabla, string campo1, string campo2)
+        {
+
+
+
+            var dt1 = sn.obtenerPerfiles(tabla, campo1, campo2);
+
+            return dt1;
+        }
+
+
+        public string[] itemsAsigUP(string tabla, string campo1)
+        {
+            string[] Items = sn.llenarCboAsigUP(tabla, campo1);
+
+            return Items;
+
+
+
+
+        }
+
+        public DataTable enviarAsigUP(string tabla, string campo1)
+        {
+
+
+            /**/
+            var dt1 = sn.obtenerAsigUP(tabla, campo1);
+
+            return dt1;
+        }
+        //###################  termina lo que hizo  Karla  Sofia Gómez Tobar #######################
+
+
 
 
     }
