@@ -249,3 +249,7 @@ ALTER TABLE tbl_bitacora DROP FOREIGN KEY tbl_bitacora_ibfk_2;
 -- ALTER TABLE tbl_bitacora MODIFY Fk_id_usuario VARCHAR(20);
 ALTER TABLE tbl_bitacora DROP COLUMN Fk_id_aplicacion;
 
+
+-- Fernando García - 0901-21-581 - 60%
+ALTER TABLE `Tbl_bitacora`
+ADD COLUMN `tabla` VARCHAR(50) NOT NULL;
