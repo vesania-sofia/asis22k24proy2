@@ -50,8 +50,15 @@ namespace Capa_Vista_Consulta
             llenarComboLogico(cboEditarLogico);
             llenarComboComparador(cboEditarComparador);
             llenarComboOrden(cboEditarOrdenar);
-
-
+            ActualizarComboBox();
+        }
+        private void ActualizarComboBox()
+        {
+            csControlador.CargarTablas(cboTabla, "consultasBD");
+            csControlador.CargarTablas(cboEditarTabla, "consultasBD");
+            csControlador.obtenerNombresConsultas(cboQuery1);
+            csControlador.obtenerNombresConsultas(cboQuery3);
+            csControlador.obtenerNombresConsultas(cboEditarNombreConsulta);
         }
         string consulta = "";
         string tabla = "tbl_consultaInteligente";
@@ -171,23 +178,40 @@ namespace Capa_Vista_Consulta
         {
             // Procesar los datos en la tabla correspondiente
             csControlador.InsertarDatos(tipos, datos, tabla);
+            ActualizarComboBox();
         }
 
         private void btnAgregarOrden_Click(object sender, EventArgs e)
         {
+            // Inicializar el array de datos
             datosComplejo = new string[] { cboOrdenar.Text, cboOrdenarCampo.Text, "0", txtQueryFinal.Text };
-            if (cboOrdenar.Text == "Ordenar") {
-                if (chbOrdenAscendente.Checked) {
-                    datosComplejo[2] = "ASC";
-                } else if (chbOrdenDescendente.Checked) {
-                    datosComplejo[2] = "DESC";
-                } else {
-                    MessageBox.Show("Si se desa agregar un ordenamiento, debe seleccionar el tipo.","Warning",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+
+            // Verificar el tipo de operación
+            if (cboOrdenar.Text == "Ordenar")
+            {
+                datosComplejo[0] = "ORDER BY";
+                if (chbOrdenAscendente.Checked)
+                {
+                    datosComplejo[2] = "ASC"; // Agregar ASC si está seleccionado
                 }
-            } else if (cboOrdenar.Text == "Agrupar") {
-                datosComplejo[2] = "0";
-            } else {
+                else if (chbOrdenDescendente.Checked)
+                {
+                    datosComplejo[2] = "DESC"; // Agregar DESC si está seleccionado
+                }
+                else
+                {
+                    MessageBox.Show("Si se desea agregar un ordenamiento, debe seleccionar el tipo.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+            }
+            else if (cboOrdenar.Text == "Agrupar")
+            {
+                datosComplejo[0] = "GROUP BY"; // Indicar que es una operación de agrupamiento
+            }
+            else
+            {
                 MessageBox.Show("Antes de agregar debe asignar valores.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
             csControlador.ingresar(tipos, datosComplejo, "tbl_consultaInteligente");
             string queryGenerado = csControlador.GenerarQueryComplejo(datosComplejo, datos);
@@ -350,7 +374,8 @@ namespace Capa_Vista_Consulta
 
             // Procesar los datos en la tabla correspondiente
             csControlador.ActualizarDatos(tipos, datos, tabla);
-    }
+            ActualizarComboBox();
+        }
 
         private void cboConsultas_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -493,6 +518,7 @@ namespace Capa_Vista_Consulta
             // Verificar el tipo de operación
             if (cboEditarOrdenar.Text == "Ordenar")
             {
+                datosComplejo[0] = "ORDER BY";
                 if (chbEditarAscendente.Checked)
                 {
                     datosComplejo[2] = "ASC"; // Agregar ASC si está seleccionado
@@ -509,42 +535,16 @@ namespace Capa_Vista_Consulta
             }
             else if (cboEditarOrdenar.Text == "Agrupar")
             {
-                datosComplejo[2] = "GROUP BY"; // Indicar que es una operación de agrupamiento
+                datosComplejo[0] = "GROUP BY"; // Indicar que es una operación de agrupamiento
             }
             else
             {
                 MessageBox.Show("Antes de agregar debe asignar valores.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
-            // Insertar datos
             csControlador.ingresar(tipos, datosComplejo, "tbl_consultaInteligente");
-
-            // Generar la query
             string queryGenerado = csControlador.GenerarQueryComplejo(datosComplejo, datos);
-
-            // Quitar cualquier punto y coma al final de la query antes de agregar ORDER BY o GROUP BY
-            queryGenerado = queryGenerado.TrimEnd(';');
-
-            // Agregar la cláusula de ordenamiento o agrupamiento según corresponda
-            if (cboEditarOrdenar.Text == "Ordenar")
-            {
-                queryGenerado += $" ORDER BY {cboEditarCampoOrdenar.Text} {datosComplejo[2]}";
-            }
-            else if (cboEditarOrdenar.Text == "Agrupar")
-            {
-                queryGenerado += $" GROUP BY {cboEditarCampoOrdenar.Text}";
-            }
-
-            // Asegurar que el punto y coma esté al final de la query
-            queryGenerado += ";";
-
-            // Actualizar el TextBox con la query generada
-            txtQueryEditadoFinal.Clear();
-            txtQueryEditadoFinal.Text = queryGenerado;
-
-            // Limpiar datosComplejo
-            datosComplejo = new string[0];
+            txtQueryEditadoFinal.Clear(); txtQueryEditadoFinal.Text = queryGenerado; datosComplejo = new string[0];
         }
 
             private void btnEditarLogico_Click(object sender, EventArgs e)
@@ -818,6 +818,7 @@ namespace Capa_Vista_Consulta
             {
                 MessageBox.Show("Por favor, seleccione una consulta para eliminar.");
             }
+            ActualizarComboBox();
         }
 
         private void tabConsultas_Click(object sender, EventArgs e)
@@ -830,7 +831,14 @@ namespace Capa_Vista_Consulta
 
         }
 
-     
+        private void button1_Click(object sender, EventArgs e)
+        {
+            consultaControlador controlador = new consultaControlador();
+            string querySeleccionado = cboEditarNombreConsulta.ToString();
+            controlador.BuscarQuerySeleccionado(querySeleccionado, dgvConsultar, txtQueryEditadoFinal);
+        }
+
+
 
 
 
