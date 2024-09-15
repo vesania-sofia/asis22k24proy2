@@ -17,18 +17,18 @@ namespace Capa_Vista_Reporteria
             InitializeComponent();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void Btn_RepUsuario_Click(object sender, EventArgs e)
         {
-                 Inicio rep = new Inicio();
-                 rep.MdiParent = this;
-                 rep.Show();
+            reporteria_usuario rep = new reporteria_usuario();
+            rep.MdiParent = this;
+            rep.Show();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Btn_RepAdmin_Click(object sender, EventArgs e)
         {
-                reporteria_usuario rep = new reporteria_usuario();
-                rep.MdiParent = this;
-                rep.Show();
+            Inicio rep = new Inicio();
+            rep.MdiParent = this;
+            rep.Show();
         }
     }
 }
