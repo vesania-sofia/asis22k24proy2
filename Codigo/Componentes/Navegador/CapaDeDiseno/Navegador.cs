@@ -2492,5 +2492,11 @@ namespace CapaDeDiseno
             //aca va el paso al formalrio de reporteria
             //añadan su capa vista y hagan el paso
         }
+
+        private void btn_Reportes_Principal_Click(object sender, EventArgs e)
+        {
+            Capa_Vista_Reporteria.menu_reporteria reportes = new Capa_Vista_Reporteria.menu_reporteria();
+            reportes.Show();
+        }
     }
 }

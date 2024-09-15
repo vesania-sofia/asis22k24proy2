@@ -22,7 +22,7 @@ namespace ejecucion
 
 
                 //usuario = user;
-                string[] alias = { "id_venta", "monto", "nombre_cliente", "nombre_empleado", "estado" };
+                string[] alias = { "id_aplicacion", "id_venta", "monto", "nombre_cliente", "nombre_empleado", "estado" };
                 navegador1.asignarAlias(alias);
                 navegador1.asignarSalida(this);
                 navegador1.asignarColorFondo(Color.LightBlue);
