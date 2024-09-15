@@ -59,7 +59,7 @@
             this.cbo_usuarios.Location = new System.Drawing.Point(41, 47);
             this.cbo_usuarios.Margin = new System.Windows.Forms.Padding(4);
             this.cbo_usuarios.Name = "cbo_usuarios";
-            this.cbo_usuarios.Size = new System.Drawing.Size(160, 25);
+            this.cbo_usuarios.Size = new System.Drawing.Size(160, 29);
             this.cbo_usuarios.TabIndex = 0;
             // 
             // cbo_aplicaciones
@@ -68,7 +68,7 @@
             this.cbo_aplicaciones.Location = new System.Drawing.Point(407, 47);
             this.cbo_aplicaciones.Margin = new System.Windows.Forms.Padding(4);
             this.cbo_aplicaciones.Name = "cbo_aplicaciones";
-            this.cbo_aplicaciones.Size = new System.Drawing.Size(160, 25);
+            this.cbo_aplicaciones.Size = new System.Drawing.Size(160, 29);
             this.cbo_aplicaciones.TabIndex = 1;
             // 
             // label1
@@ -77,7 +77,7 @@
             this.label1.Location = new System.Drawing.Point(87, 26);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(59, 17);
+            this.label1.Size = new System.Drawing.Size(77, 21);
             this.label1.TabIndex = 2;
             this.label1.Text = "Usuarios";
             // 
@@ -87,7 +87,7 @@
             this.label2.Location = new System.Drawing.Point(447, 26);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(90, 17);
+            this.label2.Size = new System.Drawing.Size(117, 21);
             this.label2.TabIndex = 3;
             this.label2.Text = "Aplicaciones";
             // 
@@ -106,6 +106,7 @@
             this.dgv_asignaciones.Location = new System.Drawing.Point(24, 171);
             this.dgv_asignaciones.Margin = new System.Windows.Forms.Padding(4);
             this.dgv_asignaciones.Name = "dgv_asignaciones";
+            this.dgv_asignaciones.RowHeadersWidth = 51;
             this.dgv_asignaciones.Size = new System.Drawing.Size(722, 302);
             this.dgv_asignaciones.TabIndex = 4;
             this.dgv_asignaciones.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgv_asignaciones_CellContentClick);
@@ -114,6 +115,7 @@
             // 
             this.Usuarios.FillWeight = 117.8203F;
             this.Usuarios.HeaderText = "Usuario";
+            this.Usuarios.MinimumWidth = 6;
             this.Usuarios.Name = "Usuarios";
             this.Usuarios.Width = 148;
             // 
@@ -121,6 +123,7 @@
             // 
             this.Aplicacion.FillWeight = 115.2093F;
             this.Aplicacion.HeaderText = "Aplicacion";
+            this.Aplicacion.MinimumWidth = 6;
             this.Aplicacion.Name = "Aplicacion";
             this.Aplicacion.Width = 149;
             // 
@@ -129,6 +132,7 @@
             this.Ingresar.FalseValue = "0";
             this.Ingresar.FillWeight = 85.63838F;
             this.Ingresar.HeaderText = "Ingresar";
+            this.Ingresar.MinimumWidth = 6;
             this.Ingresar.Name = "Ingresar";
             this.Ingresar.TrueValue = "1";
             this.Ingresar.Width = 72;
@@ -138,6 +142,7 @@
             this.Consultar.FalseValue = "0";
             this.Consultar.FillWeight = 88.13612F;
             this.Consultar.HeaderText = "Consultar";
+            this.Consultar.MinimumWidth = 6;
             this.Consultar.Name = "Consultar";
             this.Consultar.TrueValue = "1";
             this.Consultar.Width = 75;
@@ -147,6 +152,7 @@
             this.Modificar.FalseValue = "0";
             this.Modificar.FillWeight = 90.35796F;
             this.Modificar.HeaderText = "Modificar";
+            this.Modificar.MinimumWidth = 6;
             this.Modificar.Name = "Modificar";
             this.Modificar.TrueValue = "1";
             this.Modificar.Width = 77;
@@ -156,6 +162,7 @@
             this.Eliminar.FalseValue = "0";
             this.Eliminar.FillWeight = 92.33439F;
             this.Eliminar.HeaderText = "Eliminar";
+            this.Eliminar.MinimumWidth = 6;
             this.Eliminar.Name = "Eliminar";
             this.Eliminar.TrueValue = "1";
             this.Eliminar.Width = 78;
@@ -165,6 +172,7 @@
             this.Imprimir.FalseValue = "0";
             this.Imprimir.FillWeight = 94.09251F;
             this.Imprimir.HeaderText = "Imprimir";
+            this.Imprimir.MinimumWidth = 6;
             this.Imprimir.Name = "Imprimir";
             this.Imprimir.TrueValue = "1";
             this.Imprimir.Width = 80;
@@ -216,7 +224,7 @@
             this.cbo_modulos.Location = new System.Drawing.Point(227, 46);
             this.cbo_modulos.Margin = new System.Windows.Forms.Padding(4);
             this.cbo_modulos.Name = "cbo_modulos";
-            this.cbo_modulos.Size = new System.Drawing.Size(160, 25);
+            this.cbo_modulos.Size = new System.Drawing.Size(160, 29);
             this.cbo_modulos.TabIndex = 12;
             this.cbo_modulos.SelectedIndexChanged += new System.EventHandler(this.Cbo_modulos_SelectedIndexChanged);
             // 
@@ -226,7 +234,7 @@
             this.lbl_modulo.Location = new System.Drawing.Point(283, 26);
             this.lbl_modulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_modulo.Name = "lbl_modulo";
-            this.lbl_modulo.Size = new System.Drawing.Size(62, 17);
+            this.lbl_modulo.Size = new System.Drawing.Size(81, 21);
             this.lbl_modulo.TabIndex = 11;
             this.lbl_modulo.Text = "Modulos";
             // 
@@ -258,7 +266,7 @@
             this.label3.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(178, 9);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(459, 24);
+            this.label3.Size = new System.Drawing.Size(584, 33);
             this.label3.TabIndex = 15;
             this.label3.Text = "ASIGNACION DE APLICACIONES A USUARIOS";
             // 
@@ -277,7 +285,7 @@
             // 
             // frm_asignacion_aplicaciones
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(838, 514);
             this.Controls.Add(this.btn_ayuda);
