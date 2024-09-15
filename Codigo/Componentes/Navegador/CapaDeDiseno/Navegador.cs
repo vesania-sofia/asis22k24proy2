@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using CapaDeLogica;
 using CapaDatos;
 
+
 namespace CapaDeDiseno
 {
     public partial class Navegador : UserControl
