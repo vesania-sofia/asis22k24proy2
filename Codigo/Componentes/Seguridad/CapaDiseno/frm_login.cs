@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CapaDatos;
 using CapaLogica;
+using System.Security.Cryptography;
 
 namespace CapaDiseno
 {
@@ -29,7 +30,7 @@ namespace CapaDiseno
             return nombreUsuario;
         }
 
-        //Fernando García 0901-21-581//
+        //Fernando García 0901-21-581 y Brandon Boch 0901-21-13093//
 
 
         private void Frm_login_FormClosing(object sender, FormClosingEventArgs e)
@@ -56,11 +57,13 @@ namespace CapaDiseno
                 {
                     try
                     {
-                        bool bExisteUsuario = procedimientoLogin.llamarProcedimiento(Txt_usuario.Text, Txt_clave.Text);
+                        // Hashear la contraseña antes de enviarla al procedimiento
+                        string claveHasheada = HashPasswordSHA256(Txt_clave.Text.Trim());
+
+                        bool bExisteUsuario = procedimientoLogin.llamarProcedimiento(Txt_usuario.Text, claveHasheada);
 
                         if (bExisteUsuario)
                         {
-
                             // Ocultar el formulario de login en lugar de cerrarlo
                             this.Hide();
 
@@ -70,20 +73,33 @@ namespace CapaDiseno
                             // Pasa el nombre de usuario al constructor de MDI_Seguridad
                             MDI_Seguridad formMDI = new MDI_Seguridad(Txt_usuario.Text);
                             formMDI.Show();
-
                         }
                         else
                         {
-                            MessageBox.Show("Usuario o Contraseña Incorrecta", "Verificacion de Login", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            MessageBox.Show("Usuario o Contraseña Incorrecta", "Verificación de Login", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         }
-
                     }
                     catch (Exception ex)
                     {
                         Console.WriteLine(ex);
-                        MessageBox.Show("No Conecto La Base de Datos", "Verificar Conexión", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        MessageBox.Show("No se pudo conectar a la base de datos", "Error de conexión", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     }
                 }
+            }
+        }
+
+        // Método para hashear la contraseña usando SHA-256
+        private string HashPasswordSHA256(string password)
+        {
+            using (SHA256 sha256 = SHA256.Create())
+            {
+                byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
+                StringBuilder builder = new StringBuilder();
+                for (int i = 0; i < bytes.Length; i++)
+                {
+                    builder.Append(bytes[i].ToString("x2"));
+                }
+                return builder.ToString();
             }
         }
 

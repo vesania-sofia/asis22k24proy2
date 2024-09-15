@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CapaLogica;
 using System.Data.Odbc;
+using System.Security.Cryptography;
 
 /*---------------------------Creador: Diego Gomez------------------------------*/
 namespace CapaDiseno
@@ -324,26 +325,37 @@ namespace CapaDiseno
 
         }
 
-        private void Button1_Click(object sender, EventArgs e)
 
+        private string HashPasswordSHA256(string password)
+        {
+            using (SHA256 sha256 = SHA256.Create())
+            {
+                byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
+                StringBuilder builder = new StringBuilder();
+                for (int i = 0; i < bytes.Length; i++)
+                {
+                    builder.Append(bytes[i].ToString("x2"));
+                }
+                return builder.ToString();
+            }
+        }
+
+        private void Button1_Click(object sender, EventArgs e)
         {
             //Kateryn De León
             // BOTON GUARDAR
-           
             nombre = txt_nombreusername.Text;
             apellido = txt_apellido.Text;
             id = txt_nomb.Text; //Es el nombre del usuario
             clave = txt_clave.Text;
             correo = txt_correo.Text;  // Nueva línea para el correo
             DateTime fechaActual = DateTime.Now;
-            string fecha = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"); ;
+            string fecha = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
             estadousuario = txt_estadousuario.Text;  // Nueva línea para el estado del usuario
             pregunta = txt_pregunta.Text;  // Nueva línea para la pregunta de seguridad
             respuesta = txt_respuesta.Text;  // Nueva línea para la respuesta de seguridad
 
-           // int boton;
-
-            if (txt_nomb.Text == " " || txt_nombreusername.Text == "" || txt_apellido.Text == "" || txt_clave.Text == "")//corregir aca
+            if (txt_nomb.Text == " " || txt_nombreusername.Text == "" || txt_apellido.Text == "" || txt_clave.Text == "")
             {
                 MessageBox.Show("Faltan Campos Por Llenar", "Verificación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
@@ -353,22 +365,24 @@ namespace CapaDiseno
             }
             else
             {
-                if (boton_ingreso == true)//boton_ingreso
+                if (boton_ingreso == true)
                 {
-                   // boton = 1;
-
                     try
                     {
-                        // Asegúrate de pasar todos los parámetros necesarios
-                       DataTable dtusuario = logica1.usuarios(nombre, apellido,id, clave, correo,fecha, estadousuario,pregunta,respuesta);
-                             string mensaje = $"ID: {id}\n" +
-                            $"Nombre: {nombre}\n" +
-                            $"Apellido: {apellido}\n" +
-                            $"Clave: {clave}\n" +
-                            $"Correo: {correo}\n" +
-                            $"Estado Usuario: {estadousuario}\n" +
-                            $"Pregunta: {pregunta}\n" +
-                            $"Respuesta: {respuesta}";
+                        // Hash de la clave con SHA-256
+                        string claveHasheada = HashPasswordSHA256(clave);
+
+                        // Asegúrate de pasar la clave hasheada a la lógica
+                        DataTable dtusuario = logica1.usuarios(nombre, apellido, id, claveHasheada, correo, fecha, estadousuario, pregunta, respuesta);
+
+                        string mensaje = $"ID: {id}\n" +
+                                         $"Nombre: {nombre}\n" +
+                                         $"Apellido: {apellido}\n" +
+                                         $"Clave (hasheada): {claveHasheada}\n" +
+                                         $"Correo: {correo}\n" +
+                                         $"Estado Usuario: {estadousuario}\n" +
+                                         $"Pregunta: {pregunta}\n" +
+                                         $"Respuesta: {respuesta}";
 
                         // Mostrar el mensaje en un MessageBox
                         MessageBox.Show(mensaje, "Detalles del Usuario", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -377,31 +391,27 @@ namespace CapaDiseno
                     catch (Exception ex)
                     {
                         Console.WriteLine(ex);
-                      return;
+                        return;
                     }
                 }
-                
 
                 limpiar();
                 txt_clave.Enabled = true;
                 txt_nomb.Enabled = true;
                 txt_apellido.Enabled = true;
                 txt_nombreusername.Enabled = true;
-               
                 txt_buscar.Enabled = true;
-
                 btn_buscar.Enabled = true;
                 button2.Enabled = true;
                 button3.Enabled = true;
                 button4.Enabled = true;
-
                 txt_correo.Enabled = true;
                 txt_estadousuario.Enabled = true;
                 txt_pregunta.Enabled = true;
                 txt_respuesta.Enabled = true;
             }
         }
-         
+
 
         private void Btn_salir_Click(object sender, EventArgs e)
         {

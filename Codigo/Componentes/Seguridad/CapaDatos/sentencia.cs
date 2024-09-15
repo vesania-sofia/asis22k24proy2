@@ -794,7 +794,7 @@ namespace CapaDatos
 
                 using (OdbcConnection conexion = cn.conectar())
                 {
-                    string obtenerIdUsuarioQuery = "SELECT Pk_id_usuario FROM Tbl_usuarios WHERE nombre_usuario = ?";
+                    string obtenerIdUsuarioQuery = "SELECT Pk_id_usuario FROM Tbl_usuarios WHERE username_usuario = ?";
                     OdbcCommand obtenerIdUsuarioCmd = new OdbcCommand(obtenerIdUsuarioQuery, conexion);
                     obtenerIdUsuarioCmd.Parameters.AddWithValue("?", idUsuario);
 
