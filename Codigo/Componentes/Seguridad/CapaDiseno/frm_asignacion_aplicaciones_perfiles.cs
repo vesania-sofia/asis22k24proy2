@@ -54,6 +54,8 @@ namespace CapaDiseno
                 {
                     cbo_modulos.Items.Add(row[0].ToString());
                 }
+                // Vincular el evento de selección de módulo
+                cbo_modulos.SelectedIndexChanged += new EventHandler(Cbo_modulos_SelectedIndexChanged);
             }
             catch (Exception ex)
             {
@@ -62,11 +64,11 @@ namespace CapaDiseno
         }
 
         // Método para cargar aplicaciones según el módulo seleccionado
-        private void CargarAplicaciones(string ID_aplicacion)
+        private void CargarAplicaciones(string nombreModulo)
         {
             try
             {
-               DataTable dtAplicaciones = logic.consultaLogicaAplicaciones(ID_aplicacion);
+               DataTable dtAplicaciones = logic.consultaLogicaAplicacionesP(nombreModulo);
                 cbo_aplicaciones.Items.Clear();
                 foreach (DataRow row in dtAplicaciones.Rows)
                 {
@@ -101,12 +103,19 @@ namespace CapaDiseno
 
             // Limpiar las aplicaciones antes de agregar nuevas
 
+
+            if (cbo_modulos.SelectedIndex != -1)
+            {
+                string moduloSeleccionado = cbo_modulos.SelectedItem.ToString();
+                CargarAplicaciones(moduloSeleccionado); // Cargar las aplicaciones del módulo seleccionado
+            }
+            /*
             if (cbo_modulos.SelectedItem != null)
             {
                 string nombreModulo = cbo_modulos.SelectedItem.ToString();
                 string ID_aplicacion = null;
                 CargarAplicaciones(ID_aplicacion);
-            }
+            }*/
             
         }
         //****************************************FIN Kevin López***************************************************

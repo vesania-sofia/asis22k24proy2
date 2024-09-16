@@ -757,10 +757,30 @@ namespace CapaLogica
 
         return dt1;
     }
-    //###################  termina lo que hizo  Karla  Sofia Gómez Tobar #######################
+        //###################  termina lo que hizo  Karla  Sofia Gómez Tobar #######################
 
+//********************************KEVIN LOPEZ*************************************************
+        public DataTable consultaLogicaAplicacionesP(string nombreModulo)
+        {
+            try
+            {
+                using (OdbcDataAdapter cmpsAplicaciones = sn.consultarAplicacionesP(nombreModulo)) //Cambio de referencia para fuuncionamiento de APlicaciones Usuarios
+                {
+                    DataTable tableAplicaciones = new DataTable();
+                    cmpsAplicaciones.Fill(tableAplicaciones);
+                    return tableAplicaciones;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return null;
 
-}
+            }
+        }
+//********************************FIN KEVIN LOPEZ*************************************************
+
+    }
 
 
 
