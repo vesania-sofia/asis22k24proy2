@@ -60,10 +60,14 @@
             this.txt_nombreusername = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txt_clave = new System.Windows.Forms.TextBox();
+            this.rb_inhabilitado = new System.Windows.Forms.RadioButton();
+            this.rb_habilitado = new System.Windows.Forms.RadioButton();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_guardar
@@ -80,7 +84,7 @@
             // 
             // btn_salir
             // 
-            this.btn_salir.Location = new System.Drawing.Point(1004, 117);
+            this.btn_salir.Location = new System.Drawing.Point(997, 117);
             this.btn_salir.Margin = new System.Windows.Forms.Padding(4);
             this.btn_salir.Name = "btn_salir";
             this.btn_salir.Size = new System.Drawing.Size(79, 35);
@@ -91,10 +95,10 @@
             // 
             // btn_buscar
             // 
-            this.btn_buscar.Location = new System.Drawing.Point(457, 24);
+            this.btn_buscar.Location = new System.Drawing.Point(457, 29);
             this.btn_buscar.Margin = new System.Windows.Forms.Padding(4);
             this.btn_buscar.Name = "btn_buscar";
-            this.btn_buscar.Size = new System.Drawing.Size(79, 35);
+            this.btn_buscar.Size = new System.Drawing.Size(98, 35);
             this.btn_buscar.TabIndex = 237;
             this.btn_buscar.Text = "Buscar";
             this.btn_buscar.UseVisualStyleBackColor = true;
@@ -129,7 +133,7 @@
             // txt_buscar
             // 
             this.txt_buscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_buscar.Location = new System.Drawing.Point(182, 29);
+            this.txt_buscar.Location = new System.Drawing.Point(166, 29);
             this.txt_buscar.Margin = new System.Windows.Forms.Padding(4);
             this.txt_buscar.Name = "txt_buscar";
             this.txt_buscar.Size = new System.Drawing.Size(283, 33);
@@ -139,7 +143,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(79, 33);
+            this.label2.Location = new System.Drawing.Point(42, 33);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(113, 29);
@@ -184,6 +188,8 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.rb_inhabilitado);
+            this.groupBox4.Controls.Add(this.rb_habilitado);
             this.groupBox4.Controls.Add(this.txt_respuesta);
             this.groupBox4.Controls.Add(this.lbl_respuesta);
             this.groupBox4.Controls.Add(this.label8);
@@ -191,11 +197,11 @@
             this.groupBox4.Controls.Add(this.txt_estadousuario);
             this.groupBox4.Controls.Add(this.lbl_pregunta);
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox4.Location = new System.Drawing.Point(988, 194);
+            this.groupBox4.Location = new System.Drawing.Point(997, 161);
             this.groupBox4.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox4.Size = new System.Drawing.Size(476, 231);
+            this.groupBox4.Size = new System.Drawing.Size(476, 335);
             this.groupBox4.TabIndex = 256;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Datos Personales";
@@ -203,10 +209,10 @@
             // txt_respuesta
             // 
             this.txt_respuesta.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_respuesta.Location = new System.Drawing.Point(147, 145);
+            this.txt_respuesta.Location = new System.Drawing.Point(171, 190);
             this.txt_respuesta.Margin = new System.Windows.Forms.Padding(4);
             this.txt_respuesta.Name = "txt_respuesta";
-            this.txt_respuesta.Size = new System.Drawing.Size(300, 33);
+            this.txt_respuesta.Size = new System.Drawing.Size(297, 33);
             this.txt_respuesta.TabIndex = 229;
             this.txt_respuesta.Tag = "4";
             // 
@@ -214,7 +220,7 @@
             // 
             this.lbl_respuesta.AutoSize = true;
             this.lbl_respuesta.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_respuesta.Location = new System.Drawing.Point(11, 144);
+            this.lbl_respuesta.Location = new System.Drawing.Point(32, 189);
             this.lbl_respuesta.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_respuesta.Name = "lbl_respuesta";
             this.lbl_respuesta.Size = new System.Drawing.Size(128, 29);
@@ -225,7 +231,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(-5, 39);
+            this.label8.Location = new System.Drawing.Point(131, 30);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(177, 29);
@@ -235,28 +241,30 @@
             // txt_pregunta
             // 
             this.txt_pregunta.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_pregunta.Location = new System.Drawing.Point(147, 90);
+            this.txt_pregunta.Location = new System.Drawing.Point(171, 135);
             this.txt_pregunta.Margin = new System.Windows.Forms.Padding(4);
             this.txt_pregunta.Name = "txt_pregunta";
-            this.txt_pregunta.Size = new System.Drawing.Size(300, 33);
+            this.txt_pregunta.Size = new System.Drawing.Size(297, 33);
             this.txt_pregunta.TabIndex = 226;
             this.txt_pregunta.Tag = "4";
+            this.txt_pregunta.Text = "Nombre de familiar";
             // 
             // txt_estadousuario
             // 
             this.txt_estadousuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_estadousuario.Location = new System.Drawing.Point(172, 36);
+            this.txt_estadousuario.Location = new System.Drawing.Point(436, 133);
             this.txt_estadousuario.Margin = new System.Windows.Forms.Padding(4);
             this.txt_estadousuario.Name = "txt_estadousuario";
-            this.txt_estadousuario.Size = new System.Drawing.Size(275, 33);
+            this.txt_estadousuario.Size = new System.Drawing.Size(16, 33);
             this.txt_estadousuario.TabIndex = 227;
             this.txt_estadousuario.Tag = "3";
+            this.txt_estadousuario.TextChanged += new System.EventHandler(this.txt_estadousuario_TextChanged);
             // 
             // lbl_pregunta
             // 
             this.lbl_pregunta.AutoSize = true;
             this.lbl_pregunta.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_pregunta.Location = new System.Drawing.Point(8, 87);
+            this.lbl_pregunta.Location = new System.Drawing.Point(29, 132);
             this.lbl_pregunta.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_pregunta.Name = "lbl_pregunta";
             this.lbl_pregunta.Size = new System.Drawing.Size(110, 29);
@@ -424,11 +432,46 @@
             this.txt_clave.TabIndex = 227;
             this.txt_clave.Tag = "2";
             // 
+            // rb_inhabilitado
+            // 
+            this.rb_inhabilitado.AutoSize = true;
+            this.rb_inhabilitado.Location = new System.Drawing.Point(231, 63);
+            this.rb_inhabilitado.Margin = new System.Windows.Forms.Padding(4);
+            this.rb_inhabilitado.Name = "rb_inhabilitado";
+            this.rb_inhabilitado.Size = new System.Drawing.Size(119, 33);
+            this.rb_inhabilitado.TabIndex = 231;
+            this.rb_inhabilitado.TabStop = true;
+            this.rb_inhabilitado.Text = "Inactivo";
+            this.rb_inhabilitado.UseVisualStyleBackColor = true;
+            // 
+            // rb_habilitado
+            // 
+            this.rb_habilitado.AutoSize = true;
+            this.rb_habilitado.Location = new System.Drawing.Point(94, 63);
+            this.rb_habilitado.Margin = new System.Windows.Forms.Padding(4);
+            this.rb_habilitado.Name = "rb_habilitado";
+            this.rb_habilitado.Size = new System.Drawing.Size(102, 33);
+            this.rb_habilitado.TabIndex = 230;
+            this.rb_habilitado.TabStop = true;
+            this.rb_habilitado.Text = "Activo";
+            this.rb_habilitado.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(111, 503);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 72;
+            this.dataGridView1.RowTemplate.Height = 31;
+            this.dataGridView1.Size = new System.Drawing.Size(1194, 239);
+            this.dataGridView1.TabIndex = 258;
+            // 
             // frm_usuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1486, 514);
+            this.ClientSize = new System.Drawing.Size(1486, 769);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -453,6 +496,7 @@
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -490,5 +534,8 @@
         private System.Windows.Forms.TextBox txt_nombreusername;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txt_clave;
+        private System.Windows.Forms.RadioButton rb_inhabilitado;
+        private System.Windows.Forms.RadioButton rb_habilitado;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }

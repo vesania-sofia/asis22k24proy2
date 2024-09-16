@@ -1165,6 +1165,152 @@ namespace CapaDatos
             return dt;
         }
         /****************************************************************************************************************/
+        //******************************************KATERYN DE LEON***************************
+        //BUSCAR
+        public OdbcDataAdapter consultarAsignacion_moduloAplicaciones()
+        {
+            cn.conectar();
+            string sqlUsuarios = " SELECT  a.Fk_id_modulos AS ModuloID,   m.nombre_modulo AS NombreModulo, a.Fk_id_aplicacion AS AplicacionID,  ap.nombre_aplicacion AS NombreAplicacion  FROM Tbl_asignacion_modulo_aplicacion a  JOIN Tbl_modulos m ON a.Fk_id_modulos = m.Pk_id_modulos JOIN Tbl_aplicaciones ap ON a.Fk_id_aplicacion = ap.Pk_id_aplicacion";
+            OdbcDataAdapter dataUsuarios = new OdbcDataAdapter(sqlUsuarios, cn.conectar());
+            insertarBitacora(idUsuario, "Realizo una consulta  a Asignacion modulo aplicaciones", "tbl_asignacion_modulo_aplicacion");
+            return dataUsuarios;
+
+        }
+
+        //*************************************KATERYN DE LEON*********************************************************
+        // AGREGAR
+        public int ObtenerIdModulo(string nombreModulo)
+        {
+            using (OdbcConnection connection = cn.conectar())
+            {
+                if (connection == null) return -1;
+
+                try
+                {
+                    string query = "SELECT Pk_id_modulos FROM Tbl_modulos WHERE nombre_modulo = ?";
+                    using (OdbcCommand command = new OdbcCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@nombre_modulo", nombreModulo);
+                        object result = command.ExecuteScalar();
+
+                        if (result != null)
+                        {
+                            return Convert.ToInt32(result);
+                        }
+                        else
+                        {
+                            // Si no existe, inserta el módulo
+                            string insertQuery = "INSERT INTO Tbl_modulos (nombre_modulo, descripcion_modulo) VALUES (?, ?)";
+                            using (OdbcCommand insertCommand = new OdbcCommand(insertQuery, connection))
+                            {
+                                insertCommand.Parameters.AddWithValue("@nombre_modulo", nombreModulo);
+                                insertCommand.Parameters.AddWithValue("@descripcion_modulo", "Descripción del módulo"); // Ajusta según sea necesario
+                                insertCommand.ExecuteNonQuery();
+                            }
+
+                            // Obtener el ID del nuevo módulo
+                            string idQuery = "SELECT LAST_INSERT_ID()";
+                            using (OdbcCommand idCommand = new OdbcCommand(idQuery, connection))
+                            {
+                                return Convert.ToInt32(idCommand.ExecuteScalar());
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error al obtener o insertar módulo: " + ex.Message);
+                    return -1;
+                }
+            }
+        }
+        //********************************************KATERYN DE LEON*********************************************************
+        // AGREGAR
+        public int ObtenerIdAplicacion(string nombreAplicacion)
+        {
+            using (OdbcConnection connection = cn.conectar())
+            {
+                if (connection == null) return -1;
+
+                try
+                {
+                    string query = "SELECT Pk_id_aplicacion FROM Tbl_aplicaciones WHERE nombre_aplicacion = ?";
+                    using (OdbcCommand command = new OdbcCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@nombre_aplicacion", nombreAplicacion);
+                        object result = command.ExecuteScalar();
+
+                        if (result != null)
+                        {
+                            return Convert.ToInt32(result);
+                        }
+                        else
+                        {
+                            // Si no existe, inserta la aplicación
+                            string insertQuery = "INSERT INTO Tbl_aplicaciones (nombre_aplicacion, descripcion_aplicacion) VALUES (?, ?)";
+                            using (OdbcCommand insertCommand = new OdbcCommand(insertQuery, connection))
+                            {
+                                insertCommand.Parameters.AddWithValue("@nombre_aplicacion", nombreAplicacion);
+                                insertCommand.Parameters.AddWithValue("@descripcion_aplicacion", "Descripción de la aplicación"); // Ajusta según sea necesario
+                                insertCommand.ExecuteNonQuery();
+                            }
+
+                            // Obtener el ID de la nueva aplicación
+                            string idQuery = "SELECT LAST_INSERT_ID()";
+                            using (OdbcCommand idCommand = new OdbcCommand(idQuery, connection))
+                            {
+                                return Convert.ToInt32(idCommand.ExecuteScalar());
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error al obtener o insertar aplicación: " + ex.Message);
+                    return -1;
+                }
+            }
+        }
+        //*************************************************KATERYN DE LEON*********************************************************
+        // AGREGAR
+        public bool InsertarAsignacionModuloAplicacion(int idModulo, int idAplicacion)
+        {
+            using (OdbcConnection connection = cn.conectar())
+            {
+                if (connection == null) return false;
+
+                try
+                {
+                    string query = "INSERT INTO Tbl_asignacion_modulo_aplicacion (Fk_id_modulos, Fk_id_aplicacion) VALUES (?, ?)";
+                    using (OdbcCommand command = new OdbcCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@Fk_id_modulos", idModulo);
+                        command.Parameters.AddWithValue("@Fk_id_aplicacion", idAplicacion);
+
+                        int resultado = command.ExecuteNonQuery();
+                        return resultado > 0; // Devuelve true si la inserción fue exitosa
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error al insertar asignación: " + ex.Message);
+                    return false;
+                }
+            }
+        }
+        //***************************************************************************************************/
+
+
+
+
+
+
+
+
+
+
+
+
 
     }
 }
