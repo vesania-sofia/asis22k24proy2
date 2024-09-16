@@ -19,29 +19,29 @@ namespace ejecucion
             InitializeComponent();
             if (tabla == "Venta")
             {
-
-
+                string idaplicacion = "1000";
                 //usuario = user;
-                string[] alias = { "id_aplicacion", "id_venta", "monto", "nombre_cliente", "nombre_empleado", "estado" };
+                string[] alias = { "id_venta", "monto", "nombre_cliente", "nombre_empleado", "estado" };
                 navegador1.asignarAlias(alias);
                 navegador1.asignarSalida(this);
                 navegador1.asignarColorFondo(Color.LightBlue);
                 navegador1.asignarColorFuente(Color.BlueViolet);
                 navegador1.asignarTabla("venta");
                 navegador1.asignar2Tabla("factura");
+                
                 navegador1.asignarNombreForm("VENTAS");
-                navegador1.asignarAyuda("1");
             }
             else if (tabla == "Factura")
             {
-                string[] alias = { "id_factura", "monto_venta", "nombre_cliente", "estado" };
+                string[] alias = { "id_factura", "monto_venta", "nombre_cliente", "estado", "id_venta" };
                 navegador1.asignarAlias(alias);
                 navegador1.asignarSalida(this);
                 navegador1.asignarColorFondo(Color.LightBlue);
                 navegador1.asignarColorFuente(Color.BlueViolet);
                 navegador1.asignarTabla("factura");
+                navegador1.asignarComboConTabla("venta", "id_venta", "nombre_cliente", 1);
+                navegador1.asignarforaneas("factura", "venta", "nombre_cliente", "id_venta", "id_venta");
                 navegador1.asignarNombreForm("FACTURAS");
-                navegador1.asignarAyuda("1");
             }
             else if (tabla == "empleados")
             {
@@ -52,34 +52,30 @@ namespace ejecucion
                 navegador1.asignarColorFuente(Color.BlueViolet);
                 navegador1.asignarTabla("empleados");
                 navegador1.asignarNombreForm("EMPLEADOS");
-                navegador1.asignarAyuda("1");
             }
            else if (tabla == "compras")
             {
                 string[] alias = { "id_compra", "nombre_cliente", "monto", "sede", "estado" };
                 navegador1.asignarAlias(alias);
                 navegador1.asignarSalida(this);
-                navegador1.asignarColorFondo(Color.Red);
+                navegador1.asignarColorFondo(Color.LightBlue);
                 navegador1.asignarColorFuente(Color.BlueViolet);
                 navegador1.asignarTabla("compra");
                 navegador1.asignar2Tabla("reserva");
-                navegador1.asignarNombreForm("EMPLEADOS");
-                navegador1.asignarAyuda("1");
+                navegador1.asignarNombreForm("COMPRAS");
             }
             else if (tabla == "perros")
             {
-                string[] alias = { "id_perro", "nombre","raza", "estado" };
+                string[] alias = { "id_perro", "nombre","id_raza", "estado" };
                 navegador1.asignarAlias(alias);
                 navegador1.asignarSalida(this);
                 navegador1.asignarColorFondo(Color.LightBlue);
                 navegador1.asignarColorFuente(Color.BlueViolet);
                 navegador1.asignarTabla("perro");
-                navegador1.asignar2Tabla("registroperro");
-                navegador1.asignarNombreForm("EMPLEADOS");
                 navegador1.asignarComboConTabla("razas", "id_raza", "nombre_raza", 1);
-                //Esto se agrega para mostrar llaves en datagridview
-                navegador1.asignarforaneas("perro", "razas", "nombre_raza", "id_raza", "id_raza");
-                navegador1.asignarAyuda("1");
+                navegador1.asignarforaneas("perro","razas","nombre_raza","id_raza","id_raza");
+                navegador1.asignar2Tabla("registroperro");
+                navegador1.asignarNombreForm("PERROS");
             }
             else if (tabla == "casas")
             {
@@ -90,8 +86,7 @@ namespace ejecucion
                 navegador1.asignarColorFuente(Color.BlueViolet);
                 navegador1.asignarTabla("casas");
                 navegador1.asignar2Tabla("registrocasas");
-                navegador1.asignarNombreForm("EMPLEADOS");
-                navegador1.asignarAyuda("1");
+                navegador1.asignarNombreForm("CASAS");
             }
         }
 
@@ -101,6 +96,11 @@ namespace ejecucion
             //navegador1.ObtenerIdUsuario(usuario);
             //navegador1.botonesYPermisosInicial(usuario, aplicacionActiva);
             navegador1.ObtenerIdAplicacion(aplicacionActiva);
+
+        }
+
+        private void navegador1_Load(object sender, EventArgs e)
+        {
 
         }
     }
