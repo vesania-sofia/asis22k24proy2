@@ -30,34 +30,23 @@ namespace ejecucion
         private void InitializeComponent()
         {
             this.navegador1 = new CapaDeDiseno.Navegador();
-            this.navegador2 = new CapaDeDiseno.Navegador();
             this.SuspendLayout();
             // 
             // navegador1
             // 
             this.navegador1.BackColor = System.Drawing.Color.White;
-            this.navegador1.Location = new System.Drawing.Point(-2, -6);
+            this.navegador1.Location = new System.Drawing.Point(-4, -1);
+            this.navegador1.Margin = new System.Windows.Forms.Padding(4);
             this.navegador1.Name = "navegador1";
-            this.navegador1.Size = new System.Drawing.Size(850, 650);
-            this.navegador1.TabIndex = 2;
-            // 
-            // navegador2
-            // 
-            this.navegador2.BackColor = System.Drawing.Color.White;
-            this.navegador2.Location = new System.Drawing.Point(498, 175);
-            this.navegador2.Margin = new System.Windows.Forms.Padding(6);
-            this.navegador2.Name = "navegador2";
-            this.navegador2.Size = new System.Drawing.Size(8, 8);
-            this.navegador2.TabIndex = 1;
+            this.navegador1.Size = new System.Drawing.Size(1143, 800);
+            this.navegador1.TabIndex = 0;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(856, 575);
+            this.ClientSize = new System.Drawing.Size(1142, 803);
             this.Controls.Add(this.navegador1);
-            this.Controls.Add(this.navegador2);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -67,7 +56,6 @@ namespace ejecucion
 
         #endregion
 
-        private CapaDeDiseno.Navegador navegador2;
         private CapaDeDiseno.Navegador navegador1;
     }
 }

@@ -34,5 +34,10 @@ namespace ejecucion
         {
 
         }
+
+        private void principal_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
