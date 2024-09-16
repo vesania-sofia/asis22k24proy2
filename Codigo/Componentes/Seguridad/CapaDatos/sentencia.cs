@@ -52,32 +52,29 @@ namespace CapaDatos
             insertarBitacora(idUsuario, "Realizo una consulta a perfiles", "Tbl_perfiles");
             return dataPerfiles;
         }
-//****************************************Kevin López***************************************************
+        //****************************************Kevin López***************************************************
 
-
+        //#############INICIO ALYSON RODRIGUEZ 9959-21-829
         public OdbcDataAdapter consultarAplicaciones(string nombreModulo)
         {
-            string sCodigoModulo = " ";
+            cn.conectar();
+
             try
             {
-                OdbcCommand sqlCodigoModulo = new OdbcCommand("SELECT PK_id_Modulo FROM tbl_modulo WHERE nombre_modulo = '" + nombreModulo + "' ", cn.conectar());
-                OdbcDataReader almacena = sqlCodigoModulo.ExecuteReader();
+                string sqlAplicaciones = @"
+        SELECT a.Pk_id_aplicacion, a.nombre_aplicacion 
+        FROM tbl_aplicaciones a
+        JOIN tbl_asignacion_modulo_aplicacion ama ON a.pk_id_aplicacion = ama.fk_id_aplicacion
+        JOIN tbl_modulos m ON m.pk_id_modulos = ama.fk_id_modulos
+        WHERE m.nombre_modulo = ?";
 
-                while (almacena.Read() == true)
-                {
-                    sCodigoModulo = almacena.GetString(0);
-                }
-
-                string sqlAplicaciones = "SELECT nombre_aplicacion FROM tbl_aplicacion WHERE PK_id_Modulo = '" + sCodigoModulo + "' ";
                 OdbcDataAdapter dataAplicaciones = new OdbcDataAdapter(sqlAplicaciones, cn.conectar());
+                dataAplicaciones.SelectCommand.Parameters.AddWithValue("?", nombreModulo);
 
-                almacena.Close();
-                sqlCodigoModulo.Connection.Close();
-                insertarBitacora(idUsuario, "Realizo una consulta a aplicaciones", "tbl_aplicacion");
+                // Registro de la bitacora
+                insertarBitacora(idUsuario, "Realizó una consulta a aplicaciones", "tbl_aplicacion");
+
                 return dataAplicaciones;
-
-
-
             }
             catch (Exception ex)
             {
@@ -85,6 +82,7 @@ namespace CapaDatos
                 return null;
             }
         }
+        //#############FINALIZA ALYSON RODRIGUEZ 9959-21-829
 
         public OdbcDataAdapter insertarPermisosUA(string codigoUsuario, string nombreAplicacion, string ingresar, string consulta, string modificar, string eliminar, string imprimir)
         {
