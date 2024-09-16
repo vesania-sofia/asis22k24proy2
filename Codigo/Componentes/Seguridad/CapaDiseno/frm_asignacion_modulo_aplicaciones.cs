@@ -163,11 +163,124 @@ namespace CapaDiseno
                 MessageBox.Show($"Valor seleccionado: {valorSeleccionado}", "Valor Seleccionado");
             }
         }
-        /***************************************************************************************************/
 
+        //*********************KATERYN DE LEON**********************************************
+        //boton ver
+        private void btn_ver_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Llamar a la capa lógica para obtener los datos de la asignación (modulo-aplicación)
+                DataTable dtResultado = logica2.consultaLogicaAsigncacionModuloAplicaciones();
 
+                if (dtResultado != null && dtResultado.Rows.Count > 0)
+                {
+                    // Asignar el DataTable al DataGridView
+                    dgv_asignaciones_modulo_aplicacion.DataSource = dtResultado;
+                }
+                else
+                {
+                    MessageBox.Show("No se encontraron datos.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al buscar los datos: {ex.Message}");
+            }
+        }
+        // *******************************KATERYN DE LEON******************************/
+        //boton crear
+        private void btn_crear_Click(object sender, EventArgs e)
+        {   
+            try
+            {
+                // Obtener los valores seleccionados de los ComboBox
+                var selectedModulo = (ComboBoxItem)cmb_modulo.SelectedItem;
+                var selectedAplicacion = (ComboBoxItem)cmb_apli.SelectedItem;
 
+                if (selectedModulo != null && selectedAplicacion != null)
+                {
+                    // Obtener nombres
+                    string nombreModulo = selectedModulo.Display;
+                    string nombreAplicacion = selectedAplicacion.Display;
 
-        /*****************************************************************************************************/
+                    // Obtener o insertar módulo y aplicación
+                    int idModulo = logica2.ObtenerOInsertarModulo(nombreModulo);
+                    int idAplicacion = logica2.ObtenerOInsertarAplicacion(nombreAplicacion);
+
+                    if (idModulo > 0 && idAplicacion > 0)
+                    {
+                        // Insertar en la tabla intermedia
+                        bool resultado = logica2.InsertarLogicaAsignacionModuloAplicacion(idModulo, idAplicacion);
+
+                        if (resultado)
+                        {
+                            MessageBox.Show("Asignación creada exitosamente.");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Error al crear la asignación.");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se pudieron obtener los IDs del módulo o la aplicación.");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Por favor, selecciona un módulo y una aplicación válidos.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al crear la asignación: {ex.Message}");
+            }
+
+        }
+
+        private void cmb_modulo_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            //*******************************************KATERYN DE LEON**********************************************
+            //****************ComboBox1 (Modulos) ********************
+
+            if (cmb_modulo.SelectedItem != null)
+            {
+                // Obtener el valor del ComboBoxItem seleccionado
+                var selectedItem = (ComboBoxItem)cmb_modulo.SelectedItem;
+                string valorSeleccionado = selectedItem.Value;
+
+                // Mostrar el valor en el TextBox txt_modulo
+                txt_modulo.Text = $"{selectedItem.Value}-{selectedItem.Display}";
+
+                // O solo el nombre del módulo (Display)
+                // txt_modulo.Text = selectedItem.Display;
+            }
+        }
+        //*******************************************************************************/
+
+        private void cmb_apli_SelectedIndexChanged(object sender, EventArgs e)
+        {  //*************************************KATERYN DE LEON**********************************************
+           //****************ComboBox2 (Aplicaciones)********************
+
+            if (cmb_apli.SelectedItem != null)
+            {
+                // Obtener el valor del ComboBoxItem2 seleccionado
+                var selectedItem = (ComboBoxItem)cmb_apli.SelectedItem;
+                string valorSeleccionado = selectedItem.Value;
+
+                // Mostrar el valor en el TextBox txt_aplicacion
+                txt_aplicacion.Text = $"{selectedItem.Value}-{selectedItem.Display}";
+
+                // O solo el nombre de la aplicación (Display)
+                // txt_aplicacion.Text = selectedItem.Display;
+            }
+
+        }
     }
+
+    /***************************************************************************************************/
 }
+
+    
+

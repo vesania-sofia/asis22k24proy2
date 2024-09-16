@@ -657,7 +657,67 @@ namespace CapaLogica
         }
         /**************************************************************************/
 
+        /**************************************************************************/
 
+        //*************KaterynDeLeon*************************
+        //buscar
+        public DataTable consultaLogicaAsigncacionModuloAplicaciones()
+        {
+            try
+            {
+                OdbcDataAdapter dtModulos = sn.consultarAsignacion_moduloAplicaciones();
+                DataTable tableModulosApli = new DataTable();
+                dtModulos.Fill(tableModulosApli);
+                return tableModulosApli;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return null;
+            }
+        }
+        //*************************************************************************************/
+        //*************KaterynDeLeon************************
+        // Inicio ( crear)
+
+        public int ObtenerOInsertarModulo(string nombreModulo)
+        {
+            return sn.ObtenerIdModulo(nombreModulo);
+        }
+
+        public int ObtenerOInsertarAplicacion(string nombreAplicacion)
+        {
+            return sn.ObtenerIdAplicacion(nombreAplicacion);
+        }
+
+        public bool InsertarLogicaAsignacionModuloAplicacion(int idModulo, int idAplicacion)
+        {
+            return sn.InsertarAsignacionModuloAplicacion(idModulo, idAplicacion);
+        }
     }
+    //*****************Fin********************************************************************
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
+
+

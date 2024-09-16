@@ -63,73 +63,37 @@ namespace CapaDiseno
 
             txt_correo.Text = "";
             txt_estadousuario.Text = "";
-            txt_pregunta.Text = "";
+           // txt_pregunta.Text = "";
             txt_respuesta.Text = "";
         }
 
         private void Button1_Click_1(object sender, EventArgs e)
         {
-            //KaterynDeLeon
+            //**************************************KaterynDeLeon*********************/
             //BOTON BUSCAR
+          
 
             buscar = txt_buscar.Text.Trim();
 
-            /*   if (boton_eliminar == true)
-              {
-
-                  txt_clave.Enabled = false;
-                  txt_id.Enabled = false;
-                  txt_nombre.Enabled = false;
-                  txt_apellido.Enabled = false;
-                  Gpb_estado.Enabled = false;
-                    groupBox1.Enabled = false;
-                groupBox2.Enabled = false;
-            }
-              else
-              {
-                  txt_clave.Enabled = false;
-                  txt_id.Enabled = false;
-                  txt_nombre.Enabled = true;
-                  txt_apellido.Enabled = true;
-                  //Gpb_estado.Enabled = false;
-                    groupBox1.Enabled = false;
-            }*/
-
-
             try
             {
+                // Obtiene el DataTable desde la lógica de búsqueda
                 DataTable dtusuario = logica1.buscar(buscar);
 
-                //MessageBox.Show(dtusuario.ToString());
-
-                if (dtusuario.ToString() == null)
+                // Verifica si el DataTable tiene datos
+                if (dtusuario == null || dtusuario.Rows.Count == 0)
                 {
-                    MessageBox.Show("No existe");
-
+                    MessageBox.Show("No existe el registro que buscas.");
                 }
                 else
                 {
-                    foreach (DataRow dt in dtusuario.Rows)
-                    {
-                        txt_id.Text = (dt[0].ToString());
-                        txt_nomb.Text = (dt[3].ToString());
-                        txt_apellido.Text = (dt[2].ToString());
+                    // Asigna el DataTable como el origen de datos del DataGridView
+                    dataGridView1.DataSource = dtusuario;
 
-                        txt_nombreusername.Text = (dt[1].ToString());
-
-
-                        txt_clave.Text = (dt[4].ToString());
-                        txt_correo.Text = (dt[5].ToString());
-
-                        txt_estadousuario.Text = (dt[7].ToString());
-
-                        txt_pregunta.Text = (dt[8].ToString());
-                        txt_respuesta.Text = (dt[9].ToString());
-
-                    }
                     // Mensaje indicando que los datos fueron buscados correctamente
                     MessageBox.Show("Los datos fueron buscados correctamente.");
 
+                    // Habilita los botones necesarios para continuar la operación
                     txt_nomb.Enabled = true;
                     txt_apellido.Enabled = true;
                     txt_correo.Enabled = true;
@@ -141,28 +105,13 @@ namespace CapaDiseno
                     btn_salir.Enabled = true;
                     btn_guardar.Enabled = true;
                     button4.Enabled = true;
-
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
+                MessageBox.Show("Error al buscar: " + ex.Message);
                 return;
             }
-
-
-
-
-            /* txt_clave.Enabled = true;
-             txt_id.Enabled = true;
-             txt_nombre.Enabled = true;
-             txt_apellido.Enabled = true;
-             Gpb_estado.Enabled = true;
-             txt_buscar.Enabled = true;
-             button1.Enabled = true;
-             button2.Enabled = true;
-             button3.Enabled = true;
-             boton_ingreso = true;*/
         }
 
         private void GroupBox3_Enter(object sender, EventArgs e)
@@ -278,6 +227,11 @@ namespace CapaDiseno
 
         public string id, nombre, apellido, clave, correo, estadousuario, pregunta, respuesta;
 
+        private void txt_estadousuario_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
         private void Btn_ayuda_Click(object sender, EventArgs e)
         {
             Help.ShowHelp(this, "C:\\Ayuda_Seguridad\\" + "CreacionUsuario.chm", "Creacion_Usuario.html");
@@ -342,20 +296,26 @@ namespace CapaDiseno
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            //Kateryn De León
+            //**********************Kateryn De León************************/
             // BOTON GUARDAR
-            nombre = txt_nombreusername.Text;
+
+            nombre = txt_nomb.Text;////nombre usuario
             apellido = txt_apellido.Text;
-            id = txt_nomb.Text; //Es el nombre del usuario
+            id = txt_nombreusername.Text;// nombre username
+
             clave = txt_clave.Text;
             correo = txt_correo.Text;  // Nueva línea para el correo
             DateTime fechaActual = DateTime.Now;
-            string fecha = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-            estadousuario = txt_estadousuario.Text;  // Nueva línea para el estado del usuario
+            string fecha = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"); ;
+            // estadousuario = txt_estadousuario.Text;  // Nueva línea para el estado del usuario
+            string estadousuario = "";//guarda lo del txt
+
             pregunta = txt_pregunta.Text;  // Nueva línea para la pregunta de seguridad
             respuesta = txt_respuesta.Text;  // Nueva línea para la respuesta de seguridad
 
-            if (txt_nomb.Text == " " || txt_nombreusername.Text == "" || txt_apellido.Text == "" || txt_clave.Text == "")
+            // int boton;
+
+            if (txt_nomb.Text == " " || txt_nombreusername.Text == "" || txt_apellido.Text == "" || txt_clave.Text == "")//corregir aca
             {
                 MessageBox.Show("Faltan Campos Por Llenar", "Verificación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
@@ -365,24 +325,38 @@ namespace CapaDiseno
             }
             else
             {
-                if (boton_ingreso == true)
+                if (boton_ingreso == true)//boton_ingreso
                 {
+                    // boton = 1;
+
                     try
                     {
-                        // Hash de la clave con SHA-256
-                        string claveHasheada = HashPasswordSHA256(clave);
 
-                        // Asegúrate de pasar la clave hasheada a la lógica
-                        DataTable dtusuario = logica1.usuarios(nombre, apellido, id, claveHasheada, correo, fecha, estadousuario, pregunta, respuesta);
+                        if (rb_habilitado.Checked)
+                        {
+                            estadousuario = "1";
+                        }
 
-                        string mensaje = $"ID: {id}\n" +
-                                         $"Nombre: {nombre}\n" +
-                                         $"Apellido: {apellido}\n" +
-                                         $"Clave (hasheada): {claveHasheada}\n" +
-                                         $"Correo: {correo}\n" +
-                                         $"Estado Usuario: {estadousuario}\n" +
-                                         $"Pregunta: {pregunta}\n" +
-                                         $"Respuesta: {respuesta}";
+                        if (rb_inhabilitado.Checked)
+                        {
+                            estadousuario = "0";
+                        }
+                        else
+                        {
+                            estadousuario = "1";
+                        }
+
+                        // Asegúrate de pasar todos los parámetros necesarios
+                        DataTable dtusuario = logica1.usuarios(nombre, apellido, id, clave, correo, fecha, estadousuario, pregunta, respuesta);
+                        string mensaje = //$"ID: {idd}\n" +//id del guardar
+                       $"Nombre: {nombre}\n" +
+                       $"Apellido: {apellido}\n" +
+                       $"UserName: {id}\n" +
+                       $"Clave: {clave}\n" +
+                       $"Correo: {correo}\n" +
+                       $"Estado Usuario: {estadousuario}\n" +
+                       $"Pregunta: {pregunta}\n" +
+                       $"Respuesta: {respuesta}";
 
                         // Mostrar el mensaje en un MessageBox
                         MessageBox.Show(mensaje, "Detalles del Usuario", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -395,23 +369,26 @@ namespace CapaDiseno
                     }
                 }
 
+
                 limpiar();
                 txt_clave.Enabled = true;
                 txt_nomb.Enabled = true;
                 txt_apellido.Enabled = true;
                 txt_nombreusername.Enabled = true;
+
                 txt_buscar.Enabled = true;
+
                 btn_buscar.Enabled = true;
                 button2.Enabled = true;
                 button3.Enabled = true;
                 button4.Enabled = true;
+
                 txt_correo.Enabled = true;
                 txt_estadousuario.Enabled = true;
                 txt_pregunta.Enabled = true;
                 txt_respuesta.Enabled = true;
             }
         }
-
 
         private void Btn_salir_Click(object sender, EventArgs e)
         {
