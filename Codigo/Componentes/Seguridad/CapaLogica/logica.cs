@@ -522,12 +522,12 @@ namespace CapaLogica
         } // termina
 
 
-
-        public DataTable consultaLogicaPermisosPerfilAplicacion(string codigoPerfil, string nombreAplicacion, string ingresar, string consulta, string modificar, string eliminar, string imprimir)
+        //*****************************MODIFICADO POR JOSUÉ PAZ*******************************************************
+        public DataTable consultaLogicaPermisosPerfilAplicacion(string codigoPerfil, string nombreAplicacion, string ingresar, string modificar, string eliminar, string consulta, string imprimir)
         {
             try
             {
-                OdbcDataAdapter dtPermisosPerfilA = sn.insertarPermisosPerfilA(codigoPerfil, nombreAplicacion, ingresar, consulta, modificar, eliminar, imprimir);
+                OdbcDataAdapter dtPermisosPerfilA = sn.insertarPermisosPerfilA(codigoPerfil, nombreAplicacion, ingresar, modificar, eliminar, consulta, imprimir);
                 DataTable tablePermisosPerfilA = new DataTable();
                 dtPermisosPerfilA.Fill(tablePermisosPerfilA);
                 return tablePermisosPerfilA;
@@ -538,6 +538,23 @@ namespace CapaLogica
                 return null;
             }
         }
+        public DataTable buscardatid(string bperfil)
+        {
+            try
+            {
+                OdbcDataAdapter dtPermisosPerfilA = sn.buscarid(bperfil);
+                DataTable tablePermisosPerfilA = new DataTable();
+                dtPermisosPerfilA.Fill(tablePermisosPerfilA);
+                return tablePermisosPerfilA;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return null;
+            }
+        }
+
+        //*****************************ACA TERMINA********************************************************************
 
         //Trabajado por María José Véliz Ochoa, 9959-21-5909
         public DataTable ConsultaLogicaModulo(string ID_modulo)
