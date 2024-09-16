@@ -834,8 +834,8 @@ namespace Capa_Vista_Consulta
         private void button1_Click(object sender, EventArgs e)
         {
             consultaControlador controlador = new consultaControlador();
-            string querySeleccionado = cboEditarNombreConsulta.ToString();
-            controlador.BuscarQuerySeleccionado(querySeleccionado, dgvConsultar, txtQueryEditadoFinal);
+            string querySeleccionado = cboEditarNombreConsulta.SelectedItem.ToString();
+            controlador.BuscarQuerySeleccionado(querySeleccionado, dgvMostrar1, txtQueryEditadoFinal);
         }
 
 
