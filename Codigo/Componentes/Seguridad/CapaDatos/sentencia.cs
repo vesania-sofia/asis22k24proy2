@@ -84,40 +84,54 @@ namespace CapaDatos
         }
         //#############FINALIZA ALYSON RODRIGUEZ 9959-21-829
 
-        public OdbcDataAdapter insertarPermisosUA(string codigoUsuario, string nombreAplicacion, string ingresar, string consulta, string modificar, string eliminar, string imprimir)
+        //Trabajado María José Véliz
+        public OdbcDataAdapter insertarPermisosUA(string nombreAplicacion, string codigoUsuario, string ingresar, string modificar, string eliminar, string consulta, string imprimir)
         {
             string sCodigoAplicacion = " ";
+            string sCodigoUsuario = " ";
 
             try
             {
-                OdbcCommand sqlCodigoModulo = new OdbcCommand("SELECT PK_id_aplicacion FROM tbl_aplicacion WHERE nombre_aplicacion = '" + nombreAplicacion + "' ", cn.conectar());
+                // Obtén el código de la aplicación
+                OdbcCommand sqlCodigoModulo = new OdbcCommand("SELECT Pk_id_aplicacion FROM tbl_aplicaciones WHERE nombre_aplicacion = '" + nombreAplicacion + "' ", cn.conectar());
                 OdbcDataReader almacena = sqlCodigoModulo.ExecuteReader();
 
                 while (almacena.Read() == true)
                 {
                     sCodigoAplicacion = almacena.GetString(0);
                 }
-
-                string sqlInsertarPermisosUA = "INSERT INTO tbl_usuario_aplicacion(PK_id_usuario, PK_id_aplicacion, ingresar, consulta, modificar, eliminar, imprimir) VALUES ('" + codigoUsuario + "', '" + sCodigoAplicacion + "', '" + ingresar + "', '" + consulta + "', '" + modificar + "', '" + eliminar + "', '" + imprimir + "');";
-                insertarBitacora(idUsuario, "Asigno aplicacion: " + nombreAplicacion + " a usuario: " + codigoUsuario, "tbl_usuario_aplicacion");
-                OdbcDataAdapter dataPermisosUA = new OdbcDataAdapter(sqlInsertarPermisosUA, cn.conectar());
-
-
                 almacena.Close();
                 sqlCodigoModulo.Connection.Close();
 
+                // Obtén el código del usuario
+                OdbcCommand sqlCodigoUsuario = new OdbcCommand("SELECT Pk_id_usuario FROM tbl_usuarios WHERE nombre_usuario = '" + codigoUsuario + "' ", cn.conectar());
+                OdbcDataReader almacenaUsuario = sqlCodigoUsuario.ExecuteReader();
+
+                while (almacenaUsuario.Read() == true)
+                {
+                    sCodigoUsuario = almacenaUsuario.GetString(0);
+                }
+                almacenaUsuario.Close();
+                sqlCodigoUsuario.Connection.Close();
+
+                // Inserta los permisos usando el código de la aplicación y el código del usuario
+                string sqlInsertarPermisosUA = "INSERT INTO tbl_permisos_aplicaciones_usuario(Fk_id_aplicacion, Fk_id_usuario, guardar_permiso, modificar_permiso, eliminar_permiso, buscar_permiso, imprimir_permiso) VALUES ('" + sCodigoAplicacion + "','" + sCodigoUsuario + "', '" + ingresar + "', '" + modificar + "', '" + eliminar + "', '" + consulta + "', '" + imprimir + "');";
+
+                // Inserta en la bitácora
+                insertarBitacora(idUsuario, "Asignó aplicación: " + nombreAplicacion + " a usuario: " + codigoUsuario, "tbl_permisos_aplicaciones_usuario");
+
+                // Ejecuta el comando de inserción
+                OdbcDataAdapter dataPermisosUA = new OdbcDataAdapter(sqlInsertarPermisosUA, cn.conectar());
+
                 return dataPermisosUA;
-
-
-
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex);
                 return null;
             }
-
         }
+        //Termina
 
         //###################  lo que hizo Karla  Sofia Gómez Tobar #######################
         public OdbcDataAdapter mostrarPerfilesDeUsuario(string TablaPerfilUsuario)
