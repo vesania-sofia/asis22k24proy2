@@ -8,12 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CapaDeLogica;
-//using CapaDatos;
+using CapaDatos;
 
 namespace CapaDeDiseno
 {
     public partial class Navegador : UserControl
     {
+        Capa_Vista_Reporteria.menu_reporteria reportes = new Capa_Vista_Reporteria.menu_reporteria();
+        Capa_Vista_Reporteria.visualizar visualizar = new Capa_Vista_Reporteria.visualizar("ReporteVentas.rpt");
         Validaciones v = new Validaciones();
         logicaNav logic = new logicaNav();
         Form cerrar;
@@ -36,7 +38,12 @@ namespace CapaDeDiseno
         string[] campoCombo = new string[30];
         string[] listaItems = new string[30];
         string[] campoDisplayCombo = new string[30];
-        string queryFactura;
+
+        string tablarelacionada = "";
+        string campodescriptivo="";
+        string columnaprimararelacionada="";
+        string columnaForanea = "";
+
         int posCombo = 10;
         int noCombo = 0;
         int noComboAux = 0;
@@ -44,7 +51,7 @@ namespace CapaDeDiseno
         Color Cfuente = Color.White;
         Color nuevoColor = Color.White;
         bool presionado = false;
-        //sentencia sn = new sentencia(); //objeto del componente de seguridad para obtener el método de la bitácora
+        sentencia sn = new sentencia(); //objeto del componente de seguridad para obtener el método de la bitácora
         string idUsuario = "";
         string idAplicacion = "";
         //las siguientes dos variables son para el método botonesYPermisos();
@@ -112,7 +119,7 @@ namespace CapaDeDiseno
                             if (numeroAlias()== logic.contarCampos(tabla))
                             {
                                 int i = 0;
-                                DataTable dt = logic.consultaLogica(tabla);
+                                DataTable dt = logic.consultaLogica(tabla, tablarelacionada, campodescriptivo, columnaForanea, columnaprimararelacionada);
                                 dataGridView1.DataSource = dt;
                                 int head = 0;
                                 while (head< logic.contarCampos(tabla))
@@ -231,7 +238,11 @@ namespace CapaDeDiseno
             }
             else
             {
-                MessageBox.Show("Tabla actual: " + tabla);
+
+               // MessageBox.Show("Tabla actual: " + tabla);
+
+                //MessageBox.Show("Tabla actual: " + tabla);
+
             }
             //botonesYPermisosInicial(userActivo, aplActivo);
             //registros();
@@ -255,7 +266,18 @@ namespace CapaDeDiseno
 
 			this.idUsuario = idUsuario;            
         }
-        
+        public void asignarforaneas(string table, string tablarela, string campodescri, string columnafora, string columnaprimaria)
+        {
+            tabla = table;
+            tablarelacionada =tablarela;
+            campodescriptivo = campodescri;
+            columnaForanea = columnafora;
+            columnaprimararelacionada = columnaprimaria;
+
+            
+
+
+        }
         public void ObtenerIdAplicacion(string idAplicacion)
         {
             this.idAplicacion = idAplicacion;            
@@ -809,7 +831,10 @@ namespace CapaDeDiseno
 
         public void actualizardatagriew()
         {
-            DataTable dt = logic.consultaLogica(tabla);
+
+            DataTable dt = logic.consultaLogica(tabla,tablarelacionada,campodescriptivo, columnaForanea, columnaprimararelacionada);
+
+            
             dataGridView1.DataSource = dt;
             int head = 0;
             while (head < logic.contarCampos(tabla))
@@ -1263,6 +1288,7 @@ namespace CapaDeDiseno
         {
             try
             {
+                sn.insertarBitacora(idUsuario, "Se presiono el boton cancelar en " + tabla, tabla);
                 // Mostrar un mensaje de confirmación antes de cancelar la operación actual
                 DialogResult result = MessageBox.Show(
                     "Está a punto de cancelar los cambios no guardados.\n\n" +
@@ -1391,6 +1417,7 @@ namespace CapaDeDiseno
                             "Eliminación Exitosa",
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Information
+
                         );
 
                         // Restablecer el estado de los botones
@@ -1424,6 +1451,7 @@ namespace CapaDeDiseno
                 // Habilitar/deshabilitar botones según los permisos del usuario
                 botonesYPermisos();
                 presionado = true;
+                sn.insertarBitacora(idUsuario, "Se actualizo el estado en " + tabla, tabla);
             }
             catch (Exception ex)
             {
@@ -1994,7 +2022,9 @@ namespace CapaDeDiseno
                                 "Actualización Exitosa",
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Information
+
                             );
+                            sn.insertarBitacora(idUsuario, "Actualizo un registro en " + tabla, tabla);
                             break;
 
                         case 2:
@@ -2005,6 +2035,7 @@ namespace CapaDeDiseno
                             // Iniciar la lista de queries para la transacción
                             List<string> queries = new List<string>();
                            logic.nuevoQuery(queryPrimeraTabla);
+                            sn.insertarBitacora(idUsuario, "Se inserto en " + tabla, tabla);
                             string ultimoIdPrimeraTabla = logic.lastID(tabla);
                             Console.WriteLine(ultimoIdPrimeraTabla);
                             if (!string.IsNullOrEmpty(otratabla))
@@ -2047,13 +2078,15 @@ namespace CapaDeDiseno
 
                                 // Añadir a la lista de queries
                                 queries.Add(querySegundaTabla);
-                                
+
+                                // Ejecutar las queries dentro de una transacción
+                                logic.insertarDatosEnDosTablas(queries);
+
+                                sn.insertarBitacora(idUsuario, "Se inserto en " + otratabla, otratabla);
                             }
 
-                            // Ejecutar las queries dentro de una transacción
-                            logic.insertarDatosEnDosTablas(queries);
-
                             MessageBox.Show("El registro ha sido guardado correctamente.", "Guardado Exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                             break;
 
                         default:
@@ -2397,8 +2430,25 @@ namespace CapaDeDiseno
 
         private void Btn_Ayuda_Click_1(object sender, EventArgs e)
         {
-            Help.ShowHelp(this, AsRuta, AsIndice);//Abre el menu de ayuda HTML     
+            // Construir la ruta completa manualmente
+            string helpFilePath = AppDomain.CurrentDomain.BaseDirectory + @"..\..\AyudaHTML\AyudaNavegador.chm";
+
+            // Normaliza la ruta para obtener la absoluta correctamente
+            helpFilePath = System.IO.Path.GetFullPath(helpFilePath);
+
+            // Verifica si el archivo existe antes de intentar abrirlo
+            if (System.IO.File.Exists(helpFilePath))
+            {
+                Help.ShowHelp(this, helpFilePath, "AyudaNav.html");
+            }
+            else
+            {
+                MessageBox.Show("No se encontró el archivo de ayuda: " + helpFilePath, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+
+
+
 
         private void Btn_MasAyuda_Click(object sender, EventArgs e)
         {
@@ -2426,6 +2476,27 @@ namespace CapaDeDiseno
         private void LblTabla_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void xd_Click(object sender, EventArgs e)
+        {
+            //Help.ShowHelp(this, AsRuta, AsIndice); Abre el menu de ayuda HTML     
+            Help.ShowHelp(this, "/AyudaHTML/AyudaNavegador.chm", "AyudaNav.html");//Abre el menu de ayuda HTML 
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+        }
+
+        private void Btn_Imprimir_Click_1(object sender, EventArgs e)
+        {
+            visualizar.ShowDialog();
+        }
+
+        private void btn_Reportes_Principal_Click(object sender, EventArgs e)
+        {
+            reportes.ShowDialog();
         }
     }
 }

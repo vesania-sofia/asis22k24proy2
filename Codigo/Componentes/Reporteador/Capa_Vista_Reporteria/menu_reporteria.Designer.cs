@@ -29,87 +29,90 @@ namespace Capa_Vista_Reporteria
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(menu_reporteria));
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.Pic_1 = new System.Windows.Forms.PictureBox();
+            this.Btn_RepUsuario = new System.Windows.Forms.Button();
+            this.Btn_RepAdmin = new System.Windows.Forms.Button();
+            this.Pic_2 = new System.Windows.Forms.PictureBox();
+            this.Pic_Foto = new System.Windows.Forms.PictureBox();
             this.flowLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pic_1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pic_2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pic_Foto)).BeginInit();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
             // 
-            this.flowLayoutPanel1.Controls.Add(this.pictureBox1);
-            this.flowLayoutPanel1.Controls.Add(this.button1);
-            this.flowLayoutPanel1.Controls.Add(this.button2);
-            this.flowLayoutPanel1.Controls.Add(this.pictureBox2);
-            this.flowLayoutPanel1.Controls.Add(this.pictureBox3);
+            this.flowLayoutPanel1.Controls.Add(this.Pic_1);
+            this.flowLayoutPanel1.Controls.Add(this.Btn_RepUsuario);
+            this.flowLayoutPanel1.Controls.Add(this.Btn_RepAdmin);
+            this.flowLayoutPanel1.Controls.Add(this.Pic_2);
+            this.flowLayoutPanel1.Controls.Add(this.Pic_Foto);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(185, 540);
             this.flowLayoutPanel1.TabIndex = 1;
             // 
-            // button1
+            // Pic_1
             // 
-            this.button1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
-            this.button1.Location = new System.Drawing.Point(3, 164);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(185, 40);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Reporteria Usuarios";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.Pic_1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.Pic_1.Location = new System.Drawing.Point(3, 3);
+            this.Pic_1.Name = "Pic_1";
+            this.Pic_1.Size = new System.Drawing.Size(182, 155);
+            this.Pic_1.TabIndex = 2;
+            this.Pic_1.TabStop = false;
             // 
-            // button2
+            // Btn_RepUsuario
             // 
-            this.button2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(3, 210);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(185, 67);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Reporteria Administrador";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.Btn_RepUsuario.Dock = System.Windows.Forms.DockStyle.Top;
+            this.Btn_RepUsuario.FlatAppearance.BorderSize = 0;
+            this.Btn_RepUsuario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_RepUsuario.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
+            this.Btn_RepUsuario.Location = new System.Drawing.Point(3, 164);
+            this.Btn_RepUsuario.Name = "Btn_RepUsuario";
+            this.Btn_RepUsuario.Size = new System.Drawing.Size(185, 40);
+            this.Btn_RepUsuario.TabIndex = 0;
+            this.Btn_RepUsuario.Text = "Reporteria Usuarios";
+            this.Btn_RepUsuario.UseVisualStyleBackColor = true;
+            this.Btn_RepUsuario.Click += new System.EventHandler(this.Btn_RepUsuario_Click);
             // 
-            // pictureBox1
+            // Btn_RepAdmin
             // 
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(182, 155);
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
+            this.Btn_RepAdmin.Dock = System.Windows.Forms.DockStyle.Top;
+            this.Btn_RepAdmin.FlatAppearance.BorderSize = 0;
+            this.Btn_RepAdmin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_RepAdmin.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_RepAdmin.Location = new System.Drawing.Point(3, 210);
+            this.Btn_RepAdmin.Name = "Btn_RepAdmin";
+            this.Btn_RepAdmin.Size = new System.Drawing.Size(185, 67);
+            this.Btn_RepAdmin.TabIndex = 1;
+            this.Btn_RepAdmin.Text = "Reporteria Administrador";
+            this.Btn_RepAdmin.UseVisualStyleBackColor = true;
+            this.Btn_RepAdmin.Click += new System.EventHandler(this.Btn_RepAdmin_Click);
             // 
-            // pictureBox2
+            // Pic_2
             // 
-            this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pictureBox2.Location = new System.Drawing.Point(3, 283);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(182, 110);
-            this.pictureBox2.TabIndex = 3;
-            this.pictureBox2.TabStop = false;
+            this.Pic_2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.Pic_2.Image = ((System.Drawing.Image)(resources.GetObject("Pic_2.Image")));
+            this.Pic_2.Location = new System.Drawing.Point(3, 283);
+            this.Pic_2.Name = "Pic_2";
+            this.Pic_2.Size = new System.Drawing.Size(182, 110);
+            this.Pic_2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.Pic_2.TabIndex = 3;
+            this.Pic_2.TabStop = false;
             // 
-            // pictureBox3
+            // Pic_Foto
             // 
-            this.pictureBox3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pictureBox3.Image = global::Capa_Vista_Reporteria.Properties.Resources.ssssss;
-            this.pictureBox3.Location = new System.Drawing.Point(3, 399);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(182, 141);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox3.TabIndex = 4;
-            this.pictureBox3.TabStop = false;
+            this.Pic_Foto.Dock = System.Windows.Forms.DockStyle.Top;
+            this.Pic_Foto.Image = global::Capa_Vista_Reporteria.Properties.Resources.ssssss;
+            this.Pic_Foto.Location = new System.Drawing.Point(3, 399);
+            this.Pic_Foto.Name = "Pic_Foto";
+            this.Pic_Foto.Size = new System.Drawing.Size(182, 141);
+            this.Pic_Foto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.Pic_Foto.TabIndex = 4;
+            this.Pic_Foto.TabStop = false;
             // 
             // menu_reporteria
             // 
@@ -122,9 +125,9 @@ namespace Capa_Vista_Reporteria
             this.Name = "menu_reporteria";
             this.Text = "menu_reporteria";
             this.flowLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pic_1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pic_2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pic_Foto)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -132,10 +135,10 @@ namespace Capa_Vista_Reporteria
         #endregion
 
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.Button Btn_RepUsuario;
+        private System.Windows.Forms.Button Btn_RepAdmin;
+        private System.Windows.Forms.PictureBox Pic_1;
+        private System.Windows.Forms.PictureBox Pic_2;
+        private System.Windows.Forms.PictureBox Pic_Foto;
     }
 }

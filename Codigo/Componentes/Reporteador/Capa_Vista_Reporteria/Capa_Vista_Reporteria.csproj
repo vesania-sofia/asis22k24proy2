@@ -101,6 +101,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cargar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cargar.Designer.cs">
+      <DependentUpon>Cargar.cs</DependentUpon>
+    </Compile>
     <Compile Include="Inicio.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -126,6 +132,15 @@
     <Compile Include="visualizar.Designer.cs">
       <DependentUpon>visualizar.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Cargar.resx">
+      <DependentUpon>Cargar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inicio.resx">
+      <DependentUpon>Inicio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="menu_reporteria.resx">
+      <DependentUpon>menu_reporteria.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -135,6 +150,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="reporteria_usuario.resx">
+      <DependentUpon>reporteria_usuario.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
