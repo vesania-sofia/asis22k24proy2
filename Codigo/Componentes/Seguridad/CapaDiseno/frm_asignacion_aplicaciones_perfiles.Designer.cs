@@ -49,6 +49,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btn_ayuda = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.btn_buscar = new System.Windows.Forms.Button();
+            this.txt_buscar = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_asignacionesperfiles)).BeginInit();
             this.Gpb_datos.SuspendLayout();
             this.SuspendLayout();
@@ -58,9 +60,9 @@
             this.btn_finalizar.Location = new System.Drawing.Point(774, 399);
             this.btn_finalizar.Margin = new System.Windows.Forms.Padding(4);
             this.btn_finalizar.Name = "btn_finalizar";
-            this.btn_finalizar.Size = new System.Drawing.Size(77, 30);
+            this.btn_finalizar.Size = new System.Drawing.Size(97, 30);
             this.btn_finalizar.TabIndex = 28;
-            this.btn_finalizar.Text = "Finalizar";
+            this.btn_finalizar.Text = "Guardar";
             this.btn_finalizar.UseVisualStyleBackColor = true;
             this.btn_finalizar.Click += new System.EventHandler(this.Btn_finalizar_Click);
             // 
@@ -69,7 +71,7 @@
             this.btn_salir.Location = new System.Drawing.Point(774, 437);
             this.btn_salir.Margin = new System.Windows.Forms.Padding(4);
             this.btn_salir.Name = "btn_salir";
-            this.btn_salir.Size = new System.Drawing.Size(77, 30);
+            this.btn_salir.Size = new System.Drawing.Size(97, 30);
             this.btn_salir.TabIndex = 27;
             this.btn_salir.Text = "Salir";
             this.btn_salir.UseVisualStyleBackColor = true;
@@ -77,10 +79,10 @@
             // 
             // btn_remover
             // 
-            this.btn_remover.Location = new System.Drawing.Point(774, 210);
+            this.btn_remover.Location = new System.Drawing.Point(771, 358);
             this.btn_remover.Margin = new System.Windows.Forms.Padding(4);
             this.btn_remover.Name = "btn_remover";
-            this.btn_remover.Size = new System.Drawing.Size(77, 33);
+            this.btn_remover.Size = new System.Drawing.Size(100, 33);
             this.btn_remover.TabIndex = 26;
             this.btn_remover.Text = "Quitar";
             this.btn_remover.UseVisualStyleBackColor = true;
@@ -285,11 +287,30 @@
             this.label3.TabIndex = 253;
             this.label3.Text = "ASIGNACION DE APLICACIONES A PERFILES";
             // 
+            // btn_buscar
+            // 
+            this.btn_buscar.Location = new System.Drawing.Point(795, 193);
+            this.btn_buscar.Name = "btn_buscar";
+            this.btn_buscar.Size = new System.Drawing.Size(75, 33);
+            this.btn_buscar.TabIndex = 254;
+            this.btn_buscar.Text = "Buscar";
+            this.btn_buscar.UseVisualStyleBackColor = true;
+            this.btn_buscar.Click += new System.EventHandler(this.btn_buscar_Click);
+            // 
+            // txt_buscar
+            // 
+            this.txt_buscar.Location = new System.Drawing.Point(774, 149);
+            this.txt_buscar.Name = "txt_buscar";
+            this.txt_buscar.Size = new System.Drawing.Size(100, 27);
+            this.txt_buscar.TabIndex = 255;
+            // 
             // frm_asignacion_aplicaciones_perfiles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 569);
+            this.Controls.Add(this.txt_buscar);
+            this.Controls.Add(this.btn_buscar);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btn_ayuda);
             this.Controls.Add(this.btn_finalizar);
@@ -334,5 +355,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btn_ayuda;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btn_buscar;
+        private System.Windows.Forms.TextBox txt_buscar;
     }
 }

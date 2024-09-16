@@ -62,11 +62,11 @@ namespace CapaDiseno
         }
 
         // Método para cargar aplicaciones según el módulo seleccionado
-        /*private void CargarAplicaciones()
+        private void CargarAplicaciones(string ID_aplicacion)
         {
             try
             {
-               DataTable dtAplicaciones = logic.consultaLogicaAplicaciones();
+               DataTable dtAplicaciones = logic.consultaLogicaAplicaciones(ID_aplicacion);
                 cbo_aplicaciones.Items.Clear();
                 foreach (DataRow row in dtAplicaciones.Rows)
                 {
@@ -77,7 +77,7 @@ namespace CapaDiseno
             {
                 Console.WriteLine("Error al cargar aplicaciones: " + ex.Message);
             }
-        }*/
+        }
 
         //**************************************** FIN Kevin López***************************************************
 //****************************************Kevin López***************************************************
@@ -96,7 +96,7 @@ namespace CapaDiseno
         }
 
 //****************************************Kevin López***************************************************
-       /* private void Cbo_modulos_SelectedIndexChanged(object sender, EventArgs e)
+        private void Cbo_modulos_SelectedIndexChanged(object sender, EventArgs e)
         {
 
             // Limpiar las aplicaciones antes de agregar nuevas
@@ -104,13 +104,15 @@ namespace CapaDiseno
             if (cbo_modulos.SelectedItem != null)
             {
                 string nombreModulo = cbo_modulos.SelectedItem.ToString();
-                CargarAplicaciones();
+                string ID_aplicacion = null;
+                CargarAplicaciones(ID_aplicacion);
             }
             
-        }*/
-//****************************************FIN Kevin López***************************************************
+        }
+        //****************************************FIN Kevin López***************************************************
 
 
+        //****** HECHO POR JOSUE PAZ Y KEVIN LOPEZ*************************************
         public static int iContadorFila = 0;
 
         private void Btn_salir_Click(object sender, EventArgs e)
@@ -120,51 +122,51 @@ namespace CapaDiseno
 
         private void Btn_finalizar_Click(object sender, EventArgs e)
         {
-            string sIngresar;
-            string sConsulta;
-            string sModificar;
-            string sEliminar;
-            string sImprimir;
+            string ingresar;
+            string consulta;
+            string modificar;
+            string eliminar;
+            string imprimir;
             try
             {
                 foreach (DataGridViewRow Fila in dgv_asignacionesperfiles.Rows)
                 {
 
-                    string sPerfil = Fila.Cells[0].Value.ToString();
-                    string sAplicacion = Fila.Cells[1].Value.ToString();
+                    string codigoperfil = Fila.Cells[0].Value.ToString();
+                    string nombreaplicacion = Fila.Cells[1].Value.ToString();
 
 
                     bool cheked = ((bool)(Fila.Cells["Ingresar"].EditedFormattedValue));
                     if (cheked)
-                        sIngresar = "1";
+                        ingresar = "1";
                     else
-                        sIngresar = "0";
-
-                    bool chekedC = ((bool)(Fila.Cells["Consultar"].EditedFormattedValue));
-                    if (chekedC)
-                        sConsulta = "1";
-                    else
-                        sConsulta = "0";
+                        ingresar = "0";
 
                     bool chekedM = ((bool)(Fila.Cells["Modificar"].EditedFormattedValue));
                     if (chekedM)
-                        sModificar = "1";
+                        modificar = "1";
                     else
-                        sModificar = "0";
+                        modificar = "0";
 
                     bool chekedE = ((bool)(Fila.Cells["Eliminar"].EditedFormattedValue));
                     if (chekedE)
-                        sEliminar = "1";
+                        eliminar = "1";
                     else
-                        sEliminar = "0";
+                        eliminar = "0";
+
+                    bool chekedC = ((bool)(Fila.Cells["Consultar"].EditedFormattedValue));
+                    if (chekedC)
+                        consulta = "1";
+                    else
+                        consulta = "0";
 
                     bool chekedI = ((bool)(Fila.Cells["Imprimir"].EditedFormattedValue));
                     if (chekedI)
-                        sImprimir = "1";
+                        imprimir = "1";
                     else
-                        sImprimir = "0";
+                        imprimir = "0";
 
-                    DataTable dtAplicaciones = logic.consultaLogicaPermisosPerfilAplicacion(sPerfil, sAplicacion, sIngresar, sConsulta, sModificar, sEliminar, sImprimir);
+                    DataTable dtAplicaciones = logic.consultaLogicaPermisosPerfilAplicacion(codigoperfil, nombreaplicacion, ingresar, modificar, eliminar, consulta, imprimir);
 
                 }
 
@@ -178,6 +180,9 @@ namespace CapaDiseno
                 Console.WriteLine(ex);
             }
         }
+        //******************ACA TERMINA********************************************************
+
+        //***************************HECHO POR KEVIN LOPEZ********************************************
 
         private void Btn_agregar_Click(object sender, EventArgs e)
         {
@@ -224,6 +229,7 @@ namespace CapaDiseno
                 limpieza();
             }
         }
+        //***************************HECHO POR KEVIN LOPEZ********************************************
 
         private void Btn_remover_Click(object sender, EventArgs e)
         {
@@ -264,5 +270,56 @@ namespace CapaDiseno
         {
 
         }
+
+        private void btn_buscar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Limpiar el DataGridView antes de cargar los nuevos datos
+                dgv_asignacionesperfiles.Rows.Clear();
+
+                // Obtener el valor ingresado en el TextBox de búsqueda (txt_buscar)
+                string id = txt_buscar.Text;
+
+                if (string.IsNullOrEmpty(id))
+                {
+                    MessageBox.Show("Debe ingresar un ID para buscar.");
+                    return;
+                }
+
+                // Realizar la búsqueda en la base de datos usando el ID
+                DataTable dtPermisosPerfilAplicacion = logic.buscardatid(id); // Se usa ID en lugar de perfil
+
+                // Verificar si hay resultados
+                if (dtPermisosPerfilAplicacion != null && dtPermisosPerfilAplicacion.Rows.Count > 0)
+                {
+                    foreach (DataRow row in dtPermisosPerfilAplicacion.Rows)
+                    {
+                        // Agregar las filas obtenidas al DataGridView
+                        dgv_asignacionesperfiles.Rows.Add(
+                            id,
+                            row["Aplicacion"].ToString(),
+                            Convert.ToBoolean(row["guardar_permiso"]),
+                            Convert.ToBoolean(row["modificar_permiso"]),
+                            Convert.ToBoolean(row["eliminar_permiso"]),
+                            Convert.ToBoolean(row["imprimir_permiso"])
+                        );
+                    }
+
+                    MessageBox.Show("Búsqueda realizada correctamente.");
+                }
+                else
+                {
+                    MessageBox.Show("No se encontraron permisos para el ID ingresado.");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                MessageBox.Show("Ocurrió un error al realizar la búsqueda.");
+            }
+
+        }
+
     }
 }
