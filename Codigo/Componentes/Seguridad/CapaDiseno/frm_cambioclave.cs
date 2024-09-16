@@ -10,12 +10,14 @@ using System.Windows.Forms;
 using CapaLogica;
 using System.Data.Odbc;
 using System.Security.Cryptography;
+using CapaDatos;
 
 namespace CapaDiseno
 {
     public partial class frm_cambioclave : Form
     {
         logica logica1;
+        sentencia sn;
 
         string usuario;
         public frm_cambioclave(string idUsuario)
@@ -169,11 +171,12 @@ namespace CapaDiseno
                         // Intentar cambiar la contraseña en la base de datos
                         int id = int.Parse(txt_id.Text);  // Convertir el ID de usuario a entero
                         bool bCambioExitoso = cambiarContraModulo.cambiarContraModulo(id, claveHasheada);  // Llamar al método con la contraseña hasheada
-
+                        
                         // Comprobar si el cambio fue exitoso
                         if (bCambioExitoso)
                         {
                             MessageBox.Show("Se cambió la contraseña exitosamente", "Cambio de contraseña", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                           // sn.insertarBitacora(usuario, "Se cambio contraseña ", "tbl_usuarios");
                             LimpiarTextBox();
                         }
                         else
