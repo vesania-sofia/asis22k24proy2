@@ -113,26 +113,29 @@ namespace CapaLogica
 
 
         }
-        //###################  termina lo que hizo  Karla  Sofia Gómez Tobar #######################
 
-        public DataTable consultaLogicaEliminarPerfilUsuario(string nombreUsuario, string codigoPerfil)
+        public bool consultaLogicaEliminarPerfilUsuario(string Id_Perfil_Usuario)
         {
             try
             {
-                OdbcDataAdapter dtEliminarPerfilUsuario = sn.eliminarPerfilUsuario(nombreUsuario, codigoPerfil);
-                DataTable tableEliminarPerfilUsuario = new DataTable();
-                dtEliminarPerfilUsuario.Fill(tableEliminarPerfilUsuario);
-                return tableEliminarPerfilUsuario;
+                bool result = sn.eliminarPerfilUsuario(Id_Perfil_Usuario);
+                if (result)
+                {
+                    MessageBox.Show("Perfil eliminado correctamente.");
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo eliminar el perfil.");
+                }
+                return result;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex);
-                return null;
+                return false;
             }
         }
 
-
-        //###################  lo que hizo Karla  Sofia Gómez Tobar #######################
         public bool consultaLogicaInsertarPerfilUsuario(string codigoUsuario, string codigoPerfil)
         {
             try
@@ -146,7 +149,7 @@ namespace CapaLogica
                 return false;
             }
         }
-        //###################  termina lo que hizo  Karla  Sofia Gómez Tobar #######################
+   //###################  termina lo que hizo  Karla  Sofia Gómez Tobar #######################
 
 
 

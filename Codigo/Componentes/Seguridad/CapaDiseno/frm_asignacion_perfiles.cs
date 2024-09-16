@@ -254,6 +254,7 @@ namespace CapaDiseno
         {
             cbo_usuario.Text = " ";
             cbo_perfiles.Text = " ";
+            cbo_Asignacion.Text = " ";
             dgv_perfiles_asignados.Columns.Clear();
             
 
@@ -478,6 +479,33 @@ namespace CapaDiseno
             llenarsePerfilUsuario(TablaA, campo1A);
 
             MessageBox.Show("Información actualizada correctamente en el ComboBox.", "Actualización Completa");
+        }
+
+        private void btn_eliminar_Click(object sender, EventArgs e)
+        {
+            if (cbo_Asignacion.SelectedItem != null)
+            {
+                // Confirmar antes de eliminar
+                var confirmResult = MessageBox.Show("¿Estás seguro de eliminar este perfil?",
+                                                    "Confirmar Eliminación",
+                                                    MessageBoxButtons.YesNo);
+
+                if (confirmResult == DialogResult.Yes)
+                {
+                    // Obtener el valor seleccionado del ComboBox
+                    var selectedItem = (ComboBoxItemA)cbo_Asignacion.SelectedItem;
+                    string valorSeleccionado = selectedItem.Value;
+
+                    // Llamar al método de la capa lógica para eliminar el perfil
+                    logic.consultaLogicaEliminarPerfilUsuario(valorSeleccionado);
+                }
+            }
+            else
+            {
+                MessageBox.Show("No se ha seleccionado un perfil para eliminar.");
+            }
+
+            limpieza();
         }
     }
 }

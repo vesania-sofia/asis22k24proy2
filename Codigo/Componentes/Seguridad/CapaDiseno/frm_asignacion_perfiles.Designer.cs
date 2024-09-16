@@ -32,7 +32,11 @@
             this.Usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NombrePerfil = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btn_ActualizarA = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cbo_Asignacion = new System.Windows.Forms.ComboBox();
             this.btn_Buscar = new System.Windows.Forms.Button();
+            this.dgv_perfiles_asignados = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lbl_perfiles = new System.Windows.Forms.Label();
             this.cbo_perfiles = new System.Windows.Forms.ComboBox();
@@ -49,15 +53,11 @@
             this.btn_modif = new System.Windows.Forms.Button();
             this.btn_actualizar = new System.Windows.Forms.Button();
             this.btn_ingresar = new System.Windows.Forms.Button();
-            this.dgv_perfiles_asignados = new System.Windows.Forms.DataGridView();
-            this.cbo_Asignacion = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.btn_ActualizarA = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_asignacion_perfiles)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_perfiles_asignados)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_perfiles_asignados)).BeginInit();
             this.SuspendLayout();
             // 
             // dgv_asignacion_perfiles
@@ -102,6 +102,36 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Consulta de Perfiles de Usuarios";
             // 
+            // btn_ActualizarA
+            // 
+            this.btn_ActualizarA.Location = new System.Drawing.Point(240, 132);
+            this.btn_ActualizarA.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_ActualizarA.Name = "btn_ActualizarA";
+            this.btn_ActualizarA.Size = new System.Drawing.Size(79, 31);
+            this.btn_ActualizarA.TabIndex = 253;
+            this.btn_ActualizarA.Text = "Actualizar";
+            this.btn_ActualizarA.UseVisualStyleBackColor = true;
+            this.btn_ActualizarA.Click += new System.EventHandler(this.btn_ActualizarA_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(38, 115);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(92, 17);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "Asignaciones";
+            // 
+            // cbo_Asignacion
+            // 
+            this.cbo_Asignacion.FormattingEnabled = true;
+            this.cbo_Asignacion.Location = new System.Drawing.Point(11, 136);
+            this.cbo_Asignacion.Margin = new System.Windows.Forms.Padding(4);
+            this.cbo_Asignacion.Name = "cbo_Asignacion";
+            this.cbo_Asignacion.Size = new System.Drawing.Size(199, 25);
+            this.cbo_Asignacion.TabIndex = 8;
+            // 
             // btn_Buscar
             // 
             this.btn_Buscar.Location = new System.Drawing.Point(21, 39);
@@ -113,6 +143,16 @@
             this.btn_Buscar.Text = "Buscar";
             this.btn_Buscar.UseVisualStyleBackColor = true;
             this.btn_Buscar.Click += new System.EventHandler(this.btn_Buscar_Click);
+            // 
+            // dgv_perfiles_asignados
+            // 
+            this.dgv_perfiles_asignados.AllowUserToAddRows = false;
+            this.dgv_perfiles_asignados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_perfiles_asignados.Location = new System.Drawing.Point(356, 39);
+            this.dgv_perfiles_asignados.Margin = new System.Windows.Forms.Padding(4);
+            this.dgv_perfiles_asignados.Name = "dgv_perfiles_asignados";
+            this.dgv_perfiles_asignados.Size = new System.Drawing.Size(355, 175);
+            this.dgv_perfiles_asignados.TabIndex = 8;
             // 
             // groupBox2
             // 
@@ -268,6 +308,7 @@
             this.btn_eliminar.Tag = "7";
             this.btn_eliminar.Text = "Eliminar";
             this.btn_eliminar.UseVisualStyleBackColor = true;
+            this.btn_eliminar.Click += new System.EventHandler(this.btn_eliminar_Click);
             // 
             // btn_modif
             // 
@@ -302,46 +343,6 @@
             this.btn_ingresar.UseVisualStyleBackColor = true;
             this.btn_ingresar.Click += new System.EventHandler(this.btn_ingresar_Click);
             // 
-            // dgv_perfiles_asignados
-            // 
-            this.dgv_perfiles_asignados.AllowUserToAddRows = false;
-            this.dgv_perfiles_asignados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_perfiles_asignados.Location = new System.Drawing.Point(356, 39);
-            this.dgv_perfiles_asignados.Margin = new System.Windows.Forms.Padding(4);
-            this.dgv_perfiles_asignados.Name = "dgv_perfiles_asignados";
-            this.dgv_perfiles_asignados.Size = new System.Drawing.Size(355, 175);
-            this.dgv_perfiles_asignados.TabIndex = 8;
-            // 
-            // cbo_Asignacion
-            // 
-            this.cbo_Asignacion.FormattingEnabled = true;
-            this.cbo_Asignacion.Location = new System.Drawing.Point(11, 136);
-            this.cbo_Asignacion.Margin = new System.Windows.Forms.Padding(4);
-            this.cbo_Asignacion.Name = "cbo_Asignacion";
-            this.cbo_Asignacion.Size = new System.Drawing.Size(199, 25);
-            this.cbo_Asignacion.TabIndex = 8;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(38, 115);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(92, 17);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "Asignaciones";
-            // 
-            // btn_ActualizarA
-            // 
-            this.btn_ActualizarA.Location = new System.Drawing.Point(240, 132);
-            this.btn_ActualizarA.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_ActualizarA.Name = "btn_ActualizarA";
-            this.btn_ActualizarA.Size = new System.Drawing.Size(79, 31);
-            this.btn_ActualizarA.TabIndex = 253;
-            this.btn_ActualizarA.Text = "Actualizar";
-            this.btn_ActualizarA.UseVisualStyleBackColor = true;
-            this.btn_ActualizarA.Click += new System.EventHandler(this.btn_ActualizarA_Click);
-            // 
             // frm_asignacion_perfiles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -362,10 +363,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgv_asignacion_perfiles)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_perfiles_asignados)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_perfiles_asignados)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

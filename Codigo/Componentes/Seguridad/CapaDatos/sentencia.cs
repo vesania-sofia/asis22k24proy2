@@ -128,25 +128,41 @@ namespace CapaDatos
             OdbcDataAdapter dataTable = new OdbcDataAdapter(sql, cn.conectar());
             return dataTable;
         }
-        //###################  termina lo que hizo  Karla  Sofia Gómez Tobar #######################
 
-        public OdbcDataAdapter eliminarPerfilUsuario(string nombreUsuario, string codigoPerfil)
+        public bool eliminarPerfilUsuario(string Id_Perfil_Usuario)
         {
+
             try
             {
-                string sqlEliminarPerfilUsuario = "DELETE FROM tbl_usuario_perfil WHERE PK_id_usuario = '" + nombreUsuario + "' AND PK_id_perfil = '" + codigoPerfil + "' ";
-                OdbcDataAdapter dataEliminarPerfilUsuario = new OdbcDataAdapter(sqlEliminarPerfilUsuario, cn.conectar());
-                insertarBitacora(idUsuario, "Elimino perfil: " + codigoPerfil + " a usuario: " + nombreUsuario, "tbl_usuario_perfil");
-                return dataEliminarPerfilUsuario;
+
+                cn.conectar();
+                string sqlEliminarPerfilUsuario = "DELETE FROM Tbl_asignaciones_perfils_usuario WHERE PK_id_Perfil_Usuario = ?";
+                using (OdbcCommand cmd = new OdbcCommand(sqlEliminarPerfilUsuario, cn.conectar()))
+                {
+
+                    cmd.Parameters.AddWithValue("@Id_Perfil_Usuario", Id_Perfil_Usuario);
+                    int rowsAffected = cmd.ExecuteNonQuery();
+
+                    if (rowsAffected > 0)
+                    {
+                        insertarBitacora(idUsuario, "Eliminó un perfil: " + Id_Perfil_Usuario, "Tbl_asignaciones_perfils_usuario");
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex);
-                return null;
+                return false;
             }
+
+
         }
 
-        //###################  lo que hizo Karla  Sofia Gómez Tobar #######################
         public void insertarPerfilUsuario(string codigoUsuario, string codigoPerfil)
         {
 
@@ -182,6 +198,9 @@ namespace CapaDatos
             }
         }
         //###################  termina lo que hizo  Karla  Sofia Gómez Tobar #######################
+
+
+
 
         //###################  lo que hizo Karla  Sofia Gómez Tobar #######################
         public OdbcDataAdapter validarIDAplicacion()
