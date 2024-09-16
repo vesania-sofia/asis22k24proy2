@@ -3,10 +3,12 @@ using System.Data;
 using System.Data.Odbc;
 using CapaDatos;
 
+
 namespace CapaLogica
 {
     public class ProcedimientoLogin
     {
+        sentencia sn;
         //Fernando García - 0901-21-581
         public bool llamarProcedimiento(string usuario, string clave)
         {
@@ -61,6 +63,7 @@ namespace CapaLogica
                         }
                     }
                 }
+                sn.insertarBitacora(usuario, "Se cambio contraseña ", "tbl_usuarios");
 
                 return false;
             }
@@ -95,6 +98,7 @@ namespace CapaLogica
                         {
                             string resultado = reader.GetString(0);
                             // Comparar el resultado con los posibles mensajes del SP
+                            sn.insertarBitacora(usuario, "Se cambio contraseña ", "tbl_usuarios");
                             return resultado == "Contraseña actualizada con éxito";
                         }
                     }

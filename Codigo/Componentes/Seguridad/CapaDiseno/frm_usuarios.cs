@@ -300,6 +300,7 @@ namespace CapaDiseno
             id = txt_nombreusername.Text;// nombre username
 
             clave = txt_clave.Text;
+
             correo = txt_correo.Text;  // Nueva línea para el correo
             DateTime fechaActual = DateTime.Now;
             string fecha = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"); ;
@@ -327,6 +328,10 @@ namespace CapaDiseno
 
                     try
                     {
+                        // Hash de la clave con SHA-256
+                        string claveHasheada = HashPasswordSHA256(clave);
+
+                        // Asegúrate de pasar la clave hasheada a la lógica
 
                         if (rb_habilitado.Checked)
                         {
@@ -343,12 +348,12 @@ namespace CapaDiseno
                         }
 
                         // Asegúrate de pasar todos los parámetros necesarios
-                        DataTable dtusuario = logica1.usuarios(nombre, apellido, id, clave, correo, fecha, estadousuario, pregunta, respuesta);
+                        DataTable dtusuario = logica1.usuarios(nombre, apellido, id, claveHasheada, correo, fecha, estadousuario, pregunta, respuesta);
                         string mensaje = //$"ID: {idd}\n" +//id del guardar
                        $"Nombre: {nombre}\n" +
                        $"Apellido: {apellido}\n" +
                        $"UserName: {id}\n" +
-                       $"Clave: {clave}\n" +
+                       $"Clave Hasheada: {claveHasheada}\n" +
                        $"Correo: {correo}\n" +
                        $"Estado Usuario: {estadousuario}\n" +
                        $"Pregunta: {pregunta}\n" +

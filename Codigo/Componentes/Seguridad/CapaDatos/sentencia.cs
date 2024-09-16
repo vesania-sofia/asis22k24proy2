@@ -250,6 +250,7 @@ namespace CapaDatos
                     int result = command.ExecuteNonQuery();
 
                     // Verificar si se modificó algún registro
+                    insertarBitacora(idUsuario, "Se modifico un usuario ", "tbl_usuarios");
                     return result > 0;
                 }
             }
@@ -421,6 +422,7 @@ namespace CapaDatos
 
                     int result = command.ExecuteNonQuery();
 
+                    insertarBitacora(idUsuario, "Se desactivousuario ", "tbl_usuarios");
                     // Verifica si se actualizó algún registro
                     return result > 0;
                 }
@@ -1320,7 +1322,10 @@ namespace CapaDatos
                         command.Parameters.AddWithValue("@Fk_id_aplicacion", idAplicacion);
 
                         int resultado = command.ExecuteNonQuery();
+                        insertarBitacora(idUsuario, "Realizo un ingreso a aplicacion-modulos", "tbl_asignacion_modulo_aplicacion");
                         return resultado > 0; // Devuelve true si la inserción fue exitosa
+                      
+
                     }
                 }
                 catch (Exception ex)
