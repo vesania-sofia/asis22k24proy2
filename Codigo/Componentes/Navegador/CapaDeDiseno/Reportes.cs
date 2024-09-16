@@ -16,7 +16,7 @@ namespace CapaDeDiseno
     public partial class Reportes : Form
     {
         logicaNav logic = new logicaNav();
-        OdbcConnection conn = new OdbcConnection("Dsn=navegador");
+        OdbcConnection conn = new OdbcConnection("Dsn=Prueba1");
         string[] aliasC = new string[40];
 
         public Reportes()
@@ -52,7 +52,7 @@ namespace CapaDeDiseno
             OdbcCommand codigo = new OdbcCommand();
             codigo.Connection = conn;
             
-              codigo.CommandText = ("SELECT * FROM reportes");
+              codigo.CommandText = ("SELECT * FROM tbl_aplicaciones");
             try
             {
                 OdbcDataAdapter ejecutar = new OdbcDataAdapter();
@@ -76,21 +76,18 @@ namespace CapaDeDiseno
 
 
 
-		string crearInsert()// crea el query de insert
+		string crearInsert() // crea el query de update
 		{
-
-
-			string query = "INSERT INTO Reportes (Ruta) VALUES  ('" + txtpath.Text.Replace("\\", "/")+"')";
-
+			string query = "UPDATE tbl_aplicaciones SET ruta = '" + txtpath.Text.Replace("\\", "/") + "' WHERE Pk_id_aplicacion = 1002";
 			return query;
-
 		}
 
 
-		string crearDelete()// crea el query de delete
+
+		/*string crearDelete()// crea el query de delete
 		{
 			//Cambiar el estadoPelicula por estado
-			string query = "UPDATE reportes set estado = 0 " + " WHERE Id_reporte =" + dataGridView1.CurrentRow.Cells[0].Value.ToString();
+			string query = "UPDATE tbl_aplicaciones set estado = 0 " + " WHERE Id_reporte =" + dataGridView1.CurrentRow.Cells[0].Value.ToString();
 			return query;
 		}
 
@@ -100,7 +97,7 @@ namespace CapaDeDiseno
 
 
 			return query;
-		}
+		}*/
 
 		private void Button3_Click(object sender, EventArgs e)
         {
@@ -142,7 +139,7 @@ namespace CapaDeDiseno
 			}
 			else
 			{
-				logic.nuevoQuery(crearUpdate());
+				//logic.nuevoQuery(crearUpdate());
 
 				txtpath.Clear();
 				MessageBox.Show("Reporte modificado correctamente");
@@ -160,7 +157,7 @@ namespace CapaDeDiseno
 			Respuestamodieli = MessageBox.Show("Desea eliminar el Reporte Seleccionado", "", MessageBoxButtons.YesNo);
 			if (Respuestamodieli == DialogResult.Yes)
 			{
-				logic.nuevoQuery(crearDelete());
+				//logic.nuevoQuery(crearDelete());
 
 				txtpath.Clear();
 
