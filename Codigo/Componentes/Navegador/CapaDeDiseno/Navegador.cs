@@ -10,12 +10,11 @@ using System.Windows.Forms;
 using CapaDeLogica;
 using CapaDatos;
 
+
 namespace CapaDeDiseno
 {
     public partial class Navegador : UserControl
     {
-        Capa_Vista_Reporteria.menu_reporteria reportes = new Capa_Vista_Reporteria.menu_reporteria();
-        Capa_Vista_Reporteria.visualizar visualizar = new Capa_Vista_Reporteria.visualizar("ReporteVentas.rpt");
         Validaciones v = new Validaciones();
         logicaNav logic = new logicaNav();
         Form cerrar;
@@ -94,6 +93,12 @@ namespace CapaDeDiseno
             ayuda_tp.SetToolTip(Btn_FlechaFin, "Ir al último registro.");
             ayuda_tp.SetToolTip(Btn_Ayuda, "Ver la ayuda del formulario.");
             ayuda_tp.SetToolTip(Btn_Salir, "Cerrar el formulario actual.");
+            ayuda_tp.SetToolTip(Btn_Imprimir,"Mostrar un Reporte");
+            ayuda_tp.SetToolTip(button1, "Asignar Documento de Ayuda");
+            ayuda_tp.SetToolTip(Btn_Imprimir, "Mostrar un Reporte");
+            ayuda_tp.SetToolTip(btn_Reportes_Principal, "Mostrar un Reporte");
+
+            Btn_Imprimir.Enabled = true;
         }
         private void Navegador_Load(object sender, EventArgs e)
         {
@@ -1518,7 +1523,7 @@ namespace CapaDeDiseno
 			}
 			
             //habilitar y deshabilitar según Usuario
-            botonesYPermisos();
+           // botonesYPermisos();
         }
 
         private void Btn_Refrescar_Click(object sender, EventArgs e)
@@ -2491,12 +2496,34 @@ namespace CapaDeDiseno
 
         private void Btn_Imprimir_Click_1(object sender, EventArgs e)
         {
-            visualizar.ShowDialog();
+            //DLL DE IMPRESION, FORATO DE REPORTES.
+            string llave = "";
+            if (idRepo != "")
+            {
+                llave = logic.ObtenerIdReporte(idRepo);
+
+            }
+            else
+            {
+                MessageBox.Show("No se asigno ningun reporte....");
+            }
+
+            if (llave != "")
+            {
+                Clientes cl = new Clientes(llave);
+                cl.Show();
+            }
+            else
+            {
+                MessageBox.Show("El Id Asignado es incorrecto");
+            }
         }
 
         private void btn_Reportes_Principal_Click(object sender, EventArgs e)
         {
-            reportes.ShowDialog();
+            //Capa_Vista_Reporteria.menu_reporteria reportes = new Capa_Vista_Reporteria.menu_reporteria();
+            Reportes reportes = new Reportes();
+            reportes.Show();
         }
     }
 }

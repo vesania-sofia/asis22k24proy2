@@ -124,12 +124,8 @@ namespace Capa_Vista_Reporteria
             Cbo_Aplicacion.SelectedIndex = 0;
             Cbo_Estado.SelectedIndex = 0;
         }
-        private void visualizar(string ruta)
-        {
-            System.Threading.Thread.Sleep(3000);
-        }
 
-        private async void Btn_VerReporte_Click(object sender, EventArgs e)
+        private void Btn_VerReporte_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(Txt_IDReporte.Text))
             {
@@ -140,17 +136,8 @@ namespace Capa_Vista_Reporteria
                 if (estado == "Visible")
                 {
                     string ruta = Txt_Ruta.Text;
-
-                    using (Cargar cargar = new Cargar())
-                    {
-                        cargar.Show();
-
-                        await Task.Run(() => visualizar(ruta));
-                        visualizar ver = new visualizar(ruta);
-                        ver.Show();
-
-                        cargar.Close();
-                    }
+                    visualizar ver = new visualizar(ruta);
+                    ver.Show();
                 }
                 else
                 {

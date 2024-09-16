@@ -8,13 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Capa_Vista_Reporteria
+namespace consultas
 {
-    public partial class Cargar : Form
+    public partial class Form1 : Form
     {
-        public Cargar()
+        public Form1()
         {
             InitializeComponent();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

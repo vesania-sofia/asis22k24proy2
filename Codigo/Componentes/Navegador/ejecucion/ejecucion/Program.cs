@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CapaDatos;
 
 namespace ejecucion
 {
-    static class Program
+    public class Program
     {
         /// <summary>
         /// Punto de entrada principal para la aplicación.
@@ -16,7 +17,11 @@ namespace ejecucion
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new principal());
+            CapaDatos.sentencia s = new CapaDatos.sentencia();
+
+            Application.Run(new CapaDiseno.frm_login());
+            //Application.Run(new Capa_Vista_Reporteria.menu_reporteria());
+
         }
     }
 }

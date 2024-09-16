@@ -31,10 +31,10 @@ namespace Capa_Modelo_Reporteria
         public void registrarReporte(string id_reporte, string ruta, string nombre_archivo, string aplicacion, string estado)
         {
             //la variable campos es una variable plana donde se ponen los nombres de las columnas para guardar el reporte
+            string campos = "idregistro, ruta, nombre_archivo, aplicacion, estado";
+            string sql = "INSERT INTO " + tabla_reporteria + " (" + campos + ") VALUES ('" + id_reporte + "', '" + ruta + "', '" + nombre_archivo + "', '" + aplicacion + "', '" + estado + "');";
             try
             {
-                string campos = "idregistro, ruta, nombre_archivo, aplicacion, estado";
-                string sql = "INSERT INTO " + tabla_reporteria + " (" + campos + ") VALUES ('" + id_reporte + "', '" + ruta + "', '" + nombre_archivo + "', '" + aplicacion + "', '" + estado + "');";
                 OdbcCommand cmd = new OdbcCommand(sql, conexion.conexion());
                 cmd.ExecuteNonQuery();
             }
@@ -59,11 +59,12 @@ namespace Capa_Modelo_Reporteria
         }
         public void ModificarReporte(string ruta, string nombre_archivo, string aplicacion, string estado, string id_reporte)
         {
-            //aqui estamos haciendo la comprobacion de que si tuvo una conexion con la base de datos
+            //aqui con los datos recibidos le mandamos la instruccion a la base de datos para poder lo modificar lo buscamos por id
+            string sql = "UPDATE " + tabla_reporteria + " SET " + "ruta = '" + ruta + "'," + " nombre_archivo = '" + nombre_archivo + "'," + " aplicacion = '" + aplicacion + "'," + " estado = '" + estado + "' " + " WHERE (idregistro = '" + id_reporte + "');";
+
+            //aqui estamos haciendo la comprobacion de que si uvo una coneccion con la base de datos
             try
             {
-                //aqui con los datos recibidos le mandamos la instruccion a la base de datos, para poderlo modificar lo buscamos por id
-                string sql = "UPDATE " + tabla_reporteria + " SET " + "ruta = '" + ruta + "'," + " nombre_archivo = '" + nombre_archivo + "'," + " aplicacion = '" + aplicacion + "'," + " estado = '" + estado + "' " + " WHERE (idregistro = '" + id_reporte + "');";
                 OdbcCommand consulta = new OdbcCommand(sql, conexion.conexion());
                 consulta.ExecuteNonQuery();
                 MessageBox.Show("Modificado");

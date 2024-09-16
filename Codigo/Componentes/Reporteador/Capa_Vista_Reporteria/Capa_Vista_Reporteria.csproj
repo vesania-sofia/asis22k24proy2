@@ -101,12 +101,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Cargar.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Cargar.Designer.cs">
-      <DependentUpon>Cargar.cs</DependentUpon>
-    </Compile>
     <Compile Include="Inicio.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -132,9 +126,6 @@
     <Compile Include="visualizar.Designer.cs">
       <DependentUpon>visualizar.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Cargar.resx">
-      <DependentUpon>Cargar.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Inicio.resx">
       <DependentUpon>Inicio.cs</DependentUpon>
     </EmbeddedResource>
