@@ -40,9 +40,6 @@
     <Reference Include="CapaDiseno">
       <HintPath>..\..\..\Seguridad\CapaDiseno\bin\Debug\CapaDiseno.dll</HintPath>
     </Reference>
-    <Reference Include="Capa_Vista_Reporteria">
-      <HintPath>..\..\..\..\..\..\..\AS2_Proyecto\asis22k24proy2\Codigo\Componentes\Reporteador\Capa_Vista_Reporteria\bin\Debug\Capa_Vista_Reporteria.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />

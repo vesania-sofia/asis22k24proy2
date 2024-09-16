@@ -14,6 +14,8 @@ namespace CapaDeDiseno
 {
     public partial class Navegador : UserControl
     {
+        Capa_Vista_Reporteria.menu_reporteria reportes = new Capa_Vista_Reporteria.menu_reporteria();
+        Capa_Vista_Reporteria.visualizar visualizar = new Capa_Vista_Reporteria.visualizar("ReporteVentas.rpt");
         Validaciones v = new Validaciones();
         logicaNav logic = new logicaNav();
         Form cerrar;
@@ -2489,14 +2491,12 @@ namespace CapaDeDiseno
 
         private void Btn_Imprimir_Click_1(object sender, EventArgs e)
         {
-            //aca va el paso al formalrio de reporteria
-            //añadan su capa vista y hagan el paso
+            visualizar.ShowDialog();
         }
 
         private void btn_Reportes_Principal_Click(object sender, EventArgs e)
         {
-            Capa_Vista_Reporteria.menu_reporteria reportes = new Capa_Vista_Reporteria.menu_reporteria();
-            reportes.Show();
+            reportes.ShowDialog();
         }
     }
 }
