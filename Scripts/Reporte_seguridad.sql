@@ -10,16 +10,20 @@ CREATE TABLE IF NOT EXISTS `tbl_modulos` (
     estado_modulo TINYINT DEFAULT 0,
     primary key (`pk_id_modulos`)
 );
-
 DROP TABLE IF EXISTS `tbl_aplicaciones`;
 CREATE TABLE IF NOT EXISTS `tbl_aplicaciones` (
-	pk_id_aplicacion INT NOT NULL,
-    nombre_aplicacion VARCHAR(50) NOT NULL,
-    descripcion_aplicacion VARCHAR(150) NOT NULL,
+	pk_id_aplicacion INT NOT NULL AUTO_INCREMENT,
+    nombre_aplicacion VARCHAR(50) NOT NULL DEFAULT '0',
+    descripcion_aplicacion VARCHAR(150) NOT NULL DEFAULT '0',
     estado_aplicacion TINYINT DEFAULT 0,
+	--
+	idregistro int NULL,
+	ruta varchar(500) NULL,
+	nombre_archivo varchar(45) NULL,
+	aplicacion varchar(45) NULL,
+	estado varchar(45) NULL,
     primary key (`pk_id_aplicacion`)
 );
-
 DROP TABLE IF EXISTS `tbl_AsignacionModuloAplicacion`;
 CREATE TABLE IF NOT EXISTS `tbl_AsignacionModuloAplicacion` (
   fk_id_modulos INT NOT NULL,
@@ -105,18 +109,6 @@ CREATE TABLE IF NOT EXISTS `tbl_bitacoraDeEventos` (
   FOREIGN KEY (`fk_id_aplicacion`) REFERENCES `tbl_aplicaciones` (`pk_id_aplicacion`)
 )ENGINE = InnoDB DEFAULT CHARACTER SET = utf8;
 
-/*---------Reporteria----------*/
-
-DROP TABLE IF EXISTS `tbl_regreporteria`;
-CREATE TABLE `tbl_regreporteria` (
-  idregistro int NOT NULL AUTO_INCREMENT,
-  ruta varchar(500) NOT NULL,
-  nombre_archivo varchar(45) NOT NULL,
-  aplicacion varchar(45) NOT NULL,
-  estado varchar(45) NOT NULL,
-  PRIMARY KEY (idregistro)
-) ENGINE=InnoDB;
-
 -- vistas ------------------------------------------------------------------------
 CREATE 
 VIEW `colchoneria`.`vista_aplicacion_perfil` AS 
@@ -186,7 +178,7 @@ INSERT INTO `tbl_modulos` VALUES
 ('8000', 'CONTABILIDAD', 'Contabilidad', 1);
 
 -- -----APLICACIONES
-INSERT INTO `tbl_aplicaciones` VALUES
+INSERT INTO `tbl_aplicaciones` (pk_id_aplicacion, nombre_aplicacion, descripcion_aplicacion, estado_aplicacion) VALUES
 ('1000', 'MDI SEGURIDAD', 'PARA SEGURIDAD', '1'),
 ('1001', 'Mant. Usuario', 'PARA SEGURIDAD', '1'),
 ('1002', 'Mant. Aplicación', 'PARA SEGURIDAD', '1'),

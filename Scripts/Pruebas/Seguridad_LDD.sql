@@ -194,19 +194,18 @@ DELIMITER ;
 
 
 
--- Verificar cuenta procedimiento ----------------------------------------------------------------------
+-- Cambio de contraseña procedimiento ----------------------------------------------------------------------
 DELIMITER //
 
 CREATE PROCEDURE cambioContrasenia(
-    IN p_usuario VARCHAR(20),
-    IN p_respuesta VARCHAR(100)
+    IN p_usuario VARCHAR(20)
 )
 BEGIN
     DECLARE usuario_existe INT;
 
     SELECT COUNT(*) INTO usuario_existe
     FROM tbl_usuarios
-    WHERE username_usuario = p_usuario AND respuesta = p_respuesta;
+    WHERE username_usuario = p_usuario;
 
     -- Si el usuario existe, actualiza el tiempo de última conexión
     IF usuario_existe > 0 THEN        
@@ -219,17 +218,64 @@ END //
 DELIMITER ;
 
 -- Cambiar contraseña -----------------------------------------------------------------------------------------
+
 DELIMITER //
 
 CREATE PROCEDURE cambiarContrasenia(
-    IN p_usuario VARCHAR(20),
+    IN usuario VARCHAR(255),
+    IN nuevaContrasenia VARCHAR(255),
+    IN respuestaSeguridad VARCHAR(255)
+)
+BEGIN
+    DECLARE respuestaGuardada VARCHAR(255);
+    DECLARE usuarioExiste INT;
+
+    -- Verificar si el usuario existe
+    SELECT COUNT(*) INTO usuarioExiste 
+    FROM tbl_usuarios 
+    WHERE username_usuario = usuario;
+
+    IF usuarioExiste = 0 THEN
+        -- Si el usuario no existe, devolver mensaje de error
+        SELECT 'Usuario no encontrado' AS resultado;
+    ELSE
+        -- Obtener la respuesta de seguridad desde la base de datos
+        SELECT respuesta INTO respuestaGuardada 
+        FROM tbl_usuarios 
+        WHERE username_usuario = usuario;
+
+        -- Verificar si la respuesta ingresada coincide con la guardada
+        IF LOWER(respuestaGuardada) = LOWER(respuestaSeguridad) THEN
+            -- Actualizar la contraseña
+            UPDATE tbl_usuarios
+            SET password_usuario = nuevaContrasenia
+            WHERE username_usuario = usuario;
+            
+            -- Devolver el resultado exitoso
+            SELECT 'Contraseña actualizada con éxito' AS resultado;
+        ELSE
+            -- Devolver resultado si la respuesta de seguridad es incorrecta
+            SELECT 'Respuesta de seguridad incorrecta' AS resultado;
+        END IF;
+    END IF;
+END //
+
+DELIMITER ;
+
+
+
+-- Cambiar contraseña desde el módulo ------------------------------------------------------------------------------
+DELIMITER //
+
+CREATE PROCEDURE cambiarContraModulo(
+    IN p_usuario INT,
     IN p_nueva_contrasenia VARCHAR(100)
 )
 BEGIN
     -- Actualizar la contraseña del usuario
     UPDATE tbl_usuarios
     SET password_usuario = p_nueva_contrasenia
-    WHERE username_usuario = p_usuario;
+    WHERE pk_id_usuario = p_usuario;
 
     -- Confirmar que el cambio se realizó
     IF ROW_COUNT() > 0 THEN
@@ -249,6 +295,7 @@ ALTER TABLE tbl_bitacora DROP FOREIGN KEY tbl_bitacora_ibfk_2;
 -- ALTER TABLE tbl_bitacora MODIFY Fk_id_usuario VARCHAR(20);
 ALTER TABLE tbl_bitacora DROP COLUMN Fk_id_aplicacion;
 
+<<<<<<< HEAD
 DROP TABLE IF EXISTS `Tbl_permisos_aplicaciones_usuario`;
 CREATE TABLE IF NOT EXISTS `Tbl_permisos_aplicaciones_usuario` (
   PK_id_Aplicacion_Usuario INT NOT NULL AUTO_INCREMENT,
@@ -290,3 +337,26 @@ CREATE TABLE IF NOT EXISTS `Tbl_asignaciones_perfils_usuario` (
   FOREIGN KEY (`Fk_id_perfil`) REFERENCES `Tbl_perfiles` (`Pk_id_perfil`)
 ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8;
 
+=======
+
+-- Fernando García - 0901-21-581 - 60%
+ALTER TABLE `Tbl_bitacora`
+ADD COLUMN `tabla` VARCHAR(50) NOT NULL;
+
+-- -----USUARIOS
+-- Agrega el primer usuario
+INSERT INTO `Tbl_usuarios` VALUES
+('1', 'admin', 'admin', 'admin', 'HO0aGo4nM94=', 'esduardo@gmail.com', '2022-07-02 21:00:48', '1', 'COLOR FAVORITO', 'ROJO');
+
+
+
+-- Vamos a hashear admin para que puedea ingresar al programa
+-- Deshabilitar el modo seguro en
+-- edit->preferences->SQL Editor -> al final deshabilitar safe updates -> reconectar
+UPDATE tbl_usuarios
+SET password_usuario = SHA2('HO0aGo4nM94=', 256)
+WHERE username_usuario = 'admin';
+
+
+select * from tbl_usuarios;
+>>>>>>> 4ec8d35ae0365cf1a0a630056b82cffb250f0fa3

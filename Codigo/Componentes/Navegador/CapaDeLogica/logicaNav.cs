@@ -28,9 +28,9 @@ namespace CapaDeLogica
 
             return Extras;
         }
-        public DataTable consultaLogica(string tabla)  //obtener datos de la consulta
+        public DataTable consultaLogica(string tabla, string tablaRelacionada, string campodesc, string columnaForanea, string columnaprimararelacionada)  //obtener datos de la consulta
         {
-            OdbcDataAdapter dt = sn.llenaTbl(tabla);
+            OdbcDataAdapter dt = sn.llenaTbl(tabla, tablaRelacionada, campodesc, columnaForanea,columnaprimararelacionada);
             DataTable table = new DataTable();
             dt.Fill(table);
             return table;

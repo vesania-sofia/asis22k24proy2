@@ -11,12 +11,11 @@ namespace Capa_Modelo_Reporteria
 {
     public class Sentencias
     {
-        string tabla_reporteria = "tbl_regreporteria";
+        string tabla_reporteria = "tbl_aplicaciones";
         Conexion conexion = new Conexion();
-
-        public OdbcDataAdapter DisplayReportes()// metodo  que obtinene el contenio de la tabla reportes
+        public OdbcDataAdapter DisplayReportes()// metodo que obtiene el contenido de la tabla reportes
         {
-            string sql = "SELECT * FROM " + tabla_reporteria + "  ;";
+            string sql = "SELECT idregistro, ruta, nombre_archivo, aplicacion, estado FROM " + tabla_reporteria + " WHERE idregistro IS NOT NULL AND idregistro != '';";
             OdbcDataAdapter dataTable = new OdbcDataAdapter();
             try
             {
@@ -29,11 +28,11 @@ namespace Capa_Modelo_Reporteria
             }
             return dataTable;
         }
-        public void registrarReporte(string datos)
+        public void registrarReporte(string id_reporte, string ruta, string nombre_archivo, string aplicacion, string estado)
         {
             //la variable campos es una variable plana donde se ponen los nombres de las columnas para guardar el reporte
-            string campos = "ruta, nombre_archivo, aplicacion, estado";
-            string sql = "insert into " + tabla_reporteria + "(" + campos + ") values (" + datos + ");";
+            string campos = "idregistro, ruta, nombre_archivo, aplicacion, estado";
+            string sql = "INSERT INTO " + tabla_reporteria + " (" + campos + ") VALUES ('" + id_reporte + "', '" + ruta + "', '" + nombre_archivo + "', '" + aplicacion + "', '" + estado + "');";
             try
             {
                 OdbcCommand cmd = new OdbcCommand(sql, conexion.conexion());

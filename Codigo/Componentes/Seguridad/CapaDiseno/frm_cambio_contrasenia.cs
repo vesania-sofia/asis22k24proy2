@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CapaLogica;
+using CapaDatos;
+using System.Data.Odbc;
+using System.Security.Cryptography;
 
 namespace CapaDiseno
 {
@@ -19,12 +22,13 @@ namespace CapaDiseno
         {
             InitializeComponent();
             Lbl_color.Text = pregunta;
+            Txt_contrasenia.UseSystemPasswordChar = true;
+            Txt_confirmacion.UseSystemPasswordChar = true;
         }
 
         private void Btn_verificar_Click(object sender, EventArgs e)
         {
             ProcedimientoLogin cambioContrasenia = new ProcedimientoLogin();
-
 
             if (Txt_pregunta.Text.Trim() == "")
             {
@@ -32,38 +36,83 @@ namespace CapaDiseno
             }
             else
             {
-                if (Txt_color.Text.Trim() == "")
+                try
                 {
-                    MessageBox.Show("Debe ingresar su color favorito");
-                }
-                else
-                {
-                    try
+                    bool bExisteUsuario = cambioContrasenia.cambioContrasenia(Txt_pregunta.Text);
+                    if (bExisteUsuario)
                     {
-                        bool bExisteUsuario = cambioContrasenia.cambioContrasenia(Txt_pregunta.Text, Txt_color.Text);
-                        if (bExisteUsuario)
-                        {
+                        // Obtener la pregunta de seguridad del usuario
+                        string preguntaSeguridad = ObtenerPreguntaSeguridad(Txt_pregunta.Text);
 
+                        if (!string.IsNullOrEmpty(preguntaSeguridad))
+                        {
+                            // Mostrar la pregunta en el Label
+                            Lbl_pregunta.Text = preguntaSeguridad;
+                            Lbl_pregunta.Visible = true;
+
+                            // Mostrar los campos para cambiar la contraseña
                             Lbl_contrasenia.Visible = true;
                             Lbl_confirmacion.Visible = true;
                             Txt_contrasenia.Visible = true;
                             Txt_confirmacion.Visible = true;
+                            Lbl_pregunta.Visible = true;
+                            Txt_color.Visible = true;
                             Btn_confirmar.Visible = true;
-
                         }
                         else
                         {
-                            MessageBox.Show("Usuario o respuesta incorrecta", "Cambio de contraseña", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            MessageBox.Show("No se pudo obtener la pregunta de seguridad", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
-
                     }
-                    catch (Exception ex)
+                    else
                     {
-                        Console.WriteLine(ex);
-                        MessageBox.Show("No Conecto La Base de Datos", "Verificar Conexión", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        MessageBox.Show("Usuario incorrecto", "Cambio de contraseña", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     }
                 }
-            }          
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex);
+                    MessageBox.Show("No se pudo conectar a la base de datos", "Verificar Conexión", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+            }
+        }
+
+        // Método para obtener la pregunta de seguridad desde la base de datos
+        private string ObtenerPreguntaSeguridad(string nombreUsuario)
+        {
+            string pregunta = string.Empty;
+
+            // Instancia de tu clase de conexión
+            conexion conexion = new conexion();
+
+            try
+            {
+                // Abrir la conexión dentro del using para asegurar su cierre
+                using (OdbcConnection connection = conexion.conectar())
+                {
+                    string query = "SELECT pregunta FROM tbl_usuarios WHERE username_usuario = ?";
+                    using (OdbcCommand cmd = new OdbcCommand(query, connection))
+                    {
+                        // Agregar el parámetro sin el `@` para ODBC
+                        cmd.Parameters.AddWithValue("@username_usuario", nombreUsuario);
+
+                        // Ejecutar el comando y leer la pregunta
+                        using (OdbcDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                pregunta = reader["pregunta"].ToString();
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al obtener la pregunta de seguridad: " + ex.Message);
+            }
+
+            return pregunta;
         }
 
         private void frm_cambio_contrasenia_Load(object sender, EventArgs e)
@@ -78,11 +127,13 @@ namespace CapaDiseno
             Lbl_confirmacion.Visible = false;
             Txt_contrasenia.Visible = false;
             Txt_confirmacion.Visible = false;
+            Txt_color.Visible = false;
             Btn_confirmar.Visible = false;
+            Lbl_pregunta.Visible = false;
 
             Txt_pregunta.TabIndex = 0;
-            Txt_color.TabIndex = 1;
-            Btn_verificar.TabIndex = 2;
+            Txt_color.TabIndex = 2;
+            Btn_verificar.TabIndex = 1;
             Txt_contrasenia.TabIndex = 3;
             Txt_confirmacion.TabIndex = 4;
             Btn_confirmar.TabIndex = 5;
@@ -100,6 +151,10 @@ namespace CapaDiseno
             {
                 MessageBox.Show("Ingrese la confirmación");
             }
+            else if (Txt_color.Text.Trim() == "")
+            {
+                MessageBox.Show("Debe ingresar la respuesta a la pregunta de seguridad");
+            }
             else if (Txt_contrasenia.Text.Trim() != Txt_confirmacion.Text.Trim())
             {
                 MessageBox.Show("Las contraseñas no coinciden", "Cambio de contraseña", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -108,7 +163,15 @@ namespace CapaDiseno
             {
                 try
                 {
-                    bool bCambioExitoso = cambiarContrasenia.cambiarContrasenia(Txt_pregunta.Text, Txt_confirmacion.Text);
+                    // Hashear la nueva contraseña ingresada con SHA-256
+                    string claveHasheada = HashPasswordSHA256(Txt_confirmacion.Text.Trim());
+
+                    // Obtener la respuesta ingresada
+                    string respuestaIngresada = Txt_color.Text.Trim();
+
+                    // Pasar la contraseña hasheada y la respuesta ingresada al método cambiarContrasenia
+                    bool bCambioExitoso = cambiarContrasenia.cambiarContrasenia(Txt_pregunta.Text, claveHasheada, respuestaIngresada);
+
                     if (bCambioExitoso)
                     {
                         MessageBox.Show("Se cambió la contraseña exitosamente", "Cambio de contraseña", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -116,7 +179,7 @@ namespace CapaDiseno
                     }
                     else
                     {
-                        MessageBox.Show("No se pudo cambiar la contraseña", "Cambio de contraseña", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        MessageBox.Show("La respuesta de seguridad es incorrecta o no se pudo cambiar la contraseña", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 catch (Exception ex)
@@ -124,6 +187,20 @@ namespace CapaDiseno
                     Console.WriteLine(ex);
                     MessageBox.Show("No se pudo conectar a la base de datos", "Error de conexión", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            }
+        }
+        // Método para hashear la contraseña usando SHA-256
+        private string HashPasswordSHA256(string password)
+        {
+            using (SHA256 sha256 = SHA256.Create())
+            {
+                byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
+                StringBuilder builder = new StringBuilder();
+                for (int i = 0; i < bytes.Length; i++)
+                {
+                    builder.Append(bytes[i].ToString("x2"));
+                }
+                return builder.ToString();
             }
         }
     }

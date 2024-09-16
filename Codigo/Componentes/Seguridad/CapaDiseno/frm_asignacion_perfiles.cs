@@ -23,7 +23,6 @@ namespace CapaDiseno
         {
             InitializeComponent();
 
-
             logic = new logica(idUsuario);
             string tablaU = "Tbl_usuarios";
             string campo1U = "Pk_id_usuario";
@@ -45,13 +44,13 @@ namespace CapaDiseno
 
             llenarseUsuario(tablaU, campo1U, campo2U);
             llenarsePerfil(tablaP, campo1P, campo2P);
-            llenarsePerfilUsuario(TablaA, campo1A);
+
 
 
             // Asocia el evento SelectedIndexChanged después de poblar el ComboBox
             cbo_usuario.SelectedIndexChanged += new EventHandler(cbo_usuario_SelectedIndexChanged);
             cbo_perfiles.SelectedIndexChanged += new EventHandler(cbo_perfiles_SelectedIndexChanged2);
-            cbo_Asignacion.SelectedIndexChanged += new EventHandler(cbo_Asignacion_SelectedIndexChanged2);
+            
 
         }
 
@@ -173,66 +172,6 @@ namespace CapaDiseno
 
 
 
-
-
-        // /////////////////////////////////////////////////////////////////////////////////
-        public void llenarsePerfilUsuario(string tabla, string campo1)
-        {
-            // Obtén los datos para el ComboBox
-            var dt2 = logic.enviarAsigUP(tabla, campo1);
-
-            // Limpia el ComboBox antes de llenarlo
-            cbo_Asignacion.Items.Clear();
-
-            foreach (DataRow row in dt2.Rows)
-            {
-                // Agrega el elemento mostrando el formato "ID-Nombre"
-                cbo_Asignacion.Items.Add(new ComboBoxItemA
-                {
-                    Value = row[campo1].ToString(),
-                });
-            }
-
-            // Configura AutoComplete para el ComboBox con el formato deseado
-            AutoCompleteStringCollection coleccion2 = new AutoCompleteStringCollection();
-            foreach (DataRow row in dt2.Rows)
-            {
-                coleccion2.Add(Convert.ToString(row[campo1]));
-               
-            }
-
-            cbo_Asignacion.AutoCompleteCustomSource = coleccion2;
-            cbo_Asignacion.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            cbo_Asignacion.AutoCompleteSource = AutoCompleteSource.CustomSource;
-        }
-
-        // Clase auxiliar para almacenar Value y Display
-        public class ComboBoxItemA
-        {
-            public string Value { get; set; }
-
-            // Sobrescribir el método ToString para mostrar "ID-Nombre" en el ComboBox
-            public override string ToString()
-            {
-                return $"{Value}"; // Formato "ID-Nombre"
-            }
-        }
-
-        private void cbo_Asignacion_SelectedIndexChanged2(object sender, EventArgs e)
-        {
-            if (cbo_Asignacion.SelectedItem != null)
-            {
-                // Obtener el valor del ValueMember seleccionado
-                var selectedItem = (ComboBoxItemA)cbo_Asignacion.SelectedItem;
-                string valorSeleccionado = selectedItem.Value;
-                // Mostrar el valor en un MessageBox
-                MessageBox.Show($"Valor seleccionado: {valorSeleccionado}", "Valor Seleccionado");
-            }
-        }
-
-
-
-
         //###################  termina lo que hizo  Karla  Sofia Gómez Tobar #######################
 
         public frm_asignacion_perfiles()
@@ -254,7 +193,7 @@ namespace CapaDiseno
         {
             cbo_usuario.Text = " ";
             cbo_perfiles.Text = " ";
-            cbo_Asignacion.Text = " ";
+            
             dgv_perfiles_asignados.Columns.Clear();
             
 
@@ -365,9 +304,6 @@ namespace CapaDiseno
                     btn_ingresar.Enabled = true;
                     btn_cancel.Enabled = true;
                     btn_nuevo.Enabled = true;
-                    btn_actualizar.Enabled = false;
-                    btn_modif.Enabled = false;
-                    btn_eliminar.Enabled = false;
                     btn_Buscar.Enabled = false;
                     btn_quitar.Enabled = false;
                     groupBox1.Enabled = false;
@@ -424,9 +360,6 @@ namespace CapaDiseno
                 btn_ingresar.Enabled = true;
                 btn_nuevo.Enabled = true;
                 btn_cancel.Enabled = true;
-                btn_actualizar.Enabled = false;
-                btn_modif.Enabled = false;
-                btn_eliminar.Enabled = false;
                 btn_quitar.Enabled = true;
                 btn_Buscar.Enabled = true;
                 groupBox1.Enabled = true;
@@ -443,9 +376,6 @@ namespace CapaDiseno
             btn_ingresar.Enabled = true;
             btn_nuevo.Enabled = true;
             btn_cancel.Enabled = true;
-            btn_actualizar.Enabled = false;
-            btn_modif.Enabled = false;
-            btn_eliminar.Enabled = false;
             btn_Buscar.Enabled = true;
             btn_quitar.Enabled = false;
             groupBox1.Enabled = true;
@@ -467,45 +397,18 @@ namespace CapaDiseno
             btn_ingresar.Enabled = false;
             btn_nuevo.Enabled = false;
             btn_quitar.Enabled = false;
+           
         }
 
         private void btn_ActualizarA_Click(object sender, EventArgs e)
         {
            
-            string TablaA = "Tbl_asignaciones_perfils_usuario";
-            string campo1A = "PK_id_Perfil_Usuario";
-
-            
-            llenarsePerfilUsuario(TablaA, campo1A);
-
-            MessageBox.Show("Información actualizada correctamente en el ComboBox.", "Actualización Completa");
         }
 
         private void btn_eliminar_Click(object sender, EventArgs e)
         {
-            if (cbo_Asignacion.SelectedItem != null)
-            {
-                // Confirmar antes de eliminar
-                var confirmResult = MessageBox.Show("¿Estás seguro de eliminar este perfil?",
-                                                    "Confirmar Eliminación",
-                                                    MessageBoxButtons.YesNo);
 
-                if (confirmResult == DialogResult.Yes)
-                {
-                    // Obtener el valor seleccionado del ComboBox
-                    var selectedItem = (ComboBoxItemA)cbo_Asignacion.SelectedItem;
-                    string valorSeleccionado = selectedItem.Value;
 
-                    // Llamar al método de la capa lógica para eliminar el perfil
-                    logic.consultaLogicaEliminarPerfilUsuario(valorSeleccionado);
-                }
-            }
-            else
-            {
-                MessageBox.Show("No se ha seleccionado un perfil para eliminar.");
-            }
-
-            limpieza();
         }
     }
 }
