@@ -65,6 +65,12 @@
     <Compile Include="frm_asignacion_aplicaciones_perfiles.Designer.cs">
       <DependentUpon>frm_asignacion_aplicaciones_perfiles.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_asignacion_modulo_aplicaciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_asignacion_modulo_aplicaciones.Designer.cs">
+      <DependentUpon>frm_asignacion_modulo_aplicaciones.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_asignacion_perfiles.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -151,6 +157,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frm_asignacion_aplicaciones_perfiles.resx">
       <DependentUpon>frm_asignacion_aplicaciones_perfiles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_asignacion_modulo_aplicaciones.resx">
+      <DependentUpon>frm_asignacion_modulo_aplicaciones.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_asignacion_perfiles.resx">
       <DependentUpon>frm_asignacion_perfiles.cs</DependentUpon>

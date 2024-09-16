@@ -300,7 +300,16 @@ ALTER TABLE tbl_bitacora DROP COLUMN Fk_id_aplicacion;
 ALTER TABLE `Tbl_bitacora`
 ADD COLUMN `tabla` VARCHAR(50) NOT NULL;
 
+-- -----USUARIOS
+-- Agrega el primer usuario
+INSERT INTO `Tbl_usuarios` VALUES
+('1', 'admin', 'admin', 'admin', 'HO0aGo4nM94=', 'esduardo@gmail.com', '2022-07-02 21:00:48', '1', 'COLOR FAVORITO', 'ROJO');
+
+
+
 -- Vamos a hashear admin para que puedea ingresar al programa
+-- Deshabilitar el modo seguro en
+-- edit->preferences->SQL Editor -> al final deshabilitar safe updates -> reconectar
 UPDATE tbl_usuarios
 SET password_usuario = SHA2('HO0aGo4nM94=', 256)
 WHERE username_usuario = 'admin';

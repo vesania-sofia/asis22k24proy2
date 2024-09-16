@@ -43,9 +43,7 @@ INSERT INTO `Tbl_aplicaciones` VALUES
 ('7000', 'MDI BANCOS', 'PARA BANCOS', '1'),
 ('8000', 'MDI CONTRABILIDAD', 'PARA CONTRABILIDAD', '1');
 
--- -----USUARIOS
-INSERT INTO `Tbl_usuarios` VALUES
-('1', 'admin', 'admin', 'admin', 'HO0aGo4nM94=', 'esduardo@gmail.com', '2022-07-02 21:00:48', '1', 'COLOR FAVORITO', 'ROJO');
+
 
 -- -----PERFILES
 INSERT INTO `Tbl_perfiles` VALUES

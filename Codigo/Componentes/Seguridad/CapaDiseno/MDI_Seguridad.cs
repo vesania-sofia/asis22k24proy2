@@ -323,5 +323,33 @@ namespace CapaDiseno
             mostrar_Bitacora.Show();
 
         }
+
+        /***************************Ismar Leonel Cortez Sanchez**********************************************/
+        /**************************Nuevo Formulario**********************************************************/
+        bool ventanaMostrarModulosAplicaciones = false;
+        frm_asignacion_modulo_aplicaciones mostrarAplicacionesModulos = new frm_asignacion_modulo_aplicaciones();
+
+
+        private void asignacionModuloAAplicacionesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form frmC = Application.OpenForms.Cast<Form>().FirstOrDefault(x => x is frm_asignacion_modulo_aplicaciones);
+            if (ventanaMostrarModulosAplicaciones == false || frmC == null)
+            {
+                if (frmC == null)
+                {
+                    mostrarAplicacionesModulos = new frm_asignacion_modulo_aplicaciones(idUsuario);
+                }
+
+                mostrarAplicacionesModulos.MdiParent = this;
+                mostrarAplicacionesModulos.Show();
+                Application.DoEvents();
+                ventanaMostrarModulosAplicaciones = true;
+            }
+            else
+            {
+                mostrarAplicacionesModulos.WindowState = System.Windows.Forms.FormWindowState.Normal;
+            }
+        }
+        /***************************************************************************************************/
     }
 }

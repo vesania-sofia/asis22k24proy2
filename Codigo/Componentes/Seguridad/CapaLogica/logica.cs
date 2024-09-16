@@ -607,6 +607,56 @@ namespace CapaLogica
         }
         //FIN ####################################################################
 
+        /*********************Ismar Leonel Cortez Sanchez -0901-21-560************/
+        /***********************Combo box inteligente*****************************/
+
+        public string[] items(string tabla, string campo1, string campo2)
+        {
+            string[] Items = sn.llenarCmb(tabla, campo1, campo2);
+            /*Este arreglo lo obtiene y retorna de la clase senencias del modelo*/
+            return Items;
+
+            /*Aqui viene a parar lo de sentencias*/
+
+
+        }
+
+        public DataTable enviar(string tabla, string campo1, string campo2)
+        {
+
+
+            /**/
+            var dt1 = sn.obtener2(tabla, campo1, campo2);
+
+            return dt1;
+        }
+        /**************************************************************************/
+
+        /*********************Ismar Leonel Cortez Sanchez -0901-21-560************/
+        /***********************Combo box inteligente 2*****************************/
+
+        public string[] items2(string tabla, string campo1, string campo2)
+        {
+            string[] Items = sn.llenarCmb2(tabla, campo1, campo2);
+            /*Este arreglo lo obtiene y retorna de la clase senencias del modelo*/
+            return Items;
+
+            /*Aqui viene a parar lo de sentencias*/
+
+
+        }
+
+        public DataTable enviar2(string tabla, string campo1, string campo2)
+        {
+
+
+            /**/
+            var dt1 = sn.obtener2(tabla, campo1, campo2);
+
+            return dt1;
+        }
+        /**************************************************************************/
+
 
     }
 

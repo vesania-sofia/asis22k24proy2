@@ -1063,5 +1063,108 @@ namespace CapaDatos
             }
         }
         //########################FINALIZA CÓDIGO BOTÓN ELIMINAR ALYSON RODRIGUEZ
+
+        /*******************Ismar Leonel Cortez Sanchez  -0901-21-560*******************************************************/
+        /****************************Combo box inteligente******************************************************************/
+
+
+        public string[] llenarCmb(string tabla, string campo1, string campo2)
+        {
+            conexion cn = new conexion();
+            string[] Campos = new string[300];
+            int i = 0;
+
+            string sql = "SELECT DISTINCT " + campo1 + "," + campo2 + " FROM " + tabla;
+
+            /* La sentencia consulta el modelo de la base de datos con cada campo */
+            try
+            {
+                // Muestra la consulta SQL antes de ejecutarla
+                Console.Write(sql);
+                MessageBox.Show(sql);
+
+                OdbcCommand command = new OdbcCommand(sql, cn.conectar());
+                OdbcDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    Campos[i] = reader.GetValue(0).ToString() + "-" + reader.GetValue(1).ToString();
+                    i++;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + "\nError en asignarCombo, revise los parámetros \n -" + tabla + "\n -" + campo1);
+            }
+
+            return Campos;
+        }
+
+
+        public DataTable obtener(string tabla, string campo1, string campo2)
+        {
+            conexion cn = new conexion();
+            string sql = "SELECT DISTINCT " + campo1 + "," + campo2 + " FROM " + tabla;
+
+            OdbcCommand command = new OdbcCommand(sql, cn.conectar());
+            OdbcDataAdapter adaptador = new OdbcDataAdapter(command);
+            DataTable dt = new DataTable();
+            adaptador.Fill(dt);
+
+
+            return dt;
+        }
+        /****************************************************************************************************************/
+
+        /*******************Ismar Leonel Cortez Sanchez  -0901-21-560*******************************************************/
+        /****************************Combo box inteligente 2******************************************************************/
+
+
+        public string[] llenarCmb2(string tabla, string campo1, string campo2)
+        {
+            conexion cn = new conexion();
+            string[] Campos = new string[300];
+            int i = 0;
+
+            string sql = "SELECT DISTINCT " + campo1 + "," + campo2 + " FROM " + tabla;
+
+            /* La sentencia consulta el modelo de la base de datos con cada campo */
+            try
+            {
+                // Muestra la consulta SQL antes de ejecutarla
+                Console.Write(sql);
+                MessageBox.Show(sql);
+
+                OdbcCommand command = new OdbcCommand(sql, cn.conectar());
+                OdbcDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    Campos[i] = reader.GetValue(0).ToString() + "-" + reader.GetValue(1).ToString();
+                    i++;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + "\nError en asignarCombo, revise los parámetros \n -" + tabla + "\n -" + campo1);
+            }
+
+            return Campos;
+        }
+
+
+        public DataTable obtener2(string tabla, string campo1, string campo2)
+        {
+            conexion cn = new conexion();
+            string sql = "SELECT DISTINCT " + campo1 + "," + campo2 + " FROM " + tabla;
+
+            OdbcCommand command = new OdbcCommand(sql, cn.conectar());
+            OdbcDataAdapter adaptador = new OdbcDataAdapter(command);
+            DataTable dt = new DataTable();
+            adaptador.Fill(dt);
+
+
+            return dt;
+        }
+        /****************************************************************************************************************/
+
     }
 }
