@@ -3,6 +3,8 @@ using System.Data.Odbc;
 using System.Windows.Forms;
 using System.Net;
 using System.Data;
+using System.Collections.Generic;
+
 
 namespace CapaDatos
 {
@@ -184,7 +186,7 @@ namespace CapaDatos
                 string sqlIDAplicacion = "SELECT MAX(Pk_id_aplicacion)+1 FROM tbl_aplicaciones";
                 OdbcDataAdapter dataIDAplicacion = new OdbcDataAdapter(sqlIDAplicacion, cn.conectar());
                 return dataIDAplicacion;
-
+                insertarBitacora(idUsuario, "Se selecciono una aplicación", "tbl_aplicaciones");
             }
             catch (Exception ex)
             {
@@ -195,37 +197,67 @@ namespace CapaDatos
         //###################  termina lo que hizo  Karla  Sofia Gómez Tobar #######################
 
         //---------------------------------------------------- Inicio: GABRIELA SUC ---------------------------------------------------
-
-        public int ActualizarUsuario(int id, string nombre, string apellido, string correo, string estado, string pregunta, string respuesta)
+        public bool ModificarUsuario(string idUsuario, string nombre, string apellido, string correo, int estado_usuario, string respuesta)
         {
-            OdbcConnection connection = cn.conectar();
-            string sqlactualizarUsuario = "UPDATE tbl_usuarios SET nombre_usuario = ?, apellido_usuario = ?, email_usuario = ?, estado_usuario = ?, pregunta = ?, respuesta = ? WHERE PK_id_usuario = ?";
-
-            OdbcCommand command = new OdbcCommand(sqlactualizarUsuario, connection);
-
-            // Asignar los parámetros. Usar parámetros para evitar inyección SQL
-            command.Parameters.AddWithValue("@nombre", nombre);
-            command.Parameters.AddWithValue("@apellido", apellido);
-            command.Parameters.AddWithValue("@correo", correo);
-            command.Parameters.AddWithValue("@estado", estado);
-            command.Parameters.AddWithValue("@pregunta", pregunta);
-            command.Parameters.AddWithValue("@respuesta", respuesta);
-            command.Parameters.AddWithValue("@id", id);
-
             try
             {
-                // Ejecutar la consulta de actualización
-                int filasAfectadas = command.ExecuteNonQuery();
-                return filasAfectadas; // Se retorna el número de filas afectadas
+                // Comenzar a construir la consulta SQL
+                string query = "UPDATE Tbl_usuarios SET ";
+
+                // Lista de parámetros a incluir en la consulta
+                List<OdbcParameter> parameters = new List<OdbcParameter>();
+
+                // Agregar solo los campos que no estén vacíos
+                if (!string.IsNullOrEmpty(nombre))
+                {
+                    query += "nombre_usuario = ?, ";
+                    parameters.Add(new OdbcParameter("nombre_usuario", nombre));
+                }
+                if (!string.IsNullOrEmpty(apellido))
+                {
+                    query += "apellido_usuario = ?, ";
+                    parameters.Add(new OdbcParameter("apellido_usuario", apellido));
+                }
+                if (!string.IsNullOrEmpty(correo))
+                {
+                    query += "email_usuario = ?, ";
+                    parameters.Add(new OdbcParameter("email_usuario", correo));
+                }
+                if (!string.IsNullOrEmpty(respuesta))
+                {
+                    query += "respuesta = ?, ";
+                    parameters.Add(new OdbcParameter("respuesta", respuesta));
+                }
+
+                // El estado siempre se modifica (0 o 1)
+                query += "estado_usuario = ? ";
+                parameters.Add(new OdbcParameter("estado_usuario", estado_usuario));
+
+                // Completar la consulta SQL con la condición WHERE
+                query += "WHERE Pk_id_usuario = ?;";
+                parameters.Add(new OdbcParameter("id_usuario", idUsuario));
+
+                // Ejecutar la consulta SQL
+                using (OdbcCommand command = new OdbcCommand(query, cn.conectar()))
+                {
+                    // Agregar los parámetros al comando
+                    foreach (var param in parameters)
+                    {
+                        command.Parameters.Add(param);
+                    }
+
+                    // Ejecutar la consulta
+                    int result = command.ExecuteNonQuery();
+
+                    // Verificar si se modificó algún registro
+                    insertarBitacora(idUsuario, "Se modifico un usuario ", "tbl_usuarios");
+                    return result > 0;
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al actualizar usuario: " + ex.Message);
-                return 0; // En caso de error, se retorna 0
-            }
-            finally
-            {
-                connection.Close();
+                System.Windows.Forms.MessageBox.Show("Error al intentar modificar el registro: " + ex.Message);
+                return false;
             }
         }
 
@@ -289,7 +321,7 @@ namespace CapaDatos
 
             try
             {
-
+                insertarBitacora(idUsuario, "Se inserto el usuario con nombre: " + id, "tbl_usuarios");
                 return datausuarios; // Retorna si la inserción fue exitosa
             }
             catch (Exception ex)
@@ -303,15 +335,16 @@ namespace CapaDatos
         }
 
 
-    //--------------------------------------------------------------- Fin: Marco Monroy ---------------------------------------------------------------
+        //--------------------------------------------------------------- Fin: Marco Monroy ---------------------------------------------------------------
 
 
-    public OdbcDataAdapter insertarclaves(string id, string nombre, string apellido, string clave)
+        public OdbcDataAdapter insertarclaves(string id, string nombre, string apellido, string clave)
         {
             cn.conectar();
             MessageBox.Show("Contraseña Actualizada");
-            string sqlconsulta = "UPDATE tbl_usuario set PK_id_usuario='" + id + "',nombre_usuario='" + apellido + "',apellido_usuarios='" + nombre + "',password_usuario='" + clave + "',estado_usuario='1' where PK_id_usuario='" + id + "'";
+            string sqlconsulta = "UPDATE tbl_usuarios set PK_id_usuario='" + id + "',nombre_usuario='" + apellido + "',apellido_usuarios='" + nombre + "',password_usuario='" + clave + "',estado_usuario='1' where PK_id_usuario='" + id + "'";
             OdbcDataAdapter dataconsulta = new OdbcDataAdapter(sqlconsulta, cn.conectar());
+            insertarBitacora(idUsuario, "Se inserto el usuario con id: " + id, "tbl_usuarios");
             return dataconsulta;
         }
 
@@ -374,27 +407,31 @@ namespace CapaDatos
 
         //---------------------------------------------------- Inicio: GABRIELA SUC ----------------------------------------------------
 
-        public int eliminarusuario(string id)
+        // Método para cambiar el estado del usuario en la base de datos
+        public bool CambiarEstadoUsuario(string idUsuario, int nuevoEstado)
         {
-            string sqleliminar = "DELETE FROM tbl_usuarios WHERE PK_id_usuario = ?";
-            // '?' es un marcador de posición para un parámetro que será reemplazado posteriormente
-            // Este método de parametrización protege contra inyecciones SQL y permite que el valor del parámetro (id) se inserte de manera segura en la consulta
-
-            OdbcCommand cmd = new OdbcCommand(sqleliminar, cn.conectar());
-            cmd.Parameters.AddWithValue("@id", id);
-
-            int filasAfectadas = 0;
-
             try
             {
-                filasAfectadas = cmd.ExecuteNonQuery(); // Ejecutar el comando y devolver el número de filas afectadas
+                // Consulta SQL para actualizar el estado del usuario
+                string query = "UPDATE Tbl_usuarios SET estado_usuario = ? WHERE Pk_id_usuario = ?";
+
+                using (OdbcCommand command = new OdbcCommand(query, cn.conectar()))
+                {
+                    command.Parameters.AddWithValue("estado_usuario", nuevoEstado);
+                    command.Parameters.AddWithValue("id_usuario", idUsuario);
+
+                    int result = command.ExecuteNonQuery();
+
+                    insertarBitacora(idUsuario, "Se desactivousuario ", "tbl_usuarios");
+                    // Verifica si se actualizó algún registro
+                    return result > 0;
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al eliminar usuario: " + ex.Message);
+                MessageBox.Show("Error al cambiar el estado del usuario: " + ex.Message);
+                return false;
             }
-
-            return filasAfectadas; // Devolver el número de filas afectadas
         }
 
         //---------------------------------------------------- Fin: GABRIELA SUC ----------------------------------------------------
@@ -474,7 +511,7 @@ namespace CapaDatos
             {
                 // Ejecutar la consulta de inserción
                 command.ExecuteNonQuery();
-
+                insertarBitacora(idUsuario, "Se buscaron los datos del usuario con id: " + id, "tbl_usuarios");
             }
             catch (Exception ex)
             {
@@ -535,7 +572,7 @@ namespace CapaDatos
                 string sqlIDmodulo = "SELECT MAX(Pk_id_modulo)+1 FROM tbl_modulos";
                 OdbcDataAdapter dataIDmodulo = new OdbcDataAdapter(sqlIDmodulo, cn.conectar());
                 return dataIDmodulo;
-
+                insertarBitacora(idUsuario, "Se mostraron los modulos", "tbl_modulos");
             }
             catch (Exception ex)
             {
@@ -739,7 +776,7 @@ namespace CapaDatos
             try
             {
                 ds = new DataSet();
-                dat = new OdbcDataAdapter("SELECT PK_id_bitacora as Id, FK_id_usuario as Usuario, fecha_bitacora, hora_bitacora, host_bitacora, ip_bitacora, accion_bitacora from tbl_bitacora"
+                dat = new OdbcDataAdapter("SELECT PK_id_bitacora as Id, FK_id_usuario as Usuario, fecha_bitacora, hora_bitacora, host_bitacora, ip_bitacora, accion_bitacora, tabla from tbl_bitacora"
                 , cn.conectar());
                 dat.Fill(ds);
             }
@@ -749,9 +786,36 @@ namespace CapaDatos
             }
             catch (ArgumentOutOfRangeException ex)
             {
-
+                MessageBox.Show(ex.Message);
             }
+            return ds;
+        }
 
+        // Nuevo método para búsqueda filtrada
+        public DataSet consultarBitacoraFiltrada(string campo, string valor)
+        {
+            OdbcDataAdapter dat = null;
+            DataSet ds = null;
+            try
+            {
+                ds = new DataSet();
+                string query = $"SELECT PK_id_bitacora as Id, FK_id_usuario as Usuario, fecha_bitacora, hora_bitacora, host_bitacora, ip_bitacora, accion_bitacora, tabla FROM tbl_bitacora WHERE {campo} LIKE ?";
+
+                using (OdbcConnection conexion = cn.conectar())
+                {
+                    dat = new OdbcDataAdapter(query, conexion);
+                    dat.SelectCommand.Parameters.AddWithValue("?", $"%{valor}%");
+                    dat.Fill(ds);
+                }
+            }
+            catch (OdbcException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (ArgumentOutOfRangeException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
             return ds;
         }
 
@@ -764,7 +828,7 @@ namespace CapaDatos
 
                 using (OdbcConnection conexion = cn.conectar())
                 {
-                    string obtenerIdUsuarioQuery = "SELECT Pk_id_usuario FROM Tbl_usuarios WHERE nombre_usuario = ?";
+                    string obtenerIdUsuarioQuery = "SELECT Pk_id_usuario FROM Tbl_usuarios WHERE username_usuario = ?";
                     OdbcCommand obtenerIdUsuarioCmd = new OdbcCommand(obtenerIdUsuarioQuery, conexion);
                     obtenerIdUsuarioCmd.Parameters.AddWithValue("?", idUsuario);
 
@@ -776,8 +840,8 @@ namespace CapaDatos
                         string usuario = resultado.ToString();
 
                         string consulta = @"INSERT INTO tbl_bitacora 
-                                (Fk_id_usuario, fecha_bitacora, hora_bitacora, host_bitacora, ip_bitacora, accion_bitacora) 
-                                VALUES (?, ?, ?, ?, ?, ?)";
+                                (Fk_id_usuario, fecha_bitacora, hora_bitacora, host_bitacora, ip_bitacora, accion_bitacora, tabla) 
+                                VALUES (?, ?, ?, ?, ?, ?, ?)";
 
                         using (OdbcCommand cmd = new OdbcCommand(consulta, conexion))
                         {
@@ -787,6 +851,7 @@ namespace CapaDatos
                             cmd.Parameters.AddWithValue("?", nombreHost);
                             cmd.Parameters.AddWithValue("?", ipLocal);
                             cmd.Parameters.AddWithValue("?", accion);
+                            cmd.Parameters.AddWithValue("?", tabla);
 
                             cmd.ExecuteNonQuery();
                         }
@@ -797,8 +862,7 @@ namespace CapaDatos
             {
                 // Registrar la excepción o manejarla apropiadamente
                 MessageBox.Show("Error al insertar en la bitácora: " + ex.Message);
-                // throw;
-            }
+            }
         }
         private string ObtenerDireccionIPLocal()
         {
@@ -813,7 +877,7 @@ namespace CapaDatos
             return "No se pudo determinar la dirección IP local";
         }
 
-        //Fin
+        //Fin #########################3
 
 
         public bool consultarPermisos(string idUsuario, string idAplicacion, int tipoPermiso)
@@ -1033,5 +1097,257 @@ namespace CapaDatos
             }
         }
         //########################FINALIZA CÓDIGO BOTÓN ELIMINAR ALYSON RODRIGUEZ
+
+        /*******************Ismar Leonel Cortez Sanchez  -0901-21-560*******************************************************/
+        /****************************Combo box inteligente******************************************************************/
+
+
+        public string[] llenarCmb(string tabla, string campo1, string campo2)
+        {
+            conexion cn = new conexion();
+            string[] Campos = new string[300];
+            int i = 0;
+
+            string sql = "SELECT DISTINCT " + campo1 + "," + campo2 + " FROM " + tabla;
+
+            /* La sentencia consulta el modelo de la base de datos con cada campo */
+            try
+            {
+                // Muestra la consulta SQL antes de ejecutarla
+                Console.Write(sql);
+                MessageBox.Show(sql);
+
+                OdbcCommand command = new OdbcCommand(sql, cn.conectar());
+                OdbcDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    Campos[i] = reader.GetValue(0).ToString() + "-" + reader.GetValue(1).ToString();
+                    i++;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + "\nError en asignarCombo, revise los parámetros \n -" + tabla + "\n -" + campo1);
+            }
+
+            return Campos;
+        }
+
+
+        public DataTable obtener(string tabla, string campo1, string campo2)
+        {
+            conexion cn = new conexion();
+            string sql = "SELECT DISTINCT " + campo1 + "," + campo2 + " FROM " + tabla;
+
+            OdbcCommand command = new OdbcCommand(sql, cn.conectar());
+            OdbcDataAdapter adaptador = new OdbcDataAdapter(command);
+            DataTable dt = new DataTable();
+            adaptador.Fill(dt);
+
+
+            return dt;
+        }
+        /****************************************************************************************************************/
+
+        /*******************Ismar Leonel Cortez Sanchez  -0901-21-560*******************************************************/
+        /****************************Combo box inteligente 2******************************************************************/
+
+
+        public string[] llenarCmb2(string tabla, string campo1, string campo2)
+        {
+            conexion cn = new conexion();
+            string[] Campos = new string[300];
+            int i = 0;
+
+            string sql = "SELECT DISTINCT " + campo1 + "," + campo2 + " FROM " + tabla;
+
+            /* La sentencia consulta el modelo de la base de datos con cada campo */
+            try
+            {
+                // Muestra la consulta SQL antes de ejecutarla
+                Console.Write(sql);
+                MessageBox.Show(sql);
+
+                OdbcCommand command = new OdbcCommand(sql, cn.conectar());
+                OdbcDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    Campos[i] = reader.GetValue(0).ToString() + "-" + reader.GetValue(1).ToString();
+                    i++;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + "\nError en asignarCombo, revise los parámetros \n -" + tabla + "\n -" + campo1);
+            }
+
+            return Campos;
+        }
+
+
+        public DataTable obtener2(string tabla, string campo1, string campo2)
+        {
+            conexion cn = new conexion();
+            string sql = "SELECT DISTINCT " + campo1 + "," + campo2 + " FROM " + tabla;
+
+            OdbcCommand command = new OdbcCommand(sql, cn.conectar());
+            OdbcDataAdapter adaptador = new OdbcDataAdapter(command);
+            DataTable dt = new DataTable();
+            adaptador.Fill(dt);
+
+
+            return dt;
+        }
+        /****************************************************************************************************************/
+        //******************************************KATERYN DE LEON***************************
+        //BUSCAR
+        public OdbcDataAdapter consultarAsignacion_moduloAplicaciones()
+        {
+            cn.conectar();
+            string sqlUsuarios = " SELECT  a.Fk_id_modulos AS ModuloID,   m.nombre_modulo AS NombreModulo, a.Fk_id_aplicacion AS AplicacionID,  ap.nombre_aplicacion AS NombreAplicacion  FROM Tbl_asignacion_modulo_aplicacion a  JOIN Tbl_modulos m ON a.Fk_id_modulos = m.Pk_id_modulos JOIN Tbl_aplicaciones ap ON a.Fk_id_aplicacion = ap.Pk_id_aplicacion";
+            OdbcDataAdapter dataUsuarios = new OdbcDataAdapter(sqlUsuarios, cn.conectar());
+            insertarBitacora(idUsuario, "Realizo una consulta  a Asignacion modulo aplicaciones", "tbl_asignacion_modulo_aplicacion");
+            return dataUsuarios;
+
+        }
+
+        //*************************************KATERYN DE LEON*********************************************************
+        // AGREGAR
+        public int ObtenerIdModulo(string nombreModulo)
+        {
+            using (OdbcConnection connection = cn.conectar())
+            {
+                if (connection == null) return -1;
+
+                try
+                {
+                    string query = "SELECT Pk_id_modulos FROM Tbl_modulos WHERE nombre_modulo = ?";
+                    using (OdbcCommand command = new OdbcCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@nombre_modulo", nombreModulo);
+                        object result = command.ExecuteScalar();
+
+                        if (result != null)
+                        {
+                            return Convert.ToInt32(result);
+                        }
+                        else
+                        {
+                            // Si no existe, inserta el módulo
+                            string insertQuery = "INSERT INTO Tbl_modulos (nombre_modulo, descripcion_modulo) VALUES (?, ?)";
+                            using (OdbcCommand insertCommand = new OdbcCommand(insertQuery, connection))
+                            {
+                                insertCommand.Parameters.AddWithValue("@nombre_modulo", nombreModulo);
+                                insertCommand.Parameters.AddWithValue("@descripcion_modulo", "Descripción del módulo"); // Ajusta según sea necesario
+                                insertCommand.ExecuteNonQuery();
+                            }
+
+                            // Obtener el ID del nuevo módulo
+                            string idQuery = "SELECT LAST_INSERT_ID()";
+                            using (OdbcCommand idCommand = new OdbcCommand(idQuery, connection))
+                            {
+                                return Convert.ToInt32(idCommand.ExecuteScalar());
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error al obtener o insertar módulo: " + ex.Message);
+                    return -1;
+                }
+            }
+        }
+        //********************************************KATERYN DE LEON*********************************************************
+        // AGREGAR
+        public int ObtenerIdAplicacion(string nombreAplicacion)
+        {
+            using (OdbcConnection connection = cn.conectar())
+            {
+                if (connection == null) return -1;
+
+                try
+                {
+                    string query = "SELECT Pk_id_aplicacion FROM Tbl_aplicaciones WHERE nombre_aplicacion = ?";
+                    using (OdbcCommand command = new OdbcCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@nombre_aplicacion", nombreAplicacion);
+                        object result = command.ExecuteScalar();
+
+                        if (result != null)
+                        {
+                            return Convert.ToInt32(result);
+                        }
+                        else
+                        {
+                            // Si no existe, inserta la aplicación
+                            string insertQuery = "INSERT INTO Tbl_aplicaciones (nombre_aplicacion, descripcion_aplicacion) VALUES (?, ?)";
+                            using (OdbcCommand insertCommand = new OdbcCommand(insertQuery, connection))
+                            {
+                                insertCommand.Parameters.AddWithValue("@nombre_aplicacion", nombreAplicacion);
+                                insertCommand.Parameters.AddWithValue("@descripcion_aplicacion", "Descripción de la aplicación"); // Ajusta según sea necesario
+                                insertCommand.ExecuteNonQuery();
+                            }
+
+                            // Obtener el ID de la nueva aplicación
+                            string idQuery = "SELECT LAST_INSERT_ID()";
+                            using (OdbcCommand idCommand = new OdbcCommand(idQuery, connection))
+                            {
+                                return Convert.ToInt32(idCommand.ExecuteScalar());
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error al obtener o insertar aplicación: " + ex.Message);
+                    return -1;
+                }
+            }
+        }
+        //*************************************************KATERYN DE LEON*********************************************************
+        // AGREGAR
+        public bool InsertarAsignacionModuloAplicacion(int idModulo, int idAplicacion)
+        {
+            using (OdbcConnection connection = cn.conectar())
+            {
+                if (connection == null) return false;
+
+                try
+                {
+                    string query = "INSERT INTO Tbl_asignacion_modulo_aplicacion (Fk_id_modulos, Fk_id_aplicacion) VALUES (?, ?)";
+                    using (OdbcCommand command = new OdbcCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@Fk_id_modulos", idModulo);
+                        command.Parameters.AddWithValue("@Fk_id_aplicacion", idAplicacion);
+
+                        int resultado = command.ExecuteNonQuery();
+                        insertarBitacora(idUsuario, "Realizo un ingreso a aplicacion-modulos", "tbl_asignacion_modulo_aplicacion");
+                        return resultado > 0; // Devuelve true si la inserción fue exitosa
+                      
+
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error al insertar asignación: " + ex.Message);
+                    return false;
+                }
+            }
+        }
+        //***************************************************************************************************/
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }
