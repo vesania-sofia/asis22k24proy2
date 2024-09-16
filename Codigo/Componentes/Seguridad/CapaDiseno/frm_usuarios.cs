@@ -62,8 +62,11 @@ namespace CapaDiseno
             txt_nomb.Text = "";
 
             txt_correo.Text = "";
-            txt_estadousuario.Text = "";
-           // txt_pregunta.Text = "";
+            rb_habilitado.Checked = false;
+            rb_inhabilitado.Checked = false;
+            dataGridView1.Columns.Clear();
+            //txt_estadousuario.Text = "";
+            // txt_pregunta.Text = "";
             txt_respuesta.Text = "";
         }
 
@@ -141,86 +144,79 @@ namespace CapaDiseno
         //---------------------------------------------------- Inicio: GABRIELA SUC ----------------------------------------------------
 
         private void Button2_Click(object sender, EventArgs e)
-        {
-            DialogResult result = MessageBox.Show("¿Está seguro de que desea eliminar este usuario?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+        {   //Botón ELIMINAR
 
-            if (result == DialogResult.Yes)
+            // Obtener el ID del usuario del TextBox
+            string idUsuario = txt_buscar.Text;
+
+            // Validar que el campo no esté vacío
+            if (string.IsNullOrEmpty(idUsuario))
             {
-                try
+                MessageBox.Show("Por favor, ingrese el ID del usuario.");
+                return;
+            }
+
+            // Confirmar si desea eliminar el usuario
+            DialogResult dialogResult = MessageBox.Show("¿Está seguro que desea eliminar este usuario?", "Confirmación", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                // Llamar a la capa lógica para cambiar el estado del usuario
+                bool resultado = logica1.EliminarUsuario(idUsuario);
+
+                if (resultado)
                 {
-                    int idUsuario = Convert.ToInt32(txt_buscar.Text);
-                    int filasAfectadas = logica1.eliminarusuario(idUsuario);
-
-                    if (filasAfectadas > 0)
-                    {
-                        MessageBox.Show("Usuario eliminado correctamente.");
-                        limpiar(); // Limpiar los campos
-                        txt_clave.Enabled = false;
-                        txt_nombreusername.Enabled = false;
-                        txt_apellido.Enabled = false;
-                        txt_nomb.Enabled = false;
-                        txt_buscar.Enabled = true;
-                        txt_correo.Enabled = false;
-                        txt_estadousuario.Enabled = false;
-                        txt_pregunta.Enabled = false;
-                        txt_respuesta.Enabled = false;
-                        btn_guardar.Enabled = false;
-                        button3.Enabled = false;
-                        button2.Enabled = false;
-                        button4.Enabled = true;
-                        btn_salir.Enabled = true;
-                        btn_buscar.Enabled = true;
-
-                    }
-                    else
-                    {
-                        MessageBox.Show("No se encontró el usuario o no fue posible eliminarlo.");
-                    }
+                    MessageBox.Show("El usuario ha sido eliminado correctamente (cambiado a estado Inactivo).");
+                    limpiar(); // Limpiar los campos después de la actualización
                 }
-                catch (Exception ex)
+                else
                 {
-                    MessageBox.Show("Error al eliminar el usuario: " + ex.Message);
+                    MessageBox.Show("Hubo un error al intentar eliminar el usuario.");
                 }
             }
+            else
+            {
+                MessageBox.Show("El usuario no ha sido eliminado.");
+            }
+
 
         }
 
-        
 
         private void Button3_Click(object sender, EventArgs e)
         {
 
             // Botón MODIFICAR
 
-            try
+            // Preguntar si está seguro de modificar
+            DialogResult result = MessageBox.Show("¿Está seguro de modificar este registro?", "Confirmar Modificación", MessageBoxButtons.YesNo);
+
+            if (result == DialogResult.Yes)
             {
-                // Se captura el ID del usuario desde txt_buscar
-                int idUsuario = Convert.ToInt32(txt_buscar.Text);
+                // Obtener los valores de los TextBox
+                string nombre = txt_nomb.Text.Trim();
+                string apellido = txt_apellido.Text.Trim();
+                string correo = txt_correo.Text.Trim();
+                string respuesta = txt_respuesta.Text.Trim();
 
-                // Se llama a la función de la capa lógica para actualizar el registro
-                logica1.ActualizarUsuario(idUsuario, txt_nomb.Text, txt_apellido.Text, txt_correo.Text, txt_estadousuario.Text, txt_pregunta.Text, txt_respuesta.Text);
+                // Determinar el estado del usuario con los RadioButton
+                int estado_usuario = rb_habilitado.Checked ? 1 : 0;
 
-                MessageBox.Show("Usuario actualizado correctamente.");
+                // Obtener el id del usuario
+                string idUsuario = txt_buscar.Text.Trim();
 
-                // Desactivar los controles nuevamente
-                txt_clave.Enabled = false;
-                txt_nombreusername.Enabled = false;
-                txt_apellido.Enabled = false;
-                txt_nomb.Enabled = false;
-                txt_buscar.Enabled = true;
-                txt_correo.Enabled = false;
-                txt_estadousuario.Enabled = false;
-                txt_pregunta.Enabled = false;
-                txt_respuesta.Enabled = false;
+                // Llamar a la lógica para realizar la modificación
+                bool exito = logica1.ModificarUsuario(idUsuario, nombre, apellido, correo, estado_usuario, respuesta);
 
-                limpiar(); // Limpiar los campos después de la actualización
+                if (exito)
+                {
+                    MessageBox.Show("Registro modificado con éxito.");
+                    limpiar();
+                }
+                else
+                {
+                    MessageBox.Show("Error al intentar modificar el registro.");
+                }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al actualizar el usuario: " + ex.Message);
-            }
-
-
         }
 
         //---------------------------------------------------- Fin: GABRIELA SUC ----------------------------------------------------

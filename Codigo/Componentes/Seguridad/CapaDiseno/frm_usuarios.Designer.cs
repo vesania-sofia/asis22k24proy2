@@ -40,6 +40,8 @@
             this.button4 = new System.Windows.Forms.Button();
             this.btn_ayuda = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.rb_inhabilitado = new System.Windows.Forms.RadioButton();
+            this.rb_habilitado = new System.Windows.Forms.RadioButton();
             this.txt_respuesta = new System.Windows.Forms.TextBox();
             this.lbl_respuesta = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -60,8 +62,6 @@
             this.txt_nombreusername = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txt_clave = new System.Windows.Forms.TextBox();
-            this.rb_inhabilitado = new System.Windows.Forms.RadioButton();
-            this.rb_habilitado = new System.Windows.Forms.RadioButton();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -136,7 +136,7 @@
             this.txt_buscar.Location = new System.Drawing.Point(166, 29);
             this.txt_buscar.Margin = new System.Windows.Forms.Padding(4);
             this.txt_buscar.Name = "txt_buscar";
-            this.txt_buscar.Size = new System.Drawing.Size(283, 33);
+            this.txt_buscar.Size = new System.Drawing.Size(283, 26);
             this.txt_buscar.TabIndex = 240;
             // 
             // label2
@@ -146,7 +146,7 @@
             this.label2.Location = new System.Drawing.Point(42, 33);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(113, 29);
+            this.label2.Size = new System.Drawing.Size(81, 20);
             this.label2.TabIndex = 238;
             this.label2.Text = "Buscar Id";
             // 
@@ -201,10 +201,34 @@
             this.groupBox4.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox4.Size = new System.Drawing.Size(476, 335);
+            this.groupBox4.Size = new System.Drawing.Size(476, 264);
             this.groupBox4.TabIndex = 256;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Datos Personales";
+            // 
+            // rb_inhabilitado
+            // 
+            this.rb_inhabilitado.AutoSize = true;
+            this.rb_inhabilitado.Location = new System.Drawing.Point(231, 63);
+            this.rb_inhabilitado.Margin = new System.Windows.Forms.Padding(4);
+            this.rb_inhabilitado.Name = "rb_inhabilitado";
+            this.rb_inhabilitado.Size = new System.Drawing.Size(87, 24);
+            this.rb_inhabilitado.TabIndex = 231;
+            this.rb_inhabilitado.TabStop = true;
+            this.rb_inhabilitado.Text = "Inactivo";
+            this.rb_inhabilitado.UseVisualStyleBackColor = true;
+            // 
+            // rb_habilitado
+            // 
+            this.rb_habilitado.AutoSize = true;
+            this.rb_habilitado.Location = new System.Drawing.Point(94, 63);
+            this.rb_habilitado.Margin = new System.Windows.Forms.Padding(4);
+            this.rb_habilitado.Name = "rb_habilitado";
+            this.rb_habilitado.Size = new System.Drawing.Size(76, 24);
+            this.rb_habilitado.TabIndex = 230;
+            this.rb_habilitado.TabStop = true;
+            this.rb_habilitado.Text = "Activo";
+            this.rb_habilitado.UseVisualStyleBackColor = true;
             // 
             // txt_respuesta
             // 
@@ -212,7 +236,7 @@
             this.txt_respuesta.Location = new System.Drawing.Point(171, 190);
             this.txt_respuesta.Margin = new System.Windows.Forms.Padding(4);
             this.txt_respuesta.Name = "txt_respuesta";
-            this.txt_respuesta.Size = new System.Drawing.Size(297, 33);
+            this.txt_respuesta.Size = new System.Drawing.Size(297, 26);
             this.txt_respuesta.TabIndex = 229;
             this.txt_respuesta.Tag = "4";
             // 
@@ -223,7 +247,7 @@
             this.lbl_respuesta.Location = new System.Drawing.Point(32, 189);
             this.lbl_respuesta.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_respuesta.Name = "lbl_respuesta";
-            this.lbl_respuesta.Size = new System.Drawing.Size(128, 29);
+            this.lbl_respuesta.Size = new System.Drawing.Size(89, 20);
             this.lbl_respuesta.TabIndex = 228;
             this.lbl_respuesta.Text = "Respuesta";
             // 
@@ -234,7 +258,7 @@
             this.label8.Location = new System.Drawing.Point(131, 30);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(177, 29);
+            this.label8.Size = new System.Drawing.Size(124, 20);
             this.label8.TabIndex = 205;
             this.label8.Text = "Estado Usuario";
             // 
@@ -244,7 +268,7 @@
             this.txt_pregunta.Location = new System.Drawing.Point(171, 135);
             this.txt_pregunta.Margin = new System.Windows.Forms.Padding(4);
             this.txt_pregunta.Name = "txt_pregunta";
-            this.txt_pregunta.Size = new System.Drawing.Size(297, 33);
+            this.txt_pregunta.Size = new System.Drawing.Size(297, 26);
             this.txt_pregunta.TabIndex = 226;
             this.txt_pregunta.Tag = "4";
             this.txt_pregunta.Text = "Nombre de familiar";
@@ -252,10 +276,10 @@
             // txt_estadousuario
             // 
             this.txt_estadousuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_estadousuario.Location = new System.Drawing.Point(436, 133);
+            this.txt_estadousuario.Location = new System.Drawing.Point(436, 135);
             this.txt_estadousuario.Margin = new System.Windows.Forms.Padding(4);
             this.txt_estadousuario.Name = "txt_estadousuario";
-            this.txt_estadousuario.Size = new System.Drawing.Size(16, 33);
+            this.txt_estadousuario.Size = new System.Drawing.Size(16, 26);
             this.txt_estadousuario.TabIndex = 227;
             this.txt_estadousuario.Tag = "3";
             this.txt_estadousuario.TextChanged += new System.EventHandler(this.txt_estadousuario_TextChanged);
@@ -267,7 +291,7 @@
             this.lbl_pregunta.Location = new System.Drawing.Point(29, 132);
             this.lbl_pregunta.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_pregunta.Name = "lbl_pregunta";
-            this.lbl_pregunta.Size = new System.Drawing.Size(110, 29);
+            this.lbl_pregunta.Size = new System.Drawing.Size(76, 20);
             this.lbl_pregunta.TabIndex = 193;
             this.lbl_pregunta.Text = "Pregunta";
             // 
@@ -295,7 +319,7 @@
             this.txt_correo.Location = new System.Drawing.Point(125, 149);
             this.txt_correo.Margin = new System.Windows.Forms.Padding(4);
             this.txt_correo.Name = "txt_correo";
-            this.txt_correo.Size = new System.Drawing.Size(308, 33);
+            this.txt_correo.Size = new System.Drawing.Size(308, 26);
             this.txt_correo.TabIndex = 229;
             this.txt_correo.Tag = "4";
             // 
@@ -306,7 +330,7 @@
             this.label5.Location = new System.Drawing.Point(8, 149);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(88, 29);
+            this.label5.Size = new System.Drawing.Size(60, 20);
             this.label5.TabIndex = 228;
             this.label5.Text = "Correo";
             // 
@@ -316,7 +340,7 @@
             this.txt_apellido.Location = new System.Drawing.Point(125, 94);
             this.txt_apellido.Margin = new System.Windows.Forms.Padding(4);
             this.txt_apellido.Name = "txt_apellido";
-            this.txt_apellido.Size = new System.Drawing.Size(308, 33);
+            this.txt_apellido.Size = new System.Drawing.Size(308, 26);
             this.txt_apellido.TabIndex = 226;
             this.txt_apellido.Tag = "4";
             // 
@@ -326,7 +350,7 @@
             this.txt_nomb.Location = new System.Drawing.Point(206, 39);
             this.txt_nomb.Margin = new System.Windows.Forms.Padding(4);
             this.txt_nomb.Name = "txt_nomb";
-            this.txt_nomb.Size = new System.Drawing.Size(227, 33);
+            this.txt_nomb.Size = new System.Drawing.Size(227, 26);
             this.txt_nomb.TabIndex = 226;
             this.txt_nomb.Tag = "1";
             // 
@@ -337,7 +361,7 @@
             this.label1.Location = new System.Drawing.Point(8, 43);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(190, 29);
+            this.label1.Size = new System.Drawing.Size(131, 20);
             this.label1.TabIndex = 205;
             this.label1.Text = "Nombre Usuario";
             // 
@@ -348,7 +372,7 @@
             this.label7.Location = new System.Drawing.Point(13, 97);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(102, 29);
+            this.label7.Size = new System.Drawing.Size(68, 20);
             this.label7.TabIndex = 193;
             this.label7.Text = "Apellido";
             // 
@@ -376,7 +400,7 @@
             this.txt_id.Location = new System.Drawing.Point(146, 44);
             this.txt_id.Margin = new System.Windows.Forms.Padding(4);
             this.txt_id.Name = "txt_id";
-            this.txt_id.Size = new System.Drawing.Size(227, 33);
+            this.txt_id.Size = new System.Drawing.Size(227, 26);
             this.txt_id.TabIndex = 254;
             this.txt_id.Tag = "1";
             // 
@@ -385,7 +409,7 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(14, 42);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(36, 29);
+            this.label6.Size = new System.Drawing.Size(26, 20);
             this.label6.TabIndex = 228;
             this.label6.Text = "ID";
             // 
@@ -396,7 +420,7 @@
             this.label4.Location = new System.Drawing.Point(14, 93);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(124, 29);
+            this.label4.Size = new System.Drawing.Size(86, 20);
             this.label4.TabIndex = 205;
             this.label4.Text = "Username";
             // 
@@ -406,7 +430,7 @@
             this.txt_nombreusername.Location = new System.Drawing.Point(146, 93);
             this.txt_nombreusername.Margin = new System.Windows.Forms.Padding(4);
             this.txt_nombreusername.Name = "txt_nombreusername";
-            this.txt_nombreusername.Size = new System.Drawing.Size(283, 33);
+            this.txt_nombreusername.Size = new System.Drawing.Size(283, 26);
             this.txt_nombreusername.TabIndex = 227;
             this.txt_nombreusername.Tag = "3";
             // 
@@ -417,7 +441,7 @@
             this.label3.Location = new System.Drawing.Point(8, 141);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(142, 29);
+            this.label3.Size = new System.Drawing.Size(100, 20);
             this.label3.TabIndex = 193;
             this.label3.Text = " Contraseña";
             // 
@@ -428,39 +452,19 @@
             this.txt_clave.Margin = new System.Windows.Forms.Padding(4);
             this.txt_clave.Name = "txt_clave";
             this.txt_clave.PasswordChar = '*';
-            this.txt_clave.Size = new System.Drawing.Size(283, 33);
+            this.txt_clave.Size = new System.Drawing.Size(283, 26);
             this.txt_clave.TabIndex = 227;
             this.txt_clave.Tag = "2";
             // 
-            // rb_inhabilitado
-            // 
-            this.rb_inhabilitado.AutoSize = true;
-            this.rb_inhabilitado.Location = new System.Drawing.Point(231, 63);
-            this.rb_inhabilitado.Margin = new System.Windows.Forms.Padding(4);
-            this.rb_inhabilitado.Name = "rb_inhabilitado";
-            this.rb_inhabilitado.Size = new System.Drawing.Size(119, 33);
-            this.rb_inhabilitado.TabIndex = 231;
-            this.rb_inhabilitado.TabStop = true;
-            this.rb_inhabilitado.Text = "Inactivo";
-            this.rb_inhabilitado.UseVisualStyleBackColor = true;
-            // 
-            // rb_habilitado
-            // 
-            this.rb_habilitado.AutoSize = true;
-            this.rb_habilitado.Location = new System.Drawing.Point(94, 63);
-            this.rb_habilitado.Margin = new System.Windows.Forms.Padding(4);
-            this.rb_habilitado.Name = "rb_habilitado";
-            this.rb_habilitado.Size = new System.Drawing.Size(102, 33);
-            this.rb_habilitado.TabIndex = 230;
-            this.rb_habilitado.TabStop = true;
-            this.rb_habilitado.Text = "Activo";
-            this.rb_habilitado.UseVisualStyleBackColor = true;
-            // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(111, 503);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 72;
             this.dataGridView1.RowTemplate.Height = 31;
             this.dataGridView1.Size = new System.Drawing.Size(1194, 239);
@@ -468,7 +472,7 @@
             // 
             // frm_usuarios
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1486, 769);
             this.Controls.Add(this.dataGridView1);
