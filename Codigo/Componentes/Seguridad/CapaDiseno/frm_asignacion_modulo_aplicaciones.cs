@@ -277,6 +277,11 @@ namespace CapaDiseno
             }
 
         }
+
+        private void btn_salir_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 
     /***************************************************************************************************/

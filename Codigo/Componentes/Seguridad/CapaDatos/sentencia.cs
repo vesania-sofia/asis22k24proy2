@@ -3,6 +3,8 @@ using System.Data.Odbc;
 using System.Windows.Forms;
 using System.Net;
 using System.Data;
+using System.Collections.Generic;
+
 
 namespace CapaDatos
 {
@@ -195,38 +197,66 @@ namespace CapaDatos
         //###################  termina lo que hizo  Karla  Sofia Gómez Tobar #######################
 
         //---------------------------------------------------- Inicio: GABRIELA SUC ---------------------------------------------------
-
-        public int ActualizarUsuario(int id, string nombre, string apellido, string correo, string estado, string pregunta, string respuesta)
+        public bool ModificarUsuario(string idUsuario, string nombre, string apellido, string correo, int estado_usuario, string respuesta)
         {
-            OdbcConnection connection = cn.conectar();
-            string sqlactualizarUsuario = "UPDATE tbl_usuarios SET nombre_usuario = ?, apellido_usuario = ?, email_usuario = ?, estado_usuario = ?, pregunta = ?, respuesta = ? WHERE PK_id_usuario = ?";
-
-            OdbcCommand command = new OdbcCommand(sqlactualizarUsuario, connection);
-
-            // Asignar los parámetros. Usar parámetros para evitar inyección SQL
-            command.Parameters.AddWithValue("@nombre", nombre);
-            command.Parameters.AddWithValue("@apellido", apellido);
-            command.Parameters.AddWithValue("@correo", correo);
-            command.Parameters.AddWithValue("@estado", estado);
-            command.Parameters.AddWithValue("@pregunta", pregunta);
-            command.Parameters.AddWithValue("@respuesta", respuesta);
-            command.Parameters.AddWithValue("@id", id);
-
             try
             {
-                // Ejecutar la consulta de actualización
-                int filasAfectadas = command.ExecuteNonQuery();
-                insertarBitacora(idUsuario, "Se actualizo el usuario con id: " + id, "tbl_usuarios");
-                return filasAfectadas; // Se retorna el número de filas afectadas
+                // Comenzar a construir la consulta SQL
+                string query = "UPDATE Tbl_usuarios SET ";
+
+                // Lista de parámetros a incluir en la consulta
+                List<OdbcParameter> parameters = new List<OdbcParameter>();
+
+                // Agregar solo los campos que no estén vacíos
+                if (!string.IsNullOrEmpty(nombre))
+                {
+                    query += "nombre_usuario = ?, ";
+                    parameters.Add(new OdbcParameter("nombre_usuario", nombre));
+                }
+                if (!string.IsNullOrEmpty(apellido))
+                {
+                    query += "apellido_usuario = ?, ";
+                    parameters.Add(new OdbcParameter("apellido_usuario", apellido));
+                }
+                if (!string.IsNullOrEmpty(correo))
+                {
+                    query += "email_usuario = ?, ";
+                    parameters.Add(new OdbcParameter("email_usuario", correo));
+                }
+                if (!string.IsNullOrEmpty(respuesta))
+                {
+                    query += "respuesta = ?, ";
+                    parameters.Add(new OdbcParameter("respuesta", respuesta));
+                }
+
+                // El estado siempre se modifica (0 o 1)
+                query += "estado_usuario = ? ";
+                parameters.Add(new OdbcParameter("estado_usuario", estado_usuario));
+
+                // Completar la consulta SQL con la condición WHERE
+                query += "WHERE Pk_id_usuario = ?;";
+                parameters.Add(new OdbcParameter("id_usuario", idUsuario));
+
+                // Ejecutar la consulta SQL
+                using (OdbcCommand command = new OdbcCommand(query, cn.conectar()))
+                {
+                    // Agregar los parámetros al comando
+                    foreach (var param in parameters)
+                    {
+                        command.Parameters.Add(param);
+                    }
+
+                    // Ejecutar la consulta
+                    int result = command.ExecuteNonQuery();
+
+                    // Verificar si se modificó algún registro
+                    return result > 0;
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al actualizar usuario: " + ex.Message);
-                return 0; // En caso de error, se retorna 0
-            }
-            finally
-            {
-                connection.Close();
+                System.Windows.Forms.MessageBox.Show("Error al intentar modificar el registro: " + ex.Message);
+                return false;
             }
         }
 
@@ -376,28 +406,30 @@ namespace CapaDatos
 
         //---------------------------------------------------- Inicio: GABRIELA SUC ----------------------------------------------------
 
-        public int eliminarusuario(string id)
+        // Método para cambiar el estado del usuario en la base de datos
+        public bool CambiarEstadoUsuario(string idUsuario, int nuevoEstado)
         {
-            string sqleliminar = "DELETE FROM tbl_usuarios WHERE PK_id_usuario = ?";
-            // '?' es un marcador de posición para un parámetro que será reemplazado posteriormente
-            // Este método de parametrización protege contra inyecciones SQL y permite que el valor del parámetro (id) se inserte de manera segura en la consulta
-
-            OdbcCommand cmd = new OdbcCommand(sqleliminar, cn.conectar());
-            cmd.Parameters.AddWithValue("@id", id);
-
-            int filasAfectadas = 0;
-
             try
             {
-                filasAfectadas = cmd.ExecuteNonQuery(); // Ejecutar el comando y devolver el número de filas afectadas
-                insertarBitacora(idUsuario, "Se elimino el usuario con id: " + id, "tbl_usuarios");
+                // Consulta SQL para actualizar el estado del usuario
+                string query = "UPDATE Tbl_usuarios SET estado_usuario = ? WHERE Pk_id_usuario = ?";
+
+                using (OdbcCommand command = new OdbcCommand(query, cn.conectar()))
+                {
+                    command.Parameters.AddWithValue("estado_usuario", nuevoEstado);
+                    command.Parameters.AddWithValue("id_usuario", idUsuario);
+
+                    int result = command.ExecuteNonQuery();
+
+                    // Verifica si se actualizó algún registro
+                    return result > 0;
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al eliminar usuario: " + ex.Message);
+                MessageBox.Show("Error al cambiar el estado del usuario: " + ex.Message);
+                return false;
             }
-
-            return filasAfectadas; // Devolver el número de filas afectadas
         }
 
         //---------------------------------------------------- Fin: GABRIELA SUC ----------------------------------------------------

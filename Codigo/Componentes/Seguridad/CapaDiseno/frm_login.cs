@@ -21,6 +21,9 @@ namespace CapaDiseno
         {
             InitializeComponent();
             Txt_clave.UseSystemPasswordChar = true;
+
+            // Vincula el evento KeyPress
+            Txt_clave.KeyPress += new KeyPressEventHandler(Txt_clave_KeyPress);
         }
 
         string nombreUsuario = "";
@@ -141,6 +144,19 @@ namespace CapaDiseno
                     MessageBox.Show("Entrada cancelada.");
                 }*/
             }
+        }
+
+        private void Txt_clave_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                Btn_entrar_Click_1(sender, e); // Llama al método de login al presionar Enter
+            }
+        }
+
+        private void frm_login_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
