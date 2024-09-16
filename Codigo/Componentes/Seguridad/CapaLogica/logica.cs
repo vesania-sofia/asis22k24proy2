@@ -170,18 +170,12 @@ namespace CapaLogica
         //###################  termina lo que hizo  Karla  Sofia Gómez Tobar #######################
 
         //---------------------------------------------------- Inicio: GABRIELA SUC ---------------------------------------------------- 
-        public void ActualizarUsuario(int idUsuario, string nombre, string apellido, string correo, string estado, string pregunta, string respuesta)
+
+        public bool ModificarUsuario(string idUsuario, string nombre, string apellido, string correo, int estado_usuario, string respuesta)
         {
-            try
-            {
-                // Se llama a la capa de datos para actualizar el usuario
-                int filasAfectadas = sn.ActualizarUsuario(idUsuario, nombre, apellido, correo, estado, pregunta, respuesta);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error en la capa lógica al actualizar: " + ex.Message);
-            }
+            return sn.ModificarUsuario(idUsuario, nombre, apellido, correo, estado_usuario, respuesta);
         }
+
         //---------------------------------------------------- Fin: GABRIELA SUC ---------------------------------------------------- 
 
         /* creado por Emerzon Garcia  0901-21-9182 ...... */
@@ -296,9 +290,11 @@ namespace CapaLogica
 
         //---------------------------------------------------- Inicio: GABRIELA SUC ---------------------------------------------------- 
 
-        public int eliminarusuario(int idUsuario)
+        // Método para eliminar (inactivar) un usuario
+        public bool EliminarUsuario(string idUsuario)
         {
-            return sn.eliminarusuario(idUsuario.ToString()); // Llamar al método de la capa de datos y devolver el número de filas afectadas
+            // Llama al método de la capa de datos para actualizar el estado
+            return sn.CambiarEstadoUsuario(idUsuario, 0);
         }
 
         //---------------------------------------------------- Fin: GABRIELA SUC ---------------------------------------------------- 
