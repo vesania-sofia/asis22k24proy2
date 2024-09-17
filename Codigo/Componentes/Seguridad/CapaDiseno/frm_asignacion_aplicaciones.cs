@@ -24,21 +24,7 @@ namespace CapaDiseno
         {
             InitializeComponent();
             logic = new logica(idUsuario);
-            string tabla = "tbl_modulos";
-            string campo1 = "Pk_id_modulos";
-            string campo2 = "nombre_modulo";
-
-            string tablaApli = "tbl_aplicaciones";
-            string campo1Apli = "Pk_id_aplicacion";
-            string campo2Apli = "nombre_aplicacion";
-
-            // Llama al método para llenar el ComboBox
-            llenarseModulos(tabla, campo1, campo2);
-            llenarseApli(tablaApli, campo1Apli, campo2Apli);
-
-            // Asocia el evento SelectedIndexChanged después de poblar el ComboBox
-            cbo_modulos.SelectedIndexChanged += new EventHandler(Cbo_modulos_SelectedIndexChanged);
-            cbo_aplicaciones.SelectedIndexChanged += new EventHandler(Cbo_aplicaciones_SelectedIndexChanged);
+            
         }
         //####  FINALIZA ALYSON RODRIGUEZ 9959-21-829
 
@@ -47,34 +33,32 @@ namespace CapaDiseno
         }
 
 
-
-        //Trabajado María José Véliz
-        private void Frm_asignacion_aplicaciones_Load(object sender, EventArgs e)
+        //María José Véliz 
+        // Método para cargar los usuarios
+        private void CargarUsuarios()
         {
             try
             {
-                // Llenar el ComboBox de usuarios
-                DataTable dtUsuario = logic.consultaLogicaUsuarios();
-                foreach (DataRow row in dtUsuario.Rows)
+                DataTable dtPerfiles = logic.consultaLogicaUsuarios();
+                cbo_usuarios.Items.Clear();
+                foreach (DataRow row in dtPerfiles.Rows)
                 {
                     cbo_usuarios.Items.Add(row[0].ToString());
                 }
             }
-            catch (InvalidOperationException ex)
+            catch (Exception ex)
             {
-                Console.WriteLine(ex);
-            }
-
-            try
-            {
-                // Llenar el ComboBox de módulos
-                llenarseModulos("tbl_modulos", "Pk_id_modulos", "nombre_modulo");
-            }
-            catch (InvalidOperationException ex)
-            {
-                Console.WriteLine(ex);
+                Console.WriteLine("Error al cargar usuarios: " + ex.Message);
             }
         }
+        //termina
+
+        //Trabajado María José Véliz
+        private void Frm_asignacion_aplicaciones_Load(object sender, EventArgs e)
+        {
+            CargarUsuarios();
+            CargarModulos();
+        }           
         //termina
 
         void limpieza()
@@ -141,64 +125,21 @@ namespace CapaDiseno
         }
         //FIN ALYSON RODRIGURZ 9959-21-829
 
-        
 
-        //Trabajado por María José Véliz
-        public void llenarseApli(string tabla, string campo1, string campo2)
-        {
-            // Obtén los datos para el ComboBox
-            var dt2 = logic.enviarUsuario(tabla, campo1, campo2);
 
-            // Limpia el ComboBox antes de llenarlo
-            cbo_aplicaciones.Items.Clear();
-
-            foreach (DataRow row in dt2.Rows)
-            {
-                // Agrega el elemento mostrando el formato "ID-Nombre"
-                cbo_aplicaciones.Items.Add(new ComboBoxItem
-                {
-                    Value = row[campo1].ToString(),
-                    Display = row[campo2].ToString()
-                });
-            }
-
-            // Configura AutoComplete para el ComboBox con el formato deseado
-            AutoCompleteStringCollection coleccion2 = new AutoCompleteStringCollection();
-            foreach (DataRow row in dt2.Rows)
-            {
-                coleccion2.Add(Convert.ToString(row[campo1]) + "-" + Convert.ToString(row[campo2]));
-                coleccion2.Add(Convert.ToString(row[campo2]) + "-" + Convert.ToString(row[campo1]));
-            }
-
-            cbo_aplicaciones.AutoCompleteCustomSource = coleccion2;
-            cbo_aplicaciones.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            cbo_aplicaciones.AutoCompleteSource = AutoCompleteSource.CustomSource;
-        }
-
-        // Clase auxiliar para almacenar Value y Display
-        public class ComboBoxItem2
-        {
-            public string Value { get; set; }
-            public string Display { get; set; }
-
-            // Sobrescribir el método ToString para mostrar "ID-Nombre" en el ComboBox
-            public override string ToString()
-            {
-                return $"{Value}-{Display}"; // Formato "ID-Nombre"
-            }
-        }
-
+        //Trabajado María José Véliz
         private void Cbo_aplicaciones_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbo_modulos.SelectedItem != null)
+
+            if (cbo_aplicaciones.SelectedItem != null)
             {
-                // Obtener el valor del ValueMember seleccionado
-                var selectedItem = (ComboBoxItem)cbo_aplicaciones.SelectedItem;
-                string valorSeleccionado = selectedItem.Value;
-                // Mostrar el valor en un MessageBox
-                MessageBox.Show($"Valor seleccionado: {valorSeleccionado}", "Valor Seleccionado");
+                string nombreAplicacion = cbo_aplicaciones.SelectedItem.ToString();
+                Console.WriteLine("Aplicación seleccionada: " + nombreAplicacion);
             }
+
         }
+        //Termina
+
 
         public static int iContadorFila = 0;
         //Trabajado María José Véliz
@@ -213,13 +154,14 @@ namespace CapaDiseno
             {
                 bool bUsuario_aplicacion_existente = false;
 
-                string sAplicacion = cbo_aplicaciones.SelectedItem.ToString();
                 string sUsuario = cbo_usuarios.SelectedItem.ToString();
+                string sAplicacion = cbo_aplicaciones.SelectedItem.ToString();
+
 
 
                 if (iContadorFila == 0)
                 {
-                    dgv_asignaciones.Rows.Add(sAplicacion, sUsuario);
+                    dgv_asignaciones.Rows.Add(sUsuario, sAplicacion);
 
                     iContadorFila++;
 
@@ -229,8 +171,8 @@ namespace CapaDiseno
                 {
                     foreach (DataGridViewRow Fila in dgv_asignaciones.Rows)
                     {
-                        if (Fila.Cells[0].Value.ToString() == cbo_aplicaciones.SelectedItem.ToString() &&
-                           Fila.Cells[1].Value.ToString() == cbo_usuarios.SelectedItem.ToString())
+                        if (Fila.Cells[0].Value.ToString() == cbo_usuarios.SelectedItem.ToString() && Fila.Cells[1].Value.ToString() == cbo_aplicaciones.SelectedItem.ToString())
+
                         {
                             bUsuario_aplicacion_existente = true;
                         }
@@ -242,7 +184,7 @@ namespace CapaDiseno
                     }
                     else
                     {
-                        dgv_asignaciones.Rows.Add(sAplicacion, sUsuario);
+                        dgv_asignaciones.Rows.Add(sUsuario, sAplicacion);
                         iContadorFila++;
                     }
                 }
@@ -347,6 +289,43 @@ namespace CapaDiseno
             }
         }
         // FINALIZA ALYSON RODRIGUEZ 9959-21-829 
+
+
+        //Trabajado María José Véliz
+        // Método para configurar CheckBoxColumns en el DataGridView
+        private void ConfigurarColumnasCheckBox()
+        {
+            if (dgv_asignaciones.Columns["Ingresar"] is DataGridViewCheckBoxColumn)
+            {
+                ((DataGridViewCheckBoxColumn)dgv_asignaciones.Columns["Ingresar"]).TrueValue = 1;
+                ((DataGridViewCheckBoxColumn)dgv_asignaciones.Columns["Ingresar"]).FalseValue = 0;
+            }
+
+            if (dgv_asignaciones.Columns["Consultar"] is DataGridViewCheckBoxColumn)
+            {
+                ((DataGridViewCheckBoxColumn)dgv_asignaciones.Columns["Consultar"]).TrueValue = 1;
+                ((DataGridViewCheckBoxColumn)dgv_asignaciones.Columns["Consultar"]).FalseValue = 0;
+            }
+
+            if (dgv_asignaciones.Columns["Modificar"] is DataGridViewCheckBoxColumn)
+            {
+                ((DataGridViewCheckBoxColumn)dgv_asignaciones.Columns["Modificar"]).TrueValue = 1;
+                ((DataGridViewCheckBoxColumn)dgv_asignaciones.Columns["Modificar"]).FalseValue = 0;
+            }
+
+            if (dgv_asignaciones.Columns["Eliminar"] is DataGridViewCheckBoxColumn)
+            {
+                ((DataGridViewCheckBoxColumn)dgv_asignaciones.Columns["Eliminar"]).TrueValue = 1;
+                ((DataGridViewCheckBoxColumn)dgv_asignaciones.Columns["Eliminar"]).FalseValue = 0;
+            }
+
+            if (dgv_asignaciones.Columns["Imprimir"] is DataGridViewCheckBoxColumn)
+            {
+                ((DataGridViewCheckBoxColumn)dgv_asignaciones.Columns["Imprimir"]).TrueValue = 1;
+                ((DataGridViewCheckBoxColumn)dgv_asignaciones.Columns["Imprimir"]).FalseValue = 0;
+            }
+        }
+        //Termina
 
         private void Dgv_asignaciones_CellContentClick(object sender, DataGridViewCellEventArgs e)
         { 
