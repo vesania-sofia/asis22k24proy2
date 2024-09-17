@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace Capa_Modelo_Reporteria
 {
-    class Conexion
+    public class Conexion
     {
         public OdbcConnection conexion()
         {
 
-            OdbcConnection conexion = new OdbcConnection("Dsn=sig");
+            OdbcConnection conexion = new OdbcConnection("Dsn=Prueba1");
             try
             {
                 conexion.Open();

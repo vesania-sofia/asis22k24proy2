@@ -12,15 +12,65 @@ namespace CapaDeDatos
 
         conexion cn = new conexion();
         //mostrar los datos en DataGridView de forma DESC y que tengan estado 1 =>Randy 
-        public OdbcDataAdapter llenaTbl(string tabla)// metodo  que obtinene el contenio de una tabla
+        public OdbcDataAdapter llenaTbl(string tabla, string tablaRelacionada, string campoDescriptivo, string columnaForanea, string columnaPrimariaRelacionada)
         {
-            string[] camposDesc = obtenerCampos(tabla); //string para almacenar los campos de OBTENERCAMPOS y utilizar el 1ro
-            string sql = "SELECT * FROM " + tabla + " WHERE estado=0 || estado=1 ORDER BY " + camposDesc[0] + " DESC ;";
-            //SELECT * FROM tbl_bodega WHERE estado=1 ORDER BY kbodega DESC
+            string[] camposDesc = obtenerCampos(tabla); // Obtener los campos de la tabla principal
+            string camposSelect = tabla + "." + camposDesc[0]; // Seleccionar el primer campo (normalmente el ID)
+
+            // Diccionario para detectar nombres de columnas repetidas y asignarles alias
+            Dictionary<string, int> columnasRegistradas = new Dictionary<string, int>();
+
+            // Evitar duplicar la selección de id_perro
+            columnasRegistradas[camposDesc[0]] = 1;
+
+            // Obtener las propiedades de las columnas de la tabla principal
+            var columnasPropiedades = obtenerColumnasYPropiedades(tabla);
+
+            // Selección de columnas de la tabla principal
+            foreach (var (nombreColumna, esAutoIncremental, esClaveForanea) in columnasPropiedades)
+            {
+                // No duplicar el campo que ya se seleccionó como ID
+                if (nombreColumna == camposDesc[0])
+                    continue;
+
+                if (esClaveForanea && tablaRelacionada != null && campoDescriptivo != null && columnaForanea != null && columnaPrimariaRelacionada != null)
+                {
+                    // Agregar la columna descriptiva de la tabla relacionada
+                    camposSelect += ", " + tablaRelacionada + "." + campoDescriptivo + " AS " + campoDescriptivo;
+                    columnasRegistradas[campoDescriptivo] = 1;
+                }
+                else
+                {
+                    // Añadir las columnas restantes de la tabla principal
+                    camposSelect += ", " + tabla + "." + nombreColumna;
+                    columnasRegistradas[nombreColumna] = 1;
+                }
+            }
+
+            // Armado del SQL dinámico
+            string sql = "SELECT " + camposSelect + " FROM " + tabla;
+
+            // Añadir el LEFT JOIN si es necesario
+            if (!string.IsNullOrEmpty(tablaRelacionada) && !string.IsNullOrEmpty(columnaForanea) && !string.IsNullOrEmpty(columnaPrimariaRelacionada))
+            {
+                sql += " LEFT JOIN " + tablaRelacionada + " ON " + tabla + "." + columnaForanea + " = " + tablaRelacionada + "." + columnaPrimariaRelacionada;
+            }
+
+            // Condición de estado
+            sql += " WHERE " + tabla + ".estado = 0 OR " + tabla + ".estado = 1";
+
+            // Ordenar por el primer campo
+            sql += " ORDER BY " + camposDesc[0] + " DESC;";
+
+            // Mostrar la consulta generada para depuración
+            Console.WriteLine(sql);
+
             OdbcDataAdapter dataTable = new OdbcDataAdapter(sql, cn.probarConexion());
             return dataTable;
-         
         }
+
+
+
         //obtener ID siguiente => Randy             
         public string obtenerId(string tabla)
         {
@@ -147,19 +197,22 @@ namespace CapaDeDatos
 		{
 
 
-			string indice2 = " ";
-			OdbcCommand command = new OdbcCommand("SELECT * FROM reportes WHERE Id_reporte = " + idindice + " ;", cn.probarConexion());
-			OdbcDataReader reader = command.ExecuteReader();
-			while (reader.Read())
-			{
-				indice2 = reader.GetValue(1).ToString();
+            string indice2 = "";
+            OdbcCommand command = new OdbcCommand("SELECT ruta FROM tbl_aplicaciones WHERE Pk_id_aplicacion = " + idindice + ";", cn.probarConexion());
+            OdbcDataReader reader = command.ExecuteReader();
 
-			}
-			return indice2;// devuelve un arrgeglo con los campos
+            if (reader.Read())
+            {
+                indice2 = reader["ruta"].ToString();
+            }
+
+            reader.Close();
+            return indice2;
 
 
-		}
-		public string modIndice(string idindice)// metodo  que obtinene el contenio de una tabla
+
+        }
+        public string modIndice(string idindice)// metodo  que obtinene el contenio de una tabla
         {
 
 
@@ -469,25 +522,35 @@ namespace CapaDeDatos
 			}
 			return llave;
 		}
-		public string llaveCampoReverso(string tabla, string campo, string valor)
-		{
-			string llave = "";
-			string[] Campos = obtenerCampos(tabla);
-			try
-			{
-				OdbcCommand command = new OdbcCommand("SELECT "+campo+" FROM " + tabla + " where " + Campos[0]+ " = " + valor + " ;", cn.probarConexion());
-				OdbcDataReader reader = command.ExecuteReader();
-				reader.Read();
-				llave = reader.GetValue(0).ToString();
-			}
-			catch (Exception ex)
-			{
-				Console.WriteLine("Dio errore " + "SELECT " + campo + " FROM " + tabla + " where " + campo + " = " + valor + " ;" + ex.ToString());
-			}
-			return llave;
-		}
+        public string llaveCampoReverso(string tabla, string campo, string valor)
+        {
+            string llave = "";
+            string[] Campos = obtenerCampos(tabla);
+            try
+            {
+                // Escapar el valor con comillas simples si es un texto
+                string valorFormateado = "'" + valor + "'";
 
-		public string IdModulo(string aplicacion)
+                // Construir la consulta correctamente con el valor escapado
+                string query = $"SELECT {campo} FROM {tabla} WHERE {Campos[0]} = {valorFormateado};";
+
+                OdbcCommand command = new OdbcCommand(query, cn.probarConexion());
+                OdbcDataReader reader = command.ExecuteReader();
+                if (reader.Read())
+                {
+                    llave = reader.GetValue(0).ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Dio errore: " + ex.ToString());
+            }
+            return llave;
+        }
+
+
+
+        public string IdModulo(string aplicacion)
 		{
 			string llave = "";
 			try
