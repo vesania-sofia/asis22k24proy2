@@ -345,3 +345,65 @@ INSERT INTO `Tbl_permisos_aplicacion_perfil` VALUES
 ('13', '6301', '1', '1', '1', '1', '1'),
 ('13', '7000', '1', '1', '1', '1', '1'),
 ('13', '8000', '1', '1', '1', '1', '1');
+
+
+-- *********Ingreso tbl_permisos_aplicaciones_usuario******************
+-- Pruebas IsmarCortez
+-- select* from tbl_usuarios;
+-- select* from tbl_aplicaciones;
+-- select* from tbl_permisos_aplicaciones_usuario;
+
+
+-- INSERT INTO `tbl_permisos_aplicaciones_usuario` VALUES
+-- ('1000', '1', '1', '1', '1', '1', '1');
+
+-- INSERT INTO `tbl_permisos_aplicaciones_usuario` VALUES
+-- ('1000', '7', '0', '0', '0', '0', '1');
+
+-- *********************************************************************
+
+-- use seguridad;
+
+-- ***************************Permiso de (GUARDAR)****************************************************
+-- Select guardar_permiso from Tbl_permisos_aplicaciones_usuario WHERE Fk_id_usuario=1 AND Fk_id_aplicacion =1000;
+
+-- Select Tbl_permisos_aplicacion_perfil.guardar_permiso from Tbl_permisos_aplicacion_perfil 
+-- INNER JOIN Tbl_asignaciones_perfils_usuario ON Tbl_permisos_aplicacion_perfil.Fk_id_perfil = Tbl_asignaciones_perfils_usuario.Fk_id_perfil
+-- WHERE Tbl_asignaciones_perfils_usuario.Fk_id_usuario=1 AND Tbl_permisos_aplicacion_perfil.Fk_id_aplicacion =1000;
+
+-- select* from Tbl_permisos_aplicaciones_usuario;
+-- ***************************************************************************************************
+
+-- ***************************Permiso de (Buscar)****************************************************
+-- Select buscar_permiso from Tbl_permisos_aplicaciones_usuario WHERE Fk_id_usuario=1 AND Fk_id_aplicacion =1000;
+
+-- Select Tbl_permisos_aplicacion_perfil.buscar_permiso from Tbl_permisos_aplicacion_perfil
+-- INNER JOIN Tbl_asignaciones_perfils_usuario ON Tbl_permisos_aplicacion_perfil.Fk_id_perfil = Tbl_asignaciones_perfils_usuario.Fk_id_perfil
+-- WHERE Tbl_asignaciones_perfils_usuario.Fk_id_usuario=1 AND Tbl_permisos_aplicacion_perfil.Fk_id_aplicacion =1000;
+-- ***************************************************************************************************
+
+-- ***************************Permiso de (Modificar)****************************************************
+-- Select modificar_permiso from Tbl_permisos_aplicaciones_usuario WHERE Fk_id_usuario=1  AND Fk_id_aplicacion =1000;
+
+-- Select Tbl_permisos_aplicacion_perfil.modificar_permiso from Tbl_permisos_aplicacion_perfil
+-- INNER JOIN Tbl_asignaciones_perfils_usuario ON Tbl_permisos_aplicacion_perfil.Fk_id_perfil = Tbl_asignaciones_perfils_usuario.Fk_id_perfil
+-- WHERE Tbl_asignaciones_perfils_usuario.Fk_id_usuario=1 AND Tbl_permisos_aplicacion_perfil.Fk_id_aplicacion =1000 ;
+ 
+-- ***************************************************************************************************
+
+-- ***************************Permiso de (eliminar)****************************************************
+-- Select eliminar_permiso from Tbl_permisos_aplicaciones_usuario WHERE Fk_id_usuario=1 AND Fk_id_aplicacion = 1000;
+
+-- Select Tbl_permisos_aplicacion_perfil.eliminar_permiso from Tbl_permisos_aplicacion_perfil 
+-- INNER JOIN Tbl_asignaciones_perfils_usuario ON Tbl_permisos_aplicacion_perfil.Fk_id_perfil = Tbl_asignaciones_perfils_usuario.Fk_id_perfil
+-- WHERE Tbl_asignaciones_perfils_usuario.Fk_id_usuario=1  AND Tbl_permisos_aplicacion_perfil.Fk_id_aplicacion =1000;
+-- ***************************************************************************************************
+
+-- ***************************Permiso de (Imprimir)****************************************************
+-- Select imprimir_permiso from Tbl_permisos_aplicaciones_usuario WHERE Fk_id_usuario=1 AND Fk_id_aplicacion =1000;
+
+-- Select Tbl_permisos_aplicacion_perfil.imprimir_permiso from Tbl_permisos_aplicacion_perfil
+-- INNER JOIN Tbl_asignaciones_perfils_usuario ON Tbl_permisos_aplicacion_perfil.Fk_id_perfil = Tbl_asignaciones_perfils_usuario.Fk_id_perfil
+-- WHERE Tbl_asignaciones_perfils_usuario.Fk_id_usuario=1 AND Tbl_permisos_aplicacion_perfil.Fk_id_aplicacion =1000
+
+-- ***************************************************************************************************
