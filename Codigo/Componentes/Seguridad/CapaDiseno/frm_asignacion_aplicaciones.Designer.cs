@@ -49,6 +49,8 @@
             this.btn_finalizar = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.btn_ayuda = new System.Windows.Forms.Button();
+            this.btn_buscar = new System.Windows.Forms.Button();
+            this.txt_buscar = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_asignaciones)).BeginInit();
             this.Gpb_datos.SuspendLayout();
             this.SuspendLayout();
@@ -106,6 +108,7 @@
             this.dgv_asignaciones.Location = new System.Drawing.Point(24, 171);
             this.dgv_asignaciones.Margin = new System.Windows.Forms.Padding(4);
             this.dgv_asignaciones.Name = "dgv_asignaciones";
+            this.dgv_asignaciones.RowHeadersWidth = 51;
             this.dgv_asignaciones.Size = new System.Drawing.Size(722, 302);
             this.dgv_asignaciones.TabIndex = 4;
             this.dgv_asignaciones.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgv_asignaciones_CellContentClick);
@@ -114,6 +117,7 @@
             // 
             this.Usuarios.FillWeight = 117.8203F;
             this.Usuarios.HeaderText = "Usuario";
+            this.Usuarios.MinimumWidth = 6;
             this.Usuarios.Name = "Usuarios";
             this.Usuarios.Width = 148;
             // 
@@ -121,6 +125,7 @@
             // 
             this.Aplicacion.FillWeight = 115.2093F;
             this.Aplicacion.HeaderText = "Aplicacion";
+            this.Aplicacion.MinimumWidth = 6;
             this.Aplicacion.Name = "Aplicacion";
             this.Aplicacion.Width = 149;
             // 
@@ -129,6 +134,7 @@
             this.Ingresar.FalseValue = "0";
             this.Ingresar.FillWeight = 85.63838F;
             this.Ingresar.HeaderText = "Ingresar";
+            this.Ingresar.MinimumWidth = 6;
             this.Ingresar.Name = "Ingresar";
             this.Ingresar.TrueValue = "1";
             this.Ingresar.Width = 72;
@@ -138,6 +144,7 @@
             this.Consultar.FalseValue = "0";
             this.Consultar.FillWeight = 88.13612F;
             this.Consultar.HeaderText = "Consultar";
+            this.Consultar.MinimumWidth = 6;
             this.Consultar.Name = "Consultar";
             this.Consultar.TrueValue = "1";
             this.Consultar.Width = 75;
@@ -147,6 +154,7 @@
             this.Modificar.FalseValue = "0";
             this.Modificar.FillWeight = 90.35796F;
             this.Modificar.HeaderText = "Modificar";
+            this.Modificar.MinimumWidth = 6;
             this.Modificar.Name = "Modificar";
             this.Modificar.TrueValue = "1";
             this.Modificar.Width = 77;
@@ -156,6 +164,7 @@
             this.Eliminar.FalseValue = "0";
             this.Eliminar.FillWeight = 92.33439F;
             this.Eliminar.HeaderText = "Eliminar";
+            this.Eliminar.MinimumWidth = 6;
             this.Eliminar.Name = "Eliminar";
             this.Eliminar.TrueValue = "1";
             this.Eliminar.Width = 78;
@@ -165,16 +174,17 @@
             this.Imprimir.FalseValue = "0";
             this.Imprimir.FillWeight = 94.09251F;
             this.Imprimir.HeaderText = "Imprimir";
+            this.Imprimir.MinimumWidth = 6;
             this.Imprimir.Name = "Imprimir";
             this.Imprimir.TrueValue = "1";
             this.Imprimir.Width = 80;
             // 
             // btn_agregar
             // 
-            this.btn_agregar.Location = new System.Drawing.Point(609, 43);
+            this.btn_agregar.Location = new System.Drawing.Point(599, 43);
             this.btn_agregar.Margin = new System.Windows.Forms.Padding(4);
             this.btn_agregar.Name = "btn_agregar";
-            this.btn_agregar.Size = new System.Drawing.Size(77, 30);
+            this.btn_agregar.Size = new System.Drawing.Size(93, 30);
             this.btn_agregar.TabIndex = 10;
             this.btn_agregar.Text = "Agregar";
             this.btn_agregar.UseVisualStyleBackColor = true;
@@ -182,12 +192,12 @@
             // 
             // btn_remover
             // 
-            this.btn_remover.Location = new System.Drawing.Point(754, 201);
+            this.btn_remover.Location = new System.Drawing.Point(758, 339);
             this.btn_remover.Margin = new System.Windows.Forms.Padding(4);
             this.btn_remover.Name = "btn_remover";
-            this.btn_remover.Size = new System.Drawing.Size(36, 30);
+            this.btn_remover.Size = new System.Drawing.Size(99, 30);
             this.btn_remover.TabIndex = 11;
-            this.btn_remover.Text = "X";
+            this.btn_remover.Text = "Quitar";
             this.btn_remover.UseVisualStyleBackColor = true;
             this.btn_remover.Click += new System.EventHandler(this.Btn_remover_Click);
             // 
@@ -232,10 +242,10 @@
             // 
             // btn_salir
             // 
-            this.btn_salir.Location = new System.Drawing.Point(769, 443);
+            this.btn_salir.Location = new System.Drawing.Point(758, 443);
             this.btn_salir.Margin = new System.Windows.Forms.Padding(4);
             this.btn_salir.Name = "btn_salir";
-            this.btn_salir.Size = new System.Drawing.Size(57, 30);
+            this.btn_salir.Size = new System.Drawing.Size(99, 30);
             this.btn_salir.TabIndex = 13;
             this.btn_salir.Text = "Salir";
             this.btn_salir.UseVisualStyleBackColor = true;
@@ -243,10 +253,10 @@
             // 
             // btn_finalizar
             // 
-            this.btn_finalizar.Location = new System.Drawing.Point(758, 405);
+            this.btn_finalizar.Location = new System.Drawing.Point(758, 388);
             this.btn_finalizar.Margin = new System.Windows.Forms.Padding(4);
             this.btn_finalizar.Name = "btn_finalizar";
-            this.btn_finalizar.Size = new System.Drawing.Size(77, 30);
+            this.btn_finalizar.Size = new System.Drawing.Size(99, 30);
             this.btn_finalizar.TabIndex = 14;
             this.btn_finalizar.Text = "Finalizar";
             this.btn_finalizar.UseVisualStyleBackColor = true;
@@ -275,11 +285,29 @@
             this.btn_ayuda.UseVisualStyleBackColor = true;
             this.btn_ayuda.Click += new System.EventHandler(this.Btn_ayuda_Click);
             // 
+            // btn_buscar
+            // 
+            this.btn_buscar.Location = new System.Drawing.Point(758, 218);
+            this.btn_buscar.Name = "btn_buscar";
+            this.btn_buscar.Size = new System.Drawing.Size(99, 28);
+            this.btn_buscar.TabIndex = 256;
+            this.btn_buscar.Text = "Buscar";
+            this.btn_buscar.UseVisualStyleBackColor = true;
+            // 
+            // txt_buscar
+            // 
+            this.txt_buscar.Location = new System.Drawing.Point(758, 171);
+            this.txt_buscar.Name = "txt_buscar";
+            this.txt_buscar.Size = new System.Drawing.Size(99, 23);
+            this.txt_buscar.TabIndex = 257;
+            // 
             // frm_asignacion_aplicaciones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(838, 514);
+            this.ClientSize = new System.Drawing.Size(878, 509);
+            this.Controls.Add(this.txt_buscar);
+            this.Controls.Add(this.btn_buscar);
             this.Controls.Add(this.btn_ayuda);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btn_finalizar);
@@ -291,7 +319,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frm_asignacion_aplicaciones";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Asignacion de Aplicaciones a Usuarios";
+            this.Text = "Buscar";
             this.Load += new System.EventHandler(this.Frm_asignacion_aplicaciones_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_asignaciones)).EndInit();
             this.Gpb_datos.ResumeLayout(false);
@@ -323,5 +351,7 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn Imprimir;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btn_ayuda;
+        private System.Windows.Forms.Button btn_buscar;
+        private System.Windows.Forms.TextBox txt_buscar;
     }
 }
