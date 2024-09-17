@@ -89,11 +89,11 @@ namespace CapaLogica
 
         //Trabajado María José Véliz
         //Se cambiaron de lugar los parámetros por la base de datos
-        public DataTable consultaLogicaPermisosUsuarioAplicacion(string nombreAplicacion, string codigoUsuario, string ingresar, string modificar, string eliminar, string consulta, string imprimir)
+        public DataTable consultaLogicaPermisosUsuarioAplicacion(string codigoUsuario, string nombreAplicacion, string ingresar, string consulta, string modificar, string eliminar, string imprimir)
         {
             try
             {
-                OdbcDataAdapter dtPermisosUA = sn.insertarPermisosUA(nombreAplicacion, codigoUsuario, ingresar, modificar, eliminar, consulta, imprimir);
+                OdbcDataAdapter dtPermisosUA = sn.insertarPermisosUA(codigoUsuario, nombreAplicacion, ingresar, consulta, modificar, eliminar, imprimir);
                 DataTable tablePermisosUA = new DataTable();
                 dtPermisosUA.Fill(tablePermisosUA);
                 return tablePermisosUA;
@@ -104,6 +104,7 @@ namespace CapaLogica
                 return null;
             }
         }
+        //termina
 
         //###################  lo que hizo Karla  Sofia Gómez Tobar #######################
         public DataTable consultaLogicaPerfilesUsuarios(string TablaPerfilUsuario)
