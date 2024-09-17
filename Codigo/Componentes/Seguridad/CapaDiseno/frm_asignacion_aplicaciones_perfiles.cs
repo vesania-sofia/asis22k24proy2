@@ -129,6 +129,7 @@ namespace CapaDiseno
             this.Close();
         }
 
+        //*******************TRABAJADO POR JOSUE PAZ 0901-21-5560**********************************************************
         private void Btn_finalizar_Click(object sender, EventArgs e)
         {
             string ingresar;

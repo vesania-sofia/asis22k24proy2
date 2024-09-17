@@ -495,6 +495,7 @@ namespace CapaLogica
         } // termina
 
 
+
         //*****************************MODIFICADO POR JOSUÉ PAZ*******************************************************
         public DataTable consultaLogicaPermisosPerfilAplicacion(string codigoPerfil, string nombreAplicacion, string ingresar, string modificar, string eliminar, string consulta, string imprimir)
         {
