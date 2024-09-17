@@ -771,6 +771,8 @@ namespace CapaDatos
 
         }
 
+        //****************************ACA TERMINA******************************************************************
+
         public OdbcDataAdapter buscarid(string bperfil)
         {
             cn.conectar();
