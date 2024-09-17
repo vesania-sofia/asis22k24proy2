@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using CapaDatos;
+using Capa_Vista_Consulta;
 
-namespace ejecucion
+namespace consultas
 {
-    public class Program
+    static class Program
     {
         /// <summary>
         /// Punto de entrada principal para la aplicación.
@@ -17,11 +17,7 @@ namespace ejecucion
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            CapaDatos.sentencia s = new CapaDatos.sentencia();
-
-            Application.Run(new CapaDiseno.frm_login());
-            //Application.Run(new Capa_Vista_Reporteria.menu_reporteria());
-
+            Application.Run(new ConsultaInteligente());
         }
     }
 }

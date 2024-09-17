@@ -197,19 +197,22 @@ namespace CapaDeDatos
 		{
 
 
-			string indice2 = " ";
-			OdbcCommand command = new OdbcCommand("SELECT * FROM reportes WHERE Id_reporte = " + idindice + " ;", cn.probarConexion());
-			OdbcDataReader reader = command.ExecuteReader();
-			while (reader.Read())
-			{
-				indice2 = reader.GetValue(1).ToString();
+            string indice2 = "";
+            OdbcCommand command = new OdbcCommand("SELECT ruta FROM tbl_aplicaciones WHERE Pk_id_aplicacion = " + idindice + ";", cn.probarConexion());
+            OdbcDataReader reader = command.ExecuteReader();
 
-			}
-			return indice2;// devuelve un arrgeglo con los campos
+            if (reader.Read())
+            {
+                indice2 = reader["ruta"].ToString();
+            }
+
+            reader.Close();
+            return indice2;
 
 
-		}
-		public string modIndice(string idindice)// metodo  que obtinene el contenio de una tabla
+
+        }
+        public string modIndice(string idindice)// metodo  que obtinene el contenio de una tabla
         {
 
 

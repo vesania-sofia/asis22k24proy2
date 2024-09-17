@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{12FE0466-B133-4A04-9A3A-4C4EBD95B449}</ProjectGuid>
+    <ProjectGuid>{EBE87B34-2C86-48B5-A41F-A268B96F7322}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>ejecucion</RootNamespace>
-    <AssemblyName>ejecucion</AssemblyName>
+    <RootNamespace>consultas</RootNamespace>
+    <AssemblyName>consultas</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -33,21 +33,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CapaDatos, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Desktop\Prototipo\asis22k24proy2\Codigo\Componentes\Seguridad\CapaDatos\bin\Debug\CapaDatos.dll</HintPath>
-    </Reference>
-    <Reference Include="CapaDeDiseno, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Seguridad\CapaDiseno\bin\Debug\CapaDeDiseno.dll</HintPath>
-    </Reference>
-    <Reference Include="CapaDiseno, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Seguridad\CapaDiseno\bin\Debug\CapaDiseno.dll</HintPath>
-    </Reference>
-    <Reference Include="Capa_Vista_Reporteria, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Desktop\Prototipo\asis22k24proy2\Codigo\Componentes\Reporteador\Capa_Vista_Reporteria\bin\Debug\Capa_Vista_Reporteria.dll</HintPath>
+    <Reference Include="Capa_Vista_Consulta">
+      <HintPath>..\..\Capa_Vista_Consulta\bin\Debug\Capa_Vista_Consulta.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -68,19 +55,10 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="principal.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="principal.Designer.cs">
-      <DependentUpon>principal.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="principal.resx">
-      <DependentUpon>principal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

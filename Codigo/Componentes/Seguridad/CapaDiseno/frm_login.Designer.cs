@@ -33,6 +33,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblTitulo = new System.Windows.Forms.Label();
+            this.pcb_logo = new System.Windows.Forms.PictureBox();
             this.Btn_cancelar = new System.Windows.Forms.Button();
             this.Cb_ver_password = new System.Windows.Forms.CheckBox();
             this.Txt_clave = new System.Windows.Forms.TextBox();
@@ -42,11 +43,10 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.btnAyuda = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pcb_logo = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pcb_logo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pcb_logo)).BeginInit();
             this.SuspendLayout();
             // 
             // panel3
@@ -96,6 +96,18 @@
             this.lblTitulo.TabIndex = 210;
             this.lblTitulo.Text = "Colchoneria \r\nLas Cobijas S.A.\r\n";
             this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // pcb_logo
+            // 
+            this.pcb_logo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pcb_logo.Image = global::CapaDiseno.Properties.Resources.logotipo;
+            this.pcb_logo.Location = new System.Drawing.Point(164, 225);
+            this.pcb_logo.Margin = new System.Windows.Forms.Padding(4);
+            this.pcb_logo.Name = "pcb_logo";
+            this.pcb_logo.Size = new System.Drawing.Size(194, 176);
+            this.pcb_logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pcb_logo.TabIndex = 253;
+            this.pcb_logo.TabStop = false;
             // 
             // Btn_cancelar
             // 
@@ -226,18 +238,6 @@
             this.pictureBox1.TabIndex = 288;
             this.pictureBox1.TabStop = false;
             // 
-            // pcb_logo
-            // 
-            this.pcb_logo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pcb_logo.Image = global::CapaDiseno.Properties.Resources.logotipo;
-            this.pcb_logo.Location = new System.Drawing.Point(164, 225);
-            this.pcb_logo.Margin = new System.Windows.Forms.Padding(4);
-            this.pcb_logo.Name = "pcb_logo";
-            this.pcb_logo.Size = new System.Drawing.Size(194, 176);
-            this.pcb_logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pcb_logo.TabIndex = 253;
-            this.pcb_logo.TabStop = false;
-            // 
             // frm_login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -260,17 +260,18 @@
             this.Controls.Add(this.Btn_entrar);
             this.Controls.Add(this.Btn_olvidocontrasenia);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "frm_login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login ";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Frm_login_FormClosing);
+            this.Load += new System.EventHandler(this.frm_login_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pcb_logo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pcb_logo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
