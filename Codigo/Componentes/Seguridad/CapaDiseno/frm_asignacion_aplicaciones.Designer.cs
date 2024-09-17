@@ -49,6 +49,8 @@
             this.btn_finalizar = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.btn_ayuda = new System.Windows.Forms.Button();
+            this.btn_buscar = new System.Windows.Forms.Button();
+            this.txt_buscar = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_asignaciones)).BeginInit();
             this.Gpb_datos.SuspendLayout();
             this.SuspendLayout();
@@ -59,7 +61,7 @@
             this.cbo_usuarios.Location = new System.Drawing.Point(41, 47);
             this.cbo_usuarios.Margin = new System.Windows.Forms.Padding(4);
             this.cbo_usuarios.Name = "cbo_usuarios";
-            this.cbo_usuarios.Size = new System.Drawing.Size(160, 29);
+            this.cbo_usuarios.Size = new System.Drawing.Size(160, 25);
             this.cbo_usuarios.TabIndex = 0;
             // 
             // cbo_aplicaciones
@@ -68,7 +70,7 @@
             this.cbo_aplicaciones.Location = new System.Drawing.Point(407, 47);
             this.cbo_aplicaciones.Margin = new System.Windows.Forms.Padding(4);
             this.cbo_aplicaciones.Name = "cbo_aplicaciones";
-            this.cbo_aplicaciones.Size = new System.Drawing.Size(160, 29);
+            this.cbo_aplicaciones.Size = new System.Drawing.Size(160, 25);
             this.cbo_aplicaciones.TabIndex = 1;
             // 
             // label1
@@ -77,7 +79,7 @@
             this.label1.Location = new System.Drawing.Point(87, 26);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(77, 21);
+            this.label1.Size = new System.Drawing.Size(59, 17);
             this.label1.TabIndex = 2;
             this.label1.Text = "Usuarios";
             // 
@@ -87,7 +89,7 @@
             this.label2.Location = new System.Drawing.Point(447, 26);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(117, 21);
+            this.label2.Size = new System.Drawing.Size(90, 17);
             this.label2.TabIndex = 3;
             this.label2.Text = "Aplicaciones";
             // 
@@ -179,10 +181,10 @@
             // 
             // btn_agregar
             // 
-            this.btn_agregar.Location = new System.Drawing.Point(609, 43);
+            this.btn_agregar.Location = new System.Drawing.Point(599, 43);
             this.btn_agregar.Margin = new System.Windows.Forms.Padding(4);
             this.btn_agregar.Name = "btn_agregar";
-            this.btn_agregar.Size = new System.Drawing.Size(77, 30);
+            this.btn_agregar.Size = new System.Drawing.Size(93, 30);
             this.btn_agregar.TabIndex = 10;
             this.btn_agregar.Text = "Agregar";
             this.btn_agregar.UseVisualStyleBackColor = true;
@@ -190,12 +192,12 @@
             // 
             // btn_remover
             // 
-            this.btn_remover.Location = new System.Drawing.Point(754, 201);
+            this.btn_remover.Location = new System.Drawing.Point(758, 339);
             this.btn_remover.Margin = new System.Windows.Forms.Padding(4);
             this.btn_remover.Name = "btn_remover";
-            this.btn_remover.Size = new System.Drawing.Size(36, 30);
+            this.btn_remover.Size = new System.Drawing.Size(99, 30);
             this.btn_remover.TabIndex = 11;
-            this.btn_remover.Text = "X";
+            this.btn_remover.Text = "Quitar";
             this.btn_remover.UseVisualStyleBackColor = true;
             this.btn_remover.Click += new System.EventHandler(this.Btn_remover_Click);
             // 
@@ -224,7 +226,7 @@
             this.cbo_modulos.Location = new System.Drawing.Point(227, 46);
             this.cbo_modulos.Margin = new System.Windows.Forms.Padding(4);
             this.cbo_modulos.Name = "cbo_modulos";
-            this.cbo_modulos.Size = new System.Drawing.Size(160, 29);
+            this.cbo_modulos.Size = new System.Drawing.Size(160, 25);
             this.cbo_modulos.TabIndex = 12;
             this.cbo_modulos.SelectedIndexChanged += new System.EventHandler(this.Cbo_modulos_SelectedIndexChanged);
             // 
@@ -234,16 +236,16 @@
             this.lbl_modulo.Location = new System.Drawing.Point(283, 26);
             this.lbl_modulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_modulo.Name = "lbl_modulo";
-            this.lbl_modulo.Size = new System.Drawing.Size(81, 21);
+            this.lbl_modulo.Size = new System.Drawing.Size(62, 17);
             this.lbl_modulo.TabIndex = 11;
             this.lbl_modulo.Text = "Modulos";
             // 
             // btn_salir
             // 
-            this.btn_salir.Location = new System.Drawing.Point(769, 443);
+            this.btn_salir.Location = new System.Drawing.Point(758, 443);
             this.btn_salir.Margin = new System.Windows.Forms.Padding(4);
             this.btn_salir.Name = "btn_salir";
-            this.btn_salir.Size = new System.Drawing.Size(57, 30);
+            this.btn_salir.Size = new System.Drawing.Size(99, 30);
             this.btn_salir.TabIndex = 13;
             this.btn_salir.Text = "Salir";
             this.btn_salir.UseVisualStyleBackColor = true;
@@ -251,10 +253,10 @@
             // 
             // btn_finalizar
             // 
-            this.btn_finalizar.Location = new System.Drawing.Point(758, 405);
+            this.btn_finalizar.Location = new System.Drawing.Point(758, 388);
             this.btn_finalizar.Margin = new System.Windows.Forms.Padding(4);
             this.btn_finalizar.Name = "btn_finalizar";
-            this.btn_finalizar.Size = new System.Drawing.Size(77, 30);
+            this.btn_finalizar.Size = new System.Drawing.Size(99, 30);
             this.btn_finalizar.TabIndex = 14;
             this.btn_finalizar.Text = "Finalizar";
             this.btn_finalizar.UseVisualStyleBackColor = true;
@@ -266,7 +268,7 @@
             this.label3.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(178, 9);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(584, 33);
+            this.label3.Size = new System.Drawing.Size(459, 24);
             this.label3.TabIndex = 15;
             this.label3.Text = "ASIGNACION DE APLICACIONES A USUARIOS";
             // 
@@ -283,11 +285,29 @@
             this.btn_ayuda.UseVisualStyleBackColor = true;
             this.btn_ayuda.Click += new System.EventHandler(this.Btn_ayuda_Click);
             // 
+            // btn_buscar
+            // 
+            this.btn_buscar.Location = new System.Drawing.Point(758, 218);
+            this.btn_buscar.Name = "btn_buscar";
+            this.btn_buscar.Size = new System.Drawing.Size(99, 28);
+            this.btn_buscar.TabIndex = 256;
+            this.btn_buscar.Text = "Buscar";
+            this.btn_buscar.UseVisualStyleBackColor = true;
+            // 
+            // txt_buscar
+            // 
+            this.txt_buscar.Location = new System.Drawing.Point(758, 171);
+            this.txt_buscar.Name = "txt_buscar";
+            this.txt_buscar.Size = new System.Drawing.Size(99, 23);
+            this.txt_buscar.TabIndex = 257;
+            // 
             // frm_asignacion_aplicaciones
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(838, 514);
+            this.ClientSize = new System.Drawing.Size(878, 509);
+            this.Controls.Add(this.txt_buscar);
+            this.Controls.Add(this.btn_buscar);
             this.Controls.Add(this.btn_ayuda);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btn_finalizar);
@@ -299,7 +319,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frm_asignacion_aplicaciones";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Asignacion de Aplicaciones a Usuarios";
+            this.Text = "Buscar";
             this.Load += new System.EventHandler(this.Frm_asignacion_aplicaciones_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_asignaciones)).EndInit();
             this.Gpb_datos.ResumeLayout(false);
@@ -331,5 +351,7 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn Imprimir;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btn_ayuda;
+        private System.Windows.Forms.Button btn_buscar;
+        private System.Windows.Forms.TextBox txt_buscar;
     }
 }
