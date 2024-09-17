@@ -773,18 +773,34 @@ namespace CapaDatos
 
         //****************************ACA TERMINA******************************************************************
 
-        public OdbcDataAdapter buscarid(string bperfil)
-        {
-            cn.conectar();
-            string sqlPerfil = "SELECT * FROM Tbl_permisos_aplicacion_perfil WHERE Pk_id_Aplicacion_Perfil = " + bperfil;
-            OdbcDataAdapter dataTable = new OdbcDataAdapter(sqlPerfil, cn.conectar());
-            insertarBitacora(idUsuario, "Realizo una consulta a perfiles ", "Tbl_permisos_aplicacion_perfil");
 
-            return dataTable;
+        //--------------------------------- Emerzon Garcia -----------------------------------------------------------
+
+        public OdbcDataAdapter mostrarPerfilesYPermisos(string TablaPerfilUsuario)
+        {
+            try
+            {
+                // Consulta para obtener perfiles y permisos junto con el nombre de la aplicación
+                string sql = @"
+            SELECT p.Fk_id_perfil, a.nombre_aplicacion, 
+                   p.guardar_permiso, p.buscar_permiso, p.modificar_permiso, 
+                   p.eliminar_permiso, p.imprimir_permiso
+            FROM Tbl_permisos_aplicacion_perfil p
+            JOIN Tbl_aplicaciones a ON p.Fk_id_aplicacion = a.Pk_id_aplicacion
+            JOIN Tbl_perfiles pf ON p.Fk_id_perfil = pf.Pk_id_perfil;
+        ";
+
+                OdbcDataAdapter dataTable = new OdbcDataAdapter(sql, cn.conectar());
+                return dataTable;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al ejecutar la consulta: " + ex.Message);
+                return null;
+            }
         }
 
-
-        //****************************ACA TERMINA******************************************************************
+        //---------------------------------------------------------------------------------------------------------------
 
 
 

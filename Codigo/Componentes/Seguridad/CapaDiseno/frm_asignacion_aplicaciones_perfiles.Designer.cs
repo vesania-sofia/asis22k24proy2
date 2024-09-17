@@ -57,10 +57,10 @@
             // 
             // btn_finalizar
             // 
-            this.btn_finalizar.Location = new System.Drawing.Point(774, 399);
+            this.btn_finalizar.Location = new System.Drawing.Point(760, 288);
             this.btn_finalizar.Margin = new System.Windows.Forms.Padding(4);
             this.btn_finalizar.Name = "btn_finalizar";
-            this.btn_finalizar.Size = new System.Drawing.Size(97, 30);
+            this.btn_finalizar.Size = new System.Drawing.Size(100, 30);
             this.btn_finalizar.TabIndex = 28;
             this.btn_finalizar.Text = "Guardar";
             this.btn_finalizar.UseVisualStyleBackColor = true;
@@ -68,10 +68,10 @@
             // 
             // btn_salir
             // 
-            this.btn_salir.Location = new System.Drawing.Point(774, 437);
+            this.btn_salir.Location = new System.Drawing.Point(760, 335);
             this.btn_salir.Margin = new System.Windows.Forms.Padding(4);
             this.btn_salir.Name = "btn_salir";
-            this.btn_salir.Size = new System.Drawing.Size(97, 30);
+            this.btn_salir.Size = new System.Drawing.Size(100, 30);
             this.btn_salir.TabIndex = 27;
             this.btn_salir.Text = "Salir";
             this.btn_salir.UseVisualStyleBackColor = true;
@@ -79,7 +79,7 @@
             // 
             // btn_remover
             // 
-            this.btn_remover.Location = new System.Drawing.Point(771, 358);
+            this.btn_remover.Location = new System.Drawing.Point(760, 235);
             this.btn_remover.Margin = new System.Windows.Forms.Padding(4);
             this.btn_remover.Name = "btn_remover";
             this.btn_remover.Size = new System.Drawing.Size(100, 33);
@@ -104,7 +104,7 @@
             this.dgv_asignacionesperfiles.Margin = new System.Windows.Forms.Padding(4);
             this.dgv_asignacionesperfiles.Name = "dgv_asignacionesperfiles";
             this.dgv_asignacionesperfiles.RowHeadersWidth = 51;
-            this.dgv_asignacionesperfiles.Size = new System.Drawing.Size(750, 302);
+            this.dgv_asignacionesperfiles.Size = new System.Drawing.Size(739, 212);
             this.dgv_asignacionesperfiles.TabIndex = 25;
             this.dgv_asignacionesperfiles.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_asignacionesperfiles_CellContentClick);
             // 
@@ -289,9 +289,9 @@
             // 
             // btn_buscar
             // 
-            this.btn_buscar.Location = new System.Drawing.Point(795, 193);
+            this.btn_buscar.Location = new System.Drawing.Point(760, 177);
             this.btn_buscar.Name = "btn_buscar";
-            this.btn_buscar.Size = new System.Drawing.Size(75, 33);
+            this.btn_buscar.Size = new System.Drawing.Size(100, 33);
             this.btn_buscar.TabIndex = 254;
             this.btn_buscar.Text = "Buscar";
             this.btn_buscar.UseVisualStyleBackColor = true;
@@ -299,7 +299,7 @@
             // 
             // txt_buscar
             // 
-            this.txt_buscar.Location = new System.Drawing.Point(774, 149);
+            this.txt_buscar.Location = new System.Drawing.Point(760, 119);
             this.txt_buscar.Name = "txt_buscar";
             this.txt_buscar.Size = new System.Drawing.Size(100, 27);
             this.txt_buscar.TabIndex = 255;
@@ -308,7 +308,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(884, 569);
+            this.ClientSize = new System.Drawing.Size(898, 410);
             this.Controls.Add(this.txt_buscar);
             this.Controls.Add(this.btn_buscar);
             this.Controls.Add(this.label3);
