@@ -31,10 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Navegador));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-<<<<<<< HEAD
-=======
             this.button1 = new System.Windows.Forms.Button();
->>>>>>> upstream/main
             this.btn_Reportes_Principal = new System.Windows.Forms.Button();
             this.Btn_Imprimir = new System.Windows.Forms.Button();
             this.Btn_Ayuda = new System.Windows.Forms.Button();
@@ -117,9 +114,7 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(1064, 90);
             this.tableLayoutPanel2.TabIndex = 8;
-            // 
-<<<<<<< HEAD
-=======
+            //
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.White;
@@ -138,7 +133,6 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.Btn_MasAyuda_Click);
             // 
->>>>>>> upstream/main
             // btn_Reportes_Principal
             // 
             this.btn_Reportes_Principal.BackColor = System.Drawing.Color.White;
@@ -146,21 +140,18 @@
             this.btn_Reportes_Principal.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
             this.btn_Reportes_Principal.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btn_Reportes_Principal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-<<<<<<< HEAD
             this.btn_Reportes_Principal.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Reportes_Principal.Image = ((System.Drawing.Image)(resources.GetObject("btn_Reportes_Principal.Image")));
             this.btn_Reportes_Principal.Location = new System.Drawing.Point(0, 37);
             this.btn_Reportes_Principal.Margin = new System.Windows.Forms.Padding(0);
             this.btn_Reportes_Principal.Name = "btn_Reportes_Principal";
             this.btn_Reportes_Principal.Size = new System.Drawing.Size(75, 20);
-=======
             this.btn_Reportes_Principal.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Reportes_Principal.Image = ((System.Drawing.Image)(resources.GetObject("btn_Reportes_Principal.Image")));
             this.btn_Reportes_Principal.Location = new System.Drawing.Point(75, 45);
             this.btn_Reportes_Principal.Margin = new System.Windows.Forms.Padding(0);
             this.btn_Reportes_Principal.Name = "btn_Reportes_Principal";
             this.btn_Reportes_Principal.Size = new System.Drawing.Size(75, 45);
->>>>>>> upstream/main
             this.btn_Reportes_Principal.TabIndex = 15;
             this.btn_Reportes_Principal.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btn_Reportes_Principal.UseVisualStyleBackColor = false;
