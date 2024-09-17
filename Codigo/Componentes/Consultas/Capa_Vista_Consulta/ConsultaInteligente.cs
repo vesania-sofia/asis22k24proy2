@@ -16,17 +16,16 @@ namespace Capa_Vista_Consulta
     public partial class ConsultaInteligente : Form
     {
         consultaControlador csControlador = new consultaControlador();
-        string tablabusqueda;
         private string[] datos;
         private string[] datosComplejo;
         private string[] tipos;
         private string consultaSeleccionada;
+        public string BD;
 
-
-        public ConsultaInteligente()
+        public ConsultaInteligente(string Tabla)
         {
             InitializeComponent();
-            string BD = "consultasBD";
+            BD = Tabla;
             tipos = new string[] { "nombre_consulta", "tipo_consulta", "consulta_SQLE", "consulta_estatus" };
             csControlador.CargarTablas(cboTabla, BD);
             csControlador.CargarTablas(cboEditarTabla, BD);
@@ -54,13 +53,14 @@ namespace Capa_Vista_Consulta
         }
         private void ActualizarComboBox()
         {
-            csControlador.CargarTablas(cboTabla, "consultasBD");
-            csControlador.CargarTablas(cboEditarTabla, "consultasBD");
+            csControlador.CargarTablas(cboTabla, BD);
+            csControlador.CargarTablas(cboEditarTabla, BD);
             csControlador.obtenerNombresConsultas(cboQuery1);
             csControlador.obtenerNombresConsultas(cboQuery3);
             csControlador.obtenerNombresConsultas(cboEditarNombreConsulta);
         }
         string consulta = "";
+        //string BD = "consultasBD";
         string tabla = "tbl_consultaInteligente";
         private void cboTabla_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -132,7 +132,7 @@ namespace Capa_Vista_Consulta
             }
 
             // Procesar los datos en la tabla correspondiente
-            csControlador.ingresar(tipos, datos, "tbl_consultaInteligente");
+            csControlador.ingresar(tipos, datos, tabla);
         }
 
         private void chbCondiciones_CheckedChanged(object sender, EventArgs e)
@@ -153,7 +153,7 @@ namespace Capa_Vista_Consulta
         private void btnAgregarComparacion_Click(object sender, EventArgs e)
         {
             datosComplejo = new string[] { cboComparador.Text, cboComparadorCampo.Text, txtValorComparador.Text, txtQueryFinal.Text };
-            csControlador.ingresar(tipos, datosComplejo, "tbl_consultaInteligente");
+            csControlador.ingresar(tipos, datosComplejo, tabla);
             string queryGenerado = csControlador.GenerarQueryComplejo(datosComplejo, datos);
             txtQueryFinal.Clear(); txtQueryFinal.Text = queryGenerado; datosComplejo = new string[0];
             string eliminar;
@@ -162,7 +162,7 @@ namespace Capa_Vista_Consulta
         private void brnAgregarLogica_Click(object sender, EventArgs e)
         {
             datosComplejo = new string[] { cboLogico.Text, cboLogicoCampo.Text, txtValorLogico.Text, txtQueryFinal.Text};
-            csControlador.ingresar(tipos, datosComplejo, "tbl_consultaInteligente");
+            csControlador.ingresar(tipos, datosComplejo, tabla);
             string queryGenerado = csControlador.GenerarQueryComplejo(datosComplejo, datos);
             txtQueryFinal.Clear();txtQueryFinal.Text = queryGenerado;datosComplejo = new string[0];
             string eliminar;
@@ -213,7 +213,7 @@ namespace Capa_Vista_Consulta
                 MessageBox.Show("Antes de agregar debe asignar valores.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            csControlador.ingresar(tipos, datosComplejo, "tbl_consultaInteligente");
+            csControlador.ingresar(tipos, datosComplejo, tabla);
             string queryGenerado = csControlador.GenerarQueryComplejo(datosComplejo, datos);
             txtQueryFinal.Clear(); txtQueryFinal.Text = queryGenerado; datosComplejo = new string[0];
         }
@@ -439,7 +439,7 @@ namespace Capa_Vista_Consulta
             }
 
             // Procesar los datos en la tabla correspondiente
-            csControlador.ingresar(tipos, datos, "tbl_consultaInteligente");
+            csControlador.ingresar(tipos, datos, tabla);
         }
 
         private void btnEditarCampoSimple_Click(object sender, EventArgs e)
@@ -542,7 +542,7 @@ namespace Capa_Vista_Consulta
                 MessageBox.Show("Antes de agregar debe asignar valores.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            csControlador.ingresar(tipos, datosComplejo, "tbl_consultaInteligente");
+            csControlador.ingresar(tipos, datosComplejo, tabla);
             string queryGenerado = csControlador.GenerarQueryComplejo(datosComplejo, datos);
             txtQueryEditadoFinal.Clear(); txtQueryEditadoFinal.Text = queryGenerado; datosComplejo = new string[0];
         }
@@ -551,7 +551,7 @@ namespace Capa_Vista_Consulta
         {
 
             datosComplejo = new string[] { cboEditarLogico.Text, cboEditarCampoLogico.Text, txtEditarValorLogico.Text, txtQueryEditadoFinal.Text };
-            csControlador.ingresar(tipos, datosComplejo, "tbl_consultaInteligente");
+            csControlador.ingresar(tipos, datosComplejo, tabla);
             string queryGenerado = csControlador.GenerarQueryComplejo(datosComplejo, datos);
             txtQueryEditadoFinal.Clear(); txtQueryEditadoFinal.Text = queryGenerado; datosComplejo = new string[0];
             string eliminar;
@@ -561,7 +561,7 @@ namespace Capa_Vista_Consulta
         {
 
             datosComplejo = new string[] { cboEditarComparador.Text, cboEditarCampoComparador.Text, txtEditarValorComparacion.Text, txtQueryEditadoFinal.Text };
-            csControlador.ingresar(tipos, datosComplejo, "tbl_consultaInteligente");
+            csControlador.ingresar(tipos, datosComplejo, tabla);
             string queryGenerado = csControlador.GenerarQueryComplejo(datosComplejo, datos);
             txtQueryEditadoFinal.Clear(); txtQueryEditadoFinal.Text = queryGenerado; datosComplejo = new string[0];
             string eliminar;
