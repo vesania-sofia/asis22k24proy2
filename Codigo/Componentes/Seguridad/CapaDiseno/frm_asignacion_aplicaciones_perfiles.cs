@@ -281,53 +281,78 @@ namespace CapaDiseno
 
         }
 
+
+
+
+        // ------------------------- Emerzon Garcia ----------------------------------------------
+
+        public void actualizardatagriew()
+        {
+            DataTable dt = logic.consultaLogicaPerfiles("Tbl_permisos_aplicacion_perfil");
+
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                MessageBox.Show("Datos recibidos: " + dt.Rows.Count.ToString());
+
+                // Asignar los nombres de las columnas en el DataGridView
+                dgv_asignacionesperfiles.Columns["Perfil"].DataPropertyName = "Fk_id_perfil";
+                dgv_asignacionesperfiles.Columns["Aplicacion"].DataPropertyName = "nombre_aplicacion";
+                dgv_asignacionesperfiles.Columns["Ingresar"].DataPropertyName = "guardar_permiso";
+                dgv_asignacionesperfiles.Columns["Consultar"].DataPropertyName = "buscar_permiso"; // Asumo que 'Consultar' es 'buscar_permiso'
+                dgv_asignacionesperfiles.Columns["Modificar"].DataPropertyName = "modificar_permiso";
+                dgv_asignacionesperfiles.Columns["Eliminar"].DataPropertyName = "eliminar_permiso";
+                dgv_asignacionesperfiles.Columns["Imprimir"].DataPropertyName = "imprimir_permiso";
+
+                // Configurar CheckBoxColumn para los permisos booleanos
+                ConfigurarColumnasCheckBox();
+
+                // Asignar el DataTable al DataGridView
+                dgv_asignacionesperfiles.DataSource = dt;
+                dgv_asignacionesperfiles.Refresh();
+            }
+            else
+            {
+                MessageBox.Show("No se encontraron datos.");
+            }
+        }
+
+        // Método para configurar CheckBoxColumns en el DataGridView
+        private void ConfigurarColumnasCheckBox()
+        {
+            if (dgv_asignacionesperfiles.Columns["Ingresar"] is DataGridViewCheckBoxColumn)
+            {
+                ((DataGridViewCheckBoxColumn)dgv_asignacionesperfiles.Columns["Ingresar"]).TrueValue = 1;
+                ((DataGridViewCheckBoxColumn)dgv_asignacionesperfiles.Columns["Ingresar"]).FalseValue = 0;
+            }
+
+            if (dgv_asignacionesperfiles.Columns["Consultar"] is DataGridViewCheckBoxColumn)
+            {
+                ((DataGridViewCheckBoxColumn)dgv_asignacionesperfiles.Columns["Consultar"]).TrueValue = 1;
+                ((DataGridViewCheckBoxColumn)dgv_asignacionesperfiles.Columns["Consultar"]).FalseValue = 0;
+            }
+
+            if (dgv_asignacionesperfiles.Columns["Modificar"] is DataGridViewCheckBoxColumn)
+            {
+                ((DataGridViewCheckBoxColumn)dgv_asignacionesperfiles.Columns["Modificar"]).TrueValue = 1;
+                ((DataGridViewCheckBoxColumn)dgv_asignacionesperfiles.Columns["Modificar"]).FalseValue = 0;
+            }
+
+            if (dgv_asignacionesperfiles.Columns["Eliminar"] is DataGridViewCheckBoxColumn)
+            {
+                ((DataGridViewCheckBoxColumn)dgv_asignacionesperfiles.Columns["Eliminar"]).TrueValue = 1;
+                ((DataGridViewCheckBoxColumn)dgv_asignacionesperfiles.Columns["Eliminar"]).FalseValue = 0;
+            }
+
+            if (dgv_asignacionesperfiles.Columns["Imprimir"] is DataGridViewCheckBoxColumn)
+            {
+                ((DataGridViewCheckBoxColumn)dgv_asignacionesperfiles.Columns["Imprimir"]).TrueValue = 1;
+                ((DataGridViewCheckBoxColumn)dgv_asignacionesperfiles.Columns["Imprimir"]).FalseValue = 0;
+            }
+        }
+
         private void btn_buscar_Click(object sender, EventArgs e)
         {
-            try
-            {
-                // Limpiar el DataGridView antes de cargar los nuevos datos
-                dgv_asignacionesperfiles.Rows.Clear();
-
-                // Obtener el valor ingresado en el TextBox de búsqueda (txt_buscar)
-                string id = txt_buscar.Text;
-
-                if (string.IsNullOrEmpty(id))
-                {
-                    MessageBox.Show("Debe ingresar un ID para buscar.");
-                    return;
-                }
-
-                // Realizar la búsqueda en la base de datos usando el ID
-                DataTable dtPermisosPerfilAplicacion = logic.buscardatid(id); // Se usa ID en lugar de perfil
-
-                // Verificar si hay resultados
-                if (dtPermisosPerfilAplicacion != null && dtPermisosPerfilAplicacion.Rows.Count > 0)
-                {
-                    foreach (DataRow row in dtPermisosPerfilAplicacion.Rows)
-                    {
-                        // Agregar las filas obtenidas al DataGridView
-                        dgv_asignacionesperfiles.Rows.Add(
-                            id,
-                            row["Aplicacion"].ToString(),
-                            Convert.ToBoolean(row["guardar_permiso"]),
-                            Convert.ToBoolean(row["modificar_permiso"]),
-                            Convert.ToBoolean(row["eliminar_permiso"]),
-                            Convert.ToBoolean(row["imprimir_permiso"])
-                        );
-                    }
-
-                    MessageBox.Show("Búsqueda realizada correctamente.");
-                }
-                else
-                {
-                    MessageBox.Show("No se encontraron permisos para el ID ingresado.");
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                MessageBox.Show("Ocurrió un error al realizar la búsqueda.");
-            }
+            actualizardatagriew();
 
         }
 

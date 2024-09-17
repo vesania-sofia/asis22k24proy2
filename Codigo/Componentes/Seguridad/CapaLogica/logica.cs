@@ -512,23 +512,19 @@ namespace CapaLogica
                 return null;
             }
         }
-        public DataTable buscardatid(string bperfil)
+        //*****************************ACA TERMINA********************************************************************
+
+
+        //-----------------------Emerzon Garcia --------------------------------------------------
+        public DataTable consultaLogicaPerfiles(string TablaPerfilUsuario)
         {
-            try
-            {
-                OdbcDataAdapter dtPermisosPerfilA = sn.buscarid(bperfil);
-                DataTable tablePermisosPerfilA = new DataTable();
-                dtPermisosPerfilA.Fill(tablePermisosPerfilA);
-                return tablePermisosPerfilA;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex);
-                return null;
-            }
+            DataTable table = new DataTable();
+            OdbcDataAdapter dt = sn.mostrarPerfilesYPermisos(TablaPerfilUsuario); // Cambio en el nombre del método para reflejar permisos
+            dt.Fill(table);
+            return table;
         }
 
-        //*****************************ACA TERMINA********************************************************************
+        //----------------------------------------------------------------------------------------
 
         //Trabajado por María José Véliz Ochoa, 9959-21-5909
         public DataTable ConsultaLogicaModulo(string ID_modulo)
