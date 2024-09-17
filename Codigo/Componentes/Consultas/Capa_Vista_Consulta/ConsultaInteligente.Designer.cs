@@ -91,6 +91,8 @@ namespace Capa_Vista_Consulta
             this.cboQuery1 = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
             this.tabEditar = new System.Windows.Forms.TabPage();
+            this.btnConsultarEditar = new System.Windows.Forms.Button();
+            this.dgvMostrar1 = new System.Windows.Forms.DataGridView();
             this.txtQueryEditadoFinal = new System.Windows.Forms.TextBox();
             this.btnCancelarEditar = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
@@ -149,8 +151,6 @@ namespace Capa_Vista_Consulta
             this.btnActualizar = new System.Windows.Forms.Button();
             this.btnBuscarQuery = new System.Windows.Forms.Button();
             this.label17 = new System.Windows.Forms.Label();
-            this.btnConsultarEditar = new System.Windows.Forms.Button();
-            this.dgvMostrar1 = new System.Windows.Forms.DataGridView();
             this.Consulta.SuspendLayout();
             this.tabCreacion.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvConsultar)).BeginInit();
@@ -164,6 +164,7 @@ namespace Capa_Vista_Consulta
             ((System.ComponentModel.ISupportInitialize)(this.dgvConsultas)).BeginInit();
             this.gbListadoConsultas.SuspendLayout();
             this.tabEditar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMostrar1)).BeginInit();
             this.gbEditarOrden.SuspendLayout();
             this.gbEditarTipoOrden.SuspendLayout();
             this.gbEditarCondicion.SuspendLayout();
@@ -172,7 +173,6 @@ namespace Capa_Vista_Consulta
             this.groupBox8.SuspendLayout();
             this.tabBuscar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEliminarBuscarConsulta)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMostrar1)).BeginInit();
             this.SuspendLayout();
             // 
             // Consulta
@@ -621,6 +621,7 @@ namespace Capa_Vista_Consulta
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "General-Consulta Simple";
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // txtQuery
             // 
@@ -868,6 +869,28 @@ namespace Capa_Vista_Consulta
             this.tabEditar.TabIndex = 2;
             this.tabEditar.Text = "Editar";
             this.tabEditar.UseVisualStyleBackColor = true;
+            // 
+            // btnConsultarEditar
+            // 
+            this.btnConsultarEditar.Location = new System.Drawing.Point(1107, 334);
+            this.btnConsultarEditar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnConsultarEditar.Name = "btnConsultarEditar";
+            this.btnConsultarEditar.Size = new System.Drawing.Size(115, 66);
+            this.btnConsultarEditar.TabIndex = 37;
+            this.btnConsultarEditar.Text = "Consultar";
+            this.btnConsultarEditar.UseVisualStyleBackColor = true;
+            this.btnConsultarEditar.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // dgvMostrar1
+            // 
+            this.dgvMostrar1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvMostrar1.Location = new System.Drawing.Point(981, 38);
+            this.dgvMostrar1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dgvMostrar1.Name = "dgvMostrar1";
+            this.dgvMostrar1.RowHeadersWidth = 51;
+            this.dgvMostrar1.RowTemplate.Height = 24;
+            this.dgvMostrar1.Size = new System.Drawing.Size(337, 270);
+            this.dgvMostrar1.TabIndex = 36;
             // 
             // txtQueryEditadoFinal
             // 
@@ -1487,28 +1510,6 @@ namespace Capa_Vista_Consulta
             this.label17.TabIndex = 3;
             this.label17.Text = "Nombre Consulta";
             // 
-            // btnConsultarEditar
-            // 
-            this.btnConsultarEditar.Location = new System.Drawing.Point(1107, 334);
-            this.btnConsultarEditar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnConsultarEditar.Name = "btnConsultarEditar";
-            this.btnConsultarEditar.Size = new System.Drawing.Size(115, 66);
-            this.btnConsultarEditar.TabIndex = 37;
-            this.btnConsultarEditar.Text = "Consultar";
-            this.btnConsultarEditar.UseVisualStyleBackColor = true;
-            this.btnConsultarEditar.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // dgvMostrar1
-            // 
-            this.dgvMostrar1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvMostrar1.Location = new System.Drawing.Point(981, 38);
-            this.dgvMostrar1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.dgvMostrar1.Name = "dgvMostrar1";
-            this.dgvMostrar1.RowHeadersWidth = 51;
-            this.dgvMostrar1.RowTemplate.Height = 24;
-            this.dgvMostrar1.Size = new System.Drawing.Size(337, 270);
-            this.dgvMostrar1.TabIndex = 36;
-            // 
             // ConsultaInteligente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1541,6 +1542,7 @@ namespace Capa_Vista_Consulta
             this.gbListadoConsultas.PerformLayout();
             this.tabEditar.ResumeLayout(false);
             this.tabEditar.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMostrar1)).EndInit();
             this.gbEditarOrden.ResumeLayout(false);
             this.gbEditarOrden.PerformLayout();
             this.gbEditarTipoOrden.ResumeLayout(false);
@@ -1555,7 +1557,6 @@ namespace Capa_Vista_Consulta
             this.tabBuscar.ResumeLayout(false);
             this.tabBuscar.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEliminarBuscarConsulta)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMostrar1)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -603,6 +603,11 @@ namespace Capa_Vista_Consulta
             string querySeleccionado = cboEditarNombreConsulta.SelectedItem.ToString();
             controlador.BuscarQuerySeleccionado(querySeleccionado, dgvMostrar1, txtQueryEditadoFinal);
         }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
         //Fin participacion sebastian Luna
     }
 }
