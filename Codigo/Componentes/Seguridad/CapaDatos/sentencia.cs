@@ -34,7 +34,7 @@ namespace CapaDatos
 
         }
 
-//****************************************Kevin López***************************************************
+        //****************************************Kevin López***************************************************
         public OdbcDataAdapter consultarModulos()
         {
             cn.conectar();
@@ -43,9 +43,9 @@ namespace CapaDatos
             insertarBitacora(idUsuario, "Realizo una consulta a modulos", "Tbl_modulos");
             return dataModulos;
         }
-//****************************************FIN Kevin López***************************************************
+        //****************************************FIN Kevin López***************************************************
 
-//****************************************Kevin López***************************************************
+        //****************************************Kevin López***************************************************
         public OdbcDataAdapter consultarPerfiles()
         {
             cn.conectar();
@@ -1378,7 +1378,7 @@ namespace CapaDatos
                         int resultado = command.ExecuteNonQuery();
                         insertarBitacora(idUsuario, "Realizo un ingreso a aplicacion-modulos", "tbl_asignacion_modulo_aplicacion");
                         return resultado > 0; // Devuelve true si la inserción fue exitosa
-                      
+
 
                     }
                 }
@@ -1537,10 +1537,36 @@ namespace CapaDatos
         }
         //###################  termina lo que hizo  Karla  Sofia Gómez Tobar #######################
 
+        //*********************************KEVIN LOPEZ*********************************************
+        public OdbcDataAdapter consultarAplicacionesP(string nombreModulo)
+        {
+            cn.conectar();
 
+            try
+            {
+                string sqlAplicaciones = @"
+        SELECT a.Pk_id_aplicacion, a.nombre_aplicacion 
+        FROM tbl_aplicaciones a
+        JOIN tbl_asignacion_modulo_aplicacion ama ON a.pk_id_aplicacion = ama.fk_id_aplicacion
+        JOIN tbl_modulos m ON m.pk_id_modulos = ama.fk_id_modulos
+        WHERE m.nombre_modulo = ?";
 
+                OdbcDataAdapter dataAplicaciones = new OdbcDataAdapter(sqlAplicaciones, cn.conectar());
+                dataAplicaciones.SelectCommand.Parameters.AddWithValue("?", nombreModulo);
 
+                // Registro de la bitacora
+                insertarBitacora(idUsuario, "Realizó una consulta a aplicaciones", "tbl_aplicacion");
 
+                return dataAplicaciones;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return null;
+            }
+        }
+
+//*********************************FIN KEVIN LOPEZ*********************************************
 
 
 
