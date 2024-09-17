@@ -10,17 +10,169 @@ using System.Windows.Forms;
 using CapaLogica;
 
 
-/*--------------------------------------Creador: Allan Letona----------------------------------------------------------------*/
+
 namespace CapaDiseno
 {
     public partial class frm_asignacion_perfiles : Form
     {
         logica logic;
+        string TablaPerfilUsuario = "Tbl_asignaciones_perfils_usuario";
+
+        //###################  empieza lo que hizo Karla  Sofia Gómez Tobar #######################
         public frm_asignacion_perfiles(string idUsuario)
         {
             InitializeComponent();
+
             logic = new logica(idUsuario);
+            string tablaU = "Tbl_usuarios";
+            string campo1U = "Pk_id_usuario";
+            string campo2U = "nombre_usuario";
+
+            string tablaP = "Tbl_perfiles";
+            string campo1P = "Pk_id_perfil";
+            string campo2P = "nombre_perfil";
+
+
+            string TablaA = "Tbl_asignaciones_perfils_usuario";
+            string campo1A= "PK_id_Perfil_Usuario";
+
+
+
+
+
+
+
+            llenarseUsuario(tablaU, campo1U, campo2U);
+            llenarsePerfil(tablaP, campo1P, campo2P);
+
+
+
+            // Asocia el evento SelectedIndexChanged después de poblar el ComboBox
+            cbo_usuario.SelectedIndexChanged += new EventHandler(cbo_usuario_SelectedIndexChanged);
+            cbo_perfiles.SelectedIndexChanged += new EventHandler(cbo_perfiles_SelectedIndexChanged2);
+            
+
         }
+
+
+
+        public void llenarseUsuario(string tabla, string campo1, string campo2)
+        {
+            // Obtén los datos para el ComboBox
+            var dt2 = logic.enviarUsuario(tabla, campo1, campo2);
+
+            // Limpia el ComboBox antes de llenarlo
+            cbo_usuario.Items.Clear();
+
+            foreach (DataRow row in dt2.Rows)
+            {
+                // Agrega el elemento mostrando el formato "ID-Nombre"
+                cbo_usuario.Items.Add(new ComboBoxItemU
+                {
+                    Value = row[campo1].ToString(),
+                    Display = row[campo2].ToString()
+                });
+            }
+
+            // Configura AutoComplete para el ComboBox con el formato deseado
+            AutoCompleteStringCollection coleccion = new AutoCompleteStringCollection();
+            foreach (DataRow row in dt2.Rows)
+            {
+                coleccion.Add(Convert.ToString(row[campo1]) + "-" + Convert.ToString(row[campo2]));
+                coleccion.Add(Convert.ToString(row[campo2]) + "-" + Convert.ToString(row[campo1]));
+            }
+
+            cbo_usuario.AutoCompleteCustomSource = coleccion;
+            cbo_usuario.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cbo_usuario.AutoCompleteSource = AutoCompleteSource.CustomSource;
+        }
+
+        // Clase auxiliar para almacenar Value y Display
+        public class ComboBoxItemU
+        {
+            public string Value { get; set; }
+            public string Display { get; set; }
+
+            // Sobrescribir el método ToString para mostrar "ID-Nombre" en el ComboBox
+            public override string ToString()
+            {
+                return $"{Value}-{Display}"; // Formato "ID-Nombre"
+            }
+        }
+
+        private void cbo_usuario_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbo_usuario.SelectedItem != null)
+            {
+                
+                var selectedItem = (ComboBoxItemU)cbo_usuario.SelectedItem;
+                string valorSeleccionado = selectedItem.Value;
+                
+                MessageBox.Show($"Valor seleccionado: {valorSeleccionado}", "Valor Seleccionado");
+            }
+        }
+
+
+// /////////////////////////////////////////////////////////////////////////////////
+        public void llenarsePerfil(string tabla, string campo1, string campo2)
+        {
+            // Obtén los datos para el ComboBox
+            var dt2 = logic.enviarPerfiles(tabla, campo1, campo2);
+
+            // Limpia el ComboBox antes de llenarlo
+            cbo_perfiles.Items.Clear();
+
+            foreach (DataRow row in dt2.Rows)
+            {
+                // Agrega el elemento mostrando el formato "ID-Nombre"
+                cbo_perfiles.Items.Add(new ComboBoxItemP
+                {
+                    Value = row[campo1].ToString(),
+                    Display = row[campo2].ToString()
+                });
+            }
+
+            // Configura AutoComplete para el ComboBox con el formato deseado
+            AutoCompleteStringCollection coleccion2 = new AutoCompleteStringCollection();
+            foreach (DataRow row in dt2.Rows)
+            {
+                coleccion2.Add(Convert.ToString(row[campo1]) + "-" + Convert.ToString(row[campo2]));
+                coleccion2.Add(Convert.ToString(row[campo2]) + "-" + Convert.ToString(row[campo1]));
+            }
+
+            cbo_perfiles.AutoCompleteCustomSource = coleccion2;
+            cbo_perfiles.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cbo_perfiles.AutoCompleteSource = AutoCompleteSource.CustomSource;
+        }
+
+        // Clase auxiliar para almacenar Value y Display
+        public class ComboBoxItemP
+        {
+            public string Value { get; set; }
+            public string Display { get; set; }
+
+            // Sobrescribir el método ToString para mostrar "ID-Nombre" en el ComboBox
+            public override string ToString()
+            {
+                return $"{Value}-{Display}"; // Formato "ID-Nombre"
+            }
+        }
+
+        private void cbo_perfiles_SelectedIndexChanged2(object sender, EventArgs e)
+        {
+            if (cbo_perfiles.SelectedItem != null)
+            {
+                // Obtener el valor del ValueMember seleccionado
+                var selectedItem = (ComboBoxItemP)cbo_perfiles.SelectedItem;
+                string valorSeleccionado = selectedItem.Value;
+                // Mostrar el valor en un MessageBox
+                MessageBox.Show($"Valor seleccionado: {valorSeleccionado}", "Valor Seleccionado");
+            }
+        }
+
+
+
+        //###################  termina lo que hizo  Karla  Sofia Gómez Tobar #######################
 
         public frm_asignacion_perfiles()
         {
@@ -28,34 +180,7 @@ namespace CapaDiseno
 
         private void Frm_asignacion_perfiles_Load(object sender, EventArgs e)
         {
-            try
-            {
-                DataTable dtUsuario = logic.consultaLogicaUsuarios();
-
-                foreach (DataRow row in dtUsuario.Rows)
-                {
-                    cbo_usuarios.Items.Add(row[0].ToString());
-                    cbo_usuario.Items.Add(row[0].ToString());
-                }
-            }
-            catch (InvalidOperationException ex)
-            {
-                Console.WriteLine(ex);
-            }
-
-            try
-            {
-                DataTable dtPerfiles = logic.consultaLogicaPerfiles();
-
-                foreach(DataRow row in dtPerfiles.Rows)
-                {
-                    cbo_perfiles.Items.Add(row[0].ToString());
-                }
-            }
-            catch(InvalidOperationException ex)
-            {
-                Console.WriteLine(ex);
-            }
+           
         }
 
         private void Dgv_perfiles_asignados_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -63,23 +188,81 @@ namespace CapaDiseno
 
         }
 
-        private void Cbo_usuarios_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string nombreUsuario = cbo_usuarios.SelectedItem.ToString();
-
-            DataTable dtPerfilesUsuarios = logic.consultaLogicaPerfilesUsuarios(nombreUsuario);
-            dgv_perfiles_asignados.DataSource = dtPerfilesUsuarios;
-        }
 
         void limpieza()
         {
             cbo_usuario.Text = " ";
             cbo_perfiles.Text = " ";
+            
+            dgv_perfiles_asignados.Columns.Clear();
+            
+
+            if (iContadorFila > 0)
+            {
+                dgv_asignacion_perfiles.Rows.RemoveAt(dgv_asignacion_perfiles.CurrentRow.Index);
+                iContadorFila--;
+            }
+            else
+            {
+                
+            }
+        }
+
+        void limpiezaIngreso()
+        {
+            cbo_usuario.Text = " ";
+            cbo_perfiles.Text = " ";
+ 
         }
 
         public static int iContadorFila = 0;
 
         private void Btn_agregar_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void Cbo_usuario_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Btn_remover_Click(object sender, EventArgs e)
+        {
+
+                
+        }
+
+        private void Btn_quitar_Click(object sender, EventArgs e)
+        {
+            if (iContadorFila > 0)
+            {
+                dgv_asignacion_perfiles.Rows.RemoveAt(dgv_asignacion_perfiles.CurrentRow.Index);
+                iContadorFila--;
+            }
+            else
+            {
+                MessageBox.Show("No hay relaciones que eliminar");
+            }
+        }
+
+        private void Btn_finalizar_Click(object sender, EventArgs e)
+        {
+            
+            
+        }
+
+        private void Btn_ayuda_Click(object sender, EventArgs e)
+        {
+            Help.ShowHelp(this, "C:\\Ayuda_Seguridad\\" + "ayudaAsignacionPerfiles.chm", "Asignacion_Perfil_Usuarios.html");
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_ingresar_Click(object sender, EventArgs e)
         {
             if (cbo_usuario.SelectedItem == null || cbo_perfiles.SelectedItem == null)
             {
@@ -118,92 +301,114 @@ namespace CapaDiseno
                         dgv_asignacion_perfiles.Rows.Add(sUsuario, sPerfil);
                         iContadorFila++;
                     }
+                    btn_ingresar.Enabled = true;
+                    btn_cancel.Enabled = true;
+                    btn_nuevo.Enabled = true;
+                    btn_Buscar.Enabled = false;
+                    btn_quitar.Enabled = false;
+                    groupBox1.Enabled = false;
                 }
 
-                limpieza();
+                limpiezaIngreso();
             }
         }
 
-        private void Cbo_usuario_SelectedIndexChanged(object sender, EventArgs e)
+ 
+        private void cbo_usuarios_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void Btn_remover_Click(object sender, EventArgs e)
+        private void btn_nuevo_Click(object sender, EventArgs e)
         {
+            // Deshabilitar los ComboBox después de la selección
+            cbo_usuario.Enabled = false;
+            cbo_perfiles.Enabled = false;
 
-            try
+            // Validar si los ComboBox están vacíos
+            if (cbo_usuario.SelectedItem == null)
             {
-                string sNombreUsuario = cbo_usuarios.SelectedItem.ToString();
-                string sMensaje = "Desea eliminar el perfil al usuario: " + sNombreUsuario;
-                string sCaption = "Verificacion";
-                MessageBoxButtons botones = MessageBoxButtons.YesNo;
-                DialogResult respuesta;
-
-                respuesta = MessageBox.Show(sMensaje, sCaption, botones, MessageBoxIcon.Question);
-
-                if (respuesta == System.Windows.Forms.DialogResult.Yes)
-                {
-                    string sCodigoPerfil = dgv_perfiles_asignados.CurrentRow.Cells[0].Value.ToString();
-
-                    DataTable dtEliminacion = logic.consultaLogicaEliminarPerfilUsuario(sNombreUsuario, sCodigoPerfil);
-
-                    dgv_perfiles_asignados.Rows.RemoveAt(dgv_perfiles_asignados.CurrentRow.Index);
-                    iContadorFila--;
-                }
-                else
-                {
-                    //this.Close();
-                }
+                MessageBox.Show("Falta seleccionar un usuario.");
+                btn_ingresar.Enabled = false;
+                cbo_usuario.Enabled = false;
+                cbo_perfiles.Enabled = false;
             }
-            catch(Exception ex)
+            else if (cbo_perfiles.SelectedItem == null)
             {
-                Console.WriteLine(ex);
-                MessageBox.Show("No hay datos que eliminar");
-            }
-                
-        }
-
-        private void Btn_quitar_Click(object sender, EventArgs e)
-        {
-            if (iContadorFila > 0)
-            {
-                dgv_asignacion_perfiles.Rows.RemoveAt(dgv_asignacion_perfiles.CurrentRow.Index);
-                iContadorFila--;
+                MessageBox.Show("Falta seleccionar un perfil.");
+                btn_ingresar.Enabled = false;
+                cbo_usuario.Enabled = false;
+                cbo_perfiles.Enabled = false;
             }
             else
             {
-                MessageBox.Show("No hay relaciones que eliminar");
-            }
-        }
+                // Obtener los valores seleccionados de los ComboBox
+                string usuarioSeleccionado = cbo_usuario.SelectedItem.ToString();
+                string perfilSeleccionado = cbo_perfiles.SelectedItem.ToString();
 
-        private void Btn_finalizar_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                foreach(DataGridViewRow Fila in dgv_asignacion_perfiles.Rows)
-                {
-                    string sNombreUsuario = Fila.Cells[0].Value.ToString();
-                    string sNombrePerfil = Fila.Cells[1].Value.ToString();
-                    
-                    DataTable dtInsertarPerfilUsuario = logic.consultaLogicaInsertarPerfilUsuario(sNombreUsuario, sNombrePerfil);
+                // Insertar en la base de datos utilizando los valores de los ComboBox
+                logic.consultaLogicaInsertarPerfilUsuario(usuarioSeleccionado, perfilSeleccionado);
 
-                }
-
-                MessageBox.Show("Datos Ingresados Exitosamente");
+                MessageBox.Show("Asignación de usuario y perfil ingresada correctamente.");
                 limpieza();
-                dgv_asignacion_perfiles.Rows.Clear();
+
+                // Configuración de botones y controles después de la inserción
+   
+               
+                cbo_usuario.Enabled = true;
+                cbo_perfiles.Enabled = true;
+                btn_ingresar.Enabled = true;
+                btn_nuevo.Enabled = true;
+                btn_cancel.Enabled = true;
+                btn_quitar.Enabled = true;
+                btn_Buscar.Enabled = true;
+                groupBox1.Enabled = true;
+                limpieza();
             }
-            catch(Exception ex)
-            {
-                Console.WriteLine(ex);
-            }
+
             
         }
 
-        private void Btn_ayuda_Click(object sender, EventArgs e)
+        private void btn_cancel_Click(object sender, EventArgs e)
         {
-            Help.ShowHelp(this, "C:\\Ayuda_Seguridad\\" + "ayudaAsignacionPerfiles.chm", "Asignacion_Perfil_Usuarios.html");
+            cbo_usuario.Enabled = true;
+            cbo_perfiles.Enabled = true;
+            btn_ingresar.Enabled = true;
+            btn_nuevo.Enabled = true;
+            btn_cancel.Enabled = true;
+            btn_Buscar.Enabled = true;
+            btn_quitar.Enabled = false;
+            groupBox1.Enabled = true;
+            limpieza();
+        }
+
+        public void actualizardatagriew()
+        {
+            DataTable dt = logic.consultaLogicaPerfilesUsuarios(TablaPerfilUsuario);
+            dgv_perfiles_asignados.DataSource = dt;
+
+        }
+
+        private void btn_Buscar_Click(object sender, EventArgs e)
+        {
+            actualizardatagriew();
+            cbo_usuario.Enabled = false;
+            cbo_perfiles.Enabled = false;
+            btn_ingresar.Enabled = false;
+            btn_nuevo.Enabled = false;
+            btn_quitar.Enabled = false;
+           
+        }
+
+        private void btn_ActualizarA_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void btn_eliminar_Click(object sender, EventArgs e)
+        {
+
+
         }
     }
 }

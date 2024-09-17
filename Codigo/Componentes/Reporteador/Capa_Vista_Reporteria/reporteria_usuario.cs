@@ -66,15 +66,29 @@ namespace Capa_Vista_Reporteria
             Dgv_regreporteria.DataSource = data;
         }
 
-        private void Btn_VerReporte_Click(object sender, EventArgs e)
+        private void visualizar(string ruta)
+        {
+            System.Threading.Thread.Sleep(3000);
+        }
+
+        private async void Btn_VerReporte_Click(object sender, EventArgs e)
         {
 
             //si el reporte tiene estado visible entonces se ejecuta otra forma para mostrar el reporte
             if (estado.Equals("Visible"))
             {
                 string ruta = Txt_ruta.Text;
-                visualizar newFormVisualizar = new visualizar(ruta);
-                newFormVisualizar.Show();
+
+                using (Cargar cargar = new Cargar())
+                {
+                    cargar.Show();
+
+                    await Task.Run(() => visualizar(ruta));
+                    visualizar newFormVisualizar = new visualizar(ruta);
+                    newFormVisualizar.Show();
+
+                    cargar.Close();
+                }
             }
             else
             {
