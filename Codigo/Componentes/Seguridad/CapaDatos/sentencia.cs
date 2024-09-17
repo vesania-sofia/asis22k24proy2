@@ -27,9 +27,9 @@ namespace CapaDatos
         public OdbcDataAdapter consultarUsuarios()
         {
             cn.conectar();
-            string sqlUsuarios = "SELECT PK_id_usuario FROM tbl_usuario WHERE estado_usuario = 1 "; //WHERE estado_usuario = 1
+            string sqlUsuarios = "SELECT nombre_usuario FROM tbl_usuarios WHERE estado_usuario = 1 "; //WHERE estado_usuario = 1
             OdbcDataAdapter dataUsuarios = new OdbcDataAdapter(sqlUsuarios, cn.conectar());
-            insertarBitacora(idUsuario, "Realizo una consulta a usuarios", "tbl_usuario");
+            insertarBitacora(idUsuario, "Realizo una consulta a usuarios", "tbl_usuarios");
             return dataUsuarios;
 
         }
