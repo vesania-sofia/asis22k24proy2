@@ -363,28 +363,7 @@ namespace CapaLogica
             }
         }
 
-        /* public DataTable consultaLogicaaplicaciones()
-         {
-
-             try
-             {
-                 OdbcDataAdapter dt = sn.consultaraplicaciones();
-                 DataTable table = new DataTable();
-                 dt.Fill(table);
-                 return table;
-             }
-             catch (Exception ex)
-             {
-                 Console.WriteLine(ex);
-                 return null;
-             }
-
-         }*/
-
-        /*----------------------------------------------------------------------------------------------------------------------------------------------------------------*/
-
-
-        //+1 modulos
+    
 
         //Trabajado por María José Véliz Ochoa, 9959-21-5909
         public DataTable validarIDModulos()
@@ -615,7 +594,7 @@ namespace CapaLogica
         {
 
 
-            /**/
+  
             var dt1 = sn.obtener2(tabla, campo1, campo2);
 
             return dt1;
@@ -705,8 +684,6 @@ namespace CapaLogica
     public DataTable enviarUsuario(string tabla, string campo1, string campo2)
     {
 
-
-        /**/
         var dt1 = sn.obtenerUsuario(tabla, campo1, campo2);
 
         return dt1;
@@ -778,24 +755,6 @@ namespace CapaLogica
 //********************************FIN KEVIN LOPEZ*************************************************
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

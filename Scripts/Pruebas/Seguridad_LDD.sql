@@ -295,21 +295,43 @@ ALTER TABLE tbl_bitacora DROP FOREIGN KEY tbl_bitacora_ibfk_2;
 -- ALTER TABLE tbl_bitacora MODIFY Fk_id_usuario VARCHAR(20);
 ALTER TABLE tbl_bitacora DROP COLUMN Fk_id_aplicacion;
 
-<<<<<<< HEAD
-DROP TABLE IF EXISTS `Tbl_permisos_aplicaciones_usuario`;
-CREATE TABLE IF NOT EXISTS `Tbl_permisos_aplicaciones_usuario` (
+-- Fernando García - 0901-21-581 - 60%
+ALTER TABLE `Tbl_bitacora`
+ADD COLUMN `tabla` VARCHAR(50) NOT NULL;
+
+-- -----USUARIOS
+-- Agrega el primer usuario
+INSERT INTO `Tbl_usuarios` VALUES
+('1', 'admin', 'admin', 'admin', 'HO0aGo4nM94=', 'esduardo@gmail.com', '2022-07-02 21:00:48', '1', 'COLOR FAVORITO', 'ROJO');
+
+
+
+-- Vamos a hashear admin para que puedea ingresar al programa
+-- Deshabilitar el modo seguro en
+-- edit->preferences->SQL Editor -> al final deshabilitar safe updates -> reconectar
+UPDATE tbl_usuarios
+SET password_usuario = SHA2('HO0aGo4nM94=', 256)
+WHERE username_usuario = 'admin';
+
+
+select * from tbl_usuarios;
+
+--Karla Gómez 9959-21-1896
+DROP TABLE IF EXISTS Tbl_permisos_aplicaciones_usuario;
+CREATE TABLE IF NOT EXISTS Tbl_permisos_aplicaciones_usuario (
   PK_id_Aplicacion_Usuario INT NOT NULL AUTO_INCREMENT,
-  Fk_id_aplicacion INT NOT NULL, 
   Fk_id_usuario INT NOT NULL, 
+  Fk_id_aplicacion INT NOT NULL, 
   guardar_permiso BOOLEAN DEFAULT FALSE,
+  buscar_permiso BOOLEAN DEFAULT FALSE,
   modificar_permiso BOOLEAN DEFAULT FALSE,
   eliminar_permiso BOOLEAN DEFAULT FALSE,
-  buscar_permiso BOOLEAN DEFAULT FALSE,
   imprimir_permiso BOOLEAN DEFAULT FALSE,
   PRIMARY KEY (PK_id_Aplicacion_Usuario),
-  FOREIGN KEY (`Fk_id_aplicacion`) REFERENCES `Tbl_aplicaciones` (`Pk_id_aplicacion`),
-  FOREIGN KEY (`Fk_id_usuario`) REFERENCES `Tbl_usuarios` (`Pk_id_usuario`)
-) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8;
+  FOREIGN KEY (Fk_id_usuario) REFERENCES Tbl_usuarios (Pk_id_usuario),
+  FOREIGN KEY (Fk_id_aplicacion) REFERENCES Tbl_aplicaciones (Pk_id_aplicacion)
+) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8;
+
 
 DROP TABLE IF EXISTS `Tbl_permisos_aplicacion_perfil`;
 CREATE TABLE IF NOT EXISTS `Tbl_permisos_aplicacion_perfil` (
@@ -337,26 +359,3 @@ CREATE TABLE IF NOT EXISTS `Tbl_asignaciones_perfils_usuario` (
   FOREIGN KEY (`Fk_id_perfil`) REFERENCES `Tbl_perfiles` (`Pk_id_perfil`)
 ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8;
 
-=======
-
--- Fernando García - 0901-21-581 - 60%
-ALTER TABLE `Tbl_bitacora`
-ADD COLUMN `tabla` VARCHAR(50) NOT NULL;
-
--- -----USUARIOS
--- Agrega el primer usuario
-INSERT INTO `Tbl_usuarios` VALUES
-('1', 'admin', 'admin', 'admin', 'HO0aGo4nM94=', 'esduardo@gmail.com', '2022-07-02 21:00:48', '1', 'COLOR FAVORITO', 'ROJO');
-
-
-
--- Vamos a hashear admin para que puedea ingresar al programa
--- Deshabilitar el modo seguro en
--- edit->preferences->SQL Editor -> al final deshabilitar safe updates -> reconectar
-UPDATE tbl_usuarios
-SET password_usuario = SHA2('HO0aGo4nM94=', 256)
-WHERE username_usuario = 'admin';
-
-
-select * from tbl_usuarios;
->>>>>>> 4ec8d35ae0365cf1a0a630056b82cffb250f0fa3
