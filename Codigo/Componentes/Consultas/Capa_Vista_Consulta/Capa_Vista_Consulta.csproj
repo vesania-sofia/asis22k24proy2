@@ -52,11 +52,20 @@
     <Compile Include="ConsultaInteligente.Designer.cs">
       <DependentUpon>ConsultaInteligente.cs</DependentUpon>
     </Compile>
+    <Compile Include="ConsultaSimple.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConsultaSimple.Designer.cs">
+      <DependentUpon>ConsultaSimple.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="ConsultaInteligente.resx">
       <DependentUpon>ConsultaInteligente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConsultaSimple.resx">
+      <DependentUpon>ConsultaSimple.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
