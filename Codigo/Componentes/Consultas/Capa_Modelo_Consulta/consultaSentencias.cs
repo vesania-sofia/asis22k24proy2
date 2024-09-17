@@ -27,14 +27,19 @@ namespace Capa_Modelo_Consulta
 
         public OdbcDataAdapter buscartbl(string BD)
         {
-            // Usa el esquema correcto para seleccionar las tablas del esquema dado
-            string sql = "SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = '" + BD + "'";
-            OdbcDataAdapter datatable = new OdbcDataAdapter(sql, con.connection());
+            string sql = "SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = '" + BD + "'";
+            // Asegúrate de que la conexión esté funcionando
+            OdbcConnection connection = con.connection();
+            if (connection.State != ConnectionState.Open)
+            {
+                MessageBox.Show("No se pudo establecer la conexión con la base de datos.");
+                return null;
+            }
 
+            OdbcDataAdapter datatable = new OdbcDataAdapter(sql, connection);
             return datatable;
         }
 
-        //insertar datos
         public void insertar(string dato, string tipo, string tabla)
         {
             try
@@ -47,23 +52,20 @@ namespace Capa_Modelo_Consulta
             {
                 Console.WriteLine(e.Message);
             }
-
         }
+
         public List<string> ObtenerColumnas(string tabla)
         {
             List<string> columns = new List<string>();
-
             try
             {
                 // Usa la variable 'baseDatos' ya definida en la clase
                 string query = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS " +
                                "WHERE TABLE_SCHEMA = '" + baseDatos + "' AND TABLE_NAME = '" + tabla + "';";
-
                 // Ejecutamos el comando con la conexión activa
                 using (OdbcCommand cmd = new OdbcCommand(query, this.conn.connection()))
                 {
                     OdbcDataReader reader = cmd.ExecuteReader();
-
                     // Añadimos las columnas a la lista
                     while (reader.Read())
                     {
@@ -76,7 +78,6 @@ namespace Capa_Modelo_Consulta
             {
                 Console.WriteLine("Error al obtener columnas: " + e.Message);
             }
-
             return columns;
         }
 
@@ -84,7 +85,7 @@ namespace Capa_Modelo_Consulta
          Fin de la participación de Carlos González
          */
 
-        //modificar
+
         public void actualizar(string setClause, string tabla, string condicion)
         {
             try
@@ -101,9 +102,8 @@ namespace Capa_Modelo_Consulta
 
             //////////////// FIN SALVADOR MARTÍNEZ ////////////////
 
-
-
         }
+
         public void insertarconsulta(string cadena)
         {
             try
@@ -136,8 +136,7 @@ namespace Capa_Modelo_Consulta
                         Tipo = result.ToString();
                     }
                 }
-            }
-            return Tipo;
+            } return Tipo;
         }
 
         public DataTable BuscarPor2(string datobuscar, string buscaren, string operador, string tableN, DataTable dt, Label lbl_cadena)
@@ -178,230 +177,6 @@ namespace Capa_Modelo_Consulta
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         //modficado por Sebastian Luna
         
         
@@ -409,17 +184,14 @@ namespace Capa_Modelo_Consulta
         public List<string> ObtenerNombresConsultas()
         {
             List<string> nombresConsultas = new List<string>();
-
             try
             {
                 // Consulta para obtener solo los nombres de las consultas
                 string query = "SELECT nombre_consulta FROM tbl_consultaInteligente;";
-
                 // Ejecutamos el comando con la conexión activa
                 using (OdbcCommand cmd = new OdbcCommand(query, this.conn.connection()))
                 {
                     OdbcDataReader reader = cmd.ExecuteReader();
-
                     // Añadimos los nombres de consulta a la lista
                     while (reader.Read())
                     {
@@ -432,7 +204,6 @@ namespace Capa_Modelo_Consulta
             {
                 Console.WriteLine("Error al obtener nombres de consultas: " + e.Message);
             }
-
             return nombresConsultas;
         }
 
@@ -443,7 +214,6 @@ namespace Capa_Modelo_Consulta
             {
                 // Consulta SQL para obtener el texto del query por su nombre
                 string sql = "SELECT consulta_SQLE FROM tbl_consultaInteligente WHERE nombre_consulta = ?";
-
                 using (OdbcConnection conn = this.conn.connection())
                 {
                     using (OdbcCommand cmd = new OdbcCommand(sql, conn))
@@ -463,8 +233,7 @@ namespace Capa_Modelo_Consulta
             catch (Exception ex)
             {
                 Console.WriteLine("Error al obtener el query por nombre: " + ex.Message);
-            }
-            return query;
+            } return query;
         }
 
         public OdbcDataAdapter EjecutarQuery(string query)
@@ -498,9 +267,6 @@ namespace Capa_Modelo_Consulta
                 Console.WriteLine("Error al eliminar la consulta: " + e.Message);
             }
         }
-
         //Fin de participacion de sebastian luna
     }
-
-
 }

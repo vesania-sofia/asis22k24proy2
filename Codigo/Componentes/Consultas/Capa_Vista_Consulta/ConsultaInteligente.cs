@@ -9,24 +9,22 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Capa_Controlador_Consulta;
 using System.Data.Odbc;
-using System.Data;
 
 namespace Capa_Vista_Consulta
 {
     public partial class ConsultaInteligente : Form
     {
         consultaControlador csControlador = new consultaControlador();
-        string tablabusqueda;
         private string[] datos;
         private string[] datosComplejo;
         private string[] tipos;
         private string consultaSeleccionada;
+        public string BD;
 
-
-        public ConsultaInteligente()
+        public ConsultaInteligente(string Tabla)
         {
             InitializeComponent();
-            string BD = "consultasBD";
+            BD = Tabla;
             tipos = new string[] { "nombre_consulta", "tipo_consulta", "consulta_SQLE", "consulta_estatus" };
             csControlador.CargarTablas(cboTabla, BD);
             csControlador.CargarTablas(cboEditarTabla, BD);
@@ -54,13 +52,12 @@ namespace Capa_Vista_Consulta
         }
         private void ActualizarComboBox()
         {
-            csControlador.CargarTablas(cboTabla, "consultasBD");
-            csControlador.CargarTablas(cboEditarTabla, "consultasBD");
+            csControlador.CargarTablas(cboTabla, BD);
+            csControlador.CargarTablas(cboEditarTabla, BD);
             csControlador.obtenerNombresConsultas(cboQuery1);
             csControlador.obtenerNombresConsultas(cboQuery3);
             csControlador.obtenerNombresConsultas(cboEditarNombreConsulta);
         }
-        string consulta = "";
         string tabla = "tbl_consultaInteligente";
         private void cboTabla_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -90,20 +87,12 @@ namespace Capa_Vista_Consulta
         private void btnNuevo_Click(object sender, EventArgs e)
         {
             //boton agregar, consulta simple
-            // Datos que se van a procesar
             datos = new string[] { txtNombreConsulta.Text, "0", cboTabla.Text, chbTodosCampos.Text, txtQueryFinal.Text, "1" };
-
-            // Inicializamos la variable para los campos que se mostrarán en el query
-            string camposSeleccionados;
-
-            // Verificamos si el CheckBox de 'Todos los campos' está marcado
-            if (chbTodosCampos.Checked)
+            string camposSeleccionados;// Inicializamos la variable para los campos que se mostrarán en el query
+            if (chbTodosCampos.Checked)// Verificamos si el CheckBox de 'Todos los campos' está marcado
             {
-                // Si está marcado, mostramos "Todos los campos"
-                camposSeleccionados = "*";
-            }
-            else
-            {
+                camposSeleccionados = "*";// Si está marcado, mostramos "Todos los campos"
+            } else {
                 // Si no está marcado, verificamos si hay un campo seleccionado en el ComboBox
                 if (!string.IsNullOrEmpty(cboCampos.Text))
                 {
@@ -123,18 +112,14 @@ namespace Capa_Vista_Consulta
                 // Si txtQuery está vacío, asignamos el valor inicial
                 txtQuery.Text = camposSeleccionados + " + " + txtAlias.Text + " + ";
                 datos[4] = txtQuery.Text;
-            }
-            else
-            {
+            } else {
                 // Si txtQuery ya tiene texto, agregamos el nuevo valor sin repetir el nombre de la consulta y el tipo
                 txtQuery.Text += Environment.NewLine + camposSeleccionados + " + " + txtAlias.Text + " + ";
                 datos[4] += txtQuery.Text;
             }
-
             // Procesar los datos en la tabla correspondiente
-            csControlador.ingresar(tipos, datos, "tbl_consultaInteligente");
+            csControlador.ingresar(tipos, datos, tabla);
         }
-
         private void chbCondiciones_CheckedChanged(object sender, EventArgs e)
         {
             bool habilitarControles = chbCondiciones.Checked;
@@ -153,39 +138,31 @@ namespace Capa_Vista_Consulta
         private void btnAgregarComparacion_Click(object sender, EventArgs e)
         {
             datosComplejo = new string[] { cboComparador.Text, cboComparadorCampo.Text, txtValorComparador.Text, txtQueryFinal.Text };
-            csControlador.ingresar(tipos, datosComplejo, "tbl_consultaInteligente");
+            csControlador.ingresar(tipos, datosComplejo, tabla);
             string queryGenerado = csControlador.GenerarQueryComplejo(datosComplejo, datos);
             txtQueryFinal.Clear(); txtQueryFinal.Text = queryGenerado; datosComplejo = new string[0];
-            string eliminar;
         }
-
         private void brnAgregarLogica_Click(object sender, EventArgs e)
         {
             datosComplejo = new string[] { cboLogico.Text, cboLogicoCampo.Text, txtValorLogico.Text, txtQueryFinal.Text};
-            csControlador.ingresar(tipos, datosComplejo, "tbl_consultaInteligente");
+            csControlador.ingresar(tipos, datosComplejo, tabla);
             string queryGenerado = csControlador.GenerarQueryComplejo(datosComplejo, datos);
             txtQueryFinal.Clear();txtQueryFinal.Text = queryGenerado;datosComplejo = new string[0];
-            string eliminar;
         }
-
         private void btnAgregarConsultaSimple_Click(object sender, EventArgs e)
         {
             string queryGenerado = csControlador.GenerarQuerySimple(datos);
             txtQueryFinal.Text = queryGenerado;
         }
-
         private void btnCrear_Click(object sender, EventArgs e)
         {
-            // Procesar los datos en la tabla correspondiente
             csControlador.InsertarDatos(tipos, datos, tabla);
             ActualizarComboBox();
         }
-
         private void btnAgregarOrden_Click(object sender, EventArgs e)
         {
             // Inicializar el array de datos
             datosComplejo = new string[] { cboOrdenar.Text, cboOrdenarCampo.Text, "0", txtQueryFinal.Text };
-
             // Verificar el tipo de operación
             if (cboOrdenar.Text == "Ordenar")
             {
@@ -213,11 +190,10 @@ namespace Capa_Vista_Consulta
                 MessageBox.Show("Antes de agregar debe asignar valores.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            csControlador.ingresar(tipos, datosComplejo, "tbl_consultaInteligente");
+            csControlador.ingresar(tipos, datosComplejo, tabla);
             string queryGenerado = csControlador.GenerarQueryComplejo(datosComplejo, datos);
             txtQueryFinal.Clear(); txtQueryFinal.Text = queryGenerado; datosComplejo = new string[0];
         }
-
         private void btnConsultar_Click(object sender, EventArgs e)
         {
             consultaControlador controlador = new consultaControlador();
@@ -270,14 +246,10 @@ namespace Capa_Vista_Consulta
 
         }
 
-       
-
         private void chbEditarDescendente_CheckedChanged(object sender, EventArgs e)
         {
 
         }
-
-        
 
         private void btnCancelarSimple_Click(object sender, EventArgs e)
         {
@@ -368,10 +340,8 @@ namespace Capa_Vista_Consulta
                 MessageBox.Show("Debe seleccionar una consulta para editar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
             // Actualiza datos con la consulta seleccionada
             datos[0] = consultaSeleccionada; // Suponiendo que datos[0] es el nombre de la consulta
-
             // Procesar los datos en la tabla correspondiente
             csControlador.ActualizarDatos(tipos, datos, tabla);
             ActualizarComboBox();
@@ -379,52 +349,39 @@ namespace Capa_Vista_Consulta
 
         private void cboConsultas_SelectedIndexChanged(object sender, EventArgs e)
         {
-            /// Captura el nombre de la consulta seleccionada desde el ComboBox
-
             // Captura el nombre de la consulta seleccionada
             string nombreConsulta = cboQuery1.Text;
             string nombreConsulta1 = cboQuery3.Text;
             string nombreConsulta2 = cboEditarNombreConsulta.Text;
-
             // Guardar el nombre de la consulta en una variable de instancia
             consultaSeleccionada = nombreConsulta;
             consultaSeleccionada = nombreConsulta1;
             consultaSeleccionada = nombreConsulta2;
-
         }
-
-
         private void btnEditarSimple_Click(object sender, EventArgs e)
         {
             //boton agregar, consulta simple
             // Datos que se van a procesar
             datos = new string[] { cboEditarNombreConsulta.Text, "0", cboEditarTabla.Text, chbTodosCampos.Text, txtQueryEditadoFinal.Text, "1" };
-
             // Inicializamos la variable para los campos que se mostrarán en el query
             string camposSeleccionados;
-
             // Verificamos si el CheckBox de 'Todos los campos' está marcado
             if (chbEditarTodosCampos.Checked)
             {
                 // Si está marcado, mostramos "Todos los campos"
                 camposSeleccionados = "*";
-            }
-            else
-            {
+            } else {
                 // Si no está marcado, verificamos si hay un campo seleccionado en el ComboBox
                 if (!string.IsNullOrEmpty(cboEditarCampo.Text))
                 {
                     // Si hay un campo seleccionado, lo mostramos
                     camposSeleccionados = cboEditarCampo.Text;
-                }
-                else
-                {
+                } else {
                     // Si no hay campo seleccionado, dejamos un valor vacío o un mensaje de advertencia
                     MessageBox.Show("Debe seleccionar o un campo o todos", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
             }
-
             if (string.IsNullOrEmpty(txtQueryEditado.Text))
             {
                 // Si txtQuery está vacío, asignamos el valor inicial
@@ -437,18 +394,14 @@ namespace Capa_Vista_Consulta
                 txtQueryEditado.Text += Environment.NewLine + camposSeleccionados + " + " + txtEditarAlias.Text + " + ";
                 datos[4] += txtQueryEditado.Text;
             }
-
             // Procesar los datos en la tabla correspondiente
-            csControlador.ingresar(tipos, datos, "tbl_consultaInteligente");
+            csControlador.ingresar(tipos, datos, tabla);
         }
-
         private void btnEditarCampoSimple_Click(object sender, EventArgs e)
         {
             string queryGenerado = csControlador.GenerarQuerySimple(datos);
             txtQueryEditadoFinal.Text = queryGenerado;
-
         }
-
 
         private void button17_Click(object sender, EventArgs e)
         {
@@ -460,10 +413,8 @@ namespace Capa_Vista_Consulta
             txtQueryEditado.Clear();
         }
 
-
         private void btnCancelarEditar_Click(object sender, EventArgs e)
         {
-
             datos = new string[0];
             datosComplejo = new string[0];
             cboEditarTabla.ResetText();
@@ -482,7 +433,6 @@ namespace Capa_Vista_Consulta
             chbEditarDescendente.Checked = false;
             txtQueryEditado.Clear();
             txtQueryEditadoFinal.Clear();
-
         }
 
 
@@ -511,10 +461,8 @@ namespace Capa_Vista_Consulta
                 MessageBox.Show("Debe seleccionar una operación y un campo.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
             // Inicializar el array de datos
             datosComplejo = new string[] { cboEditarOrdenar.Text, cboEditarCampoOrdenar.Text, "0", txtQueryEditadoFinal.Text };
-
             // Verificar el tipo de operación
             if (cboEditarOrdenar.Text == "Ordenar")
             {
@@ -522,13 +470,9 @@ namespace Capa_Vista_Consulta
                 if (chbEditarAscendente.Checked)
                 {
                     datosComplejo[2] = "ASC"; // Agregar ASC si está seleccionado
-                }
-                else if (chbEditarDescendente.Checked)
-                {
+                } else if (chbEditarDescendente.Checked) {
                     datosComplejo[2] = "DESC"; // Agregar DESC si está seleccionado
-                }
-                else
-                {
+                } else {
                     MessageBox.Show("Si se desea agregar un ordenamiento, debe seleccionar el tipo.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
@@ -542,195 +486,27 @@ namespace Capa_Vista_Consulta
                 MessageBox.Show("Antes de agregar debe asignar valores.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            csControlador.ingresar(tipos, datosComplejo, "tbl_consultaInteligente");
+            csControlador.ingresar(tipos, datosComplejo, tabla);
             string queryGenerado = csControlador.GenerarQueryComplejo(datosComplejo, datos);
             txtQueryEditadoFinal.Clear(); txtQueryEditadoFinal.Text = queryGenerado; datosComplejo = new string[0];
         }
 
-            private void btnEditarLogico_Click(object sender, EventArgs e)
+        private void btnEditarLogico_Click(object sender, EventArgs e)
         {
-
             datosComplejo = new string[] { cboEditarLogico.Text, cboEditarCampoLogico.Text, txtEditarValorLogico.Text, txtQueryEditadoFinal.Text };
-            csControlador.ingresar(tipos, datosComplejo, "tbl_consultaInteligente");
+            csControlador.ingresar(tipos, datosComplejo, tabla);
             string queryGenerado = csControlador.GenerarQueryComplejo(datosComplejo, datos);
             txtQueryEditadoFinal.Clear(); txtQueryEditadoFinal.Text = queryGenerado; datosComplejo = new string[0];
-            string eliminar;
         }
 
         private void btnEditarComparacion_Click(object sender, EventArgs e)
         {
 
             datosComplejo = new string[] { cboEditarComparador.Text, cboEditarCampoComparador.Text, txtEditarValorComparacion.Text, txtQueryEditadoFinal.Text };
-            csControlador.ingresar(tipos, datosComplejo, "tbl_consultaInteligente");
+            csControlador.ingresar(tipos, datosComplejo, tabla);
             string queryGenerado = csControlador.GenerarQueryComplejo(datosComplejo, datos);
             txtQueryEditadoFinal.Clear(); txtQueryEditadoFinal.Text = queryGenerado; datosComplejo = new string[0];
-            string eliminar;
         }
-
-
-      
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
         //Cambios por Sebastian Luna 
@@ -750,17 +526,13 @@ namespace Capa_Vista_Consulta
             // Captura el nombre de la consulta seleccionada
             string nombreConsulta = cboQuery1.Text;
             string nombreConsulta1 = cboQuery3.Text;
-
             // Guardar el nombre de la consulta en una variable de instancia
             consultaSeleccionada = nombreConsulta;
             consultaSeleccionada = nombreConsulta1;
         }
 
-       
-
         private void btnBuscarQuery1_Click(object sender, EventArgs e)
         {
-            
             consultaControlador controlador = new consultaControlador();
             string querySeleccionado = cboQuery1.SelectedItem.ToString();
             controlador.BuscarQuerySeleccionado(querySeleccionado, dgvConsultas, txtQuery11);
@@ -784,31 +556,25 @@ namespace Capa_Vista_Consulta
         {
                 // Obtener el nombre de la consulta seleccionada en el ComboBox
                 string nombreConsultaSeleccionada = cboQuery3.SelectedItem?.ToString();
-
                 if (string.IsNullOrEmpty(nombreConsultaSeleccionada))
                 {
                     MessageBox.Show("Seleccione una consulta del ComboBox.");
                     return;
                 }
-
                 // Llamar al método del controlador para buscar y mostrar el query
                 consultaControlador controlador = new consultaControlador();
                 controlador.BuscarQuerySeleccionado(nombreConsultaSeleccionada, dgvEliminarBuscarConsulta, txtQuery11);
-            
-
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             // Obtener el nombre de la consulta seleccionada en cboQuery3
             string consultaSeleccionada = cboQuery3.SelectedItem.ToString();
-
             // Llamar al método de controlador para eliminar la consulta
             if (!string.IsNullOrEmpty(consultaSeleccionada))
             {
                 consultaControlador eliminarControlador = new consultaControlador();
                 eliminarControlador.EliminarConsulta(consultaSeleccionada);
-
                 // Refrescar el DataGridView después de eliminar la consulta
                 // Esto puede incluir la llamada al método para recargar los datos, si es necesario
                 dgvEliminarBuscarConsulta.DataSource = null; // Limpiar el DataGridView
@@ -834,18 +600,9 @@ namespace Capa_Vista_Consulta
         private void button1_Click(object sender, EventArgs e)
         {
             consultaControlador controlador = new consultaControlador();
-            string querySeleccionado = cboEditarNombreConsulta.ToString();
-            controlador.BuscarQuerySeleccionado(querySeleccionado, dgvConsultar, txtQueryEditadoFinal);
+            string querySeleccionado = cboEditarNombreConsulta.SelectedItem.ToString();
+            controlador.BuscarQuerySeleccionado(querySeleccionado, dgvMostrar1, txtQueryEditadoFinal);
         }
-
-
-
-
-
-
-
         //Fin participacion sebastian Luna
     }
 }
-    
-
