@@ -27,10 +27,17 @@ namespace Capa_Modelo_Consulta
 
         public OdbcDataAdapter buscartbl(string BD)
         {
-            // Usa el esquema correcto para seleccionar las tablas del esquema dado
             string sql = "SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = '" + BD + "'";
-            OdbcDataAdapter datatable = new OdbcDataAdapter(sql, con.connection());
 
+            // Asegúrate de que la conexión esté funcionando
+            OdbcConnection connection = con.connection();
+            if (connection.State != ConnectionState.Open)
+            {
+                MessageBox.Show("No se pudo establecer la conexión con la base de datos.");
+                return null;
+            }
+
+            OdbcDataAdapter datatable = new OdbcDataAdapter(sql, connection);
             return datatable;
         }
 
