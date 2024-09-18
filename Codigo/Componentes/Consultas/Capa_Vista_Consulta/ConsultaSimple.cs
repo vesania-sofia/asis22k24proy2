@@ -38,14 +38,11 @@ namespace Capa_Vista_Consulta
             csControlador.obtenerNombresConsultas(cboEditarNombreConsulta2);
             cboEditarTabla2.SelectedIndexChanged += new EventHandler(cboTablaEditar_SelectedIndexChanged);
             cboEditarNombreConsulta2.SelectedIndexChanged += new EventHandler(cboConsultas_SelectedIndexChanged);
-
-
-
-
         }
         private void ActualizarComboBox()
         {
-            csControlador.CargarTablas(cboTabla2, BD);
+            //csControlador.CargarTablas(cboTabla2, BD);
+            csControlador.obtenerNombresConsultas(cboEditarNombreConsulta2);
         }
         string tabla = "tbl_consultaInteligente";
         private void cboTabla_SelectedIndexChanged(object sender, EventArgs e)
