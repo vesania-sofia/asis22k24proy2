@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using CapaDatos;
 
 namespace ejecucion
 {
@@ -17,9 +16,9 @@ namespace ejecucion
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            CapaDatos.sentencia s = new CapaDatos.sentencia();
+            
 
-            Application.Run(new CapaDiseno.MDI_Seguridad("1"));
+            Application.Run(new CapaDiseno.frm_login());
             //Application.Run(new Capa_Vista_Reporteria.menu_reporteria());
 
         }
