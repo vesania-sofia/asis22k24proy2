@@ -2225,8 +2225,6 @@ namespace CapaDeDiseno
 
         }
 
-<<<<<<< HEAD
-=======
         /*
                try
                {
@@ -2264,7 +2262,7 @@ namespace CapaDeDiseno
                Btn_Eliminar.Enabled = true;                
            } */
 
->>>>>>> 7453dffb9a1fd864c63b5a1642661cebc9141aab
+
         public void botonesYPermisos()
         {
             try
@@ -2274,14 +2272,14 @@ namespace CapaDeDiseno
 
                 for (int i = 0; i < permisosText.Length; i++) // Cambié i a 0
                 {
-<<<<<<< HEAD
+
                     bool tienePermiso = sn.consultarPermisos("2", "1000", i + 1);
-=======
+
                     string idUsuario1 = logic.ObtenerIdUsuario(idUsuario);
                     MessageBox.Show("el usuario es: " +idUsuario1+" "+idAplicacion);
                     sentencia sen = new sentencia();
-                    bool tienePermiso = sen.consultarPermisos(idUsuario1, idAplicacion, i + 1);
->>>>>>> 7453dffb9a1fd864c63b5a1642661cebc9141aab
+                    //bool tienePermiso = sn.consultarPermisos(idUsuario1, idAplicacion, i + 1);
+
 
                     if (botones[i] != null)
                     {
