@@ -52,8 +52,8 @@ namespace Capa_Vista_Consulta
         }
         private void ActualizarComboBox()
         {
-            csControlador.CargarTablas(cboTabla, BD);
-            csControlador.CargarTablas(cboEditarTabla, BD);
+            //csControlador.CargarTablas(cboTabla, BD);
+            //csControlador.CargarTablas(cboEditarTabla, BD);
             csControlador.obtenerNombresConsultas(cboQuery1);
             csControlador.obtenerNombresConsultas(cboQuery3);
             csControlador.obtenerNombresConsultas(cboEditarNombreConsulta);
