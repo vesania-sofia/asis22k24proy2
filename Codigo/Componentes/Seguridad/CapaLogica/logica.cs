@@ -18,7 +18,7 @@ namespace CapaLogica
 
         public DataTable consultaLogicaUsuarios()
         {
-            
+
             try
             {
                 OdbcDataAdapter dtUsuario = sn.consultarUsuarios();
@@ -26,12 +26,12 @@ namespace CapaLogica
                 dtUsuario.Fill(tableUsuario);
                 return tableUsuario;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex);
                 return null;
             }
-            
+
         }
 
         public DataTable consultaLogicaModulos()
@@ -43,7 +43,7 @@ namespace CapaLogica
                 dtModulos.Fill(tableModulos);
                 return tableModulos;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex);
                 return null;
@@ -59,7 +59,7 @@ namespace CapaLogica
                 dtPerfiles.Fill(tablePerfiles);
                 return tablePerfiles;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex);
                 return null;
@@ -71,7 +71,7 @@ namespace CapaLogica
         {
             try
             {
-                using (OdbcDataAdapter cmpsAplicaciones = sn.consultaraplicaciones(ID_aplicacion))
+                using (OdbcDataAdapter cmpsAplicaciones = sn.consultarAplicaciones(ID_aplicacion)) //Cambio de referencia para fuuncionamiento de APlicaciones Usuarios
                 {
                     DataTable tableAplicaciones = new DataTable();
                     cmpsAplicaciones.Fill(tableAplicaciones);
@@ -87,6 +87,8 @@ namespace CapaLogica
         }
         //###################  termina lo que hizo  Karla  Sofia Gómez Tobar #######################
 
+        //Trabajado María José Véliz
+        //Se cambiaron de lugar los parámetros por la base de datos
         public DataTable consultaLogicaPermisosUsuarioAplicacion(string codigoUsuario, string nombreAplicacion, string ingresar, string consulta, string modificar, string eliminar, string imprimir)
         {
             try
@@ -96,61 +98,39 @@ namespace CapaLogica
                 dtPermisosUA.Fill(tablePermisosUA);
                 return tablePermisosUA;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex);
                 return null;
             }
         }
+        //termina
 
-        public DataTable consultaLogicaPerfilesUsuarios(string nombreUsuario)
+        //###################  lo que hizo Karla  Sofia Gómez Tobar #######################
+        public DataTable consultaLogicaPerfilesUsuarios(string TablaPerfilUsuario)
+        {
+            DataTable table = new DataTable();
+            OdbcDataAdapter dt = sn.mostrarPerfilesDeUsuario(TablaPerfilUsuario);
+            dt.Fill(table);
+            return table;
+
+
+        }
+
+        public bool consultaLogicaInsertarPerfilUsuario(string codigoUsuario, string codigoPerfil)
         {
             try
             {
-                OdbcDataAdapter dtPerfilesUsuarios = sn.mostrarPerfilesDeUsuario(nombreUsuario);
-                DataTable tablePerfilesUsuarios = new DataTable();
-                dtPerfilesUsuarios.Fill(tablePerfilesUsuarios);
-                return tablePerfilesUsuarios;
+                sn.insertarPerfilUsuario(codigoUsuario, codigoPerfil);
+                return true;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                Console.WriteLine(ex);
-                return null;
+                Console.WriteLine("Error al insertar el asignacion: " + ex.Message);
+                return false;
             }
         }
-
-        public DataTable consultaLogicaEliminarPerfilUsuario(string nombreUsuario, string codigoPerfil)
-        {
-            try
-            {
-                OdbcDataAdapter dtEliminarPerfilUsuario = sn.eliminarPerfilUsuario(nombreUsuario, codigoPerfil);
-                DataTable tableEliminarPerfilUsuario = new DataTable();
-                dtEliminarPerfilUsuario.Fill(tableEliminarPerfilUsuario);
-                return tableEliminarPerfilUsuario;
-            }
-            catch(Exception ex)
-            {
-                Console.WriteLine(ex);
-                return null;
-            }
-        }
-
-        public DataTable consultaLogicaInsertarPerfilUsuario(string nombreUsuario, string codigoPerfil)
-        {
-            try
-            {
-                OdbcDataAdapter dtInsertarPerfilUsuario = sn.insertarPerfilUsuario(nombreUsuario, codigoPerfil);
-                DataTable tableInsertarPerfilUsuario = new DataTable();
-                dtInsertarPerfilUsuario.Fill(tableInsertarPerfilUsuario);
-                return tableInsertarPerfilUsuario;
-            }
-            catch(Exception ex)
-            {
-                Console.WriteLine(ex);
-                return null;
-            }
-        }
-
+        //###################  termina lo que hizo  Karla  Sofia Gómez Tobar #######################
         //###################  lo que hizo Karla  Sofia Gómez Tobar #######################
         public DataTable validarIDAplicacion()
         {
@@ -170,18 +150,12 @@ namespace CapaLogica
         //###################  termina lo que hizo  Karla  Sofia Gómez Tobar #######################
 
         //---------------------------------------------------- Inicio: GABRIELA SUC ---------------------------------------------------- 
-        public void ActualizarUsuario(int idUsuario, string nombre, string apellido, string correo, string estado, string pregunta, string respuesta)
+
+        public bool ModificarUsuario(string idUsuario, string nombre, string apellido, string correo, int estado_usuario, string respuesta)
         {
-            try
-            {
-                // Se llama a la capa de datos para actualizar el usuario
-                int filasAfectadas = sn.ActualizarUsuario(idUsuario, nombre, apellido, correo, estado, pregunta, respuesta);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error en la capa lógica al actualizar: " + ex.Message);
-            }
+            return sn.ModificarUsuario(idUsuario, nombre, apellido, correo, estado_usuario, respuesta);
         }
+
         //---------------------------------------------------- Fin: GABRIELA SUC ---------------------------------------------------- 
 
         /* creado por Emerzon Garcia  0901-21-9182 ...... */
@@ -260,11 +234,11 @@ namespace CapaLogica
             }
         }
 
-        public DataTable updatecliente(string clave,string usuario)
+        public DataTable updatecliente(string clave, string usuario)
         {
             try
             {
-                OdbcDataAdapter dtusuario = sn.clienteupdate(clave,usuario);
+                OdbcDataAdapter dtusuario = sn.clienteupdate(clave, usuario);
                 DataTable tableusuarios = new DataTable();
                 dtusuario.Fill(tableusuarios);
                 return tableusuarios;
@@ -296,9 +270,11 @@ namespace CapaLogica
 
         //---------------------------------------------------- Inicio: GABRIELA SUC ---------------------------------------------------- 
 
-        public int eliminarusuario(int idUsuario)
+        // Método para eliminar (inactivar) un usuario
+        public bool EliminarUsuario(string idUsuario)
         {
-            return sn.eliminarusuario(idUsuario.ToString()); // Llamar al método de la capa de datos y devolver el número de filas afectadas
+            // Llama al método de la capa de datos para actualizar el estado
+            return sn.CambiarEstadoUsuario(idUsuario, 0);
         }
 
         //---------------------------------------------------- Fin: GABRIELA SUC ---------------------------------------------------- 
@@ -388,28 +364,7 @@ namespace CapaLogica
             }
         }
 
-        /* public DataTable consultaLogicaaplicaciones()
-         {
-
-             try
-             {
-                 OdbcDataAdapter dt = sn.consultaraplicaciones();
-                 DataTable table = new DataTable();
-                 dt.Fill(table);
-                 return table;
-             }
-             catch (Exception ex)
-             {
-                 Console.WriteLine(ex);
-                 return null;
-             }
-
-         }*/
-
-        /*----------------------------------------------------------------------------------------------------------------------------------------------------------------*/
-
-
-        //+1 modulos
+    
 
         //Trabajado por María José Véliz Ochoa, 9959-21-5909
         public DataTable validarIDModulos()
@@ -521,11 +476,12 @@ namespace CapaLogica
 
 
 
-        public DataTable consultaLogicaPermisosPerfilAplicacion(string codigoPerfil, string nombreAplicacion, string ingresar, string consulta, string modificar, string eliminar, string imprimir)
+        //*****************************MODIFICADO POR JOSUÉ PAZ*******************************************************
+        public DataTable consultaLogicaPermisosPerfilAplicacion(string codigoPerfil, string nombreAplicacion, string ingresar, string modificar, string eliminar, string consulta, string imprimir)
         {
             try
             {
-                OdbcDataAdapter dtPermisosPerfilA = sn.insertarPermisosPerfilA(codigoPerfil, nombreAplicacion, ingresar, consulta, modificar, eliminar, imprimir);
+                OdbcDataAdapter dtPermisosPerfilA = sn.insertarPermisosPerfilA(codigoPerfil, nombreAplicacion, ingresar, modificar, eliminar, consulta, imprimir);
                 DataTable tablePermisosPerfilA = new DataTable();
                 dtPermisosPerfilA.Fill(tablePermisosPerfilA);
                 return tablePermisosPerfilA;
@@ -536,6 +492,19 @@ namespace CapaLogica
                 return null;
             }
         }
+        //*****************************ACA TERMINA********************************************************************
+
+
+        //-----------------------Emerzon Garcia --------------------------------------------------
+        public DataTable consultaLogicaPerfiles(string TablaPerfilUsuario)
+        {
+            DataTable table = new DataTable();
+            OdbcDataAdapter dt = sn.mostrarPerfilesYPermisos(TablaPerfilUsuario); // Cambio en el nombre del método para reflejar permisos
+            dt.Fill(table);
+            return table;
+        }
+
+        //----------------------------------------------------------------------------------------
 
         //Trabajado por María José Véliz Ochoa, 9959-21-5909
         public DataTable ConsultaLogicaModulo(string ID_modulo)
@@ -560,11 +529,11 @@ namespace CapaLogica
 
 
 
-        public DataTable Actualizarmodulo(string ID_modulo,string nombre, string descripcion, string estado)
+        public DataTable Actualizarmodulo(string ID_modulo, string nombre, string descripcion, string estado)
         {
             try
             {
-                OdbcDataAdapter dtmodulo = sn.ActualizarModulo(ID_modulo,nombre,descripcion,estado);
+                OdbcDataAdapter dtmodulo = sn.ActualizarModulo(ID_modulo, nombre, descripcion, estado);
                 DataTable tablamodulos = new DataTable();
                 dtmodulo.Fill(tablamodulos);
                 return tablamodulos;
@@ -573,13 +542,21 @@ namespace CapaLogica
             {
                 Console.WriteLine(ex);
                 return null;
-            } 
+            }
         }
 
+        // Fernando García - 0901-21-581 
         public DataSet consultaLogicaBitacora()
         {
             return sn.consultarBitacora();
         }
+
+        // Nuevo método para la búsqueda filtrada de bitácora
+        public DataSet consultaLogicaBitacoraFiltrada(string campo, string valor)
+        {
+            return sn.consultarBitacoraFiltrada(campo, valor);
+        }
+        //FIN ###########
 
         //ELIMINAR MODULO ALYSON ##########################################
         public DataTable EliminarModulo(string ID_modulo, string nombre, string descripcion, string estado)
@@ -600,6 +577,188 @@ namespace CapaLogica
         //FIN ####################################################################
 
 
+        /*********************Ismar Leonel Cortez Sanchez -0901-21-560************/
+        /***********************Combo box inteligente*****************************/
+
+        public string[] items(string tabla, string campo1, string campo2)
+        {
+            string[] Items = sn.llenarCmb(tabla, campo1, campo2);
+            /*Este arreglo lo obtiene y retorna de la clase senencias del modelo*/
+            return Items;
+
+            /*Aqui viene a parar lo de sentencias*/
+
+
+        }
+
+        public DataTable enviar(string tabla, string campo1, string campo2)
+        {
+
+
+  
+            var dt1 = sn.obtener2(tabla, campo1, campo2);
+
+            return dt1;
+        }
+        /**************************************************************************/
+
+        /*********************Ismar Leonel Cortez Sanchez -0901-21-560************/
+        /***********************Combo box inteligente 2*****************************/
+
+        public string[] items2(string tabla, string campo1, string campo2)
+        {
+            string[] Items = sn.llenarCmb2(tabla, campo1, campo2);
+            /*Este arreglo lo obtiene y retorna de la clase senencias del modelo*/
+            return Items;
+
+            /*Aqui viene a parar lo de sentencias*/
+
+
+        }
+
+        public DataTable enviar2(string tabla, string campo1, string campo2)
+        {
+
+
+            /**/
+            var dt1 = sn.obtener2(tabla, campo1, campo2);
+
+            return dt1;
+        }
+        /**************************************************************************/
+
+        /**************************************************************************/
+
+        //*************KaterynDeLeon*************************
+        //buscar
+        public DataTable consultaLogicaAsigncacionModuloAplicaciones()
+        {
+            try
+            {
+                OdbcDataAdapter dtModulos = sn.consultarAsignacion_moduloAplicaciones();
+                DataTable tableModulosApli = new DataTable();
+                dtModulos.Fill(tableModulosApli);
+                return tableModulosApli;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return null;
+            }
+        }
+        //*************************************************************************************/
+        //*************KaterynDeLeon************************
+        // Inicio ( crear)
+
+        public int ObtenerOInsertarModulo(string nombreModulo)
+        {
+            return sn.ObtenerIdModulo(nombreModulo);
+        }
+
+        public int ObtenerOInsertarAplicacion(string nombreAplicacion)
+        {
+            return sn.ObtenerIdAplicacion(nombreAplicacion);
+        }
+
+        public bool InsertarLogicaAsignacionModuloAplicacion(int idModulo, int idAplicacion)
+        {
+            return sn.InsertarAsignacionModuloAplicacion(idModulo, idAplicacion);
+        }
+    
+    //*****************Fin********************************************************************
+
+
+
+    //###################  empieza lo que hizo Karla  Sofia Gómez Tobar #######################
+    // combo usuario y perfil 
+    public string[] itemsUsuario(string tabla, string campo1, string campo2)
+    {
+        string[] Items = sn.llenarCmbUsuario(tabla, campo1, campo2);
+
+        return Items;
+
+
+
+
     }
 
+    public DataTable enviarUsuario(string tabla, string campo1, string campo2)
+    {
+
+        var dt1 = sn.obtenerUsuario(tabla, campo1, campo2);
+
+        return dt1;
+    }
+
+    public string[] itemsPerfiles(string tabla, string campo1, string campo2)
+    {
+        string[] Items = sn.llenarCmbPerfiles(tabla, campo1, campo2);
+
+        return Items;
+
+
+
+
+    }
+
+    public DataTable enviarPerfiles(string tabla, string campo1, string campo2)
+    {
+
+
+
+        var dt1 = sn.obtenerPerfiles(tabla, campo1, campo2);
+
+        return dt1;
+    }
+
+
+    public string[] itemsAsigUP(string tabla, string campo1)
+    {
+        string[] Items = sn.llenarCboAsigUP(tabla, campo1);
+
+        return Items;
+
+
+
+
+    }
+
+    public DataTable enviarAsigUP(string tabla, string campo1)
+    {
+
+
+        /**/
+        var dt1 = sn.obtenerAsigUP(tabla, campo1);
+
+        return dt1;
+    }
+        //###################  termina lo que hizo  Karla  Sofia Gómez Tobar #######################
+
+//********************************KEVIN LOPEZ*************************************************
+        public DataTable consultaLogicaAplicacionesP(string nombreModulo)
+        {
+            try
+            {
+                using (OdbcDataAdapter cmpsAplicaciones = sn.consultarAplicacionesP(nombreModulo)) //Cambio de referencia para fuuncionamiento de APlicaciones Usuarios
+                {
+                    DataTable tableAplicaciones = new DataTable();
+                    cmpsAplicaciones.Fill(tableAplicaciones);
+                    return tableAplicaciones;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return null;
+
+            }
+        }
+//********************************FIN KEVIN LOPEZ*************************************************
+
+    }
+
+
+
 }
+
+

@@ -3,6 +3,8 @@ using System.Data.Odbc;
 using System.Windows.Forms;
 using System.Net;
 using System.Data;
+using System.Collections.Generic;
+
 
 namespace CapaDatos
 {
@@ -25,54 +27,56 @@ namespace CapaDatos
         public OdbcDataAdapter consultarUsuarios()
         {
             cn.conectar();
-            string sqlUsuarios = "SELECT PK_id_usuario FROM tbl_usuario WHERE estado_usuario = 1 "; //WHERE estado_usuario = 1
+            string sqlUsuarios = "SELECT nombre_usuario FROM tbl_usuarios WHERE estado_usuario = 1 "; //WHERE estado_usuario = 1
             OdbcDataAdapter dataUsuarios = new OdbcDataAdapter(sqlUsuarios, cn.conectar());
-            insertarBitacora(idUsuario, "Realizo una consulta a usuarios", "tbl_usuario");
+            insertarBitacora(idUsuario, "Realizo una consulta a usuarios", "tbl_usuarios");
             return dataUsuarios;
 
         }
 
+        //****************************************Kevin López***************************************************
         public OdbcDataAdapter consultarModulos()
         {
             cn.conectar();
-            string sqlModulos = "SELECT nombre_modulo FROM tbl_modulo WHERE estado_modulo = 1";
+            string sqlModulos = "SELECT nombre_modulo FROM Tbl_modulos WHERE estado_modulo = 1";
             OdbcDataAdapter dataModulos = new OdbcDataAdapter(sqlModulos, cn.conectar());
-            insertarBitacora(idUsuario, "Realizo una consulta a modulos", "tbl_modulos");
+            insertarBitacora(idUsuario, "Realizo una consulta a modulos", "Tbl_modulos");
             return dataModulos;
         }
+        //****************************************FIN Kevin López***************************************************
 
+        //****************************************Kevin López***************************************************
         public OdbcDataAdapter consultarPerfiles()
         {
             cn.conectar();
-            string sqlPerfiles = "SELECT nombre_perfil FROM tbl_perfil_encabezado WHERE estado_perfil = 1";
+            string sqlPerfiles = "SELECT nombre_perfil FROM Tbl_perfiles WHERE estado_perfil = 1";
             OdbcDataAdapter dataPerfiles = new OdbcDataAdapter(sqlPerfiles, cn.conectar());
-            insertarBitacora(idUsuario, "Realizo una consulta a perfiles", "tbl_perfil");
+            insertarBitacora(idUsuario, "Realizo una consulta a perfiles", "Tbl_perfiles");
             return dataPerfiles;
         }
+        //****************************************Kevin López***************************************************
 
+        //#############INICIO ALYSON RODRIGUEZ 9959-21-829
         public OdbcDataAdapter consultarAplicaciones(string nombreModulo)
         {
-            string sCodigoModulo = " ";
+            cn.conectar();
+
             try
             {
-                OdbcCommand sqlCodigoModulo = new OdbcCommand("SELECT PK_id_Modulo FROM tbl_modulo WHERE nombre_modulo = '" + nombreModulo + "' ", cn.conectar());
-                OdbcDataReader almacena = sqlCodigoModulo.ExecuteReader();
+                string sqlAplicaciones = @"
+        SELECT a.Pk_id_aplicacion, a.nombre_aplicacion 
+        FROM tbl_aplicaciones a
+        JOIN tbl_asignacion_modulo_aplicacion ama ON a.pk_id_aplicacion = ama.fk_id_aplicacion
+        JOIN tbl_modulos m ON m.pk_id_modulos = ama.fk_id_modulos
+        WHERE m.nombre_modulo = ?";
 
-                while (almacena.Read() == true)
-                {
-                    sCodigoModulo = almacena.GetString(0);
-                }
-
-                string sqlAplicaciones = "SELECT nombre_aplicacion FROM tbl_aplicacion WHERE PK_id_Modulo = '" + sCodigoModulo + "' ";
                 OdbcDataAdapter dataAplicaciones = new OdbcDataAdapter(sqlAplicaciones, cn.conectar());
+                dataAplicaciones.SelectCommand.Parameters.AddWithValue("?", nombreModulo);
 
-                almacena.Close();
-                sqlCodigoModulo.Connection.Close();
-                insertarBitacora(idUsuario, "Realizo una consulta a aplicaciones", "tbl_aplicacion");
+                // Registro de la bitacora
+                insertarBitacora(idUsuario, "Realizó una consulta a aplicaciones", "tbl_aplicacion");
+
                 return dataAplicaciones;
-
-
-
             }
             catch (Exception ex)
             {
@@ -80,14 +84,19 @@ namespace CapaDatos
                 return null;
             }
         }
+        //#############FINALIZA ALYSON RODRIGUEZ 9959-21-829
 
+
+        //Trabajado María José Véliz
         public OdbcDataAdapter insertarPermisosUA(string codigoUsuario, string nombreAplicacion, string ingresar, string consulta, string modificar, string eliminar, string imprimir)
         {
             string sCodigoAplicacion = " ";
+            string sCodigoUsuario = " ";
 
             try
             {
-                OdbcCommand sqlCodigoModulo = new OdbcCommand("SELECT PK_id_aplicacion FROM tbl_aplicacion WHERE nombre_aplicacion = '" + nombreAplicacion + "' ", cn.conectar());
+                // Obtén el código de la aplicación
+                OdbcCommand sqlCodigoModulo = new OdbcCommand("SELECT Pk_id_aplicacion FROM Tbl_aplicaciones WHERE nombre_aplicacion = '" + nombreAplicacion + "' ", cn.conectar());
                 OdbcDataReader almacena = sqlCodigoModulo.ExecuteReader();
 
                 while (almacena.Read() == true)
@@ -95,35 +104,30 @@ namespace CapaDatos
                     sCodigoAplicacion = almacena.GetString(0);
                 }
 
-                string sqlInsertarPermisosUA = "INSERT INTO tbl_usuario_aplicacion(PK_id_usuario, PK_id_aplicacion, ingresar, consulta, modificar, eliminar, imprimir) VALUES ('" + codigoUsuario + "', '" + sCodigoAplicacion + "', '" + ingresar + "', '" + consulta + "', '" + modificar + "', '" + eliminar + "', '" + imprimir + "');";
-                insertarBitacora(idUsuario, "Asigno aplicacion: " + nombreAplicacion + " a usuario: " + codigoUsuario, "tbl_usuario_aplicacion");
+
+                // Obtén el código del usuario
+                OdbcCommand sqlCodigoUsuario = new OdbcCommand("SELECT Pk_id_usuario FROM Tbl_usuarios WHERE nombre_usuario = '" + codigoUsuario + "' ", cn.conectar());
+                OdbcDataReader almacenaUsuario = sqlCodigoUsuario.ExecuteReader();
+
+                while (almacenaUsuario.Read() == true)
+                {
+                    sCodigoUsuario = almacenaUsuario.GetString(0);
+                }
+                almacenaUsuario.Close();
+                sqlCodigoUsuario.Connection.Close();
+
+                // Inserta los permisos usando el código de la aplicación y el código del usuario
+                string sqlInsertarPermisosUA = "INSERT INTO Tbl_permisos_aplicaciones_usuario(Fk_id_usuario, Fk_id_aplicacion, guardar_permiso, buscar_permiso, modificar_permiso, eliminar_permiso, imprimir_permiso) VALUES ('" + sCodigoUsuario + "','" + sCodigoAplicacion + "', '" + ingresar + "', '" + consulta + "', '" + modificar + "', '" + eliminar + "', '" + imprimir + "');";
+                // Ejecuta el comando de inserción
                 OdbcDataAdapter dataPermisosUA = new OdbcDataAdapter(sqlInsertarPermisosUA, cn.conectar());
+                // Inserta en la bitácora
+                insertarBitacora(idUsuario, "Asignó aplicación: " + nombreAplicacion + " a usuario: " + codigoUsuario, "Tbl_permisos_aplicaciones_usuario");
 
 
                 almacena.Close();
                 sqlCodigoModulo.Connection.Close();
 
                 return dataPermisosUA;
-
-
-
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex);
-                return null;
-            }
-
-        }
-
-        public OdbcDataAdapter mostrarPerfilesDeUsuario(string nombreUsuario)
-        {
-            try
-            {
-                string sqlPerfilUsuario = "SELECT PE.PK_id_perfil AS Codigo, PE.nombre_perfil AS Perfil FROM tbl_perfil_encabezado PE INNER JOIN tbl_usuario_perfil UP ON PE.PK_id_perfil = UP.PK_id_perfil WHERE PK_id_usuario = '" + nombreUsuario + "' ";
-                OdbcDataAdapter dataPerfilUsuario = new OdbcDataAdapter(sqlPerfilUsuario, cn.conectar());
-                insertarBitacora(idUsuario, "Realizo una consulta a perfiles", "tbl_perfil");
-                return dataPerfilUsuario;
             }
             catch (Exception ex)
             {
@@ -131,49 +135,88 @@ namespace CapaDatos
                 return null;
             }
         }
+        //Termina
 
-        public OdbcDataAdapter eliminarPerfilUsuario(string nombreUsuario, string codigoPerfil)
+        //###################  lo que hizo Karla  Sofia Gómez Tobar #######################
+        public OdbcDataAdapter mostrarPerfilesDeUsuario(string TablaPerfilUsuario)
         {
-            try
-            {
-                string sqlEliminarPerfilUsuario = "DELETE FROM tbl_usuario_perfil WHERE PK_id_usuario = '" + nombreUsuario + "' AND PK_id_perfil = '" + codigoPerfil + "' ";
-                OdbcDataAdapter dataEliminarPerfilUsuario = new OdbcDataAdapter(sqlEliminarPerfilUsuario, cn.conectar());
-                insertarBitacora(idUsuario, "Elimino perfil: " + codigoPerfil + " a usuario: " + nombreUsuario, "tbl_usuario_perfil");
-                return dataEliminarPerfilUsuario;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex);
-                return null;
-            }
+            string sql = "SELECT * FROM " + TablaPerfilUsuario + ";";
+            OdbcDataAdapter dataTable = new OdbcDataAdapter(sql, cn.conectar());
+            return dataTable;
         }
 
-        public OdbcDataAdapter insertarPerfilUsuario(string nombreUsuario, string codigoPerfil)
+        public bool eliminarPerfilUsuario(string Id_Perfil_Usuario)
         {
+
             try
             {
-                string sCodigoPerfil = " ";
 
-                OdbcCommand sqlCodigoModulo = new OdbcCommand("SELECT PK_id_perfil FROM tbl_perfil_encabezado WHERE nombre_perfil = '" + codigoPerfil + "' ", cn.conectar());
-                OdbcDataReader almacena = sqlCodigoModulo.ExecuteReader();
-
-                while (almacena.Read() == true)
+                cn.conectar();
+                string sqlEliminarPerfilUsuario = "DELETE FROM Tbl_asignaciones_perfils_usuario WHERE PK_id_Perfil_Usuario = ?";
+                using (OdbcCommand cmd = new OdbcCommand(sqlEliminarPerfilUsuario, cn.conectar()))
                 {
-                    sCodigoPerfil = almacena.GetString(0);
+
+                    cmd.Parameters.AddWithValue("@Id_Perfil_Usuario", Id_Perfil_Usuario);
+                    int rowsAffected = cmd.ExecuteNonQuery();
+
+                    if (rowsAffected > 0)
+                    {
+                        insertarBitacora(idUsuario, "Eliminó un perfil: " + Id_Perfil_Usuario, "Tbl_asignaciones_perfils_usuario");
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return false;
+            }
+
+
+        }
+
+        public void insertarPerfilUsuario(string codigoUsuario, string codigoPerfil)
+        {
+
+
+            try
+            {
+                using (OdbcConnection connection = cn.conectar())
+
+                {
+                    //
+                    string query = "INSERT INTO Tbl_asignaciones_perfils_usuario(" +
+                                                     "Fk_id_usuario," +
+                                                     "Fk_id_perfil)" +
+                                                     "VALUES (?, ?) ";
+
+                    using (OdbcCommand cmd = new OdbcCommand(query, connection))
+                    {
+                        // Agregar los parámetros al comando
+                        cmd.Parameters.AddWithValue("@Fk_id_usuario", codigoUsuario);
+                        cmd.Parameters.AddWithValue("@Fk_id_perfil", codigoPerfil);
+
+                        // Ejecutar el comando
+                        cmd.ExecuteNonQuery();
+                        insertarBitacora(idUsuario, "Inserto un nuevo modulo: " + codigoUsuario + " - " + codigoPerfil, "Tbl_asignaciones_perfils_usuario");
+                    }
+
                 }
 
-
-                string sqlInsertarPerfilUsuario = "INSERT INTO tbl_usuario_perfil(PK_id_usuario, PK_id_perfil) VALUES ('" + nombreUsuario + "', '" + sCodigoPerfil + "') ";
-                OdbcDataAdapter dataInsertarPerfilUsuario = new OdbcDataAdapter(sqlInsertarPerfilUsuario, cn.conectar());
-                insertarBitacora(idUsuario, "Asigno perfil: " + codigoPerfil + " a usuario: " + nombreUsuario, "tbl_usuario_perfil");
-                return dataInsertarPerfilUsuario;
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
-                return null;
+                MessageBox.Show("Error al insertar la asignacion: " + ex.Message);
             }
         }
+        //###################  termina lo que hizo  Karla  Sofia Gómez Tobar #######################
+
+
+
 
         //###################  lo que hizo Karla  Sofia Gómez Tobar #######################
         public OdbcDataAdapter validarIDAplicacion()
@@ -184,7 +227,7 @@ namespace CapaDatos
                 string sqlIDAplicacion = "SELECT MAX(Pk_id_aplicacion)+1 FROM tbl_aplicaciones";
                 OdbcDataAdapter dataIDAplicacion = new OdbcDataAdapter(sqlIDAplicacion, cn.conectar());
                 return dataIDAplicacion;
-
+                insertarBitacora(idUsuario, "Se selecciono una aplicación", "tbl_aplicaciones");
             }
             catch (Exception ex)
             {
@@ -195,37 +238,67 @@ namespace CapaDatos
         //###################  termina lo que hizo  Karla  Sofia Gómez Tobar #######################
 
         //---------------------------------------------------- Inicio: GABRIELA SUC ---------------------------------------------------
-
-        public int ActualizarUsuario(int id, string nombre, string apellido, string correo, string estado, string pregunta, string respuesta)
+        public bool ModificarUsuario(string idUsuario, string nombre, string apellido, string correo, int estado_usuario, string respuesta)
         {
-            OdbcConnection connection = cn.conectar();
-            string sqlactualizarUsuario = "UPDATE tbl_usuarios SET nombre_usuario = ?, apellido_usuario = ?, email_usuario = ?, estado_usuario = ?, pregunta = ?, respuesta = ? WHERE PK_id_usuario = ?";
-
-            OdbcCommand command = new OdbcCommand(sqlactualizarUsuario, connection);
-
-            // Asignar los parámetros. Usar parámetros para evitar inyección SQL
-            command.Parameters.AddWithValue("@nombre", nombre);
-            command.Parameters.AddWithValue("@apellido", apellido);
-            command.Parameters.AddWithValue("@correo", correo);
-            command.Parameters.AddWithValue("@estado", estado);
-            command.Parameters.AddWithValue("@pregunta", pregunta);
-            command.Parameters.AddWithValue("@respuesta", respuesta);
-            command.Parameters.AddWithValue("@id", id);
-
             try
             {
-                // Ejecutar la consulta de actualización
-                int filasAfectadas = command.ExecuteNonQuery();
-                return filasAfectadas; // Se retorna el número de filas afectadas
+                // Comenzar a construir la consulta SQL
+                string query = "UPDATE Tbl_usuarios SET ";
+
+                // Lista de parámetros a incluir en la consulta
+                List<OdbcParameter> parameters = new List<OdbcParameter>();
+
+                // Agregar solo los campos que no estén vacíos
+                if (!string.IsNullOrEmpty(nombre))
+                {
+                    query += "nombre_usuario = ?, ";
+                    parameters.Add(new OdbcParameter("nombre_usuario", nombre));
+                }
+                if (!string.IsNullOrEmpty(apellido))
+                {
+                    query += "apellido_usuario = ?, ";
+                    parameters.Add(new OdbcParameter("apellido_usuario", apellido));
+                }
+                if (!string.IsNullOrEmpty(correo))
+                {
+                    query += "email_usuario = ?, ";
+                    parameters.Add(new OdbcParameter("email_usuario", correo));
+                }
+                if (!string.IsNullOrEmpty(respuesta))
+                {
+                    query += "respuesta = ?, ";
+                    parameters.Add(new OdbcParameter("respuesta", respuesta));
+                }
+
+                // El estado siempre se modifica (0 o 1)
+                query += "estado_usuario = ? ";
+                parameters.Add(new OdbcParameter("estado_usuario", estado_usuario));
+
+                // Completar la consulta SQL con la condición WHERE
+                query += "WHERE Pk_id_usuario = ?;";
+                parameters.Add(new OdbcParameter("id_usuario", idUsuario));
+
+                // Ejecutar la consulta SQL
+                using (OdbcCommand command = new OdbcCommand(query, cn.conectar()))
+                {
+                    // Agregar los parámetros al comando
+                    foreach (var param in parameters)
+                    {
+                        command.Parameters.Add(param);
+                    }
+
+                    // Ejecutar la consulta
+                    int result = command.ExecuteNonQuery();
+
+                    // Verificar si se modificó algún registro
+                    insertarBitacora(idUsuario, "Se modifico un usuario ", "tbl_usuarios");
+                    return result > 0;
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al actualizar usuario: " + ex.Message);
-                return 0; // En caso de error, se retorna 0
-            }
-            finally
-            {
-                connection.Close();
+                System.Windows.Forms.MessageBox.Show("Error al intentar modificar el registro: " + ex.Message);
+                return false;
             }
         }
 
@@ -289,7 +362,7 @@ namespace CapaDatos
 
             try
             {
-
+                insertarBitacora(idUsuario, "Se inserto el usuario con nombre: " + id, "tbl_usuarios");
                 return datausuarios; // Retorna si la inserción fue exitosa
             }
             catch (Exception ex)
@@ -303,15 +376,16 @@ namespace CapaDatos
         }
 
 
-    //--------------------------------------------------------------- Fin: Marco Monroy ---------------------------------------------------------------
+        //--------------------------------------------------------------- Fin: Marco Monroy ---------------------------------------------------------------
 
 
-    public OdbcDataAdapter insertarclaves(string id, string nombre, string apellido, string clave)
+        public OdbcDataAdapter insertarclaves(string id, string nombre, string apellido, string clave)
         {
             cn.conectar();
             MessageBox.Show("Contraseña Actualizada");
-            string sqlconsulta = "UPDATE tbl_usuario set PK_id_usuario='" + id + "',nombre_usuario='" + apellido + "',apellido_usuarios='" + nombre + "',password_usuario='" + clave + "',estado_usuario='1' where PK_id_usuario='" + id + "'";
+            string sqlconsulta = "UPDATE tbl_usuarios set PK_id_usuario='" + id + "',nombre_usuario='" + apellido + "',apellido_usuarios='" + nombre + "',password_usuario='" + clave + "',estado_usuario='1' where PK_id_usuario='" + id + "'";
             OdbcDataAdapter dataconsulta = new OdbcDataAdapter(sqlconsulta, cn.conectar());
+            insertarBitacora(idUsuario, "Se inserto el usuario con id: " + id, "tbl_usuarios");
             return dataconsulta;
         }
 
@@ -374,27 +448,31 @@ namespace CapaDatos
 
         //---------------------------------------------------- Inicio: GABRIELA SUC ----------------------------------------------------
 
-        public int eliminarusuario(string id)
+        // Método para cambiar el estado del usuario en la base de datos
+        public bool CambiarEstadoUsuario(string idUsuario, int nuevoEstado)
         {
-            string sqleliminar = "DELETE FROM tbl_usuarios WHERE PK_id_usuario = ?";
-            // '?' es un marcador de posición para un parámetro que será reemplazado posteriormente
-            // Este método de parametrización protege contra inyecciones SQL y permite que el valor del parámetro (id) se inserte de manera segura en la consulta
-
-            OdbcCommand cmd = new OdbcCommand(sqleliminar, cn.conectar());
-            cmd.Parameters.AddWithValue("@id", id);
-
-            int filasAfectadas = 0;
-
             try
             {
-                filasAfectadas = cmd.ExecuteNonQuery(); // Ejecutar el comando y devolver el número de filas afectadas
+                // Consulta SQL para actualizar el estado del usuario
+                string query = "UPDATE Tbl_usuarios SET estado_usuario = ? WHERE Pk_id_usuario = ?";
+
+                using (OdbcCommand command = new OdbcCommand(query, cn.conectar()))
+                {
+                    command.Parameters.AddWithValue("estado_usuario", nuevoEstado);
+                    command.Parameters.AddWithValue("id_usuario", idUsuario);
+
+                    int result = command.ExecuteNonQuery();
+
+                    insertarBitacora(idUsuario, "Se desactivousuario ", "tbl_usuarios");
+                    // Verifica si se actualizó algún registro
+                    return result > 0;
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al eliminar usuario: " + ex.Message);
+                MessageBox.Show("Error al cambiar el estado del usuario: " + ex.Message);
+                return false;
             }
-
-            return filasAfectadas; // Devolver el número de filas afectadas
         }
 
         //---------------------------------------------------- Fin: GABRIELA SUC ----------------------------------------------------
@@ -474,7 +552,7 @@ namespace CapaDatos
             {
                 // Ejecutar la consulta de inserción
                 command.ExecuteNonQuery();
-
+                insertarBitacora(idUsuario, "Se buscaron los datos del usuario con id: " + id, "tbl_usuarios");
             }
             catch (Exception ex)
             {
@@ -511,17 +589,17 @@ namespace CapaDatos
                 return datausuarios;
         }
 
-        //###################  lo que hizo Karla  Sofia Gómez Tobar #######################
+        //****************************************Kevin López***************************************************
         public OdbcDataAdapter consultaraplicaciones(string aplicacion)
         {
             cn.conectar();
-            string sqlAplicaciones = "SELECT * FROM tbl_aplicaciones WHERE Pk_id_aplicacion = " + aplicacion;
-            insertarBitacora(idUsuario, "Realizo una consulta a aplicaciones", "tbl_aplicaciones");
+            string sqlAplicaciones = "SELECT Pk_id_aplicacion, nombre_aplicacion FROM Tbl_aplicaciones";
+            insertarBitacora(idUsuario, "Realizo una consulta a aplicaciones", "Tbl_aplicaciones");
             OdbcDataAdapter dataTable = new OdbcDataAdapter(sqlAplicaciones, cn.conectar());
             return dataTable;
         }
 
-        //###################  termina lo que hizo  Karla  Sofia Gómez Tobar #######################
+        //**************************************** FIN Kevin López***************************************************
 
         /*-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
@@ -535,7 +613,7 @@ namespace CapaDatos
                 string sqlIDmodulo = "SELECT MAX(Pk_id_modulo)+1 FROM tbl_modulos";
                 OdbcDataAdapter dataIDmodulo = new OdbcDataAdapter(sqlIDmodulo, cn.conectar());
                 return dataIDmodulo;
-
+                insertarBitacora(idUsuario, "Se mostraron los modulos", "tbl_modulos");
             }
             catch (Exception ex)
             {
@@ -651,15 +729,15 @@ namespace CapaDatos
         // termina
         //------------
 
-
-        public OdbcDataAdapter insertarPermisosPerfilA(string codigoPerfil, string nombreAplicacion, string ingresar, string consulta, string modificar, string eliminar, string imprimir)
+        //****************************************************MODIFICADO POR JOSUE PAZ***********************************************
+        public OdbcDataAdapter insertarPermisosPerfilA(string codigoperfil, string nombreaplicacion, string ingresar, string modificar, string eliminar, string consulta, string imprimir)
         {
             string sCodigoAplicacion = " ";
             string sCodigoPerfil = "";
 
             try
             {
-                OdbcCommand sqlCodigoModulo = new OdbcCommand("SELECT PK_id_aplicacion FROM tbl_aplicacion WHERE nombre_aplicacion = '" + nombreAplicacion + "' ", cn.conectar());
+                OdbcCommand sqlCodigoModulo = new OdbcCommand("SELECT Pk_id_aplicacion FROM Tbl_aplicaciones WHERE nombre_aplicacion = '" + nombreaplicacion + "' ", cn.conectar());
                 OdbcDataReader almacena = sqlCodigoModulo.ExecuteReader();
 
                 while (almacena.Read() == true)
@@ -667,7 +745,7 @@ namespace CapaDatos
                     sCodigoAplicacion = almacena.GetString(0);
                 }
 
-                OdbcCommand sqlCodigoPerfil = new OdbcCommand("SELECT PK_id_perfil FROM tbl_perfil_encabezado WHERE nombre_perfil = '" + codigoPerfil + "' ", cn.conectar());
+                OdbcCommand sqlCodigoPerfil = new OdbcCommand("SELECT Pk_id_perfil FROM Tbl_perfiles WHERE nombre_perfil = '" + codigoperfil + "' ", cn.conectar());
                 OdbcDataReader almacenaPerfil = sqlCodigoPerfil.ExecuteReader();
 
                 while (almacenaPerfil.Read() == true)
@@ -675,9 +753,9 @@ namespace CapaDatos
                     sCodigoPerfil = almacenaPerfil.GetString(0);
                 }
 
-                string sqlInsertarPermisosPerfilApp = "INSERT INTO tbl_perfil_detalle(PK_id_perfil, PK_id_aplicacion, ingresar, consultar, modificar, eliminar, imprimir) VALUES ('" + sCodigoPerfil + "', '" + sCodigoAplicacion + "', '" + ingresar + "', '" + consulta + "', '" + modificar + "', '" + eliminar + "', '" + imprimir + "');";
+                string sqlInsertarPermisosPerfilApp = "INSERT INTO Tbl_permisos_aplicacion_perfil(Fk_id_perfil, Fk_id_aplicacion, guardar_permiso, modificar_permiso, eliminar_permiso, buscar_permiso, imprimir_permiso) VALUES ('" + sCodigoPerfil + "', '" + sCodigoAplicacion + "', '" + ingresar + "', '" + modificar + "', '" + eliminar + "', '" + consulta + "', '" + imprimir + "');";
                 OdbcDataAdapter dataPermisosPerfilAplicacion = new OdbcDataAdapter(sqlInsertarPermisosPerfilApp, cn.conectar());
-                insertarBitacora(idUsuario, "Asigno permiso: " + nombreAplicacion + " a perfil: " + codigoPerfil, "tbl_usuario_aplicacion");
+                insertarBitacora(idUsuario, "Asigno permiso: " + nombreaplicacion + " a perfil: " + codigoperfil, "Tbl_permisos_aplicacion_perfil");
 
 
                 almacena.Close();
@@ -694,6 +772,38 @@ namespace CapaDatos
             }
 
         }
+
+        //****************************ACA TERMINA******************************************************************
+
+
+        //--------------------------------- Emerzon Garcia -----------------------------------------------------------
+
+        public OdbcDataAdapter mostrarPerfilesYPermisos(string TablaPerfilUsuario)
+        {
+            try
+            {
+                // Consulta para obtener perfiles y permisos junto con el nombre de la aplicación
+                string sql = @"
+            SELECT p.Fk_id_perfil, a.nombre_aplicacion, 
+                   p.guardar_permiso, p.buscar_permiso, p.modificar_permiso, 
+                   p.eliminar_permiso, p.imprimir_permiso
+            FROM Tbl_permisos_aplicacion_perfil p
+            JOIN Tbl_aplicaciones a ON p.Fk_id_aplicacion = a.Pk_id_aplicacion
+            JOIN Tbl_perfiles pf ON p.Fk_id_perfil = pf.Pk_id_perfil;
+        ";
+
+                OdbcDataAdapter dataTable = new OdbcDataAdapter(sql, cn.conectar());
+                return dataTable;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al ejecutar la consulta: " + ex.Message);
+                return null;
+            }
+        }
+
+        //---------------------------------------------------------------------------------------------------------------
+
 
 
         //------------Para formulario Mantenimiento Modulos---------
@@ -739,7 +849,7 @@ namespace CapaDatos
             try
             {
                 ds = new DataSet();
-                dat = new OdbcDataAdapter("SELECT PK_id_bitacora as Id, FK_id_usuario as Usuario, fecha_bitacora, hora_bitacora, host_bitacora, ip_bitacora, accion_bitacora from tbl_bitacora"
+                dat = new OdbcDataAdapter("SELECT PK_id_bitacora as Id, FK_id_usuario as Usuario, fecha_bitacora, hora_bitacora, host_bitacora, ip_bitacora, accion_bitacora, tabla from tbl_bitacora"
                 , cn.conectar());
                 dat.Fill(ds);
             }
@@ -749,9 +859,36 @@ namespace CapaDatos
             }
             catch (ArgumentOutOfRangeException ex)
             {
-
+                MessageBox.Show(ex.Message);
             }
+            return ds;
+        }
 
+        // Nuevo método para búsqueda filtrada
+        public DataSet consultarBitacoraFiltrada(string campo, string valor)
+        {
+            OdbcDataAdapter dat = null;
+            DataSet ds = null;
+            try
+            {
+                ds = new DataSet();
+                string query = $"SELECT PK_id_bitacora as Id, FK_id_usuario as Usuario, fecha_bitacora, hora_bitacora, host_bitacora, ip_bitacora, accion_bitacora, tabla FROM tbl_bitacora WHERE {campo} LIKE ?";
+
+                using (OdbcConnection conexion = cn.conectar())
+                {
+                    dat = new OdbcDataAdapter(query, conexion);
+                    dat.SelectCommand.Parameters.AddWithValue("?", $"%{valor}%");
+                    dat.Fill(ds);
+                }
+            }
+            catch (OdbcException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (ArgumentOutOfRangeException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
             return ds;
         }
 
@@ -764,7 +901,7 @@ namespace CapaDatos
 
                 using (OdbcConnection conexion = cn.conectar())
                 {
-                    string obtenerIdUsuarioQuery = "SELECT Pk_id_usuario FROM Tbl_usuarios WHERE nombre_usuario = ?";
+                    string obtenerIdUsuarioQuery = "SELECT Pk_id_usuario FROM Tbl_usuarios WHERE username_usuario = ?";
                     OdbcCommand obtenerIdUsuarioCmd = new OdbcCommand(obtenerIdUsuarioQuery, conexion);
                     obtenerIdUsuarioCmd.Parameters.AddWithValue("?", idUsuario);
 
@@ -776,8 +913,8 @@ namespace CapaDatos
                         string usuario = resultado.ToString();
 
                         string consulta = @"INSERT INTO tbl_bitacora 
-                                (Fk_id_usuario, fecha_bitacora, hora_bitacora, host_bitacora, ip_bitacora, accion_bitacora) 
-                                VALUES (?, ?, ?, ?, ?, ?)";
+                                (Fk_id_usuario, fecha_bitacora, hora_bitacora, host_bitacora, ip_bitacora, accion_bitacora, tabla) 
+                                VALUES (?, ?, ?, ?, ?, ?, ?)";
 
                         using (OdbcCommand cmd = new OdbcCommand(consulta, conexion))
                         {
@@ -787,6 +924,7 @@ namespace CapaDatos
                             cmd.Parameters.AddWithValue("?", nombreHost);
                             cmd.Parameters.AddWithValue("?", ipLocal);
                             cmd.Parameters.AddWithValue("?", accion);
+                            cmd.Parameters.AddWithValue("?", tabla);
 
                             cmd.ExecuteNonQuery();
                         }
@@ -797,8 +935,7 @@ namespace CapaDatos
             {
                 // Registrar la excepción o manejarla apropiadamente
                 MessageBox.Show("Error al insertar en la bitácora: " + ex.Message);
-                // throw;
-            }
+            }
         }
         private string ObtenerDireccionIPLocal()
         {
@@ -813,7 +950,7 @@ namespace CapaDatos
             return "No se pudo determinar la dirección IP local";
         }
 
-        //Fin
+        //Fin #########################3
 
 
         public bool consultarPermisos(string idUsuario, string idAplicacion, int tipoPermiso)
@@ -1033,5 +1170,424 @@ namespace CapaDatos
             }
         }
         //########################FINALIZA CÓDIGO BOTÓN ELIMINAR ALYSON RODRIGUEZ
+
+
+        /*******************Ismar Leonel Cortez Sanchez  -0901-21-560*******************************************************/
+        /****************************Combo box inteligente******************************************************************/
+
+
+        public string[] llenarCmb(string tabla, string campo1, string campo2)
+        {
+            conexion cn = new conexion();
+            string[] Campos = new string[300];
+            int i = 0;
+
+            string sql = "SELECT DISTINCT " + campo1 + "," + campo2 + " FROM " + tabla;
+
+            /* La sentencia consulta el modelo de la base de datos con cada campo */
+            try
+            {
+                // Muestra la consulta SQL antes de ejecutarla
+                Console.Write(sql);
+                MessageBox.Show(sql);
+
+                OdbcCommand command = new OdbcCommand(sql, cn.conectar());
+                OdbcDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    Campos[i] = reader.GetValue(0).ToString() + "-" + reader.GetValue(1).ToString();
+                    i++;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + "\nError en asignarCombo, revise los parámetros \n -" + tabla + "\n -" + campo1);
+            }
+
+            return Campos;
+        }
+
+
+        public DataTable obtener(string tabla, string campo1, string campo2)
+        {
+            conexion cn = new conexion();
+            string sql = "SELECT DISTINCT " + campo1 + "," + campo2 + " FROM " + tabla;
+
+            OdbcCommand command = new OdbcCommand(sql, cn.conectar());
+            OdbcDataAdapter adaptador = new OdbcDataAdapter(command);
+            DataTable dt = new DataTable();
+            adaptador.Fill(dt);
+
+
+            return dt;
+        }
+        /****************************************************************************************************************/
+
+        /*******************Ismar Leonel Cortez Sanchez  -0901-21-560*******************************************************/
+        /****************************Combo box inteligente 2******************************************************************/
+
+
+        public string[] llenarCmb2(string tabla, string campo1, string campo2)
+        {
+            conexion cn = new conexion();
+            string[] Campos = new string[300];
+            int i = 0;
+
+            string sql = "SELECT DISTINCT " + campo1 + "," + campo2 + " FROM " + tabla;
+
+            /* La sentencia consulta el modelo de la base de datos con cada campo */
+            try
+            {
+                // Muestra la consulta SQL antes de ejecutarla
+                Console.Write(sql);
+                MessageBox.Show(sql);
+
+                OdbcCommand command = new OdbcCommand(sql, cn.conectar());
+                OdbcDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    Campos[i] = reader.GetValue(0).ToString() + "-" + reader.GetValue(1).ToString();
+                    i++;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + "\nError en asignarCombo, revise los parámetros \n -" + tabla + "\n -" + campo1);
+            }
+
+            return Campos;
+        }
+
+
+        public DataTable obtener2(string tabla, string campo1, string campo2)
+        {
+            conexion cn = new conexion();
+            string sql = "SELECT DISTINCT " + campo1 + "," + campo2 + " FROM " + tabla;
+
+            OdbcCommand command = new OdbcCommand(sql, cn.conectar());
+            OdbcDataAdapter adaptador = new OdbcDataAdapter(command);
+            DataTable dt = new DataTable();
+            adaptador.Fill(dt);
+
+
+            return dt;
+        }
+        /****************************************************************************************************************/
+        //******************************************KATERYN DE LEON***************************
+        //BUSCAR
+        public OdbcDataAdapter consultarAsignacion_moduloAplicaciones()
+        {
+            cn.conectar();
+            string sqlUsuarios = " SELECT  a.Fk_id_modulos AS ModuloID,   m.nombre_modulo AS NombreModulo, a.Fk_id_aplicacion AS AplicacionID,  ap.nombre_aplicacion AS NombreAplicacion  FROM Tbl_asignacion_modulo_aplicacion a  JOIN Tbl_modulos m ON a.Fk_id_modulos = m.Pk_id_modulos JOIN Tbl_aplicaciones ap ON a.Fk_id_aplicacion = ap.Pk_id_aplicacion";
+            OdbcDataAdapter dataUsuarios = new OdbcDataAdapter(sqlUsuarios, cn.conectar());
+            insertarBitacora(idUsuario, "Realizo una consulta  a Asignacion modulo aplicaciones", "tbl_asignacion_modulo_aplicacion");
+            return dataUsuarios;
+
+        }
+
+        //*************************************KATERYN DE LEON*********************************************************
+        // AGREGAR
+        public int ObtenerIdModulo(string nombreModulo)
+        {
+            using (OdbcConnection connection = cn.conectar())
+            {
+                if (connection == null) return -1;
+
+                try
+                {
+                    string query = "SELECT Pk_id_modulos FROM Tbl_modulos WHERE nombre_modulo = ?";
+                    using (OdbcCommand command = new OdbcCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@nombre_modulo", nombreModulo);
+                        object result = command.ExecuteScalar();
+
+                        if (result != null)
+                        {
+                            return Convert.ToInt32(result);
+                        }
+                        else
+                        {
+                            // Si no existe, inserta el módulo
+                            string insertQuery = "INSERT INTO Tbl_modulos (nombre_modulo, descripcion_modulo) VALUES (?, ?)";
+                            using (OdbcCommand insertCommand = new OdbcCommand(insertQuery, connection))
+                            {
+                                insertCommand.Parameters.AddWithValue("@nombre_modulo", nombreModulo);
+                                insertCommand.Parameters.AddWithValue("@descripcion_modulo", "Descripción del módulo"); // Ajusta según sea necesario
+                                insertCommand.ExecuteNonQuery();
+                            }
+
+                            // Obtener el ID del nuevo módulo
+                            string idQuery = "SELECT LAST_INSERT_ID()";
+                            using (OdbcCommand idCommand = new OdbcCommand(idQuery, connection))
+                            {
+                                return Convert.ToInt32(idCommand.ExecuteScalar());
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error al obtener o insertar módulo: " + ex.Message);
+                    return -1;
+                }
+            }
+        }
+        //********************************************KATERYN DE LEON*********************************************************
+        // AGREGAR
+        public int ObtenerIdAplicacion(string nombreAplicacion)
+        {
+            using (OdbcConnection connection = cn.conectar())
+            {
+                if (connection == null) return -1;
+
+                try
+                {
+                    string query = "SELECT Pk_id_aplicacion FROM Tbl_aplicaciones WHERE nombre_aplicacion = ?";
+                    using (OdbcCommand command = new OdbcCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@nombre_aplicacion", nombreAplicacion);
+                        object result = command.ExecuteScalar();
+
+                        if (result != null)
+                        {
+                            return Convert.ToInt32(result);
+                        }
+                        else
+                        {
+                            // Si no existe, inserta la aplicación
+                            string insertQuery = "INSERT INTO Tbl_aplicaciones (nombre_aplicacion, descripcion_aplicacion) VALUES (?, ?)";
+                            using (OdbcCommand insertCommand = new OdbcCommand(insertQuery, connection))
+                            {
+                                insertCommand.Parameters.AddWithValue("@nombre_aplicacion", nombreAplicacion);
+                                insertCommand.Parameters.AddWithValue("@descripcion_aplicacion", "Descripción de la aplicación"); // Ajusta según sea necesario
+                                insertCommand.ExecuteNonQuery();
+                            }
+
+                            // Obtener el ID de la nueva aplicación
+                            string idQuery = "SELECT LAST_INSERT_ID()";
+                            using (OdbcCommand idCommand = new OdbcCommand(idQuery, connection))
+                            {
+                                return Convert.ToInt32(idCommand.ExecuteScalar());
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error al obtener o insertar aplicación: " + ex.Message);
+                    return -1;
+                }
+            }
+        }
+        //*************************************************KATERYN DE LEON*********************************************************
+        // AGREGAR
+        public bool InsertarAsignacionModuloAplicacion(int idModulo, int idAplicacion)
+        {
+            using (OdbcConnection connection = cn.conectar())
+            {
+                if (connection == null) return false;
+
+                try
+                {
+                    string query = "INSERT INTO Tbl_asignacion_modulo_aplicacion (Fk_id_modulos, Fk_id_aplicacion) VALUES (?, ?)";
+                    using (OdbcCommand command = new OdbcCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@Fk_id_modulos", idModulo);
+                        command.Parameters.AddWithValue("@Fk_id_aplicacion", idAplicacion);
+
+                        int resultado = command.ExecuteNonQuery();
+                        insertarBitacora(idUsuario, "Realizo un ingreso a aplicacion-modulos", "tbl_asignacion_modulo_aplicacion");
+                        return resultado > 0; // Devuelve true si la inserción fue exitosa
+
+
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error al insertar asignación: " + ex.Message);
+                    return false;
+                }
+            }
+        }
+        //***************************************************************************************************/
+
+        //###################  empieza lo que hizo Karla  Sofia Gómez Tobar #######################
+        // combo usuario y perfil
+
+        public string[] llenarCmbUsuario(string tabla, string campo1, string campo2)
+        {
+            conexion cn = new conexion();
+            string[] Campos = new string[300];
+            int i = 0;
+
+            string sql = "SELECT DISTINCT " + campo1 + "," + campo2 + " FROM " + tabla;
+
+            /* La sentencia consulta el modelo de la base de datos con cada campo */
+            try
+            {
+                // Muestra la consulta SQL antes de ejecutarla
+                Console.Write(sql);
+                MessageBox.Show(sql);
+
+                OdbcCommand command = new OdbcCommand(sql, cn.conectar());
+                OdbcDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    Campos[i] = reader.GetValue(0).ToString() + "-" + reader.GetValue(1).ToString();
+                    i++;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + "\nError en asignarCombo, revise los parámetros \n -" + tabla + "\n -" + campo1);
+            }
+
+            return Campos;
+        }
+
+
+        public DataTable obtenerUsuario(string tabla, string campo1, string campo2)
+        {
+            conexion cn = new conexion();
+            string sql = "SELECT DISTINCT " + campo1 + "," + campo2 + " FROM " + tabla;
+
+            OdbcCommand command = new OdbcCommand(sql, cn.conectar());
+            OdbcDataAdapter adaptador = new OdbcDataAdapter(command);
+            DataTable dt = new DataTable();
+            adaptador.Fill(dt);
+
+
+            return dt;
+        }
+        /****************************************************************************************************************/
+
+        public string[] llenarCmbPerfiles(string tabla, string campo1, string campo2)
+        {
+            conexion cn = new conexion();
+            string[] Campos = new string[300];
+            int i = 0;
+
+            string sql = "SELECT DISTINCT " + campo1 + "," + campo2 + " FROM " + tabla;
+
+
+            try
+            {
+
+                Console.Write(sql);
+                MessageBox.Show(sql);
+
+                OdbcCommand command = new OdbcCommand(sql, cn.conectar());
+                OdbcDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    Campos[i] = reader.GetValue(0).ToString() + "-" + reader.GetValue(1).ToString();
+                    i++;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + "\nError en asignarCombo, revise los parámetros \n -" + tabla + "\n -" + campo1);
+            }
+
+            return Campos;
+        }
+
+
+        public DataTable obtenerPerfiles(string tabla, string campo1, string campo2)
+        {
+            conexion cn = new conexion();
+            string sql = "SELECT DISTINCT " + campo1 + "," + campo2 + " FROM " + tabla;
+
+            OdbcCommand command = new OdbcCommand(sql, cn.conectar());
+            OdbcDataAdapter adaptador = new OdbcDataAdapter(command);
+            DataTable dt = new DataTable();
+            adaptador.Fill(dt);
+
+
+            return dt;
+        }
+
+        // ////////////////////////////////////////////////////////////////
+
+
+        public string[] llenarCboAsigUP(string tabla, string campo1)
+        {
+            conexion cn = new conexion();
+            string[] Campos = new string[300];
+            int i = 0;
+
+            string sql = "SELECT DISTINCT " + campo1 + " FROM " + tabla;
+
+
+            try
+            {
+
+                Console.Write(sql);
+                MessageBox.Show(sql);
+
+                OdbcCommand command = new OdbcCommand(sql, cn.conectar());
+                OdbcDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    Campos[i] = reader.GetValue(0).ToString();
+                    i++;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + "\nError en asignarCombo, revise los parámetros \n -" + tabla + "\n -" + campo1);
+            }
+
+            return Campos;
+        }
+
+
+        public DataTable obtenerAsigUP(string tabla, string campo1)
+        {
+            conexion cn = new conexion();
+            string sql = "SELECT DISTINCT " + campo1 + " FROM " + tabla;
+
+            OdbcCommand command = new OdbcCommand(sql, cn.conectar());
+            OdbcDataAdapter adaptador = new OdbcDataAdapter(command);
+            DataTable dt = new DataTable();
+            adaptador.Fill(dt);
+
+
+            return dt;
+        }
+        //###################  termina lo que hizo  Karla  Sofia Gómez Tobar #######################
+
+        //*********************************KEVIN LOPEZ*********************************************
+        public OdbcDataAdapter consultarAplicacionesP(string nombreModulo)
+        {
+            cn.conectar();
+
+            try
+            {
+                string sqlAplicaciones = @"
+        SELECT a.Pk_id_aplicacion, a.nombre_aplicacion 
+        FROM tbl_aplicaciones a
+        JOIN tbl_asignacion_modulo_aplicacion ama ON a.pk_id_aplicacion = ama.fk_id_aplicacion
+        JOIN tbl_modulos m ON m.pk_id_modulos = ama.fk_id_modulos
+        WHERE m.nombre_modulo = ?";
+
+                OdbcDataAdapter dataAplicaciones = new OdbcDataAdapter(sqlAplicaciones, cn.conectar());
+                dataAplicaciones.SelectCommand.Parameters.AddWithValue("?", nombreModulo);
+
+                // Registro de la bitacora
+                insertarBitacora(idUsuario, "Realizó una consulta a aplicaciones", "tbl_aplicacion");
+
+                return dataAplicaciones;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return null;
+            }
+        }
+
+//*********************************FIN KEVIN LOPEZ*********************************************
+
+
     }
 }

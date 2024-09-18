@@ -70,6 +70,7 @@ namespace ejecucion
             this.Controls.Add(this.cbTablas);
             this.Name = "principal";
             this.Text = "principal";
+            this.Load += new System.EventHandler(this.principal_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
