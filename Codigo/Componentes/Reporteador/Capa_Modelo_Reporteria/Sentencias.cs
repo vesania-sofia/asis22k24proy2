@@ -11,11 +11,11 @@ namespace Capa_Modelo_Reporteria
 {
     public class Sentencias
     {
-        string tabla_reporteria = "tbl_aplicaciones";
+        string tabla_reporteria = "tbl_regreporteria";
         Conexion conexion = new Conexion();
         public OdbcDataAdapter DisplayReportes()// metodo que obtiene el contenido de la tabla reportes
         {
-            string sql = "SELECT idregistro, ruta, nombre_archivo, aplicacion, estado FROM " + tabla_reporteria + " WHERE idregistro IS NOT NULL AND idregistro != '';";
+            string sql = "SELECT idregistro, ruta, nombre_archivo, aplicacion, estado, fk_id_modulos FROM " + tabla_reporteria + " WHERE idregistro IS NOT NULL AND idregistro != '';";
             OdbcDataAdapter dataTable = new OdbcDataAdapter();
             try
             {
@@ -28,13 +28,13 @@ namespace Capa_Modelo_Reporteria
             }
             return dataTable;
         }
-        public void registrarReporte(string id_reporte, string ruta, string nombre_archivo, string aplicacion, string estado)
+        public void registrarReporte(string id_reporte, string ruta, string nombre_archivo, string aplicacion, string estado, string modulo)
         {
             //la variable campos es una variable plana donde se ponen los nombres de las columnas para guardar el reporte
             try
             {
-                string campos = "idregistro, ruta, nombre_archivo, aplicacion, estado";
-                string sql = "INSERT INTO " + tabla_reporteria + " (" + campos + ") VALUES ('" + id_reporte + "', '" + ruta + "', '" + nombre_archivo + "', '" + aplicacion + "', '" + estado + "');";
+                string campos = "idregistro, ruta, nombre_archivo, aplicacion, estado, fk_id_aplicacion, fk_id_modulos";
+                string sql = "INSERT INTO " + tabla_reporteria + " (" + campos + ") VALUES ('" + id_reporte + "', '" + ruta + "', '" + nombre_archivo + "', '" + aplicacion + "', '" + estado + "', '" + aplicacion + "', '" + modulo + "');";
                 OdbcCommand cmd = new OdbcCommand(sql, conexion.conexion());
                 cmd.ExecuteNonQuery();
             }
@@ -57,13 +57,13 @@ namespace Capa_Modelo_Reporteria
                 Console.WriteLine(ex.Message.ToString() + " \nNo se puede eliminar el registro " + id_reporte + " en la tabla " + tabla_reporteria);
             }
         }
-        public void ModificarReporte(string ruta, string nombre_archivo, string aplicacion, string estado, string id_reporte)
+        public void ModificarReporte(string ruta, string nombre_archivo, string aplicacion, string estado, string id_reporte, string modulo)
         {
             //aqui estamos haciendo la comprobacion de que si tuvo una conexion con la base de datos
             try
             {
                 //aqui con los datos recibidos le mandamos la instruccion a la base de datos, para poderlo modificar lo buscamos por id
-                string sql = "UPDATE " + tabla_reporteria + " SET " + "ruta = '" + ruta + "'," + " nombre_archivo = '" + nombre_archivo + "'," + " aplicacion = '" + aplicacion + "'," + " estado = '" + estado + "' " + " WHERE (idregistro = '" + id_reporte + "');";
+                string sql = "UPDATE " + tabla_reporteria + " SET " + "ruta = '" + ruta + "'," + " nombre_archivo = '" + nombre_archivo + "'," + " aplicacion = '" + aplicacion + "'," + " estado = '" + estado + "'," + " fk_id_aplicacion = '" + aplicacion + "'," + " fk_id_modulos = '" + modulo + "' " + " WHERE (idregistro = '" + id_reporte + "');";
                 OdbcCommand consulta = new OdbcCommand(sql, conexion.conexion());
                 consulta.ExecuteNonQuery();
                 MessageBox.Show("Modificado");
@@ -79,6 +79,28 @@ namespace Capa_Modelo_Reporteria
 
             OdbcDataAdapter dataTable = new OdbcDataAdapter(sql, conexion.conexion());
             return dataTable;
+        }
+        public string queryRutastring(string query)
+        {
+            string sql = "SELECT ruta FROM " + tabla_reporteria + " WHERE aplicacion LIKE '%" + query + "%';";
+            string archivoruta;
+
+            OdbcCommand cmd = new OdbcCommand(sql, conexion.conexion());
+
+            using (OdbcDataReader reader = cmd.ExecuteReader())
+            {
+                if (reader.Read())
+                {
+                    string ruta = reader["ruta"].ToString();
+                    archivoruta = ruta;
+                    return archivoruta;
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo hallar el nombre del archivo");
+                    return "0";
+                }
+            }
         }
         public List<string> getAplicaciones()
         {
@@ -106,6 +128,34 @@ namespace Capa_Modelo_Reporteria
             }
 
             return applicationCodes;
+        }
+
+        public List<string> getModulos()
+        {
+            string query = "SELECT pk_id_modulos, estado_modulo FROM tbl_modulos;";
+            List<string> moduleCodes = new List<string>();
+
+            try
+            {
+                OdbcDataAdapter dataTable = new OdbcDataAdapter(query, conexion.conexion());
+                DataTable table = new DataTable();
+                dataTable.Fill(table);
+
+                foreach (DataRow row in table.Rows)
+                {
+                    if (row["estado_modulo"].ToString().Equals("1"))
+                    {
+                        string codigoAplicacion = row["pk_id_modulos"].ToString();
+                        moduleCodes.Add(codigoAplicacion);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message.ToString() + " \nNo se pudo consultar la tabla " + tabla_reporteria);
+            }
+
+            return moduleCodes;
         }
         public int getMaxIdReport()
         {
