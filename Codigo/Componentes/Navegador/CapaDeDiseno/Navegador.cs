@@ -56,8 +56,8 @@ namespace CapaDeDiseno
         string idUsuario = "";
         string idAplicacion = "";
         //las siguientes dos variables son para el método botonesYPermisos();
-        //string userActivo = ""; //1
-        //string aplActivo = "";  //2
+        string userActivo = ""; //1
+        string aplActivo = "";  //2
         string idyuda;
         string AsRuta;
         string AsIndice;
@@ -66,12 +66,15 @@ namespace CapaDeDiseno
         Font fuente = new Font("Century Gothic", 13.0f, FontStyle.Regular, GraphicsUnit.Pixel); //objeto para definir el tipo y tamaño de fuente de los labels
         ToolTip ayuda_tp = new ToolTip();
         
-        
+
+
 
         public Navegador()
         {
             InitializeComponent();
             limpiarListaItems();
+            userActivo = idUsuario;
+            aplActivo = idAplicacion;
             //Configuración del ToolTip
             ayuda_tp.IsBalloon = true;
             ayuda_tp.AutoPopDelay = 5000; // Mantener el ToolTip visible por 5 segundos
@@ -98,8 +101,9 @@ namespace CapaDeDiseno
             ayuda_tp.SetToolTip(Btn_Imprimir, "Mostrar un Reporte");
             ayuda_tp.SetToolTip(btn_Reportes_Principal, "Mostrar un Reporte");
 
-            Btn_Imprimir.Enabled = true;
-            Btn_Consultar.Enabled = true;
+            //Btn_Imprimir.Enabled = true;
+            //Btn_Consultar.Enabled = true;
+           // botonesYPermisos();
         }
         private void Navegador_Load(object sender, EventArgs e)
         {
@@ -137,12 +141,13 @@ namespace CapaDeDiseno
 								colorTitulo();
 								lblTabla.ForeColor = Cfuente;
                                 deshabilitarcampos_y_botones();
-                                
-                                Btn_Modificar.Enabled = true;
-                                Btn_Eliminar.Enabled = true;
+
+                                // Btn_Modificar.Enabled = true;
+                                // Btn_Eliminar.Enabled = true;
 
                                 //habilitar y deshabilitar según Usuario FUNCION SOLO PARA INICIO                                                                                               
-                                //botonesYPermisosInicial(userActivo, aplActivo);
+                                // botonesYPermisosInicial(userActivo, aplActivo);
+                                //botonesYPermisos();
                                 //registros();
                                 if (logic.TestRegistros(tabla) > 0)
                                 {
@@ -252,6 +257,7 @@ namespace CapaDeDiseno
             }
             //botonesYPermisosInicial(userActivo, aplActivo);
             //registros();
+           //habilitarallbotones();
         }
 
         //-----------------------------------------------Funciones-----------------------------------------------//
@@ -1169,14 +1175,15 @@ namespace CapaDeDiseno
             }
 
             // Habilitar y deshabilitar botones según usuario
+
+            /* Btn_Ingresar.Enabled = false;
+             Btn_Guardar.Enabled = true;
+             Btn_Modificar.Enabled = false;
+             Btn_Eliminar.Enabled = false;
+             Btn_Cancelar.Enabled = true;
+            Btn_Consultar.Enabled = false;
+             Btn_Refrescar.Enabled = false;*/
             botonesYPermisos();
-            Btn_Ingresar.Enabled = false;
-            Btn_Guardar.Enabled = true;
-            Btn_Modificar.Enabled = false;
-            Btn_Eliminar.Enabled = false;
-            Btn_Cancelar.Enabled = true;
-           // Btn_Consultar.Enabled = false;
-            Btn_Refrescar.Enabled = false;
         }
 
 
@@ -1268,11 +1275,6 @@ namespace CapaDeDiseno
                 // Habilitar y deshabilitar botones según el usuario
                 botonesYPermisos();
 
-                Btn_Ingresar.Enabled = false;
-                Btn_Eliminar.Enabled = false;
-                Btn_Modificar.Enabled = false;
-               // Btn_Consultar.Enabled = false;
-                Btn_Refrescar.Enabled = false;
             }
             catch (Exception ex)
             {
@@ -1524,7 +1526,7 @@ namespace CapaDeDiseno
 			}
 			
             //habilitar y deshabilitar según Usuario
-           // botonesYPermisos();
+           botonesYPermisos();
         }
 
         private void Btn_Refrescar_Click(object sender, EventArgs e)
@@ -1845,6 +1847,7 @@ namespace CapaDeDiseno
         private void Btn_Ayuda_Click(object sender, EventArgs e)
         {                    
             Help.ShowHelp(this, AsRuta, AsIndice);//Abre el menu de ayuda HTML            
+            botonesYPermisos();        
         }
 
         private void Btn_Salir_Click(object sender, EventArgs e)
@@ -2149,17 +2152,17 @@ namespace CapaDeDiseno
 
                     // Deshabilitar campos y botones
                     deshabilitarcampos_y_botones();
-
+                    botonesYPermisos();
                     // Habilitar/deshabilitar botones según sea necesario
-                    Btn_Guardar.Enabled = false;
+                    /*Btn_Guardar.Enabled = false;
                     Btn_Eliminar.Enabled = true;
                     Btn_Cancelar.Enabled = false;
                     Btn_Modificar.Enabled = true;
                     Btn_Ingresar.Enabled = true;
-                    Btn_Refrescar.Enabled = true;
+                    Btn_Refrescar.Enabled = true;*/
 
                     // Configurar permisos según el usuario
-                    botonesYPermisos();
+                    
                 }
                 else
                 {
@@ -2222,6 +2225,46 @@ namespace CapaDeDiseno
 
         }
 
+<<<<<<< HEAD
+=======
+        /*
+               try
+               {
+                   sentencia sen = new sentencia();                                        
+                   if (sen.consultarPermisos(idUsuario, idAplicacion, 1) == true)
+                   {
+                       Btn_Ingresar.Enabled = true;
+                   }
+                   else
+                   {
+                       Btn_Ingresar.Enabled = false;
+                   }
+               }
+               catch(Exception ex)
+               {
+                   MessageBox.Show("Error en el Void Registros. Favor llamar Administrador. Error: " + ex);
+               } 
+           if (logic.TestRegistros(tabla)<=0)
+           {                
+               Btn_Anterior.Enabled = false;
+               Btn_Siguiente.Enabled = false;
+               Btn_FlechaInicio.Enabled = false;
+               Btn_FlechaFin.Enabled = false;
+               Btn_Ingresar.Enabled = false;
+               Btn_Modificar.Enabled = false;
+               Btn_Eliminar.Enabled = false; 
+           }
+           else
+           {
+               Btn_Anterior.Enabled = true;
+               Btn_Siguiente.Enabled = true;
+               Btn_FlechaInicio.Enabled = true;
+               Btn_FlechaFin.Enabled = true;
+               Btn_Modificar.Enabled = true;
+               Btn_Eliminar.Enabled = true;                
+           } */
+
+>>>>>>> 7453dffb9a1fd864c63b5a1642661cebc9141aab
         public void botonesYPermisos()
         {
             try
@@ -2231,7 +2274,14 @@ namespace CapaDeDiseno
 
                 for (int i = 0; i < permisosText.Length; i++) // Cambié i a 0
                 {
+<<<<<<< HEAD
                     bool tienePermiso = sn.consultarPermisos("2", "1000", i + 1);
+=======
+                    string idUsuario1 = logic.ObtenerIdUsuario(idUsuario);
+                    MessageBox.Show("el usuario es: " +idUsuario1+" "+idAplicacion);
+                    sentencia sen = new sentencia();
+                    bool tienePermiso = sen.consultarPermisos(idUsuario1, idAplicacion, i + 1);
+>>>>>>> 7453dffb9a1fd864c63b5a1642661cebc9141aab
 
                     if (botones[i] != null)
                     {
@@ -2255,12 +2305,16 @@ namespace CapaDeDiseno
 
         }
 
-        public void botonesYPermisosInicial(string userActivo, string appActivo)
+      /*  public void botonesYPermisosInicial(string userActivo, string appActivo)
         {
             try
             {
-                if (logic.TestRegistros(tabla) <= 0)
+                string[] permisosText = { "INGRESAR", "BUSCAR", "MODIFICAR", "ELIMINAR", "IMPRIMIR" };
+                Button[] botones = { Btn_Ingresar, Btn_Consultar, Btn_Modificar, Btn_Eliminar, Btn_Imprimir };
+
+                for (int i = 0; i < permisosText.Length; i++) // Cambié i a 0
                 {
+<<<<<<< HEAD
                     Btn_Ingresar.Enabled = false;
                     Btn_Modificar.Enabled = false;
                     Btn_Guardar.Enabled = false;
@@ -2275,20 +2329,23 @@ namespace CapaDeDiseno
                     Btn_FlechaFin.Enabled = false;
                     MessageBox.Show("Tabla Vacía! Debe ingresar un registro!");
                    try
+=======
+                    CapaDatos.sentencia sen = new CapaDatos.sentencia();
+                    bool tienePermiso = sen.consultarPermisos(idUsuario, idAplicacion, i + 1);
+
+                    if (botones[i] != null)
+>>>>>>> 7453dffb9a1fd864c63b5a1642661cebc9141aab
                     {
-                        sentencia sent = new sentencia();
-                        if (sent.consultarPermisos(userActivo, appActivo, 1) == true)
+                        botones[i].Enabled = tienePermiso;
+
+                        if (botones[i].Enabled)
                         {
-                            MessageBox.Show("Tabla Vacía! SI puede INGRESAR");
-                            Btn_Ingresar.Enabled = true;
-                        }
-                        else
-                        {
-                            MessageBox.Show("Tabla Vacía! NO puede INGRESAR");
+                            MessageBox.Show("Se permitió el botón " + permisosText[i]);
                         }
                     }
-                    catch (Exception exx)
+                    else
                     {
+<<<<<<< HEAD
                         MessageBox.Show("Estamos en Tabla Vacía! Determinanos si el usuario Activo puede ingresar! ERROR: " + exx);
                     }
                 }
@@ -2347,15 +2404,18 @@ namespace CapaDeDiseno
                     catch (Exception ex)
                     {
                         MessageBox.Show("Surgió el siguiente problema: " + ex);
+=======
+                        MessageBox.Show("No se encontró el botón " + permisosText[i]);
+>>>>>>> 7453dffb9a1fd864c63b5a1642661cebc9141aab
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error General en Botones y Permisos Inicial. ERROR: " + ex);
+                MessageBox.Show("Error al configurar los botones y permisos: " + ex.Message);
             }
 
-        }
+        }*/
 
         private void Btn_Ayuda_Click_1(object sender, EventArgs e)
         {
