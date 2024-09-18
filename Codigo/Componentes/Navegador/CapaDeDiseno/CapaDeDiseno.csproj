@@ -41,8 +41,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Reporteador\Capa_Controlador_Reporteria\bin\Debug\Capa_Controlador_Reporteria.dll</HintPath>
     </Reference>
-    <Reference Include="Capa_Vista_Consulta, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Capa_Vista_Consulta">
       <HintPath>..\..\Consultas\Capa_Vista_Consulta\bin\Debug\Capa_Vista_Consulta.dll</HintPath>
     </Reference>
     <Reference Include="Capa_Vista_Reporteria, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
