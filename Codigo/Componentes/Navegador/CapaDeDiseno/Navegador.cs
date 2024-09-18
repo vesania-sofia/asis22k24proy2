@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CapaDeLogica;
 using CapaDatos;
+using Capa_Controlador_Reporteria;
+using Capa_Vista_Reporteria;
+using Capa_Vista_Consulta;
 
 
 namespace CapaDeDiseno
@@ -21,7 +24,6 @@ namespace CapaDeDiseno
         int correcto = 0;
         string tabla = "def";
         string otratabla = "def";
-        string tabla2 = "def";
         string nomForm;
         int pos = 8;
 		string idRepo = "";
@@ -63,9 +65,7 @@ namespace CapaDeDiseno
         // string rutaa;
         Font fuente = new Font("Century Gothic", 13.0f, FontStyle.Regular, GraphicsUnit.Pixel); //objeto para definir el tipo y tamaño de fuente de los labels
         ToolTip ayuda_tp = new ToolTip();
-        private string idFactura;
-        private string monto;
-        private string nombreCliente;
+        
         
 
         public Navegador()
@@ -99,6 +99,7 @@ namespace CapaDeDiseno
             ayuda_tp.SetToolTip(btn_Reportes_Principal, "Mostrar un Reporte");
 
             Btn_Imprimir.Enabled = true;
+            Btn_Consultar.Enabled = true;
         }
         private void Navegador_Load(object sender, EventArgs e)
         {
@@ -1174,7 +1175,7 @@ namespace CapaDeDiseno
             Btn_Modificar.Enabled = false;
             Btn_Eliminar.Enabled = false;
             Btn_Cancelar.Enabled = true;
-            Btn_Consultar.Enabled = false;
+           // Btn_Consultar.Enabled = false;
             Btn_Refrescar.Enabled = false;
         }
 
@@ -1270,7 +1271,7 @@ namespace CapaDeDiseno
                 Btn_Ingresar.Enabled = false;
                 Btn_Eliminar.Enabled = false;
                 Btn_Modificar.Enabled = false;
-                Btn_Consultar.Enabled = false;
+               // Btn_Consultar.Enabled = false;
                 Btn_Refrescar.Enabled = false;
             }
             catch (Exception ex)
@@ -2240,7 +2241,7 @@ namespace CapaDeDiseno
                     Btn_Guardar.Enabled = false;
                     Btn_Cancelar.Enabled = false;
                     Btn_Eliminar.Enabled = false;
-                    Btn_Consultar.Enabled = false;
+                   // Btn_Consultar.Enabled = false;
                   
                     Btn_Refrescar.Enabled = false;
                     Btn_FlechaInicio.Enabled = false;
@@ -2341,7 +2342,7 @@ namespace CapaDeDiseno
                     Btn_Guardar.Enabled = false;
                     Btn_Cancelar.Enabled = false;
                     Btn_Eliminar.Enabled = false;
-                    Btn_Consultar.Enabled = false;
+                   // Btn_Consultar.Enabled = false;
                 
                     Btn_Refrescar.Enabled = false;
                     Btn_FlechaInicio.Enabled = false;
@@ -2496,8 +2497,17 @@ namespace CapaDeDiseno
 
         private void Btn_Imprimir_Click_1(object sender, EventArgs e)
         {
-            //DLL DE IMPRESION, FORATO DE REPORTES.
-            string llave = "";
+            Capa_Controlador_Reporteria.Controlador controlador = new Capa_Controlador_Reporteria.Controlador();
+
+        
+            ObtenerIdAplicacion(idAplicacion);
+            string ruta = controlador.queryRuta(idAplicacion);
+            if (!string.IsNullOrEmpty(idAplicacion))
+            {
+                Capa_Vista_Reporteria.visualizar visualizar = new Capa_Vista_Reporteria.visualizar(ruta);
+                visualizar.ShowDialog();
+            }
+            /*sring llave = "";
             if (idRepo != "")
             {
                 llave = logic.ObtenerIdReporte(idRepo);
@@ -2516,14 +2526,20 @@ namespace CapaDeDiseno
             else
             {
                 MessageBox.Show("El Id Asignado es incorrecto");
-            }
+            }*/
         }
 
         private void btn_Reportes_Principal_Click(object sender, EventArgs e)
         {
-            //Capa_Vista_Reporteria.menu_reporteria reportes = new Capa_Vista_Reporteria.menu_reporteria();
-            Reportes reportes = new Reportes();
+            menu_reporteria reportes = new menu_reporteria();
+            
             reportes.Show();
+        }
+
+        private void Btn_Consultar_Click(object sender, EventArgs e)
+        {
+            ConsultaInteligente consulta = new ConsultaInteligente(tabla);
+            consulta.Show();
         }
     }
 }
