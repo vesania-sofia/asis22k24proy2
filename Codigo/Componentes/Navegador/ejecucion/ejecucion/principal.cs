@@ -26,7 +26,6 @@ namespace ejecucion
 
             // Pasar el valor seleccionado al método RecibirTabla de Form1
 
-            // Mostrar Form1
             form1.Show();
         }
 

@@ -121,6 +121,37 @@ namespace CapaDeDatos
             OdbcDataAdapter dataTable = new OdbcDataAdapter(sql, cn.probarConexion());
             return dataTable;
         }
+
+        public string ObtenerIdUsuarioPorUsername(string username)
+        {
+            // Consulta SQL para obtener el Pk_id_usuario basado en el username_usuario
+            string sql = "SELECT Pk_id_usuario FROM tbl_usuarios WHERE username_usuario = ?";
+
+            // Crear comando ODBC
+            using (OdbcCommand command = new OdbcCommand(sql, cn.probarConexion()))
+            {
+                // Agregar el parámetro de username
+                command.Parameters.AddWithValue("@username", username);
+
+                // Ejecutar el comando y obtener el resultado
+                using (OdbcDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        // Si hay resultado, convertir el Pk_id_usuario a string y retornarlo
+                        return reader["Pk_id_usuario"].ToString();
+                    }
+                    else
+                    {
+                        // Si no se encuentra, retornar un valor indicador (ej. "-1")
+                        return "-1";
+                    }
+                }
+            }
+        }
+
+
+
         /**/
 
         public int contarAlias(string tabla)// metodo  que obtinene el contenio de una tabla

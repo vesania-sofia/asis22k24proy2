@@ -167,6 +167,14 @@ namespace CapaDeLogica
             sn.ejecutarQueryConTransaccion(queries);
         }
 
+        // Método para obtener el ID de usuario a partir del username
+        public string ObtenerIdUsuario(string username)
+        {
+            // Llamar al método de la capa de sentencias y retornar el resultado como string
+            return sn.ObtenerIdUsuarioPorUsername(username);
+        }
+
+
 
     }
 }
