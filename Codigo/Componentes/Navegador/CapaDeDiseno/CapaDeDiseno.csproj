@@ -37,7 +37,16 @@
     <Reference Include="CapaDeLogica">
       <HintPath>..\CapaDeLogica\bin\Debug\CapaDeLogica.dll</HintPath>
     </Reference>
-    <Reference Include="Capa_Vista_Reporteria">
+    <Reference Include="Capa_Controlador_Reporteria, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Reporteador\Capa_Controlador_Reporteria\bin\Debug\Capa_Controlador_Reporteria.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_Consulta, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Consultas\Capa_Vista_Consulta\bin\Debug\Capa_Vista_Consulta.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_Reporteria, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Reporteador\Capa_Vista_Reporteria\bin\Debug\Capa_Vista_Reporteria.dll</HintPath>
     </Reference>
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">

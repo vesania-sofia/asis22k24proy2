@@ -114,7 +114,7 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(1064, 90);
             this.tableLayoutPanel2.TabIndex = 8;
-            //
+            // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.White;
@@ -140,12 +140,6 @@
             this.btn_Reportes_Principal.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
             this.btn_Reportes_Principal.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btn_Reportes_Principal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Reportes_Principal.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Reportes_Principal.Image = ((System.Drawing.Image)(resources.GetObject("btn_Reportes_Principal.Image")));
-            this.btn_Reportes_Principal.Location = new System.Drawing.Point(0, 37);
-            this.btn_Reportes_Principal.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_Reportes_Principal.Name = "btn_Reportes_Principal";
-            this.btn_Reportes_Principal.Size = new System.Drawing.Size(75, 20);
             this.btn_Reportes_Principal.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Reportes_Principal.Image = ((System.Drawing.Image)(resources.GetObject("btn_Reportes_Principal.Image")));
             this.btn_Reportes_Principal.Location = new System.Drawing.Point(75, 45);
@@ -320,6 +314,7 @@
             this.Btn_Consultar.TabIndex = 5;
             this.Btn_Consultar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_Consultar.UseVisualStyleBackColor = false;
+            this.Btn_Consultar.Click += new System.EventHandler(this.Btn_Consultar_Click);
             // 
             // Btn_Eliminar
             // 
