@@ -35,6 +35,7 @@ namespace Capa_Vista_Consulta
             gbOrdenar.Enabled = false;
             gbListadoConsultas.Enabled = true;
             gbEditarLogica.Enabled = false;
+            gbEditarComparacion.Enabled = false;
             gbEditarOrden.Enabled = false;
             csControlador.obtenerNombresConsultas(cboQuery1);
             cboQuery1.SelectedIndexChanged += new EventHandler(cboConsultas_SelectedIndexChanged);
@@ -54,9 +55,7 @@ namespace Capa_Vista_Consulta
             tt.SetToolTip(btnEliminar, "Borrar");
             tt.SetToolTip(btnActualizar, "Actualizar");
             tt.SetToolTip(btnBuscarQuery, "Buscar");
-
             tt.SetToolTip(btnBuscarQuery1, "Buscar");
-
             tt.SetToolTip(btnEditarSimple, "Agregar");
             tt.SetToolTip(btnEditarLogico, "Agregar");
             tt.SetToolTip(btnEditarOrdenar, "Agregar");
@@ -69,7 +68,6 @@ namespace Capa_Vista_Consulta
             tt.SetToolTip(btnCancelarEditar, "Borrar");
             tt.SetToolTip(btnEditar, "Editar");
             tt.SetToolTip(btnConsultarEditar, "Consular");
-
             tt.SetToolTip(btnNuevo, "Agregar");
             tt.SetToolTip(brnAgregarLogica, "Agregar");
             tt.SetToolTip(btnAgregarComparacion, "Agregar");
@@ -85,8 +83,6 @@ namespace Capa_Vista_Consulta
         }
         private void ActualizarComboBox()
         {
-            //csControlador.CargarTablas(cboTabla, BD);
-            //csControlador.CargarTablas(cboEditarTabla, BD);
             csControlador.obtenerNombresConsultas(cboQuery1);
             csControlador.obtenerNombresConsultas(cboQuery3);
             csControlador.obtenerNombresConsultas(cboEditarNombreConsulta);
@@ -473,6 +469,7 @@ namespace Capa_Vista_Consulta
         {
             bool habilitarControles = chbCondicionesEditar.Checked;
             gbEditarCondicion.Enabled = habilitarControles;
+            gbEditarComparacion.Enabled = habilitarControles;
             gbEditarOrden.Enabled = habilitarControles;
             gbListadoConsultas.Enabled = habilitarControles;
             gbEditarLogica.Enabled = habilitarControles;
