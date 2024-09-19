@@ -137,6 +137,40 @@ namespace CapaDatos
         }
         //Termina
 
+        //Trabajado por ALyson Rodriguez 9959-21-829
+        public OdbcDataAdapter mostrarUsuariosYPermisos(string TablaAplicacionUsuario)
+        {
+            try
+            {
+                // Consulta para obtener usuarios y permisos aplicaciones segun modulos
+                string sql = @"
+        SELECT 
+        au.Fk_id_usuario, 
+        a.nombre_aplicacion, 
+        au.guardar_permiso, 
+        au.buscar_permiso, 
+        au.modificar_permiso, 
+        au.eliminar_permiso, 
+        au.imprimir_permiso
+    FROM 
+        Tbl_permisos_aplicaciones_usuario au
+    JOIN 
+        Tbl_aplicaciones a ON au.Fk_id_aplicacion = a.Pk_id_aplicacion
+    JOIN 
+        Tbl_usuarios u ON au.Fk_id_usuario = u.Pk_id_usuario; 
+";
+
+                OdbcDataAdapter dataTable = new OdbcDataAdapter(sql, cn.conectar());
+                return dataTable;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al ejecutar la consulta: " + ex.Message);
+                return null;
+            }
+        }
+        //Finaliza
+
         //###################  lo que hizo Karla  Sofia Gómez Tobar #######################
         public OdbcDataAdapter mostrarPerfilesDeUsuario(string TablaPerfilUsuario)
         {

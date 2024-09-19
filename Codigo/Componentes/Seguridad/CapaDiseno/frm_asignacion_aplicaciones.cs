@@ -291,41 +291,81 @@ namespace CapaDiseno
         // FINALIZA ALYSON RODRIGUEZ 9959-21-829 
 
 
-        //Trabajado María José Véliz
+        //Trabajado María José Véliz   //Cambios Trabajados por Alyson Rodriguez 9959-21-829
         // Método para configurar CheckBoxColumns en el DataGridView
         private void ConfigurarColumnasCheckBox()
         {
-            if (dgv_asignaciones.Columns["Ingresar"] is DataGridViewCheckBoxColumn)
-            {
-                ((DataGridViewCheckBoxColumn)dgv_asignaciones.Columns["Ingresar"]).TrueValue = 1;
-                ((DataGridViewCheckBoxColumn)dgv_asignaciones.Columns["Ingresar"]).FalseValue = 0;
-            }
 
-            if (dgv_asignaciones.Columns["Consultar"] is DataGridViewCheckBoxColumn)
-            {
-                ((DataGridViewCheckBoxColumn)dgv_asignaciones.Columns["Consultar"]).TrueValue = 1;
-                ((DataGridViewCheckBoxColumn)dgv_asignaciones.Columns["Consultar"]).FalseValue = 0;
-            }
+            // Asegurarte de que el DataGridView esté vacío antes de configurar columnas
+            dgv_asignaciones.Columns.Clear();
 
-            if (dgv_asignaciones.Columns["Modificar"] is DataGridViewCheckBoxColumn)
-            {
-                ((DataGridViewCheckBoxColumn)dgv_asignaciones.Columns["Modificar"]).TrueValue = 1;
-                ((DataGridViewCheckBoxColumn)dgv_asignaciones.Columns["Modificar"]).FalseValue = 0;
-            }
+            // Agregar las columnas necesarias al DataGridView
+            dgv_asignaciones.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "Fk_id_usuario", HeaderText = "Usuario" });
+            dgv_asignaciones.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "nombre_aplicacion", HeaderText = "Aplicación" });
+            dgv_asignaciones.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "guardar_permiso", HeaderText = "Ingresar" });
+            dgv_asignaciones.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "buscar_permiso", HeaderText = "Consultar" });
+            dgv_asignaciones.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "modificar_permiso", HeaderText = "Modificar" });
+            dgv_asignaciones.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "eliminar_permiso", HeaderText = "Eliminar" });
+            dgv_asignaciones.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "imprimir_permiso", HeaderText = "Imprimir" });
 
-            if (dgv_asignaciones.Columns["Eliminar"] is DataGridViewCheckBoxColumn)
-            {
-                ((DataGridViewCheckBoxColumn)dgv_asignaciones.Columns["Eliminar"]).TrueValue = 1;
-                ((DataGridViewCheckBoxColumn)dgv_asignaciones.Columns["Eliminar"]).FalseValue = 0;
-            }
 
-            if (dgv_asignaciones.Columns["Imprimir"] is DataGridViewCheckBoxColumn)
+            // Lista de las columnas que son CheckBox y necesitan configuración
+            string[] permisosColumnas = { "Ingresar", "Consultar", "Modificar", "Eliminar", "Imprimir" };
+
+            foreach (string columna in permisosColumnas)
             {
-                ((DataGridViewCheckBoxColumn)dgv_asignaciones.Columns["Imprimir"]).TrueValue = 1;
-                ((DataGridViewCheckBoxColumn)dgv_asignaciones.Columns["Imprimir"]).FalseValue = 0;
+                // Verificar si la columna existe en el DataGridView
+                if (dgv_asignaciones.Columns.Contains(columna))
+                {
+                    if (dgv_asignaciones.Columns[columna] is DataGridViewCheckBoxColumn checkBoxColumn)
+                    {
+                        // Configurar permisos habilitados o deshabilitados para cada columna CheckBox
+                        checkBoxColumn.TrueValue = 1;
+                        checkBoxColumn.FalseValue = 0;
+                    }
+                }
             }
         }
         //Termina
+
+        //Trabajado por Alyson Rodriguez 9959-21-829
+        public void ActualizarDataGridView()
+        {
+            // Obtener los datos desde la base de datos
+            DataTable dt = logic.consultaLogicaUsuarios("Tbl_permisos_aplicaciones_usuario");
+
+            // Verificar si hay datos
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                MessageBox.Show("Datos recibidos: " + dt.Rows.Count.ToString());
+
+                // Mensaje con los datos obtenidos
+                string datosObtenidos = "Datos recibidos:\n";
+
+                // Recorrer las filas y columnas para mostrar los datos
+                foreach (DataRow row in dt.Rows)
+                {
+                    foreach (DataColumn column in dt.Columns)
+                    {
+                        datosObtenidos += $"{column.ColumnName}: {row[column]}\n";
+                    }
+                    datosObtenidos += "-------------------\n"; // Separador entre filas
+                }
+
+                // Asignar el DataTable al DataGridView directamente
+                dgv_asignaciones.DataSource = dt;
+
+                // Actualizar el DataGridView para reflejar los nuevos datos
+                dgv_asignaciones.Refresh();
+                ConfigurarColumnasCheckBox();
+            }
+            else
+            {
+                MessageBox.Show("No se encontraron datos.");
+            }
+        }
+        //##################Finaliza##################
+
 
         private void Dgv_asignaciones_CellContentClick(object sender, DataGridViewCellEventArgs e)
         { 
@@ -341,6 +381,11 @@ namespace CapaDiseno
         private void Btn_ayuda_Click(object sender, EventArgs e)
         {
             Help.ShowHelp(this, "C:\\Ayuda_Seguridad\\" + "AyudaAsignacionAplicacionesUsuarios.chm", "Asignacion_Aplicaciones_Usuarios.html");
+        }
+
+        private void btn_buscar_Click(object sender, EventArgs e)
+        {
+            ActualizarDataGridView();
         }
     }
 }
