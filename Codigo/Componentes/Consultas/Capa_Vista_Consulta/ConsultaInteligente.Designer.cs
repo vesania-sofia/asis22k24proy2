@@ -29,6 +29,7 @@ namespace Capa_Vista_Consulta
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConsultaInteligente));
             this.Consulta = new System.Windows.Forms.TabControl();
             this.tabCreacion = new System.Windows.Forms.TabPage();
             this.btnConsultar = new System.Windows.Forms.Button();
@@ -211,12 +212,14 @@ namespace Capa_Vista_Consulta
             // 
             // btnConsultar
             // 
-            this.btnConsultar.Location = new System.Drawing.Point(830, 258);
+            this.btnConsultar.FlatAppearance.BorderSize = 0;
+            this.btnConsultar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnConsultar.Image = ((System.Drawing.Image)(resources.GetObject("btnConsultar.Image")));
+            this.btnConsultar.Location = new System.Drawing.Point(841, 258);
             this.btnConsultar.Margin = new System.Windows.Forms.Padding(2);
             this.btnConsultar.Name = "btnConsultar";
-            this.btnConsultar.Size = new System.Drawing.Size(86, 54);
+            this.btnConsultar.Size = new System.Drawing.Size(75, 55);
             this.btnConsultar.TabIndex = 5;
-            this.btnConsultar.Text = "Consultar";
             this.btnConsultar.UseVisualStyleBackColor = true;
             this.btnConsultar.Click += new System.EventHandler(this.btnConsultar_Click);
             // 
@@ -254,23 +257,27 @@ namespace Capa_Vista_Consulta
             // 
             // btnCancelar
             // 
+            this.btnCancelar.FlatAppearance.BorderSize = 0;
+            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancelar.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelar.Image")));
             this.btnCancelar.Location = new System.Drawing.Point(632, 578);
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(64, 54);
             this.btnCancelar.TabIndex = 29;
-            this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnCrear
             // 
+            this.btnCrear.FlatAppearance.BorderSize = 0;
+            this.btnCrear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCrear.Image = ((System.Drawing.Image)(resources.GetObject("btnCrear.Image")));
             this.btnCrear.Location = new System.Drawing.Point(444, 578);
             this.btnCrear.Margin = new System.Windows.Forms.Padding(2);
             this.btnCrear.Name = "btnCrear";
             this.btnCrear.Size = new System.Drawing.Size(64, 54);
             this.btnCrear.TabIndex = 28;
-            this.btnCrear.Text = "Crear";
             this.btnCrear.UseVisualStyleBackColor = true;
             this.btnCrear.Click += new System.EventHandler(this.btnCrear_Click);
             // 
@@ -378,23 +385,27 @@ namespace Capa_Vista_Consulta
             // 
             // btnCancelarOrden
             // 
+            this.btnCancelarOrden.FlatAppearance.BorderSize = 0;
+            this.btnCancelarOrden.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancelarOrden.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelarOrden.Image")));
             this.btnCancelarOrden.Location = new System.Drawing.Point(317, 104);
             this.btnCancelarOrden.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancelarOrden.Name = "btnCancelarOrden";
             this.btnCancelarOrden.Size = new System.Drawing.Size(64, 54);
             this.btnCancelarOrden.TabIndex = 27;
-            this.btnCancelarOrden.Text = "Cancelar";
             this.btnCancelarOrden.UseVisualStyleBackColor = true;
             this.btnCancelarOrden.Click += new System.EventHandler(this.btnCancelarOrden_Click);
             // 
             // btnAgregarOrden
             // 
+            this.btnAgregarOrden.FlatAppearance.BorderSize = 0;
+            this.btnAgregarOrden.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAgregarOrden.Image = ((System.Drawing.Image)(resources.GetObject("btnAgregarOrden.Image")));
             this.btnAgregarOrden.Location = new System.Drawing.Point(317, 37);
             this.btnAgregarOrden.Margin = new System.Windows.Forms.Padding(2);
             this.btnAgregarOrden.Name = "btnAgregarOrden";
             this.btnAgregarOrden.Size = new System.Drawing.Size(64, 54);
             this.btnAgregarOrden.TabIndex = 26;
-            this.btnAgregarOrden.Text = "Agregar ";
             this.btnAgregarOrden.UseVisualStyleBackColor = true;
             this.btnAgregarOrden.Click += new System.EventHandler(this.btnAgregarOrden_Click);
             // 
@@ -432,23 +443,27 @@ namespace Capa_Vista_Consulta
             // 
             // btnCancelarComparacion
             // 
+            this.btnCancelarComparacion.FlatAppearance.BorderSize = 0;
+            this.btnCancelarComparacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancelarComparacion.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelarComparacion.Image")));
             this.btnCancelarComparacion.Location = new System.Drawing.Point(251, 93);
             this.btnCancelarComparacion.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancelarComparacion.Name = "btnCancelarComparacion";
             this.btnCancelarComparacion.Size = new System.Drawing.Size(64, 54);
             this.btnCancelarComparacion.TabIndex = 25;
-            this.btnCancelarComparacion.Text = "Cancelar";
             this.btnCancelarComparacion.UseVisualStyleBackColor = true;
             this.btnCancelarComparacion.Click += new System.EventHandler(this.btnCancelarComparacion_Click);
             // 
             // btnAgregarComparacion
             // 
+            this.btnAgregarComparacion.FlatAppearance.BorderSize = 0;
+            this.btnAgregarComparacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAgregarComparacion.Image = ((System.Drawing.Image)(resources.GetObject("btnAgregarComparacion.Image")));
             this.btnAgregarComparacion.Location = new System.Drawing.Point(251, 25);
             this.btnAgregarComparacion.Margin = new System.Windows.Forms.Padding(2);
             this.btnAgregarComparacion.Name = "btnAgregarComparacion";
             this.btnAgregarComparacion.Size = new System.Drawing.Size(64, 54);
             this.btnAgregarComparacion.TabIndex = 24;
-            this.btnAgregarComparacion.Text = "Agregar ";
             this.btnAgregarComparacion.UseVisualStyleBackColor = true;
             this.btnAgregarComparacion.Click += new System.EventHandler(this.btnAgregarComparacion_Click);
             // 
@@ -530,23 +545,27 @@ namespace Capa_Vista_Consulta
             // 
             // btnCancelarLogica
             // 
+            this.btnCancelarLogica.FlatAppearance.BorderSize = 0;
+            this.btnCancelarLogica.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancelarLogica.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelarLogica.Image")));
             this.btnCancelarLogica.Location = new System.Drawing.Point(246, 90);
             this.btnCancelarLogica.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancelarLogica.Name = "btnCancelarLogica";
             this.btnCancelarLogica.Size = new System.Drawing.Size(64, 54);
             this.btnCancelarLogica.TabIndex = 17;
-            this.btnCancelarLogica.Text = "Cancelar";
             this.btnCancelarLogica.UseVisualStyleBackColor = true;
             this.btnCancelarLogica.Click += new System.EventHandler(this.btnCancelarLogica_Click);
             // 
             // brnAgregarLogica
             // 
+            this.brnAgregarLogica.FlatAppearance.BorderSize = 0;
+            this.brnAgregarLogica.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.brnAgregarLogica.Image = ((System.Drawing.Image)(resources.GetObject("brnAgregarLogica.Image")));
             this.brnAgregarLogica.Location = new System.Drawing.Point(246, 23);
             this.brnAgregarLogica.Margin = new System.Windows.Forms.Padding(2);
             this.brnAgregarLogica.Name = "brnAgregarLogica";
             this.brnAgregarLogica.Size = new System.Drawing.Size(64, 54);
             this.brnAgregarLogica.TabIndex = 16;
-            this.brnAgregarLogica.Text = "Agregar ";
             this.brnAgregarLogica.UseVisualStyleBackColor = true;
             this.brnAgregarLogica.Click += new System.EventHandler(this.brnAgregarLogica_Click);
             // 
@@ -643,23 +662,27 @@ namespace Capa_Vista_Consulta
             // 
             // btnCancelarSimple
             // 
+            this.btnCancelarSimple.FlatAppearance.BorderSize = 0;
+            this.btnCancelarSimple.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancelarSimple.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelarSimple.Image")));
             this.btnCancelarSimple.Location = new System.Drawing.Point(630, 104);
             this.btnCancelarSimple.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancelarSimple.Name = "btnCancelarSimple";
             this.btnCancelarSimple.Size = new System.Drawing.Size(64, 54);
             this.btnCancelarSimple.TabIndex = 13;
-            this.btnCancelarSimple.Text = "Cancelar";
             this.btnCancelarSimple.UseVisualStyleBackColor = true;
             this.btnCancelarSimple.Click += new System.EventHandler(this.btnCancelarSimple_Click);
             // 
             // btnAgregarConsultaSimple
             // 
+            this.btnAgregarConsultaSimple.FlatAppearance.BorderSize = 0;
+            this.btnAgregarConsultaSimple.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAgregarConsultaSimple.Image = ((System.Drawing.Image)(resources.GetObject("btnAgregarConsultaSimple.Image")));
             this.btnAgregarConsultaSimple.Location = new System.Drawing.Point(630, 37);
             this.btnAgregarConsultaSimple.Margin = new System.Windows.Forms.Padding(2);
             this.btnAgregarConsultaSimple.Name = "btnAgregarConsultaSimple";
             this.btnAgregarConsultaSimple.Size = new System.Drawing.Size(64, 54);
             this.btnAgregarConsultaSimple.TabIndex = 11;
-            this.btnAgregarConsultaSimple.Text = "Agregar Campos";
             this.btnAgregarConsultaSimple.UseVisualStyleBackColor = true;
             this.btnAgregarConsultaSimple.Click += new System.EventHandler(this.btnAgregarConsultaSimple_Click);
             // 
@@ -675,12 +698,14 @@ namespace Capa_Vista_Consulta
             // 
             // btnNuevo
             // 
+            this.btnNuevo.FlatAppearance.BorderSize = 0;
+            this.btnNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNuevo.Image = ((System.Drawing.Image)(resources.GetObject("btnNuevo.Image")));
             this.btnNuevo.Location = new System.Drawing.Point(317, 67);
             this.btnNuevo.Margin = new System.Windows.Forms.Padding(2);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Size = new System.Drawing.Size(64, 54);
             this.btnNuevo.TabIndex = 9;
-            this.btnNuevo.Text = "Agregar";
             this.btnNuevo.UseVisualStyleBackColor = true;
             this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
@@ -834,12 +859,14 @@ namespace Capa_Vista_Consulta
             // 
             // btnBuscarQuery1
             // 
+            this.btnBuscarQuery1.FlatAppearance.BorderSize = 0;
+            this.btnBuscarQuery1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBuscarQuery1.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscarQuery1.Image")));
             this.btnBuscarQuery1.Location = new System.Drawing.Point(240, 25);
             this.btnBuscarQuery1.Margin = new System.Windows.Forms.Padding(2);
             this.btnBuscarQuery1.Name = "btnBuscarQuery1";
             this.btnBuscarQuery1.Size = new System.Drawing.Size(64, 54);
             this.btnBuscarQuery1.TabIndex = 10;
-            this.btnBuscarQuery1.Text = "Buscar";
             this.btnBuscarQuery1.UseVisualStyleBackColor = true;
             this.btnBuscarQuery1.Click += new System.EventHandler(this.btnBuscarQuery1_Click);
             // 
@@ -888,12 +915,14 @@ namespace Capa_Vista_Consulta
             // 
             // btnConsultarEditar
             // 
-            this.btnConsultarEditar.Location = new System.Drawing.Point(830, 271);
+            this.btnConsultarEditar.FlatAppearance.BorderSize = 0;
+            this.btnConsultarEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnConsultarEditar.Image = ((System.Drawing.Image)(resources.GetObject("btnConsultarEditar.Image")));
+            this.btnConsultarEditar.Location = new System.Drawing.Point(835, 271);
             this.btnConsultarEditar.Margin = new System.Windows.Forms.Padding(2);
             this.btnConsultarEditar.Name = "btnConsultarEditar";
-            this.btnConsultarEditar.Size = new System.Drawing.Size(86, 54);
+            this.btnConsultarEditar.Size = new System.Drawing.Size(69, 54);
             this.btnConsultarEditar.TabIndex = 37;
-            this.btnConsultarEditar.Text = "Consultar";
             this.btnConsultarEditar.UseVisualStyleBackColor = true;
             this.btnConsultarEditar.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -919,23 +948,27 @@ namespace Capa_Vista_Consulta
             // 
             // btnCancelarEditar
             // 
+            this.btnCancelarEditar.FlatAppearance.BorderSize = 0;
+            this.btnCancelarEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancelarEditar.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelarEditar.Image")));
             this.btnCancelarEditar.Location = new System.Drawing.Point(631, 592);
             this.btnCancelarEditar.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancelarEditar.Name = "btnCancelarEditar";
             this.btnCancelarEditar.Size = new System.Drawing.Size(64, 54);
             this.btnCancelarEditar.TabIndex = 34;
-            this.btnCancelarEditar.Text = "Borrar";
             this.btnCancelarEditar.UseVisualStyleBackColor = true;
             this.btnCancelarEditar.Click += new System.EventHandler(this.btnCancelarEditar_Click);
             // 
             // btnEditar
             // 
+            this.btnEditar.FlatAppearance.BorderSize = 0;
+            this.btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditar.Image = ((System.Drawing.Image)(resources.GetObject("btnEditar.Image")));
             this.btnEditar.Location = new System.Drawing.Point(443, 592);
             this.btnEditar.Margin = new System.Windows.Forms.Padding(2);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(64, 54);
             this.btnEditar.TabIndex = 33;
-            this.btnEditar.Text = "Editar";
             this.btnEditar.UseVisualStyleBackColor = true;
             this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click_1);
             // 
@@ -1043,22 +1076,26 @@ namespace Capa_Vista_Consulta
             // 
             // btnCancelarEditarOrdenar
             // 
+            this.btnCancelarEditarOrdenar.FlatAppearance.BorderSize = 0;
+            this.btnCancelarEditarOrdenar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancelarEditarOrdenar.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelarEditarOrdenar.Image")));
             this.btnCancelarEditarOrdenar.Location = new System.Drawing.Point(317, 104);
             this.btnCancelarEditarOrdenar.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancelarEditarOrdenar.Name = "btnCancelarEditarOrdenar";
             this.btnCancelarEditarOrdenar.Size = new System.Drawing.Size(64, 54);
             this.btnCancelarEditarOrdenar.TabIndex = 27;
-            this.btnCancelarEditarOrdenar.Text = "Cancelar";
             this.btnCancelarEditarOrdenar.UseVisualStyleBackColor = true;
             // 
             // btnEditarOrdenar
             // 
+            this.btnEditarOrdenar.FlatAppearance.BorderSize = 0;
+            this.btnEditarOrdenar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditarOrdenar.Image = ((System.Drawing.Image)(resources.GetObject("btnEditarOrdenar.Image")));
             this.btnEditarOrdenar.Location = new System.Drawing.Point(317, 37);
             this.btnEditarOrdenar.Margin = new System.Windows.Forms.Padding(2);
             this.btnEditarOrdenar.Name = "btnEditarOrdenar";
             this.btnEditarOrdenar.Size = new System.Drawing.Size(64, 54);
             this.btnEditarOrdenar.TabIndex = 26;
-            this.btnEditarOrdenar.Text = "Agregar ";
             this.btnEditarOrdenar.UseVisualStyleBackColor = true;
             this.btnEditarOrdenar.Click += new System.EventHandler(this.btnEditarOrdenar_Click);
             // 
@@ -1108,22 +1145,26 @@ namespace Capa_Vista_Consulta
             // 
             // btnCancelarEditarComparacion
             // 
+            this.btnCancelarEditarComparacion.FlatAppearance.BorderSize = 0;
+            this.btnCancelarEditarComparacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancelarEditarComparacion.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelarEditarComparacion.Image")));
             this.btnCancelarEditarComparacion.Location = new System.Drawing.Point(251, 93);
             this.btnCancelarEditarComparacion.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancelarEditarComparacion.Name = "btnCancelarEditarComparacion";
             this.btnCancelarEditarComparacion.Size = new System.Drawing.Size(64, 54);
             this.btnCancelarEditarComparacion.TabIndex = 25;
-            this.btnCancelarEditarComparacion.Text = "Cancelar";
             this.btnCancelarEditarComparacion.UseVisualStyleBackColor = true;
             // 
             // btnEditarComparacion
             // 
+            this.btnEditarComparacion.FlatAppearance.BorderSize = 0;
+            this.btnEditarComparacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditarComparacion.Image = ((System.Drawing.Image)(resources.GetObject("btnEditarComparacion.Image")));
             this.btnEditarComparacion.Location = new System.Drawing.Point(251, 25);
             this.btnEditarComparacion.Margin = new System.Windows.Forms.Padding(2);
             this.btnEditarComparacion.Name = "btnEditarComparacion";
             this.btnEditarComparacion.Size = new System.Drawing.Size(64, 54);
             this.btnEditarComparacion.TabIndex = 24;
-            this.btnEditarComparacion.Text = "Agregar ";
             this.btnEditarComparacion.UseVisualStyleBackColor = true;
             this.btnEditarComparacion.Click += new System.EventHandler(this.btnEditarComparacion_Click);
             // 
@@ -1204,22 +1245,26 @@ namespace Capa_Vista_Consulta
             // 
             // btnCancelarEditarLogico
             // 
+            this.btnCancelarEditarLogico.FlatAppearance.BorderSize = 0;
+            this.btnCancelarEditarLogico.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancelarEditarLogico.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelarEditarLogico.Image")));
             this.btnCancelarEditarLogico.Location = new System.Drawing.Point(246, 90);
             this.btnCancelarEditarLogico.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancelarEditarLogico.Name = "btnCancelarEditarLogico";
             this.btnCancelarEditarLogico.Size = new System.Drawing.Size(64, 54);
             this.btnCancelarEditarLogico.TabIndex = 17;
-            this.btnCancelarEditarLogico.Text = "Cancelar";
             this.btnCancelarEditarLogico.UseVisualStyleBackColor = true;
             // 
             // btnEditarLogico
             // 
+            this.btnEditarLogico.FlatAppearance.BorderSize = 0;
+            this.btnEditarLogico.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditarLogico.Image = ((System.Drawing.Image)(resources.GetObject("btnEditarLogico.Image")));
             this.btnEditarLogico.Location = new System.Drawing.Point(246, 23);
             this.btnEditarLogico.Margin = new System.Windows.Forms.Padding(2);
             this.btnEditarLogico.Name = "btnEditarLogico";
             this.btnEditarLogico.Size = new System.Drawing.Size(64, 54);
             this.btnEditarLogico.TabIndex = 16;
-            this.btnEditarLogico.Text = "Agregar ";
             this.btnEditarLogico.UseVisualStyleBackColor = true;
             this.btnEditarLogico.Click += new System.EventHandler(this.btnEditarLogico_Click);
             // 
@@ -1335,23 +1380,27 @@ namespace Capa_Vista_Consulta
             // 
             // btnCancelarEditarSimple
             // 
+            this.btnCancelarEditarSimple.FlatAppearance.BorderSize = 0;
+            this.btnCancelarEditarSimple.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancelarEditarSimple.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelarEditarSimple.Image")));
             this.btnCancelarEditarSimple.Location = new System.Drawing.Point(630, 104);
             this.btnCancelarEditarSimple.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancelarEditarSimple.Name = "btnCancelarEditarSimple";
             this.btnCancelarEditarSimple.Size = new System.Drawing.Size(64, 54);
             this.btnCancelarEditarSimple.TabIndex = 13;
-            this.btnCancelarEditarSimple.Text = "Cancelar";
             this.btnCancelarEditarSimple.UseVisualStyleBackColor = true;
             this.btnCancelarEditarSimple.Click += new System.EventHandler(this.button17_Click);
             // 
             // btnEditarCampoSimple
             // 
+            this.btnEditarCampoSimple.FlatAppearance.BorderSize = 0;
+            this.btnEditarCampoSimple.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditarCampoSimple.Image = ((System.Drawing.Image)(resources.GetObject("btnEditarCampoSimple.Image")));
             this.btnEditarCampoSimple.Location = new System.Drawing.Point(630, 37);
             this.btnEditarCampoSimple.Margin = new System.Windows.Forms.Padding(2);
             this.btnEditarCampoSimple.Name = "btnEditarCampoSimple";
             this.btnEditarCampoSimple.Size = new System.Drawing.Size(64, 54);
             this.btnEditarCampoSimple.TabIndex = 11;
-            this.btnEditarCampoSimple.Text = "Agregar Campos";
             this.btnEditarCampoSimple.UseVisualStyleBackColor = true;
             this.btnEditarCampoSimple.Click += new System.EventHandler(this.btnEditarCampoSimple_Click);
             // 
@@ -1367,12 +1416,14 @@ namespace Capa_Vista_Consulta
             // 
             // btnEditarSimple
             // 
+            this.btnEditarSimple.FlatAppearance.BorderSize = 0;
+            this.btnEditarSimple.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditarSimple.Image = ((System.Drawing.Image)(resources.GetObject("btnEditarSimple.Image")));
             this.btnEditarSimple.Location = new System.Drawing.Point(317, 67);
             this.btnEditarSimple.Margin = new System.Windows.Forms.Padding(2);
             this.btnEditarSimple.Name = "btnEditarSimple";
             this.btnEditarSimple.Size = new System.Drawing.Size(64, 54);
             this.btnEditarSimple.TabIndex = 9;
-            this.btnEditarSimple.Text = "Agregar";
             this.btnEditarSimple.UseVisualStyleBackColor = true;
             this.btnEditarSimple.Click += new System.EventHandler(this.btnEditarSimple_Click);
             // 
@@ -1501,34 +1552,40 @@ namespace Capa_Vista_Consulta
             // 
             // btnEliminar
             // 
+            this.btnEliminar.FlatAppearance.BorderSize = 0;
+            this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEliminar.Image = ((System.Drawing.Image)(resources.GetObject("btnEliminar.Image")));
             this.btnEliminar.Location = new System.Drawing.Point(568, 16);
             this.btnEliminar.Margin = new System.Windows.Forms.Padding(2);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(64, 54);
             this.btnEliminar.TabIndex = 13;
-            this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnActualizar
             // 
+            this.btnActualizar.FlatAppearance.BorderSize = 0;
+            this.btnActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnActualizar.Image = ((System.Drawing.Image)(resources.GetObject("btnActualizar.Image")));
             this.btnActualizar.Location = new System.Drawing.Point(489, 16);
             this.btnActualizar.Margin = new System.Windows.Forms.Padding(2);
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.Size = new System.Drawing.Size(64, 54);
             this.btnActualizar.TabIndex = 12;
-            this.btnActualizar.Text = "Actualizar";
             this.btnActualizar.UseVisualStyleBackColor = true;
             this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
             // 
             // btnBuscarQuery
             // 
+            this.btnBuscarQuery.FlatAppearance.BorderSize = 0;
+            this.btnBuscarQuery.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBuscarQuery.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscarQuery.Image")));
             this.btnBuscarQuery.Location = new System.Drawing.Point(412, 16);
             this.btnBuscarQuery.Margin = new System.Windows.Forms.Padding(2);
             this.btnBuscarQuery.Name = "btnBuscarQuery";
             this.btnBuscarQuery.Size = new System.Drawing.Size(64, 54);
             this.btnBuscarQuery.TabIndex = 11;
-            this.btnBuscarQuery.Text = "Buscar";
             this.btnBuscarQuery.UseVisualStyleBackColor = true;
             this.btnBuscarQuery.Click += new System.EventHandler(this.btnBuscarQuery_Click);
             // 
@@ -1546,7 +1603,7 @@ namespace Capa_Vista_Consulta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1017, 655);
+            this.ClientSize = new System.Drawing.Size(1009, 674);
             this.Controls.Add(this.Consulta);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ConsultaInteligente";
