@@ -12,7 +12,7 @@ using System.Data.Odbc;
 
 /*
 
-    Forma creada por Carlos González 
+    Forma creada por Carlos González y Salvador Martínez
 
  */
 
@@ -46,7 +46,6 @@ namespace Capa_Vista_Consulta
             tt.SetToolTip(btnEditarCampoSimple2, "Agregar Campos");
             tt.SetToolTip(btnCancelarEditarSimple2, "Cancelar");
             tt.SetToolTip(btnConsultarEditar2, "Consultar");
-
             tt.SetToolTip(btnNuevo2, "Agregar");
             tt.SetToolTip(btnAgregarConsultaSimple2, "Agregar Campos");
             tt.SetToolTip(btnCancelarSimple2, "Cancelar");
@@ -56,7 +55,6 @@ namespace Capa_Vista_Consulta
         }
         private void ActualizarComboBox()
         {
-            //csControlador.CargarTablas(cboTabla2, BD);
             csControlador.obtenerNombresConsultas(cboEditarNombreConsulta2);
         }
         string tabla = "tbl_consultaInteligente";
@@ -354,13 +352,9 @@ namespace Capa_Vista_Consulta
             consultaSeleccionada = nombreConsulta2;
         }
 
+        private void groupBox8_Enter(object sender, EventArgs e)
+        {
 
-
-
-
-
-
-
-
+        }
     }
 }
