@@ -38,6 +38,21 @@ namespace Capa_Vista_Consulta
             csControlador.obtenerNombresConsultas(cboEditarNombreConsulta2);
             cboEditarTabla2.SelectedIndexChanged += new EventHandler(cboTablaEditar_SelectedIndexChanged);
             cboEditarNombreConsulta2.SelectedIndexChanged += new EventHandler(cboConsultas_SelectedIndexChanged);
+            //Agregado por sebastian luna
+            var tt = new ToolTip();
+            tt.SetToolTip(btnCancelarEditar2, "Borrar");
+            tt.SetToolTip(btnEditar2, "Editar");
+            tt.SetToolTip(btnEditarSimple2, "Agregar");
+            tt.SetToolTip(btnEditarCampoSimple2, "Agregar Campos");
+            tt.SetToolTip(btnCancelarEditarSimple2, "Cancelar");
+            tt.SetToolTip(btnConsultarEditar2, "Consultar");
+
+            tt.SetToolTip(btnNuevo2, "Agregar");
+            tt.SetToolTip(btnAgregarConsultaSimple2, "Agregar Campos");
+            tt.SetToolTip(btnCancelarSimple2, "Cancelar");
+            tt.SetToolTip(btnCancelar2, "Cancelar");
+            tt.SetToolTip(btnCrear2, "Crear");
+            tt.SetToolTip(btnConsultar2, "Consultar");
         }
         private void ActualizarComboBox()
         {
