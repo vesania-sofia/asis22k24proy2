@@ -26,12 +26,13 @@ namespace Capa_Vista_Reporteria
         {
             //mostramos todos los reportes que hay en la base de datos y la desplegamos
             DataTable data = controlador.MostrarReportes();
-            Dgv_regreporteria.DataSource = data;
-            Dgv_regreporteria.Columns[0].HeaderText = "Id";
-            Dgv_regreporteria.Columns[1].HeaderText = "Ruta";
-            Dgv_regreporteria.Columns[2].HeaderText = "Nombre";
-            Dgv_regreporteria.Columns[3].HeaderText = "Aplicación";
-            Dgv_regreporteria.Columns[4].HeaderText = "Estado";
+            Dgv_Regreporteria.DataSource = data;
+            Dgv_Regreporteria.Columns[0].HeaderText = "Id";
+            Dgv_Regreporteria.Columns[1].HeaderText = "Ruta";
+            Dgv_Regreporteria.Columns[2].HeaderText = "Nombre";
+            Dgv_Regreporteria.Columns[3].HeaderText = "Aplicación";
+            Dgv_Regreporteria.Columns[4].HeaderText = "Estado";
+            Dgv_Regreporteria.Columns[5].HeaderText = "Módulo";
         }
 
         private void reporteria_usuario_Load(object sender, EventArgs e)
@@ -42,11 +43,11 @@ namespace Capa_Vista_Reporteria
         private void tabla_registro_DoubleClick(object sender, EventArgs e)
         {
             //se habilita la funcion de modificar y eliminar para el reporte seleccionado 
-            if (Dgv_regreporteria.CurrentRow.Index != -1)
+            if (Dgv_Regreporteria.CurrentRow.Index != -1)
             {
-                Txt_nombre.Text = Dgv_regreporteria.CurrentRow.Cells[2].Value.ToString();
-                Txt_ruta.Text = Dgv_regreporteria.CurrentRow.Cells[1].Value.ToString();
-                estado = Dgv_regreporteria.CurrentRow.Cells[4].Value.ToString();
+                Txt_nombre.Text = Dgv_Regreporteria.CurrentRow.Cells[2].Value.ToString();
+                Txt_ruta.Text = Dgv_Regreporteria.CurrentRow.Cells[1].Value.ToString();
+                estado = Dgv_Regreporteria.CurrentRow.Cells[4].Value.ToString();
 
                 if (estado.Equals("Visible"))
                 {
@@ -63,7 +64,7 @@ namespace Capa_Vista_Reporteria
         {
             //mostramos todos los reportes que hay en la base de datos segun lo introducido en el textbox y la desplegamos
             DataTable data = controlador.queryReporteria(Txt_nombre);
-            Dgv_regreporteria.DataSource = data;
+            Dgv_Regreporteria.DataSource = data;
         }
 
         private void visualizar(string ruta)

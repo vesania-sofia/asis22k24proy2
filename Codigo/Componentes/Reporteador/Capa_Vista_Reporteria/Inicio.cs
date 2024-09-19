@@ -21,6 +21,7 @@ namespace Capa_Vista_Reporteria
             InitializeComponent();
             actualizarVistaReportes();
             cargarCategorias();
+            cargarModulos();
             getId();
         }
 
@@ -33,6 +34,7 @@ namespace Capa_Vista_Reporteria
             Dgv_Regreporteria.Columns[2].HeaderText = "Nombre";
             Dgv_Regreporteria.Columns[3].HeaderText = "Aplicación";
             Dgv_Regreporteria.Columns[4].HeaderText = "Estado";
+            Dgv_Regreporteria.Columns[5].HeaderText = "Módulo";
         }
 
 
@@ -80,9 +82,17 @@ namespace Capa_Vista_Reporteria
             Cbo_Aplicacion.DataSource = applicationCodes;
         }
 
+        private void cargarModulos()
+        {
+            List<string> limpiarTexbox = new List<string>();
+            Cbo_Modulo.DataSource = limpiarTexbox;
+            List<string> moduleCodes = controlador.listadoModulos();
+            Cbo_Modulo.DataSource = moduleCodes;
+        }
+
         private void Btn_Guardar_Click(object sender, EventArgs e)
         {
-            controlador.guardarReporte(Txt_IDReporte, Txt_Ruta.Text, Txt_NombreA.Text, Cbo_Aplicacion.Text, Cbo_Estado.Text);
+            controlador.guardarReporte(Txt_IDReporte, Txt_Ruta.Text, Txt_NombreA.Text, Cbo_Aplicacion.Text, Cbo_Estado.Text, Cbo_Modulo.Text);
             actualizarVistaReportes();
             confirmRuta = true;
             getId();
@@ -95,7 +105,7 @@ namespace Capa_Vista_Reporteria
             {
                 Txt_Ruta.Text = Txt_Ruta.Text.Replace("\\", "\\\\");
             }
-            controlador.ModReporteria(Txt_Ruta.Text, Txt_NombreA.Text, Cbo_Aplicacion.Text, Cbo_Estado.Text, Txt_IDReporte);
+            controlador.ModReporteria(Txt_Ruta.Text, Txt_NombreA.Text, Cbo_Aplicacion.Text, Cbo_Estado.Text, Txt_IDReporte, Cbo_Modulo.Text);
             actualizarVistaReportes();
             getId();
             confirmRuta = true;
@@ -124,28 +134,21 @@ namespace Capa_Vista_Reporteria
             Cbo_Aplicacion.SelectedIndex = 0;
             Cbo_Estado.SelectedIndex = 0;
         }
-        private void visualizar(string ruta)
-        {
-            System.Threading.Thread.Sleep(3000);
-        }
 
-        private async void Btn_VerReporte_Click(object sender, EventArgs e)
+        public async void visualizar(string ruta)
         {
-            if (!string.IsNullOrEmpty(Txt_IDReporte.Text))
+            if (!string.IsNullOrEmpty(ruta))
             {
-                // creamos una variable para que se le asigne lo que esta escrito en el estado del reporte
                 string estado = Convert.ToString(Cbo_Estado.Text);
 
                 // aqui realizamos una comprobacion de ver si el reporte esta en estado visible y el usuario lo pueda ver si no esta visible entonces le saldra un mensaje al usuario
                 if (estado == "Visible")
                 {
-                    string ruta = Txt_Ruta.Text;
-
                     using (Cargar cargar = new Cargar())
                     {
                         cargar.Show();
 
-                        await Task.Run(() => visualizar(ruta));
+                        await Task.Run(() => System.Threading.Thread.Sleep(3000));
                         visualizar ver = new visualizar(ruta);
                         ver.Show();
 
@@ -157,6 +160,12 @@ namespace Capa_Vista_Reporteria
                     MessageBox.Show("Reporte No_visible");
                 }
             }
+        }
+
+        private void Btn_VerReporte_Click(object sender, EventArgs e)
+        {
+            string ruta = Txt_Ruta.Text;
+            visualizar(ruta);
         }
 
         private void Btn_Examinar_Click(object sender, EventArgs e)
