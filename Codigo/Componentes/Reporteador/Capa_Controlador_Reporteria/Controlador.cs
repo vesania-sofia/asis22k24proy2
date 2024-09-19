@@ -21,18 +21,18 @@ namespace Capa_Controlador_Reporteria
             return tabla;
         }
 
-        public int guardarReporte(TextBox idReporte, string ruta, string nombre_archivo, string aplicacion, string estado, string modulo)
+        public int guardarReporte(TextBox idReporte, string sRuta, string sNombre_archivo, string sAplicacion, string sEstado, string sModulo)
         {
             //se valida que el textbox no este vacio o con espacios en blanco
-            if (string.IsNullOrEmpty(idReporte.Text) || string.IsNullOrEmpty(ruta) || string.IsNullOrEmpty(nombre_archivo) ||
-                string.IsNullOrEmpty(aplicacion) || string.IsNullOrEmpty(estado) || string.IsNullOrEmpty(modulo))
+            if (string.IsNullOrEmpty(idReporte.Text) || string.IsNullOrEmpty(sRuta) || string.IsNullOrEmpty(sNombre_archivo) ||
+                string.IsNullOrEmpty(sAplicacion) || string.IsNullOrEmpty(sEstado) || string.IsNullOrEmpty(sModulo))
             {
                 MessageBox.Show("Existen campos vacios, revise y vuelva a intentarlo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return 0;
             }
             else
             {
-                sentencias.registrarReporte(idReporte.Text, ruta, nombre_archivo, aplicacion, estado, modulo);
+                sentencias.registrarReporte(idReporte.Text, sRuta, sNombre_archivo, sAplicacion, sEstado, sModulo);
                 return 1;
             }
         }
@@ -62,11 +62,11 @@ namespace Capa_Controlador_Reporteria
             }
         }
 
-        public int ModReporteria(string ruta, string nombre_archivo, string aplicacion, string estado, TextBox idReporte, string modulo)
+        public int ModReporteria(string sRuta, string sNombre_archivo, string sAplicacion, string sEstado, TextBox idReporte, string sModulo)
         {
             //se valida que el textbox no este vacio o con espacios en blanco
-            if (string.IsNullOrEmpty(idReporte.Text) || string.IsNullOrEmpty(ruta) || string.IsNullOrEmpty(nombre_archivo) ||
-                string.IsNullOrEmpty(aplicacion) || string.IsNullOrEmpty(estado) || string.IsNullOrEmpty(modulo))
+            if (string.IsNullOrEmpty(idReporte.Text) || string.IsNullOrEmpty(sRuta) || string.IsNullOrEmpty(sNombre_archivo) ||
+                string.IsNullOrEmpty(sAplicacion) || string.IsNullOrEmpty(sEstado) || string.IsNullOrEmpty(sModulo))
             {
                 MessageBox.Show("Existen campos vacios, revise y vuelva a intentarlo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return 0;
@@ -83,7 +83,7 @@ namespace Capa_Controlador_Reporteria
                 else
                 {
                     //aqui con los datos que recibimos de la capavista a hora la mandamos a la funicon ModificarReporte en sentencias.cs
-                    sentencias.ModificarReporte(ruta, nombre_archivo, aplicacion, estado, idReporte.Text, modulo);
+                    sentencias.ModificarReporte(sRuta, sNombre_archivo, sAplicacion, sEstado, idReporte.Text, sModulo);
                     return 1;
                 }
             }
@@ -99,7 +99,7 @@ namespace Capa_Controlador_Reporteria
 
         public string queryRuta(string aplicacion)
         {
-            string ruta;
+            string sRuta;
             if (string.IsNullOrEmpty(aplicacion))
             {
                 MessageBox.Show("No existe una aplicación valida");
@@ -107,10 +107,10 @@ namespace Capa_Controlador_Reporteria
             }
             else
             {
-                ruta = sentencias.queryRutastring(aplicacion);
-                if (ruta != "")
+                sRuta = sentencias.queryRutastring(aplicacion);
+                if (sRuta != "")
                 {
-                    return ruta;
+                    return sRuta;
                 }
                 else
                 {
