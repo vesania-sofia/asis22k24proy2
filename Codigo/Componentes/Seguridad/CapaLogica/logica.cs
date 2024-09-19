@@ -106,6 +106,19 @@ namespace CapaLogica
         }
         //termina
 
+        //Trabajado por ALyson Rodriguez 9959-21-829
+      
+        public DataTable consultaLogicaUsuarios(string AplicacionUsuario)
+        {
+
+            // Llamar al método que retorna un DataTable
+            DataTable table = new DataTable();
+            OdbcDataAdapter dt = sn.mostrarUsuariosYPermisos(AplicacionUsuario); // Cambio en el nombre del método para reflejar permisos
+            dt.Fill(table);
+            return table;
+        }
+        //Finaliza
+
         //###################  lo que hizo Karla  Sofia Gómez Tobar #######################
         public DataTable consultaLogicaPerfilesUsuarios(string TablaPerfilUsuario)
         {
