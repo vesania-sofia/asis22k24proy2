@@ -61,7 +61,7 @@
             this.cbo_usuarios.Location = new System.Drawing.Point(41, 47);
             this.cbo_usuarios.Margin = new System.Windows.Forms.Padding(4);
             this.cbo_usuarios.Name = "cbo_usuarios";
-            this.cbo_usuarios.Size = new System.Drawing.Size(160, 31);
+            this.cbo_usuarios.Size = new System.Drawing.Size(160, 29);
             this.cbo_usuarios.TabIndex = 0;
             // 
             // cbo_aplicaciones
@@ -71,7 +71,7 @@
             this.cbo_aplicaciones.Location = new System.Drawing.Point(536, 46);
             this.cbo_aplicaciones.Margin = new System.Windows.Forms.Padding(4);
             this.cbo_aplicaciones.Name = "cbo_aplicaciones";
-            this.cbo_aplicaciones.Size = new System.Drawing.Size(160, 31);
+            this.cbo_aplicaciones.Size = new System.Drawing.Size(160, 29);
             this.cbo_aplicaciones.TabIndex = 1;
             // 
             // label1
@@ -81,7 +81,7 @@
             this.label1.Location = new System.Drawing.Point(87, 26);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(87, 23);
+            this.label1.Size = new System.Drawing.Size(77, 21);
             this.label1.TabIndex = 2;
             this.label1.Text = "Usuarios";
             // 
@@ -92,7 +92,7 @@
             this.label2.Location = new System.Drawing.Point(543, 26);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(136, 23);
+            this.label2.Size = new System.Drawing.Size(117, 21);
             this.label2.TabIndex = 3;
             this.label2.Text = "Aplicaciones";
             // 
@@ -207,7 +207,7 @@
             this.cbo_modulos.Location = new System.Drawing.Point(279, 47);
             this.cbo_modulos.Margin = new System.Windows.Forms.Padding(4);
             this.cbo_modulos.Name = "cbo_modulos";
-            this.cbo_modulos.Size = new System.Drawing.Size(160, 31);
+            this.cbo_modulos.Size = new System.Drawing.Size(160, 29);
             this.cbo_modulos.TabIndex = 12;
             this.cbo_modulos.SelectedIndexChanged += new System.EventHandler(this.Cbo_modulos_SelectedIndexChanged);
             // 
@@ -218,7 +218,7 @@
             this.lbl_modulo.Location = new System.Drawing.Point(312, 26);
             this.lbl_modulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_modulo.Name = "lbl_modulo";
-            this.lbl_modulo.Size = new System.Drawing.Size(92, 23);
+            this.lbl_modulo.Size = new System.Drawing.Size(81, 21);
             this.lbl_modulo.TabIndex = 11;
             this.lbl_modulo.Text = "Modulos";
             // 
@@ -228,7 +228,7 @@
             this.label3.Font = new System.Drawing.Font("Haettenschweiler", 26F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(139, 9);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(680, 54);
+            this.label3.Size = new System.Drawing.Size(574, 45);
             this.label3.TabIndex = 15;
             this.label3.Text = "ASIGNACION DE APLICACIONES A USUARIOS";
             // 
@@ -318,7 +318,7 @@
             // 
             // frm_asignacion_aplicaciones
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 23F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
             this.ClientSize = new System.Drawing.Size(946, 625);
@@ -362,11 +362,11 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn Eliminar;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Imprimir;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button btn_agregar;
         private System.Windows.Forms.Button btn_buscar;
         private System.Windows.Forms.Button btn_remover;
         private System.Windows.Forms.Button btn_guardar;
         private System.Windows.Forms.Button btn_salir;
         private System.Windows.Forms.Button btn_ayuda;
+        private System.Windows.Forms.Button btn_agregar;
     }
 }
