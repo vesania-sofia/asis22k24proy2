@@ -72,20 +72,22 @@
             // 
             // gbbuscar
             // 
+            this.gbbuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
             this.gbbuscar.Controls.Add(this.btn_bsucarmodulo);
             this.gbbuscar.Controls.Add(this.tbx_buscarmodulo);
-            this.gbbuscar.Location = new System.Drawing.Point(87, 23);
+            this.gbbuscar.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbbuscar.Location = new System.Drawing.Point(203, 80);
             this.gbbuscar.Margin = new System.Windows.Forms.Padding(4);
             this.gbbuscar.Name = "gbbuscar";
             this.gbbuscar.Padding = new System.Windows.Forms.Padding(4);
-            this.gbbuscar.Size = new System.Drawing.Size(606, 102);
+            this.gbbuscar.Size = new System.Drawing.Size(648, 102);
             this.gbbuscar.TabIndex = 255;
             this.gbbuscar.TabStop = false;
             this.gbbuscar.Text = "Buscar Módulo";
             // 
             // btn_bsucarmodulo
             // 
-            this.btn_bsucarmodulo.Location = new System.Drawing.Point(427, 41);
+            this.btn_bsucarmodulo.Location = new System.Drawing.Point(524, 41);
             this.btn_bsucarmodulo.Margin = new System.Windows.Forms.Padding(4);
             this.btn_bsucarmodulo.Name = "btn_bsucarmodulo";
             this.btn_bsucarmodulo.Size = new System.Drawing.Size(100, 30);
@@ -96,14 +98,15 @@
             // 
             // tbx_buscarmodulo
             // 
-            this.tbx_buscarmodulo.Location = new System.Drawing.Point(95, 44);
+            this.tbx_buscarmodulo.Location = new System.Drawing.Point(37, 36);
             this.tbx_buscarmodulo.Margin = new System.Windows.Forms.Padding(4);
             this.tbx_buscarmodulo.Name = "tbx_buscarmodulo";
-            this.tbx_buscarmodulo.Size = new System.Drawing.Size(296, 26);
+            this.tbx_buscarmodulo.Size = new System.Drawing.Size(444, 35);
             this.tbx_buscarmodulo.TabIndex = 6;
             // 
             // groupBox2
             // 
+            this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
             this.groupBox2.Controls.Add(this.txtdesc);
             this.groupBox2.Controls.Add(this.txtcodigo);
             this.groupBox2.Controls.Add(this.gbestado);
@@ -111,7 +114,8 @@
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.txtnombre);
-            this.groupBox2.Location = new System.Drawing.Point(15, 133);
+            this.groupBox2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Location = new System.Drawing.Point(203, 205);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
@@ -122,26 +126,29 @@
             // 
             // txtdesc
             // 
-            this.txtdesc.Location = new System.Drawing.Point(248, 143);
+            this.txtdesc.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtdesc.Location = new System.Drawing.Point(256, 103);
             this.txtdesc.Margin = new System.Windows.Forms.Padding(4);
             this.txtdesc.Multiline = true;
             this.txtdesc.Name = "txtdesc";
-            this.txtdesc.Size = new System.Drawing.Size(296, 45);
+            this.txtdesc.Size = new System.Drawing.Size(296, 32);
             this.txtdesc.TabIndex = 2;
             this.txtdesc.Tag = "2";
             // 
             // txtcodigo
             // 
-            this.txtcodigo.Location = new System.Drawing.Point(248, 54);
+            this.txtcodigo.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtcodigo.Location = new System.Drawing.Point(255, 47);
             this.txtcodigo.Margin = new System.Windows.Forms.Padding(4);
             this.txtcodigo.Name = "txtcodigo";
-            this.txtcodigo.Size = new System.Drawing.Size(132, 26);
+            this.txtcodigo.Size = new System.Drawing.Size(297, 32);
             this.txtcodigo.TabIndex = 4;
             // 
             // gbestado
             // 
             this.gbestado.Controls.Add(this.rbinhabilitado);
             this.gbestado.Controls.Add(this.rbhabilitado);
+            this.gbestado.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbestado.Location = new System.Drawing.Point(72, 208);
             this.gbestado.Margin = new System.Windows.Forms.Padding(4);
             this.gbestado.Name = "gbestado";
@@ -157,7 +164,7 @@
             this.rbinhabilitado.Location = new System.Drawing.Point(284, 69);
             this.rbinhabilitado.Margin = new System.Windows.Forms.Padding(4);
             this.rbinhabilitado.Name = "rbinhabilitado";
-            this.rbinhabilitado.Size = new System.Drawing.Size(114, 24);
+            this.rbinhabilitado.Size = new System.Drawing.Size(227, 41);
             this.rbinhabilitado.TabIndex = 1;
             this.rbinhabilitado.TabStop = true;
             this.rbinhabilitado.Text = "Inhabilitado";
@@ -169,7 +176,7 @@
             this.rbhabilitado.Location = new System.Drawing.Point(89, 69);
             this.rbhabilitado.Margin = new System.Windows.Forms.Padding(4);
             this.rbhabilitado.Name = "rbhabilitado";
-            this.rbhabilitado.Size = new System.Drawing.Size(105, 24);
+            this.rbhabilitado.Size = new System.Drawing.Size(204, 41);
             this.rbhabilitado.TabIndex = 0;
             this.rbhabilitado.TabStop = true;
             this.rbhabilitado.Text = "Habilitado";
@@ -178,39 +185,43 @@
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(60, 146);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(99, 20);
+            this.label3.Size = new System.Drawing.Size(185, 35);
             this.label3.TabIndex = 2;
             this.label3.Text = "Descripción";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(60, 106);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(68, 20);
+            this.label2.Size = new System.Drawing.Size(135, 35);
             this.label2.TabIndex = 1;
             this.label2.Text = "Nombre";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(60, 58);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(143, 20);
+            this.label1.Size = new System.Drawing.Size(293, 35);
             this.label1.TabIndex = 0;
             this.label1.Text = "Codigo de Modulo";
             // 
             // txtnombre
             // 
-            this.txtnombre.Location = new System.Drawing.Point(248, 102);
+            this.txtnombre.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtnombre.Location = new System.Drawing.Point(256, 143);
             this.txtnombre.Margin = new System.Windows.Forms.Padding(4);
             this.txtnombre.Name = "txtnombre";
-            this.txtnombre.Size = new System.Drawing.Size(296, 26);
+            this.txtnombre.Size = new System.Drawing.Size(297, 32);
             this.txtnombre.TabIndex = 1;
             this.txtnombre.Tag = "1";
             // 
@@ -224,7 +235,7 @@
             this.groupBox1.Controls.Add(this.btn_cancel);
             this.groupBox1.Controls.Add(this.btn_ingresar);
             this.groupBox1.Controls.Add(this.btn_modif);
-            this.groupBox1.Location = new System.Drawing.Point(671, 133);
+            this.groupBox1.Location = new System.Drawing.Point(43, 80);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
@@ -323,9 +334,10 @@
             // 
             // frm_modulos
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(838, 514);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(133)))), ((int)(((byte)(223)))));
+            this.ClientSize = new System.Drawing.Size(1024, 621);
             this.Controls.Add(this.btn_ayuda);
             this.Controls.Add(this.gbbuscar);
             this.Controls.Add(this.groupBox2);
