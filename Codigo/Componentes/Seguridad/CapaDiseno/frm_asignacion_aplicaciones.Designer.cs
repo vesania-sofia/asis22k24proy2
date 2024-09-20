@@ -40,56 +40,59 @@
             this.Modificar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Eliminar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Imprimir = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.btn_agregar = new System.Windows.Forms.Button();
-            this.btn_remover = new System.Windows.Forms.Button();
             this.Gpb_datos = new System.Windows.Forms.GroupBox();
             this.cbo_modulos = new System.Windows.Forms.ComboBox();
             this.lbl_modulo = new System.Windows.Forms.Label();
-            this.btn_salir = new System.Windows.Forms.Button();
-            this.btn_finalizar = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.btn_ayuda = new System.Windows.Forms.Button();
+            this.btn_salir = new System.Windows.Forms.Button();
+            this.btn_guardar = new System.Windows.Forms.Button();
+            this.btn_remover = new System.Windows.Forms.Button();
             this.btn_buscar = new System.Windows.Forms.Button();
-            this.txt_buscar = new System.Windows.Forms.TextBox();
+            this.btn_agregar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_asignaciones)).BeginInit();
             this.Gpb_datos.SuspendLayout();
             this.SuspendLayout();
             // 
             // cbo_usuarios
             // 
+            this.cbo_usuarios.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbo_usuarios.FormattingEnabled = true;
             this.cbo_usuarios.Location = new System.Drawing.Point(41, 47);
             this.cbo_usuarios.Margin = new System.Windows.Forms.Padding(4);
             this.cbo_usuarios.Name = "cbo_usuarios";
-            this.cbo_usuarios.Size = new System.Drawing.Size(160, 25);
+            this.cbo_usuarios.Size = new System.Drawing.Size(160, 31);
             this.cbo_usuarios.TabIndex = 0;
             // 
             // cbo_aplicaciones
             // 
+            this.cbo_aplicaciones.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbo_aplicaciones.FormattingEnabled = true;
-            this.cbo_aplicaciones.Location = new System.Drawing.Point(407, 47);
+            this.cbo_aplicaciones.Location = new System.Drawing.Point(536, 46);
             this.cbo_aplicaciones.Margin = new System.Windows.Forms.Padding(4);
             this.cbo_aplicaciones.Name = "cbo_aplicaciones";
-            this.cbo_aplicaciones.Size = new System.Drawing.Size(160, 25);
+            this.cbo_aplicaciones.Size = new System.Drawing.Size(160, 31);
             this.cbo_aplicaciones.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(87, 26);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(59, 17);
+            this.label1.Size = new System.Drawing.Size(87, 23);
             this.label1.TabIndex = 2;
             this.label1.Text = "Usuarios";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(447, 26);
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(543, 26);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(90, 17);
+            this.label2.Size = new System.Drawing.Size(136, 23);
             this.label2.TabIndex = 3;
             this.label2.Text = "Aplicaciones";
             // 
@@ -105,11 +108,11 @@
             this.Modificar,
             this.Eliminar,
             this.Imprimir});
-            this.dgv_asignaciones.Location = new System.Drawing.Point(24, 171);
+            this.dgv_asignaciones.Location = new System.Drawing.Point(107, 345);
             this.dgv_asignaciones.Margin = new System.Windows.Forms.Padding(4);
             this.dgv_asignaciones.Name = "dgv_asignaciones";
             this.dgv_asignaciones.RowHeadersWidth = 51;
-            this.dgv_asignaciones.Size = new System.Drawing.Size(722, 302);
+            this.dgv_asignaciones.Size = new System.Drawing.Size(722, 232);
             this.dgv_asignaciones.TabIndex = 4;
             this.dgv_asignaciones.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgv_asignaciones_CellContentClick);
             // 
@@ -179,39 +182,16 @@
             this.Imprimir.TrueValue = "1";
             this.Imprimir.Width = 80;
             // 
-            // btn_agregar
-            // 
-            this.btn_agregar.Location = new System.Drawing.Point(599, 43);
-            this.btn_agregar.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_agregar.Name = "btn_agregar";
-            this.btn_agregar.Size = new System.Drawing.Size(93, 30);
-            this.btn_agregar.TabIndex = 10;
-            this.btn_agregar.Text = "Agregar";
-            this.btn_agregar.UseVisualStyleBackColor = true;
-            this.btn_agregar.Click += new System.EventHandler(this.Btn_agregar_Click);
-            // 
-            // btn_remover
-            // 
-            this.btn_remover.Location = new System.Drawing.Point(758, 339);
-            this.btn_remover.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_remover.Name = "btn_remover";
-            this.btn_remover.Size = new System.Drawing.Size(99, 30);
-            this.btn_remover.TabIndex = 11;
-            this.btn_remover.Text = "Quitar";
-            this.btn_remover.UseVisualStyleBackColor = true;
-            this.btn_remover.Click += new System.EventHandler(this.Btn_remover_Click);
-            // 
             // Gpb_datos
             // 
             this.Gpb_datos.Controls.Add(this.cbo_modulos);
             this.Gpb_datos.Controls.Add(this.lbl_modulo);
             this.Gpb_datos.Controls.Add(this.cbo_usuarios);
             this.Gpb_datos.Controls.Add(this.cbo_aplicaciones);
-            this.Gpb_datos.Controls.Add(this.btn_agregar);
             this.Gpb_datos.Controls.Add(this.label1);
             this.Gpb_datos.Controls.Add(this.label2);
-            this.Gpb_datos.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Gpb_datos.Location = new System.Drawing.Point(24, 53);
+            this.Gpb_datos.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Gpb_datos.Location = new System.Drawing.Point(107, 227);
             this.Gpb_datos.Margin = new System.Windows.Forms.Padding(4);
             this.Gpb_datos.Name = "Gpb_datos";
             this.Gpb_datos.Padding = new System.Windows.Forms.Padding(4);
@@ -222,99 +202,134 @@
             // 
             // cbo_modulos
             // 
+            this.cbo_modulos.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbo_modulos.FormattingEnabled = true;
-            this.cbo_modulos.Location = new System.Drawing.Point(227, 46);
+            this.cbo_modulos.Location = new System.Drawing.Point(279, 47);
             this.cbo_modulos.Margin = new System.Windows.Forms.Padding(4);
             this.cbo_modulos.Name = "cbo_modulos";
-            this.cbo_modulos.Size = new System.Drawing.Size(160, 25);
+            this.cbo_modulos.Size = new System.Drawing.Size(160, 31);
             this.cbo_modulos.TabIndex = 12;
             this.cbo_modulos.SelectedIndexChanged += new System.EventHandler(this.Cbo_modulos_SelectedIndexChanged);
             // 
             // lbl_modulo
             // 
             this.lbl_modulo.AutoSize = true;
-            this.lbl_modulo.Location = new System.Drawing.Point(283, 26);
+            this.lbl_modulo.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_modulo.Location = new System.Drawing.Point(312, 26);
             this.lbl_modulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_modulo.Name = "lbl_modulo";
-            this.lbl_modulo.Size = new System.Drawing.Size(62, 17);
+            this.lbl_modulo.Size = new System.Drawing.Size(92, 23);
             this.lbl_modulo.TabIndex = 11;
             this.lbl_modulo.Text = "Modulos";
-            // 
-            // btn_salir
-            // 
-            this.btn_salir.Location = new System.Drawing.Point(758, 443);
-            this.btn_salir.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_salir.Name = "btn_salir";
-            this.btn_salir.Size = new System.Drawing.Size(99, 30);
-            this.btn_salir.TabIndex = 13;
-            this.btn_salir.Text = "Salir";
-            this.btn_salir.UseVisualStyleBackColor = true;
-            this.btn_salir.Click += new System.EventHandler(this.Btn_salir_Click);
-            // 
-            // btn_finalizar
-            // 
-            this.btn_finalizar.Location = new System.Drawing.Point(758, 388);
-            this.btn_finalizar.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_finalizar.Name = "btn_finalizar";
-            this.btn_finalizar.Size = new System.Drawing.Size(99, 30);
-            this.btn_finalizar.TabIndex = 14;
-            this.btn_finalizar.Text = "Finalizar";
-            this.btn_finalizar.UseVisualStyleBackColor = true;
-            this.btn_finalizar.Click += new System.EventHandler(this.Btn_finalizar_Click);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(178, 9);
+            this.label3.Font = new System.Drawing.Font("Haettenschweiler", 26F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(139, 9);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(459, 24);
+            this.label3.Size = new System.Drawing.Size(680, 54);
             this.label3.TabIndex = 15;
             this.label3.Text = "ASIGNACION DE APLICACIONES A USUARIOS";
             // 
             // btn_ayuda
             // 
-            this.btn_ayuda.Image = global::CapaDiseno.Properties.Resources.icons8_ayuda_30;
-            this.btn_ayuda.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btn_ayuda.Location = new System.Drawing.Point(740, 9);
+            this.btn_ayuda.BackgroundImage = global::CapaDiseno.Properties.Resources.ayuda1;
+            this.btn_ayuda.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_ayuda.FlatAppearance.BorderSize = 0;
+            this.btn_ayuda.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_ayuda.Location = new System.Drawing.Point(742, 114);
+            this.btn_ayuda.Margin = new System.Windows.Forms.Padding(0);
             this.btn_ayuda.Name = "btn_ayuda";
-            this.btn_ayuda.Size = new System.Drawing.Size(86, 36);
-            this.btn_ayuda.TabIndex = 252;
-            this.btn_ayuda.Text = "Ayuda";
-            this.btn_ayuda.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_ayuda.Size = new System.Drawing.Size(87, 92);
+            this.btn_ayuda.TabIndex = 263;
             this.btn_ayuda.UseVisualStyleBackColor = true;
-            this.btn_ayuda.Click += new System.EventHandler(this.Btn_ayuda_Click);
+            this.btn_ayuda.Click += new System.EventHandler(this.btn_ayuda_Click_1);
+            // 
+            // btn_salir
+            // 
+            this.btn_salir.BackgroundImage = global::CapaDiseno.Properties.Resources.salir1;
+            this.btn_salir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_salir.FlatAppearance.BorderSize = 0;
+            this.btn_salir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_salir.Location = new System.Drawing.Point(618, 114);
+            this.btn_salir.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_salir.Name = "btn_salir";
+            this.btn_salir.Size = new System.Drawing.Size(87, 92);
+            this.btn_salir.TabIndex = 262;
+            this.btn_salir.UseVisualStyleBackColor = true;
+            this.btn_salir.Click += new System.EventHandler(this.btn_salir_Click_1);
+            // 
+            // btn_guardar
+            // 
+            this.btn_guardar.BackgroundImage = global::CapaDiseno.Properties.Resources.guardar1;
+            this.btn_guardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_guardar.FlatAppearance.BorderSize = 0;
+            this.btn_guardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_guardar.Location = new System.Drawing.Point(490, 114);
+            this.btn_guardar.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_guardar.Name = "btn_guardar";
+            this.btn_guardar.Size = new System.Drawing.Size(87, 92);
+            this.btn_guardar.TabIndex = 261;
+            this.btn_guardar.UseVisualStyleBackColor = true;
+            this.btn_guardar.Click += new System.EventHandler(this.btn_guardar_Click);
+            // 
+            // btn_remover
+            // 
+            this.btn_remover.BackgroundImage = global::CapaDiseno.Properties.Resources.cancelar;
+            this.btn_remover.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_remover.FlatAppearance.BorderSize = 0;
+            this.btn_remover.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_remover.Location = new System.Drawing.Point(364, 114);
+            this.btn_remover.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_remover.Name = "btn_remover";
+            this.btn_remover.Size = new System.Drawing.Size(87, 92);
+            this.btn_remover.TabIndex = 260;
+            this.btn_remover.UseVisualStyleBackColor = true;
+            this.btn_remover.Click += new System.EventHandler(this.btn_remover_Click_1);
             // 
             // btn_buscar
             // 
-            this.btn_buscar.Location = new System.Drawing.Point(758, 218);
+            this.btn_buscar.BackgroundImage = global::CapaDiseno.Properties.Resources.buscar1;
+            this.btn_buscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_buscar.FlatAppearance.BorderSize = 0;
+            this.btn_buscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_buscar.Location = new System.Drawing.Point(242, 114);
+            this.btn_buscar.Margin = new System.Windows.Forms.Padding(0);
             this.btn_buscar.Name = "btn_buscar";
-            this.btn_buscar.Size = new System.Drawing.Size(99, 28);
-            this.btn_buscar.TabIndex = 256;
-            this.btn_buscar.Text = "Buscar";
+            this.btn_buscar.Size = new System.Drawing.Size(87, 92);
+            this.btn_buscar.TabIndex = 259;
             this.btn_buscar.UseVisualStyleBackColor = true;
-            this.btn_buscar.Click += new System.EventHandler(this.btn_buscar_Click);
+            this.btn_buscar.Click += new System.EventHandler(this.btn_buscar_Click_1);
             // 
-            // txt_buscar
+            // btn_agregar
             // 
-            this.txt_buscar.Location = new System.Drawing.Point(758, 171);
-            this.txt_buscar.Name = "txt_buscar";
-            this.txt_buscar.Size = new System.Drawing.Size(99, 23);
-            this.txt_buscar.TabIndex = 257;
+            this.btn_agregar.BackgroundImage = global::CapaDiseno.Properties.Resources.agregar1;
+            this.btn_agregar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_agregar.FlatAppearance.BorderSize = 0;
+            this.btn_agregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_agregar.Location = new System.Drawing.Point(116, 114);
+            this.btn_agregar.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_agregar.Name = "btn_agregar";
+            this.btn_agregar.Size = new System.Drawing.Size(87, 92);
+            this.btn_agregar.TabIndex = 258;
+            this.btn_agregar.UseVisualStyleBackColor = true;
+            this.btn_agregar.Click += new System.EventHandler(this.btn_agregar_Click_1);
             // 
             // frm_asignacion_aplicaciones
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(878, 509);
-            this.Controls.Add(this.txt_buscar);
-            this.Controls.Add(this.btn_buscar);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.ClientSize = new System.Drawing.Size(946, 625);
             this.Controls.Add(this.btn_ayuda);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.btn_finalizar);
             this.Controls.Add(this.btn_salir);
-            this.Controls.Add(this.Gpb_datos);
+            this.Controls.Add(this.btn_guardar);
             this.Controls.Add(this.btn_remover);
+            this.Controls.Add(this.btn_buscar);
+            this.Controls.Add(this.btn_agregar);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.Gpb_datos);
             this.Controls.Add(this.dgv_asignaciones);
             this.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -335,11 +350,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView dgv_asignaciones;
-        private System.Windows.Forms.Button btn_agregar;
-        private System.Windows.Forms.Button btn_remover;
         private System.Windows.Forms.GroupBox Gpb_datos;
-        private System.Windows.Forms.Button btn_salir;
-        private System.Windows.Forms.Button btn_finalizar;
         public System.Windows.Forms.ComboBox cbo_usuarios;
         public System.Windows.Forms.ComboBox cbo_modulos;
         private System.Windows.Forms.Label lbl_modulo;
@@ -351,8 +362,11 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn Eliminar;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Imprimir;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button btn_ayuda;
+        private System.Windows.Forms.Button btn_agregar;
         private System.Windows.Forms.Button btn_buscar;
-        private System.Windows.Forms.TextBox txt_buscar;
+        private System.Windows.Forms.Button btn_remover;
+        private System.Windows.Forms.Button btn_guardar;
+        private System.Windows.Forms.Button btn_salir;
+        private System.Windows.Forms.Button btn_ayuda;
     }
 }
