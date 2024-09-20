@@ -25,6 +25,9 @@ namespace Capa_Vista_Navegador
         int correcto = 0;
         string tabla = "def";
         string otratabla = "def";
+        // Lista que contendrá los nombres de las tablas adicionales
+        List<string> listaTablasAdicionales = new List<string>();
+
         string nomForm;
         int pos = 8;
 		string idRepo = "";
@@ -402,10 +405,10 @@ namespace Capa_Vista_Navegador
         {
             tabla = table;
         }
-      
-        public void asignar2Tabla(string table)
+
+        public void asignarTablas(List<string> tablas)
         {
-            otratabla= table;
+            listaTablasAdicionales = tablas;
         }
 
         public void asignarNombreForm(string nom)
@@ -2019,7 +2022,6 @@ namespace Capa_Vista_Navegador
         {
             try
             {
-                // Mostrar un mensaje de confirmación antes de proceder con la operación
                 DialogResult result = MessageBox.Show(
                     "Está a punto de guardar un nuevo registro en el sistema.\n\n" +
                     "Asegúrese de que toda la información ingresada sea correcta.\n\n" +
@@ -2029,7 +2031,6 @@ namespace Capa_Vista_Navegador
                     MessageBoxIcon.Question
                 );
 
-                // Si el usuario selecciona "No", se cancela la operación
                 if (result == DialogResult.No)
                 {
                     return;
@@ -2037,7 +2038,6 @@ namespace Capa_Vista_Navegador
 
                 bool lleno = true;
 
-                // Verificar si todos los controles tienen valores
                 foreach (Control componente in Controls)
                 {
                     if (componente is TextBox || componente is DateTimePicker || componente is ComboBox)
@@ -2052,81 +2052,67 @@ namespace Capa_Vista_Navegador
 
                 if (lleno)
                 {
+                    List<string> queries = new List<string>();
+
                     switch (activar)
                     {
                         case 1:
-                            // Si está en modo de actualización
                             logic.nuevoQuery(crearUpdate());
-                            MessageBox.Show(
-                                "El registro ha sido actualizado correctamente.",
-                                "Actualización Exitosa",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Information
-
-                            );
+                            MessageBox.Show("El registro ha sido actualizado correctamente.", "Actualización Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             sn.insertarBitacora(idUsuario, "Actualizo un registro en " + tabla, tabla);
                             break;
 
                         case 2:
-                            // Crear query para la primera tabla
-                         
-                                string queryPrimeraTabla = crearInsert(tabla);
-                            
-                            // Iniciar la lista de queries para la transacción
-                            List<string> queries = new List<string>();
-                           logic.nuevoQuery(queryPrimeraTabla);
-                            sn.insertarBitacora(idUsuario, "Se inserto en " + tabla, tabla);
+                            // Insert en la primera tabla
+                            string queryPrimeraTabla = crearInsert(tabla);
+                            logic.nuevoQuery(queryPrimeraTabla);
+                            sn.insertarBitacora(idUsuario, "Se insertó en " + tabla, tabla);
+
+                            // Obtener último ID insertado de la primera tabla
                             string ultimoIdPrimeraTabla = logic.lastID(tabla);
-                            Console.WriteLine(ultimoIdPrimeraTabla);
-                            if (!string.IsNullOrEmpty(otratabla))
+
+                            // Insertar en tablas adicionales
+                            foreach (string tablaAdicional in listaTablasAdicionales)
                             {
-                                // Obtener las columnas de la segunda tabla
-                                List<(string nombreColumna, bool esAutoIncremental, bool esClaveForanea)> columnasSegundaTabla = logic.obtenerColumnasYPropiedadesLogica(otratabla);
-
-
-                                // Crear los valores para la segunda tabla
-                                List<string> valoresSegundaTabla = new List<string>();
-                                int pos = 1;
-
-                                foreach (var columna in columnasSegundaTabla)
+                                if (!string.IsNullOrEmpty(tablaAdicional))
                                 {
-                                    string valorCampo;
-                                    if (columna.esAutoIncremental)
+                                    List<(string nombreColumna, bool esAutoIncremental, bool esClaveForanea)> columnasAdicionales = logic.obtenerColumnasYPropiedadesLogica(tablaAdicional);
+
+                                    List<string> valoresTablaAdicional = new List<string>();
+                                    int pos = 1;
+
+                                    foreach (var columna in columnasAdicionales)
                                     {
-                                        continue;
-                                    }
-                                    if (columna.esClaveForanea)
-                                    {
-                                        // Usar el ID de la tabla relacionada
-                                         valorCampo = ultimoIdPrimeraTabla.ToString();  // Asignar el último ID insertado
-                                    }
-                                    else
-                                    {
-                                        // Usar el valor obtenido del control
-                                         valorCampo = obtenerDatoCampos(pos);  // Obtener el valor del control correspondiente
+                                        string valorCampo;
+                                        if (columna.esAutoIncremental)
+                                        {
+                                            continue;
+                                        }
+                                        if (columna.esClaveForanea)
+                                        {
+                                            valorCampo = ultimoIdPrimeraTabla.ToString();
+                                        }
+                                        else
+                                        {
+                                            valorCampo = obtenerDatoCampos(pos);
+                                        }
+
+                                        valoresTablaAdicional.Add($"'{valorCampo}'");
+                                        pos++;
                                     }
 
-                                    // Si es la clave foránea, usar el último ID insertado
-                                    valoresSegundaTabla.Add($"'{valorCampo}'");
-                                    pos++;
+                                    string camposQuery = string.Join(", ", columnasAdicionales.Where(c => !c.esAutoIncremental).Select(c => c.nombreColumna));
+                                    string valoresQuery = string.Join(", ", valoresTablaAdicional);
+                                    string queryAdicional = $"INSERT INTO {tablaAdicional} ({camposQuery}) VALUES ({valoresQuery});";
+                                    queries.Add(queryAdicional);
+
+                                    sn.insertarBitacora(idUsuario, "Se insertó en " + tablaAdicional, tablaAdicional);
+                                    logic.insertarDatosEnMultiplesTablas(queries);
+                                    MessageBox.Show("El registro ha sido guardado correctamente.", "Guardado Exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 }
-
-                                // Crear el query de inserción para la segunda tabla
-                                string camposQuery = string.Join(", ", columnasSegundaTabla.Where(c => !c.esAutoIncremental).Select(c => c.nombreColumna));
-                                string valoresQuery = string.Join(", ", valoresSegundaTabla);
-                                string querySegundaTabla = $"INSERT INTO {otratabla} ({camposQuery}) VALUES ({valoresQuery});";
-
-                                // Añadir a la lista de queries
-                                queries.Add(querySegundaTabla);
-
-                                // Ejecutar las queries dentro de una transacción
-                                logic.insertarDatosEnDosTablas(queries);
-
-                                sn.insertarBitacora(idUsuario, "Se inserto en " + otratabla, otratabla);
                             }
 
-                            MessageBox.Show("El registro ha sido guardado correctamente.", "Guardado Exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                          
                             break;
 
                         default:
@@ -2134,10 +2120,8 @@ namespace Capa_Vista_Navegador
                             break;
                     }
 
-                    // Actualizar DataGridView después de la inserción
                     actualizardatagriew();
 
-                    // Cargar los datos en los controles si hay registros en la tabla
                     if (logic.TestRegistros(tabla) > 0)
                     {
                         int i = 0;
@@ -2152,19 +2136,8 @@ namespace Capa_Vista_Navegador
                         }
                     }
 
-                    // Deshabilitar campos y botones
                     deshabilitarcampos_y_botones();
                     botonesYPermisos();
-                    // Habilitar/deshabilitar botones según sea necesario
-                    /*Btn_Guardar.Enabled = false;
-                    Btn_Eliminar.Enabled = true;
-                    Btn_Cancelar.Enabled = false;
-                    Btn_Modificar.Enabled = true;
-                    Btn_Ingresar.Enabled = true;
-                    Btn_Refrescar.Enabled = true;*/
-
-                    // Configurar permisos según el usuario
-                    
                 }
                 else
                 {
@@ -2179,7 +2152,6 @@ namespace Capa_Vista_Navegador
             }
             catch (Exception ex)
             {
-                // Manejo de errores y mostrar un mensaje más profesional
                 MessageBox.Show(
                     "Ocurrió un error durante el guardado del registro.\n\n" +
                     "Detalles del error: " + ex.Message + "\n\n" +
@@ -2191,8 +2163,9 @@ namespace Capa_Vista_Navegador
             }
         }
 
+
         // Aquí está la función crearInsertFactura
-       
+
 
         private void DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -2485,6 +2458,7 @@ namespace Capa_Vista_Navegador
             if (!string.IsNullOrEmpty(idAplicacion))
             {
                 Capa_Vista_Reporteria.visualizar visualizar = new Capa_Vista_Reporteria.visualizar(ruta);
+               // MessageBox.Show(ruta);
                 visualizar.ShowDialog();
             }
             /*sring llave = "";

@@ -172,6 +172,12 @@ namespace Capa_Controlador_Navegador
             // Llamar al método de la capa de sentencias y retornar el resultado como string
             return sn.ObtenerIdUsuarioPorUsername(username);
         }
+        public void insertarDatosEnMultiplesTablas(List<string> queries)
+        {
+            sentencias sn = new sentencias();
+            sn.ejecutarQueryConTransaccion(queries);  // Pasamos la lista de queries para ser ejecutadas dentro de una transacción
+        }
+
 
 
 
