@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Odbc;
 using System.Linq;
 using System.Text;
@@ -11,7 +12,7 @@ namespace CapaDeDatos
     {
         public OdbcConnection probarConexion()
         {
-            OdbcConnection conn = new OdbcConnection("Dsn=colchoneria");// creacion de la conexion via ODBC
+            OdbcConnection conn = new OdbcConnection("dsn=colchoneria");// creacion de la conexion via ODBC
             try
             {              
                 conn.Open();

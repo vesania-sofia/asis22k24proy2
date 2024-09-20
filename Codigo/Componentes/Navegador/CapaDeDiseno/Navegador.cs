@@ -1846,6 +1846,7 @@ namespace CapaDeDiseno
 
         private void Btn_Ayuda_Click(object sender, EventArgs e)
         {                    
+            
             Help.ShowHelp(this, AsRuta, AsIndice);//Abre el menu de ayuda HTML            
             botonesYPermisos();        
         }
@@ -2273,12 +2274,12 @@ namespace CapaDeDiseno
                 for (int i = 0; i < permisosText.Length; i++) // Cambié i a 0
                 {
 
-                    bool tienePermiso = sn.consultarPermisos("2", "1000", i + 1);
+                    //bool tienePermiso = sn.consultarPermisos("2", "1000", i + 1);
 
                     string idUsuario1 = logic.ObtenerIdUsuario(idUsuario);
                     MessageBox.Show("el usuario es: " +idUsuario1+" "+idAplicacion);
                     sentencia sen = new sentencia();
-                    //bool tienePermiso = sn.consultarPermisos(idUsuario1, idAplicacion, i + 1);
+                    bool tienePermiso = sn.consultarPermisos(idUsuario1, idAplicacion, i + 1);
 
 
                     if (botones[i] != null)
