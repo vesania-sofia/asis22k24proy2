@@ -14,7 +14,7 @@ namespace Capa_Vista_Reporteria
     public partial class reporteria_usuario : Form
     {
         Capa_Controlador_Reporteria.Controlador controlador = new Capa_Controlador_Reporteria.Controlador();
-        String estado = "";
+        String sEstado = "";
 
         public reporteria_usuario()
         {
@@ -47,9 +47,9 @@ namespace Capa_Vista_Reporteria
             {
                 Txt_nombre.Text = Dgv_Regreporteria.CurrentRow.Cells[2].Value.ToString();
                 Txt_ruta.Text = Dgv_Regreporteria.CurrentRow.Cells[1].Value.ToString();
-                estado = Dgv_Regreporteria.CurrentRow.Cells[4].Value.ToString();
+                sEstado = Dgv_Regreporteria.CurrentRow.Cells[4].Value.ToString();
 
-                if (estado.Equals("Visible"))
+                if (sEstado.Equals("Visible"))
                 {
                     Btn_VerReporte.Enabled = true;
                 }
@@ -76,16 +76,16 @@ namespace Capa_Vista_Reporteria
         {
 
             //si el reporte tiene estado visible entonces se ejecuta otra forma para mostrar el reporte
-            if (estado.Equals("Visible"))
+            if (sEstado.Equals("Visible"))
             {
-                string ruta = Txt_ruta.Text;
+                string sRuta = Txt_ruta.Text;
 
                 using (Cargar cargar = new Cargar())
                 {
                     cargar.Show();
 
-                    await Task.Run(() => visualizar(ruta));
-                    visualizar newFormVisualizar = new visualizar(ruta);
+                    await Task.Run(() => visualizar(sRuta));
+                    visualizar newFormVisualizar = new visualizar(sRuta);
                     newFormVisualizar.Show();
 
                     cargar.Close();

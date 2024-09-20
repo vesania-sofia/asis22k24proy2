@@ -15,7 +15,7 @@ namespace Capa_Vista_Reporteria
     public partial class Inicio : Form
     {
         Capa_Controlador_Reporteria.Controlador controlador = new Capa_Controlador_Reporteria.Controlador();
-        Boolean confirmRuta = true;
+        Boolean bConfirmRuta = true;
         public Inicio()
         {
             InitializeComponent();
@@ -94,28 +94,28 @@ namespace Capa_Vista_Reporteria
         {
             controlador.guardarReporte(Txt_IDReporte, Txt_Ruta.Text, Txt_NombreA.Text, Cbo_Aplicacion.Text, Cbo_Estado.Text, Cbo_Modulo.Text);
             actualizarVistaReportes();
-            confirmRuta = true;
+            bConfirmRuta = true;
             getId();
         }
 
         private void Btn_Modificar_Click(object sender, EventArgs e)
         {
             //aqui recibimos los nuevos datos en los diferente txtbox y se lo mandamos a la funcion ModReporteador que esta en controlador.cs
-            if (confirmRuta)
+            if (bConfirmRuta)
             {
                 Txt_Ruta.Text = Txt_Ruta.Text.Replace("\\", "\\\\");
             }
             controlador.ModReporteria(Txt_Ruta.Text, Txt_NombreA.Text, Cbo_Aplicacion.Text, Cbo_Estado.Text, Txt_IDReporte, Cbo_Modulo.Text);
             actualizarVistaReportes();
             getId();
-            confirmRuta = true;
+            bConfirmRuta = true;
         }
 
         private void Btn_Eliminar_Click(object sender, EventArgs e)
         {
             controlador.borrar_reporte(Txt_IDReporte);
             actualizarVistaReportes();
-            confirmRuta = true;
+            bConfirmRuta = true;
             getId();
         }
 
@@ -135,21 +135,21 @@ namespace Capa_Vista_Reporteria
             Cbo_Estado.SelectedIndex = 0;
         }
 
-        public async void visualizar(string ruta)
+        public async void visualizar(string sRuta)
         {
-            if (!string.IsNullOrEmpty(ruta))
+            if (!string.IsNullOrEmpty(sRuta))
             {
-                string estado = Convert.ToString(Cbo_Estado.Text);
+                string sEstado = Convert.ToString(Cbo_Estado.Text);
 
                 // aqui realizamos una comprobacion de ver si el reporte esta en estado visible y el usuario lo pueda ver si no esta visible entonces le saldra un mensaje al usuario
-                if (estado == "Visible")
+                if (sEstado == "Visible")
                 {
                     using (Cargar cargar = new Cargar())
                     {
                         cargar.Show();
 
                         await Task.Run(() => System.Threading.Thread.Sleep(3000));
-                        visualizar ver = new visualizar(ruta);
+                        visualizar ver = new visualizar(sRuta);
                         ver.Show();
 
                         cargar.Close();
@@ -164,8 +164,8 @@ namespace Capa_Vista_Reporteria
 
         private void Btn_VerReporte_Click(object sender, EventArgs e)
         {
-            string ruta = Txt_Ruta.Text;
-            visualizar(ruta);
+            string sRuta = Txt_Ruta.Text;
+            visualizar(sRuta);
         }
 
         private void Btn_Examinar_Click(object sender, EventArgs e)
@@ -176,31 +176,31 @@ namespace Capa_Vista_Reporteria
             if (Ofd_Reporte.ShowDialog() == DialogResult.OK)
             {
                 Txt_Ruta.Text = Ofd_Reporte.FileName;
-                string[] separatingStrings = { "\\" };
-                string text = Txt_Ruta.Text;
-                string[] words = text.Split(separatingStrings, System.StringSplitOptions.RemoveEmptyEntries);
+                string[] sSeparatingStrings = { "\\" };
+                string sText = Txt_Ruta.Text;
+                string[] sWords = sText.Split(sSeparatingStrings, System.StringSplitOptions.RemoveEmptyEntries);
                 string db = "";
-                Boolean ruta = false;
-                for (int i = 0; i < words.Length; i++)
+                Boolean bRuta = false;
+                for (int i = 0; i < sWords.Length; i++)
                 {
-                    if (ruta)
+                    if (bRuta)
                     {
-                        if (i < words.Length - 1)
+                        if (i < sWords.Length - 1)
                         {
-                            db += words[i] + '\\' + '\\';
+                            db += sWords[i] + '\\' + '\\';
                         }
                         else
                         {
-                            db += words[i];
+                            db += sWords[i];
                         }
                     }
-                    if (words[i].Equals("Reportes"))
+                    if (sWords[i].Equals("Reportes"))
                     {
-                        ruta = true;
+                        bRuta = true;
                     }
                 }
                 Txt_Ruta.Text = db;
-                confirmRuta = false;
+                bConfirmRuta = false;
             }
         }
     }
