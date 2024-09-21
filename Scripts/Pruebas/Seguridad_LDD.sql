@@ -319,6 +319,10 @@ ALTER TABLE tbl_bitacora DROP COLUMN Fk_id_aplicacion;
 ALTER TABLE `Tbl_bitacora`
 ADD COLUMN `tabla` VARCHAR(50) NOT NULL;
 
+-- Brandon Boch - 0901-21-13093
+ALTER TABLE Tbl_bitacora
+ADD COLUMN aplicacion VARCHAR(10) NOT NULL;
+
 -- -----USUARIOS
 -- Agrega el primer usuario
 INSERT INTO `Tbl_usuarios` VALUES

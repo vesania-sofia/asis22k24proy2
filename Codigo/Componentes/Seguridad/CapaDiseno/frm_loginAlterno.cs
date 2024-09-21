@@ -46,7 +46,7 @@ namespace CapaDiseno
 
                         {
                             sentencia s = new sentencia();
-                            s.insertarBitacora(Txt_usuario.Text.Trim(), "Se logeo al sistema", "Login");
+                            s.insertarBitacora(Txt_usuario.Text.Trim(), "Se logeo al sistema", "Login", "1000");
                             MDI_Seguridad seguridad = new MDI_Seguridad(Txt_usuario.Text.Trim());
                             seguridad.Show();
                             seguridad.lbl_nombreUsuario.Text = Txt_usuario.Text;
