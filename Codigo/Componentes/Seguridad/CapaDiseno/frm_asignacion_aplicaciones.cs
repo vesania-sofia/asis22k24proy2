@@ -24,7 +24,20 @@ namespace CapaDiseno
         {
             InitializeComponent();
             logic = new logica(idUsuario);
-            
+            ToolTip tnuevo = new ToolTip();
+            tnuevo.SetToolTip(btn_agregar, "Crear Asignación");
+            ToolTip tbuscar = new ToolTip();
+            tbuscar.SetToolTip(btn_buscar, "Buscar Asignación");
+            ToolTip tcancelar = new ToolTip();
+            tcancelar.SetToolTip(btn_limpiar, "Limpiar Datos");
+            ToolTip tguardar = new ToolTip();
+            tguardar.SetToolTip(btn_guardar, "Guardar Asignación");
+            ToolTip tsalir = new ToolTip();
+            tsalir.SetToolTip(btn_salir, "Salir Módulo de Asignación");
+            ToolTip tayuda = new ToolTip();
+            tayuda.SetToolTip(btn_ayuda, "Ayuda");
+            ToolTip teliminar = new ToolTip();
+            teliminar.SetToolTip(btn_eliminar, "Cancelar Asignación");
         }
         //####  FINALIZA ALYSON RODRIGUEZ 9959-21-829
 
@@ -68,6 +81,21 @@ namespace CapaDiseno
             cbo_aplicaciones.Text = " ";
         }
 
+        void limpieza2()
+        {
+            dgv_asignaciones.Columns.Clear();
+
+
+            if (iContadorFila > 0)
+            {
+                dgv_asignaciones.Rows.RemoveAt(dgv_asignaciones.CurrentRow.Index);
+                iContadorFila--;
+            }
+            else
+            {
+            }
+        }
+
         // TRABAJADO POR ALYSON RODRIGURZ 9959-21-829
         // Método para cargar los módulos 
         private void CargarModulos()
@@ -87,7 +115,7 @@ namespace CapaDiseno
                 Console.WriteLine("Error al cargar módulos: " + ex.Message);
             }
         }
-        //FIN ALYSON RODRIGURZ 9959-21-829
+        //FIN ALYSON RODRIGUEZ 9959-21-829
 
         // TRABAJADO POR ALYSON RODRIGURZ 9959-21-829
         // Método para cargar aplicaciones según el módulo seleccionado
@@ -242,7 +270,7 @@ namespace CapaDiseno
 
 
 
-                if (iContadorFila == 0)
+                if (iContadorFila > 0)
                 {
                     dgv_asignaciones.Rows.Add(sUsuario, sAplicacion);
 
@@ -289,15 +317,7 @@ namespace CapaDiseno
 
         private void btn_remover_Click_1(object sender, EventArgs e)
         {
-            if (iContadorFila > 0)
-            {
-                dgv_asignaciones.Rows.RemoveAt(dgv_asignaciones.CurrentRow.Index);
-                iContadorFila--;
-            }
-            else
-            {
-                MessageBox.Show("No hay relaciones que eliminar");
-            }
+            limpieza2();
         }
 
         // FINALIZA ALYSON RODRIGUEZ 9959-21-829 
@@ -386,6 +406,19 @@ namespace CapaDiseno
         private void btn_ayuda_Click_1(object sender, EventArgs e)
         {
             Help.ShowHelp(this, "C:\\Ayuda_Seguridad\\" + "AyudaAsignacionAplicacionesUsuarios.chm", "Asignacion_Aplicaciones_Usuarios.html");
+        }
+
+        private void btn_eliminar_Click(object sender, EventArgs e)
+        {
+            if (iContadorFila > 0)
+            {
+                dgv_asignaciones.Rows.RemoveAt(dgv_asignaciones.CurrentRow.Index);
+                iContadorFila--;
+            }
+            else
+            {
+                MessageBox.Show("No hay relaciones que eliminar");
+            }
         }
     }
 }
