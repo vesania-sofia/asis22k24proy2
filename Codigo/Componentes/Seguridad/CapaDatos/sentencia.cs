@@ -484,6 +484,16 @@ namespace CapaDatos
                 MessageBox.Show("Error al insertar la aplicación: " + ex.Message);
             }
         }
+
+        public OdbcDataAdapter Consultaraplicaciones(string aplicacion)
+        {
+            cn.conectar();
+            string sqlAplicaciones = "SELECT * FROM Tbl_aplicaciones WHERE Pk_id_aplicacion = " + aplicacion;
+            insertarBitacora(idUsuario, "Realizo una consulta a aplicaciones", "Tbl_aplicaciones");
+            OdbcDataAdapter dataTable = new OdbcDataAdapter(sqlAplicaciones, cn.conectar());
+            return dataTable;
+        }
+
         //###################  termina lo que hizo  Karla  Sofia Gómez Tobar #######################
 
         //---------------------------------------------------- Inicio: GABRIELA SUC ----------------------------------------------------
@@ -629,17 +639,8 @@ namespace CapaDatos
                 return datausuarios;
         }
 
-        //****************************************Kevin López***************************************************
-        public OdbcDataAdapter consultaraplicaciones(string aplicacion)
-        {
-            cn.conectar();
-            string sqlAplicaciones = "SELECT Pk_id_aplicacion, nombre_aplicacion FROM Tbl_aplicaciones";
-            insertarBitacora(idUsuario, "Realizo una consulta a aplicaciones", "Tbl_aplicaciones");
-            OdbcDataAdapter dataTable = new OdbcDataAdapter(sqlAplicaciones, cn.conectar());
-            return dataTable;
-        }
 
-        //**************************************** FIN Kevin López***************************************************
+
 
         /*-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 

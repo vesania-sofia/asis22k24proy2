@@ -21,23 +21,41 @@ namespace CapaDiseno
         public frm_aplicaciones(string idUsuario)
         {
             InitializeComponent();
-            btn_cancel.Enabled = false;
+            btn_cancelar.Enabled = false;
             btn_ingresar.Enabled = false;
             btn_actualizar.Enabled = false;
-            btn_modif.Enabled = false;
+            btn_modificar.Enabled = false;
             btn_eliminar.Enabled = false;
             logic = new logica(idUsuario);
             txt_idaplicacion.Enabled = false;
             txt_nombre.Enabled = false;
             txt_descripcion.Enabled = false;
             Gpb_estado.Enabled = false;
+            ToolTip tnuevo = new ToolTip();
+            tnuevo.SetToolTip(btn_nuevo, "Crear aplicación");
+            ToolTip tguardar = new ToolTip();
+            tguardar.SetToolTip(btn_ingresar, "Guardar aplicación");
+            ToolTip tactualizar = new ToolTip();
+            tactualizar.SetToolTip(btn_modificar, "Actualizar Cambios");
+            ToolTip tbuscar = new ToolTip();
+            tbuscar.SetToolTip(btn_bsucar, "Buscar aplicación");
+            ToolTip teditar = new ToolTip();
+            teditar.SetToolTip(btn_modificar, "Modificar aplicación");
+            ToolTip teliminar = new ToolTip();
+            teliminar.SetToolTip(btn_eliminar, "Eliminar aplicación");
+            ToolTip tcancelar = new ToolTip();
+            tcancelar.SetToolTip(btn_cancelar, "Cancelar Cambios");
+            ToolTip tsalir = new ToolTip();
+            tsalir.SetToolTip(btn_salir, "Salir Mantenimiento de aplicaciones");
+            ToolTip tayuda = new ToolTip();
+            tayuda.SetToolTip(btn_ayuda, "Ayuda");
         }
-        //###################  termina lo que hizo  Karla  Sofia Gómez Tobar #######################
+     
         public frm_aplicaciones()
         {
         }
 
-        //###################  lo que hizo Karla  Sofia Gómez Tobar #######################
+
         void limpiar()
         {
             txt_idaplicacion.Text = "";
@@ -49,7 +67,7 @@ namespace CapaDiseno
             txt_idaplicacion.Focus();
         }
 
-        //###################  termina lo que hizo  Karla  Sofia Gómez Tobar #######################
+
         private void GroupBox2_Enter(object sender, EventArgs e)
         {
 
@@ -71,17 +89,19 @@ namespace CapaDiseno
 
         }
 
-        //###################  lo que hizo Karla  Sofia Gómez Tobar #######################
-        private void btn_salir_Click_1(object sender, EventArgs e)
+
+        private void btn_cancel_Click(object sender, EventArgs e)
         {
-            limpiar();
-            this.Close();
+            
+
         }
-        //###################  termina lo que hizo  Karla  Sofia Gómez Tobar ######################
 
+        private void btn_ayuda_Click(object sender, EventArgs e)
+        {
+            Help.ShowHelp(this, "C:\\Ayuda_Seguridad\\" + "MantenimientoAplicaciones.chm", "Mantenimiento_Aplicaciones.html");
+        }
 
-        //###################  lo que hizo Karla  Sofia Gómez Tobar #######################
-        private void btn_bsucarap_Click(object sender, EventArgs e)
+        private void btn_bsucar_Click(object sender, EventArgs e)
         {
             string aplicacion = txt_buscar.Text;
 
@@ -122,7 +142,8 @@ namespace CapaDiseno
                     }
                 }
 
-                btn_modif.Enabled = true;
+                btn_modificar.Enabled = true;
+                btn_cancelar.Enabled = true;
                 btn_ingresar.Enabled = false;
                 txt_idaplicacion.Enabled = false;
                 txt_nombre.Enabled = false;
@@ -138,20 +159,20 @@ namespace CapaDiseno
             }
         }
 
-        //###################  lo que hizo Karla  Sofia Gómez Tobar #######################
-        private void btn_nuevo_Click_1(object sender, EventArgs e)
+        private void btn_nuevo_Click(object sender, EventArgs e)
         {
             Rdb_activo.Checked = true;
             Gpb_estado.Enabled = true;
-            btn_nuevo.Enabled = false;
-            btn_actualizar.Enabled = false;
-            gb_buscar.Enabled = false;
-            btn_modif.Enabled = false;
             btn_ingresar.Enabled = true;
-            btn_cancel.Enabled = true;
+            btn_cancelar.Enabled = true;
             txt_idaplicacion.Enabled = true;
             txt_nombre.Enabled = true;
             txt_descripcion.Enabled = true;
+            btn_nuevo.Enabled = false;
+            btn_actualizar.Enabled = false;
+            gb_buscar.Enabled = false;
+            btn_modificar.Enabled = false;
+            
 
 
 
@@ -179,11 +200,8 @@ namespace CapaDiseno
                 return;
             }
         }
-        //###################  termina lo que hizo  Karla  Sofia Gómez Tobar #######################
 
-
-        //###################  lo que hizo Karla  Sofia Gómez Tobar #######################
-        private void btn_ingresar_Click_1(object sender, EventArgs e)
+        private void btn_ingresar_Click(object sender, EventArgs e)
         {
             txt_nombre.Enabled = false;
             txt_descripcion.Enabled = false;
@@ -230,25 +248,23 @@ namespace CapaDiseno
                 txt_idaplicacion.Enabled = false;
             }
         }
-        //###################  termina lo que hizo  Karla  Sofia Gómez Tobar #######################
 
-        //esto fue echo por Carlos hernandez
-        private void btn_modif_Click_1(object sender, EventArgs e)
+        private void btn_modif_Click(object sender, EventArgs e)
         {
             Rdb_activo.Checked = true;
             Gpb_estado.Enabled = true;
             btn_nuevo.Enabled = false;
             btn_actualizar.Enabled = true;
             gb_buscar.Enabled = false;
-            btn_modif.Enabled = false;
+            btn_modificar.Enabled = false;
             btn_ingresar.Enabled = false;
-            btn_cancel.Enabled = true;
+            btn_cancelar.Enabled = true;
             txt_idaplicacion.Enabled = false;
             txt_nombre.Enabled = true;
             txt_descripcion.Enabled = true;
         }
-        //termina lo que hizo carlos hernandez 
-        private void btn_actualizar_Click_1(object sender, EventArgs e)
+
+        private void btn_actualizar_Click(object sender, EventArgs e)
         {
             if (txt_nombre.Text == "")
             {
@@ -286,12 +302,12 @@ namespace CapaDiseno
                 logic.actualizaraplicaciones(txt_idaplicacion.Text.ToString(), txt_nombre.Text.ToString(), txt_descripcion.Text.ToString(), estado.ToString());
                 MessageBox.Show("Modulo Modificado Correctamente");
                 limpiar();
-                btn_cancel.Enabled = false;
-                btn_bsucarap.Enabled = true;
+                btn_cancelar.Enabled = false;
+                btn_bsucar.Enabled = true;
                 btn_nuevo.Enabled = true;
                 btn_ingresar.Enabled = false;
                 btn_actualizar.Enabled = false;
-                btn_modif.Enabled = false;
+                btn_modificar.Enabled = false;
                 btn_eliminar.Enabled = false;
                 txt_idaplicacion.Enabled = false;
                 txt_nombre.Enabled = false;
@@ -300,8 +316,7 @@ namespace CapaDiseno
             }
         }
 
-        //aqui inica lo que hizo Carlos Hernandez
-        private void btn_eliminar_Click_1(object sender, EventArgs e)
+        private void btn_eliminar_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(txt_idaplicacion.Text))
             {
@@ -317,8 +332,8 @@ namespace CapaDiseno
 
                     // Opcionalmente, puedes desactivar botones o limpiar campos después de la eliminación
                     txt_buscar.Enabled = true;
-                    btn_bsucarap.Enabled = false;
-                    btn_modif.Enabled = false;
+                    btn_bsucar.Enabled = false;
+                    btn_modificar.Enabled = false;
                     btn_nuevo.Enabled = true;
                     txt_idaplicacion.Enabled = false;
                     txt_descripcion.Enabled = false;
@@ -331,30 +346,29 @@ namespace CapaDiseno
                 MessageBox.Show("No se ha seleccionado un perfil para eliminar.");
             }
         }
-        //aqui termina la parte de Carlos Hernandez
 
-        //###################  lo que hizo Karla  Sofia Gómez Tobar #######################
-        private void btn_cancel_Click_1(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            limpiar();
+        }
+
+        private void btn_cancelar_Click(object sender, EventArgs e)
         {
             limpiar();
             btn_nuevo.Enabled = true;
             gb_buscar.Enabled = true;
-            btn_bsucarap.Enabled = true;
-            btn_cancel.Enabled = false;
+            btn_bsucar.Enabled = true;
+            btn_cancelar.Enabled = false;
             btn_ingresar.Enabled = false;
             btn_actualizar.Enabled = false;
-            btn_modif.Enabled = false;
+            btn_modificar.Enabled = false;
             txt_idaplicacion.Enabled = false;
             txt_nombre.Enabled = false;
             txt_descripcion.Enabled = false;
             Gpb_estado.Enabled = false;
-
         }
-        //###################  termina lo que hizo  Karla  Sofia Gómez Tobar #######################
-        private void btn_ayuda_Click_1(object sender, EventArgs e)
-        {
-            Help.ShowHelp(this, "C:\\Ayuda_Seguridad\\" + "MantenimientoAplicaciones.chm", "Mantenimiento_Aplicaciones.html");
-        }
-        
     }
 }
+
+//###################  termina lo que hizo  Karla  Sofia Gómez Tobar #######################

@@ -71,7 +71,7 @@ namespace CapaLogica
         {
             try
             {
-                using (OdbcDataAdapter cmpsAplicaciones = sn.consultarAplicaciones(ID_aplicacion)) //Cambio de referencia para fuuncionamiento de APlicaciones Usuarios
+                using (OdbcDataAdapter cmpsAplicaciones = sn.Consultaraplicaciones(ID_aplicacion)) //Cambio de referencia para fuuncionamiento de APlicaciones Usuarios
                 {
                     DataTable tableAplicaciones = new DataTable();
                     cmpsAplicaciones.Fill(tableAplicaciones);
@@ -84,6 +84,7 @@ namespace CapaLogica
                 return null;
 
             }
+
         }
         //###################  termina lo que hizo  Karla  Sofia Gómez Tobar #######################
 
