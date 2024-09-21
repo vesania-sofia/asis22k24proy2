@@ -998,105 +998,107 @@ namespace Capa_Vista_Navegador
 
             return query;
         }
-
-
-
-
-
-        string crearUpdate()
+        private IEnumerable<Control> GetAllControls(Control container)
         {
-            // Inicialización de la consulta UPDATE y la cláusula WHERE
+            foreach (Control control in container.Controls)
+            {
+                foreach (Control child in GetAllControls(control))
+                {
+                    yield return child;
+                }
+                yield return control;
+            }
+        }
+
+
+
+
+
+
+
+        string crearUpdate(string tabla, string nombreClavePrimaria, string nombreClaveForanea)
+        {
+            // Obtener las columnas existentes en la tabla
+            string[] columnasTabla = logic.campos(tabla);
+
             string query = "UPDATE " + tabla + " SET ";
             string whereQuery = " WHERE ";
-            int posCampo = 0;
             int i = 0;
             string campos = "";
 
-            // Recorre los controles del formulario
-            foreach (Control componente in Controls)
+            // Usar la función para obtener todos los controles, incluyendo los anidados
+            foreach (Control componente in GetAllControls(this))
             {
-                // Verifica si el componente es un campo relevante (TextBox, DateTimePicker, ComboBox)
                 if (componente is TextBox || componente is DateTimePicker || componente is ComboBox)
                 {
-                    // Para los campos que no son claves primarias
-                    if (posCampo > 0)
+                    string nombreCampo = componente.Name;
+                    Console.WriteLine($"Evaluando control: {nombreCampo} para la tabla: {tabla}");
+
+                    if (columnasTabla.Contains(nombreCampo))
                     {
-                        string valorCampo = "";
-                        string nombreCampo = componente.Name;
-
-                        if (componente is ComboBox comboBox)
+                        // Excluir claves primarias y foráneas
+                        if (nombreCampo != nombreClavePrimaria && nombreCampo != nombreClaveForanea)
                         {
-                            // Si es un ComboBox, manejar si tiene un valor o es una llave foránea
-                            if (modoCampoCombo[i] == 1)
-                            {
-                                valorCampo = logic.llaveCampolo(tablaCombo[i], campoCombo[i], comboBox.Text);
-                            }
-                            else
-                            {
-                                valorCampo = comboBox.SelectedValue?.ToString() ?? "";
-                            }
-                        }
-                        else
-                        {
-                            // Si es un TextBox o DateTimePicker, obtener el texto
-                            valorCampo = componente.Text;
-                        }
-
-                        // Validar si es numérico o texto
-                        if (tipoCampo[posCampo] == "Num")
-                        {
-                            campos += $"{nombreCampo} = {valorCampo}, ";
-                        }
-                        else
-                        {
+                            // Agregar al SET
+                            string valorCampo = componente.Text;
                             campos += $"{nombreCampo} = '{valorCampo}', ";
+                            i++;
+                            Console.WriteLine($"Asignando valor '{valorCampo}' al campo '{nombreCampo}' en la tabla '{tabla}'");
                         }
-
-                        i++;
+                        else
+                        {
+                            Console.WriteLine($"El campo {nombreCampo} es clave primaria o foránea y no se actualizará.");
+                        }
                     }
-                    // Para la clave primaria (posición 0)
                     else
                     {
-                        string valorClavePrimaria = dataGridView1.CurrentRow.Cells[0].Value.ToString();
-                        string nombreClavePrimaria = componente.Name;
-
-                        if (tipoCampo[0] == "Num")
-                        {
-                            whereQuery += $"{nombreClavePrimaria} = {valorClavePrimaria}";
-                        }
-                        else
-                        {
-                            whereQuery += $"{nombreClavePrimaria} = '{valorClavePrimaria}'";
-                        }
+                        Console.WriteLine($"El control {nombreCampo} no corresponde a una columna en la tabla {tabla}");
                     }
-
-                    posCampo++;
-                }
-
-                // Manejo de botones (ej. activado/desactivado)
-                if (componente is Button)
-                {
-                    if (tipoCampo[posCampo] == "Num")
-                    {
-                        string estadoButton = estado.ToString();
-                        campos += $"{componente.Name} = {estadoButton}, ";
-                    }
-
-                    posCampo++;
                 }
             }
 
-            // Eliminar cualquier coma final sobrante en la cadena de campos
+            if (string.IsNullOrEmpty(campos))
+            {
+                Console.WriteLine($"No hay campos para actualizar en la tabla {tabla}");
+                return null; // O manejar según corresponda
+            }
+
             campos = campos.TrimEnd(' ', ',');
 
-            // Construcción final de la consulta
+            // Usar la clave primaria o foránea en el WHERE
+            string valorClave = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+            if (!string.IsNullOrEmpty(nombreClaveForanea))
+            {
+                whereQuery += $"{nombreClaveForanea} = '{valorClave}'";
+            }
+            else
+            {
+                whereQuery += $"{nombreClavePrimaria} = '{valorClave}'";
+            }
+
             query += campos + whereQuery + ";";
 
-            // Mostrar la consulta para depurar (opcional)
-            Console.WriteLine("Query generado para el UPDATE: " + query);
+            Console.WriteLine("Consulta generada para el UPDATE: " + query);
 
             return query;
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2070,9 +2072,49 @@ namespace Capa_Vista_Navegador
                     switch (activar)
                     {
                         case 1:
-                            logic.nuevoQuery(crearUpdate());
-                            MessageBox.Show("El registro ha sido actualizado correctamente.", "Actualización Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            sn.insertarBitacora(idUsuario, "Actualizo un registro en " + tabla, tabla);
+                            string clavePrimariaPrincipal = logic.ObtenerClavePrimaria(tabla);
+                            string queryPrincipal = crearUpdate(tabla, clavePrimariaPrincipal, null); // No hay clave foránea en la tabla principal
+                            queries.Add(queryPrincipal);
+                            foreach (string query in queries)
+                                {
+                                    Console.WriteLine("Consulta a ejecutar: " + query);
+                                }
+
+                            // Para las tablas adicionales, detectar claves foráneas
+                            foreach (string tablaAdicional in listaTablasAdicionales)
+                            {
+                                if (!string.IsNullOrEmpty(tablaAdicional))
+                                {
+                                    string clavePrimariaAdicional = logic.ObtenerClavePrimaria(tablaAdicional);
+                                    string claveForaneaAdicional = logic.ObtenerClaveForanea(tablaAdicional, tabla);
+                                    // Detecta la clave foránea
+                                    Console.WriteLine($"Procesando tabla: {tablaAdicional}");
+                                    Console.WriteLine($"Clave primaria: {clavePrimariaAdicional}");
+                                    Console.WriteLine($"Clave foránea: {claveForaneaAdicional}");
+                                    string queryAdicional = crearUpdate(tablaAdicional, clavePrimariaAdicional, claveForaneaAdicional);
+
+                                    if (!string.IsNullOrEmpty(queryAdicional))
+                                    {
+                                        queries.Add(queryAdicional);
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine($"No se generó consulta para la tabla {tablaAdicional} porque no hay campos para actualizar.");
+                                    }
+
+                                }
+                            }
+
+                            try
+                            {
+                                logic.insertarDatosEnMultiplesTablas(queries);
+                                MessageBox.Show("El registro ha sido actualizado correctamente en todas las tablas.", "Actualización Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                sn.insertarBitacora(idUsuario, "Actualizó registros en múltiples tablas", tabla);
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show("Ocurrió un error al actualizar las tablas: " + ex.Message, "Error en la actualización", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                             break;
 
                         case 2:

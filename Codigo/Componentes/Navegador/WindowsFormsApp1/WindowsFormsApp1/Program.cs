@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ejecuciontransaccional
+namespace WindowsFormsApp1
 {
     static class Program
     {
@@ -16,7 +16,6 @@ namespace ejecuciontransaccional
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new Form1());
             Application.Run(new CapaDiseno.frm_login());
         }
     }
