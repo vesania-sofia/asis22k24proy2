@@ -522,8 +522,19 @@ namespace CapaLogica
         public DataTable consultaLogicaPerfiles(string TablaPerfilUsuario)
         {
             DataTable table = new DataTable();
-            OdbcDataAdapter dt = sn.mostrarPerfilesYPermisos(TablaPerfilUsuario); // Cambio en el nombre del método para reflejar permisos
+            OdbcDataAdapter dt = sn.mostrarPerfilesYPermisos(TablaPerfilUsuario);
             dt.Fill(table);
+
+            // Convertir los valores booleanos a string "0" o "1"
+            foreach (DataRow row in table.Rows)
+            {
+                row["guardar_permiso"] = (Convert.ToBoolean(row["guardar_permiso"]) ? "1" : "0");
+                row["buscar_permiso"] = (Convert.ToBoolean(row["buscar_permiso"]) ? "1" : "0");
+                row["modificar_permiso"] = (Convert.ToBoolean(row["modificar_permiso"]) ? "1" : "0");
+                row["eliminar_permiso"] = (Convert.ToBoolean(row["eliminar_permiso"]) ? "1" : "0");
+                row["imprimir_permiso"] = (Convert.ToBoolean(row["imprimir_permiso"]) ? "1" : "0");
+            }
+
             return table;
         }
 
