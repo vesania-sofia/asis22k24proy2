@@ -229,7 +229,7 @@ namespace CapaDiseno
         {
 
         }
-        //**********************KATERYN DE LEON ******************************
+        //********************** KATERYN DE LEON y Gabriela Suc ******************************
         private void Btn_ayuda_Click(object sender, EventArgs e)
         {
             //Help.ShowHelp(this, "C:\\Ayuda_Seguridad\\" + "CreacionUsuario.chm", "Creacion_Usuario.html");
@@ -240,7 +240,7 @@ namespace CapaDiseno
             MessageBox.Show("Ruta base: " + baseDirectory);
 
             // Busca el archivo .chm en el directorio base y sus subdirectorios
-            string pathAyuda = FindFileInDirectory(baseDirectory, "Ayuda_Seguridad", "ayudaAsignacionAplicacionesUsuarios.chm");
+            string pathAyuda = FindFileInDirectory(baseDirectory, "Ayuda_Seguridad", "ayudaUsuarios.chm");
 
             // Imprimir la ruta generada para verificar
             MessageBox.Show("Ruta de ayuda: " + pathAyuda);
@@ -258,7 +258,7 @@ namespace CapaDiseno
                 MessageBox.Show("El archivo de ayuda no se encontró.");
             }
         }
-        //**********************KATERYN DE LEON ******************************
+        //********************** KATERYN DE LEON y Gabriela Suc ******************************
         private string FindFileInDirectory(string rootDirectory, string folderName, string fileName)
         {
             try
@@ -282,7 +282,8 @@ namespace CapaDiseno
                 MessageBox.Show("Error al buscar el archivo: " + ex.Message);
             }
             return null; // No se encontró el archivo
-        }//***********************************************************************************************************
+        }
+        //************************************** Fin KATERYN DE LEON y Gabriela Suc *********************************************************************
 
         private void txt_id_TextChanged(object sender, EventArgs e)
         {

@@ -187,7 +187,7 @@ namespace CapaDiseno
                 MessageBox.Show("Error al limpiar los campos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        //**********************KATERYN DE LEON ********************************************
+        //********************** KATERYN DE LEON y Gabriela Suc   ********************************************
         private void btn_ayuda_Click(object sender, EventArgs e)
         { // Define el directorio base desde donde comenzar la búsqueda
             string baseDirectory = AppDomain.CurrentDomain.BaseDirectory; // Usando el directorio base del ejecutable
@@ -196,7 +196,7 @@ namespace CapaDiseno
             MessageBox.Show("Ruta base: " + baseDirectory);
 
             // Busca el archivo en el directorio base y sus subdirectorios
-            string pathAyuda = FindFileInDirectory(baseDirectory, "Ayuda_Seguridad", "CambioContraseña.chm");
+            string pathAyuda = FindFileInDirectory(baseDirectory, "Ayuda_Seguridad", "ayudaBitacora.chm");
 
             // Imprimir la ruta generada para verificar
             MessageBox.Show("Ruta de ayuda: " + pathAyuda);
@@ -214,7 +214,7 @@ namespace CapaDiseno
                 MessageBox.Show("El archivo de ayuda no se encontró.");
             }
         }
-        //**********************KATERYN DE LEON ********************************************
+        //********************** KATERYN DE LEON y Gabriela Suc   ********************************************
         private string FindFileInDirectory(string rootDirectory, string folderName, string fileName)
         {
             try
@@ -240,7 +240,7 @@ namespace CapaDiseno
             return null; // No se encontró el archivo
         }
 
-        //********FIN KATY********************************************************************
+        //******** Fin KATERYN DE LEON y Gabriela Suc   ********************************************************************
 
 
     }
