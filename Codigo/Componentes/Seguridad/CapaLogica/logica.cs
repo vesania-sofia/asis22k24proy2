@@ -120,12 +120,22 @@ namespace CapaLogica
         //Finaliza
 
         //###################  lo que hizo Karla  Sofia Gómez Tobar #######################
-        public DataTable consultaLogicaPerfilesUsuarios(string TablaPerfilUsuario)
+        public DataTable consultaLogicaPerfilesUsuarios()
         {
-            DataTable table = new DataTable();
-            OdbcDataAdapter dt = sn.mostrarPerfilesDeUsuario(TablaPerfilUsuario);
-            dt.Fill(table);
-            return table;
+     
+
+            try
+            {
+                OdbcDataAdapter dt = sn.mostrarPerfilesDeUsuario();
+                DataTable table = new DataTable();
+                dt.Fill(table);
+                return table;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return null;
+            }
 
 
         }

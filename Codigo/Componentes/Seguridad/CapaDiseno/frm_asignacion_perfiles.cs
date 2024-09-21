@@ -384,9 +384,27 @@ namespace CapaDiseno
 
         public void actualizardatagriew()
         {
-            DataTable dt = logic.consultaLogicaPerfilesUsuarios(TablaPerfilUsuario);
-            dgv_perfiles_asignados.DataSource = dt;
+            
+            
+            try
+            {
+                // Llamar a la capa lógica para obtener los datos de la asignación (modulo-aplicación)
+                DataTable dt = logic.consultaLogicaPerfilesUsuarios();
 
+                if (dt != null && dt.Rows.Count > 0)
+                {
+                    // Asignar el DataTable al DataGridView
+                    dgv_perfiles_asignados.DataSource = dt;
+                }
+                else
+                {
+                    MessageBox.Show("No se encontraron datos.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al buscar los datos: {ex.Message}");
+            }
         }
 
         private void btn_Buscar_Click(object sender, EventArgs e)

@@ -172,11 +172,17 @@ namespace CapaDatos
         //Finaliza
 
         //###################  lo que hizo Karla  Sofia Gómez Tobar #######################
-        public OdbcDataAdapter mostrarPerfilesDeUsuario(string TablaPerfilUsuario)
+        public OdbcDataAdapter mostrarPerfilesDeUsuario()
         {
-            string sql = "SELECT * FROM " + TablaPerfilUsuario + ";";
+            /*string sql = "SELECT * FROM " + TablaPerfilUsuario + ";";
             OdbcDataAdapter dataTable = new OdbcDataAdapter(sql, cn.conectar());
-            return dataTable;
+            return dataTable;*/
+
+            cn.conectar();
+            string sqlPerfilUsuario = " SELECT  a.Fk_id_usuario AS UsuarioID,   m.nombre_usuario AS NombreUsuario, a.Fk_id_perfil AS PerfilID,  ap.nombre_perfil AS NombrePerfil  FROM Tbl_asignaciones_perfils_usuario a  JOIN Tbl_usuarios m ON a.Fk_id_usuario = m.Pk_id_usuario JOIN Tbl_perfiles ap ON a.Fk_id_perfil = ap.Pk_id_perfil";
+            OdbcDataAdapter dataPerfilUsuario = new OdbcDataAdapter(sqlPerfilUsuario, cn.conectar());
+            insertarBitacora(idUsuario, "Realizo una consulta  a Asignacion de perfil a un usuario", "Tbl_asignaciones_perfils_usuario");
+            return dataPerfilUsuario;
         }
 
         public bool eliminarPerfilUsuario(string Id_Perfil_Usuario)
