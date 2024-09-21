@@ -52,6 +52,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_asignacionesperfiles)).BeginInit();
             this.Gpb_datos.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -145,22 +146,22 @@
             // 
             this.txt_buscar.Location = new System.Drawing.Point(829, 138);
             this.txt_buscar.Name = "txt_buscar";
-            this.txt_buscar.Size = new System.Drawing.Size(87, 27);
+            this.txt_buscar.Size = new System.Drawing.Size(87, 23);
             this.txt_buscar.TabIndex = 275;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Haettenschweiler", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(205, 29);
+            this.label3.Location = new System.Drawing.Point(156, 9);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(547, 44);
+            this.label3.Size = new System.Drawing.Size(0, 37);
             this.label3.TabIndex = 274;
-            this.label3.Text = "ASIGNACION DE APLICACIONES A PERFILES";
             // 
             // dgv_asignacionesperfiles
             // 
             this.dgv_asignacionesperfiles.AllowUserToAddRows = false;
+            this.dgv_asignacionesperfiles.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
             this.dgv_asignacionesperfiles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_asignacionesperfiles.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Perfil,
@@ -252,7 +253,7 @@
             this.Gpb_datos.Controls.Add(this.cbo_aplicaciones);
             this.Gpb_datos.Controls.Add(this.label1);
             this.Gpb_datos.Controls.Add(this.label2);
-            this.Gpb_datos.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Gpb_datos.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Gpb_datos.Location = new System.Drawing.Point(67, 203);
             this.Gpb_datos.Margin = new System.Windows.Forms.Padding(4);
             this.Gpb_datos.Name = "Gpb_datos";
@@ -264,58 +265,68 @@
             // 
             // cbo_modulos
             // 
+            this.cbo_modulos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.cbo_modulos.Cursor = System.Windows.Forms.Cursors.No;
+            this.cbo_modulos.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbo_modulos.FormattingEnabled = true;
             this.cbo_modulos.Location = new System.Drawing.Point(300, 51);
             this.cbo_modulos.Margin = new System.Windows.Forms.Padding(4);
             this.cbo_modulos.Name = "cbo_modulos";
-            this.cbo_modulos.Size = new System.Drawing.Size(160, 29);
+            this.cbo_modulos.Size = new System.Drawing.Size(160, 23);
             this.cbo_modulos.TabIndex = 14;
             // 
             // lbl_modulo
             // 
             this.lbl_modulo.AutoSize = true;
+            this.lbl_modulo.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_modulo.Location = new System.Drawing.Point(348, 26);
             this.lbl_modulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_modulo.Name = "lbl_modulo";
-            this.lbl_modulo.Size = new System.Drawing.Size(81, 21);
+            this.lbl_modulo.Size = new System.Drawing.Size(63, 19);
             this.lbl_modulo.TabIndex = 13;
             this.lbl_modulo.Text = "Modulos";
             // 
             // cbo_perfiles
             // 
+            this.cbo_perfiles.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.cbo_perfiles.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbo_perfiles.FormattingEnabled = true;
             this.cbo_perfiles.Location = new System.Drawing.Point(96, 51);
             this.cbo_perfiles.Margin = new System.Windows.Forms.Padding(4);
             this.cbo_perfiles.Name = "cbo_perfiles";
-            this.cbo_perfiles.Size = new System.Drawing.Size(160, 29);
+            this.cbo_perfiles.Size = new System.Drawing.Size(160, 23);
             this.cbo_perfiles.TabIndex = 0;
             // 
             // cbo_aplicaciones
             // 
+            this.cbo_aplicaciones.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.cbo_aplicaciones.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbo_aplicaciones.FormattingEnabled = true;
             this.cbo_aplicaciones.Location = new System.Drawing.Point(502, 51);
             this.cbo_aplicaciones.Margin = new System.Windows.Forms.Padding(4);
             this.cbo_aplicaciones.Name = "cbo_aplicaciones";
-            this.cbo_aplicaciones.Size = new System.Drawing.Size(160, 29);
+            this.cbo_aplicaciones.Size = new System.Drawing.Size(160, 23);
             this.cbo_aplicaciones.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(142, 26);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(65, 21);
+            this.label1.Size = new System.Drawing.Size(53, 19);
             this.label1.TabIndex = 2;
             this.label1.Text = "Perfiles";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(526, 25);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(117, 21);
+            this.label2.Size = new System.Drawing.Size(86, 19);
             this.label2.TabIndex = 3;
             this.label2.Text = "Aplicaciones";
             // 
@@ -342,12 +353,25 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(739, 47);
             this.tableLayoutPanel1.TabIndex = 282;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Haettenschweiler", 26F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Transparent;
+            this.label4.Location = new System.Drawing.Point(142, 46);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(599, 37);
+            this.label4.TabIndex = 283;
+            this.label4.Text = "A s i g n a c i o n  d e  A p l i c a c i o n e s  a  P e r f i l e s";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
+            // 
             // frm_asignacion_aplicaciones_perfiles
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(133)))), ((int)(((byte)(223)))));
             this.ClientSize = new System.Drawing.Size(925, 556);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.txt_buscar);
             this.Controls.Add(this.label3);
@@ -394,5 +418,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Label label4;
     }
 }

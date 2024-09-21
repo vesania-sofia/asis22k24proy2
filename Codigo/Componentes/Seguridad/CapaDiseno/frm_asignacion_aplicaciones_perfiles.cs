@@ -364,6 +364,11 @@ namespace CapaDiseno
         {
             Help.ShowHelp(this, "C:\\Ayuda_Seguridad\\" + "AyudaAsignacionAplicacionesPerfiles.chm", "Asignacion_Aplicaciones_Perfiles.html");
         }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
     }
     //******************ACA TERMINA********************************************************
 }
