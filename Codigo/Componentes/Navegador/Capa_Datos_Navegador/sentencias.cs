@@ -612,6 +612,79 @@ namespace Capa_Datos_Navegador
 
         }
 
+        public string obtenerClavePrimaria(string nombreTabla)
+        {
+            string clavePrimaria = "";
+            try
+            {
+                // Definir la consulta para obtener la clave primaria de la tabla
+                string query = $"SHOW KEYS FROM {nombreTabla} WHERE Key_name = 'PRIMARY';";
+
+                // Crear el comando ODBC
+                OdbcCommand command = new OdbcCommand(query, cn.probarConexion());
+
+                // Ejecutar el comando y leer los resultados
+                OdbcDataReader reader = command.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    // Obtener el nombre de la columna que es clave primaria
+                    clavePrimaria = reader["Column_name"].ToString();
+                    Console.WriteLine($"Clave primaria de {nombreTabla}: {clavePrimaria}");
+                }
+                else
+                {
+                    throw new Exception("No se encontró una clave primaria para la tabla: " + nombreTabla);
+                }
+
+                // Cerrar el lector
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al obtener la clave primaria de la tabla " + nombreTabla + ": " + ex.ToString());
+            }
+
+            return clavePrimaria;
+        }
+
+        public string ObtenerClaveForanea(string tablaOrigen, string tablaReferencia)
+        {
+            string claveForanea = null;
+
+            try
+            {
+                // Consulta a INFORMATION_SCHEMA para obtener las claves foráneas
+                string query = $@"
+            SELECT COLUMN_NAME 
+            FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE 
+            WHERE TABLE_SCHEMA = DATABASE()
+            AND TABLE_NAME = '{tablaOrigen}' 
+            AND REFERENCED_TABLE_NAME = '{tablaReferencia}';";
+
+                OdbcCommand command = new OdbcCommand(query, cn.probarConexion());
+                OdbcDataReader reader = command.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    claveForanea = reader.GetString(0); // Obtener el nombre de la clave foránea
+                    Console.WriteLine($"Clave foránea de {tablaOrigen} que referencia a {tablaReferencia}: {claveForanea}");
+                }
+                else
+                {
+                    Console.WriteLine($"No se encontró clave foránea en {tablaOrigen} que referencia a {tablaReferencia}");
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al obtener clave foránea: " + ex.Message);
+            }
+
+            return claveForanea;
+        }
+
+
 
 
         // Método para insertar en la tabla "factura"

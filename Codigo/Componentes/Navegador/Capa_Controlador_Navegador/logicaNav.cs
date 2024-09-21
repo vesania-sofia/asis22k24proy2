@@ -177,7 +177,16 @@ namespace Capa_Controlador_Navegador
             sentencias sn = new sentencias();
             sn.ejecutarQueryConTransaccion(queries);  // Pasamos la lista de queries para ser ejecutadas dentro de una transacción
         }
+        public string ObtenerClavePrimaria(string nombreTabla)
+        {
+            // Llama al método de la capa de datos (sentencias)
+            return sn.obtenerClavePrimaria(nombreTabla);
+        }
 
+        public string ObtenerClaveForanea(string nombreTabla, string tablaReferenciada)
+        {
+            return sn.ObtenerClaveForanea(nombreTabla, tablaReferenciada);
+        }
 
 
 
