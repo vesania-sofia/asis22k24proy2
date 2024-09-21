@@ -221,5 +221,26 @@
   <ItemGroup>
     <None Include="Resources\actualizar.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\guardar11.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\guardar2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\guardar1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\buscar1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\editar1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\borrar1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancelar.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

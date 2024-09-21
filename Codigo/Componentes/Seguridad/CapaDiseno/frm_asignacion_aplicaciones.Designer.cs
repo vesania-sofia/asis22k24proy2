@@ -44,13 +44,14 @@
             this.cbo_modulos = new System.Windows.Forms.ComboBox();
             this.lbl_modulo = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.btn_ayuda = new System.Windows.Forms.Button();
-            this.btn_salir = new System.Windows.Forms.Button();
-            this.btn_guardar = new System.Windows.Forms.Button();
-            this.btn_remover = new System.Windows.Forms.Button();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.btn_buscar = new System.Windows.Forms.Button();
             this.btn_agregar = new System.Windows.Forms.Button();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.btn_salir = new System.Windows.Forms.Button();
+            this.btn_limpiar = new System.Windows.Forms.Button();
+            this.btn_guardar = new System.Windows.Forms.Button();
+            this.btn_ayuda = new System.Windows.Forms.Button();
+            this.btn_eliminar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_asignaciones)).BeginInit();
             this.Gpb_datos.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -236,65 +237,33 @@
             this.label3.ForeColor = System.Drawing.Color.Transparent;
             this.label3.Location = new System.Drawing.Point(158, 28);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(607, 37);
+            this.label3.Size = new System.Drawing.Size(631, 37);
             this.label3.TabIndex = 15;
-            this.label3.Text = "A s i g n a c i ó n  d e  A p l i c a c i o n e s  a  U s u a r i o s";
+            this.label3.Text = "A s i g n a c i ó n   d e   A p l i c a c i o n e s   a   U s u a r i o s";
             // 
-            // btn_ayuda
+            // tableLayoutPanel1
             // 
-            this.btn_ayuda.BackgroundImage = global::CapaDiseno.Properties.Resources.ayuda1;
-            this.btn_ayuda.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_ayuda.FlatAppearance.BorderSize = 0;
-            this.btn_ayuda.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_ayuda.Location = new System.Drawing.Point(615, 0);
-            this.btn_ayuda.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_ayuda.Name = "btn_ayuda";
-            this.btn_ayuda.Size = new System.Drawing.Size(124, 42);
-            this.btn_ayuda.TabIndex = 263;
-            this.btn_ayuda.UseVisualStyleBackColor = true;
-            this.btn_ayuda.Click += new System.EventHandler(this.btn_ayuda_Click_1);
-            // 
-            // btn_salir
-            // 
-            this.btn_salir.BackgroundImage = global::CapaDiseno.Properties.Resources.salir1;
-            this.btn_salir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_salir.FlatAppearance.BorderSize = 0;
-            this.btn_salir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_salir.Location = new System.Drawing.Point(492, 0);
-            this.btn_salir.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_salir.Name = "btn_salir";
-            this.btn_salir.Size = new System.Drawing.Size(120, 42);
-            this.btn_salir.TabIndex = 262;
-            this.btn_salir.UseVisualStyleBackColor = true;
-            this.btn_salir.Click += new System.EventHandler(this.btn_salir_Click_1);
-            // 
-            // btn_guardar
-            // 
-            this.btn_guardar.BackgroundImage = global::CapaDiseno.Properties.Resources.guardar1;
-            this.btn_guardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_guardar.FlatAppearance.BorderSize = 0;
-            this.btn_guardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_guardar.Location = new System.Drawing.Point(369, 0);
-            this.btn_guardar.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_guardar.Name = "btn_guardar";
-            this.btn_guardar.Size = new System.Drawing.Size(123, 42);
-            this.btn_guardar.TabIndex = 261;
-            this.btn_guardar.UseVisualStyleBackColor = true;
-            this.btn_guardar.Click += new System.EventHandler(this.btn_guardar_Click);
-            // 
-            // btn_remover
-            // 
-            this.btn_remover.BackgroundImage = global::CapaDiseno.Properties.Resources.cancelar;
-            this.btn_remover.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_remover.FlatAppearance.BorderSize = 0;
-            this.btn_remover.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_remover.Location = new System.Drawing.Point(246, 0);
-            this.btn_remover.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_remover.Name = "btn_remover";
-            this.btn_remover.Size = new System.Drawing.Size(120, 42);
-            this.btn_remover.TabIndex = 260;
-            this.btn_remover.UseVisualStyleBackColor = true;
-            this.btn_remover.Click += new System.EventHandler(this.btn_remover_Click_1);
+            this.tableLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.tableLayoutPanel1.ColumnCount = 6;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel1.Controls.Add(this.btn_limpiar, 4, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btn_buscar, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btn_agregar, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btn_salir, 5, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btn_eliminar, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btn_guardar, 2, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(41, 137);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(739, 42);
+            this.tableLayoutPanel1.TabIndex = 264;
             // 
             // btn_buscar
             // 
@@ -302,7 +271,7 @@
             this.btn_buscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btn_buscar.FlatAppearance.BorderSize = 0;
             this.btn_buscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_buscar.Location = new System.Drawing.Point(123, 0);
+            this.btn_buscar.Location = new System.Drawing.Point(369, 0);
             this.btn_buscar.Margin = new System.Windows.Forms.Padding(0);
             this.btn_buscar.Name = "btn_buscar";
             this.btn_buscar.Size = new System.Drawing.Size(120, 42);
@@ -324,29 +293,77 @@
             this.btn_agregar.UseVisualStyleBackColor = true;
             this.btn_agregar.Click += new System.EventHandler(this.btn_agregar_Click_1);
             // 
-            // tableLayoutPanel1
+            // btn_salir
             // 
-            this.tableLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.tableLayoutPanel1.ColumnCount = 6;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanel1.Controls.Add(this.btn_buscar, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btn_agregar, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btn_salir, 4, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btn_remover, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btn_guardar, 3, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btn_ayuda, 5, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(108, 136);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(739, 42);
-            this.tableLayoutPanel1.TabIndex = 264;
+            this.btn_salir.BackgroundImage = global::CapaDiseno.Properties.Resources.salir1;
+            this.btn_salir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_salir.FlatAppearance.BorderSize = 0;
+            this.btn_salir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_salir.Location = new System.Drawing.Point(615, 0);
+            this.btn_salir.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_salir.Name = "btn_salir";
+            this.btn_salir.Size = new System.Drawing.Size(120, 42);
+            this.btn_salir.TabIndex = 262;
+            this.btn_salir.UseVisualStyleBackColor = true;
+            this.btn_salir.Click += new System.EventHandler(this.btn_salir_Click_1);
+            // 
+            // btn_limpiar
+            // 
+            this.btn_limpiar.BackgroundImage = global::CapaDiseno.Properties.Resources.cancelar;
+            this.btn_limpiar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_limpiar.FlatAppearance.BorderSize = 0;
+            this.btn_limpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_limpiar.Location = new System.Drawing.Point(492, 0);
+            this.btn_limpiar.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_limpiar.Name = "btn_limpiar";
+            this.btn_limpiar.Size = new System.Drawing.Size(120, 42);
+            this.btn_limpiar.TabIndex = 260;
+            this.btn_limpiar.UseVisualStyleBackColor = true;
+            this.btn_limpiar.Click += new System.EventHandler(this.btn_remover_Click_1);
+            // 
+            // btn_guardar
+            // 
+            this.btn_guardar.BackgroundImage = global::CapaDiseno.Properties.Resources.guardar1;
+            this.btn_guardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_guardar.FlatAppearance.BorderSize = 0;
+            this.btn_guardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_guardar.Location = new System.Drawing.Point(246, 0);
+            this.btn_guardar.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_guardar.Name = "btn_guardar";
+            this.btn_guardar.Size = new System.Drawing.Size(123, 42);
+            this.btn_guardar.TabIndex = 261;
+            this.btn_guardar.UseVisualStyleBackColor = true;
+            this.btn_guardar.Click += new System.EventHandler(this.btn_guardar_Click);
+            // 
+            // btn_ayuda
+            // 
+            this.btn_ayuda.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btn_ayuda.BackgroundImage = global::CapaDiseno.Properties.Resources.ayuda1;
+            this.btn_ayuda.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_ayuda.FlatAppearance.BorderSize = 0;
+            this.btn_ayuda.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_ayuda.Location = new System.Drawing.Point(776, 137);
+            this.btn_ayuda.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_ayuda.Name = "btn_ayuda";
+            this.btn_ayuda.Size = new System.Drawing.Size(124, 42);
+            this.btn_ayuda.TabIndex = 263;
+            this.btn_ayuda.UseVisualStyleBackColor = false;
+            this.btn_ayuda.Click += new System.EventHandler(this.btn_ayuda_Click_1);
+            // 
+            // btn_eliminar
+            // 
+            this.btn_eliminar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btn_eliminar.BackgroundImage = global::CapaDiseno.Properties.Resources.borrar11;
+            this.btn_eliminar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_eliminar.FlatAppearance.BorderSize = 0;
+            this.btn_eliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_eliminar.Location = new System.Drawing.Point(123, 0);
+            this.btn_eliminar.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_eliminar.Name = "btn_eliminar";
+            this.btn_eliminar.Size = new System.Drawing.Size(123, 42);
+            this.btn_eliminar.TabIndex = 290;
+            this.btn_eliminar.UseVisualStyleBackColor = false;
+            this.btn_eliminar.Click += new System.EventHandler(this.btn_eliminar_Click);
             // 
             // frm_asignacion_aplicaciones
             // 
@@ -357,6 +374,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.Gpb_datos);
+            this.Controls.Add(this.btn_ayuda);
             this.Controls.Add(this.dgv_asignaciones);
             this.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -392,10 +410,11 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btn_agregar;
         private System.Windows.Forms.Button btn_buscar;
-        private System.Windows.Forms.Button btn_remover;
+        private System.Windows.Forms.Button btn_limpiar;
         private System.Windows.Forms.Button btn_guardar;
         private System.Windows.Forms.Button btn_salir;
         private System.Windows.Forms.Button btn_ayuda;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Button btn_eliminar;
     }
 }
