@@ -27,7 +27,7 @@ namespace Capa_Datos_Navegador
             var columnasPropiedades = obtenerColumnasYPropiedades(tabla);
 
             // Selección de columnas de la tabla principal
-            foreach (var (nombreColumna, esAutoIncremental, esClaveForanea) in columnasPropiedades)
+            foreach (var (nombreColumna, esAutoIncremental, esClaveForanea, esTinyInt) in columnasPropiedades)
             {
                 // No duplicar el campo que ya se seleccionó como ID
                 if (nombreColumna == camposDesc[0])
@@ -358,13 +358,13 @@ namespace Capa_Datos_Navegador
         }
 
 
-        public List<(string nombreColumna, bool esAutoIncremental, bool esClaveForanea)> obtenerColumnasYPropiedades(string nombreTabla)
+        public List<(string nombreColumna, bool esAutoIncremental, bool esClaveForanea, bool esTinyInt)> obtenerColumnasYPropiedades(string nombreTabla)
         {
-            List<(string, bool, bool)> columnas = new List<(string, bool, bool)>();
+            List<(string, bool, bool, bool)> columnas = new List<(string, bool, bool, bool)>();
 
             try
             {
-                // Paso 1: Obtener las columnas y propiedades (como autoincremental)
+                // Paso 1: Obtener las columnas y propiedades (como autoincremental y tipo de dato)
                 string queryColumnas = $"SHOW COLUMNS FROM {nombreTabla};";
                 OdbcCommand comando = new OdbcCommand(queryColumnas, cn.probarConexion());
                 OdbcDataReader lector = comando.ExecuteReader();
@@ -388,17 +388,19 @@ namespace Capa_Datos_Navegador
 
                 lectorClaves.Close();
 
-                // Paso 3: Procesar las columnas y determinar si son autoincrementales o claves foráneas
+                // Paso 3: Procesar las columnas y determinar si son autoincrementales, claves foráneas o de tipo TINYINT
                 while (lector.Read())
                 {
                     string nombreColumna = lector.GetString(0);  // Nombre de la columna
+                    string tipoColumna = lector.GetString(1);    // Tipo de la columna
                     string columnaExtra = lector.GetString(5);   // Información adicional (e.g. AUTO_INCREMENT)
 
                     bool esAutoIncremental = columnaExtra.Contains("auto_increment");  // Detectar si es autoincremental
                     bool esClaveForanea = clavesForaneas.Contains(nombreColumna);  // Detectar si es clave foránea
+                    bool esTinyInt = tipoColumna.StartsWith("tinyint");  // Detectar si es de tipo TINYINT
 
                     // Añadir la columna con sus propiedades a la lista
-                    columnas.Add((nombreColumna, esAutoIncremental, esClaveForanea));
+                    columnas.Add((nombreColumna, esAutoIncremental, esClaveForanea, esTinyInt));
                 }
 
                 lector.Close();
@@ -410,6 +412,7 @@ namespace Capa_Datos_Navegador
 
             return columnas;
         }
+
 
 
         public void ejecutarQueryConTransaccion(List<string> queries)

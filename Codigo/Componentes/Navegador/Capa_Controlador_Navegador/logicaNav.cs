@@ -71,7 +71,7 @@ namespace Capa_Controlador_Navegador
         }
 
 
-        public List<(string nombreColumna, bool esAutoIncremental, bool esClaveForanea)> obtenerColumnasYPropiedadesLogica(string nombreTabla)
+        public List<(string nombreColumna, bool esAutoIncremental, bool esClaveForanea, bool esTinyInt)> obtenerColumnasYPropiedadesLogica(string nombreTabla)
         {
             // Llamada al método en la capa de datos, que ahora incluye la información de las claves foráneas
             return sn.obtenerColumnasYPropiedades(nombreTabla);
