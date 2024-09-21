@@ -88,7 +88,7 @@ namespace CapaDatos
 
 
         //Trabajado María José Véliz
-        public OdbcDataAdapter insertarPermisosUA(string codigoUsuario, string nombreAplicacion, string ingresar, string consulta, string modificar, string eliminar, string imprimir)
+        public OdbcDataAdapter funcInsertarPermisosUA(string codigoUsuario, string nombreAplicacion, string ingresar, string consulta, string modificar, string eliminar, string imprimir)
         {
             string sCodigoAplicacion = " ";
             string sCodigoUsuario = " ";
@@ -138,7 +138,7 @@ namespace CapaDatos
         //Termina
 
         //Trabajado por ALyson Rodriguez 9959-21-829
-        public OdbcDataAdapter mostrarUsuariosYPermisos(string TablaAplicacionUsuario)
+        public OdbcDataAdapter funcMostrarUsuariosYPermisos(string TablaAplicacionUsuario)
         {
             try
             {
@@ -645,7 +645,7 @@ namespace CapaDatos
 
 
         //Trabajado por María José Véliz Ochoa, 9959-21-5909
-        public OdbcDataAdapter validarIDModulos()
+        public OdbcDataAdapter funcValidarIdModulos()
         {
             try
             {
@@ -732,7 +732,7 @@ namespace CapaDatos
 
         //Trabajado por María José Véliz Ochoa 9959-21-5909
         //se optó por usar OdbcCommand en lugar de OdbcDataAdapter, cambió estructura
-        public void insertarModulo(string codigo, string nombre, string descripcion, string estado)
+        public void funcInsertarModulo(string codigo, string nombre, string descripcion, string estado)
         {
             try
             {
@@ -849,7 +849,7 @@ namespace CapaDatos
         //------------Para formulario Mantenimiento Modulos---------
 
         //Trabajado por María José Véliz Ochoa, 9959-21-5909
-        public OdbcDataAdapter ConsultarModulos(string modulo)
+        public OdbcDataAdapter funcConsultarModulos(string modulo)
         {
             cn.conectar();
             string sqlModulos = "SELECT * FROM tbl_modulos WHERE Pk_id_modulos = " + modulo;
@@ -859,7 +859,7 @@ namespace CapaDatos
         } //termina
 
         //###############ALYSON RODRIGUEZ BOTON ACTUALIZAR : creo que solo cambie que el nombre de la tabla estuviera bien
-        public OdbcDataAdapter ActualizarModulo(string ID_modulo, string nombre, string descripcion, string estado)
+        public OdbcDataAdapter funcActualizarModulo(string ID_modulo, string nombre, string descripcion, string estado)
         {
             Console.WriteLine("ESTO SE INGRESA EN LA SENTENCIA: " + ID_modulo + ", " + nombre + ", " + descripcion + ", " + estado);
             try
@@ -1173,7 +1173,7 @@ namespace CapaDatos
         }
 
         //###############INICIA CÓDIGO PARA BOTON ELIMINAR ALYSON RODRÍGUEZ 
-        public OdbcDataAdapter EliminarModulo(string ID_modulo, string nombre, string descripcion, string estado)
+        public OdbcDataAdapter funcEliminarModulo(string ID_modulo, string nombre, string descripcion, string estado)
         {
             Console.WriteLine("ESTO SE INGRESA EN LA SENTENCIA: " + ID_modulo + ", " + nombre + ", " + descripcion + ", " + estado);
             try

@@ -213,7 +213,7 @@ namespace CapaDiseno
         public void ActualizarDataGridView()
         {
             // Obtener los datos desde la base de datos
-            DataTable dt = logic.consultaLogicaUsuarios("Tbl_permisos_aplicaciones_usuario");
+            DataTable dt = logic.funcConsultaLogicaUsuarios("Tbl_permisos_aplicaciones_usuario");
 
             // Verificar si hay datos
             if (dt != null && dt.Rows.Count > 0)
@@ -382,7 +382,7 @@ namespace CapaDiseno
                         MessageBoxIcon.Information
                     );
 
-                    DataTable dtAplicaciones = logic.consultaLogicaPermisosUsuarioAplicacion(sUsuario, sAplicacion, sIngresar, sConsulta, sModificar, sEliminar, sImprimir);
+                    DataTable dtAplicaciones = logic.funcConsultaLogicaPermisosUsuarioAplicacion(sUsuario, sAplicacion, sIngresar, sConsulta, sModificar, sEliminar, sImprimir);
 
                 }
 

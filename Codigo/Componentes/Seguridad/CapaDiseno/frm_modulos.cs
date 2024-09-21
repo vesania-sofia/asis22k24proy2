@@ -92,7 +92,7 @@ namespace CapaDiseno
             //para errores tipo null
             try
             {
-                DataTable dtValidarID = logic.validarIDModulos();
+                DataTable dtValidarID = logic.funcValidarIdModulos();
                 if (dtValidarID == null || dtValidarID.Rows.Count == 0)
                 {
                     //txtcodigo.Text = ""; // Asigna un valor por defecto si no se encuentra ningún ID
@@ -125,6 +125,7 @@ namespace CapaDiseno
         {
             txtnombre.Enabled = false;
             txtdesc.Enabled = false;
+            gbestado.Enabled = false; //no debe estar habilitado ya que por defecta al crearse debe estar habilitado
 
 
             if (txtnombre.Text == "")
@@ -161,7 +162,7 @@ namespace CapaDiseno
                     estado = "1";
                 }
 
-                logic.ingresarmodulos(txtcodigo.Text.ToString(), txtnombre.Text.ToString(), txtdesc.Text.ToString(), estado.ToString());
+                logic.funcIngresarModulo(txtcodigo.Text.ToString(), txtnombre.Text.ToString(), txtdesc.Text.ToString(), estado.ToString());
                 MessageBox.Show("Modulo Ingresado Correctamente");
                 limpiar();
                 gbbuscar.Enabled = true;
@@ -212,7 +213,7 @@ namespace CapaDiseno
                     estado = "1";
                 }
 
-                logic.Actualizarmodulo(txtcodigo.Text.ToString(), txtnombre.Text.ToString(), txtdesc.Text.ToString(), estado.ToString());
+                logic.funcActualizarModulo(txtcodigo.Text.ToString(), txtnombre.Text.ToString(), txtdesc.Text.ToString(), estado.ToString());
                 MessageBox.Show("Modulo Actualizado Correctamente");
                 btn_modif.Enabled = false;
                 btn_actualizar.Enabled = false;
@@ -241,7 +242,7 @@ namespace CapaDiseno
             //Para errores null del DataTable
             try
             {
-                DataTable dtModulos = logic.ConsultaLogicaModulo(modulo);
+                DataTable dtModulos = logic.funcConsultaLogicaModulo(modulo);
 
                 if (dtModulos == null || dtModulos.Rows.Count == 0)
                 {
@@ -347,7 +348,7 @@ namespace CapaDiseno
             try
             {
                 // Llamar al método de la lógica de negocio para realizar el borrado lógico
-                logic.EliminarModulo(txtcodigo.Text.ToString(), txtnombre.Text.ToString(), txtdesc.Text.ToString(), estado);
+                logic.funcEliminarModulo(txtcodigo.Text.ToString(), txtnombre.Text.ToString(), txtdesc.Text.ToString(), estado);
 
                 MessageBox.Show("Módulo eliminado correctamente.");
                 limpiar(); // Limpia los campos del formulario
