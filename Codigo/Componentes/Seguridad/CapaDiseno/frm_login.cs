@@ -125,7 +125,7 @@ namespace CapaDiseno
                 Txt_clave.UseSystemPasswordChar = false;
             }
         }
-        //**********************KATERYN DE LEON ******************************
+        //********************** KATERYN DE LEON y Gabriela Suc ******************************
         private void button1_Click(object sender, EventArgs e)
         { //boton guardar
             //Help.ShowHelp(this, "C:\\Ayuda_Seguridad\\" + "ayudaLogin.chm", "login.html");
@@ -137,7 +137,7 @@ namespace CapaDiseno
             MessageBox.Show("Ruta base: " + baseDirectory);
 
             // Busca el archivo en el directorio base y sus subdirectorios
-            string pathAyuda = FindFileInDirectory(baseDirectory, "Ayuda_Seguridad", "CambioContraseña.chm");
+            string pathAyuda = FindFileInDirectory(baseDirectory, "Ayuda_Seguridad", "AyudaLogin.chm");
 
             // Imprimir la ruta generada para verificar
             MessageBox.Show("Ruta de ayuda: " + pathAyuda);
@@ -155,7 +155,7 @@ namespace CapaDiseno
                 MessageBox.Show("El archivo de ayuda no se encontró.");
             }
         }
-        //**********************KATERYN DE LEON ******************************
+        //********************** KATERYN DE LEON y Gabriela Suc  ******************************
         private string FindFileInDirectory(string rootDirectory, string folderName, string fileName)
         { // parte del boton guardar
             try
@@ -181,7 +181,7 @@ namespace CapaDiseno
             return null; // No se encontró el archivo
         }
 
-        //********FIN KATY********************************************************************
+        //******** FIN KATERYN DE LEON y Gabriela Suc   ********************************************************************
 
         private void Btn_olvidocontrasenia_Click_1(object sender, EventArgs e)
         {
