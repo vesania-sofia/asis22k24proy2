@@ -23,6 +23,21 @@ namespace CapaDiseno
         {
             InitializeComponent();
 
+            ToolTip tnuevo = new ToolTip();
+            tnuevo.SetToolTip(btn_agregar, "Crea nueva asignación");
+            ToolTip tguardar = new ToolTip();
+            tguardar.SetToolTip(btn_guardar, "Guardar nueva asignación");
+            ToolTip tbuscar = new ToolTip();
+            tbuscar.SetToolTip(btn_buscar, "Buscar todas las asignaciones");
+            ToolTip tcancelar = new ToolTip();
+            tcancelar.SetToolTip(btn_cancelar, "reestablecer");
+            ToolTip tremover = new ToolTip();
+            tcancelar.SetToolTip(btn_remover, "Quita la nueva asignación");
+            ToolTip tsalir = new ToolTip();
+            tsalir.SetToolTip(btn_salir, "Salir de asignacion perfil");
+            ToolTip tayuda = new ToolTip();
+            tayuda.SetToolTip(btn_ayuda, "Ayuda");
+
             logic = new logica(idUsuario);
             string tablaU = "Tbl_usuarios";
             string campo1U = "Pk_id_usuario";
@@ -235,15 +250,7 @@ namespace CapaDiseno
 
         private void Btn_quitar_Click(object sender, EventArgs e)
         {
-            if (iContadorFila > 0)
-            {
-                dgv_asignacion_perfiles.Rows.RemoveAt(dgv_asignacion_perfiles.CurrentRow.Index);
-                iContadorFila--;
-            }
-            else
-            {
-                MessageBox.Show("No hay relaciones que eliminar");
-            }
+            
         }
 
         private void Btn_finalizar_Click(object sender, EventArgs e)
@@ -263,6 +270,78 @@ namespace CapaDiseno
         }
 
         private void btn_ingresar_Click(object sender, EventArgs e)
+        {
+          
+        }
+
+ 
+        private void cbo_usuarios_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_nuevo_Click(object sender, EventArgs e)
+        {
+            
+
+            
+        }
+
+        private void btn_cancel_Click(object sender, EventArgs e)
+        {
+            cbo_usuario.Enabled = true;
+            cbo_perfiles.Enabled = true;
+            btn_agregar.Enabled = true;
+            btn_guardar.Enabled = true;
+            btn_cancelar.Enabled = true;
+            btn_buscar.Enabled = true;
+            btn_remover.Enabled = false;
+            groupBox1.Enabled = true;
+            limpieza();
+        }
+
+        public void actualizardatagriew()
+        {
+            
+            
+            try
+            {
+                // Llamar a la capa lógica para obtener los datos de la asignación (modulo-aplicación)
+                DataTable dt = logic.consultaLogicaPerfilesUsuarios();
+
+                if (dt != null && dt.Rows.Count > 0)
+                {
+                    // Asignar el DataTable al DataGridView
+                    dgv_perfiles_asignados.DataSource = dt;
+                }
+                else
+                {
+                    MessageBox.Show("No se encontraron datos.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al buscar los datos: {ex.Message}");
+            }
+        }
+
+        private void btn_Buscar_Click(object sender, EventArgs e)
+        {
+            
+           
+        }
+
+        private void btn_ActualizarA_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_agregar_Click_1(object sender, EventArgs e)
         {
             if (cbo_usuario.SelectedItem == null || cbo_perfiles.SelectedItem == null)
             {
@@ -301,11 +380,11 @@ namespace CapaDiseno
                         dgv_asignacion_perfiles.Rows.Add(sUsuario, sPerfil);
                         iContadorFila++;
                     }
-                    btn_1.Enabled = true;
-                    btn_c.Enabled = true;
-                    btn_n.Enabled = true;
-                    btn_B.Enabled = false;
-                    btn_q.Enabled = false;
+                    btn_agregar.Enabled = true;
+                    btn_remover.Enabled = true;
+                    btn_guardar.Enabled = true;
+                    btn_buscar.Enabled = false;
+                    btn_cancelar.Enabled = false;
                     groupBox1.Enabled = false;
                 }
 
@@ -313,13 +392,7 @@ namespace CapaDiseno
             }
         }
 
- 
-        private void cbo_usuarios_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btn_nuevo_Click(object sender, EventArgs e)
+        private void btn_guardar_Click(object sender, EventArgs e)
         {
             // Deshabilitar los ComboBox después de la selección
             cbo_usuario.Enabled = false;
@@ -329,14 +402,14 @@ namespace CapaDiseno
             if (cbo_usuario.SelectedItem == null)
             {
                 MessageBox.Show("Falta seleccionar un usuario.");
-                btn_1.Enabled = false;
+                btn_agregar.Enabled = false;
                 cbo_usuario.Enabled = false;
                 cbo_perfiles.Enabled = false;
             }
             else if (cbo_perfiles.SelectedItem == null)
             {
                 MessageBox.Show("Falta seleccionar un perfil.");
-                btn_1.Enabled = false;
+                btn_agregar.Enabled = false;
                 cbo_usuario.Enabled = false;
                 cbo_perfiles.Enabled = false;
             }
@@ -353,85 +426,64 @@ namespace CapaDiseno
                 limpieza();
 
                 // Configuración de botones y controles después de la inserción
-   
-               
+
+
                 cbo_usuario.Enabled = true;
                 cbo_perfiles.Enabled = true;
-                btn_1.Enabled = true;
-                btn_n.Enabled = true;
-                btn_c.Enabled = true;
-                btn_q.Enabled = true;
-                btn_B.Enabled = true;
+                btn_agregar.Enabled = true;
+                btn_guardar.Enabled = true;
+                btn_cancelar.Enabled = true;
+                btn_remover.Enabled = true;
+                btn_buscar.Enabled = true;
                 groupBox1.Enabled = true;
                 limpieza();
             }
-
-            
         }
 
-        private void btn_cancel_Click(object sender, EventArgs e)
+        private void btn_remover_Click_1(object sender, EventArgs e)
         {
-            cbo_usuario.Enabled = true;
-            cbo_perfiles.Enabled = true;
-            btn_1.Enabled = true;
-            btn_n.Enabled = true;
-            btn_c.Enabled = true;
-            btn_B.Enabled = true;
-            btn_q.Enabled = false;
-            groupBox1.Enabled = true;
-            limpieza();
-        }
-
-        public void actualizardatagriew()
-        {
-            
-            
-            try
+            if (iContadorFila > 0)
             {
-                // Llamar a la capa lógica para obtener los datos de la asignación (modulo-aplicación)
-                DataTable dt = logic.consultaLogicaPerfilesUsuarios();
-
-                if (dt != null && dt.Rows.Count > 0)
-                {
-                    // Asignar el DataTable al DataGridView
-                    dgv_perfiles_asignados.DataSource = dt;
-                }
-                else
-                {
-                    MessageBox.Show("No se encontraron datos.");
-                }
+                dgv_asignacion_perfiles.Rows.RemoveAt(dgv_asignacion_perfiles.CurrentRow.Index);
+                iContadorFila--;
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show($"Error al buscar los datos: {ex.Message}");
+                MessageBox.Show("No hay relaciones que eliminar");
             }
         }
 
-        private void btn_Buscar_Click(object sender, EventArgs e)
+        private void btn_buscar_Click_1(object sender, EventArgs e)
         {
             actualizardatagriew();
             cbo_usuario.Enabled = false;
             cbo_perfiles.Enabled = false;
-            btn_1.Enabled = false;
-            btn_n.Enabled = false;
-            btn_q.Enabled = false;
-           
+            btn_agregar.Enabled = false;
+            btn_guardar.Enabled = false;
+            btn_remover.Enabled = false;
         }
 
-        private void btn_ActualizarA_Click(object sender, EventArgs e)
+        private void dgv_asignacion_perfiles_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-           
-        }
-
-        private void btn_eliminar_Click(object sender, EventArgs e)
-        {
-
 
         }
 
-        private void label3_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btn_cancelar_Click(object sender, EventArgs e)
+        {
+            cbo_usuario.Enabled = true;
+            cbo_perfiles.Enabled = true;
+            btn_agregar.Enabled = true;
+            btn_guardar.Enabled = true;
+            btn_cancelar.Enabled = true;
+            btn_buscar.Enabled = true;
+            btn_remover.Enabled = false;
+            groupBox1.Enabled = true;
+            limpieza();
         }
     }
 }
