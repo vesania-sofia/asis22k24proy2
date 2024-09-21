@@ -74,7 +74,7 @@ namespace CapaDiseno
                             this.Hide();
 
                             sentencia s = new sentencia();
-                            s.insertarBitacora(Txt_usuario.Text.Trim(), "Se logeo al sistema", "Login");
+                            s.insertarBitacora(Txt_usuario.Text.Trim(), "Se logeo al sistema", "Login", "1000");
 
                             // Pasa el nombre de usuario al constructor de MDI_Seguridad
                             MDI_Seguridad formMDI = new MDI_Seguridad(Txt_usuario.Text);

@@ -209,7 +209,7 @@ namespace CapaDiseno
         {
             this.Close();
             sentencia sn = new sentencia(idUsuario);
-            sn.insertarBitacora(idUsuario, "Cerro sesion en el sistema", "Login");
+            sn.insertarBitacora(idUsuario, "Cerro sesion en el sistema", "Login", "1301");
         }
 
 

@@ -63,7 +63,7 @@ namespace CapaLogica
                         }
                     }
                 }
-                sn.insertarBitacora(usuario, "Se cambio contraseña ", "tbl_usuarios");
+                sn.insertarBitacora(usuario, "Se cambio contraseña ", "tbl_usuarios", "1201");
 
                 return false;
             }
@@ -98,7 +98,7 @@ namespace CapaLogica
                         {
                             string resultado = reader.GetString(0);
                             // Comparar el resultado con los posibles mensajes del SP
-                            sn.insertarBitacora(usuario, "Se cambio contraseña ", "tbl_usuarios");
+                            sn.insertarBitacora(usuario, "Se cambio contraseña ", "tbl_usuarios", "1201");
                             return resultado == "Contraseña actualizada con éxito";
                         }
                     }

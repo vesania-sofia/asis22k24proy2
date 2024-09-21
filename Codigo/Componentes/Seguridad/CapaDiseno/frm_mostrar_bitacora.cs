@@ -37,7 +37,7 @@ namespace CapaDiseno
             Cbo_columna.SelectedIndex = 0;
 
             sentencia sn = new sentencia(idUsuario);
-            sn.insertarBitacora(idUsuario, "Consulto bitacora", "tbl_bitacora");
+            sn.insertarBitacora(idUsuario, "Consulto bitacora", "tbl_bitacora", "1301");
             ActualizarBitacora();
         }
 
