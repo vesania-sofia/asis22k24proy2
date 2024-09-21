@@ -52,114 +52,15 @@ namespace CapaDiseno
 
         }
 
-      
+     
 
 
-
-        private void btn_bsucarperfil_Click_1(object sender, EventArgs e)
+        private void rbhabilitado_CheckedChanged(object sender, EventArgs e)
         {
-            string perfil = tbx_buscarperfil.Text;
-            bool modificar = false;
-            bool eliminar = false;
-            try
-            {
-                DataTable dtModulos = logic.ConsultaLogicaPerfil(perfil);
 
-                foreach (DataRow row in dtModulos.Rows)
-                {
-                    if (row[0] != null)
-                        modificar = true;
-                    eliminar = true;
-
-                    txtcodigo.Text = (row[0].ToString());
-                    txtnombre.Text = (row[1].ToString());
-                    txtdesc.Text = (row[2].ToString());
-                    if (row[3].ToString() == "1")
-                    {
-                        rbhabilitado.Checked = true;
-                        rbinhabilitado.Checked = false;
-
-                    }
-                    if (row[3].ToString() == "0")
-                    {
-                        rbinhabilitado.Checked = true;
-                        rbhabilitado.Checked = false;
-
-                    }
-                }
-
-                if (modificar == true)
-                {
-                    btn_modif.Enabled = true;
-                    btn_ingresar.Enabled = false;
-                    txtcodigo.Enabled = false;
-                    txtnombre.Enabled = false;
-                    txtdesc.Enabled = false;
-                    rbhabilitado.Enabled = false;
-                    rbinhabilitado.Enabled = false;
-                }
-
-                if (eliminar == true)             // se crean las ventanas aviertas para el boton eliminar 
-                {
-                    btn_eli.Enabled = true;
-                    btn_ingresar.Enabled = false;
-                    txtcodigo.Enabled = false;
-                    txtnombre.Enabled = false;
-                    txtdesc.Enabled = false;
-                    rbhabilitado.Enabled = false;
-                    rbinhabilitado.Enabled = false;
-                }
-
-                else
-                {
-                    btn_modif.Enabled = false;
-                    MessageBox.Show("No se encontró el perfil buscado");
-                }
-
-            }
-            catch (InvalidOperationException ex)
-            {
-                Console.WriteLine(ex);
-            }
         }
 
-        private void btn_nuevo_Click(object sender, EventArgs e)
-        {
-            btn_nuevo.Enabled = false;
-            btn_actualizar.Enabled = false;
-            gbbuscar.Enabled = false;
-            btn_modif.Enabled = false;
-            rbhabilitado.Checked = true;
-            gbestado.Enabled = false;
-            txtnombre.Enabled = true;
-            txtdesc.Enabled = true;
-            btn_ingresar.Enabled = true;
-            btn_cancel.Enabled = true;
-
-            try
-            {
-                DataTable dtValidarID = logic.validarIDperfiles();
-                foreach (DataRow row in dtValidarID.Rows)
-                {
-                    if (row[0].ToString() == "")
-                    {
-                        txtcodigo.Text = "1";
-                    }
-                    else
-                    {
-                        txtcodigo.Text = row[0].ToString();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-
-                Console.WriteLine(ex);
-                return;
-            }
-        }
-
-        private void btn_ingresar_Click_1(object sender, EventArgs e)
+        private void btn_ingresar_Click(object sender, EventArgs e)
         {
             txtnombre.Enabled = false;
             txtdesc.Enabled = false;
@@ -206,7 +107,7 @@ namespace CapaDiseno
             }
         }
 
-        private void btn_actualizar_Click_1(object sender, EventArgs e)
+        private void btn_actualizar_Click(object sender, EventArgs e)
         {
             if (txtnombre.Text == "")
             {
@@ -254,7 +155,49 @@ namespace CapaDiseno
             }
         }
 
-        private void btn_modif_Click_1(object sender, EventArgs e)
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btn_nuevo_Click_1(object sender, EventArgs e)
+        {
+            btn_nuevo.Enabled = false;
+            btn_actualizar.Enabled = false;
+            gbbuscar.Enabled = false;
+            btn_modif.Enabled = false;
+            rbhabilitado.Checked = true;
+            rbinhabilitado.Checked = true;
+            gbestado.Enabled = true;
+            txtnombre.Enabled = true;
+            txtdesc.Enabled = true;
+            btn_ingresar.Enabled = true;
+            btn_cancel.Enabled = true;
+
+            try
+            {
+                DataTable dtValidarID = logic.validarIDperfiles();
+                foreach (DataRow row in dtValidarID.Rows)
+                {
+                    if (row[0].ToString() == "")
+                    {
+                        txtcodigo.Text = "1";
+                    }
+                    else
+                    {
+                        txtcodigo.Text = row[0].ToString();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex);
+                return;
+            }
+        }
+
+        private void btn_modif_Click(object sender, EventArgs e)
         {
             txtcodigo.Enabled = false;
             btn_nuevo.Enabled = false;
@@ -267,9 +210,8 @@ namespace CapaDiseno
             rbinhabilitado.Enabled = true;
             gbestado.Enabled = true;
         }
-
-        /* creado por Emerzon Garcia */
-        private void btn_eli_Click_1(object sender, EventArgs e)
+        /* creado por Emerzon Garcia */ 
+        private void btn_eli_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(txtcodigo.Text))
             {
@@ -300,7 +242,7 @@ namespace CapaDiseno
             }
         }
 
-        private void btn_cancel_Click_1(object sender, EventArgs e)
+        private void btn_cancel_Click(object sender, EventArgs e)
         {
             limpiar();
             btn_modif.Enabled = false;
@@ -314,19 +256,74 @@ namespace CapaDiseno
             gbestado.Enabled = false;
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
+        private void btnSalir_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void rbhabilitado_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btn_ayuda_Click_1(object sender, EventArgs e)
+        private void btn_ayuda_Click(object sender, EventArgs e)
         {
             Help.ShowHelp(this, "C:\\Ayuda_Seguridad\\" + "MantenimientoPerfiles.chm", "AyudaMantenimientoPerfiles.html");
+        }
+
+        private void btn_bsucarperfil_Click(object sender, EventArgs e)
+        {
+            string perfil = tbx_buscarperfil.Text;
+
+            if (string.IsNullOrWhiteSpace(perfil))
+            {
+                MessageBox.Show("Por favor, ingrese un ID de una aplicacion.");
+                return;
+            }
+
+            try
+            {
+                DataTable dtModulos = logic.ConsultaLogicaPerfil(perfil);
+
+                if (dtModulos == null || dtModulos.Rows.Count == 0)
+                {
+                    MessageBox.Show("No se encontraro la aplicacion.");
+                    return;
+                }
+
+                foreach (DataRow row in dtModulos.Rows)
+                {
+                    if (row[0] != DBNull.Value) txtcodigo.Text = row[0].ToString();
+                    if (row[1] != DBNull.Value) txtnombre.Text = row[1].ToString();
+                    if (row[2] != DBNull.Value) txtdesc.Text = row[2].ToString();
+                    if (row[3] != DBNull.Value)
+                    {
+                        string estado = row[3].ToString();
+                        if (estado == "1")
+                        {
+                            rbhabilitado.Checked = true;
+                            rbinhabilitado.Checked = false;
+                        }
+                        else if (estado == "0")
+                        {
+                            rbhabilitado.Checked = false;
+                            rbinhabilitado.Checked = true;
+                        }
+                    }
+                }
+
+                btn_modif.Enabled = true;
+                btn_ingresar.Enabled = false;
+                txtcodigo.Enabled = false;
+                txtnombre.Enabled = false;
+                txtdesc.Enabled = false;
+                rbhabilitado.Enabled = false;
+                rbinhabilitado.Enabled = false;
+                btn_eli.Enabled = true;
+                btn_nuevo.Enabled = false;
+                btn_cancel.Enabled = true;
+                gbestado.Enabled = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+                Console.WriteLine(ex);
+            }
         }
     }
 }

@@ -64,7 +64,7 @@
             this.cbo_usuarios.Location = new System.Drawing.Point(41, 47);
             this.cbo_usuarios.Margin = new System.Windows.Forms.Padding(4);
             this.cbo_usuarios.Name = "cbo_usuarios";
-            this.cbo_usuarios.Size = new System.Drawing.Size(160, 31);
+            this.cbo_usuarios.Size = new System.Drawing.Size(160, 29);
             this.cbo_usuarios.TabIndex = 0;
             // 
             // cbo_aplicaciones
@@ -75,7 +75,7 @@
             this.cbo_aplicaciones.Location = new System.Drawing.Point(536, 46);
             this.cbo_aplicaciones.Margin = new System.Windows.Forms.Padding(4);
             this.cbo_aplicaciones.Name = "cbo_aplicaciones";
-            this.cbo_aplicaciones.Size = new System.Drawing.Size(160, 31);
+            this.cbo_aplicaciones.Size = new System.Drawing.Size(160, 29);
             this.cbo_aplicaciones.TabIndex = 1;
             // 
             // label1
@@ -85,7 +85,7 @@
             this.label1.Location = new System.Drawing.Point(87, 26);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(87, 23);
+            this.label1.Size = new System.Drawing.Size(77, 21);
             this.label1.TabIndex = 2;
             this.label1.Text = "Usuarios";
             // 
@@ -96,7 +96,7 @@
             this.label2.Location = new System.Drawing.Point(543, 26);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(136, 23);
+            this.label2.Size = new System.Drawing.Size(117, 21);
             this.label2.TabIndex = 3;
             this.label2.Text = "Aplicaciones";
             // 
@@ -214,7 +214,7 @@
             this.cbo_modulos.Location = new System.Drawing.Point(279, 47);
             this.cbo_modulos.Margin = new System.Windows.Forms.Padding(4);
             this.cbo_modulos.Name = "cbo_modulos";
-            this.cbo_modulos.Size = new System.Drawing.Size(160, 31);
+            this.cbo_modulos.Size = new System.Drawing.Size(160, 29);
             this.cbo_modulos.TabIndex = 12;
             this.cbo_modulos.SelectedIndexChanged += new System.EventHandler(this.Cbo_modulos_SelectedIndexChanged);
             // 
@@ -225,7 +225,7 @@
             this.lbl_modulo.Location = new System.Drawing.Point(312, 26);
             this.lbl_modulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_modulo.Name = "lbl_modulo";
-            this.lbl_modulo.Size = new System.Drawing.Size(92, 23);
+            this.lbl_modulo.Size = new System.Drawing.Size(81, 21);
             this.lbl_modulo.TabIndex = 11;
             this.lbl_modulo.Text = "Modulos";
             // 
@@ -236,7 +236,7 @@
             this.label3.ForeColor = System.Drawing.Color.Transparent;
             this.label3.Location = new System.Drawing.Point(158, 28);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(916, 54);
+            this.label3.Size = new System.Drawing.Size(786, 45);
             this.label3.TabIndex = 15;
             this.label3.Text = "A s i g n a c i ó n  d e  A p l i c a c i o n e s  a  U s u a r i o s";
             // 
@@ -335,11 +335,11 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tableLayoutPanel1.Controls.Add(this.btn_buscar, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btn_ayuda, 5, 0);
             this.tableLayoutPanel1.Controls.Add(this.btn_agregar, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.btn_salir, 4, 0);
             this.tableLayoutPanel1.Controls.Add(this.btn_remover, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.btn_guardar, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btn_ayuda, 5, 0);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(108, 136);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
@@ -350,7 +350,7 @@
             // 
             // frm_asignacion_aplicaciones
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 23F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(133)))), ((int)(((byte)(223)))));
             this.ClientSize = new System.Drawing.Size(939, 617);
