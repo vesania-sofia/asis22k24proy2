@@ -301,11 +301,11 @@ namespace CapaDiseno
                         dgv_asignacion_perfiles.Rows.Add(sUsuario, sPerfil);
                         iContadorFila++;
                     }
-                    btn_ingresar.Enabled = true;
-                    btn_cancel.Enabled = true;
-                    btn_nuevo.Enabled = true;
-                    btn_Buscar.Enabled = false;
-                    btn_quitar.Enabled = false;
+                    btn_1.Enabled = true;
+                    btn_c.Enabled = true;
+                    btn_n.Enabled = true;
+                    btn_B.Enabled = false;
+                    btn_q.Enabled = false;
                     groupBox1.Enabled = false;
                 }
 
@@ -329,14 +329,14 @@ namespace CapaDiseno
             if (cbo_usuario.SelectedItem == null)
             {
                 MessageBox.Show("Falta seleccionar un usuario.");
-                btn_ingresar.Enabled = false;
+                btn_1.Enabled = false;
                 cbo_usuario.Enabled = false;
                 cbo_perfiles.Enabled = false;
             }
             else if (cbo_perfiles.SelectedItem == null)
             {
                 MessageBox.Show("Falta seleccionar un perfil.");
-                btn_ingresar.Enabled = false;
+                btn_1.Enabled = false;
                 cbo_usuario.Enabled = false;
                 cbo_perfiles.Enabled = false;
             }
@@ -357,11 +357,11 @@ namespace CapaDiseno
                
                 cbo_usuario.Enabled = true;
                 cbo_perfiles.Enabled = true;
-                btn_ingresar.Enabled = true;
-                btn_nuevo.Enabled = true;
-                btn_cancel.Enabled = true;
-                btn_quitar.Enabled = true;
-                btn_Buscar.Enabled = true;
+                btn_1.Enabled = true;
+                btn_n.Enabled = true;
+                btn_c.Enabled = true;
+                btn_q.Enabled = true;
+                btn_B.Enabled = true;
                 groupBox1.Enabled = true;
                 limpieza();
             }
@@ -373,11 +373,11 @@ namespace CapaDiseno
         {
             cbo_usuario.Enabled = true;
             cbo_perfiles.Enabled = true;
-            btn_ingresar.Enabled = true;
-            btn_nuevo.Enabled = true;
-            btn_cancel.Enabled = true;
-            btn_Buscar.Enabled = true;
-            btn_quitar.Enabled = false;
+            btn_1.Enabled = true;
+            btn_n.Enabled = true;
+            btn_c.Enabled = true;
+            btn_B.Enabled = true;
+            btn_q.Enabled = false;
             groupBox1.Enabled = true;
             limpieza();
         }
@@ -412,9 +412,9 @@ namespace CapaDiseno
             actualizardatagriew();
             cbo_usuario.Enabled = false;
             cbo_perfiles.Enabled = false;
-            btn_ingresar.Enabled = false;
-            btn_nuevo.Enabled = false;
-            btn_quitar.Enabled = false;
+            btn_1.Enabled = false;
+            btn_n.Enabled = false;
+            btn_q.Enabled = false;
            
         }
 
@@ -426,6 +426,11 @@ namespace CapaDiseno
         private void btn_eliminar_Click(object sender, EventArgs e)
         {
 
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
 
         }
     }
