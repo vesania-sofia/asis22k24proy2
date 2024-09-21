@@ -355,9 +355,74 @@ namespace CapaDiseno
             this.Close();
         }
 
+        // ------------------------- Emerzon Garcia ----------------------------------------------
+
+        public void actualizardatagriew1()
+        {
+            DataTable dt = logic.consultaLogicaPerfiles("Tbl_permisos_aplicacion_perfil");
+
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                MessageBox.Show("Datos recibidos: " + dt.Rows.Count.ToString());
+
+                // Limpiar las columnas anteriores
+                dgv_asignacionesperfiles.Columns.Clear();
+
+                // Crear y agregar las columnas manualmente
+                dgv_asignacionesperfiles.Columns.Add("Perfil", "Perfil");
+                dgv_asignacionesperfiles.Columns["Perfil"].DataPropertyName = "Fk_id_perfil";
+
+                dgv_asignacionesperfiles.Columns.Add("Aplicacion", "Aplicación");
+                dgv_asignacionesperfiles.Columns["Aplicacion"].DataPropertyName = "nombre_aplicacion";
+
+                // Agregar columnas de permisos como TextBox
+                dgv_asignacionesperfiles.Columns.Add("Ingresar", "Ingresar");
+                dgv_asignacionesperfiles.Columns["Ingresar"].DataPropertyName = "guardar_permiso";
+
+                dgv_asignacionesperfiles.Columns.Add("Consultar", "Consultar");
+                dgv_asignacionesperfiles.Columns["Consultar"].DataPropertyName = "buscar_permiso";
+
+                dgv_asignacionesperfiles.Columns.Add("Modificar", "Modificar");
+                dgv_asignacionesperfiles.Columns["Modificar"].DataPropertyName = "modificar_permiso";
+
+                dgv_asignacionesperfiles.Columns.Add("Eliminar", "Eliminar");
+                dgv_asignacionesperfiles.Columns["Eliminar"].DataPropertyName = "eliminar_permiso";
+
+                dgv_asignacionesperfiles.Columns.Add("Imprimir", "Imprimir");
+                dgv_asignacionesperfiles.Columns["Imprimir"].DataPropertyName = "imprimir_permiso";
+
+                // Asegúrate de que las columnas son de texto y centrar el contenido
+                foreach (var column in new[] { "Ingresar", "Consultar", "Modificar", "Eliminar", "Imprimir" })
+                {
+                    dgv_asignacionesperfiles.Columns[column].ValueType = typeof(string);
+                    dgv_asignacionesperfiles.Columns[column].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                }
+
+                // Asignar el DataTable al DataGridView
+                dgv_asignacionesperfiles.DataSource = dt;
+
+                // Convertir booleanos a "0" o "1"
+                foreach (DataRow row in dt.Rows)
+                {
+                    row["guardar_permiso"] = (Convert.ToBoolean(row["guardar_permiso"]) ? "1" : "0");
+                    row["buscar_permiso"] = (Convert.ToBoolean(row["buscar_permiso"]) ? "1" : "0");
+                    row["modificar_permiso"] = (Convert.ToBoolean(row["modificar_permiso"]) ? "1" : "0");
+                    row["eliminar_permiso"] = (Convert.ToBoolean(row["eliminar_permiso"]) ? "1" : "0");
+                    row["imprimir_permiso"] = (Convert.ToBoolean(row["imprimir_permiso"]) ? "1" : "0");
+                }
+
+                dgv_asignacionesperfiles.Refresh();
+            }
+            else
+            {
+                MessageBox.Show("No se encontraron datos.");
+            }
+        }
+
+
         private void btn_buscar_Click_1(object sender, EventArgs e)
         {
-            actualizardatagriew();
+            actualizardatagriew1();
         }
 
         private void btn_ayuda_Click_1(object sender, EventArgs e)

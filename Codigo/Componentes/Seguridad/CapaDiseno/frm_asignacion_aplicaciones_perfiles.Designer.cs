@@ -34,7 +34,6 @@
             this.btn_buscar = new System.Windows.Forms.Button();
             this.btn_salir = new System.Windows.Forms.Button();
             this.btn_finalizar = new System.Windows.Forms.Button();
-            this.txt_buscar = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.dgv_asignacionesperfiles = new System.Windows.Forms.DataGridView();
             this.Perfil = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -64,7 +63,7 @@
             this.btn_remover.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btn_remover.FlatAppearance.BorderSize = 0;
             this.btn_remover.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_remover.Location = new System.Drawing.Point(258, 0);
+            this.btn_remover.Location = new System.Drawing.Point(257, 0);
             this.btn_remover.Margin = new System.Windows.Forms.Padding(0);
             this.btn_remover.Name = "btn_remover";
             this.btn_remover.Size = new System.Drawing.Size(124, 47);
@@ -78,7 +77,7 @@
             this.btn_ayuda.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btn_ayuda.FlatAppearance.BorderSize = 0;
             this.btn_ayuda.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_ayuda.Location = new System.Drawing.Point(628, 0);
+            this.btn_ayuda.Location = new System.Drawing.Point(627, 0);
             this.btn_ayuda.Margin = new System.Windows.Forms.Padding(0);
             this.btn_ayuda.Name = "btn_ayuda";
             this.btn_ayuda.Size = new System.Drawing.Size(111, 47);
@@ -95,7 +94,7 @@
             this.btn_agregar.Location = new System.Drawing.Point(0, 0);
             this.btn_agregar.Margin = new System.Windows.Forms.Padding(0);
             this.btn_agregar.Name = "btn_agregar";
-            this.btn_agregar.Size = new System.Drawing.Size(131, 47);
+            this.btn_agregar.Size = new System.Drawing.Size(130, 47);
             this.btn_agregar.TabIndex = 279;
             this.btn_agregar.UseVisualStyleBackColor = true;
             this.btn_agregar.Click += new System.EventHandler(this.btn_agregar_Click_1);
@@ -106,7 +105,7 @@
             this.btn_buscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btn_buscar.FlatAppearance.BorderSize = 0;
             this.btn_buscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_buscar.Location = new System.Drawing.Point(382, 0);
+            this.btn_buscar.Location = new System.Drawing.Point(381, 0);
             this.btn_buscar.Margin = new System.Windows.Forms.Padding(0);
             this.btn_buscar.Name = "btn_buscar";
             this.btn_buscar.Size = new System.Drawing.Size(131, 47);
@@ -120,7 +119,7 @@
             this.btn_salir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btn_salir.FlatAppearance.BorderSize = 0;
             this.btn_salir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_salir.Location = new System.Drawing.Point(513, 0);
+            this.btn_salir.Location = new System.Drawing.Point(512, 0);
             this.btn_salir.Margin = new System.Windows.Forms.Padding(0);
             this.btn_salir.Name = "btn_salir";
             this.btn_salir.Size = new System.Drawing.Size(115, 47);
@@ -134,7 +133,7 @@
             this.btn_finalizar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btn_finalizar.FlatAppearance.BorderSize = 0;
             this.btn_finalizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_finalizar.Location = new System.Drawing.Point(131, 0);
+            this.btn_finalizar.Location = new System.Drawing.Point(130, 0);
             this.btn_finalizar.Margin = new System.Windows.Forms.Padding(0);
             this.btn_finalizar.Name = "btn_finalizar";
             this.btn_finalizar.Size = new System.Drawing.Size(127, 47);
@@ -142,20 +141,13 @@
             this.btn_finalizar.UseVisualStyleBackColor = true;
             this.btn_finalizar.Click += new System.EventHandler(this.btn_finalizar_Click_1);
             // 
-            // txt_buscar
-            // 
-            this.txt_buscar.Location = new System.Drawing.Point(829, 138);
-            this.txt_buscar.Name = "txt_buscar";
-            this.txt_buscar.Size = new System.Drawing.Size(87, 23);
-            this.txt_buscar.TabIndex = 275;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Haettenschweiler", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(156, 9);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(0, 37);
+            this.label3.Size = new System.Drawing.Size(0, 44);
             this.label3.TabIndex = 274;
             // 
             // dgv_asignacionesperfiles
@@ -272,7 +264,7 @@
             this.cbo_modulos.Location = new System.Drawing.Point(300, 51);
             this.cbo_modulos.Margin = new System.Windows.Forms.Padding(4);
             this.cbo_modulos.Name = "cbo_modulos";
-            this.cbo_modulos.Size = new System.Drawing.Size(160, 23);
+            this.cbo_modulos.Size = new System.Drawing.Size(160, 27);
             this.cbo_modulos.TabIndex = 14;
             // 
             // lbl_modulo
@@ -282,7 +274,7 @@
             this.lbl_modulo.Location = new System.Drawing.Point(348, 26);
             this.lbl_modulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_modulo.Name = "lbl_modulo";
-            this.lbl_modulo.Size = new System.Drawing.Size(63, 19);
+            this.lbl_modulo.Size = new System.Drawing.Size(80, 22);
             this.lbl_modulo.TabIndex = 13;
             this.lbl_modulo.Text = "Modulos";
             // 
@@ -294,7 +286,7 @@
             this.cbo_perfiles.Location = new System.Drawing.Point(96, 51);
             this.cbo_perfiles.Margin = new System.Windows.Forms.Padding(4);
             this.cbo_perfiles.Name = "cbo_perfiles";
-            this.cbo_perfiles.Size = new System.Drawing.Size(160, 23);
+            this.cbo_perfiles.Size = new System.Drawing.Size(160, 27);
             this.cbo_perfiles.TabIndex = 0;
             // 
             // cbo_aplicaciones
@@ -305,7 +297,7 @@
             this.cbo_aplicaciones.Location = new System.Drawing.Point(502, 51);
             this.cbo_aplicaciones.Margin = new System.Windows.Forms.Padding(4);
             this.cbo_aplicaciones.Name = "cbo_aplicaciones";
-            this.cbo_aplicaciones.Size = new System.Drawing.Size(160, 23);
+            this.cbo_aplicaciones.Size = new System.Drawing.Size(160, 27);
             this.cbo_aplicaciones.TabIndex = 1;
             // 
             // label1
@@ -315,7 +307,7 @@
             this.label1.Location = new System.Drawing.Point(142, 26);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 19);
+            this.label1.Size = new System.Drawing.Size(72, 22);
             this.label1.TabIndex = 2;
             this.label1.Text = "Perfiles";
             // 
@@ -326,7 +318,7 @@
             this.label2.Location = new System.Drawing.Point(526, 25);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(86, 19);
+            this.label2.Size = new System.Drawing.Size(115, 22);
             this.label2.TabIndex = 3;
             this.label2.Text = "Aplicaciones";
             // 
@@ -339,7 +331,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 124F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 131F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 115F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 110F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 111F));
             this.tableLayoutPanel1.Controls.Add(this.btn_agregar, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.btn_ayuda, 5, 0);
             this.tableLayoutPanel1.Controls.Add(this.btn_salir, 4, 0);
@@ -358,22 +350,21 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Haettenschweiler", 26F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Transparent;
-            this.label4.Location = new System.Drawing.Point(142, 46);
+            this.label4.Location = new System.Drawing.Point(143, 44);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(599, 37);
+            this.label4.Size = new System.Drawing.Size(774, 45);
             this.label4.TabIndex = 283;
             this.label4.Text = "A s i g n a c i o n  d e  A p l i c a c i o n e s  a  P e r f i l e s";
             this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // frm_asignacion_aplicaciones_perfiles
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(133)))), ((int)(((byte)(223)))));
-            this.ClientSize = new System.Drawing.Size(925, 556);
+            this.ClientSize = new System.Drawing.Size(889, 574);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Controls.Add(this.txt_buscar);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.dgv_asignacionesperfiles);
             this.Controls.Add(this.Gpb_datos);
@@ -400,7 +391,6 @@
         private System.Windows.Forms.Button btn_buscar;
         private System.Windows.Forms.Button btn_salir;
         private System.Windows.Forms.Button btn_finalizar;
-        private System.Windows.Forms.TextBox txt_buscar;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridView dgv_asignacionesperfiles;
         private System.Windows.Forms.DataGridViewTextBoxColumn Perfil;
