@@ -351,7 +351,7 @@ namespace CapaDiseno
                 mostrarAplicacionesModulos.WindowState = System.Windows.Forms.FormWindowState.Normal;
             }
         }
-        //**********************KATERYN DE LEON ******************************
+        //********************** KATERYN DE LEON y Gabriela Suc ******************************
         private void ayudaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // Define el directorio base desde donde comenzar la búsqueda
@@ -361,7 +361,7 @@ namespace CapaDiseno
             MessageBox.Show("Ruta base: " + baseDirectory);
 
             // Busca el archivo en el directorio base y sus subdirectorios
-            string pathAyuda = FindFileInDirectory(baseDirectory, "Ayuda_Seguridad", "CambioContraseña.chm");
+            string pathAyuda = FindFileInDirectory(baseDirectory, "Ayuda_Seguridad", "ayudaMDI_Seguridad.chm");
 
             // Imprimir la ruta generada para verificar
             MessageBox.Show("Ruta de ayuda: " + pathAyuda);
@@ -379,7 +379,7 @@ namespace CapaDiseno
                 MessageBox.Show("El archivo de ayuda no se encontró.");
             }
         }
-        //**********************KATERYN DE LEON ******************************
+        //********************** KATERYN DE LEON y Gabriela Suc ******************************
         private string FindFileInDirectory(string rootDirectory, string folderName, string fileName)
         {
             try
@@ -405,7 +405,6 @@ namespace CapaDiseno
             return null; // No se encontró el archivo
         }
 
-        //********FIN KATY********************************************************************
-        /***************************************************************************************************/
+        //****************************** Fin KATERYN DE LEON y Gabriela Suc **********************************************
     }
 }
