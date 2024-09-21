@@ -952,17 +952,16 @@ namespace CapaDatos
 
         //Fin #########################3
 
-
+        /************************Ismar Leonel Cortez Sanchez*********************************************************************/
+        /*Funcion de ConsultarPermisos()*****************************************************************************************/
         public bool consultarPermisos(string idUsuario, string idAplicacion, int tipoPermiso)
         {
-
             try
             {
                 switch (tipoPermiso)
                 {
                     case 1:
-
-                        OdbcCommand sql = new OdbcCommand("Select ingresar from tbl_usuario_aplicacion WHERE PK_id_usuario= '" + idUsuario + "' AND PK_id_aplicacion ='" + idAplicacion + "'", cn.conectar());
+                        OdbcCommand sql = new OdbcCommand("Select guardar_permiso from Tbl_permisos_aplicaciones_usuario WHERE Fk_id_usuario= '" + idUsuario + "' AND Fk_id_aplicacion ='" + idAplicacion + "'", cn.conectar());
                         OdbcDataReader almacena = sql.ExecuteReader();
 
                         if (almacena.Read() == true)
@@ -971,13 +970,15 @@ namespace CapaDatos
                             {
                                 almacena.Close();
                                 sql.Connection.Close();
+                                MessageBox.Show("es igual a true 1");
                                 return true;
+
                             }
                         }
 
-                        sql = new OdbcCommand("Select tbl_perfil_detalle.ingresar from tbl_perfil_detalle " +
-                            "INNER JOIN tbl_usuario_perfil ON tbl_perfil_detalle.PK_id_perfil = tbl_usuario_perfil.PK_id_perfil" +
-                            " WHERE tbl_usuario_perfil.PK_id_usuario= '" + idUsuario + "' AND tbl_perfil_detalle.PK_id_aplicacion ='" + idAplicacion + "'", cn.conectar());
+                        sql = new OdbcCommand("Select Tbl_permisos_aplicacion_perfil.guardar_permiso from Tbl_permisos_aplicacion_perfil " +
+                            "INNER JOIN Tbl_asignaciones_perfils_usuario ON Tbl_permisos_aplicacion_perfil.Fk_id_perfil = Tbl_asignaciones_perfils_usuario.Fk_id_perfil" +
+                            " WHERE Tbl_asignaciones_perfils_usuario.Fk_id_usuario= '" + idUsuario + "' AND Tbl_permisos_aplicacion_perfil.Fk_id_aplicacion ='" + idAplicacion + "'", cn.conectar());
                         almacena = sql.ExecuteReader();
 
                         if (almacena.Read() == true)
@@ -986,6 +987,7 @@ namespace CapaDatos
                             {
                                 almacena.Close();
                                 sql.Connection.Close();
+                                MessageBox.Show("es igual a true 1");
                                 return true;
                             }
                         }
@@ -993,8 +995,7 @@ namespace CapaDatos
                         break;
 
                     case 2:
-
-                        sql = new OdbcCommand("Select consultar from tbl_usuario_aplicacion WHERE PK_id_usuario= '" + idUsuario + "' AND PK_id_aplicacion ='" + idAplicacion + "'", cn.conectar());
+                        sql = new OdbcCommand("Select buscar_permiso from Tbl_permisos_aplicaciones_usuario WHERE Fk_id_usuario= '" + idUsuario + "' AND Fk_id_aplicacion ='" + idAplicacion + "'", cn.conectar());
                         almacena = sql.ExecuteReader();
 
                         if (almacena.Read() == true)
@@ -1007,9 +1008,9 @@ namespace CapaDatos
                             }
                         }
 
-                        sql = new OdbcCommand("Select tbl_perfil_detalle.consultar from tbl_perfil_detalle " +
-                            "INNER JOIN tbl_usuario_perfil ON tbl_perfil_detalle.PK_id_perfil = tbl_usuario_perfil.PK_id_perfil" +
-                            " WHERE tbl_usuario_perfil.PK_id_usuario= '" + idUsuario + "' AND tbl_perfil_detalle.PK_id_aplicacion ='" + idAplicacion + "'", cn.conectar());
+                        sql = new OdbcCommand("Select Tbl_permisos_aplicacion_perfil.buscar_permiso from Tbl_permisos_aplicacion_perfil " +
+                            "INNER JOIN Tbl_asignaciones_perfils_usuario ON Tbl_permisos_aplicacion_perfil.Fk_id_perfil = Tbl_asignaciones_perfils_usuario.Fk_id_perfil" +
+                            " WHERE Tbl_asignaciones_perfils_usuario.Fk_id_usuario= '" + idUsuario + "' AND Tbl_permisos_aplicacion_perfil.Fk_id_aplicacion ='" + idAplicacion + "'", cn.conectar());
                         almacena = sql.ExecuteReader();
 
                         if (almacena.Read() == true)
@@ -1025,8 +1026,7 @@ namespace CapaDatos
                         break;
 
                     case 3:
-
-                        sql = new OdbcCommand("Select modificar from tbl_usuario_aplicacion WHERE PK_id_usuario= '" + idUsuario + "' AND PK_id_aplicacion ='" + idAplicacion + "'", cn.conectar());
+                        sql = new OdbcCommand("Select modificar_permiso from Tbl_permisos_aplicaciones_usuario WHERE Fk_id_usuario= '" + idUsuario + "' AND Fk_id_aplicacion ='" + idAplicacion + "'", cn.conectar());
                         almacena = sql.ExecuteReader();
 
                         if (almacena.Read() == true)
@@ -1039,9 +1039,9 @@ namespace CapaDatos
                             }
                         }
 
-                        sql = new OdbcCommand("Select tbl_perfil_detalle.modificar from tbl_perfil_detalle " +
-                            "INNER JOIN tbl_usuario_perfil ON tbl_perfil_detalle.PK_id_perfil = tbl_usuario_perfil.PK_id_perfil" +
-                            " WHERE tbl_usuario_perfil.PK_id_usuario= '" + idUsuario + "' AND tbl_perfil_detalle.PK_id_aplicacion ='" + idAplicacion + "'", cn.conectar());
+                        sql = new OdbcCommand("Select Tbl_permisos_aplicacion_perfil.modificar_permiso from Tbl_permisos_aplicacion_perfil " +
+                            "INNER JOIN Tbl_asignaciones_perfils_usuario ON Tbl_permisos_aplicacion_perfil.Fk_id_perfil = Tbl_asignaciones_perfils_usuario.Fk_id_perfil" +
+                            " WHERE Tbl_asignaciones_perfils_usuario.Fk_id_usuario= '" + idUsuario + "' AND Tbl_permisos_aplicacion_perfil.Fk_id_aplicacion ='" + idAplicacion + "'", cn.conectar());
                         almacena = sql.ExecuteReader();
 
                         if (almacena.Read() == true)
@@ -1057,8 +1057,7 @@ namespace CapaDatos
                         break;
 
                     case 4:
-
-                        sql = new OdbcCommand("Select eliminar from tbl_usuario_aplicacion WHERE PK_id_usuario= '" + idUsuario + "' AND PK_id_aplicacion ='" + idAplicacion + "'", cn.conectar());
+                        sql = new OdbcCommand("Select eliminar_permiso from Tbl_permisos_aplicaciones_usuario WHERE Fk_id_usuario= '" + idUsuario + "' AND Fk_id_aplicacion ='" + idAplicacion + "'", cn.conectar());
                         almacena = sql.ExecuteReader();
 
                         if (almacena.Read() == true)
@@ -1071,9 +1070,9 @@ namespace CapaDatos
                             }
                         }
 
-                        sql = new OdbcCommand("Select tbl_perfil_detalle.eliminar from tbl_perfil_detalle " +
-                            "INNER JOIN tbl_usuario_perfil ON tbl_perfil_detalle.PK_id_perfil = tbl_usuario_perfil.PK_id_perfil" +
-                            " WHERE tbl_usuario_perfil.PK_id_usuario= '" + idUsuario + "' AND tbl_perfil_detalle.PK_id_aplicacion ='" + idAplicacion + "'", cn.conectar());
+                        sql = new OdbcCommand("Select Tbl_permisos_aplicacion_perfil.eliminar_permiso from Tbl_permisos_aplicacion_perfil " +
+                            "INNER JOIN Tbl_asignaciones_perfils_usuario ON Tbl_permisos_aplicacion_perfil.Fk_id_perfil = Tbl_asignaciones_perfils_usuario.Fk_id_perfil" +
+                            " WHERE Tbl_asignaciones_perfils_usuario.Fk_id_usuario= '" + idUsuario + "' AND Tbl_permisos_aplicacion_perfil.Fk_id_aplicacion ='" + idAplicacion + "'", cn.conectar());
                         almacena = sql.ExecuteReader();
 
                         if (almacena.Read() == true)
@@ -1089,8 +1088,7 @@ namespace CapaDatos
                         break;
 
                     case 5:
-
-                        sql = new OdbcCommand("Select imprimir from tbl_usuario_aplicacion WHERE PK_id_usuario= '" + idUsuario + "' AND PK_id_aplicacion ='" + idAplicacion + "'", cn.conectar());
+                        sql = new OdbcCommand("Select imprimir_permiso from Tbl_permisos_aplicaciones_usuario WHERE Fk_id_usuario= '" + idUsuario + "' AND Fk_id_aplicacion ='" + idAplicacion + "'", cn.conectar());
                         almacena = sql.ExecuteReader();
 
                         if (almacena.Read() == true)
@@ -1103,9 +1101,9 @@ namespace CapaDatos
                             }
                         }
 
-                        sql = new OdbcCommand("Select tbl_perfil_detalle.imprimir from tbl_perfil_detalle " +
-                            "INNER JOIN tbl_usuario_perfil ON tbl_perfil_detalle.PK_id_perfil = tbl_usuario_perfil.PK_id_perfil" +
-                            " WHERE tbl_usuario_perfil.PK_id_usuario= '" + idUsuario + "' AND tbl_perfil_detalle.PK_id_aplicacion ='" + idAplicacion + "'", cn.conectar());
+                        sql = new OdbcCommand("Select Tbl_permisos_aplicacion_perfil.imprimir_permiso from Tbl_permisos_aplicacion_perfil " +
+                            "INNER JOIN Tbl_asignaciones_perfils_usuario ON Tbl_permisos_aplicacion_perfil.Fk_id_perfil = Tbl_asignaciones_perfils_usuario.Fk_id_perfil" +
+                            " WHERE Tbl_asignaciones_perfils_usuario.Fk_id_usuario= '" + idUsuario + "' AND Tbl_permisos_aplicacion_perfil.Fk_id_aplicacion ='" + idAplicacion + "'", cn.conectar());
                         almacena = sql.ExecuteReader();
 
                         if (almacena.Read() == true)
@@ -1119,18 +1117,26 @@ namespace CapaDatos
                         }
 
                         break;
-
                 }
-
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
-
-
             return false;
         }
+
+        /*Se tendrian que recorrer un par de iteraciones el consultarpermisos() en donde ahi se ver que permisos como tal tiene el usuario e ir habilitando los botones como tal
+         
+          
+         for each(hasta 5){
+        int tipoPermiso=1;
+         consultarPermisos(string idUsuario, string idAplicacion, int tipoPermiso)
+        tipoPermiso=+1;
+        
+        } 
+
+        /*************************************************************************************************************************************************************/
 
         //###############INICIA CÓDIGO PARA BOTON ELIMINAR ALYSON RODRÍGUEZ 
         public OdbcDataAdapter EliminarModulo(string ID_modulo, string nombre, string descripcion, string estado)
