@@ -327,23 +327,35 @@ namespace Capa_Vista_Navegador
 
         public string obtenerDatoCampos(int pos)
         {
-
             int i = 0;
-            pos = pos - 1;
+            pos = pos - 1;  // Ajuste del índice, ya que 'pos' es 1-based, pero los arrays son 0-based
             string dato = "";
+
+            // Solo recorremos los controles relevantes: TextBox, DateTimePicker, ComboBox
             foreach (Control componente in Controls)
             {
                 if (componente is TextBox || componente is DateTimePicker || componente is ComboBox)
                 {
-                    if (i==pos)
+                    if (i == pos)  // Verificar si el índice coincide con el solicitado
                     {
-                        dato = componente.Text;
+                        // Obtener el valor del control según su tipo
+                        if (componente is TextBox || componente is ComboBox)
+                        {
+                            dato = componente.Text;  // Para TextBox y ComboBox, tomamos el texto
+                        }
+                        else if (componente is DateTimePicker dateTimePicker)
+                        {
+                            dato = dateTimePicker.Value.ToString("yyyy-MM-dd");  // Formato de fecha
+                        }
+                        break;  // Una vez encontrado el campo, terminamos el ciclo
                     }
-                    i++;
+                    i++;  // Incrementar el índice solo si es un control relevante
                 }
             }
-                return dato;
+
+            return dato;
         }
+
         public void asignarAlias(string[] alias)
         {
             alias.CopyTo(aliasC, 0);   
@@ -2077,7 +2089,7 @@ namespace Capa_Vista_Navegador
                             {
                                 if (!string.IsNullOrEmpty(tablaAdicional))
                                 {
-                                    List<(string nombreColumna, bool esAutoIncremental, bool esClaveForanea)> columnasAdicionales = logic.obtenerColumnasYPropiedadesLogica(tablaAdicional);
+                                    List<(string nombreColumna, bool esAutoIncremental, bool esClaveForanea, bool esTinyInt)> columnasAdicionales = logic.obtenerColumnasYPropiedadesLogica(tablaAdicional);
 
                                     List<string> valoresTablaAdicional = new List<string>();
                                     int pos = 1;
@@ -2085,26 +2097,41 @@ namespace Capa_Vista_Navegador
                                     foreach (var columna in columnasAdicionales)
                                     {
                                         string valorCampo;
+                                        int estado = 1;
+
+                                        // Excluir columnas autoincrementales, claves foráneas y de tipo TINYINT
                                         if (columna.esAutoIncremental)
                                         {
                                             continue;
                                         }
-                                        if (columna.esClaveForanea)
+                                        // Si es de tipo TINYINT, asigna siempre 1
+                                        else if (columna.esTinyInt)
+                                        {
+                                            valorCampo = "1";
+                                            Console.WriteLine($"Asignando valor 1 al campo {columna.nombreColumna}");
+                                        }
+                                        // Si es clave foránea, asigna el último ID de la primera tabla
+                                        else if (columna.esClaveForanea)
                                         {
                                             valorCampo = ultimoIdPrimeraTabla.ToString();
+                                            Console.WriteLine($"Asignando clave foránea {valorCampo} al campo {columna.nombreColumna}");
                                         }
+                                        // En los demás casos, obtener el valor del control
                                         else
                                         {
                                             valorCampo = obtenerDatoCampos(pos);
+                                            Console.WriteLine($"Asignando valor {valorCampo} al campo {columna.nombreColumna}");
                                         }
 
                                         valoresTablaAdicional.Add($"'{valorCampo}'");
                                         pos++;
                                     }
 
+
                                     string camposQuery = string.Join(", ", columnasAdicionales.Where(c => !c.esAutoIncremental).Select(c => c.nombreColumna));
                                     string valoresQuery = string.Join(", ", valoresTablaAdicional);
                                     string queryAdicional = $"INSERT INTO {tablaAdicional} ({camposQuery}) VALUES ({valoresQuery});";
+                                    Console.WriteLine("Consulta SQL generada: " + queryAdicional);
                                     queries.Add(queryAdicional);
 
                                     sn.insertarBitacora(idUsuario, "Se insertó en " + tablaAdicional, tablaAdicional);
@@ -2493,8 +2520,31 @@ namespace Capa_Vista_Navegador
 
         private void Btn_Consultar_Click(object sender, EventArgs e)
         {
-            ConsultaInteligente consulta = new ConsultaInteligente(tabla);
-            consulta.Show();
+          
+            string idUsuario1 = logic.ObtenerIdUsuario(idUsuario);
+            //MessageBox.Show("el usuario es: " + idUsuario1 + " " + idAplicacion);
+            sentencia sen = new sentencia();
+            //DLL DE CONSULTAS
+            sentencia con = new sentencia();
+            bool per1 = con.consultarPermisos(idUsuario1, idAplicacion, 1);
+            bool per2 = con.consultarPermisos(idUsuario1, idAplicacion, 2);
+            bool per3 = con.consultarPermisos(idUsuario1, idAplicacion, 3);
+            bool per4 = con.consultarPermisos(idUsuario1, idAplicacion, 4);
+            bool per5 = con.consultarPermisos(idUsuario1, idAplicacion, 5);
+
+            if (per1 == true && per2 == true && per3 == true && per4 == true && per5 == true)
+            {
+                ConsultaInteligente nuevo = new ConsultaInteligente(tabla);
+                nuevo.Show();
+            }
+            else
+            {
+               ConsultaSimple nueva = new ConsultaSimple(tabla);
+                nueva.Show();
+            }
+
+            //habilitar y deshabilitar según Usuario
+            botonesYPermisos();
         }
     }
 }
