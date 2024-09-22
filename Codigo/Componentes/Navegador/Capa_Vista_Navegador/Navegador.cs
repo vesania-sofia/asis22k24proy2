@@ -103,12 +103,7 @@ namespace Capa_Vista_Navegador
             ayuda_tp.SetToolTip(Btn_Salir, "Cerrar el formulario actual.");
             ayuda_tp.SetToolTip(Btn_Imprimir, "Mostrar un Reporte");
             ayuda_tp.SetToolTip(button1, "Asignar Documento de Ayuda");
-            ayuda_tp.SetToolTip(Btn_Imprimir, "Mostrar un Reporte");
             ayuda_tp.SetToolTip(btn_Reportes_Principal, "Mostrar un Reporte");
-
-            //Btn_Imprimir.Enabled = true;
-            //Btn_Consultar.Enabled = true;
-            // botonesYPermisos();
         }
         private void Navegador_Load(object sender, EventArgs e)
         {
@@ -124,7 +119,6 @@ namespace Capa_Vista_Navegador
                     string EstadoOK = logic.TestEstado(tabla);
                     if (EstadoOK == "" && correcto == 0)
                     {
-                        //Asayuda = logic.verificacion("");
                         if (Asayuda == "0")
                         {
                             MessageBox.Show("No se encontró ningún registro en la tabla Ayuda");
@@ -152,9 +146,6 @@ namespace Capa_Vista_Navegador
                                 Btn_Eliminar.Enabled = true;
 
                                 //habilitar y deshabilitar según Usuario FUNCION SOLO PARA INICIO                                                                                               
-                                // botonesYPermisosInicial(userActivo, aplActivo);
-                                //botonesYPermisos();
-                                //registros();
                                 if (logic.TestRegistros(tabla) > 0)
                                 {
                                     int numCombo = 0;
@@ -255,16 +246,7 @@ namespace Capa_Vista_Navegador
             }
             else
             {
-
-                // MessageBox.Show("Tabla actual: " + tabla);
-
-                //MessageBox.Show("Tabla actual: " + tabla);
-
             }
-            //botonesYPermisosInicial(userActivo, aplActivo);
-            //registros();
-
-
         }
 
         //-----------------------------------------------Funciones-----------------------------------------------//
@@ -301,13 +283,6 @@ namespace Capa_Vista_Navegador
         {
             this.idAplicacion = idAplicacion;
         }
-        /*
-        private void permisos()
-        {
-          sentencia s = new sentencia();
-          bool permiso = s.consultarPermisos(IdUsuario,idAplicacion,5);
-        } */
-
         private int numeroAlias()
         {
             int i = 0;
@@ -641,29 +616,6 @@ namespace Capa_Vista_Navegador
                         //estado++;
                         estado = 1;
                     }
-                    /* else
-                     {
-                         componente.Text = "Desactivado";
-                         componente.BackColor = Color.Red;
-                         //estado--;
-                         estado = 1
-                     }
-                     if(estado == 0)
-                     {
-                         componente.Text = "Activado";
-                         componente.BackColor = Color.Green;
-                         //estado++;
-                         estado = 1;
-                     }
-                     else
-                     {
-
-                         componente.Text = "Activado";
-                         componente.BackColor = Color.Green;
-                         //estado++;
-                         estado = 0;
-                     }*/
-
                 }
             }
         }
@@ -691,15 +643,12 @@ namespace Capa_Vista_Navegador
             this.Controls.Add(tb);
             tb.KeyPress += Paravalidarnumeros_KeyPress;
             this.KeyPress += Paravalidarnumeros_KeyPress;
-            //+= new System.Windows.Forms.KeyPressEventHandler(this.Txt_telefono_KeyPress);
             pos++;
 
         }
 
         void crearTextBoxvarchar(String nom)
         {
-
-
             TextBox tb = new TextBox();
             Point p = new Point(x + 125 + pos, y * pos);
             tb.Location = p;
@@ -710,19 +659,7 @@ namespace Capa_Vista_Navegador
             pos++;
 
         }
-        void crearTextBoxtexto(String nom)
-        {
 
-            TextBox tb = new TextBox();
-            Point p = new Point(x + 125 + pos, y * pos);
-            tb.Location = p;
-            tb.Name = nom;
-            this.Controls.Add(tb);
-            tb.KeyPress += Paravalidartexto_KeyPress;
-            this.KeyPress += Paravalidartexto_KeyPress;
-            pos++;
-
-        }
 
         void crearcampohora(String nom)
         {
@@ -1017,12 +954,6 @@ namespace Capa_Vista_Navegador
             }
         }
 
-
-
-
-
-
-
         string crearUpdate(string tabla, string nombreClavePrimaria, string nombreClaveForanea)
         {
             // Obtener las columnas existentes en la tabla
@@ -1090,25 +1021,6 @@ namespace Capa_Vista_Navegador
             return query;
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         public void guardadoforsozo()
         {
             logic.nuevoQuery(crearInsert(tabla));
@@ -1134,9 +1046,6 @@ namespace Capa_Vista_Navegador
             Btn_Eliminar.Enabled = true;
 
         }
-
-
-
 
         //-----------------------------------------------Funcionalidad de Botones-----------------------------------------------//
 
@@ -1209,8 +1118,6 @@ namespace Capa_Vista_Navegador
             Btn_Eliminar.Enabled = false;
 
         }
-
-
         private void Btn_Modificar_Click(object sender, EventArgs e)
         {
             try
@@ -1317,9 +1224,6 @@ namespace Capa_Vista_Navegador
                 );
             }
         }
-
-
-
         private void Btn_Cancelar_Click(object sender, EventArgs e)
         {
             try
@@ -2153,151 +2057,7 @@ namespace Capa_Vista_Navegador
                     }
                 }
 
-                if (lleno)
-                {
-                    List<string> queries = new List<string>();
-
-                    switch (activar)
-                    {
-                        case 1:
-                            string clavePrimariaPrincipal = logic.ObtenerClavePrimaria(tabla);
-                            string queryPrincipal = crearUpdate(tabla, clavePrimariaPrincipal, null); // No hay clave foránea en la tabla principal
-                            queries.Add(queryPrincipal);
-                            foreach (string query in queries)
-                            {
-                                Console.WriteLine("Consulta a ejecutar: " + query);
-                            }
-
-                            // Para las tablas adicionales, detectar claves foráneas
-                            foreach (string tablaAdicional in listaTablasAdicionales)
-                            {
-                                if (!string.IsNullOrEmpty(tablaAdicional))
-                                {
-                                    string clavePrimariaAdicional = logic.ObtenerClavePrimaria(tablaAdicional);
-                                    string claveForaneaAdicional = logic.ObtenerClaveForanea(tablaAdicional, tabla);
-                                    // Detecta la clave foránea
-                                    Console.WriteLine($"Procesando tabla: {tablaAdicional}");
-                                    Console.WriteLine($"Clave primaria: {clavePrimariaAdicional}");
-                                    Console.WriteLine($"Clave foránea: {claveForaneaAdicional}");
-                                    string queryAdicional = crearUpdate(tablaAdicional, clavePrimariaAdicional, claveForaneaAdicional);
-
-                                    if (!string.IsNullOrEmpty(queryAdicional))
-                                    {
-                                        queries.Add(queryAdicional);
-                                    }
-                                    else
-                                    {
-                                        Console.WriteLine($"No se generó consulta para la tabla {tablaAdicional} porque no hay campos para actualizar.");
-                                    }
-
-                                }
-                            }
-
-                            try
-                            {
-                                logic.insertarDatosEnMultiplesTablas(queries);
-                                MessageBox.Show("El registro ha sido actualizado correctamente en todas las tablas.", "Actualización Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                sn.insertarBitacora(idUsuario, "Actualizó registros en múltiples tablas", tabla);
-                            }
-                            catch (Exception ex)
-                            {
-                                MessageBox.Show("Ocurrió un error al actualizar las tablas: " + ex.Message, "Error en la actualización", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
-                            break;
-
-                        case 2:
-                            // Insert en la primera tabla
-                            string queryPrimeraTabla = crearInsert(tabla);
-                            logic.nuevoQuery(queryPrimeraTabla);
-                            sn.insertarBitacora(idUsuario, "Se insertó en " + tabla, tabla);
-
-                            // Obtener último ID insertado de la primera tabla
-                            string ultimoIdPrimeraTabla = logic.lastID(tabla);
-
-                            // Insertar en tablas adicionales
-                            foreach (string tablaAdicional in listaTablasAdicionales)
-                            {
-                                if (!string.IsNullOrEmpty(tablaAdicional))
-                                {
-                                    List<(string nombreColumna, bool esAutoIncremental, bool esClaveForanea, bool esTinyInt)> columnasAdicionales = logic.obtenerColumnasYPropiedadesLogica(tablaAdicional);
-
-                                    List<string> valoresTablaAdicional = new List<string>();
-                                    int pos = 1;
-
-                                    foreach (var columna in columnasAdicionales)
-                                    {
-                                        string valorCampo;
-                                        int estado = 1;
-
-                                        // Excluir columnas autoincrementales, claves foráneas y de tipo TINYINT
-                                        if (columna.esAutoIncremental)
-                                        {
-                                            continue;
-                                        }
-                                        // Si es de tipo TINYINT, asigna siempre 1
-                                        else if (columna.esTinyInt)
-                                        {
-                                            valorCampo = "1";
-                                            Console.WriteLine($"Asignando valor 1 al campo {columna.nombreColumna}");
-                                        }
-                                        // Si es clave foránea, asigna el último ID de la primera tabla
-                                        else if (columna.esClaveForanea)
-                                        {
-                                            valorCampo = ultimoIdPrimeraTabla.ToString();
-                                            Console.WriteLine($"Asignando clave foránea {valorCampo} al campo {columna.nombreColumna}");
-                                        }
-                                        // En los demás casos, obtener el valor del control
-                                        else
-                                        {
-                                            valorCampo = obtenerDatoCampos(pos);
-                                            Console.WriteLine($"Asignando valor {valorCampo} al campo {columna.nombreColumna}");
-                                        }
-
-                                        valoresTablaAdicional.Add($"'{valorCampo}'");
-                                        pos++;
-                                    }
-
-
-                                    string camposQuery = string.Join(", ", columnasAdicionales.Where(c => !c.esAutoIncremental).Select(c => c.nombreColumna));
-                                    string valoresQuery = string.Join(", ", valoresTablaAdicional);
-                                    string queryAdicional = $"INSERT INTO {tablaAdicional} ({camposQuery}) VALUES ({valoresQuery});";
-                                    Console.WriteLine("Consulta SQL generada: " + queryAdicional);
-                                    queries.Add(queryAdicional);
-
-                                    sn.insertarBitacora(idUsuario, "Se insertó en " + tablaAdicional, tablaAdicional);
-                                    logic.insertarDatosEnMultiplesTablas(queries);
-                                    MessageBox.Show("El registro ha sido guardado correctamente.", "Guardado Exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                }
-                            }
-
-
-                            break;
-
-                        default:
-                            MessageBox.Show("Opción no válida.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            break;
-                    }
-
-                    actualizardatagriew();
-
-                    if (logic.TestRegistros(tabla) > 0)
-                    {
-                        int i = 0;
-                        foreach (Control componente in Controls)
-                        {
-                            if (componente is TextBox || componente is DateTimePicker || componente is ComboBox)
-                            {
-                                componente.Text = dataGridView1.CurrentRow.Cells[i].Value.ToString();
-                                componente.Enabled = false;
-                                i++;
-                            }
-                        }
-                    }
-
-                    deshabilitarcampos_y_botones();
-                    botonesYPermisosSinMensaje();
-                }
-                else
+                if (!lleno)
                 {
                     MessageBox.Show(
                         "Por favor, complete todos los campos antes de guardar.\n\n" +
@@ -2306,7 +2066,98 @@ namespace Capa_Vista_Navegador
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Warning
                     );
+                    return;
                 }
+
+                List<string> queries = new List<string>();
+
+                switch (activar)
+                {
+                    case 1: // Actualizar
+                        string clavePrimariaPrincipal = logic.ObtenerClavePrimaria(tabla);
+                        string queryPrincipal = crearUpdate(tabla, clavePrimariaPrincipal, null);
+                        queries.Add(queryPrincipal);
+
+                        foreach (string tablaAdicional in listaTablasAdicionales)
+                        {
+                            if (!string.IsNullOrEmpty(tablaAdicional))
+                            {
+                                string clavePrimariaAdicional = logic.ObtenerClavePrimaria(tablaAdicional);
+                                string claveForaneaAdicional = logic.ObtenerClaveForanea(tablaAdicional, tabla);
+                                string queryAdicional = crearUpdate(tablaAdicional, clavePrimariaAdicional, claveForaneaAdicional);
+
+                                if (!string.IsNullOrEmpty(queryAdicional))
+                                {
+                                    queries.Add(queryAdicional);
+                                }
+                            }
+                        }
+
+                        logic.insertarDatosEnMultiplesTablas(queries);
+                        MessageBox.Show("El registro ha sido actualizado correctamente en todas las tablas.", "Actualización Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        sn.insertarBitacora(idUsuario, "Actualizó registros en múltiples tablas", tabla);
+                        break;
+
+                    case 2: // Insertar
+                        string queryPrimeraTabla = crearInsert(tabla);
+                        logic.nuevoQuery(queryPrimeraTabla);
+                        sn.insertarBitacora(idUsuario, "Se insertó en " + tabla, tabla);
+
+                        string ultimoIdPrimeraTabla = logic.lastID(tabla);
+
+                        foreach (string tablaAdicional in listaTablasAdicionales)
+                        {
+                            if (!string.IsNullOrEmpty(tablaAdicional))
+                            {
+                                List<(string nombreColumna, bool esAutoIncremental, bool esClaveForanea, bool esTinyInt)> columnasAdicionales = logic.obtenerColumnasYPropiedadesLogica(tablaAdicional);
+
+                                List<string> valoresTablaAdicional = new List<string>();
+                                int pos = 1;
+
+                                foreach (var columna in columnasAdicionales)
+                                {
+                                    string valorCampo;
+
+                                    if (columna.esAutoIncremental)
+                                    {
+                                        continue;
+                                    }
+                                    else if (columna.esTinyInt)
+                                    {
+                                        valorCampo = "1";
+                                    }
+                                    else if (columna.esClaveForanea)
+                                    {
+                                        valorCampo = ultimoIdPrimeraTabla.ToString();
+                                    }
+                                    else
+                                    {
+                                        valorCampo = obtenerDatoCampos(pos);
+                                    }
+
+                                    valoresTablaAdicional.Add($"'{valorCampo}'");
+                                    pos++;
+                                }
+
+                                string camposQuery = string.Join(", ", columnasAdicionales.Where(c => !c.esAutoIncremental).Select(c => c.nombreColumna));
+                                string valoresQuery = string.Join(", ", valoresTablaAdicional);
+                                string queryAdicional = $"INSERT INTO {tablaAdicional} ({camposQuery}) VALUES ({valoresQuery});";
+                                queries.Add(queryAdicional);
+                            }
+                        }
+
+                        logic.insertarDatosEnMultiplesTablas(queries);
+                        MessageBox.Show("El registro ha sido guardado correctamente.", "Guardado Exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        break;
+
+                    default:
+                        MessageBox.Show("Opción no válida.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        break;
+                }
+
+                actualizardatagriew();
+                deshabilitarcampos_y_botones();
+                botonesYPermisosSinMensaje();
             }
             catch (Exception ex)
             {
@@ -2320,6 +2171,7 @@ namespace Capa_Vista_Navegador
                 );
             }
         }
+
 
 
         // Aquí está la función crearInsertFactura
@@ -2357,157 +2209,6 @@ namespace Capa_Vista_Navegador
         {
 
         }
-
-        /*
-               try
-               {
-                   sentencia sen = new sentencia();                                        
-                   if (sen.consultarPermisos(idUsuario, idAplicacion, 1) == true)
-                   {
-                       Btn_Ingresar.Enabled = true;
-                   }
-                   else
-                   {
-                       Btn_Ingresar.Enabled = false;
-                   }
-               }
-               catch(Exception ex)
-               {
-                   MessageBox.Show("Error en el Void Registros. Favor llamar Administrador. Error: " + ex);
-               } 
-           if (logic.TestRegistros(tabla)<=0)
-           {                
-               Btn_Anterior.Enabled = false;
-               Btn_Siguiente.Enabled = false;
-               Btn_FlechaInicio.Enabled = false;
-               Btn_FlechaFin.Enabled = false;
-               Btn_Ingresar.Enabled = false;
-               Btn_Modificar.Enabled = false;
-               Btn_Eliminar.Enabled = false; 
-           }
-           else
-           {
-               Btn_Anterior.Enabled = true;
-               Btn_Siguiente.Enabled = true;
-               Btn_FlechaInicio.Enabled = true;
-               Btn_FlechaFin.Enabled = true;
-               Btn_Modificar.Enabled = true;
-               Btn_Eliminar.Enabled = true;                
-           } */
-
-
-
-        /*  public void botonesYPermisosInicial(string userActivo, string appActivo)
-          {
-              try
-              {
-                  string[] permisosText = { "INGRESAR", "BUSCAR", "MODIFICAR", "ELIMINAR", "IMPRIMIR" };
-                  Button[] botones = { Btn_Ingresar, Btn_Consultar, Btn_Modificar, Btn_Eliminar, Btn_Imprimir };
-
-                  for (int i = 0; i < permisosText.Length; i++) // Cambié i a 0
-                  {
-  <<<<<<< HEAD
-                      Btn_Ingresar.Enabled = false;
-                      Btn_Modificar.Enabled = false;
-                      Btn_Guardar.Enabled = false;
-                      Btn_Cancelar.Enabled = false;
-                      Btn_Eliminar.Enabled = false;
-                     // Btn_Consultar.Enabled = false;
-
-                      Btn_Refrescar.Enabled = false;
-                      Btn_FlechaInicio.Enabled = false;
-                      Btn_Anterior.Enabled = false;
-                      Btn_Siguiente.Enabled = false;
-                      Btn_FlechaFin.Enabled = false;
-                      MessageBox.Show("Tabla Vacía! Debe ingresar un registro!");
-                     try
-  =======
-                      CapaDatos.sentencia sen = new CapaDatos.sentencia();
-                      bool tienePermiso = sen.consultarPermisos(idUsuario, idAplicacion, i + 1);
-
-                      if (botones[i] != null)
-  >>>>>>> 7453dffb9a1fd864c63b5a1642661cebc9141aab
-                      {
-                          botones[i].Enabled = tienePermiso;
-
-                          if (botones[i].Enabled)
-                          {
-                              MessageBox.Show("Se permitió el botón " + permisosText[i]);
-                          }
-                      }
-                      else
-                      {
-  <<<<<<< HEAD
-                          MessageBox.Show("Estamos en Tabla Vacía! Determinanos si el usuario Activo puede ingresar! ERROR: " + exx);
-                      }
-                  }
-                  else
-                  {
-                      //validamos con TRY CATCH por si llegará a existir un problema 
-                      try
-                      {
-                          //sentencia sen = new sentencia();
-                          string[] permisosText = { "INGRESAR", "CONSULTAR", "MODIFICAR", "ELIMINAR", "IMPRIMIR" };
-                          for (int i = 1; i < 6; i++)
-                          {
-                             if (sn.consultarPermisos(userActivo, appActivo, i) == true)
-                              {
-                                  //mostramos un mensaje para indicar que si tiene permiso
-                                  MessageBox.Show("Tiene permiso para " + permisosText[i - 1]);
-                                  //bloqueamos botones
-                                  switch (permisosText[i - 1])
-                                  {
-                                      case "INGRESAR":
-                                          Btn_Ingresar.Enabled = true; break;
-                                      case "CONSULTAR":
-                                          Btn_Consultar.Enabled = true; break;
-                                      case "MODIFICAR":
-                                          Btn_Modificar.Enabled = true; break;
-                                      case "ELIMINAR":
-                                          Btn_Eliminar.Enabled = true; break;
-                                      case "IMPRIMIR":
-                                          break;
-                                      default:
-                                          MessageBox.Show("Entro al case default! TIENE PERMISO! Por favor hablar con Administrador!"); break;
-                                  }
-                              }
-                              else
-                              {
-                                  //MessageBox.Show("No tiene permiso para " + permisosText[i - 1]);
-                                  switch (permisosText[i - 1])
-                                  {
-                                      case "INGRESAR":
-                                          Btn_Ingresar.Enabled = false; break;
-                                      case "CONSULTAR":
-                                          Btn_Consultar.Enabled = false; break;
-                                      case "MODIFICAR":
-                                          Btn_Modificar.Enabled = false; break;
-                                      case "ELIMINAR":
-                                          Btn_Eliminar.Enabled = false; break;
-                                      case "IMPRIMIR":
-                                          break;
-                                      default:
-                                          MessageBox.Show("Entro al case default! NO TIENE PERMISO! Por favor hablar con Administrador!"); break;
-                                  }
-                              }
-                              // 1 ingresar - 2 consultar - 3 modificar - 4 eliminar - 5 imprimir 
-                          }
-                      }
-                      catch (Exception ex)
-                      {
-                          MessageBox.Show("Surgió el siguiente problema: " + ex);
-  =======
-                          MessageBox.Show("No se encontró el botón " + permisosText[i]);
-  >>>>>>> 7453dffb9a1fd864c63b5a1642661cebc9141aab
-                      }
-                  }
-              }
-              catch (Exception ex)
-              {
-                  MessageBox.Show("Error al configurar los botones y permisos: " + ex.Message);
-              }
-
-          }*/
 
         private void Btn_Ayuda_Click_1(object sender, EventArgs e)
         {
@@ -2556,12 +2257,6 @@ namespace Capa_Vista_Navegador
 
         }
 
-        private void xd_Click(object sender, EventArgs e)
-        {
-            //Help.ShowHelp(this, AsRuta, AsIndice); Abre el menu de ayuda HTML     
-            Help.ShowHelp(this, "/AyudaHTML/AyudaNavegador.chm", "AyudaNav.html");//Abre el menu de ayuda HTML 
-        }
-
         private void button7_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -2580,26 +2275,6 @@ namespace Capa_Vista_Navegador
                 // MessageBox.Show(ruta);
                 visualizar.ShowDialog();
             }
-            /*sring llave = "";
-            if (idRepo != "")
-            {
-                llave = logic.ObtenerIdReporte(idRepo);
-
-            }
-            else
-            {
-                MessageBox.Show("No se asigno ningun reporte....");
-            }
-
-            if (llave != "")
-            {
-                Clientes cl = new Clientes(llave);
-                cl.Show();
-            }
-            else
-            {
-                MessageBox.Show("El Id Asignado es incorrecto");
-            }*/
         }
 
         private void btn_Reportes_Principal_Click(object sender, EventArgs e)
@@ -2638,11 +2313,18 @@ namespace Capa_Vista_Navegador
             botonesYPermisosSinMensaje();
         }
 
+        private void btn_Reportes_Principal_Click_1(object sender, EventArgs e)
+        {
+            menu_reporteria reportes = new menu_reporteria();
+
+            reportes.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Ayudas ayudas = new Ayudas();
+            ayudas.Show();
+        }
     }
 }
-   //     private void button1_Click(object sender, EventArgs e)
-   //     {
-
-   //     }
-   // }
-
+  

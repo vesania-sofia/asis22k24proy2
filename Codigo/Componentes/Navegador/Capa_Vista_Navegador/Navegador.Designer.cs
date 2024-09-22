@@ -132,6 +132,7 @@
             this.btn_Reportes_Principal.TabIndex = 22;
             this.btn_Reportes_Principal.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btn_Reportes_Principal.UseVisualStyleBackColor = false;
+            this.btn_Reportes_Principal.Click += new System.EventHandler(this.btn_Reportes_Principal_Click_1);
             // 
             // button1
             // 
@@ -149,6 +150,7 @@
             this.button1.TabIndex = 21;
             this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Btn_Imprimir
             // 
