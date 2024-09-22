@@ -532,15 +532,15 @@ namespace CapaDatos
 
 
         // Esta parte fue echa por Carlos Hernandez
-        public OdbcDataAdapter actualizaraplicacion(string codigo, string nombre, string descripcion, string estado)
+        public OdbcDataAdapter funactualizaraplicacion(string scodigo, string snombre, string sdescripcion, string sestado)
         {
-            Console.WriteLine("ESTO SE INGRESA EN LA SENTENCIA: " + codigo + ", " + nombre + ", " + descripcion + ", " + estado);
+            Console.WriteLine("ESTO SE INGRESA EN LA SENTENCIA: " + scodigo + ", " + snombre + ", " + sdescripcion + ", " + sestado);
             try
             {
                 cn.conectar();
-                string sqlactualizaraplicacion = "UPDATE tbl_aplicaciones SET nombre_aplicacion = '" + nombre + "', descripcion_aplicacion = '" + descripcion + "', estado_aplicacion = '" + estado + "' WHERE Pk_id_aplicacion ='" + codigo + "'";
+                string sqlactualizaraplicacion = "UPDATE tbl_aplicaciones SET nombre_aplicacion = '" + snombre + "', descripcion_aplicacion = '" + sdescripcion + "', estado_aplicacion = '" + sestado + "' WHERE Pk_id_aplicacion ='" + scodigo + "'";
                 OdbcDataAdapter dataTable = new OdbcDataAdapter(sqlactualizaraplicacion, cn.conectar());
-                insertarBitacora(idUsuario, "Actualizo una aplicacion: " + codigo + " - " + nombre, "tbl_aplicaciones");
+                insertarBitacora(idUsuario, "Actualizo una aplicacion: " + scodigo + " - " + snombre, "tbl_aplicaciones");
                 return dataTable;
             }
             catch (Exception ex)
@@ -553,7 +553,7 @@ namespace CapaDatos
         //termina lo que hizo carlos hernandez 
 
 
-        public bool eliminaraplicacion(string codigo)
+        public bool funeliminaraplicacion(string scodigo)
         {
             try
             {
@@ -561,12 +561,12 @@ namespace CapaDatos
                 cn.conectar();
 
 
-                string sqlEliminarAplicacion = "DELETE FROM tbl_aplicaciones WHERE Pk_id_aplicacion = ?";
+                string ssqlEliminarAplicacion = "DELETE FROM tbl_aplicaciones WHERE Pk_id_aplicacion = ?";
 
-                using (OdbcCommand cmd = new OdbcCommand(sqlEliminarAplicacion, cn.conectar()))
+                using (OdbcCommand cmd = new OdbcCommand(ssqlEliminarAplicacion, cn.conectar()))
                 {
 
-                    cmd.Parameters.AddWithValue("@codigo", codigo);
+                    cmd.Parameters.AddWithValue("@codigo", scodigo);
 
 
                     int rowsAffected = cmd.ExecuteNonQuery();
@@ -574,7 +574,7 @@ namespace CapaDatos
 
                     if (rowsAffected > 0)
                     {
-                        insertarBitacora(idUsuario, "Eliminó una aplicacion: " + codigo, "tbl_aplicaciones");
+                        insertarBitacora(idUsuario, "Eliminó una aplicacion: " + scodigo, "tbl_aplicaciones");
                         return true;
                     }
                     else

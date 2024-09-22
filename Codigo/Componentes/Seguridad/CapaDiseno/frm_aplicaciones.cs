@@ -271,22 +271,22 @@ namespace CapaDiseno
 
             else
             {
-                string estado = "";
+                string sestado = "";
                 if (Rdb_activo.Checked)
                 {
-                    estado = "1";
+                    sestado = "1";
                 }
 
                 if (Rdb_inactivo.Checked)
                 {
-                    estado = "0";
+                    sestado = "0";
                 }
                 else
                 {
-                    estado = "1";
+                    sestado = "1";
                 }
 
-                logic.actualizaraplicaciones(Txt_idaplicacion.Text.ToString(), Txt_nombre.Text.ToString(), Txt_descripcion.Text.ToString(), estado.ToString());
+                logic.funactualizaraplicaciones(Txt_idaplicacion.Text.ToString(), Txt_nombre.Text.ToString(), Txt_descripcion.Text.ToString(), sestado.ToString());
                 MessageBox.Show("Modulo Modificado Correctamente");
                 prolimpiar();
                 Btn_cancelar.Enabled = false;
@@ -315,7 +315,7 @@ namespace CapaDiseno
                 if (confirmResult == DialogResult.Yes)
                 {
                     // Llamar al método de la capa lógica para eliminar el perfil
-                    logic.eliminaraplicaciones(Txt_idaplicacion.Text);
+                    logic.funeliminaraplicaciones(Txt_idaplicacion.Text);
 
                     // Opcionalmente, puedes desactivar botones o limpiar campos después de la eliminación
                     Txt_buscar.Enabled = true;

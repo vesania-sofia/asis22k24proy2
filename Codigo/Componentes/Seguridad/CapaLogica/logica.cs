@@ -306,11 +306,11 @@ namespace CapaLogica
         //---------------------------------------------------- Fin: GABRIELA SUC ---------------------------------------------------- 
 
         //Esta parte fue echa por Carlos Hernandez
-        public DataTable actualizaraplicaciones(string codigo, string nombre, string descripcion, string estado)
+        public DataTable funactualizaraplicaciones(string scodigo, string snombre, string sdescripcion, string sestado)
         {
             try
             {
-                OdbcDataAdapter dtModificar = sn.actualizaraplicacion(codigo, nombre, descripcion, estado);
+                OdbcDataAdapter dtModificar = sn.funactualizaraplicacion(scodigo, snombre, sdescripcion, sestado);
                 DataTable tableAplicacion = new DataTable();
                 dtModificar.Fill(tableAplicacion);
                 return tableAplicacion;
@@ -323,11 +323,11 @@ namespace CapaLogica
         }
         //termina lo que hizo carlos hernandez 
 
-        public bool eliminaraplicaciones(string codigo)
+        public bool funeliminaraplicaciones(string scodigo)
         {
             try
             {
-                bool result = sn.eliminaraplicacion(codigo);
+                bool result = sn.funeliminaraplicacion(scodigo);
                 if (result)
                 {
                     MessageBox.Show("Perfil eliminado correctamente.");
