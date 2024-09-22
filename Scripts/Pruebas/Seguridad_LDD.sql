@@ -1,6 +1,6 @@
-DROP DATABASE  IF EXISTS `Seguridad`;
-CREATE DATABASE IF NOT EXISTS `Seguridad`;
-USE `Seguridad`;
+DROP DATABASE  IF EXISTS `Colchoneria`;
+CREATE DATABASE IF NOT EXISTS `Colchoneria`;
+USE `Colchoneria`;
 
 DROP TABLE IF EXISTS `Tbl_modulos`;
 CREATE TABLE IF NOT EXISTS `Tbl_modulos` (
@@ -30,6 +30,20 @@ CREATE TABLE IF NOT EXISTS `Tbl_asignacion_modulo_aplicacion` (
   FOREIGN KEY (`Fk_id_aplicacion`) REFERENCES `Tbl_aplicaciones` (`Pk_id_aplicacion`)
 ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8;
 
+CREATE TABLE tbl_regreporteria (
+  idregistro int NOT NULL AUTO_INCREMENT,
+  ruta varchar(500) NOT NULL,
+  nombre_archivo varchar(45) NOT NULL,
+  aplicacion varchar(45) NOT NULL,
+  estado varchar(45) NOT NULL,
+  Fk_id_aplicacion INT NOT NULL,
+  Fk_id_modulos INT NOT NULL,
+  PRIMARY KEY (idregistro),
+  FOREIGN KEY (`Fk_id_modulos`) REFERENCES `Tbl_modulos` (`Pk_id_modulos`),
+  FOREIGN KEY (`Fk_id_aplicacion`) REFERENCES `Tbl_aplicaciones` (`Pk_id_aplicacion`)
+) ENGINE=InnoDB;
+
+
 DROP TABLE IF EXISTS `Tbl_usuarios`;
 CREATE TABLE IF NOT EXISTS `Tbl_usuarios` (
   Pk_id_usuario INT AUTO_INCREMENT NOT NULL,
@@ -54,22 +68,26 @@ CREATE TABLE IF NOT EXISTS `Tbl_perfiles` (
     primary key (Pk_id_perfil)
 );
 
-DROP TABLE IF EXISTS `Tbl_permisos_aplicaciones_usuario`;
-CREATE TABLE IF NOT EXISTS `Tbl_permisos_aplicaciones_usuario` (
-  Fk_id_aplicacion INT NOT NULL, 
+-- Karla Gómez 9959-21-1896
+DROP TABLE IF EXISTS Tbl_permisos_aplicaciones_usuario;
+CREATE TABLE IF NOT EXISTS Tbl_permisos_aplicaciones_usuario (
+  PK_id_Aplicacion_Usuario INT NOT NULL AUTO_INCREMENT,
   Fk_id_usuario INT NOT NULL, 
+  Fk_id_aplicacion INT NOT NULL, 
   guardar_permiso BOOLEAN DEFAULT FALSE,
+  buscar_permiso BOOLEAN DEFAULT FALSE,
   modificar_permiso BOOLEAN DEFAULT FALSE,
   eliminar_permiso BOOLEAN DEFAULT FALSE,
-  buscar_permiso BOOLEAN DEFAULT FALSE,
   imprimir_permiso BOOLEAN DEFAULT FALSE,
-  PRIMARY KEY (`Fk_id_aplicacion`,`Fk_id_usuario`),
-  FOREIGN KEY (`Fk_id_aplicacion`) REFERENCES `Tbl_aplicaciones` (`Pk_id_aplicacion`),
-  FOREIGN KEY (`Fk_id_usuario`) REFERENCES `Tbl_usuarios` (`Pk_id_usuario`)
+  PRIMARY KEY (PK_id_Aplicacion_Usuario),
+  FOREIGN KEY (Fk_id_usuario) REFERENCES Tbl_usuarios (Pk_id_usuario),
+  FOREIGN KEY (Fk_id_aplicacion) REFERENCES Tbl_aplicaciones (Pk_id_aplicacion)
 ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8;
 
+-- Karla Gómez 9959-21-1896
 DROP TABLE IF EXISTS `Tbl_permisos_aplicacion_perfil`;
 CREATE TABLE IF NOT EXISTS `Tbl_permisos_aplicacion_perfil` (
+  PK_id_Aplicacion_Perfil INT NOT NULL AUTO_INCREMENT,
   Fk_id_perfil INT NOT NULL, 
   Fk_id_aplicacion INT NOT NULL, 
   guardar_permiso BOOLEAN DEFAULT FALSE,
@@ -77,16 +95,18 @@ CREATE TABLE IF NOT EXISTS `Tbl_permisos_aplicacion_perfil` (
   eliminar_permiso BOOLEAN DEFAULT FALSE,
   buscar_permiso BOOLEAN DEFAULT FALSE,
   imprimir_permiso BOOLEAN DEFAULT FALSE,
-  PRIMARY KEY (`Fk_id_perfil`,`Fk_id_aplicacion`),
+  PRIMARY KEY (PK_id_Aplicacion_Perfil),
   FOREIGN KEY (`Fk_id_aplicacion`) REFERENCES `Tbl_aplicaciones` (`Pk_id_aplicacion`),
   FOREIGN KEY (`Fk_id_perfil`) REFERENCES `Tbl_perfiles` (`Pk_id_perfil`)
 ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8;
 
+-- Karla Gómez 9959-21-1896
 DROP TABLE IF EXISTS `Tbl_asignaciones_perfils_usuario`;
 CREATE TABLE IF NOT EXISTS `Tbl_asignaciones_perfils_usuario` (
+  PK_id_Perfil_Usuario INT NOT NULL AUTO_INCREMENT,
   Fk_id_usuario INT NOT NULL, 
   Fk_id_perfil INT NOT NULL,
-  PRIMARY KEY (`Fk_id_usuario`,`Fk_id_perfil` ),
+  PRIMARY KEY (PK_id_Perfil_Usuario),
   FOREIGN KEY (`Fk_id_usuario`) REFERENCES `Tbl_usuarios` (`Pk_id_usuario`),
   FOREIGN KEY (`Fk_id_perfil`) REFERENCES `Tbl_perfiles` (`Pk_id_perfil`)
 ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8;
@@ -299,10 +319,14 @@ ALTER TABLE tbl_bitacora DROP COLUMN Fk_id_aplicacion;
 ALTER TABLE `Tbl_bitacora`
 ADD COLUMN `tabla` VARCHAR(50) NOT NULL;
 
+-- Brandon Boch - 0901-21-13093
+ALTER TABLE Tbl_bitacora
+ADD COLUMN aplicacion VARCHAR(10) NOT NULL;
+
 -- -----USUARIOS
 -- Agrega el primer usuario
 INSERT INTO `Tbl_usuarios` VALUES
-('1', 'admin', 'admin', 'admin', 'HO0aGo4nM94=', 'esduardo@gmail.com', '2022-07-02 21:00:48', '1', 'COLOR FAVORITO', 'ROJO');
+('1', 'admin', 'admin', 'admin', 'HO0aGo4nM94=', 'esduardo@gmail.com', '2022-07-02 21:00:48', '1', 'Color favorito', 'ROJO');
 
 
 
@@ -315,47 +339,4 @@ WHERE username_usuario = 'admin';
 
 
 select * from tbl_usuarios;
-
---Karla Gómez 9959-21-1896
-DROP TABLE IF EXISTS Tbl_permisos_aplicaciones_usuario;
-CREATE TABLE IF NOT EXISTS Tbl_permisos_aplicaciones_usuario (
-  PK_id_Aplicacion_Usuario INT NOT NULL AUTO_INCREMENT,
-  Fk_id_usuario INT NOT NULL, 
-  Fk_id_aplicacion INT NOT NULL, 
-  guardar_permiso BOOLEAN DEFAULT FALSE,
-  buscar_permiso BOOLEAN DEFAULT FALSE,
-  modificar_permiso BOOLEAN DEFAULT FALSE,
-  eliminar_permiso BOOLEAN DEFAULT FALSE,
-  imprimir_permiso BOOLEAN DEFAULT FALSE,
-  PRIMARY KEY (PK_id_Aplicacion_Usuario),
-  FOREIGN KEY (Fk_id_usuario) REFERENCES Tbl_usuarios (Pk_id_usuario),
-  FOREIGN KEY (Fk_id_aplicacion) REFERENCES Tbl_aplicaciones (Pk_id_aplicacion)
-) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8;
-
-
-DROP TABLE IF EXISTS `Tbl_permisos_aplicacion_perfil`;
-CREATE TABLE IF NOT EXISTS `Tbl_permisos_aplicacion_perfil` (
-  PK_id_Aplicacion_Perfil INT NOT NULL AUTO_INCREMENT,
-  Fk_id_perfil INT NOT NULL, 
-  Fk_id_aplicacion INT NOT NULL, 
-  guardar_permiso BOOLEAN DEFAULT FALSE,
-  modificar_permiso BOOLEAN DEFAULT FALSE,
-  eliminar_permiso BOOLEAN DEFAULT FALSE,
-  buscar_permiso BOOLEAN DEFAULT FALSE,
-  imprimir_permiso BOOLEAN DEFAULT FALSE,
-  PRIMARY KEY (PK_id_Aplicacion_Perfil),
-  FOREIGN KEY (`Fk_id_aplicacion`) REFERENCES `Tbl_aplicaciones` (`Pk_id_aplicacion`),
-  FOREIGN KEY (`Fk_id_perfil`) REFERENCES `Tbl_perfiles` (`Pk_id_perfil`)
-) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8;
-
-
-DROP TABLE IF EXISTS `Tbl_asignaciones_perfils_usuario`;
-CREATE TABLE IF NOT EXISTS `Tbl_asignaciones_perfils_usuario` (
-  PK_id_Perfil_Usuario INT NOT NULL AUTO_INCREMENT,
-  Fk_id_usuario INT NOT NULL, 
-  Fk_id_perfil INT NOT NULL,
-  PRIMARY KEY (PK_id_Perfil_Usuario),
-  FOREIGN KEY (`Fk_id_usuario`) REFERENCES `Tbl_usuarios` (`Pk_id_usuario`),
-  FOREIGN KEY (`Fk_id_perfil`) REFERENCES `Tbl_perfiles` (`Pk_id_perfil`)
-) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8;
 

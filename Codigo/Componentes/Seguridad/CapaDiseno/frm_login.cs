@@ -11,6 +11,9 @@ using CapaDatos;
 using CapaLogica;
 using System.Security.Cryptography;
 
+using System.IO; // Necesario para Directory, File, Path y SearchOption
+using System.Windows.Forms; // Necesario para MessageBox y Help
+
 namespace CapaDiseno
 {
     public partial class frm_login : Form
@@ -24,6 +27,7 @@ namespace CapaDiseno
 
             // Vincula el evento KeyPress
             Txt_clave.KeyPress += new KeyPressEventHandler(Txt_clave_KeyPress);
+            Txt_usuario.KeyPress += new KeyPressEventHandler(Txt_usuario_KeyPress);
         }
 
         string nombreUsuario = "";
@@ -71,7 +75,7 @@ namespace CapaDiseno
                             this.Hide();
 
                             sentencia s = new sentencia();
-                            s.insertarBitacora(Txt_usuario.Text.Trim(), "Se logeo al sistema", "Login");
+                            s.insertarBitacora(Txt_usuario.Text.Trim(), "Se logeo al sistema", "Login", "1000");
 
                             // Pasa el nombre de usuario al constructor de MDI_Seguridad
                             MDI_Seguridad formMDI = new MDI_Seguridad(Txt_usuario.Text);
@@ -122,11 +126,63 @@ namespace CapaDiseno
                 Txt_clave.UseSystemPasswordChar = false;
             }
         }
-
+        //********************** KATERYN DE LEON y Gabriela Suc ******************************
         private void button1_Click(object sender, EventArgs e)
-        {
-            Help.ShowHelp(this, "C:\\Ayuda_Seguridad\\" + "ayudaLogin.chm", "login.html");
+        { //boton guardar
+            //Help.ShowHelp(this, "C:\\Ayuda_Seguridad\\" + "ayudaLogin.chm", "login.html");
+            
+            // Define el directorio base desde donde comenzar la búsqueda
+            string baseDirectory = AppDomain.CurrentDomain.BaseDirectory; // Usando el directorio base del ejecutable
+
+            // Imprime la ruta base para verificar
+            MessageBox.Show("Ruta base: " + baseDirectory);
+
+            // Busca el archivo en el directorio base y sus subdirectorios
+            string pathAyuda = FindFileInDirectory(baseDirectory, "Ayuda_Seguridad", "AyudaLogin.chm");
+
+            // Imprimir la ruta generada para verificar
+            MessageBox.Show("Ruta de ayuda: " + pathAyuda);
+
+            // Verifica si el archivo existe antes de intentar abrirlo
+            if (!string.IsNullOrEmpty(pathAyuda))
+            {
+                MessageBox.Show("El archivo sí está.");
+                // Abre el archivo de ayuda .chm
+                Help.ShowHelp(this, pathAyuda);
+            }
+            else
+            {
+                // Si el archivo no existe, muestra un mensaje de error
+                MessageBox.Show("El archivo de ayuda no se encontró.");
+            }
         }
+        //********************** KATERYN DE LEON y Gabriela Suc  ******************************
+        private string FindFileInDirectory(string rootDirectory, string folderName, string fileName)
+        { // parte del boton guardar
+            try
+            {
+                // Imprime la ruta raíz para verificar
+                MessageBox.Show("Buscando en: " + rootDirectory);
+
+                // Busca la carpeta y el archivo
+                foreach (string directory in Directory.GetDirectories(rootDirectory, folderName, SearchOption.AllDirectories))
+                {
+                    MessageBox.Show("Carpeta encontrada: " + directory); // Imprime las carpetas encontradas
+                    string filePath = Path.Combine(directory, fileName);
+                    if (File.Exists(filePath))
+                    {
+                        return filePath; // Devuelve la primera coincidencia encontrada
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al buscar el archivo: " + ex.Message);
+            }
+            return null; // No se encontró el archivo
+        }
+
+        //******** FIN KATERYN DE LEON y Gabriela Suc   ********************************************************************
 
         private void Btn_olvidocontrasenia_Click_1(object sender, EventArgs e)
         {
@@ -158,5 +214,15 @@ namespace CapaDiseno
         {
 
         }
+
+        private void Txt_usuario_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                // Cancela el evento para que el Enter no se procese y no mueva el cursor
+                e.Handled = true;
+            }
+        }
+
     }
 }

@@ -28,30 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_asignacion_perfiles));
             this.dgv_asignacion_perfiles = new System.Windows.Forms.DataGridView();
             this.Usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NombrePerfil = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btn_Buscar = new System.Windows.Forms.Button();
+            this.gpb_consultaperfilesusuarios = new System.Windows.Forms.GroupBox();
             this.dgv_perfiles_asignados = new System.Windows.Forms.DataGridView();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.lbl_perfiles = new System.Windows.Forms.Label();
+            this.btn_Buscar = new System.Windows.Forms.Button();
+            this.gpb_perfilesusuarios = new System.Windows.Forms.GroupBox();
+            this.Lbl_perfiles = new System.Windows.Forms.Label();
             this.cbo_perfiles = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.Lbl_usuario = new System.Windows.Forms.Label();
             this.cbo_usuario = new System.Windows.Forms.ComboBox();
             this.btn_quitar = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
+            this.Lbl_asignacionperfiles = new System.Windows.Forms.Label();
             this.btn_ayuda = new System.Windows.Forms.Button();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.Gpb_opciones = new System.Windows.Forms.GroupBox();
             this.btn_cancel = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.btn_nuevo = new System.Windows.Forms.Button();
             this.btn_ingresar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_asignacion_perfiles)).BeginInit();
-            this.groupBox1.SuspendLayout();
+            this.gpb_consultaperfilesusuarios.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_perfiles_asignados)).BeginInit();
-            this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
+            this.gpb_perfilesusuarios.SuspendLayout();
+            this.Gpb_opciones.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgv_asignacion_perfiles
@@ -64,33 +65,47 @@
             this.dgv_asignacion_perfiles.Location = new System.Drawing.Point(242, 24);
             this.dgv_asignacion_perfiles.Margin = new System.Windows.Forms.Padding(4);
             this.dgv_asignacion_perfiles.Name = "dgv_asignacion_perfiles";
+            this.dgv_asignacion_perfiles.RowHeadersWidth = 51;
             this.dgv_asignacion_perfiles.Size = new System.Drawing.Size(325, 148);
             this.dgv_asignacion_perfiles.TabIndex = 1;
             // 
             // Usuario
             // 
             this.Usuario.HeaderText = "Usuario";
+            this.Usuario.MinimumWidth = 6;
             this.Usuario.Name = "Usuario";
             this.Usuario.Width = 140;
             // 
             // NombrePerfil
             // 
             this.NombrePerfil.HeaderText = "Perfil";
+            this.NombrePerfil.MinimumWidth = 6;
             this.NombrePerfil.Name = "NombrePerfil";
             this.NombrePerfil.Width = 140;
             // 
-            // groupBox1
+            // gpb_consultaperfilesusuarios
             // 
-            this.groupBox1.Controls.Add(this.dgv_perfiles_asignados);
-            this.groupBox1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(44, 291);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(586, 210);
-            this.groupBox1.TabIndex = 4;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Consulta de Perfiles de Usuarios";
+            this.gpb_consultaperfilesusuarios.Controls.Add(this.dgv_perfiles_asignados);
+            this.gpb_consultaperfilesusuarios.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gpb_consultaperfilesusuarios.Location = new System.Drawing.Point(44, 291);
+            this.gpb_consultaperfilesusuarios.Margin = new System.Windows.Forms.Padding(4);
+            this.gpb_consultaperfilesusuarios.Name = "gpb_consultaperfilesusuarios";
+            this.gpb_consultaperfilesusuarios.Padding = new System.Windows.Forms.Padding(4);
+            this.gpb_consultaperfilesusuarios.Size = new System.Drawing.Size(586, 210);
+            this.gpb_consultaperfilesusuarios.TabIndex = 4;
+            this.gpb_consultaperfilesusuarios.TabStop = false;
+            this.gpb_consultaperfilesusuarios.Text = "Consulta de Perfiles de Usuarios";
+            // 
+            // dgv_perfiles_asignados
+            // 
+            this.dgv_perfiles_asignados.AllowUserToAddRows = false;
+            this.dgv_perfiles_asignados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_perfiles_asignados.Location = new System.Drawing.Point(125, 24);
+            this.dgv_perfiles_asignados.Margin = new System.Windows.Forms.Padding(4);
+            this.dgv_perfiles_asignados.Name = "dgv_perfiles_asignados";
+            this.dgv_perfiles_asignados.RowHeadersWidth = 51;
+            this.dgv_perfiles_asignados.Size = new System.Drawing.Size(355, 175);
+            this.dgv_perfiles_asignados.TabIndex = 8;
             // 
             // btn_Buscar
             // 
@@ -104,42 +119,32 @@
             this.btn_Buscar.UseVisualStyleBackColor = true;
             this.btn_Buscar.Click += new System.EventHandler(this.btn_Buscar_Click);
             // 
-            // dgv_perfiles_asignados
+            // gpb_perfilesusuarios
             // 
-            this.dgv_perfiles_asignados.AllowUserToAddRows = false;
-            this.dgv_perfiles_asignados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_perfiles_asignados.Location = new System.Drawing.Point(125, 24);
-            this.dgv_perfiles_asignados.Margin = new System.Windows.Forms.Padding(4);
-            this.dgv_perfiles_asignados.Name = "dgv_perfiles_asignados";
-            this.dgv_perfiles_asignados.Size = new System.Drawing.Size(355, 175);
-            this.dgv_perfiles_asignados.TabIndex = 8;
+            this.gpb_perfilesusuarios.Controls.Add(this.Lbl_perfiles);
+            this.gpb_perfilesusuarios.Controls.Add(this.cbo_perfiles);
+            this.gpb_perfilesusuarios.Controls.Add(this.Lbl_usuario);
+            this.gpb_perfilesusuarios.Controls.Add(this.cbo_usuario);
+            this.gpb_perfilesusuarios.Controls.Add(this.dgv_asignacion_perfiles);
+            this.gpb_perfilesusuarios.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gpb_perfilesusuarios.Location = new System.Drawing.Point(44, 84);
+            this.gpb_perfilesusuarios.Margin = new System.Windows.Forms.Padding(4);
+            this.gpb_perfilesusuarios.Name = "gpb_perfilesusuarios";
+            this.gpb_perfilesusuarios.Padding = new System.Windows.Forms.Padding(4);
+            this.gpb_perfilesusuarios.Size = new System.Drawing.Size(586, 188);
+            this.gpb_perfilesusuarios.TabIndex = 5;
+            this.gpb_perfilesusuarios.TabStop = false;
+            this.gpb_perfilesusuarios.Text = "Asignacion de Perfiles a Usuarios";
             // 
-            // groupBox2
+            // Lbl_perfiles
             // 
-            this.groupBox2.Controls.Add(this.lbl_perfiles);
-            this.groupBox2.Controls.Add(this.cbo_perfiles);
-            this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Controls.Add(this.cbo_usuario);
-            this.groupBox2.Controls.Add(this.dgv_asignacion_perfiles);
-            this.groupBox2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(44, 84);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox2.Size = new System.Drawing.Size(586, 188);
-            this.groupBox2.TabIndex = 5;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Asignacion de Perfiles a Usuarios";
-            // 
-            // lbl_perfiles
-            // 
-            this.lbl_perfiles.AutoSize = true;
-            this.lbl_perfiles.Location = new System.Drawing.Point(80, 92);
-            this.lbl_perfiles.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbl_perfiles.Name = "lbl_perfiles";
-            this.lbl_perfiles.Size = new System.Drawing.Size(51, 17);
-            this.lbl_perfiles.TabIndex = 7;
-            this.lbl_perfiles.Text = "Perfiles";
+            this.Lbl_perfiles.AutoSize = true;
+            this.Lbl_perfiles.Location = new System.Drawing.Point(80, 92);
+            this.Lbl_perfiles.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Lbl_perfiles.Name = "Lbl_perfiles";
+            this.Lbl_perfiles.Size = new System.Drawing.Size(65, 21);
+            this.Lbl_perfiles.TabIndex = 7;
+            this.Lbl_perfiles.Text = "Perfiles";
             // 
             // cbo_perfiles
             // 
@@ -147,18 +152,18 @@
             this.cbo_perfiles.Location = new System.Drawing.Point(11, 127);
             this.cbo_perfiles.Margin = new System.Windows.Forms.Padding(4);
             this.cbo_perfiles.Name = "cbo_perfiles";
-            this.cbo_perfiles.Size = new System.Drawing.Size(199, 25);
+            this.cbo_perfiles.Size = new System.Drawing.Size(199, 29);
             this.cbo_perfiles.TabIndex = 6;
             // 
-            // label1
+            // Lbl_usuario
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(80, 28);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(54, 17);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Usuario";
+            this.Lbl_usuario.AutoSize = true;
+            this.Lbl_usuario.Location = new System.Drawing.Point(80, 28);
+            this.Lbl_usuario.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Lbl_usuario.Name = "Lbl_usuario";
+            this.Lbl_usuario.Size = new System.Drawing.Size(70, 21);
+            this.Lbl_usuario.TabIndex = 5;
+            this.Lbl_usuario.Text = "Usuario";
             // 
             // cbo_usuario
             // 
@@ -166,7 +171,7 @@
             this.cbo_usuario.Location = new System.Drawing.Point(11, 54);
             this.cbo_usuario.Margin = new System.Windows.Forms.Padding(4);
             this.cbo_usuario.Name = "cbo_usuario";
-            this.cbo_usuario.Size = new System.Drawing.Size(199, 25);
+            this.cbo_usuario.Size = new System.Drawing.Size(199, 29);
             this.cbo_usuario.TabIndex = 4;
             this.cbo_usuario.SelectedIndexChanged += new System.EventHandler(this.Cbo_usuario_SelectedIndexChanged);
             // 
@@ -181,17 +186,17 @@
             this.btn_quitar.UseVisualStyleBackColor = true;
             this.btn_quitar.Click += new System.EventHandler(this.Btn_quitar_Click);
             // 
-            // label2
+            // Lbl_asignacionperfiles
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(246, 18);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(337, 24);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "Asignacion de perfiles a Usuarios";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+            this.Lbl_asignacionperfiles.AutoSize = true;
+            this.Lbl_asignacionperfiles.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_asignacionperfiles.Location = new System.Drawing.Point(246, 18);
+            this.Lbl_asignacionperfiles.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Lbl_asignacionperfiles.Name = "Lbl_asignacionperfiles";
+            this.Lbl_asignacionperfiles.Size = new System.Drawing.Size(437, 33);
+            this.Lbl_asignacionperfiles.TabIndex = 6;
+            this.Lbl_asignacionperfiles.Text = "Asignacion de perfiles a Usuarios";
+            this.Lbl_asignacionperfiles.Click += new System.EventHandler(this.label2_Click);
             // 
             // btn_ayuda
             // 
@@ -206,22 +211,22 @@
             this.btn_ayuda.UseVisualStyleBackColor = true;
             this.btn_ayuda.Click += new System.EventHandler(this.Btn_ayuda_Click);
             // 
-            // groupBox3
+            // Gpb_opciones
             // 
-            this.groupBox3.Controls.Add(this.btn_Buscar);
-            this.groupBox3.Controls.Add(this.btn_cancel);
-            this.groupBox3.Controls.Add(this.btn_quitar);
-            this.groupBox3.Controls.Add(this.button5);
-            this.groupBox3.Controls.Add(this.btn_nuevo);
-            this.groupBox3.Controls.Add(this.btn_ingresar);
-            this.groupBox3.Location = new System.Drawing.Point(653, 84);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox3.Size = new System.Drawing.Size(144, 326);
-            this.groupBox3.TabIndex = 258;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Opciones";
+            this.Gpb_opciones.Controls.Add(this.btn_Buscar);
+            this.Gpb_opciones.Controls.Add(this.btn_cancel);
+            this.Gpb_opciones.Controls.Add(this.btn_quitar);
+            this.Gpb_opciones.Controls.Add(this.button5);
+            this.Gpb_opciones.Controls.Add(this.btn_nuevo);
+            this.Gpb_opciones.Controls.Add(this.btn_ingresar);
+            this.Gpb_opciones.Location = new System.Drawing.Point(653, 84);
+            this.Gpb_opciones.Margin = new System.Windows.Forms.Padding(4);
+            this.Gpb_opciones.Name = "Gpb_opciones";
+            this.Gpb_opciones.Padding = new System.Windows.Forms.Padding(4);
+            this.Gpb_opciones.Size = new System.Drawing.Size(144, 326);
+            this.Gpb_opciones.TabIndex = 258;
+            this.Gpb_opciones.TabStop = false;
+            this.Gpb_opciones.Text = "Opciones";
             // 
             // btn_cancel
             // 
@@ -270,27 +275,28 @@
             // 
             // frm_asignacion_perfiles
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(829, 514);
-            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.Gpb_opciones);
             this.Controls.Add(this.btn_ayuda);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.Lbl_asignacionperfiles);
+            this.Controls.Add(this.gpb_perfilesusuarios);
+            this.Controls.Add(this.gpb_consultaperfilesusuarios);
             this.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frm_asignacion_perfiles";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Asignacion de Perfiles a Usuarios";
             this.Load += new System.EventHandler(this.Frm_asignacion_perfiles_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_asignacion_perfiles)).EndInit();
-            this.groupBox1.ResumeLayout(false);
+            this.gpb_consultaperfilesusuarios.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_perfiles_asignados)).EndInit();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
+            this.gpb_perfilesusuarios.ResumeLayout(false);
+            this.gpb_perfilesusuarios.PerformLayout();
+            this.Gpb_opciones.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -298,18 +304,18 @@
 
         #endregion
         private System.Windows.Forms.DataGridView dgv_asignacion_perfiles;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox gpb_consultaperfilesusuarios;
+        private System.Windows.Forms.GroupBox gpb_perfilesusuarios;
         private System.Windows.Forms.Button btn_quitar;
-        private System.Windows.Forms.Label lbl_perfiles;
+        private System.Windows.Forms.Label Lbl_perfiles;
         private System.Windows.Forms.ComboBox cbo_perfiles;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label Lbl_usuario;
         private System.Windows.Forms.ComboBox cbo_usuario;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label Lbl_asignacionperfiles;
         private System.Windows.Forms.DataGridViewTextBoxColumn Usuario;
         private System.Windows.Forms.DataGridViewTextBoxColumn NombrePerfil;
         private System.Windows.Forms.Button btn_ayuda;
-        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox Gpb_opciones;
         private System.Windows.Forms.Button btn_cancel;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button btn_nuevo;
