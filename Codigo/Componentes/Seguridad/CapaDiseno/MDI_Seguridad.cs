@@ -207,13 +207,27 @@ namespace CapaDiseno
 
         private void CerrarSesionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Close();
+            CerrarAplicacion();
+        }
+
+        private void CerrarAplicacion()
+        {
             sentencia sn = new sentencia(idUsuario);
             sn.insertarBitacora(idUsuario, "Cerro sesion en el sistema", "Login", "1301");
+            Application.Exit();
+        }
+
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            base.OnFormClosing(e);
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                CerrarAplicacion();
+            }
         }
 
 
-        bool ventanaMostrarUsuarios = false;
+    bool ventanaMostrarUsuarios = false;
         frm_usuarios mostrarUsuarios = new frm_usuarios();
 
         private void UsuariosToolStripMenuItem_Click(object sender, EventArgs e)

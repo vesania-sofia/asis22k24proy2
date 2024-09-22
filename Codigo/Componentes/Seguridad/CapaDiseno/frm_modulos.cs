@@ -39,7 +39,7 @@ namespace CapaDiseno
 
         void limpiar()
         {
-            tbx_buscarmodulo.Text = "";
+            txt_buscarmodulo.Text = "";
             txtcodigo.Text = "";
             txtdesc.Text = "";
             txtnombre.Text = "";
@@ -51,17 +51,37 @@ namespace CapaDiseno
 
         private void Frm_modulos_Load(object sender, EventArgs e)
         {
+            txt_buscarmodulo.KeyPress += new KeyPressEventHandler(SoloNumeros_KeyPress);
+            txtcodigo.KeyPress += new KeyPressEventHandler(SoloNumeros_KeyPress);
+            txtnombre.KeyPress += new KeyPressEventHandler(SoloLetras_KeyPress);
+            txtdesc.KeyPress += new KeyPressEventHandler(SoloLetras_KeyPress);
+            // Orden de tabulaciones
+            txt_buscarmodulo.TabIndex = 0;
+            btn_bsucarmodulo.TabIndex = 1;
+            txtcodigo.TabIndex = 2;
+            txtnombre.TabIndex = 3;
+            txtdesc.TabIndex = 4;
+            btn_nuevo.TabIndex = 5;
+            btn_ingresar.TabIndex = 6;
+            btn_modif.TabIndex = 7;
+            btn_actualizar.TabIndex = 8;
+            btn_eliminar.TabIndex = 9;
+            btn_cancel.TabIndex = 10;
 
+            //limitar caracteres
+            txtnombre.MaxLength = 50; // Limita el texto a 50 caracteres
+            txtdesc.MaxLength = 150;
+            txtcodigo.MaxLength = 20;
         }
 
         //Trabajado por María José Véliz Ochoa, 9959-21-5909
         private void btn_bsucarmodulo_Click_1(object sender, EventArgs e)
         {
-            string modulo = tbx_buscarmodulo.Text;
+            string modulo = txt_buscarmodulo.Text;
 
             if (string.IsNullOrWhiteSpace(modulo))
             {
-                MessageBox.Show("Por favor, ingrese un ID de módulo.");
+                MessageBox.Show("Por favor, ingrese un ID de módulo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             //Para errores null del DataTable
@@ -71,7 +91,7 @@ namespace CapaDiseno
 
                 if (dtModulos == null || dtModulos.Rows.Count == 0)
                 {
-                    MessageBox.Show("No se encontraron módulos.");
+                    MessageBox.Show("No se encontraron módulos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
@@ -168,7 +188,7 @@ namespace CapaDiseno
 
             if (txtnombre.Text == "")
             {
-                MessageBox.Show("Falta Nombre de Modulo");
+                MessageBox.Show("Falta Nombre de Modulo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 btn_nuevo.Enabled = true;
                 txtnombre.Enabled = false;
                 txtdesc.Enabled = false;
@@ -176,7 +196,7 @@ namespace CapaDiseno
             }
             else if (txtdesc.Text == "")
             {
-                MessageBox.Show("Falta Descripcion del modulo");
+                MessageBox.Show("Falta Descripcion del modulo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 btn_nuevo.Enabled = true;
                 txtnombre.Enabled = false;
                 txtdesc.Enabled = false;
@@ -201,21 +221,22 @@ namespace CapaDiseno
                 }
 
                 logic.ingresarmodulos(txtcodigo.Text.ToString(), txtnombre.Text.ToString(), txtdesc.Text.ToString(), estado.ToString());
-                MessageBox.Show("Modulo Ingresado Correctamente");
-                limpiar();
-                gbbuscar.Enabled = true;
-                btn_nuevo.Enabled = true;
-                btn_ingresar.Enabled = false;
-                txtcodigo.Enabled = false;
-                btn_eliminar.Enabled = false; //se agrega
+                MessageBox.Show("Modulo Ingresado Correctamente", "Modulo", MessageBoxButtons.OK, MessageBoxIcon.Information);         
             }
+            limpiar();
+            gbbuscar.Enabled = true;
+            btn_nuevo.Enabled = true;
+            btn_ingresar.Enabled = false;
+            txtcodigo.Enabled = false;
+            btn_eliminar.Enabled = false; //se agrega
+            gbestado.Enabled = false;
         }
 
         private void btn_actualizar_Click_1(object sender, EventArgs e)
         {
             if (txtnombre.Text == "")
             {
-                MessageBox.Show("Falta Nombre de Modulo");
+                MessageBox.Show("Falta Nombre de Modulo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 btn_nuevo.Enabled = true;
                 txtnombre.Enabled = false;
@@ -225,7 +246,7 @@ namespace CapaDiseno
             }
             else if (txtdesc.Text == "")
             {
-                MessageBox.Show("Falta Descripcion del modulo");
+                MessageBox.Show("Falta Descripcion del modulo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 btn_nuevo.Enabled = true;
                 txtnombre.Enabled = false;
@@ -249,9 +270,21 @@ namespace CapaDiseno
                 {
                     estado = "1";
                 }
+                // Confirmar antes de eliminar
+                var confirmResult = MessageBox.Show("¿Estás seguro de modificar este perfil?",
+                                                        "Confirmar Modificación",
+                                                        MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
 
-                logic.Actualizarmodulo(txtcodigo.Text.ToString(), txtnombre.Text.ToString(), txtdesc.Text.ToString(), estado.ToString());
-                MessageBox.Show("Modulo Actualizado Correctamente");
+                if (confirmResult == DialogResult.Yes)
+                {
+                    logic.Actualizarmodulo(txtcodigo.Text.ToString(), txtnombre.Text.ToString(), txtdesc.Text.ToString(), estado.ToString());
+                    MessageBox.Show("Modulo Actualizado Correctamente", "Modulo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("No se ha modificado el modulo seleccionado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+ 
                 btn_modif.Enabled = false;
                 btn_actualizar.Enabled = false;
                 btn_cancel.Enabled = false;
@@ -316,22 +349,37 @@ namespace CapaDiseno
             // Validar que se haya ingresado el ID del módulo
             if (string.IsNullOrEmpty(txtcodigo.Text))
             {
-                MessageBox.Show("Falta ID del Módulo");
+                MessageBox.Show("Falta ID del Módulo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return; // Salir del método si falta el ID
             }
 
-            try
+            if (!string.IsNullOrEmpty(txtcodigo.Text))
             {
-                // Llamar al método de la lógica de negocio para realizar el borrado lógico
-                logic.EliminarModulo(txtcodigo.Text.ToString(), txtnombre.Text.ToString(), txtdesc.Text.ToString(), estado);
+                // Confirmar antes de eliminar
+                var confirmResult = MessageBox.Show("¿Estás seguro de eliminar este modulo?",
+                                                    "Confirmar Eliminación",
+                                                    MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
 
-                MessageBox.Show("Módulo eliminado correctamente.");
-                limpiar(); // Limpia los campos del formulario
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al intentar eliminar el módulo: " + ex.Message);
-            }
+                if (confirmResult == DialogResult.Yes)
+                {
+                    try
+                    {
+                        // Llamar al método de la lógica de negocio para realizar el borrado lógico
+                        logic.EliminarModulo(txtcodigo.Text.ToString(), txtnombre.Text.ToString(), txtdesc.Text.ToString(), estado);
+
+                        MessageBox.Show("Módulo eliminado correctamente.", "Modulo eliminado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        limpiar(); // Limpia los campos del formulario
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error al intentar eliminar el módulo: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No se ha seleccionado un perfil para eliminar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }        
         }
         // FIN BOTON ELIMINAR ####################################
 
@@ -415,7 +463,30 @@ namespace CapaDiseno
             return null; // No se encontró el archivo
         }
 
-        //******** FIN KATERYN DE LEON y Gabriela Suc   ********************************************************************
+        //******** FIN KATERYN DE LEON y Gabriela Suc   ********************************************************************.
+
+        //Fernando García 0901-21-581
+        private void SoloNumeros_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Verificar si el carácter es un número o si es la tecla de Backspace
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+            {
+                // Si no es un número o la tecla de retroceso, cancelar el evento
+                e.Handled = true;
+                MessageBox.Show("Solo se permiten números.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void SoloLetras_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Verifica si la tecla presionada es una letra o una tecla de control como backspace
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
+            {
+                // Si no es una letra, espacio o tecla de control, cancela el evento
+                e.Handled = true;
+                MessageBox.Show("Solo se permiten letras.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
     }
 }
 

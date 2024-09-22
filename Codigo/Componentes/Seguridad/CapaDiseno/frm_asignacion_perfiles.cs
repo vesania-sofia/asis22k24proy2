@@ -184,7 +184,10 @@ namespace CapaDiseno
 
         private void Frm_asignacion_perfiles_Load(object sender, EventArgs e)
         {
-           
+            cbo_perfiles.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbo_perfiles.SelectedIndex = -1;
+            cbo_usuario.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbo_usuario.SelectedIndex = -1;
         }
 
         private void Dgv_perfiles_asignados_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -362,7 +365,7 @@ namespace CapaDiseno
                     btn_nuevo.Enabled = true;
                     btn_Buscar.Enabled = false;
                     btn_quitar.Enabled = false;
-                    groupBox1.Enabled = false;
+                    gpb_consultaperfilesusuarios.Enabled = false;
                 }
 
                 limpiezaIngreso();
@@ -418,7 +421,7 @@ namespace CapaDiseno
                 btn_cancel.Enabled = true;
                 btn_quitar.Enabled = true;
                 btn_Buscar.Enabled = true;
-                groupBox1.Enabled = true;
+                gpb_consultaperfilesusuarios.Enabled = true;
                 limpieza();
             }
 
@@ -434,7 +437,7 @@ namespace CapaDiseno
             btn_cancel.Enabled = true;
             btn_Buscar.Enabled = true;
             btn_quitar.Enabled = false;
-            groupBox1.Enabled = true;
+            gpb_consultaperfilesusuarios.Enabled = true;
             limpieza();
         }
 

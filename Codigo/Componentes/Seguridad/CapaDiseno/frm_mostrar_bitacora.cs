@@ -33,7 +33,7 @@ namespace CapaDiseno
             Dtp_hora.CustomFormat = "HH:mm";  // Formato de 24 horas
             Limpiar();
             // Inicializar el ComboBox con las opciones de filtrado
-            Cbo_columna.Items.AddRange(new string[] { "Id", "Usuario", "Fecha", "Hora", "Host", "IP", "Acción", "Tabla" });
+            Cbo_columna.Items.AddRange(new string[] { "Id", "Usuario", "Fecha", "Hora", "Host", "IP", "Acción", "Tabla", "Aplicacion" });
             Cbo_columna.SelectedIndex = 0;
 
             sentencia sn = new sentencia(idUsuario);
@@ -121,6 +121,7 @@ namespace CapaDiseno
                 case "IP": return "ip_bitacora";
                 case "Acción": return "accion_bitacora";
                 case "Tabla": return "tabla";
+                case "Aplicacion": return "aplicacion";
                 default: return "FK_id_usuario";
             }
         }

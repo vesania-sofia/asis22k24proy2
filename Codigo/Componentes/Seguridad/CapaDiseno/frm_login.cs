@@ -27,6 +27,7 @@ namespace CapaDiseno
 
             // Vincula el evento KeyPress
             Txt_clave.KeyPress += new KeyPressEventHandler(Txt_clave_KeyPress);
+            Txt_usuario.KeyPress += new KeyPressEventHandler(Txt_usuario_KeyPress);
         }
 
         string nombreUsuario = "";
@@ -213,5 +214,15 @@ namespace CapaDiseno
         {
 
         }
+
+        private void Txt_usuario_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                // Cancela el evento para que el Enter no se procese y no mueva el cursor
+                e.Handled = true;
+            }
+        }
+
     }
 }

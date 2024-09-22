@@ -14,8 +14,6 @@ using System.IO; // Necesario para Directory, File, Path y SearchOption
 using System.Windows.Forms; // Necesario para MessageBox y Help
 
 
-/*---------------------------Creador: Allan Letona------------------------------*/
-
 namespace CapaDiseno
 {
     public partial class frm_asignacion_aplicaciones : Form
@@ -61,6 +59,12 @@ namespace CapaDiseno
         {
             CargarUsuarios();
             CargarModulos();
+            cbo_usuarios.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbo_usuarios.SelectedIndex = -1;
+            cbo_modulos.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbo_modulos.SelectedIndex = -1;
+            cbo_aplicaciones.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbo_aplicaciones.SelectedIndex = -1;
         }           
         //termina
 
@@ -98,7 +102,7 @@ namespace CapaDiseno
         {
             try
             {
-                DataTable dtAplicaciones = logic.consultaLogicaAplicaciones(nombreModulo);
+                DataTable dtAplicaciones = logic.consultaLogicaAplicacionesP(nombreModulo);
                 cbo_aplicaciones.Items.Clear();
                 foreach (DataRow row in dtAplicaciones.Rows)
                 {
@@ -397,6 +401,16 @@ namespace CapaDiseno
                 MessageBox.Show("Error al buscar el archivo: " + ex.Message);
             }
             return null; // No se encontró el archivo
+        }
+
+        private void cbo_aplicaciones_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_buscar_Click(object sender, EventArgs e)
+        {
+
         }
 
         //****************************************************************************
