@@ -83,17 +83,20 @@ namespace CapaDiseno
 
         void limpieza2()
         {
-            dgv_asignaciones.Columns.Clear();
-
-
-            if (iContadorFila > 0)
+            // Verificar si el DataGridView está vinculado a un DataTable
+            if (dgv_asignaciones.DataSource is DataTable dt)
             {
-                dgv_asignaciones.Rows.RemoveAt(dgv_asignaciones.CurrentRow.Index);
-                iContadorFila--;
+                // Limpiar las filas del DataTable (manteniendo las columnas)
+                dt.Clear();  // Esto eliminará las filas, pero mantendrá la estructura de las columnas
+
+                // Reiniciar el contador de filas si es necesario
+                iContadorFila = 0;
             }
             else
             {
+                MessageBox.Show("El DataGridView no está enlazado a un DataTable.");
             }
+
         }
 
         // TRABAJADO POR ALYSON RODRIGURZ 9959-21-829
