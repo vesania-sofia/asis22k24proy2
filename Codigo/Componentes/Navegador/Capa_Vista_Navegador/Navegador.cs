@@ -30,10 +30,10 @@ namespace Capa_Vista_Navegador
 
         string nomForm;
         int pos = 8;
-		string idRepo = "";
-		
-		int[] modoCampoCombo = new int[40];
-		int noCampos = 1;
+        string idRepo = "";
+
+        int[] modoCampoCombo = new int[40];
+        int noCampos = 1;
         int x = 30;
         int y = 30;
         int activar = 0;    //Variable para reconocer que funcion realizara el boton de guardar (1. Ingresar, 2. Modificar, 3. Eliminar)
@@ -45,8 +45,8 @@ namespace Capa_Vista_Navegador
         string[] campoDisplayCombo = new string[30];
 
         string tablarelacionada = "";
-        string campodescriptivo="";
-        string columnaprimararelacionada="";
+        string campodescriptivo = "";
+        string columnaprimararelacionada = "";
         string columnaForanea = "";
 
         int posCombo = 10;
@@ -69,7 +69,7 @@ namespace Capa_Vista_Navegador
         // string rutaa;
         Font fuente = new Font("Century Gothic", 13.0f, FontStyle.Regular, GraphicsUnit.Pixel); //objeto para definir el tipo y tamaño de fuente de los labels
         ToolTip ayuda_tp = new ToolTip();
-        
+
 
 
 
@@ -101,14 +101,14 @@ namespace Capa_Vista_Navegador
             ayuda_tp.SetToolTip(Btn_FlechaFin, "Ir al último registro.");
             ayuda_tp.SetToolTip(Btn_Ayuda, "Ver la ayuda del formulario.");
             ayuda_tp.SetToolTip(Btn_Salir, "Cerrar el formulario actual.");
-            ayuda_tp.SetToolTip(Btn_Imprimir,"Mostrar un Reporte");
+            ayuda_tp.SetToolTip(Btn_Imprimir, "Mostrar un Reporte");
             ayuda_tp.SetToolTip(button1, "Asignar Documento de Ayuda");
             ayuda_tp.SetToolTip(Btn_Imprimir, "Mostrar un Reporte");
             ayuda_tp.SetToolTip(btn_Reportes_Principal, "Mostrar un Reporte");
 
             //Btn_Imprimir.Enabled = true;
             //Btn_Consultar.Enabled = true;
-           // botonesYPermisos();
+            // botonesYPermisos();
         }
         private void Navegador_Load(object sender, EventArgs e)
         {
@@ -132,20 +132,20 @@ namespace Capa_Vista_Navegador
                         }
                         else
                         {
-                            if (numeroAlias()== logic.contarCampos(tabla))
+                            if (numeroAlias() == logic.contarCampos(tabla))
                             {
                                 int i = 0;
                                 DataTable dt = logic.consultaLogica(tabla, tablarelacionada, campodescriptivo, columnaForanea, columnaprimararelacionada);
                                 dataGridView1.DataSource = dt;
                                 int head = 0;
-                                while (head< logic.contarCampos(tabla))
+                                while (head < logic.contarCampos(tabla))
                                 {
                                     dataGridView1.Columns[head].HeaderText = aliasC[head];
                                     head++;
                                 }
                                 CreaComponentes();
-								colorTitulo();
-								lblTabla.ForeColor = Cfuente;
+                                colorTitulo();
+                                lblTabla.ForeColor = Cfuente;
                                 deshabilitarcampos_y_botones();
 
                                 Btn_Modificar.Enabled = true;
@@ -157,50 +157,50 @@ namespace Capa_Vista_Navegador
                                 //registros();
                                 if (logic.TestRegistros(tabla) > 0)
                                 {
-									int numCombo = 0;
-									foreach (Control componente in Controls)
-									{
-										if (componente is TextBox || componente is DateTimePicker || componente is ComboBox)
-										{
-											if (componente is ComboBox)
-											{
-												if (modoCampoCombo[numCombo] == 1)
-												{
-													componente.Text = logic.llaveCampoRev(tablaCombo[numCombo], campoCombo[numCombo], dataGridView1.CurrentRow.Cells[i].Value.ToString());
+                                    int numCombo = 0;
+                                    foreach (Control componente in Controls)
+                                    {
+                                        if (componente is TextBox || componente is DateTimePicker || componente is ComboBox)
+                                        {
+                                            if (componente is ComboBox)
+                                            {
+                                                if (modoCampoCombo[numCombo] == 1)
+                                                {
+                                                    componente.Text = logic.llaveCampoRev(tablaCombo[numCombo], campoCombo[numCombo], dataGridView1.CurrentRow.Cells[i].Value.ToString());
 
-												}
-												else
-												{
-													componente.Text = dataGridView1.CurrentRow.Cells[i].Value.ToString();
-												}
+                                                }
+                                                else
+                                                {
+                                                    componente.Text = dataGridView1.CurrentRow.Cells[i].Value.ToString();
+                                                }
 
-												numCombo++;
-											}
-											else
-											{
-												componente.Text = dataGridView1.CurrentRow.Cells[i].Value.ToString();
-											}
+                                                numCombo++;
+                                            }
+                                            else
+                                            {
+                                                componente.Text = dataGridView1.CurrentRow.Cells[i].Value.ToString();
+                                            }
 
-											i++;
-										}
-										if (componente is Button)
-										{
-											string var1 = dataGridView1.CurrentRow.Cells[i].Value.ToString();
-											if (var1 == "0")
-											{
-												componente.Text = "Desactivado";
-												componente.BackColor = Color.Red;
-											}
-											if (var1 == "1")
-											{
-												componente.Text = "Activado";
-												componente.BackColor = Color.Green;
-											}
-											componente.Enabled = false;
+                                            i++;
+                                        }
+                                        if (componente is Button)
+                                        {
+                                            string var1 = dataGridView1.CurrentRow.Cells[i].Value.ToString();
+                                            if (var1 == "0")
+                                            {
+                                                componente.Text = "Desactivado";
+                                                componente.BackColor = Color.Red;
+                                            }
+                                            if (var1 == "1")
+                                            {
+                                                componente.Text = "Activado";
+                                                componente.BackColor = Color.Green;
+                                            }
+                                            componente.Enabled = false;
 
-										}
-									}
-								}
+                                        }
+                                    }
+                                }
                                 else
                                 {
                                     Btn_Anterior.Enabled = false;
@@ -232,7 +232,7 @@ namespace Capa_Vista_Navegador
                                         }
                                     }
                                 }
-                             }                                                      
+                            }
                         }
                     }
                     else
@@ -256,50 +256,50 @@ namespace Capa_Vista_Navegador
             else
             {
 
-               // MessageBox.Show("Tabla actual: " + tabla);
+                // MessageBox.Show("Tabla actual: " + tabla);
 
                 //MessageBox.Show("Tabla actual: " + tabla);
 
             }
             //botonesYPermisosInicial(userActivo, aplActivo);
             //registros();
-            
-            
+
+
         }
 
         //-----------------------------------------------Funciones-----------------------------------------------//
-        
-		void colorTitulo()
-		{
-			foreach (Control componente in Controls)
-			{
-				if (componente is Label)
-				{
 
-					componente.ForeColor = Cfuente;
-				}
-			}
-		}
+        void colorTitulo()
+        {
+            foreach (Control componente in Controls)
+            {
+                if (componente is Label)
+                {
+
+                    componente.ForeColor = Cfuente;
+                }
+            }
+        }
         public void ObtenerIdUsuario(string idUsuario)
         {
 
-			this.idUsuario = idUsuario;            
+            this.idUsuario = idUsuario;
         }
         public void asignarforaneas(string table, string tablarela, string campodescri, string columnafora, string columnaprimaria)
         {
             tabla = table;
-            tablarelacionada =tablarela;
+            tablarelacionada = tablarela;
             campodescriptivo = campodescri;
             columnaForanea = columnafora;
             columnaprimararelacionada = columnaprimaria;
 
-            
+
 
 
         }
         public void ObtenerIdAplicacion(string idAplicacion)
         {
-            this.idAplicacion = idAplicacion;            
+            this.idAplicacion = idAplicacion;
         }
         /*
         private void permisos()
@@ -309,22 +309,22 @@ namespace Capa_Vista_Navegador
         } */
 
         private int numeroAlias()
-            {
+        {
             int i = 0;
-            foreach (string cad  in aliasC)
+            foreach (string cad in aliasC)
             {
-                if (cad!=null && cad!="")
+                if (cad != null && cad != "")
                 {
                     i++;
-                } 
+                }
             }
             return i;
-            }       
+        }
 
         public string obtenerDatoTabla(int pos)
         {
-            pos=pos - 1;
-          return  dataGridView1.CurrentRow.Cells[pos].Value.ToString();
+            pos = pos - 1;
+            return dataGridView1.CurrentRow.Cells[pos].Value.ToString();
         }
 
         public string obtenerDatoCampos(int pos)
@@ -360,7 +360,7 @@ namespace Capa_Vista_Navegador
 
         public void asignarAlias(string[] alias)
         {
-            alias.CopyTo(aliasC, 0);   
+            alias.CopyTo(aliasC, 0);
         }
 
         public void asignarAyuda(string ayudar)
@@ -368,12 +368,12 @@ namespace Capa_Vista_Navegador
             string AyudaOK = logic.TestTabla("ayuda");
             if (AyudaOK == "")
             {
-                if (logic.contarRegAyuda(ayudar)>0)
+                if (logic.contarRegAyuda(ayudar) > 0)
                 {
                     idyuda = ayudar;
                     AsRuta = logic.MRuta(idyuda);
                     AsIndice = logic.MIndice(idyuda);
-                    if (AsRuta=="" || AsIndice=="" || AsRuta == null || AsIndice == null)
+                    if (AsRuta == "" || AsIndice == "" || AsRuta == null || AsIndice == null)
                     {
                         DialogResult validacion = MessageBox.Show("La Ruta o índice de la ayuda está vacía", "Verificación de requisitos", MessageBoxButtons.OK);
                         if (validacion == DialogResult.OK)
@@ -390,7 +390,7 @@ namespace Capa_Vista_Navegador
                         correcto = 1;
                     }
                 }
-               
+
             }
             else
             {
@@ -402,11 +402,11 @@ namespace Capa_Vista_Navegador
             }
         }
 
-		public void asignarReporte(string repo)
-		{
-			idRepo = repo;
-		}
-		public void asignarSalida(Form salida)
+        public void asignarReporte(string repo)
+        {
+            idRepo = repo;
+        }
+        public void asignarSalida(Form salida)
         {
             cerrar = salida;
         }
@@ -461,12 +461,12 @@ namespace Capa_Vista_Navegador
             nuevoColor = nuevo;
         }
 
-        public void asignarComboConLista(int pos,string lista)
+        public void asignarComboConLista(int pos, string lista)
         {
-            posCombo = pos-1;
+            posCombo = pos - 1;
             limpiarLista(lista);
-			modoCampoCombo[noCombo] = 0;
-			noCombo++;
+            modoCampoCombo[noCombo] = 0;
+            noCombo++;
         }
 
         void limpiarLista(string cadena)
@@ -495,7 +495,7 @@ namespace Capa_Vista_Navegador
 
         void limpiarListaItems()
         {
-            for (int i =0; i< listaItems.Length;i++)
+            for (int i = 0; i < listaItems.Length; i++)
             {
                 listaItems[i] = "";
             }
@@ -527,7 +527,7 @@ namespace Capa_Vista_Navegador
                 lb.ForeColor = Cfuente;
                 this.Controls.Add(lb);
 
-                if (LLaves[i]=="PRI" && i!=0)
+                if (LLaves[i] == "PRI" && i != 0)
                 {
                     LLaves[i] = "MUL";
                 }
@@ -536,23 +536,28 @@ namespace Capa_Vista_Navegador
                 {
                     case "int":
                         tipoCampo[noCampos - 1] = "Num";
-                        if (LLaves[i] != "MUL") { 
-                            crearTextBoxnumerico(Campos[i]); 
-                        } 
-                        else { 
-                            crearComboBox(Campos[i]); }
-                        
+                        if (LLaves[i] != "MUL")
+                        {
+                            crearTextBoxnumerico(Campos[i]);
+                        }
+                        else
+                        {
+                            crearComboBox(Campos[i]);
+                        }
+
                         break;
                     case "varchar":
                         tipoCampo[noCampos - 1] = "Text";
 
                         if (LLaves[i] != "MUL")
-                        { crearTextBoxvarchar(Campos[i]);} else { crearComboBox(Campos[i]); }
-                break;
+                        { crearTextBoxvarchar(Campos[i]); }
+                        else { crearComboBox(Campos[i]); }
+                        break;
                     case "date":
                         tipoCampo[noCampos - 1] = "Text";
                         if (LLaves[i] != "MUL")
-                        {crearDateTimePicker(Campos[i]);} else { crearComboBox(Campos[i]); }
+                        { crearDateTimePicker(Campos[i]); }
+                        else { crearComboBox(Campos[i]); }
                         break;
 
                     case "datetime":
@@ -600,15 +605,15 @@ namespace Capa_Vista_Navegador
 
                     default:
 
-                        if (Tipos[i]!=null && Tipos[i] != "")
+                        if (Tipos[i] != null && Tipos[i] != "")
                         {
-                            DialogResult validacion = MessageBox.Show("La tabla "+tabla+" posee un campo "+Tipos[i]+ ", este tipo de dato no es reconocido por el navegador\n Solucione este problema...", "Verificación de requisitos", MessageBoxButtons.OK);
+                            DialogResult validacion = MessageBox.Show("La tabla " + tabla + " posee un campo " + Tipos[i] + ", este tipo de dato no es reconocido por el navegador\n Solucione este problema...", "Verificación de requisitos", MessageBoxButtons.OK);
                             if (validacion == DialogResult.OK)
                             {
                                 Application.Exit();
                             }
                         }
-                        
+
                         break;
                 }
                 noCampos++;
@@ -629,36 +634,36 @@ namespace Capa_Vista_Navegador
                         //estado++;
                         estado = 0;
                     }
-                    else 
-                    {
-                        componente.Text = "Activado";
-                        componente.BackColor = Color.Green;
-                        //estado++;
-                        estado = 1;
-                    }
-                   /* else
-                    {
-                        componente.Text = "Desactivado";
-                        componente.BackColor = Color.Red;
-                        //estado--;
-                        estado = 1
-                    }
-                    if(estado == 0)
-                    {
-                        componente.Text = "Activado";
-                        componente.BackColor = Color.Green;
-                        //estado++;
-                        estado = 1;
-                    }
                     else
                     {
-
                         componente.Text = "Activado";
                         componente.BackColor = Color.Green;
                         //estado++;
-                        estado = 0;
-                    }*/
-                  
+                        estado = 1;
+                    }
+                    /* else
+                     {
+                         componente.Text = "Desactivado";
+                         componente.BackColor = Color.Red;
+                         //estado--;
+                         estado = 1
+                     }
+                     if(estado == 0)
+                     {
+                         componente.Text = "Activado";
+                         componente.BackColor = Color.Green;
+                         //estado++;
+                         estado = 1;
+                     }
+                     else
+                     {
+
+                         componente.Text = "Activado";
+                         componente.BackColor = Color.Green;
+                         //estado++;
+                         estado = 0;
+                     }*/
+
                 }
             }
         }
@@ -678,7 +683,7 @@ namespace Capa_Vista_Navegador
         void crearTextBoxnumerico(String nom)
         {
 
-          
+
             TextBox tb = new TextBox();
             Point p = new Point(x + 125 + pos, y * pos);
             tb.Location = p;
@@ -694,14 +699,14 @@ namespace Capa_Vista_Navegador
         void crearTextBoxvarchar(String nom)
         {
 
-  
+
             TextBox tb = new TextBox();
             Point p = new Point(x + 125 + pos, y * pos);
             tb.Location = p;
             tb.Name = nom;
             this.Controls.Add(tb);
             tb.KeyPress += Paravalidarvarchar_KeyPress;
-            this.KeyPress += Paravalidarvarchar_KeyPress;      
+            this.KeyPress += Paravalidarvarchar_KeyPress;
             pos++;
 
         }
@@ -714,7 +719,7 @@ namespace Capa_Vista_Navegador
             tb.Name = nom;
             this.Controls.Add(tb);
             tb.KeyPress += Paravalidartexto_KeyPress;
-            this.KeyPress += Paravalidartexto_KeyPress;          
+            this.KeyPress += Paravalidartexto_KeyPress;
             pos++;
 
         }
@@ -732,7 +737,7 @@ namespace Capa_Vista_Navegador
             pos++;
         }
 
-       
+
         void crearcampodecimales(String nom)
         {
             TextBox tb = new TextBox();
@@ -863,9 +868,9 @@ namespace Capa_Vista_Navegador
         public void actualizardatagriew()
         {
 
-            DataTable dt = logic.consultaLogica(tabla,tablarelacionada,campodescriptivo, columnaForanea, columnaprimararelacionada);
+            DataTable dt = logic.consultaLogica(tabla, tablarelacionada, campodescriptivo, columnaForanea, columnaprimararelacionada);
 
-            
+
             dataGridView1.DataSource = dt;
             int head = 0;
             while (head < logic.contarCampos(tabla))
@@ -881,7 +886,7 @@ namespace Capa_Vista_Navegador
             string query = "UPDATE " + tabla + " SET estado=0";
             string whereQuery = " WHERE  ";
             int posCampo = 0;
-			int i = 0;
+            int i = 0;
             string campos = "";
 
             foreach (Control componente in Controls)
@@ -893,51 +898,51 @@ namespace Capa_Vista_Navegador
                         switch (tipoCampo[posCampo])
                         {
                             case "Text":
-								if (componente is ComboBox)
-								{
+                                if (componente is ComboBox)
+                                {
 
-									if (modoCampoCombo[i] == 1)
-									{
-										whereQuery += componente.Name + " = '" + logic.llaveCampolo(tablaCombo[i], campoCombo[i], componente.Text) + "' , ";
-									}
-									else
-									{
-										whereQuery += componente.Name + " = '" + componente.Text + "' , ";
-									}
+                                    if (modoCampoCombo[i] == 1)
+                                    {
+                                        whereQuery += componente.Name + " = '" + logic.llaveCampolo(tablaCombo[i], campoCombo[i], componente.Text) + "' , ";
+                                    }
+                                    else
+                                    {
+                                        whereQuery += componente.Name + " = '" + componente.Text + "' , ";
+                                    }
 
-									i++;
-								}
-								else
-								{
-									whereQuery += componente.Name + " = '" + componente.Text + "' , ";
-								}
+                                    i++;
+                                }
+                                else
+                                {
+                                    whereQuery += componente.Name + " = '" + componente.Text + "' , ";
+                                }
 
-								
+
                                 break;
                             case "Num":
-								if (componente is ComboBox)
-								{
+                                if (componente is ComboBox)
+                                {
 
-									if (modoCampoCombo[i] == 1)
-									{
-										whereQuery += componente.Name + " = " + logic.llaveCampolo(tablaCombo[i], campoCombo[i], componente.Text);
-										 
-									}
-									else
-									{
-										whereQuery += componente.Name + " = " + componente.Text;
-									}
+                                    if (modoCampoCombo[i] == 1)
+                                    {
+                                        whereQuery += componente.Name + " = " + logic.llaveCampolo(tablaCombo[i], campoCombo[i], componente.Text);
 
-									i++;
-								}
-								else
-								{
-									whereQuery += componente.Name + " = " + componente.Text;
-								}
-								
+                                    }
+                                    else
+                                    {
+                                        whereQuery += componente.Name + " = " + componente.Text;
+                                    }
+
+                                    i++;
+                                }
+                                else
+                                {
+                                    whereQuery += componente.Name + " = " + componente.Text;
+                                }
+
                                 break;
                         }
-						
+
                     }
                     posCampo++;
                 }
@@ -945,11 +950,11 @@ namespace Capa_Vista_Navegador
             }
             campos = campos.TrimEnd(' ');
             campos = campos.TrimEnd(',');
-			whereQuery = whereQuery.TrimEnd(' ');
-			whereQuery = whereQuery.TrimEnd(',');
-			//query += campos + whereQuery + ";";
-			query += whereQuery + ";";
-			Console.Write(query);
+            whereQuery = whereQuery.TrimEnd(' ');
+            whereQuery = whereQuery.TrimEnd(',');
+            //query += campos + whereQuery + ";";
+            query += whereQuery + ";";
+            Console.Write(query);
             //sn.insertarBitacora(idUsuario, "Se eliminó un registro", tabla);
             return query;
         }
@@ -1137,7 +1142,7 @@ namespace Capa_Vista_Navegador
 
         private void Btn_Ingresar_Click(object sender, EventArgs e)
         {
-            
+
             string[] Tipos = logic.tipos(tabla);
 
             bool tipoInt = false;
@@ -1199,10 +1204,10 @@ namespace Capa_Vista_Navegador
             botonesYPermisosSinMensaje();
             // Habilitar y deshabilitar botones según usuario
             Btn_Ingresar.Enabled = false;
-             //Btn_Guardar.Enabled = false;
-             Btn_Modificar.Enabled = false;
-             Btn_Eliminar.Enabled = false;
-           
+            //Btn_Guardar.Enabled = false;
+            Btn_Modificar.Enabled = false;
+            Btn_Eliminar.Enabled = false;
+
         }
 
 
@@ -1480,7 +1485,7 @@ namespace Capa_Vista_Navegador
                 }
 
                 // Habilitar/deshabilitar botones según los permisos del usuario
-                botonesYPermisosSinMensaje();;
+                botonesYPermisosSinMensaje(); ;
                 presionado = true;
                 sn.insertarBitacora(idUsuario, "Se actualizo el estado en " + tabla, tabla);
             }
@@ -1526,27 +1531,27 @@ namespace Capa_Vista_Navegador
         */
         private void Btn_Imprimir_Click(object sender, EventArgs e)
         {
-			//DLL DE IMPRESION, FORATO DE REPORTES.
-			string llave = "";
-			if (idRepo!="")
-			{
-				llave= logic.ObtenerIdReporte(idRepo);
-				
-			}
-			else
-			{
-				MessageBox.Show("No se asigno ningun reporte....");
-			}
-			
-			if (llave!="")
-			{
-				Clientes cl = new Clientes(llave);
-				cl.Show();
-			}
-			else
-			{
-				MessageBox.Show("El Id Asignado es incorrecto");
-			}
+            //DLL DE IMPRESION, FORATO DE REPORTES.
+            string llave = "";
+            if (idRepo != "")
+            {
+                llave = logic.ObtenerIdReporte(idRepo);
+
+            }
+            else
+            {
+                MessageBox.Show("No se asigno ningun reporte....");
+            }
+
+            if (llave != "")
+            {
+                Clientes cl = new Clientes(llave);
+                cl.Show();
+            }
+            else
+            {
+                MessageBox.Show("El Id Asignado es incorrecto");
+            }
 
             //habilitar y deshabilitar según Usuario
             botonesYPermisosSinMensaje();
@@ -1640,108 +1645,108 @@ namespace Capa_Vista_Navegador
                 dataGridView1.Rows[fila - 1].Selected = true;
                 dataGridView1.CurrentCell = dataGridView1.Rows[fila - 1].Cells[0];
 
-				int numCombo = 0;
-				foreach (Control componente in Controls)
-				{
-					if (componente is TextBox || componente is DateTimePicker || componente is ComboBox)
-					{
-						if (componente is ComboBox)
-						{
-							if (modoCampoCombo[numCombo] == 1)
-							{
-								componente.Text = logic.llaveCampoRev(tablaCombo[numCombo], campoCombo[numCombo], dataGridView1.CurrentRow.Cells[i].Value.ToString());
+                int numCombo = 0;
+                foreach (Control componente in Controls)
+                {
+                    if (componente is TextBox || componente is DateTimePicker || componente is ComboBox)
+                    {
+                        if (componente is ComboBox)
+                        {
+                            if (modoCampoCombo[numCombo] == 1)
+                            {
+                                componente.Text = logic.llaveCampoRev(tablaCombo[numCombo], campoCombo[numCombo], dataGridView1.CurrentRow.Cells[i].Value.ToString());
 
-							}
-							else
-							{
-								componente.Text = dataGridView1.CurrentRow.Cells[i].Value.ToString();
-							}
+                            }
+                            else
+                            {
+                                componente.Text = dataGridView1.CurrentRow.Cells[i].Value.ToString();
+                            }
 
-							numCombo++;
-						}
-						else
-						{
-							componente.Text = dataGridView1.CurrentRow.Cells[i].Value.ToString();
-						}
+                            numCombo++;
+                        }
+                        else
+                        {
+                            componente.Text = dataGridView1.CurrentRow.Cells[i].Value.ToString();
+                        }
 
-						i++;
-					}
-					if (componente is Button)
-					{
-						string var1 = dataGridView1.CurrentRow.Cells[i].Value.ToString();
-						if (var1 == "0")
-						{
-							componente.Text = "Desactivado";
-							componente.BackColor = Color.Red;
-						}
-						if (var1 == "1")
-						{
-							componente.Text = "Activado";
-							componente.BackColor = Color.Green;
-						}
-						componente.Enabled = false;
+                        i++;
+                    }
+                    if (componente is Button)
+                    {
+                        string var1 = dataGridView1.CurrentRow.Cells[i].Value.ToString();
+                        if (var1 == "0")
+                        {
+                            componente.Text = "Desactivado";
+                            componente.BackColor = Color.Red;
+                        }
+                        if (var1 == "1")
+                        {
+                            componente.Text = "Activado";
+                            componente.BackColor = Color.Green;
+                        }
+                        componente.Enabled = false;
 
-					}
-				}
-			}            
+                    }
+                }
+            }
         }
 
         private void Btn_Siguiente_Click(object sender, EventArgs e)
         {
             int i = 0;
-                string[] Campos = logic.campos(tabla);
+            string[] Campos = logic.campos(tabla);
 
-                int fila = dataGridView1.SelectedRows[0].Index;
-                if (fila < dataGridView1.Rows.Count - 1)
+            int fila = dataGridView1.SelectedRows[0].Index;
+            if (fila < dataGridView1.Rows.Count - 1)
+            {
+                dataGridView1.Rows[fila + 1].Selected = true;
+                dataGridView1.CurrentCell = dataGridView1.Rows[fila + 1].Cells[0];
+
+                int numCombo = 0;
+                foreach (Control componente in Controls)
                 {
-                    dataGridView1.Rows[fila + 1].Selected = true;
-                    dataGridView1.CurrentCell = dataGridView1.Rows[fila + 1].Cells[0];
+                    if (componente is TextBox || componente is DateTimePicker || componente is ComboBox)
+                    {
+                        if (componente is ComboBox)
+                        {
+                            if (modoCampoCombo[numCombo] == 1)
+                            {
+                                componente.Text = logic.llaveCampoRev(tablaCombo[numCombo], campoCombo[numCombo], dataGridView1.CurrentRow.Cells[i].Value.ToString());
 
-				int numCombo = 0;
-				foreach (Control componente in Controls)
-				{
-					if (componente is TextBox || componente is DateTimePicker || componente is ComboBox)
-					{
-						if (componente is ComboBox)
-						{
-							if (modoCampoCombo[numCombo] == 1)
-							{
-								componente.Text = logic.llaveCampoRev(tablaCombo[numCombo], campoCombo[numCombo], dataGridView1.CurrentRow.Cells[i].Value.ToString());
+                            }
+                            else
+                            {
+                                componente.Text = dataGridView1.CurrentRow.Cells[i].Value.ToString();
+                            }
 
-							}
-							else
-							{
-								componente.Text = dataGridView1.CurrentRow.Cells[i].Value.ToString();
-							}
+                            numCombo++;
+                        }
+                        else
+                        {
+                            componente.Text = dataGridView1.CurrentRow.Cells[i].Value.ToString();
+                        }
 
-							numCombo++;
-						}
-						else
-						{
-							componente.Text = dataGridView1.CurrentRow.Cells[i].Value.ToString();
-						}
+                        i++;
+                    }
+                    if (componente is Button)
+                    {
+                        string var1 = dataGridView1.CurrentRow.Cells[i].Value.ToString();
+                        if (var1 == "0")
+                        {
+                            componente.Text = "Desactivado";
+                            componente.BackColor = Color.Red;
+                        }
+                        if (var1 == "1")
+                        {
+                            componente.Text = "Activado";
+                            componente.BackColor = Color.Green;
+                        }
+                        componente.Enabled = false;
 
-						i++;
-					}
-					if (componente is Button)
-					{
-						string var1 = dataGridView1.CurrentRow.Cells[i].Value.ToString();
-						if (var1 == "0")
-						{
-							componente.Text = "Desactivado";
-							componente.BackColor = Color.Red;
-						}
-						if (var1 == "1")
-						{
-							componente.Text = "Activado";
-							componente.BackColor = Color.Green;
-						}
-						componente.Enabled = false;
+                    }
+                }
 
-					}
-				}
-
-			}
+            }
         }
 
         private void Btn_FlechaFin_Click(object sender, EventArgs e)
@@ -1758,51 +1763,51 @@ namespace Capa_Vista_Navegador
                 dataGridView1.Rows[dataGridView1.Rows.Count - 2].Selected = true;
                 dataGridView1.CurrentCell = dataGridView1.Rows[dataGridView1.Rows.Count - 2].Cells[0];
 
-				int numCombo = 0;
-				foreach (Control componente in Controls)
-				{
-					if (componente is TextBox || componente is DateTimePicker || componente is ComboBox)
-					{
-						if (componente is ComboBox)
-						{
-							if (modoCampoCombo[numCombo] == 1)
-							{
-								componente.Text = logic.llaveCampoRev(tablaCombo[numCombo], campoCombo[numCombo], dataGridView1.CurrentRow.Cells[i].Value.ToString());
+                int numCombo = 0;
+                foreach (Control componente in Controls)
+                {
+                    if (componente is TextBox || componente is DateTimePicker || componente is ComboBox)
+                    {
+                        if (componente is ComboBox)
+                        {
+                            if (modoCampoCombo[numCombo] == 1)
+                            {
+                                componente.Text = logic.llaveCampoRev(tablaCombo[numCombo], campoCombo[numCombo], dataGridView1.CurrentRow.Cells[i].Value.ToString());
 
-							}
-							else
-							{
-								componente.Text = dataGridView1.CurrentRow.Cells[i].Value.ToString();
-							}
+                            }
+                            else
+                            {
+                                componente.Text = dataGridView1.CurrentRow.Cells[i].Value.ToString();
+                            }
 
-							numCombo++;
-						}
-						else
-						{
-							componente.Text = dataGridView1.CurrentRow.Cells[i].Value.ToString();
-						}
+                            numCombo++;
+                        }
+                        else
+                        {
+                            componente.Text = dataGridView1.CurrentRow.Cells[i].Value.ToString();
+                        }
 
-						i++;
-					}
-					if (componente is Button)
-					{
-						string var1 = dataGridView1.CurrentRow.Cells[i].Value.ToString();
-						if (var1 == "0")
-						{
-							componente.Text = "Desactivado";
-							componente.BackColor = Color.Red;
-						}
-						if (var1 == "1")
-						{
-							componente.Text = "Activado";
-							componente.BackColor = Color.Green;
-						}
-						componente.Enabled = false;
+                        i++;
+                    }
+                    if (componente is Button)
+                    {
+                        string var1 = dataGridView1.CurrentRow.Cells[i].Value.ToString();
+                        if (var1 == "0")
+                        {
+                            componente.Text = "Desactivado";
+                            componente.BackColor = Color.Red;
+                        }
+                        if (var1 == "1")
+                        {
+                            componente.Text = "Activado";
+                            componente.BackColor = Color.Green;
+                        }
+                        componente.Enabled = false;
 
-					}
-				}
+                    }
+                }
 
-			}
+            }
         }
 
         private void Btn_FlechaInicio_Click(object sender, EventArgs e)
@@ -1820,50 +1825,50 @@ namespace Capa_Vista_Navegador
                 dataGridView1.CurrentCell = dataGridView1.Rows[0].Cells[0];
 
 
-				int numCombo = 0;
-				foreach (Control componente in Controls)
-				{
-					if (componente is TextBox || componente is DateTimePicker || componente is ComboBox)
-					{
-						if (componente is ComboBox)
-						{
-							if (modoCampoCombo[numCombo] == 1)
-							{
-								componente.Text = logic.llaveCampoRev(tablaCombo[numCombo], campoCombo[numCombo], dataGridView1.CurrentRow.Cells[i].Value.ToString());
+                int numCombo = 0;
+                foreach (Control componente in Controls)
+                {
+                    if (componente is TextBox || componente is DateTimePicker || componente is ComboBox)
+                    {
+                        if (componente is ComboBox)
+                        {
+                            if (modoCampoCombo[numCombo] == 1)
+                            {
+                                componente.Text = logic.llaveCampoRev(tablaCombo[numCombo], campoCombo[numCombo], dataGridView1.CurrentRow.Cells[i].Value.ToString());
 
-							}
-							else
-							{
-								componente.Text = dataGridView1.CurrentRow.Cells[i].Value.ToString();
-							}
+                            }
+                            else
+                            {
+                                componente.Text = dataGridView1.CurrentRow.Cells[i].Value.ToString();
+                            }
 
-							numCombo++;
-						}
-						else
-						{
-							componente.Text = dataGridView1.CurrentRow.Cells[i].Value.ToString();
-						}
+                            numCombo++;
+                        }
+                        else
+                        {
+                            componente.Text = dataGridView1.CurrentRow.Cells[i].Value.ToString();
+                        }
 
-						i++;
-					}
-					if (componente is Button)
-					{
-						string var1 = dataGridView1.CurrentRow.Cells[i].Value.ToString();
-						if (var1 == "0")
-						{
-							componente.Text = "Desactivado";
-							componente.BackColor = Color.Red;
-						}
-						if (var1 == "1")
-						{
-							componente.Text = "Activado";
-							componente.BackColor = Color.Green;
-						}
-						componente.Enabled = false;
+                        i++;
+                    }
+                    if (componente is Button)
+                    {
+                        string var1 = dataGridView1.CurrentRow.Cells[i].Value.ToString();
+                        if (var1 == "0")
+                        {
+                            componente.Text = "Desactivado";
+                            componente.BackColor = Color.Red;
+                        }
+                        if (var1 == "1")
+                        {
+                            componente.Text = "Activado";
+                            componente.BackColor = Color.Green;
+                        }
+                        componente.Enabled = false;
 
-					}
-				}
-			}
+                    }
+                }
+            }
 
         }
 
@@ -2052,7 +2057,7 @@ namespace Capa_Vista_Navegador
         public void botonesYPermisos()
         {
             try
-            {        
+            {
                 string[] permisosText = { "INGRESAR", "BUSCAR", "MODIFICAR", "ELIMINAR", "IMPRIMIR" };
                 Button[] botones = { Btn_Ingresar, Btn_Consultar, Btn_Modificar, Btn_Eliminar, Btn_Imprimir };
 
@@ -2159,9 +2164,9 @@ namespace Capa_Vista_Navegador
                             string queryPrincipal = crearUpdate(tabla, clavePrimariaPrincipal, null); // No hay clave foránea en la tabla principal
                             queries.Add(queryPrincipal);
                             foreach (string query in queries)
-                                {
-                                    Console.WriteLine("Consulta a ejecutar: " + query);
-                                }
+                            {
+                                Console.WriteLine("Consulta a ejecutar: " + query);
+                            }
 
                             // Para las tablas adicionales, detectar claves foráneas
                             foreach (string tablaAdicional in listaTablasAdicionales)
@@ -2265,7 +2270,7 @@ namespace Capa_Vista_Navegador
                                 }
                             }
 
-                          
+
                             break;
 
                         default:
@@ -2533,10 +2538,10 @@ namespace Capa_Vista_Navegador
             }
             else
             {
-                DialogResult validacion = MessageBox.Show(AyudaOK +" \n Solucione este error para continuar...", "Verificación de requisitos", MessageBoxButtons.OK);
+                DialogResult validacion = MessageBox.Show(AyudaOK + " \n Solucione este error para continuar...", "Verificación de requisitos", MessageBoxButtons.OK);
                 if (validacion == DialogResult.OK)
                 {
-                    
+
                 }
             }
         }
@@ -2566,13 +2571,13 @@ namespace Capa_Vista_Navegador
         {
             Capa_Controlador_Reporteria.Controlador controlador = new Capa_Controlador_Reporteria.Controlador();
 
-        
+
             ObtenerIdAplicacion(idAplicacion);
             string ruta = controlador.queryRuta(idAplicacion);
             if (!string.IsNullOrEmpty(idAplicacion))
             {
                 Capa_Vista_Reporteria.visualizar visualizar = new Capa_Vista_Reporteria.visualizar(ruta);
-               // MessageBox.Show(ruta);
+                // MessageBox.Show(ruta);
                 visualizar.ShowDialog();
             }
             /*sring llave = "";
@@ -2600,13 +2605,13 @@ namespace Capa_Vista_Navegador
         private void btn_Reportes_Principal_Click(object sender, EventArgs e)
         {
             menu_reporteria reportes = new menu_reporteria();
-            
+
             reportes.Show();
         }
 
         private void Btn_Consultar_Click(object sender, EventArgs e)
         {
-          
+
             string idUsuario1 = logic.ObtenerIdUsuario(idUsuario);
             //MessageBox.Show("el usuario es: " + idUsuario1 + " " + idAplicacion);
             sentencia sen = new sentencia();
@@ -2625,12 +2630,19 @@ namespace Capa_Vista_Navegador
             }
             else
             {
-               ConsultaSimple nueva = new ConsultaSimple(tabla);
+                ConsultaSimple nueva = new ConsultaSimple(tabla);
                 nueva.Show();
             }
 
             //habilitar y deshabilitar según Usuario
             botonesYPermisosSinMensaje();
         }
+
     }
 }
+   //     private void button1_Click(object sender, EventArgs e)
+   //     {
+
+   //     }
+   // }
+
