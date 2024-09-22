@@ -15,7 +15,6 @@ namespace Capa_Controlador_Navegador
         char punto = (char)46;
         char bs = (char)8;
         char dosp = (char)58;
-        //char arr = (char)64;
         int contador;
         int contadordp = 0;
 
