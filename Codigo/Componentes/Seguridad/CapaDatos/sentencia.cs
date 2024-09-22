@@ -24,7 +24,7 @@ namespace CapaDatos
         }
         //Kateryn De Leon
         //buscar usuarios
-        public OdbcDataAdapter consultarUsuarios()
+        public OdbcDataAdapter funconsultarUsuarios()
         {
             cn.conectar();
             string sqlUsuarios = "SELECT nombre_usuario FROM tbl_usuarios WHERE estado_usuario = 1 "; //WHERE estado_usuario = 1
@@ -57,7 +57,7 @@ namespace CapaDatos
         //****************************************Kevin López***************************************************
 
         //#############INICIO ALYSON RODRIGUEZ 9959-21-829
-        public OdbcDataAdapter consultarAplicaciones(string nombreModulo)
+        public OdbcDataAdapter funconsultarAplicaciones(string nombreModulo)
         {
             cn.conectar();
 
@@ -88,15 +88,15 @@ namespace CapaDatos
 
 
         //Trabajado María José Véliz
-        public OdbcDataAdapter funcInsertarPermisosUA(string codigoUsuario, string nombreAplicacion, string ingresar, string consulta, string modificar, string eliminar, string imprimir)
+        public OdbcDataAdapter funInsertarPermisosUA(string sCodigoUsuario, string sNombreAplicacion, string sIngresar, string sConsulta, string sModificar, string sEliminar, string sImprimir)
         {
             string sCodigoAplicacion = " ";
-            string sCodigoUsuario = " ";
+            string sCodigoUsuarios = " ";
 
             try
             {
                 // Obtén el código de la aplicación
-                OdbcCommand sqlCodigoModulo = new OdbcCommand("SELECT Pk_id_aplicacion FROM Tbl_aplicaciones WHERE nombre_aplicacion = '" + nombreAplicacion + "' ", cn.conectar());
+                OdbcCommand sqlCodigoModulo = new OdbcCommand("SELECT Pk_id_aplicacion FROM Tbl_aplicaciones WHERE nombre_aplicacion = '" + sNombreAplicacion + "' ", cn.conectar());
                 OdbcDataReader almacena = sqlCodigoModulo.ExecuteReader();
 
                 while (almacena.Read() == true)
@@ -106,22 +106,22 @@ namespace CapaDatos
 
 
                 // Obtén el código del usuario
-                OdbcCommand sqlCodigoUsuario = new OdbcCommand("SELECT Pk_id_usuario FROM Tbl_usuarios WHERE nombre_usuario = '" + codigoUsuario + "' ", cn.conectar());
+                OdbcCommand sqlCodigoUsuario = new OdbcCommand("SELECT Pk_id_usuario FROM Tbl_usuarios WHERE nombre_usuario = '" + sCodigoUsuario + "' ", cn.conectar());
                 OdbcDataReader almacenaUsuario = sqlCodigoUsuario.ExecuteReader();
 
                 while (almacenaUsuario.Read() == true)
                 {
-                    sCodigoUsuario = almacenaUsuario.GetString(0);
+                    sCodigoUsuarios = almacenaUsuario.GetString(0);
                 }
                 almacenaUsuario.Close();
                 sqlCodigoUsuario.Connection.Close();
 
                 // Inserta los permisos usando el código de la aplicación y el código del usuario
-                string sqlInsertarPermisosUA = "INSERT INTO Tbl_permisos_aplicaciones_usuario(Fk_id_usuario, Fk_id_aplicacion, guardar_permiso, buscar_permiso, modificar_permiso, eliminar_permiso, imprimir_permiso) VALUES ('" + sCodigoUsuario + "','" + sCodigoAplicacion + "', '" + ingresar + "', '" + consulta + "', '" + modificar + "', '" + eliminar + "', '" + imprimir + "');";
+                string sqlInsertarPermisosUA = "INSERT INTO Tbl_permisos_aplicaciones_usuario(Fk_id_usuario, Fk_id_aplicacion, guardar_permiso, buscar_permiso, modificar_permiso, eliminar_permiso, imprimir_permiso) VALUES ('" + sCodigoUsuario + "','" + sCodigoAplicacion + "', '" + sIngresar + "', '" + sConsulta + "', '" + sModificar + "', '" + sEliminar + "', '" + sImprimir + "');";
                 // Ejecuta el comando de inserción
                 OdbcDataAdapter dataPermisosUA = new OdbcDataAdapter(sqlInsertarPermisosUA, cn.conectar());
                 // Inserta en la bitácora
-                insertarBitacora(idUsuario, "Asignó aplicación: " + nombreAplicacion + " a usuario: " + codigoUsuario, "Tbl_permisos_aplicaciones_usuario");
+                insertarBitacora(idUsuario, "Asignó aplicación: " + sNombreAplicacion + " a usuario: " + sCodigoUsuario, "Tbl_permisos_aplicaciones_usuario");
 
 
                 almacena.Close();
@@ -138,7 +138,7 @@ namespace CapaDatos
         //Termina
 
         //Trabajado por ALyson Rodriguez 9959-21-829
-        public OdbcDataAdapter funcMostrarUsuariosYPermisos(string TablaAplicacionUsuario)
+        public OdbcDataAdapter funMostrarUsuariosYPermisos(string sTablaAplicacionUsuario)
         {
             try
             {
