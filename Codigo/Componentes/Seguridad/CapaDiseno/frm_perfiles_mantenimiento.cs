@@ -48,7 +48,7 @@ namespace CapaDiseno
             txtcodigo.Focus();
         }
      
-
+        //Fernando García - 0901-21-581
         private void Frm_perfiles_mantenimiento_Load(object sender, EventArgs e)
         {
             txt_buscarperfil.KeyPress += new KeyPressEventHandler(SoloNumeros_KeyPress);
@@ -73,9 +73,6 @@ namespace CapaDiseno
             txtdesc.MaxLength = 150;
             txtcodigo.MaxLength = 20;
         }
-
-      
-
 
 
         private void btn_bsucarperfil_Click_1(object sender, EventArgs e)
@@ -135,7 +132,7 @@ namespace CapaDiseno
                 else
                 {
                     btn_modif.Enabled = false;
-                    MessageBox.Show("No se encontró el perfil buscado");
+                    MessageBox.Show("No se encontró el perfil buscado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
             }
@@ -149,14 +146,19 @@ namespace CapaDiseno
         {
             btn_nuevo.Enabled = false;
             btn_actualizar.Enabled = false;
+            btn_eli.Enabled = false;
             gbbuscar.Enabled = false;
             btn_modif.Enabled = false;
             rbhabilitado.Checked = true;
-            gbestado.Enabled = false;
             txtnombre.Enabled = true;
             txtdesc.Enabled = true;
             btn_ingresar.Enabled = true;
             btn_cancel.Enabled = true;
+            gbestado.Enabled = true;
+            Gpb_datos.Enabled = true;
+            txtcodigo.Enabled = true;
+            rbinhabilitado.Enabled = true;
+            rbhabilitado.Enabled = true;
 
             try
             {
@@ -185,19 +187,20 @@ namespace CapaDiseno
         {
             txtnombre.Enabled = false;
             txtdesc.Enabled = false;
-
+            Gpb_datos.Enabled = false;
+            gbestado.Enabled = false;
 
 
             if (txtnombre.Text == "")
             {
-                MessageBox.Show("Falta Nombre de Perfil");
+                MessageBox.Show("Falta Nombre de Perfil", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 btn_nuevo.Enabled = true;
 
             }
             else if (txtdesc.Text == "")
             {
-                MessageBox.Show("Falta Descripcion del Perfil");
+                MessageBox.Show("Falta Descripcion del Perfil", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 btn_nuevo.Enabled = true;
 
             }
@@ -220,7 +223,7 @@ namespace CapaDiseno
                 }
 
                 logic.ingresarperfiles(txtcodigo.Text.ToString(), txtnombre.Text.ToString(), txtdesc.Text.ToString(), estado.ToString());
-                MessageBox.Show("Perfil Ingresado Correctamente");
+                MessageBox.Show("Perfil Ingresado Correctamente", "Perfil", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 limpiar();
                 gbbuscar.Enabled = true;
                 btn_nuevo.Enabled = true;
@@ -232,13 +235,13 @@ namespace CapaDiseno
         {
             if (txtnombre.Text == "")
             {
-                MessageBox.Show("Falta Nombre de Perfil");
+                MessageBox.Show("Falta Nombre de Perfil", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 btn_nuevo.Enabled = true;
 
             }
             else if (txtdesc.Text == "")
             {
-                MessageBox.Show("Falta Descripcion del Perfil");
+                MessageBox.Show("Falta Descripcion del Perfil", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 btn_nuevo.Enabled = true;
 
             }
@@ -260,8 +263,21 @@ namespace CapaDiseno
                     estado = "1";
                 }
 
-                logic.Actualizarperfil(txtcodigo.Text.ToString(), txtnombre.Text.ToString(), txtdesc.Text.ToString(), estado.ToString());
-                MessageBox.Show("Perfil Actualizado Correctamente");
+                // Confirmar antes de eliminar
+                var confirmResult = MessageBox.Show("¿Estás seguro de modificar este perfil?",
+                                                        "Confirmar Modificación",
+                                                        MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+
+                if (confirmResult == DialogResult.Yes)
+                {
+                    logic.Actualizarperfil(txtcodigo.Text.ToString(), txtnombre.Text.ToString(), txtdesc.Text.ToString(), estado.ToString());
+                    MessageBox.Show("Perfil Actualizado Correctamente", "Perfil", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("No se ha modificado el perfil seleccionado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
                 btn_modif.Enabled = false;
                 btn_actualizar.Enabled = false;
                 btn_cancel.Enabled = false;
@@ -271,8 +287,8 @@ namespace CapaDiseno
                 txtnombre.Enabled = false;
                 txtdesc.Enabled = false;
                 gbestado.Enabled = false;
+                btn_eli.Enabled = false;
                 limpiar();
-
             }
         }
 
@@ -288,6 +304,7 @@ namespace CapaDiseno
             rbhabilitado.Enabled = true;
             rbinhabilitado.Enabled = true;
             gbestado.Enabled = true;
+            Gpb_datos.Enabled = true;
         }
 
         /* creado por Emerzon Garcia */
@@ -298,28 +315,31 @@ namespace CapaDiseno
                 // Confirmar antes de eliminar
                 var confirmResult = MessageBox.Show("¿Estás seguro de eliminar este perfil?",
                                                     "Confirmar Eliminación",
-                                                    MessageBoxButtons.YesNo);
+                                                    MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (confirmResult == DialogResult.Yes)
                 {
                     // Llamar al método de la capa lógica para eliminar el perfil
                     logic.Eliminarperfil(txtcodigo.Text);
-
-                    // Opcionalmente, puedes desactivar botones o limpiar campos después de la eliminación
-                    btn_modif.Enabled = false;
-                    btn_actualizar.Enabled = false;
-                    btn_cancel.Enabled = false;
-                    btn_ingresar.Enabled = false;
-                    btn_nuevo.Enabled = true;
-                    txtcodigo.Enabled = false;
-                    gbestado.Enabled = false;  // Desactiva el grupo de radio buttons
-                    limpiar();  // Limpiar campos
                 }
             }
             else
             {
-                MessageBox.Show("No se ha seleccionado un perfil para eliminar.");
+                MessageBox.Show("No se ha seleccionado un perfil para eliminar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+
+            // Opcionalmente, puedes desactivar botones o limpiar campos después de la eliminación
+            btn_modif.Enabled = false;
+            btn_actualizar.Enabled = false;
+            btn_cancel.Enabled = false;
+            btn_ingresar.Enabled = false;
+            btn_nuevo.Enabled = true;
+            txtcodigo.Enabled = false;
+            gbestado.Enabled = false;  // Desactiva el grupo de radio buttons
+            btn_eli.Enabled = false;
+            Gpb_datos.Enabled = false;
+            gbbuscar.Enabled = true;
+            limpiar();  // Limpiar campos
         }
 
         private void btn_cancel_Click_1(object sender, EventArgs e)
@@ -334,6 +354,9 @@ namespace CapaDiseno
             gbbuscar.Enabled = true;
             btn_nuevo.Enabled = true;
             gbestado.Enabled = false;
+            btn_eli.Enabled = false;
+            Gpb_datos.Enabled = false;
+
         }
 
         private void button1_Click_1(object sender, EventArgs e)

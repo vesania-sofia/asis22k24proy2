@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_mostrar_bitacora));
             this.Dgv_bitacora = new System.Windows.Forms.DataGridView();
             this.Txt_dato = new System.Windows.Forms.TextBox();
             this.Cbo_columna = new System.Windows.Forms.ComboBox();
@@ -193,6 +194,7 @@
             this.Controls.Add(this.Btn_actualizar);
             this.Controls.Add(this.Dgv_bitacora);
             this.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frm_mostrar_bitacora";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Bitacora";
