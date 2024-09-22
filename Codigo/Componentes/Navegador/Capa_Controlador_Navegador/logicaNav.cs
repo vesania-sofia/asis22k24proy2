@@ -9,7 +9,7 @@ using Capa_Datos_Navegador;
 
 namespace Capa_Controlador_Navegador
 {
-
+    //******************************************** CODIGO HECHO POR TODOS SEGUN LO NECESITABAN ***************************** 
     public class logicaNav
     {
         sentencias sn = new sentencias();

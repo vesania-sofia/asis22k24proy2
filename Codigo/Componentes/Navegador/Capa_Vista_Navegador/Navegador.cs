@@ -251,6 +251,8 @@ namespace Capa_Vista_Navegador
 
         //-----------------------------------------------Funciones-----------------------------------------------//
 
+        //******************************************** CODIGO HECHO POR DIEGO MARROQUIN ***************************** 
+
         void colorTitulo()
         {
             foreach (Control componente in Controls)
@@ -274,11 +276,10 @@ namespace Capa_Vista_Navegador
             campodescriptivo = campodescri;
             columnaForanea = columnafora;
             columnaprimararelacionada = columnaprimaria;
-
-
-
-
         }
+        //******************************************** CODIGO HECHO POR DIEGO MARROQUIN ***************************** 
+
+        //******************************************** CODIGO HECHO POR BRAYAN HERNANDEZ ***************************** 
         public void ObtenerIdAplicacion(string idAplicacion)
         {
             this.idAplicacion = idAplicacion;
@@ -301,7 +302,9 @@ namespace Capa_Vista_Navegador
             pos = pos - 1;
             return dataGridView1.CurrentRow.Cells[pos].Value.ToString();
         }
+        //******************************************** CODIGO HECHO POR BRAYAN HERNANDEZ ***************************** 
 
+        //******************************************** CODIGO HECHO POR PABLO FLORES ***************************** 
         public string obtenerDatoCampos(int pos)
         {
             int i = 0;
@@ -337,7 +340,10 @@ namespace Capa_Vista_Navegador
         {
             alias.CopyTo(aliasC, 0);
         }
+        //******************************************** CODIGO HECHO POR PABLO FLORES ***************************** 
 
+
+        //******************************************** CODIGO HECHO POR VICTOR CASTELLANOS ***************************** 
         public void asignarAyuda(string ayudar)
         {
             string AyudaOK = logic.TestTabla("ayuda");
@@ -381,6 +387,9 @@ namespace Capa_Vista_Navegador
         {
             idRepo = repo;
         }
+        //******************************************** CODIGO HECHO POR VICTOR CASTELLANOS ***************************** 
+
+        //******************************************** CODIGO HECHO POR JOSUE CACAO ***************************** 
         public void asignarSalida(Form salida)
         {
             cerrar = salida;
@@ -405,7 +414,10 @@ namespace Capa_Vista_Navegador
             nomForm = nom;
             lblTabla.Text = nomForm;
         }
+        //******************************************** CODIGO HECHO POR JOSUE CACAO ***************************** 
 
+
+        //******************************************** CODIGO HECHO POR ANIKA ESCOTO***************************** 
         public void asignarComboConTabla(string tabla, string campoClave, string campoDisplay, int modo)
         {
             // Verifica si la tabla existe
@@ -429,7 +441,9 @@ namespace Capa_Vista_Navegador
                 }
             }
         }
+        //******************************************** CODIGO HECHO POR ANIKA ESCOTO***************************** 
 
+        //******************************************** CODIGO HECHO POR SEBASTIAN LETONA***************************** 
 
         public void asignarColorFondo(Color nuevo)
         {
@@ -467,7 +481,10 @@ namespace Capa_Vista_Navegador
                 }
             }
         }
+        
 
+
+        
         void limpiarListaItems()
         {
             for (int i = 0; i < listaItems.Length; i++)
@@ -475,8 +492,10 @@ namespace Capa_Vista_Navegador
                 listaItems[i] = "";
             }
         }
+        //******************************************** CODIGO HECHO POR SEBASTIAN LETONA***************************** 
 
 
+        //******************************************** CODIGO HECHO POR JORGE AVILA***************************** 
         void CreaComponentes()
         {
             string[] Campos = logic.campos(tabla);
@@ -596,6 +615,11 @@ namespace Capa_Vista_Navegador
                 i++;
             }
         }
+        //******************************************** CODIGO HECHO POR JORGE AVILA***************************** 
+
+
+        //******************************************** CODIGO HECHO POR DIEGO MARROQUIN***************************** 
+
         void func_click(object sender, EventArgs e)
         {
             foreach (Control componente in Controls)
@@ -619,6 +643,9 @@ namespace Capa_Vista_Navegador
                 }
             }
         }
+        //******************************************** CODIGO HECHO POR DIEGO MARROQUIN***************************** 
+
+        //******************************************** CODIGO HECHO POR PABLO FLORES***************************** 
         void crearBotonEstado(String nom)
         {
             Button btn = new Button();
@@ -646,7 +673,10 @@ namespace Capa_Vista_Navegador
             pos++;
 
         }
+        //******************************************** CODIGO HECHO POR PABLO FLORES***************************** 
 
+
+        //******************************************** CODIGO HECHO POR EMANUEL BARAHONA***************************** 
         void crearTextBoxvarchar(String nom)
         {
             TextBox tb = new TextBox();
@@ -673,7 +703,7 @@ namespace Capa_Vista_Navegador
             //+= new System.Windows.Forms.KeyPressEventHandler(this.Txt_telefono_KeyPress);
             pos++;
         }
-
+        
 
         void crearcampodecimales(String nom)
         {
@@ -689,7 +719,9 @@ namespace Capa_Vista_Navegador
 
 
         }
+        //******************************************** CODIGO HECHO POR EMANUEL BARAHONA***************************** 
 
+        //******************************************** CODIGO HECHO POR VICTOR CASTELLANOS***************************** 
         private void Paravalidardecimales_KeyPress(object sender, KeyPressEventArgs e)
         {
             v.Camposdecimales(e);
@@ -749,10 +781,12 @@ namespace Capa_Vista_Navegador
             this.Controls.Add(cb);
             pos++;
         }
+        //******************************************** CODIGO HECHO POR VICTOR CASTELLANOS***************************** 
 
 
 
 
+        //******************************************** CODIGO HECHO POR BRAYAN HERNANDEZ***************************** 
         void crearDateTimePicker(String nom)
         {
             DateTimePicker dtp = new DateTimePicker();
@@ -816,7 +850,10 @@ namespace Capa_Vista_Navegador
                 head++;
             }
         }
+        //******************************************** CODIGO HECHO POR BRAYAN HERNANDEZ***************************** 
 
+
+        //******************************************** CODIGO HECHO POR MATY MANCILLA***************************** 
         string crearDelete()// crea el query de delete
         {
             //Cambiar el estadoPelicula por estado
@@ -895,7 +932,9 @@ namespace Capa_Vista_Navegador
             //sn.insertarBitacora(idUsuario, "Se eliminó un registro", tabla);
             return query;
         }
+        //******************************************** CODIGO HECHO POR MATY MANCILLA***************************** 
 
+        //******************************************** CODIGO HECHO POR JOEL LOPEZ***************************** 
         string crearInsert(string nombretabla)
         {
             string query = "INSERT INTO " + nombretabla + " (";
@@ -942,6 +981,10 @@ namespace Capa_Vista_Navegador
 
             return query;
         }
+
+        //******************************************** CODIGO HECHO POR JOEL LOPEZ***************************** 
+
+        //******************************************** CODIGO HECHO POR BRAYAN HERNANDEZ***************************** 
         private IEnumerable<Control> GetAllControls(Control container)
         {
             foreach (Control control in container.Controls)
@@ -1020,7 +1063,9 @@ namespace Capa_Vista_Navegador
 
             return query;
         }
+        //******************************************** CODIGO HECHO POR BRAYAN HERNANDEZ***************************** 
 
+        //******************************************** CODIGO HECHO POR PABLO FLORES***************************** 
         public void guardadoforsozo()
         {
             logic.nuevoQuery(crearInsert(tabla));
@@ -1047,8 +1092,11 @@ namespace Capa_Vista_Navegador
 
         }
 
+        //******************************************** CODIGO HECHO POR PABLO FLORES***************************** 
+
         //-----------------------------------------------Funcionalidad de Botones-----------------------------------------------//
 
+        //******************************************** CODIGO HECHO POR DIEGO MARROQUIN***************************** 
         private void Btn_Ingresar_Click(object sender, EventArgs e)
         {
 
@@ -1118,6 +1166,12 @@ namespace Capa_Vista_Navegador
             Btn_Eliminar.Enabled = false;
 
         }
+
+
+        //******************************************** CODIGO HECHO POR DIEGO MARROQUIN***************************** 
+
+
+        //******************************************** CODIGO HECHO POR BRAYAN HERNANDEZ ***************************** 
         private void Btn_Modificar_Click(object sender, EventArgs e)
         {
             try
@@ -1224,11 +1278,15 @@ namespace Capa_Vista_Navegador
                 );
             }
         }
+
+        //******************************************** CODIGO HECHO POR BRAYAN HERNANDEZ***************************** 
+
+        //******************************************** CODIGO HECHO POR JORGE AVILA***************************** 
         private void Btn_Cancelar_Click(object sender, EventArgs e)
         {
             try
             {
-                sn.insertarBitacora(idUsuario, "Se presiono el boton cancelar en " + tabla, tabla);
+                sn.insertarBitacora(idUsuario, "Se presiono el boton cancelar en " + tabla, tabla,idAplicacion);
                 // Mostrar un mensaje de confirmación antes de cancelar la operación actual
                 DialogResult result = MessageBox.Show(
                     "Está a punto de cancelar los cambios no guardados.\n\n" +
@@ -1317,8 +1375,11 @@ namespace Capa_Vista_Navegador
                 );
             }
         }
+        //******************************************** CODIGO HECHO POR JORGE AVILA ***************************** 
 
 
+
+        //******************************************** CODIGO HECHO POR VICTOR CASTELLANOS***************************** 
         private void Btn_Eliminar_Click(object sender, EventArgs e)
         {
             try
@@ -1391,7 +1452,7 @@ namespace Capa_Vista_Navegador
                 // Habilitar/deshabilitar botones según los permisos del usuario
                 botonesYPermisosSinMensaje(); ;
                 presionado = true;
-                sn.insertarBitacora(idUsuario, "Se actualizo el estado en " + tabla, tabla);
+                sn.insertarBitacora(idUsuario, "Se actualizo el estado en " + tabla, tabla, idAplicacion);
             }
             catch (Exception ex)
             {
@@ -1406,33 +1467,9 @@ namespace Capa_Vista_Navegador
                 );
             }
         }
+        //******************************************** CODIGO HECHO POR VICTOR CASTELLANOS***************************** 
 
-        /*
-                private void Btn_Consultar_Click(object sender, EventArgs e)
-                {
-                    //DLL DE CONSULTAS
-                    sentencia con = new sentencia();
-                    bool per1 = con.consultarPermisos(idUsuario, idAplicacion, 1);
-                    bool per2 = con.consultarPermisos(idUsuario, idAplicacion, 2);
-                    bool per3 = con.consultarPermisos(idUsuario, idAplicacion, 3);
-                    bool per4 = con.consultarPermisos(idUsuario, idAplicacion, 4);
-                    bool per5 = con.consultarPermisos(idUsuario, idAplicacion, 5);
-
-                    if (per1==true && per2 == true && per3 == true && per4 == true && per5 == true)
-                    {
-                        Compleja nuevo = new Compleja(idUsuario);
-                        nuevo.Show();
-                    }
-                    else
-                    {
-                         Simple nueva = new Simple(idUsuario);
-                        nueva.Show();
-                    }
-
-                    //habilitar y deshabilitar según Usuario
-                    botonesYPermisos();
-                }
-        */
+        //******************************************** CODIGO HECHO POR SEBASTIAN LETONA***************************** 
         private void Btn_Imprimir_Click(object sender, EventArgs e)
         {
             //DLL DE IMPRESION, FORATO DE REPORTES.
@@ -1460,7 +1497,9 @@ namespace Capa_Vista_Navegador
             //habilitar y deshabilitar según Usuario
             botonesYPermisosSinMensaje();
         }
+        //******************************************** CODIGO HECHO POR SEBASTIAN LETONA***************************** 
 
+        //******************************************** CODIGO HECHO POR VICTOR CASTELLANOS***************************** 
         private void Btn_Refrescar_Click(object sender, EventArgs e)
         {
             try
@@ -1536,7 +1575,9 @@ namespace Capa_Vista_Navegador
             }
         }
 
+        //******************************************** CODIGO HECHO POR VICTOR CASTELLANOS***************************** 
 
+        //******************************************** CODIGO HECHO POR BRAYAN HERNANDEZ***************************** 
 
         private void Btn_Anterior_Click(object sender, EventArgs e)
         {
@@ -1652,6 +1693,11 @@ namespace Capa_Vista_Navegador
 
             }
         }
+
+        //******************************************** CODIGO HECHO POR BRAYAN HERNANDEZ***************************** 
+
+
+        //******************************************** CODIGO HECHO POR JOEL LOPEZ***************************** 
 
         private void Btn_FlechaFin_Click(object sender, EventArgs e)
         {
@@ -1775,7 +1821,9 @@ namespace Capa_Vista_Navegador
             }
 
         }
+        //******************************************** CODIGO HECHO POR JOEL LOPEZ***************************** 
 
+        //******************************************** CODIGO HECHO POR VICTOR CASTELLANOS***************************** 
         private void Btn_Ayuda_Click(object sender, EventArgs e)
         {
             try
@@ -1796,7 +1844,9 @@ namespace Capa_Vista_Navegador
 
             botonesYPermisosSinMensaje();
         }
+        //******************************************** CODIGO HECHO POR VICTOR CASTELLANOS***************************** 
 
+        //******************************************** CODIGO HECHO POR ANIKA ESCOTO ***************************** 
 
         private void Btn_Salir_Click(object sender, EventArgs e)
         {
@@ -1927,7 +1977,9 @@ namespace Capa_Vista_Navegador
                 );
             }
         }
+        //******************************************** CODIGO HECHO POR ANIKA ESCOTO ***************************** 
 
+        //******************************************** CODIGO HECHO POR VICTOR CASTELLANOS ***************************** 
         public void botonesYPermisosSinMensaje()
         {
             try
@@ -1957,7 +2009,9 @@ namespace Capa_Vista_Navegador
             }
         }
 
+        //******************************************** CODIGO HECHO POR VICTOR CASTELLANOS ***************************** 
 
+        //******************************************** CODIGO HECHO POR JOSUE CACAO ***************************** 
         public void botonesYPermisos()
         {
             try
@@ -2024,7 +2078,9 @@ namespace Capa_Vista_Navegador
             }
         }
 
+        //******************************************** CODIGO HECHO POR JOSUE CACAO ***************************** 
 
+        //******************************************** CODIGO HECHO POR BRAYAN HERNANDEZ ***************************** 
         private void Btn_Guardar_Click(object sender, EventArgs e)
         {
             try
@@ -2095,13 +2151,13 @@ namespace Capa_Vista_Navegador
 
                         logic.insertarDatosEnMultiplesTablas(queries);
                         MessageBox.Show("El registro ha sido actualizado correctamente en todas las tablas.", "Actualización Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        sn.insertarBitacora(idUsuario, "Actualizó registros en múltiples tablas", tabla);
+                        sn.insertarBitacora(idUsuario, "Actualizó registros en múltiples tablas", tabla,idAplicacion);
                         break;
 
                     case 2: // Insertar
                         string queryPrimeraTabla = crearInsert(tabla);
                         logic.nuevoQuery(queryPrimeraTabla);
-                        sn.insertarBitacora(idUsuario, "Se insertó en " + tabla, tabla);
+                        sn.insertarBitacora(idUsuario, "Se insertó en " + tabla, tabla, idAplicacion);
 
                         string ultimoIdPrimeraTabla = logic.lastID(tabla);
 
@@ -2171,12 +2227,12 @@ namespace Capa_Vista_Navegador
                 );
             }
         }
-
+        //******************************************** CODIGO HECHO POR BRAYAN HERNANDEZ ***************************** 
 
 
         // Aquí está la función crearInsertFactura
 
-
+        //******************************************** CODIGO HECHO POR MATY MANCILLA ***************************** 
         private void DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int i = 0;
@@ -2204,11 +2260,12 @@ namespace Capa_Vista_Navegador
 
             }
         }
-
+        //******************************************** CODIGO HECHO POR MATY MANCILLA ***************************** 
         private void Contenido_Click(object sender, EventArgs e)
         {
 
         }
+        //******************************************** CODIGO HECHO POR EMANUEL BARAHONA ***************************** 
 
         private void Btn_Ayuda_Click_1(object sender, EventArgs e)
         {
@@ -2246,7 +2303,7 @@ namespace Capa_Vista_Navegador
                 }
             }
         }
-
+        //******************************************** CODIGO HECHO POR EMANUEL BARAHONA ***************************** 
         private void DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -2257,6 +2314,7 @@ namespace Capa_Vista_Navegador
 
         }
 
+        //******************************************** CODIGO HECHO POR JOSUE CACAO ***************************** 
         private void button7_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -2283,7 +2341,9 @@ namespace Capa_Vista_Navegador
 
             reportes.Show();
         }
+        //******************************************** CODIGO HECHO POR JOSUE CACAO ***************************** 
 
+        //******************************************** CODIGO HECHO POR BRAYAN HERNANDEZ ***************************** 
         private void Btn_Consultar_Click(object sender, EventArgs e)
         {
 
@@ -2312,7 +2372,10 @@ namespace Capa_Vista_Navegador
             //habilitar y deshabilitar según Usuario
             botonesYPermisosSinMensaje();
         }
+        //******************************************** CODIGO HECHO POR BRAYAN HERNANDEZ ***************************** 
 
+
+        //******************************************** CODIGO HECHO POR VICTOR CASTELLANOS ***************************** 
         private void btn_Reportes_Principal_Click_1(object sender, EventArgs e)
         {
             menu_reporteria reportes = new menu_reporteria();
@@ -2325,6 +2388,7 @@ namespace Capa_Vista_Navegador
             Ayudas ayudas = new Ayudas();
             ayudas.Show();
         }
+        //******************************************** CODIGO HECHO POR VICTOR CASTELLANOS ***************************** 
     }
 }
   

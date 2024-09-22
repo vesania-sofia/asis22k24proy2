@@ -26,7 +26,7 @@ namespace Capa_Vista_Navegador
             llenartabla();
 
         }
-
+        //******************************************** CODIGO HECHO POR VICTOR CASTELLANOS ***************************** 
         private void Button1_Click(object sender, EventArgs e)
         {
             OpenFileDialog rutaFile = new OpenFileDialog();
@@ -79,6 +79,10 @@ namespace Capa_Vista_Navegador
         }
 
 
+
+        //******************************************** CODIGO HECHO POR VICTOR CASTELLANOS ***************************** 
+
+        //******************************************** CODIGO HECHO POR BRAYAN HERNANDEZ ***************************** 
 
         string crearInsert()// crea el query de insert
         {
@@ -201,5 +205,7 @@ namespace Capa_Vista_Navegador
 
 			}
 		}
-	}
+
+        //******************************************** CODIGO HECHO POR BRAYAN HERNANDEZ ***************************** 
+    }
 }
