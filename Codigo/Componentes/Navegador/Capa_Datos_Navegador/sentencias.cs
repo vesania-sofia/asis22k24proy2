@@ -12,73 +12,73 @@ namespace Capa_Datos_Navegador
     {
 
         conexion cn = new conexion();
-        //mostrar los datos en DataGridView de forma DESC y que tengan estado 1 =>Randy 
+       
         public OdbcDataAdapter llenaTbl(string tabla, string tablaRelacionada, string campoDescriptivo, string columnaForanea, string columnaPrimariaRelacionada)
         {
-            // Obtener la conexión
+            
             OdbcConnection conn = cn.probarConexion();
 
             try
             {
-                string[] camposDesc = obtenerCampos(tabla); // Obtener los campos de la tabla principal
-                string camposSelect = tabla + "." + camposDesc[0]; // Seleccionar el primer campo (normalmente el ID)
+                string[] camposDesc = obtenerCampos(tabla); 
+                string camposSelect = tabla + "." + camposDesc[0]; 
 
-                // Diccionario para detectar nombres de columnas repetidas y asignarles alias
+               
                 Dictionary<string, int> columnasRegistradas = new Dictionary<string, int>();
 
-                // Evitar duplicar la selección de id_perro
+                
                 columnasRegistradas[camposDesc[0]] = 1;
 
-                // Obtener las propiedades de las columnas de la tabla principal
+                
                 var columnasPropiedades = obtenerColumnasYPropiedades(tabla);
 
-                // Selección de columnas de la tabla principal
+                
                 foreach (var (nombreColumna, esAutoIncremental, esClaveForanea, esTinyInt) in columnasPropiedades)
                 {
-                    // No duplicar el campo que ya se seleccionó como ID
+                   
                     if (nombreColumna == camposDesc[0])
                         continue;
 
                     if (esClaveForanea && tablaRelacionada != null && campoDescriptivo != null && columnaForanea != null && columnaPrimariaRelacionada != null)
                     {
-                        // Agregar la columna descriptiva de la tabla relacionada
+                       
                         camposSelect += ", " + tablaRelacionada + "." + campoDescriptivo + " AS " + campoDescriptivo;
                         columnasRegistradas[campoDescriptivo] = 1;
                     }
                     else
                     {
-                        // Añadir las columnas restantes de la tabla principal
+                        
                         camposSelect += ", " + tabla + "." + nombreColumna;
                         columnasRegistradas[nombreColumna] = 1;
                     }
                 }
 
-                // Armado del SQL dinámico
+                
                 string sql = "SELECT " + camposSelect + " FROM " + tabla;
 
-                // Añadir el LEFT JOIN si es necesario
+               
                 if (!string.IsNullOrEmpty(tablaRelacionada) && !string.IsNullOrEmpty(columnaForanea) && !string.IsNullOrEmpty(columnaPrimariaRelacionada))
                 {
                     sql += " LEFT JOIN " + tablaRelacionada + " ON " + tabla + "." + columnaForanea + " = " + tablaRelacionada + "." + columnaPrimariaRelacionada;
                 }
 
-                // Condición de estado
+               
                 sql += " WHERE " + tabla + ".estado = 0 OR " + tabla + ".estado = 1";
 
-                // Ordenar por el primer campo
+                
                 sql += " ORDER BY " + camposDesc[0] + " DESC;";
 
-                // Mostrar la consulta generada para depuración
+                
                 Console.WriteLine(sql);
 
-                // Crear el OdbcDataAdapter
+                
                 OdbcDataAdapter dataTable = new OdbcDataAdapter(sql, conn);
 
                 return dataTable;
             }
             finally
             {
-                // Cerrar la conexión si está abierta
+               
                 if (conn != null && conn.State == ConnectionState.Open)
                 {
                     conn.Close();
@@ -89,11 +89,11 @@ namespace Capa_Datos_Navegador
 
 
 
-        //obtener ID siguiente => Randy             
+                    
         public string obtenerId(string tabla)
         {
-            string[] camposDesc = obtenerCampos(tabla); //string para almacenar los campos de OBTENERCAMPOS y utilizar el 1ro
-            string sql = "SELECT MAX(" + camposDesc[0] + ") FROM " + tabla + ";"; //SELECT MAX(idFuncion) FROM funciones            
+            string[] camposDesc = obtenerCampos(tabla); 
+            string sql = "SELECT MAX(" + camposDesc[0] + ") FROM " + tabla + ";";             
             string sid = "";
             OdbcCommand command = new OdbcCommand(sql, cn.probarConexion());
             OdbcDataReader reader = command.ExecuteReader();
@@ -117,8 +117,8 @@ namespace Capa_Datos_Navegador
             }
             return sid;
         }
-        //obtener la ultima columna de la funcion DESCRIBE => Randy 
-        public string[] obtenerExtra(string tabla)//metodo que obtiene la lista de los valores EXTRA que tiene un campo
+       
+        public string[] obtenerExtra(string tabla)
         {
             string[] Campos = new string[30];
             int i = 0;
@@ -129,50 +129,33 @@ namespace Capa_Datos_Navegador
                 Campos[i] = reader.GetValue(5).ToString();
                 i++;
             }
-            return Campos;// devuelve un arreglo con los valores EXTRA
-        }
-
-        /**/
-        public OdbcDataAdapter llenaTbl2()// metodo  que obtinene el contenio de una tabla
-        {
-            string sql = "SELECT Id_ayuda, Ruta, indice FROM ayuda";
-            OdbcDataAdapter dataTable = new OdbcDataAdapter(sql, cn.probarConexion());
-            return dataTable;
+            return Campos;
         }
 
         public string ObtenerIdUsuarioPorUsername(string username)
         {
-            // Consulta SQL para obtener el Pk_id_usuario basado en el username_usuario
+            
             string sql = "SELECT Pk_id_usuario FROM tbl_usuarios WHERE username_usuario = ?";
 
-            // Crear comando ODBC
             using (OdbcCommand command = new OdbcCommand(sql, cn.probarConexion()))
             {
-                // Agregar el parámetro de username
                 command.Parameters.AddWithValue("@username", username);
 
-                // Ejecutar el comando y obtener el resultado
                 using (OdbcDataReader reader = command.ExecuteReader())
                 {
                     if (reader.Read())
                     {
-                        // Si hay resultado, convertir el Pk_id_usuario a string y retornarlo
                         return reader["Pk_id_usuario"].ToString();
                     }
                     else
                     {
-                        // Si no se encuentra, retornar un valor indicador (ej. "-1")
                         return "-1";
                     }
                 }
             }
         }
 
-
-
-        /**/
-
-        public int contarAlias(string tabla)// metodo  que obtinene el contenio de una tabla
+        public int contarAlias(string tabla)
         {
             int Campos = 0;
 
@@ -188,11 +171,10 @@ namespace Capa_Datos_Navegador
                 }
             }
             catch (Exception ex) { Console.WriteLine(ex.Message.ToString() + " \nError en obtenerTipo, revise los parámetros de la tabla  \n -" + tabla.ToUpper() + "\n -"); }
-            return Campos;// devuelve un arreglo con los tiposlos campos
+            return Campos;
         }
 
-
-        public int contarReg(string idindice)// metodo  que obtinene el contenio de una tabla
+        public int contarReg(string idindice)
         {
             int Campos = 0;
             try
@@ -207,26 +189,10 @@ namespace Capa_Datos_Navegador
                 }
             }
             catch (Exception ex) { Console.WriteLine(ex.Message.ToString() + " \nError en obtenerTipo, revise los parámetros de la tabla  \n -" + idindice.ToUpper() + "\n -"); }
-            return Campos;// devuelve un arreglo con los tiposlos campos
-        }
-        public string primerCampo(string tabla)// metodo  que obtinene el contenio de una tabla
-        {
-            string Campos = "";
-
-            try
-            {
-                OdbcCommand command = new OdbcCommand("DESCRIBE " + tabla + "", cn.probarConexion());
-                OdbcDataReader reader = command.ExecuteReader();
-
-                reader.Read();
-
-                Campos = reader.GetValue(0).ToString();
-            }
-            catch (Exception ex) { Console.WriteLine(ex.Message.ToString() + " \nError en obtenerTipo, revise los parámetros de la tabla  \n -" + tabla.ToUpper() + "\n -"); }
-            return Campos;// devuelve un arreglo con los tipos de campos
+            return Campos;
         }
 
-        public string modRuta(string idindice)// metodo  que obtinene el contenio de una tabla
+        public string modRuta(string idindice)
         {
 
 
@@ -238,14 +204,11 @@ namespace Capa_Datos_Navegador
                 indice2 = reader.GetValue(1).ToString();
 
             }
-            return indice2;// devuelve un arrgeglo con los campos
-
+            return indice2;
 
         }
-        public string rutaReporte(string idindice)// metodo  que obtinene el contenio de una tabla
+        public string rutaReporte(string idindice)
         {
-
-
             string indice2 = "";
             OdbcCommand command = new OdbcCommand("SELECT ruta FROM tbl_aplicaciones WHERE Pk_id_aplicacion = " + idindice + ";", cn.probarConexion());
             OdbcDataReader reader = command.ExecuteReader();
@@ -258,13 +221,9 @@ namespace Capa_Datos_Navegador
             reader.Close();
             return indice2;
 
-
-
         }
-        public string modIndice(string idindice)// metodo  que obtinene el contenio de una tabla
+        public string modIndice(string idindice)
         {
-
-
             string indice = " ";
             OdbcCommand command = new OdbcCommand("SELECT * FROM ayuda WHERE id_ayuda = " + idindice + ";", cn.probarConexion());
             OdbcDataReader reader = command.ExecuteReader();
@@ -274,31 +233,9 @@ namespace Capa_Datos_Navegador
             }
 
 
-            return indice;// devuelve un arrgeglo con los campos
-
+            return indice;
 
         }
-
-        /*
-                public string VerificacionR(string idindice)// metodo  que obtinene el contenio de una tabla
-                {
-
-
-                    string indice = " ";
-
-                    OdbcCommand command = new OdbcCommand("SELECT COUNT(*) FROM ayuda", cn.probarConexion());
-                    //OdbcDataReader reader = command.ExecuteReader();
-                    while (reader.Read())
-                    {
-                        indice = reader.GetValue(0).ToString();
-                    }
-
-
-                    return indice;// devuelve un arrgeglo con los campos
-
-                }
-
-        */
 
         public string ProbarTabla(string tabla)
         {
@@ -361,17 +298,17 @@ namespace Capa_Datos_Navegador
 
             try
             {
-                conn = cn.probarConexion(); // Abrir la conexión
+                conn = cn.probarConexion(); 
                 OdbcCommand command = new OdbcCommand("DESCRIBE " + tabla + "", conn);
                 OdbcDataReader reader = command.ExecuteReader();
 
                 while (reader.Read())
                 {
-                    Campos[i] = reader.GetValue(0).ToString();  // Obtenemos el nombre de la columna
+                    Campos[i] = reader.GetValue(0).ToString();  
                     i++;
                 }
 
-                reader.Close(); // Cerrar el lector
+                reader.Close(); 
             }
             catch (Exception ex)
             {
@@ -379,7 +316,7 @@ namespace Capa_Datos_Navegador
             }
             finally
             {
-                // Cerrar la conexión si está abierta
+               
                 if (conn != null && conn.State == System.Data.ConnectionState.Open)
                 {
                     conn.Close();
@@ -387,9 +324,8 @@ namespace Capa_Datos_Navegador
                 }
             }
 
-            return Campos;  // Devolver un arreglo con los nombres de las columnas
+            return Campos;  
         }
-
 
         public List<(string nombreColumna, bool esAutoIncremental, bool esClaveForanea, bool esTinyInt)> obtenerColumnasYPropiedades(string nombreTabla)
         {
@@ -397,15 +333,12 @@ namespace Capa_Datos_Navegador
 
             try
             {
-                // Paso 1: Obtener las columnas y propiedades (como autoincremental y tipo de dato)
                 string queryColumnas = $"SHOW COLUMNS FROM {nombreTabla};";
                 OdbcCommand comando = new OdbcCommand(queryColumnas, cn.probarConexion());
                 OdbcDataReader lector = comando.ExecuteReader();
 
-                // Crear un diccionario para almacenar las claves foráneas
                 HashSet<string> clavesForaneas = new HashSet<string>();
 
-                // Paso 2: Obtener las claves foráneas de la tabla desde INFORMATION_SCHEMA
                 string queryClavesForaneas = $@"
                     SELECT COLUMN_NAME
                     FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE
@@ -416,23 +349,21 @@ namespace Capa_Datos_Navegador
                 while (lectorClaves.Read())
                 {
                     string nombreColumnaForanea = lectorClaves.GetString(0);
-                    clavesForaneas.Add(nombreColumnaForanea);  // Añadir la clave foránea al conjunto
+                    clavesForaneas.Add(nombreColumnaForanea);
                 }
 
                 lectorClaves.Close();
 
-                // Paso 3: Procesar las columnas y determinar si son autoincrementales, claves foráneas o de tipo TINYINT
                 while (lector.Read())
                 {
-                    string nombreColumna = lector.GetString(0);  // Nombre de la columna
-                    string tipoColumna = lector.GetString(1);    // Tipo de la columna
-                    string columnaExtra = lector.GetString(5);   // Información adicional (e.g. AUTO_INCREMENT)
+                    string nombreColumna = lector.GetString(0);  
+                    string tipoColumna = lector.GetString(1);    
+                    string columnaExtra = lector.GetString(5); 
 
-                    bool esAutoIncremental = columnaExtra.Contains("auto_increment");  // Detectar si es autoincremental
-                    bool esClaveForanea = clavesForaneas.Contains(nombreColumna);  // Detectar si es clave foránea
-                    bool esTinyInt = tipoColumna.StartsWith("tinyint");  // Detectar si es de tipo TINYINT
+                    bool esAutoIncremental = columnaExtra.Contains("auto_increment");  
+                    bool esClaveForanea = clavesForaneas.Contains(nombreColumna); 
+                    bool esTinyInt = tipoColumna.StartsWith("tinyint");  
 
-                    // Añadir la columna con sus propiedades a la lista
                     columnas.Add((nombreColumna, esAutoIncremental, esClaveForanea, esTinyInt));
                 }
 
@@ -446,8 +377,6 @@ namespace Capa_Datos_Navegador
             return columnas;
         }
 
-
-
         public void ejecutarQueryConTransaccion(List<string> queries)
         {
             OdbcConnection connection = cn.probarConexion();
@@ -455,7 +384,6 @@ namespace Capa_Datos_Navegador
 
             try
             {
-                // Iniciar la transacción
                 transaction = connection.BeginTransaction();
 
                 foreach (string query in queries)
@@ -464,12 +392,10 @@ namespace Capa_Datos_Navegador
                     command.ExecuteNonQuery();
                 }
 
-                // Confirmar la transacción
                 transaction.Commit();
             }
             catch (Exception ex)
             {
-                // Si algo falla, revertir los cambios
                 if (transaction != null)
                 {
                     transaction.Rollback();
@@ -490,7 +416,7 @@ namespace Capa_Datos_Navegador
 
             try
             {
-                conn = cn.probarConexion(); // Abrir la conexión
+                conn = cn.probarConexion(); 
                 OdbcCommand command = new OdbcCommand("DESCRIBE " + tabla + "", conn);
                 OdbcDataReader reader = command.ExecuteReader();
 
@@ -500,7 +426,7 @@ namespace Capa_Datos_Navegador
                     i++;
                 }
 
-                reader.Close(); // Cerrar el lector
+                reader.Close(); 
             }
             catch (Exception ex)
             {
@@ -508,7 +434,6 @@ namespace Capa_Datos_Navegador
             }
             finally
             {
-                // Cerrar la conexión si está abierta
                 if (conn != null && conn.State == System.Data.ConnectionState.Open)
                 {
                     conn.Close();
@@ -516,9 +441,9 @@ namespace Capa_Datos_Navegador
                 }
             }
 
-            return Campos; // devuelve un arreglo con los tipos
+            return Campos; 
         }
-        public string[] obtenerLLave(string tabla)//metodo que obtiene la lista de los tipos de campos que requiere una tabla
+        public string[] obtenerLLave(string tabla)
         {
             string[] Campos = new string[30];
             int i = 0;
@@ -536,7 +461,7 @@ namespace Capa_Datos_Navegador
             }
             catch (Exception ex) { Console.WriteLine(ex.Message.ToString() + " \nError en obtenerTipo, revise los parametros de la tabla  \n -" + tabla + "\n -"); }
 
-            return Campos;// devuelve un arreglo con los tipos
+            return Campos;
         }
         public Dictionary<string, string> obtenerItems(string tabla, string campoClave, string campoDisplay)
         {
@@ -548,7 +473,7 @@ namespace Capa_Datos_Navegador
 
                 while (reader.Read())
                 {
-                    items.Add(reader.GetValue(0).ToString(), reader.GetValue(1).ToString());  // id_raza -> nombre_raza
+                    items.Add(reader.GetValue(0).ToString(), reader.GetValue(1).ToString()); 
                 }
             }
             catch (Exception ex)
@@ -558,7 +483,7 @@ namespace Capa_Datos_Navegador
             return items;
         }
 
-        string limpiarTipo(string cadena)// elimina los parentesis y tama;o de campo del tipo de campo
+        string limpiarTipo(string cadena)
         {
             bool dim = false;
             string nuevaCadena = "";
@@ -587,7 +512,7 @@ namespace Capa_Datos_Navegador
                 return cadena;
             }
 
-            return nuevaCadena;// devuelve la cadena unicamente con el tipo
+            return nuevaCadena;
         }
 
         public string llaveCampo(string tabla, string campo, string valor)
@@ -612,10 +537,8 @@ namespace Capa_Datos_Navegador
             string[] Campos = obtenerCampos(tabla);
             try
             {
-                // Escapar el valor con comillas simples si es un texto
                 string valorFormateado = "'" + valor + "'";
 
-                // Construir la consulta correctamente con el valor escapado
                 string query = $"SELECT {campo} FROM {tabla} WHERE {Campos[0]} = {valorFormateado};";
 
                 OdbcCommand command = new OdbcCommand(query, cn.probarConexion());
@@ -631,8 +554,6 @@ namespace Capa_Datos_Navegador
             }
             return llave;
         }
-
-
 
         public string IdModulo(string aplicacion)
         {
@@ -650,7 +571,7 @@ namespace Capa_Datos_Navegador
             }
             return llave;
         }
-        public void ejecutarQuery(string query)// ejecuta un query en la BD
+        public void ejecutarQuery(string query)
         {
             try
             {
@@ -661,25 +582,19 @@ namespace Capa_Datos_Navegador
 
         }
 
-    
-
         public string obtenerClavePrimaria(string nombreTabla)
         {
             string clavePrimaria = "";
             try
             {
-                // Definir la consulta para obtener la clave primaria de la tabla
                 string query = $"SHOW KEYS FROM {nombreTabla} WHERE Key_name = 'PRIMARY';";
 
-                // Crear el comando ODBC
                 OdbcCommand command = new OdbcCommand(query, cn.probarConexion());
 
-                // Ejecutar el comando y leer los resultados
                 OdbcDataReader reader = command.ExecuteReader();
 
                 if (reader.Read())
                 {
-                    // Obtener el nombre de la columna que es clave primaria
                     clavePrimaria = reader["Column_name"].ToString();
                     Console.WriteLine($"Clave primaria de {nombreTabla}: {clavePrimaria}");
                 }
@@ -688,7 +603,6 @@ namespace Capa_Datos_Navegador
                     throw new Exception("No se encontró una clave primaria para la tabla: " + nombreTabla);
                 }
 
-                // Cerrar el lector
                 reader.Close();
             }
             catch (Exception ex)
@@ -705,7 +619,6 @@ namespace Capa_Datos_Navegador
 
             try
             {
-                // Consulta a INFORMATION_SCHEMA para obtener las claves foráneas
                 string query = $@"
             SELECT COLUMN_NAME 
             FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE 
@@ -718,7 +631,7 @@ namespace Capa_Datos_Navegador
 
                 if (reader.Read())
                 {
-                    claveForanea = reader.GetString(0); // Obtener el nombre de la clave foránea
+                    claveForanea = reader.GetString(0); 
                     Console.WriteLine($"Clave foránea de {tablaOrigen} que referencia a {tablaReferencia}: {claveForanea}");
                 }
                 else
@@ -735,12 +648,5 @@ namespace Capa_Datos_Navegador
             return claveForanea;
         }
 
-
-
-
-        // Método para insertinsertar en la tabla "factura"
-
-
-        // Método para manejar ambas inserciones
     }
 }

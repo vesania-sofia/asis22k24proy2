@@ -12,7 +12,7 @@ namespace Capa_Datos_Navegador
     {
         public OdbcConnection probarConexion()
         {
-            OdbcConnection conn = new OdbcConnection("dsn=colchoneria");// creacion de la conexion via ODBC
+            OdbcConnection conn = new OdbcConnection("dsn=colchoneria");
             try
             {
                 conn.Open();
