@@ -114,6 +114,7 @@ namespace Capa_Vista_Navegador
         {
             colorDialog1.Color = nuevoColor;
             this.BackColor = colorDialog1.Color;
+            botonesYPermisos();
 
             if (tabla != "def")
             {
@@ -147,8 +148,8 @@ namespace Capa_Vista_Navegador
 								lblTabla.ForeColor = Cfuente;
                                 deshabilitarcampos_y_botones();
 
-                                // Btn_Modificar.Enabled = true;
-                                // Btn_Eliminar.Enabled = true;
+                                Btn_Modificar.Enabled = true;
+                                Btn_Eliminar.Enabled = true;
 
                                 //habilitar y deshabilitar según Usuario FUNCION SOLO PARA INICIO                                                                                               
                                 // botonesYPermisosInicial(userActivo, aplActivo);
@@ -262,7 +263,8 @@ namespace Capa_Vista_Navegador
             }
             //botonesYPermisosInicial(userActivo, aplActivo);
             //registros();
-           //habilitarallbotones();
+            
+            
         }
 
         //-----------------------------------------------Funciones-----------------------------------------------//
@@ -1135,6 +1137,7 @@ namespace Capa_Vista_Navegador
 
         private void Btn_Ingresar_Click(object sender, EventArgs e)
         {
+            
             string[] Tipos = logic.tipos(tabla);
 
             bool tipoInt = false;
@@ -1193,16 +1196,13 @@ namespace Capa_Vista_Navegador
                 Btn_Cancelar.Enabled = true;
             }
 
+            botonesYPermisosSinMensaje();
             // Habilitar y deshabilitar botones según usuario
-
-            /* Btn_Ingresar.Enabled = false;
-             Btn_Guardar.Enabled = true;
+            Btn_Ingresar.Enabled = false;
+             //Btn_Guardar.Enabled = false;
              Btn_Modificar.Enabled = false;
              Btn_Eliminar.Enabled = false;
-             Btn_Cancelar.Enabled = true;
-            Btn_Consultar.Enabled = false;
-             Btn_Refrescar.Enabled = false;*/
-            botonesYPermisos();
+           
         }
 
 
@@ -1288,12 +1288,16 @@ namespace Capa_Vista_Navegador
                             estado = 1;
                         }
                         componente.Enabled = true;
+
                     }
                 }
 
                 // Habilitar y deshabilitar botones según el usuario
-                botonesYPermisos();
-
+                botonesYPermisosSinMensaje();
+                Btn_Ingresar.Enabled = false;
+                Btn_Modificar.Enabled = false;
+                Btn_Eliminar.Enabled = false;
+                Btn_Cancelar.Enabled = true;
             }
             catch (Exception ex)
             {
@@ -1389,7 +1393,7 @@ namespace Capa_Vista_Navegador
                 }
 
                 // Habilitar/deshabilitar según los permisos del usuario
-                botonesYPermisos();
+                botonesYPermisosSinMensaje();
             }
             catch (Exception ex)
             {
@@ -1476,7 +1480,7 @@ namespace Capa_Vista_Navegador
                 }
 
                 // Habilitar/deshabilitar botones según los permisos del usuario
-                botonesYPermisos();
+                botonesYPermisosSinMensaje();;
                 presionado = true;
                 sn.insertarBitacora(idUsuario, "Se actualizo el estado en " + tabla, tabla);
             }
@@ -1543,9 +1547,9 @@ namespace Capa_Vista_Navegador
 			{
 				MessageBox.Show("El Id Asignado es incorrecto");
 			}
-			
+
             //habilitar y deshabilitar según Usuario
-           botonesYPermisos();
+            botonesYPermisosSinMensaje();
         }
 
         private void Btn_Refrescar_Click(object sender, EventArgs e)
@@ -1599,7 +1603,7 @@ namespace Capa_Vista_Navegador
                 }
 
                 // Habilitar y deshabilitar botones según permisos del usuario
-                botonesYPermisos();
+                botonesYPermisosSinMensaje();
 
                 // Mostrar mensaje de éxito al refrescar los datos
                 MessageBox.Show(
@@ -1864,11 +1868,26 @@ namespace Capa_Vista_Navegador
         }
 
         private void Btn_Ayuda_Click(object sender, EventArgs e)
-        {                    
-            
-            Help.ShowHelp(this, AsRuta, AsIndice);//Abre el menu de ayuda HTML            
-            botonesYPermisos();        
+        {
+            try
+            {
+                Help.ShowHelp(this, AsRuta, AsIndice); // Abre el menú de ayuda HTML
+            }
+            catch (Exception ex)
+            {
+                // Opción 1: Mostrar un mensaje de error al usuario
+                MessageBox.Show("Ocurrió un error al abrir la ayuda: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                // Opción 2: Registrar el error en la consola para propósitos de depuración
+                Console.WriteLine("Error al abrir la ayuda: " + ex.ToString());
+
+                // Opción 3: Podrías agregar un registro de error en un archivo de log si es necesario
+                // LogError(ex); // Función que guarda el error en un archivo de texto o en otro lugar
+            }
+
+            botonesYPermisosSinMensaje();
         }
+
 
         private void Btn_Salir_Click(object sender, EventArgs e)
         {
@@ -2000,17 +2019,54 @@ namespace Capa_Vista_Navegador
             }
         }
 
-
-        /*public void botonesYPermisos()
+        public void botonesYPermisosSinMensaje()
         {
             try
             {
                 string[] permisosText = { "INGRESAR", "BUSCAR", "MODIFICAR", "ELIMINAR", "IMPRIMIR" };
                 Button[] botones = { Btn_Ingresar, Btn_Consultar, Btn_Modificar, Btn_Eliminar, Btn_Imprimir };
 
-                for (int i = 0; i < permisosText.Length; i++) 
+                for (int i = 0; i < permisosText.Length; i++)
                 {
-                    bool tienePermiso = sn.consultarPermisos("2", "1000", i + 1);
+                    // Consultar permisos para cada botón
+                    string idUsuario1 = logic.ObtenerIdUsuario(idUsuario);
+                    sentencia sen = new sentencia();
+                    bool tienePermiso = sn.consultarPermisos(idUsuario1, idAplicacion, i + 1);
+
+                    // Verificar si el botón no es nulo y asignar permisos
+                    if (botones[i] != null)
+                    {
+                        botones[i].Enabled = tienePermiso;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Opción: Podrías registrar el error en un log en lugar de mostrar un MessageBox
+                // LogError(ex);  // Un método para registrar errores
+                Console.WriteLine("Error al configurar los botones y permisos: " + ex.Message);  // Mostrar el error en la consola
+            }
+        }
+
+
+        public void botonesYPermisos()
+        {
+            try
+            {        
+                string[] permisosText = { "INGRESAR", "BUSCAR", "MODIFICAR", "ELIMINAR", "IMPRIMIR" };
+                Button[] botones = { Btn_Ingresar, Btn_Consultar, Btn_Modificar, Btn_Eliminar, Btn_Imprimir };
+
+                string botonesPermitidos = "";
+                string botonesNoPermitidos = "";
+
+                for (int i = 0; i < permisosText.Length; i++)
+                {
+                    // bool tienePermiso = sn.consultarPermisos("2", "1000", i + 1);
+
+                    string idUsuario1 = logic.ObtenerIdUsuario(idUsuario);
+                    // MessageBox.Show("El usuario es: " + idUsuario1 + " " + idAplicacion);
+                    sentencia sen = new sentencia();
+                    bool tienePermiso = sn.consultarPermisos(idUsuario1, idAplicacion, i + 1);
 
                     if (botones[i] != null)
                     {
@@ -2018,20 +2074,47 @@ namespace Capa_Vista_Navegador
 
                         if (botones[i].Enabled)
                         {
-                            MessageBox.Show("Se permitió el botón " + permisosText[i]);
+                            // Acumular los botones permitidos en la cadena
+                            botonesPermitidos += permisosText[i] + ", ";
+                        }
+                        else
+                        {
+                            // Acumular los botones no permitidos (que existen pero no tienen permiso)
+                            botonesNoPermitidos += permisosText[i] + ", ";
                         }
                     }
                     else
                     {
-                        MessageBox.Show("No se encontró el botón " + permisosText[i]);
+                        // Acumular los botones no permitidos (que no se encontraron)
+                        botonesNoPermitidos += permisosText[i] + ", ";
                     }
+                }
+
+                // Formatear el mensaje final
+                string mensaje = "";
+
+                if (!string.IsNullOrEmpty(botonesPermitidos))
+                {
+                    mensaje += "Botones permitidos: " + botonesPermitidos.TrimEnd(',', ' ') + ".\n";
+                }
+
+                if (!string.IsNullOrEmpty(botonesNoPermitidos))
+                {
+                    mensaje += "Botones no permitidos: " + botonesNoPermitidos.TrimEnd(',', ' ') + ".";
+                }
+
+                if (!string.IsNullOrEmpty(mensaje))
+                {
+                    // Mostrar un solo MessageBox con el resumen de botones permitidos y no permitidos
+                    MessageBox.Show(mensaje);
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error al configurar los botones y permisos: " + ex.Message);
             }
-        }*/
+        }
+
 
         private void Btn_Guardar_Click(object sender, EventArgs e)
         {
@@ -2207,7 +2290,7 @@ namespace Capa_Vista_Navegador
                     }
 
                     deshabilitarcampos_y_botones();
-                    botonesYPermisos();
+                    botonesYPermisosSinMensaje();
                 }
                 else
                 {
@@ -2308,157 +2391,118 @@ namespace Capa_Vista_Navegador
            } */
 
 
-        public void botonesYPermisos()
-        {
-            try
-            {
-                string[] permisosText = { "INGRESAR", "BUSCAR", "MODIFICAR", "ELIMINAR", "IMPRIMIR" };
-                Button[] botones = { Btn_Ingresar, Btn_Consultar, Btn_Modificar, Btn_Eliminar, Btn_Imprimir };
 
-                for (int i = 0; i < permisosText.Length; i++) // Cambié i a 0
-                {
+        /*  public void botonesYPermisosInicial(string userActivo, string appActivo)
+          {
+              try
+              {
+                  string[] permisosText = { "INGRESAR", "BUSCAR", "MODIFICAR", "ELIMINAR", "IMPRIMIR" };
+                  Button[] botones = { Btn_Ingresar, Btn_Consultar, Btn_Modificar, Btn_Eliminar, Btn_Imprimir };
 
-                    //bool tienePermiso = sn.consultarPermisos("2", "1000", i + 1);
+                  for (int i = 0; i < permisosText.Length; i++) // Cambié i a 0
+                  {
+  <<<<<<< HEAD
+                      Btn_Ingresar.Enabled = false;
+                      Btn_Modificar.Enabled = false;
+                      Btn_Guardar.Enabled = false;
+                      Btn_Cancelar.Enabled = false;
+                      Btn_Eliminar.Enabled = false;
+                     // Btn_Consultar.Enabled = false;
 
-                    string idUsuario1 = logic.ObtenerIdUsuario(idUsuario);
-                    MessageBox.Show("el usuario es: " +idUsuario1+" "+idAplicacion);
-                    sentencia sen = new sentencia();
-                    bool tienePermiso = sn.consultarPermisos(idUsuario1, idAplicacion, i + 1);
+                      Btn_Refrescar.Enabled = false;
+                      Btn_FlechaInicio.Enabled = false;
+                      Btn_Anterior.Enabled = false;
+                      Btn_Siguiente.Enabled = false;
+                      Btn_FlechaFin.Enabled = false;
+                      MessageBox.Show("Tabla Vacía! Debe ingresar un registro!");
+                     try
+  =======
+                      CapaDatos.sentencia sen = new CapaDatos.sentencia();
+                      bool tienePermiso = sen.consultarPermisos(idUsuario, idAplicacion, i + 1);
 
+                      if (botones[i] != null)
+  >>>>>>> 7453dffb9a1fd864c63b5a1642661cebc9141aab
+                      {
+                          botones[i].Enabled = tienePermiso;
 
-                    if (botones[i] != null)
-                    {
-                        botones[i].Enabled = tienePermiso;
+                          if (botones[i].Enabled)
+                          {
+                              MessageBox.Show("Se permitió el botón " + permisosText[i]);
+                          }
+                      }
+                      else
+                      {
+  <<<<<<< HEAD
+                          MessageBox.Show("Estamos en Tabla Vacía! Determinanos si el usuario Activo puede ingresar! ERROR: " + exx);
+                      }
+                  }
+                  else
+                  {
+                      //validamos con TRY CATCH por si llegará a existir un problema 
+                      try
+                      {
+                          //sentencia sen = new sentencia();
+                          string[] permisosText = { "INGRESAR", "CONSULTAR", "MODIFICAR", "ELIMINAR", "IMPRIMIR" };
+                          for (int i = 1; i < 6; i++)
+                          {
+                             if (sn.consultarPermisos(userActivo, appActivo, i) == true)
+                              {
+                                  //mostramos un mensaje para indicar que si tiene permiso
+                                  MessageBox.Show("Tiene permiso para " + permisosText[i - 1]);
+                                  //bloqueamos botones
+                                  switch (permisosText[i - 1])
+                                  {
+                                      case "INGRESAR":
+                                          Btn_Ingresar.Enabled = true; break;
+                                      case "CONSULTAR":
+                                          Btn_Consultar.Enabled = true; break;
+                                      case "MODIFICAR":
+                                          Btn_Modificar.Enabled = true; break;
+                                      case "ELIMINAR":
+                                          Btn_Eliminar.Enabled = true; break;
+                                      case "IMPRIMIR":
+                                          break;
+                                      default:
+                                          MessageBox.Show("Entro al case default! TIENE PERMISO! Por favor hablar con Administrador!"); break;
+                                  }
+                              }
+                              else
+                              {
+                                  //MessageBox.Show("No tiene permiso para " + permisosText[i - 1]);
+                                  switch (permisosText[i - 1])
+                                  {
+                                      case "INGRESAR":
+                                          Btn_Ingresar.Enabled = false; break;
+                                      case "CONSULTAR":
+                                          Btn_Consultar.Enabled = false; break;
+                                      case "MODIFICAR":
+                                          Btn_Modificar.Enabled = false; break;
+                                      case "ELIMINAR":
+                                          Btn_Eliminar.Enabled = false; break;
+                                      case "IMPRIMIR":
+                                          break;
+                                      default:
+                                          MessageBox.Show("Entro al case default! NO TIENE PERMISO! Por favor hablar con Administrador!"); break;
+                                  }
+                              }
+                              // 1 ingresar - 2 consultar - 3 modificar - 4 eliminar - 5 imprimir 
+                          }
+                      }
+                      catch (Exception ex)
+                      {
+                          MessageBox.Show("Surgió el siguiente problema: " + ex);
+  =======
+                          MessageBox.Show("No se encontró el botón " + permisosText[i]);
+  >>>>>>> 7453dffb9a1fd864c63b5a1642661cebc9141aab
+                      }
+                  }
+              }
+              catch (Exception ex)
+              {
+                  MessageBox.Show("Error al configurar los botones y permisos: " + ex.Message);
+              }
 
-                        if (botones[i].Enabled)
-                        {
-                            MessageBox.Show("Se permitió el botón " + permisosText[i]);
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("No se encontró el botón " + permisosText[i]);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al configurar los botones y permisos: " + ex.Message);
-            }
-
-        }
-
-      /*  public void botonesYPermisosInicial(string userActivo, string appActivo)
-        {
-            try
-            {
-                string[] permisosText = { "INGRESAR", "BUSCAR", "MODIFICAR", "ELIMINAR", "IMPRIMIR" };
-                Button[] botones = { Btn_Ingresar, Btn_Consultar, Btn_Modificar, Btn_Eliminar, Btn_Imprimir };
-
-                for (int i = 0; i < permisosText.Length; i++) // Cambié i a 0
-                {
-<<<<<<< HEAD
-                    Btn_Ingresar.Enabled = false;
-                    Btn_Modificar.Enabled = false;
-                    Btn_Guardar.Enabled = false;
-                    Btn_Cancelar.Enabled = false;
-                    Btn_Eliminar.Enabled = false;
-                   // Btn_Consultar.Enabled = false;
-                
-                    Btn_Refrescar.Enabled = false;
-                    Btn_FlechaInicio.Enabled = false;
-                    Btn_Anterior.Enabled = false;
-                    Btn_Siguiente.Enabled = false;
-                    Btn_FlechaFin.Enabled = false;
-                    MessageBox.Show("Tabla Vacía! Debe ingresar un registro!");
-                   try
-=======
-                    CapaDatos.sentencia sen = new CapaDatos.sentencia();
-                    bool tienePermiso = sen.consultarPermisos(idUsuario, idAplicacion, i + 1);
-
-                    if (botones[i] != null)
->>>>>>> 7453dffb9a1fd864c63b5a1642661cebc9141aab
-                    {
-                        botones[i].Enabled = tienePermiso;
-
-                        if (botones[i].Enabled)
-                        {
-                            MessageBox.Show("Se permitió el botón " + permisosText[i]);
-                        }
-                    }
-                    else
-                    {
-<<<<<<< HEAD
-                        MessageBox.Show("Estamos en Tabla Vacía! Determinanos si el usuario Activo puede ingresar! ERROR: " + exx);
-                    }
-                }
-                else
-                {
-                    //validamos con TRY CATCH por si llegará a existir un problema 
-                    try
-                    {
-                        //sentencia sen = new sentencia();
-                        string[] permisosText = { "INGRESAR", "CONSULTAR", "MODIFICAR", "ELIMINAR", "IMPRIMIR" };
-                        for (int i = 1; i < 6; i++)
-                        {
-                           if (sn.consultarPermisos(userActivo, appActivo, i) == true)
-                            {
-                                //mostramos un mensaje para indicar que si tiene permiso
-                                MessageBox.Show("Tiene permiso para " + permisosText[i - 1]);
-                                //bloqueamos botones
-                                switch (permisosText[i - 1])
-                                {
-                                    case "INGRESAR":
-                                        Btn_Ingresar.Enabled = true; break;
-                                    case "CONSULTAR":
-                                        Btn_Consultar.Enabled = true; break;
-                                    case "MODIFICAR":
-                                        Btn_Modificar.Enabled = true; break;
-                                    case "ELIMINAR":
-                                        Btn_Eliminar.Enabled = true; break;
-                                    case "IMPRIMIR":
-                                        break;
-                                    default:
-                                        MessageBox.Show("Entro al case default! TIENE PERMISO! Por favor hablar con Administrador!"); break;
-                                }
-                            }
-                            else
-                            {
-                                //MessageBox.Show("No tiene permiso para " + permisosText[i - 1]);
-                                switch (permisosText[i - 1])
-                                {
-                                    case "INGRESAR":
-                                        Btn_Ingresar.Enabled = false; break;
-                                    case "CONSULTAR":
-                                        Btn_Consultar.Enabled = false; break;
-                                    case "MODIFICAR":
-                                        Btn_Modificar.Enabled = false; break;
-                                    case "ELIMINAR":
-                                        Btn_Eliminar.Enabled = false; break;
-                                    case "IMPRIMIR":
-                                        break;
-                                    default:
-                                        MessageBox.Show("Entro al case default! NO TIENE PERMISO! Por favor hablar con Administrador!"); break;
-                                }
-                            }
-                            // 1 ingresar - 2 consultar - 3 modificar - 4 eliminar - 5 imprimir 
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Surgió el siguiente problema: " + ex);
-=======
-                        MessageBox.Show("No se encontró el botón " + permisosText[i]);
->>>>>>> 7453dffb9a1fd864c63b5a1642661cebc9141aab
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al configurar los botones y permisos: " + ex.Message);
-            }
-
-        }*/
+          }*/
 
         private void Btn_Ayuda_Click_1(object sender, EventArgs e)
         {
@@ -2586,7 +2630,7 @@ namespace Capa_Vista_Navegador
             }
 
             //habilitar y deshabilitar según Usuario
-            botonesYPermisos();
+            botonesYPermisosSinMensaje();
         }
     }
 }

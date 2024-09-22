@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Odbc;
 using System.Linq;
 using System.Text;
+using System.Data;
 using System.Threading.Tasks;
 
 namespace Capa_Datos_Navegador
@@ -14,59 +15,76 @@ namespace Capa_Datos_Navegador
         //mostrar los datos en DataGridView de forma DESC y que tengan estado 1 =>Randy 
         public OdbcDataAdapter llenaTbl(string tabla, string tablaRelacionada, string campoDescriptivo, string columnaForanea, string columnaPrimariaRelacionada)
         {
-            string[] camposDesc = obtenerCampos(tabla); // Obtener los campos de la tabla principal
-            string camposSelect = tabla + "." + camposDesc[0]; // Seleccionar el primer campo (normalmente el ID)
+            // Obtener la conexión
+            OdbcConnection conn = cn.probarConexion();
 
-            // Diccionario para detectar nombres de columnas repetidas y asignarles alias
-            Dictionary<string, int> columnasRegistradas = new Dictionary<string, int>();
-
-            // Evitar duplicar la selección de id_perro
-            columnasRegistradas[camposDesc[0]] = 1;
-
-            // Obtener las propiedades de las columnas de la tabla principal
-            var columnasPropiedades = obtenerColumnasYPropiedades(tabla);
-
-            // Selección de columnas de la tabla principal
-            foreach (var (nombreColumna, esAutoIncremental, esClaveForanea, esTinyInt) in columnasPropiedades)
+            try
             {
-                // No duplicar el campo que ya se seleccionó como ID
-                if (nombreColumna == camposDesc[0])
-                    continue;
+                string[] camposDesc = obtenerCampos(tabla); // Obtener los campos de la tabla principal
+                string camposSelect = tabla + "." + camposDesc[0]; // Seleccionar el primer campo (normalmente el ID)
 
-                if (esClaveForanea && tablaRelacionada != null && campoDescriptivo != null && columnaForanea != null && columnaPrimariaRelacionada != null)
+                // Diccionario para detectar nombres de columnas repetidas y asignarles alias
+                Dictionary<string, int> columnasRegistradas = new Dictionary<string, int>();
+
+                // Evitar duplicar la selección de id_perro
+                columnasRegistradas[camposDesc[0]] = 1;
+
+                // Obtener las propiedades de las columnas de la tabla principal
+                var columnasPropiedades = obtenerColumnasYPropiedades(tabla);
+
+                // Selección de columnas de la tabla principal
+                foreach (var (nombreColumna, esAutoIncremental, esClaveForanea, esTinyInt) in columnasPropiedades)
                 {
-                    // Agregar la columna descriptiva de la tabla relacionada
-                    camposSelect += ", " + tablaRelacionada + "." + campoDescriptivo + " AS " + campoDescriptivo;
-                    columnasRegistradas[campoDescriptivo] = 1;
+                    // No duplicar el campo que ya se seleccionó como ID
+                    if (nombreColumna == camposDesc[0])
+                        continue;
+
+                    if (esClaveForanea && tablaRelacionada != null && campoDescriptivo != null && columnaForanea != null && columnaPrimariaRelacionada != null)
+                    {
+                        // Agregar la columna descriptiva de la tabla relacionada
+                        camposSelect += ", " + tablaRelacionada + "." + campoDescriptivo + " AS " + campoDescriptivo;
+                        columnasRegistradas[campoDescriptivo] = 1;
+                    }
+                    else
+                    {
+                        // Añadir las columnas restantes de la tabla principal
+                        camposSelect += ", " + tabla + "." + nombreColumna;
+                        columnasRegistradas[nombreColumna] = 1;
+                    }
                 }
-                else
+
+                // Armado del SQL dinámico
+                string sql = "SELECT " + camposSelect + " FROM " + tabla;
+
+                // Añadir el LEFT JOIN si es necesario
+                if (!string.IsNullOrEmpty(tablaRelacionada) && !string.IsNullOrEmpty(columnaForanea) && !string.IsNullOrEmpty(columnaPrimariaRelacionada))
                 {
-                    // Añadir las columnas restantes de la tabla principal
-                    camposSelect += ", " + tabla + "." + nombreColumna;
-                    columnasRegistradas[nombreColumna] = 1;
+                    sql += " LEFT JOIN " + tablaRelacionada + " ON " + tabla + "." + columnaForanea + " = " + tablaRelacionada + "." + columnaPrimariaRelacionada;
+                }
+
+                // Condición de estado
+                sql += " WHERE " + tabla + ".estado = 0 OR " + tabla + ".estado = 1";
+
+                // Ordenar por el primer campo
+                sql += " ORDER BY " + camposDesc[0] + " DESC;";
+
+                // Mostrar la consulta generada para depuración
+                Console.WriteLine(sql);
+
+                // Crear el OdbcDataAdapter
+                OdbcDataAdapter dataTable = new OdbcDataAdapter(sql, conn);
+
+                return dataTable;
+            }
+            finally
+            {
+                // Cerrar la conexión si está abierta
+                if (conn != null && conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                    Console.WriteLine("Conexión cerrada después de llenar la tabla");
                 }
             }
-
-            // Armado del SQL dinámico
-            string sql = "SELECT " + camposSelect + " FROM " + tabla;
-
-            // Añadir el LEFT JOIN si es necesario
-            if (!string.IsNullOrEmpty(tablaRelacionada) && !string.IsNullOrEmpty(columnaForanea) && !string.IsNullOrEmpty(columnaPrimariaRelacionada))
-            {
-                sql += " LEFT JOIN " + tablaRelacionada + " ON " + tabla + "." + columnaForanea + " = " + tablaRelacionada + "." + columnaPrimariaRelacionada;
-            }
-
-            // Condición de estado
-            sql += " WHERE " + tabla + ".estado = 0 OR " + tabla + ".estado = 1";
-
-            // Ordenar por el primer campo
-            sql += " ORDER BY " + camposDesc[0] + " DESC;";
-
-            // Mostrar la consulta generada para depuración
-            Console.WriteLine(sql);
-
-            OdbcDataAdapter dataTable = new OdbcDataAdapter(sql, cn.probarConexion());
-            return dataTable;
         }
 
 
@@ -75,7 +93,7 @@ namespace Capa_Datos_Navegador
         public string obtenerId(string tabla)
         {
             string[] camposDesc = obtenerCampos(tabla); //string para almacenar los campos de OBTENERCAMPOS y utilizar el 1ro
-            string sql = "SELECT MAX(" + camposDesc[0] + ") FROM " + tabla + ";"; //SELECT MAX(idFuncion) FROM `funciones`            
+            string sql = "SELECT MAX(" + camposDesc[0] + ") FROM " + tabla + ";"; //SELECT MAX(idFuncion) FROM funciones            
             string sid = "";
             OdbcCommand command = new OdbcCommand(sql, cn.probarConexion());
             OdbcDataReader reader = command.ExecuteReader();
@@ -339,9 +357,12 @@ namespace Capa_Datos_Navegador
         {
             string[] Campos = new string[30];
             int i = 0;
+            OdbcConnection conn = null;
+
             try
             {
-                OdbcCommand command = new OdbcCommand("DESCRIBE " + tabla + "", cn.probarConexion());
+                conn = cn.probarConexion(); // Abrir la conexión
+                OdbcCommand command = new OdbcCommand("DESCRIBE " + tabla + "", conn);
                 OdbcDataReader reader = command.ExecuteReader();
 
                 while (reader.Read())
@@ -349,13 +370,25 @@ namespace Capa_Datos_Navegador
                     Campos[i] = reader.GetValue(0).ToString();  // Obtenemos el nombre de la columna
                     i++;
                 }
+
+                reader.Close(); // Cerrar el lector
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message.ToString() + " \nError en asignarCombo, revise los parámetros \n -" + tabla);
             }
+            finally
+            {
+                // Cerrar la conexión si está abierta
+                if (conn != null && conn.State == System.Data.ConnectionState.Open)
+                {
+                    conn.Close();
+                    Console.WriteLine("Conexión cerrada después de obtener los campos");
+                }
+            }
+
             return Campos;  // Devolver un arreglo con los nombres de las columnas
-        }
+        }
 
 
         public List<(string nombreColumna, bool esAutoIncremental, bool esClaveForanea, bool esTinyInt)> obtenerColumnasYPropiedades(string nombreTabla)
@@ -449,25 +482,42 @@ namespace Capa_Datos_Navegador
             }
         }
 
-        public string[] ObtenerTipo(string tabla)//metodo que obtiene la lista de los tipos de campos que requiere una tabla
+        public string[] ObtenerTipo(string tabla)
         {
             string[] Campos = new string[30];
             int i = 0;
+            OdbcConnection conn = null;
+
             try
             {
-                OdbcCommand command = new OdbcCommand("DESCRIBE " + tabla + "", cn.probarConexion());
+                conn = cn.probarConexion(); // Abrir la conexión
+                OdbcCommand command = new OdbcCommand("DESCRIBE " + tabla + "", conn);
                 OdbcDataReader reader = command.ExecuteReader();
 
                 while (reader.Read())
                 {
                     Campos[i] = limpiarTipo(reader.GetValue(1).ToString());
                     i++;
+                }
 
+                reader.Close(); // Cerrar el lector
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message.ToString() + " \nError en obtenerTipo, revise los parámetros de la tabla  \n -" + tabla.ToUpper() + "\n -");
+            }
+            finally
+            {
+                // Cerrar la conexión si está abierta
+                if (conn != null && conn.State == System.Data.ConnectionState.Open)
+                {
+                    conn.Close();
+                    Console.WriteLine("Conexión cerrada después de obtener el tipo de los campos");
                 }
             }
-            catch (Exception ex) { Console.WriteLine(ex.Message.ToString() + " \nError en obtenerTipo, revise los parametros de la tabla  \n -" + tabla.ToUpper() + "\n -"); }
-            return Campos;// devuelve un arreglo con los tipos
-        }
+
+            return Campos; // devuelve un arreglo con los tipos
+        }
         public string[] obtenerLLave(string tabla)//metodo que obtiene la lista de los tipos de campos que requiere una tabla
         {
             string[] Campos = new string[30];
@@ -600,7 +650,6 @@ namespace Capa_Datos_Navegador
             }
             return llave;
         }
-
         public void ejecutarQuery(string query)// ejecuta un query en la BD
         {
             try
@@ -611,6 +660,8 @@ namespace Capa_Datos_Navegador
             catch (OdbcException ex) { Console.WriteLine(ex.ToString()); }
 
         }
+
+    
 
         public string obtenerClavePrimaria(string nombreTabla)
         {
@@ -687,7 +738,7 @@ namespace Capa_Datos_Navegador
 
 
 
-        // Método para insertar en la tabla "factura"
+        // Método para insertinsertar en la tabla "factura"
 
 
         // Método para manejar ambas inserciones
