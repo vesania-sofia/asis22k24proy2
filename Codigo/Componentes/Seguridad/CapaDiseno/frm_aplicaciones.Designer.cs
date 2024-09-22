@@ -28,7 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_aplicaciones));
+            this.Gb_opciones = new System.Windows.Forms.GroupBox();
             this.btn_cancel = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.btn_nuevo = new System.Windows.Forms.Button();
@@ -40,42 +41,42 @@
             this.gb_buscar = new System.Windows.Forms.GroupBox();
             this.btn_bsucarap = new System.Windows.Forms.Button();
             this.txt_buscar = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.Lbl_buscarid = new System.Windows.Forms.Label();
+            this.gb_datosaplicacion = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txt_nombre = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.Lbl_descripcion = new System.Windows.Forms.Label();
+            this.Lbl_nombreaplicacion = new System.Windows.Forms.Label();
             this.txt_descripcion = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.Lbl_idaplicacion = new System.Windows.Forms.Label();
             this.txt_idaplicacion = new System.Windows.Forms.TextBox();
             this.btn_salir = new System.Windows.Forms.Button();
             this.Gpb_estado = new System.Windows.Forms.GroupBox();
             this.Rdb_inactivo = new System.Windows.Forms.RadioButton();
             this.Rdb_activo = new System.Windows.Forms.RadioButton();
-            this.groupBox2.SuspendLayout();
+            this.Gb_opciones.SuspendLayout();
             this.gb_buscar.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.gb_datosaplicacion.SuspendLayout();
             this.Gpb_estado.SuspendLayout();
             this.SuspendLayout();
             // 
-            // groupBox2
+            // Gb_opciones
             // 
-            this.groupBox2.Controls.Add(this.btn_cancel);
-            this.groupBox2.Controls.Add(this.button5);
-            this.groupBox2.Controls.Add(this.btn_nuevo);
-            this.groupBox2.Controls.Add(this.btn_eliminar);
-            this.groupBox2.Controls.Add(this.btn_modif);
-            this.groupBox2.Controls.Add(this.btn_actualizar);
-            this.groupBox2.Controls.Add(this.btn_ingresar);
-            this.groupBox2.Location = new System.Drawing.Point(661, 142);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox2.Size = new System.Drawing.Size(144, 360);
-            this.groupBox2.TabIndex = 257;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Opciones";
+            this.Gb_opciones.Controls.Add(this.btn_cancel);
+            this.Gb_opciones.Controls.Add(this.button5);
+            this.Gb_opciones.Controls.Add(this.btn_nuevo);
+            this.Gb_opciones.Controls.Add(this.btn_eliminar);
+            this.Gb_opciones.Controls.Add(this.btn_modif);
+            this.Gb_opciones.Controls.Add(this.btn_actualizar);
+            this.Gb_opciones.Controls.Add(this.btn_ingresar);
+            this.Gb_opciones.Location = new System.Drawing.Point(661, 142);
+            this.Gb_opciones.Margin = new System.Windows.Forms.Padding(4);
+            this.Gb_opciones.Name = "Gb_opciones";
+            this.Gb_opciones.Padding = new System.Windows.Forms.Padding(4);
+            this.Gb_opciones.Size = new System.Drawing.Size(144, 360);
+            this.Gb_opciones.TabIndex = 257;
+            this.Gb_opciones.TabStop = false;
+            this.Gb_opciones.Text = "Opciones";
             // 
             // btn_cancel
             // 
@@ -174,7 +175,7 @@
             // 
             this.gb_buscar.Controls.Add(this.btn_bsucarap);
             this.gb_buscar.Controls.Add(this.txt_buscar);
-            this.gb_buscar.Controls.Add(this.label2);
+            this.gb_buscar.Controls.Add(this.Lbl_buscarid);
             this.gb_buscar.Location = new System.Drawing.Point(33, 47);
             this.gb_buscar.Margin = new System.Windows.Forms.Padding(4);
             this.gb_buscar.Name = "gb_buscar";
@@ -205,36 +206,36 @@
             this.txt_buscar.TabIndex = 240;
             this.txt_buscar.Tag = "9";
             // 
-            // label2
+            // Lbl_buscarid
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(69, 35);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(81, 20);
-            this.label2.TabIndex = 238;
-            this.label2.Text = "Buscar Id";
+            this.Lbl_buscarid.AutoSize = true;
+            this.Lbl_buscarid.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_buscarid.Location = new System.Drawing.Point(69, 35);
+            this.Lbl_buscarid.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Lbl_buscarid.Name = "Lbl_buscarid";
+            this.Lbl_buscarid.Size = new System.Drawing.Size(81, 20);
+            this.Lbl_buscarid.TabIndex = 238;
+            this.Lbl_buscarid.Text = "Buscar Id";
             // 
-            // groupBox1
+            // gb_datosaplicacion
             // 
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.txt_nombre);
-            this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.txt_descripcion);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.txt_idaplicacion);
-            this.groupBox1.Controls.Add(this.btn_salir);
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(33, 157);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(620, 255);
-            this.groupBox1.TabIndex = 254;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Datos Aplicacion";
+            this.gb_datosaplicacion.Controls.Add(this.label3);
+            this.gb_datosaplicacion.Controls.Add(this.txt_nombre);
+            this.gb_datosaplicacion.Controls.Add(this.Lbl_descripcion);
+            this.gb_datosaplicacion.Controls.Add(this.Lbl_nombreaplicacion);
+            this.gb_datosaplicacion.Controls.Add(this.txt_descripcion);
+            this.gb_datosaplicacion.Controls.Add(this.Lbl_idaplicacion);
+            this.gb_datosaplicacion.Controls.Add(this.txt_idaplicacion);
+            this.gb_datosaplicacion.Controls.Add(this.btn_salir);
+            this.gb_datosaplicacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gb_datosaplicacion.Location = new System.Drawing.Point(33, 157);
+            this.gb_datosaplicacion.Margin = new System.Windows.Forms.Padding(4);
+            this.gb_datosaplicacion.Name = "gb_datosaplicacion";
+            this.gb_datosaplicacion.Padding = new System.Windows.Forms.Padding(4);
+            this.gb_datosaplicacion.Size = new System.Drawing.Size(620, 255);
+            this.gb_datosaplicacion.TabIndex = 254;
+            this.gb_datosaplicacion.TabStop = false;
+            this.gb_datosaplicacion.Text = "Datos Aplicacion";
             // 
             // label3
             // 
@@ -255,27 +256,27 @@
             this.txt_nombre.Size = new System.Drawing.Size(285, 26);
             this.txt_nombre.TabIndex = 228;
             // 
-            // label7
+            // Lbl_descripcion
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(25, 135);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(99, 20);
-            this.label7.TabIndex = 193;
-            this.label7.Text = "Descripcion";
+            this.Lbl_descripcion.AutoSize = true;
+            this.Lbl_descripcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_descripcion.Location = new System.Drawing.Point(25, 135);
+            this.Lbl_descripcion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Lbl_descripcion.Name = "Lbl_descripcion";
+            this.Lbl_descripcion.Size = new System.Drawing.Size(99, 20);
+            this.Lbl_descripcion.TabIndex = 193;
+            this.Lbl_descripcion.Text = "Descripcion";
             // 
-            // label4
+            // Lbl_nombreaplicacion
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(22, 90);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(155, 20);
-            this.label4.TabIndex = 205;
-            this.label4.Text = " Nombre Aplicacion";
+            this.Lbl_nombreaplicacion.AutoSize = true;
+            this.Lbl_nombreaplicacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_nombreaplicacion.Location = new System.Drawing.Point(22, 90);
+            this.Lbl_nombreaplicacion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Lbl_nombreaplicacion.Name = "Lbl_nombreaplicacion";
+            this.Lbl_nombreaplicacion.Size = new System.Drawing.Size(155, 20);
+            this.Lbl_nombreaplicacion.TabIndex = 205;
+            this.Lbl_nombreaplicacion.Text = " Nombre Aplicacion";
             // 
             // txt_descripcion
             // 
@@ -287,16 +288,16 @@
             this.txt_descripcion.TabIndex = 226;
             this.txt_descripcion.Tag = "2";
             // 
-            // label1
+            // Lbl_idaplicacion
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(25, 54);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(108, 20);
-            this.label1.TabIndex = 205;
-            this.label1.Text = "ID Aplicacion";
+            this.Lbl_idaplicacion.AutoSize = true;
+            this.Lbl_idaplicacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_idaplicacion.Location = new System.Drawing.Point(25, 54);
+            this.Lbl_idaplicacion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Lbl_idaplicacion.Name = "Lbl_idaplicacion";
+            this.Lbl_idaplicacion.Size = new System.Drawing.Size(108, 20);
+            this.Lbl_idaplicacion.TabIndex = 205;
+            this.Lbl_idaplicacion.Text = "ID Aplicacion";
             // 
             // txt_idaplicacion
             // 
@@ -362,22 +363,23 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(838, 514);
-            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.Gb_opciones);
             this.Controls.Add(this.btn_ayuda);
             this.Controls.Add(this.gb_buscar);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.gb_datosaplicacion);
             this.Controls.Add(this.Gpb_estado);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frm_aplicaciones";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Mantenimiento de Aplicaciones";
             this.Load += new System.EventHandler(this.Frm_aplicaciones_Load);
-            this.groupBox2.ResumeLayout(false);
+            this.Gb_opciones.ResumeLayout(false);
             this.gb_buscar.ResumeLayout(false);
             this.gb_buscar.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.gb_datosaplicacion.ResumeLayout(false);
+            this.gb_datosaplicacion.PerformLayout();
             this.Gpb_estado.ResumeLayout(false);
             this.Gpb_estado.PerformLayout();
             this.ResumeLayout(false);
@@ -386,7 +388,7 @@
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox Gb_opciones;
         private System.Windows.Forms.Button btn_cancel;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button btn_nuevo;
@@ -398,14 +400,14 @@
         private System.Windows.Forms.GroupBox gb_buscar;
         private System.Windows.Forms.Button btn_bsucarap;
         private System.Windows.Forms.TextBox txt_buscar;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label Lbl_buscarid;
+        private System.Windows.Forms.GroupBox gb_datosaplicacion;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txt_nombre;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label Lbl_descripcion;
+        private System.Windows.Forms.Label Lbl_nombreaplicacion;
         private System.Windows.Forms.TextBox txt_descripcion;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label Lbl_idaplicacion;
         private System.Windows.Forms.TextBox txt_idaplicacion;
         private System.Windows.Forms.Button btn_salir;
         private System.Windows.Forms.GroupBox Gpb_estado;

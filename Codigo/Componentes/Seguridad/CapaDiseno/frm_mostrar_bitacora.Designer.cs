@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_mostrar_bitacora));
             this.Dgv_bitacora = new System.Windows.Forms.DataGridView();
             this.Txt_dato = new System.Windows.Forms.TextBox();
             this.Cbo_columna = new System.Windows.Forms.ComboBox();
@@ -46,6 +47,9 @@
             // 
             this.Dgv_bitacora.AllowUserToAddRows = false;
             this.Dgv_bitacora.AllowUserToDeleteRows = false;
+            this.Dgv_bitacora.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.Dgv_bitacora.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.Dgv_bitacora.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Dgv_bitacora.Location = new System.Drawing.Point(19, 97);
@@ -58,9 +62,11 @@
             // 
             // Txt_dato
             // 
+            this.Txt_dato.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.Txt_dato.Location = new System.Drawing.Point(472, 46);
             this.Txt_dato.Name = "Txt_dato";
-            this.Txt_dato.Size = new System.Drawing.Size(229, 35);
+            this.Txt_dato.Size = new System.Drawing.Size(229, 27);
             this.Txt_dato.TabIndex = 2;
             // 
             // Cbo_columna
@@ -68,7 +74,7 @@
             this.Cbo_columna.FormattingEnabled = true;
             this.Cbo_columna.Location = new System.Drawing.Point(155, 46);
             this.Cbo_columna.Name = "Cbo_columna";
-            this.Cbo_columna.Size = new System.Drawing.Size(226, 35);
+            this.Cbo_columna.Size = new System.Drawing.Size(226, 29);
             this.Cbo_columna.TabIndex = 3;
             this.Cbo_columna.SelectedIndexChanged += new System.EventHandler(this.Cbo_columna_SelectedIndexChanged);
             // 
@@ -77,29 +83,34 @@
             this.Lbl_columna.AutoSize = true;
             this.Lbl_columna.Location = new System.Drawing.Point(160, 20);
             this.Lbl_columna.Name = "Lbl_columna";
-            this.Lbl_columna.Size = new System.Drawing.Size(298, 27);
+            this.Lbl_columna.Size = new System.Drawing.Size(215, 21);
             this.Lbl_columna.TabIndex = 5;
             this.Lbl_columna.Text = "Selecciona una columna";
             // 
             // Lbl_dato
             // 
+            this.Lbl_dato.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.Lbl_dato.AutoSize = true;
             this.Lbl_dato.Location = new System.Drawing.Point(510, 20);
             this.Lbl_dato.Name = "Lbl_dato";
-            this.Lbl_dato.Size = new System.Drawing.Size(189, 27);
+            this.Lbl_dato.Size = new System.Drawing.Size(143, 21);
             this.Lbl_dato.TabIndex = 6;
             this.Lbl_dato.Text = "Ingresa un dato";
             // 
             // Dtp_dato
             // 
+            this.Dtp_dato.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.Dtp_dato.Location = new System.Drawing.Point(455, 46);
             this.Dtp_dato.Name = "Dtp_dato";
-            this.Dtp_dato.Size = new System.Drawing.Size(258, 35);
+            this.Dtp_dato.Size = new System.Drawing.Size(258, 27);
             this.Dtp_dato.TabIndex = 7;
             this.Dtp_dato.Visible = false;
             // 
             // Btn_borrarfiltros
             // 
+            this.Btn_borrarfiltros.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Btn_borrarfiltros.BackgroundImage = global::CapaDiseno.Properties.Resources.borrar;
             this.Btn_borrarfiltros.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.Btn_borrarfiltros.FlatAppearance.BorderSize = 0;
@@ -114,6 +125,7 @@
             // 
             // Btn_buscar
             // 
+            this.Btn_buscar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Btn_buscar.BackgroundImage = global::CapaDiseno.Properties.Resources.buscar;
             this.Btn_buscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.Btn_buscar.FlatAppearance.BorderSize = 0;
@@ -128,6 +140,7 @@
             // 
             // Btn_actualizar
             // 
+            this.Btn_actualizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Btn_actualizar.BackgroundImage = global::CapaDiseno.Properties.Resources.actualizar;
             this.Btn_actualizar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.Btn_actualizar.FlatAppearance.BorderSize = 0;
@@ -142,14 +155,17 @@
             // 
             // Dtp_hora
             // 
+            this.Dtp_hora.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.Dtp_hora.Location = new System.Drawing.Point(455, 46);
             this.Dtp_hora.Name = "Dtp_hora";
-            this.Dtp_hora.Size = new System.Drawing.Size(258, 35);
+            this.Dtp_hora.Size = new System.Drawing.Size(258, 27);
             this.Dtp_hora.TabIndex = 9;
             this.Dtp_hora.Visible = false;
             // 
             // btn_ayuda
             // 
+            this.btn_ayuda.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_ayuda.Image = global::CapaDiseno.Properties.Resources.icons8_ayuda_30;
             this.btn_ayuda.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btn_ayuda.Location = new System.Drawing.Point(948, 33);
@@ -163,7 +179,7 @@
             // 
             // frm_mostrar_bitacora
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 27F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1104, 596);
             this.Controls.Add(this.btn_ayuda);
@@ -178,6 +194,7 @@
             this.Controls.Add(this.Btn_actualizar);
             this.Controls.Add(this.Dgv_bitacora);
             this.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frm_mostrar_bitacora";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Bitacora";

@@ -77,12 +77,14 @@ namespace CapaLogica
 
         }
 
-
         public bool cambiarContrasenia(string usuario, string nuevaContrasenia, string respuestaSeguridad)
         {
             try
             {
                 conexion con = new conexion();
+                bool contraseniaActualizada = false;
+                string resultado = "";
+
                 using (OdbcCommand cmd = new OdbcCommand("CALL cambiarContrasenia(?, ?, ?)", con.conectar()))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
@@ -96,21 +98,31 @@ namespace CapaLogica
                     {
                         if (reader.Read())
                         {
-                            string resultado = reader.GetString(0);
-                            // Comparar el resultado con los posibles mensajes del SP
-                            sn.insertarBitacora(usuario, "Se cambio contraseña ", "tbl_usuarios", "1201");
-                            return resultado == "Contraseña actualizada con éxito";
+                            resultado = reader.GetString(0);
+                            contraseniaActualizada = (resultado == "Contraseña actualizada con éxito");
                         }
                     }
                 }
+
+                if (contraseniaActualizada)
+                {
+                    // Inicializamos sn aquí si no se ha hecho en el constructor
+                    if (sn == null)
+                    {
+                        sn = new sentencia();
+                    }
+
+                    // Insertamos en la bitácora solo si la contraseña fue actualizada
+                    sn.insertarBitacora(usuario, "Se cambió contraseña la contraseña de: " + usuario, "tbl_usuarios", "1201");
+                }
+
+                return contraseniaActualizada;
             }
-            catch (OdbcException ex)
+            catch (Exception ex)
             {
-                Console.WriteLine(ex);
+                Console.WriteLine($"Error en cambiarContrasenia: {ex.Message}");
                 return false;
             }
-
-            return false;
         }
         //////////////////////////////////////////////////////////////////////////////////////////////////
 

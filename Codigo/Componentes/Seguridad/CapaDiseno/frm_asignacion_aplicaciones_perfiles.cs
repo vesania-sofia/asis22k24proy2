@@ -92,6 +92,13 @@ namespace CapaDiseno
 
             CargarPerfiles();
             CargarModulos();
+            cbo_perfiles.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbo_perfiles.SelectedIndex = -1;
+            cbo_modulos.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbo_modulos.SelectedIndex = -1;
+            cbo_aplicaciones.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbo_aplicaciones.SelectedIndex = -1;
+            txt_buscar.KeyPress += new KeyPressEventHandler(SoloNumeros_KeyPress);
         }
 //****************************************FIN Kevin López***************************************************
         void limpieza()
@@ -415,5 +422,18 @@ namespace CapaDiseno
         {
 
         }
+
+        //Fernando García 0901-21-581
+        private void SoloNumeros_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Verificar si el carácter es un número o si es la tecla de Backspace
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+            {
+                // Si no es un número o la tecla de retroceso, cancelar el evento
+                e.Handled = true;
+                MessageBox.Show("Solo se permiten números.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
     }
 }

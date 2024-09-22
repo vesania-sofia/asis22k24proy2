@@ -4,7 +4,7 @@ using System.Windows.Forms;
 using System.Net;
 using System.Data;
 using System.Collections.Generic;
-
+using System.Text.RegularExpressions; // Para expresiones regulares
 
 namespace CapaDatos
 {
@@ -27,11 +27,10 @@ namespace CapaDatos
         public OdbcDataAdapter consultarUsuarios()
         {
             cn.conectar();
-            string sqlUsuarios = "SELECT nombre_usuario FROM tbl_usuarios WHERE estado_usuario = 1 "; //WHERE estado_usuario = 1
+            string sqlUsuarios = "SELECT Pk_id_usuario as Usuario, nombre_usuario as Nombre, apellido_usuario as Apellido, username_usuario as Username, password_usuario as Password, email_usuario as Email, ultima_conexion_usuario as Ultima_Conexion, estado_usuario as Estado, pregunta as Pregunta, respuesta as Respuesta FROM tbl_usuarios";
             OdbcDataAdapter dataUsuarios = new OdbcDataAdapter(sqlUsuarios, cn.conectar());
             insertarBitacora(idUsuario, "Realizo una consulta a usuarios", "tbl_usuarios", "1001");
             return dataUsuarios;
-
         }
 
         //****************************************Kevin López***************************************************
@@ -60,17 +59,18 @@ namespace CapaDatos
         public OdbcDataAdapter consultarAplicaciones(string nombreModulo)
         {
             cn.conectar();
+            OdbcDataAdapter dataAplicaciones = null;
 
             try
             {
                 string sqlAplicaciones = @"
-        SELECT a.Pk_id_aplicacion, a.nombre_aplicacion 
-        FROM tbl_aplicaciones a
-        JOIN tbl_asignacion_modulo_aplicacion ama ON a.pk_id_aplicacion = ama.fk_id_aplicacion
-        JOIN tbl_modulos m ON m.pk_id_modulos = ama.fk_id_modulos
-        WHERE m.nombre_modulo = ?";
+                SELECT a.Pk_id_aplicacion, a.nombre_aplicacion 
+                FROM tbl_aplicaciones a
+                JOIN tbl_asignacion_modulo_aplicacion ama ON a.pk_id_aplicacion = ama.fk_id_aplicacion
+                JOIN tbl_modulos m ON m.pk_id_modulos = ama.fk_id_modulos
+                WHERE m.nombre_modulo = ?";
 
-                OdbcDataAdapter dataAplicaciones = new OdbcDataAdapter(sqlAplicaciones, cn.conectar());
+                dataAplicaciones = new OdbcDataAdapter(sqlAplicaciones, cn.conectar());
                 dataAplicaciones.SelectCommand.Parameters.AddWithValue("?", nombreModulo);
 
                 // Registro de la bitacora
@@ -83,7 +83,13 @@ namespace CapaDatos
                 Console.WriteLine(ex);
                 return null;
             }
+            finally
+            {
+                // Asegúrate de cerrar la conexión si es necesario
+                // cn.desconectar(); // Descomenta si tienes un método para cerrar la conexión
+            }
         }
+
         //#############FINALIZA ALYSON RODRIGUEZ 9959-21-829
 
 
@@ -238,7 +244,7 @@ namespace CapaDatos
         //###################  termina lo que hizo  Karla  Sofia Gómez Tobar #######################
 
         //---------------------------------------------------- Inicio: GABRIELA SUC ---------------------------------------------------
-        public bool ModificarUsuario(string idUsuario, string nombre, string apellido, string correo, int estado_usuario, string respuesta)
+        public bool ModificarUsuario(string Id_Usuario, string nombre, string apellido, string correo, int estado_usuario, string pregunta, string respuesta)
         {
             try
             {
@@ -270,13 +276,20 @@ namespace CapaDatos
                     parameters.Add(new OdbcParameter("respuesta", respuesta));
                 }
 
+                // Asegurarse de agregar la pregunta seleccionada
+                if (!string.IsNullOrEmpty(pregunta))
+                {
+                    query += "pregunta = ?, "; // Asegúrate de que el campo en la BD sea correcto
+                    parameters.Add(new OdbcParameter("pregunta", pregunta));
+                }
+
                 // El estado siempre se modifica (0 o 1)
                 query += "estado_usuario = ? ";
                 parameters.Add(new OdbcParameter("estado_usuario", estado_usuario));
 
                 // Completar la consulta SQL con la condición WHERE
                 query += "WHERE Pk_id_usuario = ?;";
-                parameters.Add(new OdbcParameter("id_usuario", idUsuario));
+                parameters.Add(new OdbcParameter("id_usuario", Id_Usuario));
 
                 // Ejecutar la consulta SQL
                 using (OdbcCommand command = new OdbcCommand(query, cn.conectar()))
@@ -286,21 +299,23 @@ namespace CapaDatos
                     {
                         command.Parameters.Add(param);
                     }
+                    insertarBitacora(idUsuario, "Se modificó el usuario: " + Id_Usuario, "Tbl_usuarios", "1001");
 
                     // Ejecutar la consulta
                     int result = command.ExecuteNonQuery();
 
                     // Verificar si se modificó algún registro
-                    insertarBitacora(idUsuario, "Se modifico un usuario ", "tbl_usuarios", "1001");
                     return result > 0;
                 }
             }
             catch (Exception ex)
             {
                 System.Windows.Forms.MessageBox.Show("Error al intentar modificar el registro: " + ex.Message);
+                insertarBitacora(idUsuario, "Ocurrio un error al modificar el usuario: " + Id_Usuario, "Tbl_usuarios", "1001");
                 return false;
             }
         }
+
 
         //---------------------------------------------------- Fin: GABRIELA SUC ----------------------------------------------------
 
@@ -449,7 +464,7 @@ namespace CapaDatos
         //---------------------------------------------------- Inicio: GABRIELA SUC ----------------------------------------------------
 
         // Método para cambiar el estado del usuario en la base de datos
-        public bool CambiarEstadoUsuario(string idUsuario, int nuevoEstado)
+        public bool CambiarEstadoUsuario(string LlaveUsuario, int nuevoEstado)
         {
             try
             {
@@ -459,11 +474,11 @@ namespace CapaDatos
                 using (OdbcCommand command = new OdbcCommand(query, cn.conectar()))
                 {
                     command.Parameters.AddWithValue("estado_usuario", nuevoEstado);
-                    command.Parameters.AddWithValue("id_usuario", idUsuario);
+                    command.Parameters.AddWithValue("id_usuario", LlaveUsuario);
 
+                    insertarBitacora(idUsuario, "Se desactivo el usuario: " + LlaveUsuario, "tbl_usuarios", "1001");
                     int result = command.ExecuteNonQuery();
-
-                    insertarBitacora(idUsuario, "Se desactivousuario ", "tbl_usuarios", "1001");
+     
                     // Verifica si se actualizó algún registro
                     return result > 0;
                 }
@@ -471,6 +486,7 @@ namespace CapaDatos
             catch (Exception ex)
             {
                 MessageBox.Show("Error al cambiar el estado del usuario: " + ex.Message);
+                insertarBitacora(idUsuario, "Ocurrio un error al desactivar el usuario: " + LlaveUsuario, "tbl_usuarios", "1001");
                 return false;
             }
         }
@@ -544,7 +560,7 @@ namespace CapaDatos
         {
             OdbcConnection connection = cn.conectar();
 
-            string sqlusuarios = "SELECT pk_id_usuario, nombre_usuario, apellido_usuario, username_usuario, password_usuario, email_usuario, ultima_conexion_usuario, estado_usuario,pregunta,respuesta  FROM tbl_usuarios where pk_id_usuario = '" + id + "'";
+            string sqlusuarios = "SELECT Pk_id_usuario as Usuario, nombre_usuario as Nombre, apellido_usuario as Apellido, username_usuario as Username, password_usuario as Password, email_usuario as Email, ultima_conexion_usuario as Ultima_Conexion, estado_usuario as Estado, pregunta as Pregunta, respuesta as Respuesta FROM tbl_usuarios where pk_id_usuario = '" + id + "'";
 
             OdbcCommand command = new OdbcCommand(sqlusuarios, connection);
 
@@ -593,11 +609,17 @@ namespace CapaDatos
         public OdbcDataAdapter consultaraplicaciones(string aplicacion)
         {
             cn.conectar();
-            string sqlAplicaciones = "SELECT Pk_id_aplicacion, nombre_aplicacion FROM Tbl_aplicaciones";
-            insertarBitacora(idUsuario, "Realizo una consulta a aplicaciones", "Tbl_aplicaciones", "1002");
+            string sqlAplicaciones = "SELECT Pk_id_aplicacion, nombre_aplicacion, descripcion_aplicacion FROM tbl_aplicaciones WHERE Pk_id_aplicacion = ?";
+
+            // Registro de la bitacora
+            insertarBitacora(idUsuario, "Realizó una consulta a aplicaciones", "tbl_aplicaciones", "1002");
+
             OdbcDataAdapter dataTable = new OdbcDataAdapter(sqlAplicaciones, cn.conectar());
+            dataTable.SelectCommand.Parameters.AddWithValue("?", aplicacion);
+
             return dataTable;
         }
+
 
         //**************************************** FIN Kevin López***************************************************
 
@@ -849,7 +871,7 @@ namespace CapaDatos
             try
             {
                 ds = new DataSet();
-                dat = new OdbcDataAdapter("SELECT PK_id_bitacora as Id, FK_id_usuario as Usuario, fecha_bitacora, hora_bitacora, host_bitacora, ip_bitacora, accion_bitacora, tabla from tbl_bitacora"
+                dat = new OdbcDataAdapter("SELECT PK_id_bitacora as Id, FK_id_usuario as Usuario, fecha_bitacora as Fecha, hora_bitacora as Hora, host_bitacora as Host, ip_bitacora as IP, accion_bitacora as Accion, tabla as Tabla, aplicacion as Aplicacion from tbl_bitacora"
                 , cn.conectar());
                 dat.Fill(ds);
             }
@@ -872,7 +894,7 @@ namespace CapaDatos
             try
             {
                 ds = new DataSet();
-                string query = $"SELECT PK_id_bitacora as Id, FK_id_usuario as Usuario, fecha_bitacora, hora_bitacora, host_bitacora, ip_bitacora, accion_bitacora, tabla FROM tbl_bitacora WHERE {campo} LIKE ?";
+                string query = $"SELECT PK_id_bitacora as Id, FK_id_usuario as Usuario, fecha_bitacora, hora_bitacora, host_bitacora, ip_bitacora, accion_bitacora, tabla, aplicacion FROM tbl_bitacora WHERE {campo} LIKE ?";
 
                 using (OdbcConnection conexion = cn.conectar())
                 {
