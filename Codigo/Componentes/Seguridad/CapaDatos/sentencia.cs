@@ -117,7 +117,7 @@ namespace CapaDatos
                 sqlCodigoUsuario.Connection.Close();
 
                 // Inserta los permisos usando el código de la aplicación y el código del usuario
-                string sqlInsertarPermisosUA = "INSERT INTO Tbl_permisos_aplicaciones_usuario(Fk_id_usuario, Fk_id_aplicacion, guardar_permiso, buscar_permiso, modificar_permiso, eliminar_permiso, imprimir_permiso) VALUES ('" + sCodigoUsuario + "','" + sCodigoAplicacion + "', '" + sIngresar + "', '" + sConsulta + "', '" + sModificar + "', '" + sEliminar + "', '" + sImprimir + "');";
+                string sqlInsertarPermisosUA = "INSERT INTO Tbl_permisos_aplicaciones_usuario(Fk_id_usuario, Fk_id_aplicacion, guardar_permiso, buscar_permiso, modificar_permiso, eliminar_permiso, imprimir_permiso) VALUES ('" + sCodigoUsuarios + "','" + sCodigoAplicacion + "', '" + sIngresar + "', '" + sConsulta + "', '" + sModificar + "', '" + sEliminar + "', '" + sImprimir + "');";
                 // Ejecuta el comando de inserción
                 OdbcDataAdapter dataPermisosUA = new OdbcDataAdapter(sqlInsertarPermisosUA, cn.conectar());
                 // Inserta en la bitácora
