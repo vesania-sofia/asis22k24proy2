@@ -105,7 +105,7 @@ namespace CapaDiseno
         {
             try
             {
-                DataTable dtModulos = logic.consultaLogicaModulos();
+                DataTable dtModulos = logic.funconsultalogicamodulos();
                 cbo_modulos.Items.Clear();
                 foreach (DataRow row in dtModulos.Rows)
                 {
@@ -126,7 +126,7 @@ namespace CapaDiseno
         {
             try
             {
-                DataTable dtAplicaciones = logic.consultaLogicaAplicaciones(nombreModulo);
+                DataTable dtAplicaciones = logic.funconsultaLogicaaplicacionesP(nombreModulo);
                 cbo_aplicaciones.Items.Clear();
                 foreach (DataRow row in dtAplicaciones.Rows)
                 {

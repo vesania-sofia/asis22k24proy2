@@ -34,11 +34,11 @@ namespace CapaLogica
 
         }
 
-        public DataTable consultaLogicaModulos()
+        public DataTable funconsultalogicamodulos()
         {
             try
             {
-                OdbcDataAdapter dtModulos = sn.consultarModulos();
+                OdbcDataAdapter dtModulos = sn.funconsultarmodulos();
                 DataTable tableModulos = new DataTable();
                 dtModulos.Fill(tableModulos);
                 return tableModulos;
@@ -50,11 +50,11 @@ namespace CapaLogica
             }
         }
 
-        public DataTable consultaLogicaPerfiles()
+        public DataTable funconsultalogicaperfiles()
         {
             try
             {
-                OdbcDataAdapter dtPerfiles = sn.consultarPerfiles();
+                OdbcDataAdapter dtPerfiles = sn.funconsultarperfiles();
                 DataTable tablePerfiles = new DataTable();
                 dtPerfiles.Fill(tablePerfiles);
                 return tablePerfiles;
@@ -201,11 +201,11 @@ namespace CapaLogica
 
         /* creado por Emerzon Garcia  0901-21-9182 ...... */
 
-        public bool Eliminarperfil(string ID_perfil)
+        public bool funeliminarperfil(string sID_perfil)
         {
             try
             {
-                bool result = sn.EliminarPerfil1(ID_perfil);
+                bool result = sn.funeliminarperfil1(sID_perfil);
                 if (result)
                 {
                     MessageBox.Show("Perfil eliminado correctamente.");
@@ -414,11 +414,11 @@ namespace CapaLogica
         //--------mantenimiento perfiles
 
         //+1
-        public DataTable validarIDperfiles()
+        public DataTable funagregar()
         {
             try
             {
-                OdbcDataAdapter dtValidarIDAplicacion = sn.validarIDperfiles();
+                OdbcDataAdapter dtValidarIDAplicacion = sn.funagregarperfil();
                 DataTable tableValidacionIdAplicacion = new DataTable();
                 dtValidarIDAplicacion.Fill(tableValidacionIdAplicacion);
                 return tableValidacionIdAplicacion;
@@ -431,11 +431,11 @@ namespace CapaLogica
         }
 
 
-        public DataTable ingresarperfiles(string codigo, string nombre, string descripcion, string estado)
+        public DataTable funingresarperfiles(string scodigo, string snombre, string sdescripcion, string sestado)
         {
             try
             {
-                OdbcDataAdapter ingresoperfil = sn.insertarPerfil(codigo, nombre, descripcion, estado);
+                OdbcDataAdapter ingresoperfil = sn.proinsertarperfil(scodigo, snombre, sdescripcion, sestado);
                 DataTable tableperfiles = new DataTable();
                 ingresoperfil.Fill(tableperfiles);
                 return tableperfiles;
@@ -447,11 +447,11 @@ namespace CapaLogica
             }
         }
 
-        public DataTable ConsultaLogicaPerfil(string ID_perfil)
+        public DataTable funconsultarperfil(string sID_perfil)
         {
             try
             {
-                OdbcDataAdapter cmpsperfiles = sn.ConsultarPerfil(ID_perfil);
+                OdbcDataAdapter cmpsperfiles = sn.proconsultar(sID_perfil);
                 DataTable tablaperfiles = new DataTable();
                 cmpsperfiles.Fill(tablaperfiles);
                 return tablaperfiles;
@@ -464,11 +464,11 @@ namespace CapaLogica
         }
 
 
-        public DataTable Actualizarperfil(string ID_perfil, string nombre, string descripcion, string estado)
+        public DataTable funactualizar(string sID_perfil, string snombre, string sdescripcion, string sestado)
         {
             try
             {
-                OdbcDataAdapter dtperfil = sn.ActualizarPerfil(ID_perfil, nombre, descripcion, estado);
+                OdbcDataAdapter dtperfil = sn.funactualizarperfil(sID_perfil, snombre, sdescripcion, sestado);
                 DataTable tablaperfiles = new DataTable();
                 dtperfil.Fill(tablaperfiles);
                 return tablaperfiles;
@@ -503,11 +503,11 @@ namespace CapaLogica
 
 
         //*****************************MODIFICADO POR JOSUÉ PAZ*******************************************************
-        public DataTable consultaLogicaPermisosPerfilAplicacion(string codigoPerfil, string nombreAplicacion, string ingresar, string modificar, string eliminar, string consulta, string imprimir)
+        public DataTable funguardarpermisosperfil(string scodigoPerfil, string snombreAplicacion, string singresar, string smodificar, string seliminar, string sconsulta, string simprimir)
         {
             try
             {
-                OdbcDataAdapter dtPermisosPerfilA = sn.insertarPermisosPerfilA(codigoPerfil, nombreAplicacion, ingresar, modificar, eliminar, consulta, imprimir);
+                OdbcDataAdapter dtPermisosPerfilA = sn.proinsertarpermisosperfil(scodigoPerfil, snombreAplicacion, singresar, smodificar, seliminar, sconsulta, simprimir);
                 DataTable tablePermisosPerfilA = new DataTable();
                 dtPermisosPerfilA.Fill(tablePermisosPerfilA);
                 return tablePermisosPerfilA;
@@ -522,10 +522,10 @@ namespace CapaLogica
 
 
         //-----------------------Emerzon Garcia --------------------------------------------------
-        public DataTable consultaLogicaPerfiles(string TablaPerfilUsuario)
+        public DataTable funconsultarPerfiles(string sTablaPerfilUsuario)
         {
             DataTable table = new DataTable();
-            OdbcDataAdapter dt = sn.mostrarPerfilesYPermisos(TablaPerfilUsuario);
+            OdbcDataAdapter dt = sn.funmostrarperfilesypermisos(sTablaPerfilUsuario);
             dt.Fill(table);
 
             // Convertir los valores booleanos a string "0" o "1"
@@ -772,11 +772,11 @@ namespace CapaLogica
         //###################  termina lo que hizo  Karla  Sofia Gómez Tobar #######################
 
 //********************************KEVIN LOPEZ*************************************************
-        public DataTable consultaLogicaAplicacionesP(string nombreModulo)
+        public DataTable funconsultaLogicaaplicacionesP(string snombreModulo)
         {
             try
             {
-                using (OdbcDataAdapter cmpsAplicaciones = sn.consultarAplicacionesP(nombreModulo)) //Cambio de referencia para fuuncionamiento de APlicaciones Usuarios
+                using (OdbcDataAdapter cmpsAplicaciones = sn.funconsultaraplicacionesP(snombreModulo)) //Cambio de referencia para fuuncionamiento de APlicaciones Usuarios
                 {
                     DataTable tableAplicaciones = new DataTable();
                     cmpsAplicaciones.Fill(tableAplicaciones);

@@ -14,10 +14,10 @@ namespace CapaDiseno
     public partial class frm_asignacion_aplicaciones_perfiles : Form
     {
         logica logic;
-        public frm_asignacion_aplicaciones_perfiles(string idUsuario)
+        public frm_asignacion_aplicaciones_perfiles(string sidUsuario)
         {
             InitializeComponent();
-            logic = new logica(idUsuario);
+            logic = new logica(sidUsuario);
         }
 
         public frm_asignacion_aplicaciones_perfiles()
@@ -30,11 +30,11 @@ namespace CapaDiseno
         {
             try
             {
-                DataTable dtPerfiles = logic.consultaLogicaPerfiles();
-                cbo_perfiles.Items.Clear();
+                DataTable dtPerfiles = logic.funconsultalogicaperfiles();
+                Cbo_perfiles.Items.Clear();
                 foreach (DataRow row in dtPerfiles.Rows)
                 {
-                    cbo_perfiles.Items.Add(row[0].ToString());
+                    Cbo_perfiles.Items.Add(row[0].ToString());
                 }
             }
             catch (Exception ex)
@@ -48,14 +48,14 @@ namespace CapaDiseno
         {
             try
             {
-                DataTable dtModulos = logic.consultaLogicaModulos();
-                cbo_modulos.Items.Clear();
+                DataTable dtModulos = logic.funconsultalogicamodulos();
+                Cbo_modulos.Items.Clear();
                 foreach (DataRow row in dtModulos.Rows)
                 {
-                    cbo_modulos.Items.Add(row[0].ToString());
+                    Cbo_modulos.Items.Add(row[0].ToString());
                 }
                 // Vincular el evento de selección de módulo
-                cbo_modulos.SelectedIndexChanged += new EventHandler(Cbo_modulos_SelectedIndexChanged);
+                Cbo_modulos.SelectedIndexChanged += new EventHandler(Cbo_modulos_SelectedIndexChanged);
             }
             catch (Exception ex)
             {
@@ -64,15 +64,15 @@ namespace CapaDiseno
         }
 
         // Método para cargar aplicaciones según el módulo seleccionado
-        private void CargarAplicaciones(string nombreModulo)
+        private void CargarAplicaciones(string snombreModulo)
         {
             try
             {
-               DataTable dtAplicaciones = logic.consultaLogicaAplicacionesP(nombreModulo);
-                cbo_aplicaciones.Items.Clear();
+               DataTable dtAplicaciones = logic.funconsultaLogicaaplicacionesP(snombreModulo);
+                Cbo_aplicaciones.Items.Clear();
                 foreach (DataRow row in dtAplicaciones.Rows)
                 {
-                    cbo_aplicaciones.Items.Add(row["nombre_aplicacion"].ToString());
+                    Cbo_aplicaciones.Items.Add(row["nombre_aplicacion"].ToString());
                 }
             }
             catch (Exception ex)
@@ -92,9 +92,9 @@ namespace CapaDiseno
 //****************************************FIN Kevin López***************************************************
         void limpieza()
         {
-            cbo_perfiles.Text = " ";
-            cbo_modulos.Text = " ";
-            cbo_aplicaciones.Text = " ";
+            Cbo_perfiles.Text = " ";
+            Cbo_modulos.Text = " ";
+            Cbo_aplicaciones.Text = " ";
         }
 
 //****************************************Kevin López***************************************************
@@ -104,10 +104,10 @@ namespace CapaDiseno
             // Limpiar las aplicaciones antes de agregar nuevas
 
 
-            if (cbo_modulos.SelectedIndex != -1)
+            if (Cbo_modulos.SelectedIndex != -1)
             {
-                string moduloSeleccionado = cbo_modulos.SelectedItem.ToString();
-                CargarAplicaciones(moduloSeleccionado); // Cargar las aplicaciones del módulo seleccionado
+                string smoduloSeleccionado = Cbo_modulos.SelectedItem.ToString();
+                CargarAplicaciones(smoduloSeleccionado); // Cargar las aplicaciones del módulo seleccionado
             }
             /*
             if (cbo_modulos.SelectedItem != null)
@@ -136,10 +136,10 @@ namespace CapaDiseno
         private void cbo_aplicaciones_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-            if (cbo_aplicaciones.SelectedItem != null)
+            if (Cbo_aplicaciones.SelectedItem != null)
             {
-                string nombreAplicacion = cbo_aplicaciones.SelectedItem.ToString();
-                Console.WriteLine("Aplicación seleccionada: " + nombreAplicacion);
+                string snombreAplicacion = Cbo_aplicaciones.SelectedItem.ToString();
+                Console.WriteLine("Aplicación seleccionada: " + snombreAplicacion);
             }
 
         }
@@ -156,27 +156,27 @@ namespace CapaDiseno
 
         public void actualizardatagriew()
         {
-            DataTable dt = logic.consultaLogicaPerfiles("Tbl_permisos_aplicacion_perfil");
+            DataTable dt = logic.funconsultarPerfiles("Tbl_permisos_aplicacion_perfil");
 
             if (dt != null && dt.Rows.Count > 0)
             {
                 MessageBox.Show("Datos recibidos: " + dt.Rows.Count.ToString());
 
                 // Asignar los nombres de las columnas en el DataGridView
-                dgv_asignacionesperfiles.Columns["Perfil"].DataPropertyName = "Fk_id_perfil";
-                dgv_asignacionesperfiles.Columns["Aplicacion"].DataPropertyName = "nombre_aplicacion";
-                dgv_asignacionesperfiles.Columns["Ingresar"].DataPropertyName = "guardar_permiso";
-                dgv_asignacionesperfiles.Columns["Consultar"].DataPropertyName = "buscar_permiso"; // Asumo que 'Consultar' es 'buscar_permiso'
-                dgv_asignacionesperfiles.Columns["Modificar"].DataPropertyName = "modificar_permiso";
-                dgv_asignacionesperfiles.Columns["Eliminar"].DataPropertyName = "eliminar_permiso";
-                dgv_asignacionesperfiles.Columns["Imprimir"].DataPropertyName = "imprimir_permiso";
+                Dgv_asignacionesperfiles.Columns["Perfil"].DataPropertyName = "Fk_id_perfil";
+                Dgv_asignacionesperfiles.Columns["Aplicacion"].DataPropertyName = "nombre_aplicacion";
+                Dgv_asignacionesperfiles.Columns["Ingresar"].DataPropertyName = "guardar_permiso";
+                Dgv_asignacionesperfiles.Columns["Consultar"].DataPropertyName = "buscar_permiso"; // Asumo que 'Consultar' es 'buscar_permiso'
+                Dgv_asignacionesperfiles.Columns["Modificar"].DataPropertyName = "modificar_permiso";
+                Dgv_asignacionesperfiles.Columns["Eliminar"].DataPropertyName = "eliminar_permiso";
+                Dgv_asignacionesperfiles.Columns["Imprimir"].DataPropertyName = "imprimir_permiso";
 
                 // Configurar CheckBoxColumn para los permisos booleanos
                 ConfigurarColumnasCheckBox();
 
                 // Asignar el DataTable al DataGridView
-                dgv_asignacionesperfiles.DataSource = dt;
-                dgv_asignacionesperfiles.Refresh();
+                Dgv_asignacionesperfiles.DataSource = dt;
+                Dgv_asignacionesperfiles.Refresh();
             }
             else
             {
@@ -187,34 +187,34 @@ namespace CapaDiseno
         // Método para configurar CheckBoxColumns en el DataGridView
         private void ConfigurarColumnasCheckBox()
         {
-            if (dgv_asignacionesperfiles.Columns["Ingresar"] is DataGridViewCheckBoxColumn)
+            if (Dgv_asignacionesperfiles.Columns["Ingresar"] is DataGridViewCheckBoxColumn)
             {
-                ((DataGridViewCheckBoxColumn)dgv_asignacionesperfiles.Columns["Ingresar"]).TrueValue = 1;
-                ((DataGridViewCheckBoxColumn)dgv_asignacionesperfiles.Columns["Ingresar"]).FalseValue = 0;
+                ((DataGridViewCheckBoxColumn)Dgv_asignacionesperfiles.Columns["Ingresar"]).TrueValue = 1;
+                ((DataGridViewCheckBoxColumn)Dgv_asignacionesperfiles.Columns["Ingresar"]).FalseValue = 0;
             }
 
-            if (dgv_asignacionesperfiles.Columns["Consultar"] is DataGridViewCheckBoxColumn)
+            if (Dgv_asignacionesperfiles.Columns["Consultar"] is DataGridViewCheckBoxColumn)
             {
-                ((DataGridViewCheckBoxColumn)dgv_asignacionesperfiles.Columns["Consultar"]).TrueValue = 1;
-                ((DataGridViewCheckBoxColumn)dgv_asignacionesperfiles.Columns["Consultar"]).FalseValue = 0;
+                ((DataGridViewCheckBoxColumn)Dgv_asignacionesperfiles.Columns["Consultar"]).TrueValue = 1;
+                ((DataGridViewCheckBoxColumn)Dgv_asignacionesperfiles.Columns["Consultar"]).FalseValue = 0;
             }
 
-            if (dgv_asignacionesperfiles.Columns["Modificar"] is DataGridViewCheckBoxColumn)
+            if (Dgv_asignacionesperfiles.Columns["Modificar"] is DataGridViewCheckBoxColumn)
             {
-                ((DataGridViewCheckBoxColumn)dgv_asignacionesperfiles.Columns["Modificar"]).TrueValue = 1;
-                ((DataGridViewCheckBoxColumn)dgv_asignacionesperfiles.Columns["Modificar"]).FalseValue = 0;
+                ((DataGridViewCheckBoxColumn)Dgv_asignacionesperfiles.Columns["Modificar"]).TrueValue = 1;
+                ((DataGridViewCheckBoxColumn)Dgv_asignacionesperfiles.Columns["Modificar"]).FalseValue = 0;
             }
 
-            if (dgv_asignacionesperfiles.Columns["Eliminar"] is DataGridViewCheckBoxColumn)
+            if (Dgv_asignacionesperfiles.Columns["Eliminar"] is DataGridViewCheckBoxColumn)
             {
-                ((DataGridViewCheckBoxColumn)dgv_asignacionesperfiles.Columns["Eliminar"]).TrueValue = 1;
-                ((DataGridViewCheckBoxColumn)dgv_asignacionesperfiles.Columns["Eliminar"]).FalseValue = 0;
+                ((DataGridViewCheckBoxColumn)Dgv_asignacionesperfiles.Columns["Eliminar"]).TrueValue = 1;
+                ((DataGridViewCheckBoxColumn)Dgv_asignacionesperfiles.Columns["Eliminar"]).FalseValue = 0;
             }
 
-            if (dgv_asignacionesperfiles.Columns["Imprimir"] is DataGridViewCheckBoxColumn)
+            if (Dgv_asignacionesperfiles.Columns["Imprimir"] is DataGridViewCheckBoxColumn)
             {
-                ((DataGridViewCheckBoxColumn)dgv_asignacionesperfiles.Columns["Imprimir"]).TrueValue = 1;
-                ((DataGridViewCheckBoxColumn)dgv_asignacionesperfiles.Columns["Imprimir"]).FalseValue = 0;
+                ((DataGridViewCheckBoxColumn)Dgv_asignacionesperfiles.Columns["Imprimir"]).TrueValue = 1;
+                ((DataGridViewCheckBoxColumn)Dgv_asignacionesperfiles.Columns["Imprimir"]).FalseValue = 0;
             }
         }
 
@@ -230,7 +230,7 @@ namespace CapaDiseno
         {
             if (iContadorFila > 0)
             {
-                dgv_asignacionesperfiles.Rows.RemoveAt(dgv_asignacionesperfiles.CurrentRow.Index);
+                Dgv_asignacionesperfiles.Rows.RemoveAt(Dgv_asignacionesperfiles.CurrentRow.Index);
                 iContadorFila--;
             }
             else
@@ -244,7 +244,7 @@ namespace CapaDiseno
         //***************************HECHO POR KEVIN LOPEZ********************************************
         private void btn_agregar_Click_1(object sender, EventArgs e)
         {
-            if (cbo_perfiles.SelectedItem == null || cbo_aplicaciones.SelectedItem == null)
+            if (Cbo_perfiles.SelectedItem == null || Cbo_aplicaciones.SelectedItem == null)
             {
                 MessageBox.Show("No se ha seleccionado nada aún");
             }
@@ -252,12 +252,12 @@ namespace CapaDiseno
             {
                 bool bUsuario_aplicacion_existente = false;
 
-                string sPerfil = cbo_perfiles.SelectedItem.ToString();
-                string sAplicacion = cbo_aplicaciones.SelectedItem.ToString();
+                string sPerfil = Cbo_perfiles.SelectedItem.ToString();
+                string sAplicacion = Cbo_aplicaciones.SelectedItem.ToString();
 
                 if (iContadorFila == 0)
                 {
-                    dgv_asignacionesperfiles.Rows.Add(sPerfil, sAplicacion);
+                    Dgv_asignacionesperfiles.Rows.Add(sPerfil, sAplicacion);
 
                     iContadorFila++;
 
@@ -265,9 +265,9 @@ namespace CapaDiseno
                 }
                 else
                 {
-                    foreach (DataGridViewRow Fila in dgv_asignacionesperfiles.Rows)
+                    foreach (DataGridViewRow Fila in Dgv_asignacionesperfiles.Rows)
                     {
-                        if (Fila.Cells[0].Value.ToString() == cbo_perfiles.SelectedItem.ToString() && Fila.Cells[1].Value.ToString() == cbo_aplicaciones.SelectedItem.ToString())
+                        if (Fila.Cells[0].Value.ToString() == Cbo_perfiles.SelectedItem.ToString() && Fila.Cells[1].Value.ToString() == Cbo_aplicaciones.SelectedItem.ToString())
                         {
                             bUsuario_aplicacion_existente = true;
                         }
@@ -279,7 +279,7 @@ namespace CapaDiseno
                     }
                     else
                     {
-                        dgv_asignacionesperfiles.Rows.Add(sPerfil, sAplicacion);
+                        Dgv_asignacionesperfiles.Rows.Add(sPerfil, sAplicacion);
                         iContadorFila++;
                     }
                 }
@@ -291,57 +291,57 @@ namespace CapaDiseno
         //*******************TRABAJADO POR JOSUE PAZ 0901-21-5560**********************************************************
         private void btn_finalizar_Click_1(object sender, EventArgs e)
         {
-            string ingresar;
-            string consulta;
-            string modificar;
-            string eliminar;
-            string imprimir;
+            string singresar;
+            string sconsulta;
+            string smodificar;
+            string seliminar;
+            string simprimir;
             try
             {
-                foreach (DataGridViewRow Fila in dgv_asignacionesperfiles.Rows)
+                foreach (DataGridViewRow Fila in Dgv_asignacionesperfiles.Rows)
                 {
 
-                    string codigoperfil = Fila.Cells[0].Value.ToString();
-                    string nombreaplicacion = Fila.Cells[1].Value.ToString();
+                    string scodigoperfil = Fila.Cells[0].Value.ToString();
+                    string snombreaplicacion = Fila.Cells[1].Value.ToString();
 
 
                     bool cheked = ((bool)(Fila.Cells["Ingresar"].EditedFormattedValue));
                     if (cheked)
-                        ingresar = "1";
+                        singresar = "1";
                     else
-                        ingresar = "0";
+                        singresar = "0";
 
                     bool chekedM = ((bool)(Fila.Cells["Modificar"].EditedFormattedValue));
                     if (chekedM)
-                        modificar = "1";
+                        smodificar = "1";
                     else
-                        modificar = "0";
+                        smodificar = "0";
 
                     bool chekedE = ((bool)(Fila.Cells["Eliminar"].EditedFormattedValue));
                     if (chekedE)
-                        eliminar = "1";
+                        seliminar = "1";
                     else
-                        eliminar = "0";
+                        seliminar = "0";
 
                     bool chekedC = ((bool)(Fila.Cells["Consultar"].EditedFormattedValue));
                     if (chekedC)
-                        consulta = "1";
+                        sconsulta = "1";
                     else
-                        consulta = "0";
+                        sconsulta = "0";
 
                     bool chekedI = ((bool)(Fila.Cells["Imprimir"].EditedFormattedValue));
                     if (chekedI)
-                        imprimir = "1";
+                        simprimir = "1";
                     else
-                        imprimir = "0";
+                        simprimir = "0";
 
-                    DataTable dtAplicaciones = logic.consultaLogicaPermisosPerfilAplicacion(codigoperfil, nombreaplicacion, ingresar, modificar, eliminar, consulta, imprimir);
+                    DataTable dtAplicaciones = logic.funguardarpermisosperfil(scodigoperfil, snombreaplicacion, singresar, smodificar, seliminar, sconsulta, simprimir);
 
                 }
 
                 MessageBox.Show("Datos ingresados exitosamente");
                 limpieza();
-                dgv_asignacionesperfiles.Rows.Clear();
+                Dgv_asignacionesperfiles.Rows.Clear();
                 iContadorFila = 0;
             }
             catch (Exception ex)
@@ -359,47 +359,47 @@ namespace CapaDiseno
 
         public void actualizardatagriew1()
         {
-            DataTable dt = logic.consultaLogicaPerfiles("Tbl_permisos_aplicacion_perfil");
+            DataTable dt = logic.funconsultarPerfiles("Tbl_permisos_aplicacion_perfil");
 
             if (dt != null && dt.Rows.Count > 0)
             {
                 MessageBox.Show("Datos recibidos: " + dt.Rows.Count.ToString());
 
                 // Limpiar las columnas anteriores
-                dgv_asignacionesperfiles.Columns.Clear();
+                Dgv_asignacionesperfiles.Columns.Clear();
 
                 // Crear y agregar las columnas manualmente
-                dgv_asignacionesperfiles.Columns.Add("Perfil", "Perfil");
-                dgv_asignacionesperfiles.Columns["Perfil"].DataPropertyName = "Fk_id_perfil";
+                Dgv_asignacionesperfiles.Columns.Add("Perfil", "Perfil");
+                Dgv_asignacionesperfiles.Columns["Perfil"].DataPropertyName = "Fk_id_perfil";
 
-                dgv_asignacionesperfiles.Columns.Add("Aplicacion", "Aplicación");
-                dgv_asignacionesperfiles.Columns["Aplicacion"].DataPropertyName = "nombre_aplicacion";
+                Dgv_asignacionesperfiles.Columns.Add("Aplicacion", "Aplicación");
+                Dgv_asignacionesperfiles.Columns["Aplicacion"].DataPropertyName = "nombre_aplicacion";
 
                 // Agregar columnas de permisos como TextBox
-                dgv_asignacionesperfiles.Columns.Add("Ingresar", "Ingresar");
-                dgv_asignacionesperfiles.Columns["Ingresar"].DataPropertyName = "guardar_permiso";
+                Dgv_asignacionesperfiles.Columns.Add("Ingresar", "Ingresar");
+                Dgv_asignacionesperfiles.Columns["Ingresar"].DataPropertyName = "guardar_permiso";
 
-                dgv_asignacionesperfiles.Columns.Add("Consultar", "Consultar");
-                dgv_asignacionesperfiles.Columns["Consultar"].DataPropertyName = "buscar_permiso";
+                Dgv_asignacionesperfiles.Columns.Add("Consultar", "Consultar");
+                Dgv_asignacionesperfiles.Columns["Consultar"].DataPropertyName = "buscar_permiso";
 
-                dgv_asignacionesperfiles.Columns.Add("Modificar", "Modificar");
-                dgv_asignacionesperfiles.Columns["Modificar"].DataPropertyName = "modificar_permiso";
+                Dgv_asignacionesperfiles.Columns.Add("Modificar", "Modificar");
+                Dgv_asignacionesperfiles.Columns["Modificar"].DataPropertyName = "modificar_permiso";
 
-                dgv_asignacionesperfiles.Columns.Add("Eliminar", "Eliminar");
-                dgv_asignacionesperfiles.Columns["Eliminar"].DataPropertyName = "eliminar_permiso";
+                Dgv_asignacionesperfiles.Columns.Add("Eliminar", "Eliminar");
+                Dgv_asignacionesperfiles.Columns["Eliminar"].DataPropertyName = "eliminar_permiso";
 
-                dgv_asignacionesperfiles.Columns.Add("Imprimir", "Imprimir");
-                dgv_asignacionesperfiles.Columns["Imprimir"].DataPropertyName = "imprimir_permiso";
+                Dgv_asignacionesperfiles.Columns.Add("Imprimir", "Imprimir");
+                Dgv_asignacionesperfiles.Columns["Imprimir"].DataPropertyName = "imprimir_permiso";
 
                 // Asegúrate de que las columnas son de texto y centrar el contenido
                 foreach (var column in new[] { "Ingresar", "Consultar", "Modificar", "Eliminar", "Imprimir" })
                 {
-                    dgv_asignacionesperfiles.Columns[column].ValueType = typeof(string);
-                    dgv_asignacionesperfiles.Columns[column].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                    Dgv_asignacionesperfiles.Columns[column].ValueType = typeof(string);
+                    Dgv_asignacionesperfiles.Columns[column].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 }
 
                 // Asignar el DataTable al DataGridView
-                dgv_asignacionesperfiles.DataSource = dt;
+                Dgv_asignacionesperfiles.DataSource = dt;
 
                 // Convertir booleanos a "0" o "1"
                 foreach (DataRow row in dt.Rows)
@@ -411,7 +411,7 @@ namespace CapaDiseno
                     row["imprimir_permiso"] = (Convert.ToBoolean(row["imprimir_permiso"]) ? "1" : "0");
                 }
 
-                dgv_asignacionesperfiles.Refresh();
+                Dgv_asignacionesperfiles.Refresh();
             }
             else
             {
