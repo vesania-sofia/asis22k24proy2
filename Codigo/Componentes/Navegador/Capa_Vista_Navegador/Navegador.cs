@@ -2638,6 +2638,18 @@ namespace Capa_Vista_Navegador
             botonesYPermisosSinMensaje();
         }
 
+        private void btn_Reportes_Principal_Click_1(object sender, EventArgs e)
+        {
+            menu_reporteria reportes = new menu_reporteria();
+
+            reportes.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Ayudas ayudas = new Ayudas();
+            ayudas.Show();
+        }
     }
 }
    //     private void button1_Click(object sender, EventArgs e)
