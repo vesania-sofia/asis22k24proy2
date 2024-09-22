@@ -1,6 +1,6 @@
 ﻿namespace CapaDiseno
 {
-    partial class frm_modulos
+    partial class frmMantemientoMódulos
     {
         /// <summary>
         /// Required designer variable.
@@ -28,380 +28,381 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.gbbuscar = new System.Windows.Forms.GroupBox();
-            this.tbx_buscarmodulo = new System.Windows.Forms.TextBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.txtdesc = new System.Windows.Forms.TextBox();
-            this.txtcodigo = new System.Windows.Forms.TextBox();
-            this.gbestado = new System.Windows.Forms.GroupBox();
-            this.rbinhabilitado = new System.Windows.Forms.RadioButton();
-            this.rbhabilitado = new System.Windows.Forms.RadioButton();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtnombre = new System.Windows.Forms.TextBox();
-            this.btn_cancel = new System.Windows.Forms.Button();
-            this.btn_eliminar = new System.Windows.Forms.Button();
-            this.btn_modif = new System.Windows.Forms.Button();
-            this.btn_bsucarmodulo = new System.Windows.Forms.Button();
-            this.btn_actualizar = new System.Windows.Forms.Button();
-            this.btn_ingresar = new System.Windows.Forms.Button();
-            this.btn_ayuda = new System.Windows.Forms.Button();
-            this.btn_salir = new System.Windows.Forms.Button();
-            this.btn_nuevo = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
-            this.gbbuscar.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.gbestado.SuspendLayout();
+            this.gbxBuscar = new System.Windows.Forms.GroupBox();
+            this.txtBuscarModulo = new System.Windows.Forms.TextBox();
+            this.gbxDatos = new System.Windows.Forms.GroupBox();
+            this.txtNombre = new System.Windows.Forms.TextBox();
+            this.txtCodigo = new System.Windows.Forms.TextBox();
+            this.gbxEstado = new System.Windows.Forms.GroupBox();
+            this.rbtnInhabilitado = new System.Windows.Forms.RadioButton();
+            this.rbtnHabilitado = new System.Windows.Forms.RadioButton();
+            this.lblDescripcion = new System.Windows.Forms.Label();
+            this.lblNombre = new System.Windows.Forms.Label();
+            this.lblCodigo = new System.Windows.Forms.Label();
+            this.txtDescripcion = new System.Windows.Forms.TextBox();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnEliminar = new System.Windows.Forms.Button();
+            this.btnModificar = new System.Windows.Forms.Button();
+            this.btnBuscar = new System.Windows.Forms.Button();
+            this.btnActualizar = new System.Windows.Forms.Button();
+            this.btnGuardar = new System.Windows.Forms.Button();
+            this.btnAyuda = new System.Windows.Forms.Button();
+            this.btnSalir = new System.Windows.Forms.Button();
+            this.btnNuevo = new System.Windows.Forms.Button();
+            this.lblTitulo = new System.Windows.Forms.Label();
+            this.gbxBuscar.SuspendLayout();
+            this.gbxDatos.SuspendLayout();
+            this.gbxEstado.SuspendLayout();
             this.SuspendLayout();
             // 
-            // gbbuscar
+            // gbxBuscar
             // 
-            this.gbbuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.gbbuscar.Controls.Add(this.tbx_buscarmodulo);
-            this.gbbuscar.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbbuscar.Location = new System.Drawing.Point(169, 151);
-            this.gbbuscar.Margin = new System.Windows.Forms.Padding(4);
-            this.gbbuscar.Name = "gbbuscar";
-            this.gbbuscar.Padding = new System.Windows.Forms.Padding(4);
-            this.gbbuscar.Size = new System.Drawing.Size(648, 98);
-            this.gbbuscar.TabIndex = 255;
-            this.gbbuscar.TabStop = false;
-            this.gbbuscar.Text = "Buscar Módulo";
+            this.gbxBuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.gbxBuscar.Controls.Add(this.txtBuscarModulo);
+            this.gbxBuscar.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbxBuscar.Location = new System.Drawing.Point(169, 145);
+            this.gbxBuscar.Margin = new System.Windows.Forms.Padding(4);
+            this.gbxBuscar.Name = "gbxBuscar";
+            this.gbxBuscar.Padding = new System.Windows.Forms.Padding(4);
+            this.gbxBuscar.Size = new System.Drawing.Size(648, 98);
+            this.gbxBuscar.TabIndex = 255;
+            this.gbxBuscar.TabStop = false;
+            this.gbxBuscar.Text = "Buscar Módulo";
             // 
-            // tbx_buscarmodulo
+            // txtBuscarModulo
             // 
-            this.tbx_buscarmodulo.Location = new System.Drawing.Point(37, 36);
-            this.tbx_buscarmodulo.Margin = new System.Windows.Forms.Padding(4);
-            this.tbx_buscarmodulo.Name = "tbx_buscarmodulo";
-            this.tbx_buscarmodulo.Size = new System.Drawing.Size(573, 26);
-            this.tbx_buscarmodulo.TabIndex = 6;
+            this.txtBuscarModulo.Location = new System.Drawing.Point(37, 36);
+            this.txtBuscarModulo.Margin = new System.Windows.Forms.Padding(4);
+            this.txtBuscarModulo.Name = "txtBuscarModulo";
+            this.txtBuscarModulo.Size = new System.Drawing.Size(573, 26);
+            this.txtBuscarModulo.TabIndex = 6;
             // 
-            // groupBox2
+            // gbxDatos
             // 
-            this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.groupBox2.Controls.Add(this.txtdesc);
-            this.groupBox2.Controls.Add(this.txtcodigo);
-            this.groupBox2.Controls.Add(this.gbestado);
-            this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Controls.Add(this.txtnombre);
-            this.groupBox2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(169, 266);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox2.Size = new System.Drawing.Size(648, 360);
-            this.groupBox2.TabIndex = 254;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Datos";
+            this.gbxDatos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.gbxDatos.Controls.Add(this.txtNombre);
+            this.gbxDatos.Controls.Add(this.txtCodigo);
+            this.gbxDatos.Controls.Add(this.gbxEstado);
+            this.gbxDatos.Controls.Add(this.lblDescripcion);
+            this.gbxDatos.Controls.Add(this.lblNombre);
+            this.gbxDatos.Controls.Add(this.lblCodigo);
+            this.gbxDatos.Controls.Add(this.txtDescripcion);
+            this.gbxDatos.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbxDatos.Location = new System.Drawing.Point(169, 251);
+            this.gbxDatos.Margin = new System.Windows.Forms.Padding(4);
+            this.gbxDatos.Name = "gbxDatos";
+            this.gbxDatos.Padding = new System.Windows.Forms.Padding(4);
+            this.gbxDatos.Size = new System.Drawing.Size(648, 347);
+            this.gbxDatos.TabIndex = 254;
+            this.gbxDatos.TabStop = false;
+            this.gbxDatos.Text = "Datos";
             // 
-            // txtdesc
+            // txtNombre
             // 
-            this.txtdesc.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtdesc.Location = new System.Drawing.Point(246, 96);
-            this.txtdesc.Margin = new System.Windows.Forms.Padding(4);
-            this.txtdesc.Multiline = true;
-            this.txtdesc.Name = "txtdesc";
-            this.txtdesc.Size = new System.Drawing.Size(296, 26);
-            this.txtdesc.TabIndex = 2;
-            this.txtdesc.Tag = "2";
+            this.txtNombre.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNombre.Location = new System.Drawing.Point(246, 96);
+            this.txtNombre.Margin = new System.Windows.Forms.Padding(4);
+            this.txtNombre.Multiline = true;
+            this.txtNombre.Name = "txtNombre";
+            this.txtNombre.Size = new System.Drawing.Size(296, 26);
+            this.txtNombre.TabIndex = 2;
+            this.txtNombre.Tag = "2";
             // 
-            // txtcodigo
+            // txtCodigo
             // 
-            this.txtcodigo.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtcodigo.Location = new System.Drawing.Point(246, 41);
-            this.txtcodigo.Margin = new System.Windows.Forms.Padding(4);
-            this.txtcodigo.Name = "txtcodigo";
-            this.txtcodigo.Size = new System.Drawing.Size(297, 24);
-            this.txtcodigo.TabIndex = 4;
+            this.txtCodigo.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCodigo.Location = new System.Drawing.Point(246, 41);
+            this.txtCodigo.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCodigo.Name = "txtCodigo";
+            this.txtCodigo.Size = new System.Drawing.Size(297, 24);
+            this.txtCodigo.TabIndex = 4;
             // 
-            // gbestado
+            // gbxEstado
             // 
-            this.gbestado.Controls.Add(this.rbinhabilitado);
-            this.gbestado.Controls.Add(this.rbhabilitado);
-            this.gbestado.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbestado.Location = new System.Drawing.Point(102, 208);
-            this.gbestado.Margin = new System.Windows.Forms.Padding(4);
-            this.gbestado.Name = "gbestado";
-            this.gbestado.Padding = new System.Windows.Forms.Padding(4);
-            this.gbestado.Size = new System.Drawing.Size(441, 131);
-            this.gbestado.TabIndex = 3;
-            this.gbestado.TabStop = false;
-            this.gbestado.Text = "Estado";
+            this.gbxEstado.Controls.Add(this.rbtnInhabilitado);
+            this.gbxEstado.Controls.Add(this.rbtnHabilitado);
+            this.gbxEstado.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbxEstado.Location = new System.Drawing.Point(102, 208);
+            this.gbxEstado.Margin = new System.Windows.Forms.Padding(4);
+            this.gbxEstado.Name = "gbxEstado";
+            this.gbxEstado.Padding = new System.Windows.Forms.Padding(4);
+            this.gbxEstado.Size = new System.Drawing.Size(441, 101);
+            this.gbxEstado.TabIndex = 3;
+            this.gbxEstado.TabStop = false;
+            this.gbxEstado.Text = "Estado";
             // 
-            // rbinhabilitado
+            // rbtnInhabilitado
             // 
-            this.rbinhabilitado.AutoSize = true;
-            this.rbinhabilitado.Location = new System.Drawing.Point(255, 58);
-            this.rbinhabilitado.Margin = new System.Windows.Forms.Padding(4);
-            this.rbinhabilitado.Name = "rbinhabilitado";
-            this.rbinhabilitado.Size = new System.Drawing.Size(111, 23);
-            this.rbinhabilitado.TabIndex = 1;
-            this.rbinhabilitado.TabStop = true;
-            this.rbinhabilitado.Text = "Inhabilitado";
-            this.rbinhabilitado.UseVisualStyleBackColor = true;
+            this.rbtnInhabilitado.AutoSize = true;
+            this.rbtnInhabilitado.Location = new System.Drawing.Point(248, 44);
+            this.rbtnInhabilitado.Margin = new System.Windows.Forms.Padding(4);
+            this.rbtnInhabilitado.Name = "rbtnInhabilitado";
+            this.rbtnInhabilitado.Size = new System.Drawing.Size(111, 23);
+            this.rbtnInhabilitado.TabIndex = 1;
+            this.rbtnInhabilitado.TabStop = true;
+            this.rbtnInhabilitado.Text = "Inhabilitado";
+            this.rbtnInhabilitado.UseVisualStyleBackColor = true;
             // 
-            // rbhabilitado
+            // rbtnHabilitado
             // 
-            this.rbhabilitado.AutoSize = true;
-            this.rbhabilitado.Location = new System.Drawing.Point(75, 58);
-            this.rbhabilitado.Margin = new System.Windows.Forms.Padding(4);
-            this.rbhabilitado.Name = "rbhabilitado";
-            this.rbhabilitado.Size = new System.Drawing.Size(100, 23);
-            this.rbhabilitado.TabIndex = 0;
-            this.rbhabilitado.TabStop = true;
-            this.rbhabilitado.Text = "Habilitado";
-            this.rbhabilitado.UseVisualStyleBackColor = true;
-            this.rbhabilitado.CheckedChanged += new System.EventHandler(this.rbhabilitado_CheckedChanged);
+            this.rbtnHabilitado.AutoSize = true;
+            this.rbtnHabilitado.Location = new System.Drawing.Point(73, 44);
+            this.rbtnHabilitado.Margin = new System.Windows.Forms.Padding(4);
+            this.rbtnHabilitado.Name = "rbtnHabilitado";
+            this.rbtnHabilitado.Size = new System.Drawing.Size(100, 23);
+            this.rbtnHabilitado.TabIndex = 0;
+            this.rbtnHabilitado.TabStop = true;
+            this.rbtnHabilitado.Text = "Habilitado";
+            this.rbtnHabilitado.UseVisualStyleBackColor = true;
+            this.rbtnHabilitado.CheckedChanged += new System.EventHandler(this.rbtnHabilitado_CheckedChanged);
             // 
-            // label3
+            // lblDescripcion
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(98, 155);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(89, 19);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Descripción";
+            this.lblDescripcion.AutoSize = true;
+            this.lblDescripcion.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDescripcion.Location = new System.Drawing.Point(98, 155);
+            this.lblDescripcion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDescripcion.Name = "lblDescripcion";
+            this.lblDescripcion.Size = new System.Drawing.Size(89, 19);
+            this.lblDescripcion.TabIndex = 2;
+            this.lblDescripcion.Text = "Descripción";
             // 
-            // label2
+            // lblNombre
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(98, 103);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(64, 19);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Nombre";
+            this.lblNombre.AutoSize = true;
+            this.lblNombre.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNombre.Location = new System.Drawing.Point(98, 103);
+            this.lblNombre.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblNombre.Name = "lblNombre";
+            this.lblNombre.Size = new System.Drawing.Size(64, 19);
+            this.lblNombre.TabIndex = 1;
+            this.lblNombre.Text = "Nombre";
             // 
-            // label1
+            // lblCodigo
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(98, 46);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(140, 19);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Código de Módulo";
+            this.lblCodigo.AutoSize = true;
+            this.lblCodigo.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCodigo.Location = new System.Drawing.Point(98, 46);
+            this.lblCodigo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCodigo.Name = "lblCodigo";
+            this.lblCodigo.Size = new System.Drawing.Size(140, 19);
+            this.lblCodigo.TabIndex = 0;
+            this.lblCodigo.Text = "Código de Módulo";
             // 
-            // txtnombre
+            // txtDescripcion
             // 
-            this.txtnombre.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtnombre.Location = new System.Drawing.Point(245, 150);
-            this.txtnombre.Margin = new System.Windows.Forms.Padding(4);
-            this.txtnombre.Name = "txtnombre";
-            this.txtnombre.Size = new System.Drawing.Size(297, 24);
-            this.txtnombre.TabIndex = 1;
-            this.txtnombre.Tag = "1";
+            this.txtDescripcion.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDescripcion.Location = new System.Drawing.Point(245, 150);
+            this.txtDescripcion.Margin = new System.Windows.Forms.Padding(4);
+            this.txtDescripcion.Name = "txtDescripcion";
+            this.txtDescripcion.Size = new System.Drawing.Size(297, 24);
+            this.txtDescripcion.TabIndex = 1;
+            this.txtDescripcion.Tag = "1";
             // 
-            // btn_cancel
+            // btnCancelar
             // 
-            this.btn_cancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btn_cancel.BackgroundImage = global::CapaDiseno.Properties.Resources.cancelar1;
-            this.btn_cancel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_cancel.FlatAppearance.BorderSize = 0;
-            this.btn_cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_cancel.Location = new System.Drawing.Point(632, 86);
-            this.btn_cancel.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_cancel.Name = "btn_cancel";
-            this.btn_cancel.Size = new System.Drawing.Size(93, 42);
-            this.btn_cancel.TabIndex = 290;
-            this.btn_cancel.UseVisualStyleBackColor = false;
-            this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click_1);
+            this.btnCancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnCancelar.BackgroundImage = global::CapaDiseno.Properties.Resources.cancelar1;
+            this.btnCancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnCancelar.FlatAppearance.BorderSize = 0;
+            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancelar.Location = new System.Drawing.Point(630, 76);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(0);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(93, 42);
+            this.btnCancelar.TabIndex = 290;
+            this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
-            // btn_eliminar
+            // btnEliminar
             // 
-            this.btn_eliminar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btn_eliminar.BackgroundImage = global::CapaDiseno.Properties.Resources.borrar11;
-            this.btn_eliminar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_eliminar.FlatAppearance.BorderSize = 0;
-            this.btn_eliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_eliminar.Location = new System.Drawing.Point(539, 86);
-            this.btn_eliminar.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_eliminar.Name = "btn_eliminar";
-            this.btn_eliminar.Size = new System.Drawing.Size(93, 42);
-            this.btn_eliminar.TabIndex = 289;
-            this.btn_eliminar.UseVisualStyleBackColor = false;
-            this.btn_eliminar.Click += new System.EventHandler(this.btn_eliminar_Click_1);
+            this.btnEliminar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnEliminar.BackgroundImage = global::CapaDiseno.Properties.Resources.borrar11;
+            this.btnEliminar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnEliminar.FlatAppearance.BorderSize = 0;
+            this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEliminar.Location = new System.Drawing.Point(537, 76);
+            this.btnEliminar.Margin = new System.Windows.Forms.Padding(0);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(93, 42);
+            this.btnEliminar.TabIndex = 289;
+            this.btnEliminar.UseVisualStyleBackColor = false;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click_1);
             // 
-            // btn_modif
+            // btnModificar
             // 
-            this.btn_modif.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btn_modif.BackgroundImage = global::CapaDiseno.Properties.Resources.editar11;
-            this.btn_modif.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_modif.FlatAppearance.BorderSize = 0;
-            this.btn_modif.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_modif.Location = new System.Drawing.Point(446, 86);
-            this.btn_modif.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_modif.Name = "btn_modif";
-            this.btn_modif.Size = new System.Drawing.Size(93, 42);
-            this.btn_modif.TabIndex = 288;
-            this.btn_modif.UseVisualStyleBackColor = false;
-            this.btn_modif.Click += new System.EventHandler(this.btn_modif_Click);
+            this.btnModificar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnModificar.BackgroundImage = global::CapaDiseno.Properties.Resources.editar11;
+            this.btnModificar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnModificar.FlatAppearance.BorderSize = 0;
+            this.btnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnModificar.Location = new System.Drawing.Point(444, 76);
+            this.btnModificar.Margin = new System.Windows.Forms.Padding(0);
+            this.btnModificar.Name = "btnModificar";
+            this.btnModificar.Size = new System.Drawing.Size(93, 42);
+            this.btnModificar.TabIndex = 288;
+            this.btnModificar.UseVisualStyleBackColor = false;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
-            // btn_bsucarmodulo
+            // btnBuscar
             // 
-            this.btn_bsucarmodulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btn_bsucarmodulo.BackgroundImage = global::CapaDiseno.Properties.Resources.buscar12;
-            this.btn_bsucarmodulo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_bsucarmodulo.FlatAppearance.BorderSize = 0;
-            this.btn_bsucarmodulo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_bsucarmodulo.Location = new System.Drawing.Point(353, 86);
-            this.btn_bsucarmodulo.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_bsucarmodulo.Name = "btn_bsucarmodulo";
-            this.btn_bsucarmodulo.Size = new System.Drawing.Size(93, 42);
-            this.btn_bsucarmodulo.TabIndex = 287;
-            this.btn_bsucarmodulo.UseVisualStyleBackColor = false;
-            this.btn_bsucarmodulo.Click += new System.EventHandler(this.btn_bsucarmodulo_Click);
+            this.btnBuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnBuscar.BackgroundImage = global::CapaDiseno.Properties.Resources.buscar12;
+            this.btnBuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnBuscar.FlatAppearance.BorderSize = 0;
+            this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBuscar.Location = new System.Drawing.Point(351, 76);
+            this.btnBuscar.Margin = new System.Windows.Forms.Padding(0);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(93, 42);
+            this.btnBuscar.TabIndex = 287;
+            this.btnBuscar.UseVisualStyleBackColor = false;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
-            // btn_actualizar
+            // btnActualizar
             // 
-            this.btn_actualizar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btn_actualizar.BackgroundImage = global::CapaDiseno.Properties.Resources.guardar22;
-            this.btn_actualizar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_actualizar.FlatAppearance.BorderSize = 0;
-            this.btn_actualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_actualizar.Location = new System.Drawing.Point(260, 86);
-            this.btn_actualizar.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_actualizar.Name = "btn_actualizar";
-            this.btn_actualizar.Size = new System.Drawing.Size(93, 42);
-            this.btn_actualizar.TabIndex = 286;
-            this.btn_actualizar.UseVisualStyleBackColor = false;
-            this.btn_actualizar.Click += new System.EventHandler(this.btn_actualizar_Click_1);
+            this.btnActualizar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnActualizar.BackgroundImage = global::CapaDiseno.Properties.Resources.guardar22;
+            this.btnActualizar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnActualizar.FlatAppearance.BorderSize = 0;
+            this.btnActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnActualizar.Location = new System.Drawing.Point(258, 76);
+            this.btnActualizar.Margin = new System.Windows.Forms.Padding(0);
+            this.btnActualizar.Name = "btnActualizar";
+            this.btnActualizar.Size = new System.Drawing.Size(93, 42);
+            this.btnActualizar.TabIndex = 286;
+            this.btnActualizar.UseVisualStyleBackColor = false;
+            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click_1);
             // 
-            // btn_ingresar
+            // btnGuardar
             // 
-            this.btn_ingresar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btn_ingresar.BackgroundImage = global::CapaDiseno.Properties.Resources.guardar13;
-            this.btn_ingresar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_ingresar.FlatAppearance.BorderSize = 0;
-            this.btn_ingresar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_ingresar.Location = new System.Drawing.Point(167, 86);
-            this.btn_ingresar.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_ingresar.Name = "btn_ingresar";
-            this.btn_ingresar.Size = new System.Drawing.Size(93, 42);
-            this.btn_ingresar.TabIndex = 285;
-            this.btn_ingresar.UseVisualStyleBackColor = false;
-            this.btn_ingresar.Click += new System.EventHandler(this.btn_ingresar_Click_1);
+            this.btnGuardar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnGuardar.BackgroundImage = global::CapaDiseno.Properties.Resources.guardar13;
+            this.btnGuardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnGuardar.FlatAppearance.BorderSize = 0;
+            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGuardar.Location = new System.Drawing.Point(165, 76);
+            this.btnGuardar.Margin = new System.Windows.Forms.Padding(0);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(93, 42);
+            this.btnGuardar.TabIndex = 285;
+            this.btnGuardar.UseVisualStyleBackColor = false;
+            this.btnGuardar.Click += new System.EventHandler(this.btnIngresar_Click_1);
             // 
-            // btn_ayuda
+            // btnAyuda
             // 
-            this.btn_ayuda.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btn_ayuda.BackgroundImage = global::CapaDiseno.Properties.Resources.ayuda1;
-            this.btn_ayuda.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_ayuda.FlatAppearance.BorderSize = 0;
-            this.btn_ayuda.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_ayuda.Location = new System.Drawing.Point(818, 86);
-            this.btn_ayuda.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_ayuda.Name = "btn_ayuda";
-            this.btn_ayuda.Size = new System.Drawing.Size(93, 42);
-            this.btn_ayuda.TabIndex = 284;
-            this.btn_ayuda.UseVisualStyleBackColor = false;
-            this.btn_ayuda.Click += new System.EventHandler(this.btn_ayuda_Click);
+            this.btnAyuda.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnAyuda.BackgroundImage = global::CapaDiseno.Properties.Resources.ayuda1;
+            this.btnAyuda.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnAyuda.FlatAppearance.BorderSize = 0;
+            this.btnAyuda.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAyuda.Location = new System.Drawing.Point(816, 76);
+            this.btnAyuda.Margin = new System.Windows.Forms.Padding(0);
+            this.btnAyuda.Name = "btnAyuda";
+            this.btnAyuda.Size = new System.Drawing.Size(93, 42);
+            this.btnAyuda.TabIndex = 284;
+            this.btnAyuda.UseVisualStyleBackColor = false;
+            this.btnAyuda.Click += new System.EventHandler(this.btnAyuda_Click);
             // 
-            // btn_salir
+            // btnSalir
             // 
-            this.btn_salir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btn_salir.BackgroundImage = global::CapaDiseno.Properties.Resources.salir1;
-            this.btn_salir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_salir.FlatAppearance.BorderSize = 0;
-            this.btn_salir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_salir.Location = new System.Drawing.Point(725, 86);
-            this.btn_salir.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_salir.Name = "btn_salir";
-            this.btn_salir.Size = new System.Drawing.Size(93, 42);
-            this.btn_salir.TabIndex = 283;
-            this.btn_salir.UseVisualStyleBackColor = false;
-            this.btn_salir.Click += new System.EventHandler(this.button1_Click);
+            this.btnSalir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnSalir.BackgroundImage = global::CapaDiseno.Properties.Resources.salir1;
+            this.btnSalir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnSalir.FlatAppearance.BorderSize = 0;
+            this.btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSalir.Location = new System.Drawing.Point(723, 76);
+            this.btnSalir.Margin = new System.Windows.Forms.Padding(0);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(93, 42);
+            this.btnSalir.TabIndex = 283;
+            this.btnSalir.UseVisualStyleBackColor = false;
+            this.btnSalir.Click += new System.EventHandler(this.button1_Click);
             // 
-            // btn_nuevo
+            // btnNuevo
             // 
-            this.btn_nuevo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btn_nuevo.BackgroundImage = global::CapaDiseno.Properties.Resources.agregar1;
-            this.btn_nuevo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_nuevo.FlatAppearance.BorderSize = 0;
-            this.btn_nuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_nuevo.Location = new System.Drawing.Point(74, 86);
-            this.btn_nuevo.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_nuevo.Name = "btn_nuevo";
-            this.btn_nuevo.Size = new System.Drawing.Size(93, 42);
-            this.btn_nuevo.TabIndex = 277;
-            this.btn_nuevo.UseVisualStyleBackColor = false;
-            this.btn_nuevo.Click += new System.EventHandler(this.btn_nuevo_Click);
+            this.btnNuevo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnNuevo.BackgroundImage = global::CapaDiseno.Properties.Resources.agregar1;
+            this.btnNuevo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnNuevo.FlatAppearance.BorderSize = 0;
+            this.btnNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNuevo.Location = new System.Drawing.Point(72, 76);
+            this.btnNuevo.Margin = new System.Windows.Forms.Padding(0);
+            this.btnNuevo.Name = "btnNuevo";
+            this.btnNuevo.Size = new System.Drawing.Size(93, 42);
+            this.btnNuevo.TabIndex = 277;
+            this.btnNuevo.UseVisualStyleBackColor = false;
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
-            // label4
+            // lblTitulo
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Haettenschweiler", 26F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.Transparent;
-            this.label4.Location = new System.Drawing.Point(273, 23);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(439, 37);
-            this.label4.TabIndex = 291;
-            this.label4.Text = "M a n t e n i m i e n t o   d e   M ó d u l o s";
+            this.lblTitulo.AutoSize = true;
+            this.lblTitulo.Font = new System.Drawing.Font("Haettenschweiler", 26F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitulo.ForeColor = System.Drawing.Color.Transparent;
+            this.lblTitulo.Location = new System.Drawing.Point(273, 18);
+            this.lblTitulo.Name = "lblTitulo";
+            this.lblTitulo.Size = new System.Drawing.Size(439, 37);
+            this.lblTitulo.TabIndex = 291;
+            this.lblTitulo.Text = "M a n t e n i m i e n t o   d e   M ó d u l o s";
             // 
-            // frm_modulos
+            // frmMantemientoMódulos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(133)))), ((int)(((byte)(223)))));
-            this.ClientSize = new System.Drawing.Size(973, 663);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.btn_cancel);
-            this.Controls.Add(this.btn_eliminar);
-            this.Controls.Add(this.btn_modif);
-            this.Controls.Add(this.btn_bsucarmodulo);
-            this.Controls.Add(this.btn_actualizar);
-            this.Controls.Add(this.btn_ingresar);
-            this.Controls.Add(this.btn_ayuda);
-            this.Controls.Add(this.btn_salir);
-            this.Controls.Add(this.btn_nuevo);
-            this.Controls.Add(this.gbbuscar);
-            this.Controls.Add(this.groupBox2);
+            this.ClientSize = new System.Drawing.Size(973, 611);
+            this.Controls.Add(this.lblTitulo);
+            this.Controls.Add(this.btnCancelar);
+            this.Controls.Add(this.btnEliminar);
+            this.Controls.Add(this.btnModificar);
+            this.Controls.Add(this.btnBuscar);
+            this.Controls.Add(this.btnActualizar);
+            this.Controls.Add(this.btnGuardar);
+            this.Controls.Add(this.btnAyuda);
+            this.Controls.Add(this.btnSalir);
+            this.Controls.Add(this.btnNuevo);
+            this.Controls.Add(this.gbxBuscar);
+            this.Controls.Add(this.gbxDatos);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "frm_modulos";
+            this.Name = "frmMantemientoMódulos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Mantenimiento de Modulos";
             this.Load += new System.EventHandler(this.Frm_modulos_Load);
-            this.gbbuscar.ResumeLayout(false);
-            this.gbbuscar.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.gbestado.ResumeLayout(false);
-            this.gbestado.PerformLayout();
+            this.gbxBuscar.ResumeLayout(false);
+            this.gbxBuscar.PerformLayout();
+            this.gbxDatos.ResumeLayout(false);
+            this.gbxDatos.PerformLayout();
+            this.gbxEstado.ResumeLayout(false);
+            this.gbxEstado.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.GroupBox gbbuscar;
-        private System.Windows.Forms.TextBox tbx_buscarmodulo;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox txtdesc;
-        private System.Windows.Forms.TextBox txtcodigo;
-        private System.Windows.Forms.GroupBox gbestado;
-        private System.Windows.Forms.RadioButton rbinhabilitado;
-        private System.Windows.Forms.RadioButton rbhabilitado;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtnombre;
-        private System.Windows.Forms.Button btn_ayuda;
-        private System.Windows.Forms.Button btn_salir;
-        private System.Windows.Forms.Button btn_nuevo;
-        private System.Windows.Forms.Button btn_ingresar;
-        private System.Windows.Forms.Button btn_actualizar;
-        private System.Windows.Forms.Button btn_bsucarmodulo;
-        private System.Windows.Forms.Button btn_modif;
-        private System.Windows.Forms.Button btn_eliminar;
-        private System.Windows.Forms.Button btn_cancel;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.GroupBox gbxBuscar;
+        private System.Windows.Forms.TextBox txtBuscarModulo;
+        private System.Windows.Forms.GroupBox gbxDatos;
+        private System.Windows.Forms.TextBox txtNombre;
+        private System.Windows.Forms.TextBox txtCodigo;
+        private System.Windows.Forms.GroupBox gbxEstado;
+        private System.Windows.Forms.RadioButton rbtnInhabilitado;
+        private System.Windows.Forms.RadioButton rbtnHabilitado;
+        private System.Windows.Forms.Label lblDescripcion;
+        private System.Windows.Forms.Label lblNombre;
+        private System.Windows.Forms.Label lblCodigo;
+        private System.Windows.Forms.TextBox txtDescripcion;
+        private System.Windows.Forms.Button btnAyuda;
+        private System.Windows.Forms.Button btnSalir;
+        private System.Windows.Forms.Button btnNuevo;
+        private System.Windows.Forms.Button btnGuardar;
+        private System.Windows.Forms.Button btnActualizar;
+        private System.Windows.Forms.Button btnBuscar;
+        private System.Windows.Forms.Button btnModificar;
+        private System.Windows.Forms.Button btnEliminar;
+        private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.Label lblTitulo;
     }
 }

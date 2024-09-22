@@ -71,7 +71,7 @@ namespace CapaLogica
         {
             try
             {
-                using (OdbcDataAdapter cmpsAplicaciones = sn.Consultaraplicaciones(ID_aplicacion)) //Cambio de referencia para fuuncionamiento de APlicaciones Usuarios
+                using (OdbcDataAdapter cmpsAplicaciones = sn.consultarAplicaciones(ID_aplicacion)) //Cambio de referencia para fuuncionamiento de APlicaciones Usuarios
                 {
                     DataTable tableAplicaciones = new DataTable();
                     cmpsAplicaciones.Fill(tableAplicaciones);
@@ -90,11 +90,11 @@ namespace CapaLogica
 
         //Trabajado María José Véliz
         //Se cambiaron de lugar los parámetros por la base de datos
-        public DataTable consultaLogicaPermisosUsuarioAplicacion(string codigoUsuario, string nombreAplicacion, string ingresar, string consulta, string modificar, string eliminar, string imprimir)
+        public DataTable funcConsultaLogicaPermisosUsuarioAplicacion(string codigoUsuario, string nombreAplicacion, string ingresar, string consulta, string modificar, string eliminar, string imprimir)
         {
             try
             {
-                OdbcDataAdapter dtPermisosUA = sn.insertarPermisosUA(codigoUsuario, nombreAplicacion, ingresar, consulta, modificar, eliminar, imprimir);
+                OdbcDataAdapter dtPermisosUA = sn.funcInsertarPermisosUA(codigoUsuario, nombreAplicacion, ingresar, consulta, modificar, eliminar, imprimir);
                 DataTable tablePermisosUA = new DataTable();
                 dtPermisosUA.Fill(tablePermisosUA);
                 return tablePermisosUA;
@@ -109,12 +109,12 @@ namespace CapaLogica
 
         //Trabajado por ALyson Rodriguez 9959-21-829
       
-        public DataTable consultaLogicaUsuarios(string AplicacionUsuario)
+        public DataTable funcConsultaLogicaUsuarios(string AplicacionUsuario)
         {
 
             // Llamar al método que retorna un DataTable
             DataTable table = new DataTable();
-            OdbcDataAdapter dt = sn.mostrarUsuariosYPermisos(AplicacionUsuario); // Cambio en el nombre del método para reflejar permisos
+            OdbcDataAdapter dt = sn.funcMostrarUsuariosYPermisos(AplicacionUsuario); // Cambio en el nombre del método para reflejar permisos
             dt.Fill(table);
             return table;
         }
@@ -391,11 +391,11 @@ namespace CapaLogica
     
 
         //Trabajado por María José Véliz Ochoa, 9959-21-5909
-        public DataTable validarIDModulos()
+        public DataTable funcValidarIdModulos()
         {
             try
             {
-                OdbcDataAdapter dtValidarIDModulo = sn.validarIDModulos();
+                OdbcDataAdapter dtValidarIDModulo = sn.funcValidarIdModulos();
                 DataTable tableValidacionIdModulo = new DataTable();
                 dtValidarIDModulo.Fill(tableValidacionIdModulo);
                 return tableValidacionIdModulo;
@@ -482,12 +482,12 @@ namespace CapaLogica
 
 
         //Trabajado por María José Véliz Ochoa, 9959-21-5909
-        public bool ingresarmodulos(string codigo, string nombre, string descripcion, string estado)
+        public bool funcIngresarModulo(string codigo, string nombre, string descripcion, string estado)
         {
             try
             {
                 // Ejecutar la inserción
-                sn.insertarModulo(codigo, nombre, descripcion, estado);
+                sn.funcInsertarModulo(codigo, nombre, descripcion, estado);
                 return true;
             }
             catch (Exception ex)
@@ -542,11 +542,11 @@ namespace CapaLogica
         //----------------------------------------------------------------------------------------
 
         //Trabajado por María José Véliz Ochoa, 9959-21-5909
-        public DataTable ConsultaLogicaModulo(string ID_modulo)
+        public DataTable funcConsultaLogicaModulo(string ID_modulo)
         {
             try
             {
-                using (OdbcDataAdapter cmpsModulos = sn.ConsultarModulos(ID_modulo))
+                using (OdbcDataAdapter cmpsModulos = sn.funcConsultarModulos(ID_modulo))
                 {
                     DataTable tablaModulos = new DataTable();
                     cmpsModulos.Fill(tablaModulos);
@@ -564,11 +564,11 @@ namespace CapaLogica
 
 
 
-        public DataTable Actualizarmodulo(string ID_modulo, string nombre, string descripcion, string estado)
+        public DataTable funcActualizarModulo(string ID_modulo, string nombre, string descripcion, string estado)
         {
             try
             {
-                OdbcDataAdapter dtmodulo = sn.ActualizarModulo(ID_modulo, nombre, descripcion, estado);
+                OdbcDataAdapter dtmodulo = sn.funcActualizarModulo(ID_modulo, nombre, descripcion, estado);
                 DataTable tablamodulos = new DataTable();
                 dtmodulo.Fill(tablamodulos);
                 return tablamodulos;
@@ -594,11 +594,11 @@ namespace CapaLogica
         //FIN ###########
 
         //ELIMINAR MODULO ALYSON ##########################################
-        public DataTable EliminarModulo(string ID_modulo, string nombre, string descripcion, string estado)
+        public DataTable funcEliminarModulo(string ID_modulo, string nombre, string descripcion, string estado)
         {
             try
             {
-                OdbcDataAdapter dtmodulo = sn.EliminarModulo(ID_modulo, nombre, descripcion, estado);
+                OdbcDataAdapter dtmodulo = sn.funcEliminarModulo(ID_modulo, nombre, descripcion, estado);
                 DataTable tablamodulos = new DataTable();
                 dtmodulo.Fill(tablamodulos);
                 return tablamodulos;

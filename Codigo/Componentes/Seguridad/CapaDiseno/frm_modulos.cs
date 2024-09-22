@@ -12,56 +12,56 @@ using System.Data.Odbc;
 
 namespace CapaDiseno
 {
-    public partial class frm_modulos : Form
+    public partial class frmMantemientoMódulos : Form
     {
         logica logic;
 
-        public frm_modulos(string idUsuario)
+        public frmMantemientoMódulos(string idUsuario)
         {
             InitializeComponent();
-            btn_modif.Enabled = false;
-            btn_actualizar.Enabled = false;
-            btn_cancel.Enabled = false;
-            btn_eliminar.Enabled = false; //se agrega
+            btnModificar.Enabled = false;
+            btnActualizar.Enabled = false;
+            btnCancelar.Enabled = false;
+            btnEliminar.Enabled = false; //se agrega
             logic = new logica(idUsuario);
-            txtcodigo.Enabled = false;
-            txtnombre.Enabled = false;
-            txtdesc.Enabled = false;
-            btn_ingresar.Enabled = false;
-            gbestado.Enabled = false;
+            txtCodigo.Enabled = false;
+            txtDescripcion.Enabled = false;
+            txtNombre.Enabled = false;
+            btnGuardar.Enabled = false;
+            gbxEstado.Enabled = false;
             ToolTip tnuevo = new ToolTip();
-            tnuevo.SetToolTip(btn_nuevo, "Crear Módulo");
+            tnuevo.SetToolTip(btnNuevo, "Crear Módulo");
             ToolTip tguardar = new ToolTip();
-            tguardar.SetToolTip(btn_ingresar, "Guardar Módulo");
+            tguardar.SetToolTip(btnGuardar, "Guardar Módulo");
             ToolTip tactualizar = new ToolTip();
-            tactualizar.SetToolTip(btn_modif, "Actualizar Cambios");
+            tactualizar.SetToolTip(btnModificar, "Actualizar Cambios");
             ToolTip tbuscar = new ToolTip();
-            tbuscar.SetToolTip(btn_bsucarmodulo, "Buscar Módulo");
+            tbuscar.SetToolTip(btnBuscar, "Buscar Módulo");
             ToolTip teditar = new ToolTip();
-            teditar.SetToolTip(btn_modif, "Modificar Módulo");
+            teditar.SetToolTip(btnModificar, "Modificar Módulo");
             ToolTip teliminar = new ToolTip();
-            teliminar.SetToolTip(btn_eliminar, "Eliminar Módulo");
+            teliminar.SetToolTip(btnEliminar, "Eliminar Módulo");
             ToolTip tcancelar = new ToolTip();
-            tcancelar.SetToolTip(btn_cancel, "Cancelar Cambios");
+            tcancelar.SetToolTip(btnCancelar, "Limpiar/Cancelar");
             ToolTip tsalir = new ToolTip();
-            tsalir.SetToolTip(btn_salir, "Salir Mantenimiento Módulos");
+            tsalir.SetToolTip(btnSalir, "Salir Mantenimiento Módulos");
             ToolTip tayuda = new ToolTip();
-            tayuda.SetToolTip(btn_ayuda, "Ayuda");
+            tayuda.SetToolTip(btnAyuda, "Ayuda");
         }
 
-        public frm_modulos()
+        public frmMantemientoMódulos()
         {
         }
 
         void limpiar()
         {
-            tbx_buscarmodulo.Text = "";
-            txtcodigo.Text = "";
-            txtdesc.Text = "";
-            txtnombre.Text = "";
-            rbhabilitado.Checked = false;
-            rbinhabilitado.Checked = false;
-            txtcodigo.Focus();
+            txtBuscarModulo.Text = "";
+            txtCodigo.Text = "";
+            txtNombre.Text = "";
+            txtDescripcion.Text = "";
+            rbtnHabilitado.Checked = false;
+            rbtnInhabilitado.Checked = false;
+            txtCodigo.Focus();
         }
 
 
@@ -72,27 +72,27 @@ namespace CapaDiseno
 
         //Trabajado por María José Véliz Ochoa, 9959-21-5909
 
-        private void btn_nuevo_Click(object sender, EventArgs e)
+        private void btnNuevo_Click(object sender, EventArgs e)
         {
-            btn_nuevo.Enabled = false;
-            btn_actualizar.Enabled = false;
-            gbbuscar.Enabled = false;
-            btn_modif.Enabled = false;
-            rbhabilitado.Checked = true;
-            gbestado.Enabled = true;
-            txtnombre.Enabled = true;
-            txtdesc.Enabled = true;
-            btn_ingresar.Enabled = true;
-            btn_cancel.Enabled = true;
+            btnNuevo.Enabled = false;
+            btnActualizar.Enabled = false;
+            gbxBuscar.Enabled = false;
+            btnModificar.Enabled = false;
+            rbtnHabilitado.Checked = true;
+            gbxEstado.Enabled = true;
+            txtDescripcion.Enabled = true;
+            txtNombre.Enabled = true;
+            btnGuardar.Enabled = true;
+            btnCancelar.Enabled = true;
             //habilitando para ingresar id
-            txtcodigo.Enabled = true;
-            btn_eliminar.Enabled = false; //se agrega
+            txtCodigo.Enabled = true;
+            btnEliminar.Enabled = false; //se agrega
 
 
             //para errores tipo null
             try
             {
-                DataTable dtValidarID = logic.validarIDModulos();
+                DataTable dtValidarID = logic.funcValidarIdModulos();
                 if (dtValidarID == null || dtValidarID.Rows.Count == 0)
                 {
                     //txtcodigo.Text = ""; // Asigna un valor por defecto si no se encuentra ningún ID
@@ -102,7 +102,7 @@ namespace CapaDiseno
                 {
                     if (row[0] != DBNull.Value)
                     {
-                        txtcodigo.Text = row[0].ToString();
+                        txtCodigo.Text = row[0].ToString();
                     }
                 }
 
@@ -116,43 +116,43 @@ namespace CapaDiseno
         }
         // FIN ####################################
 
-        private void rbhabilitado_CheckedChanged(object sender, EventArgs e)
+        private void rbtnHabilitado_CheckedChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void btn_ingresar_Click_1(object sender, EventArgs e)
+        private void btnIngresar_Click_1(object sender, EventArgs e)
         {
-            txtnombre.Enabled = false;
-            txtdesc.Enabled = false;
+            txtNombre.Enabled = false;
+            txtDescripcion.Enabled = false;
 
 
-            if (txtnombre.Text == "")
+            if (txtNombre.Text == "")
             {
                 MessageBox.Show("Falta Nombre de Modulo");
-                btn_nuevo.Enabled = true;
-                txtnombre.Enabled = false;
-                txtdesc.Enabled = false;
+                btnNuevo.Enabled = true;
+                txtNombre.Enabled = false;
+                txtDescripcion.Enabled = false;
 
             }
-            else if (txtdesc.Text == "")
+            else if (txtDescripcion.Text == "")
             {
                 MessageBox.Show("Falta Descripcion del modulo");
-                btn_nuevo.Enabled = true;
-                txtnombre.Enabled = false;
-                txtdesc.Enabled = false;
+                btnNuevo.Enabled = true;
+                txtNombre.Enabled = false;
+                txtDescripcion.Enabled = false;
 
             }
 
             else
             {
                 string estado = "";
-                if (rbhabilitado.Checked)
+                if (rbtnHabilitado.Checked)
                 {
                     estado = "1";
                 }
 
-                if (rbinhabilitado.Checked)
+                if (rbtnInhabilitado.Checked)
                 {
                     estado = "0";
                 }
@@ -161,49 +161,50 @@ namespace CapaDiseno
                     estado = "1";
                 }
 
-                logic.ingresarmodulos(txtcodigo.Text.ToString(), txtnombre.Text.ToString(), txtdesc.Text.ToString(), estado.ToString());
+                logic.funcIngresarModulo(txtCodigo.Text.ToString(), txtNombre.Text.ToString(), txtDescripcion.Text.ToString(), estado.ToString());
                 MessageBox.Show("Modulo Ingresado Correctamente");
                 limpiar();
-                gbbuscar.Enabled = true;
-                btn_nuevo.Enabled = true;
-                btn_ingresar.Enabled = false;
-                txtcodigo.Enabled = false;
-                btn_eliminar.Enabled = false; //se agrega
+                gbxBuscar.Enabled = true;
+                btnNuevo.Enabled = true;
+                btnGuardar.Enabled = false;
+                txtCodigo.Enabled = false;
+                btnEliminar.Enabled = false; //se agrega
             }
         }
 
+
         //Trabajado por Alyson Rodríguez, 9959-21-829
-        private void btn_actualizar_Click_1(object sender, EventArgs e)
+        private void btnActualizar_Click_1(object sender, EventArgs e)
         {
-            if (txtnombre.Text == "")
+            if (txtDescripcion.Text == "")
             {
                 MessageBox.Show("Falta Nombre de Modulo");
 
-                btn_nuevo.Enabled = true;
-                txtnombre.Enabled = false;
-                txtdesc.Enabled = false;
+                btnNuevo.Enabled = true;
+                txtDescripcion.Enabled = false;
+                txtNombre.Enabled = false;
 
 
             }
-            else if (txtdesc.Text == "")
+            else if (txtNombre.Text == "")
             {
                 MessageBox.Show("Falta Descripcion del modulo");
 
-                btn_nuevo.Enabled = true;
-                txtnombre.Enabled = false;
-                txtdesc.Enabled = false;
+                btnNuevo.Enabled = true;
+                txtDescripcion.Enabled = false;
+                txtNombre.Enabled = false;
 
             }
 
             else
             {
                 string estado = "";
-                if (rbhabilitado.Checked)
+                if (rbtnHabilitado.Checked)
                 {
                     estado = "1";
                 }
 
-                if (rbinhabilitado.Checked)
+                if (rbtnInhabilitado.Checked)
                 {
                     estado = "0";
                 }
@@ -212,26 +213,26 @@ namespace CapaDiseno
                     estado = "1";
                 }
 
-                logic.Actualizarmodulo(txtcodigo.Text.ToString(), txtnombre.Text.ToString(), txtdesc.Text.ToString(), estado.ToString());
+                logic.funcActualizarModulo(txtCodigo.Text.ToString(), txtDescripcion.Text.ToString(), txtNombre.Text.ToString(), estado.ToString());
                 MessageBox.Show("Modulo Actualizado Correctamente");
-                btn_modif.Enabled = false;
-                btn_actualizar.Enabled = false;
-                btn_cancel.Enabled = false;
-                btn_ingresar.Enabled = false;
-                gbestado.Enabled = false;
-                btn_nuevo.Enabled = true;
-                txtcodigo.Enabled = false;
-                txtnombre.Enabled = false;
-                txtdesc.Enabled = false;
-                btn_eliminar.Enabled = false; //se agrega  ALyson #####################
+                btnModificar.Enabled = false;
+                btnActualizar.Enabled = false;
+                btnCancelar.Enabled = false;
+                btnGuardar.Enabled = false;
+                gbxEstado.Enabled = false;
+                btnNuevo.Enabled = true;
+                txtCodigo.Enabled = false;
+                txtDescripcion.Enabled = false;
+                txtNombre.Enabled = false;
+                btnEliminar.Enabled = false; //se agrega  ALyson #####################
                 limpiar();
             }
         }
 
         //Trabajado por María José Véliz Ochoa, 9959-21-5909
-        private void btn_bsucarmodulo_Click(object sender, EventArgs e)
+        private void btnBuscar_Click(object sender, EventArgs e)
         {
-            string modulo = tbx_buscarmodulo.Text;
+            string modulo = txtBuscarModulo.Text;
 
             if (string.IsNullOrWhiteSpace(modulo))
             {
@@ -241,7 +242,7 @@ namespace CapaDiseno
             //Para errores null del DataTable
             try
             {
-                DataTable dtModulos = logic.ConsultaLogicaModulo(modulo);
+                DataTable dtModulos = logic.funcConsultaLogicaModulo(modulo);
 
                 if (dtModulos == null || dtModulos.Rows.Count == 0)
                 {
@@ -251,34 +252,34 @@ namespace CapaDiseno
 
                 foreach (DataRow row in dtModulos.Rows)
                 {// Asigna el valor de cada columna a su respectivo control en la interfaz si no es nulo
-                    if (row[0] != DBNull.Value) txtcodigo.Text = row[0].ToString();
-                    if (row[1] != DBNull.Value) txtnombre.Text = row[1].ToString();
-                    if (row[2] != DBNull.Value) txtdesc.Text = row[2].ToString();
+                    if (row[0] != DBNull.Value) txtCodigo.Text = row[0].ToString();
+                    if (row[1] != DBNull.Value) txtDescripcion.Text = row[1].ToString();
+                    if (row[2] != DBNull.Value) txtNombre.Text = row[2].ToString();
                     if (row[3] != DBNull.Value)
                     {
                         string estado = row[3].ToString();
                         if (estado == "1")
                         {
-                            rbhabilitado.Checked = true;
-                            rbinhabilitado.Checked = false;
+                            rbtnHabilitado.Checked = true;
+                            rbtnInhabilitado.Checked = false;
                         }
                         else if (estado == "0")
                         {
-                            rbhabilitado.Checked = false;
-                            rbinhabilitado.Checked = true;
+                            rbtnHabilitado.Checked = false;
+                            rbtnInhabilitado.Checked = true;
                         }
                     }
                 }
 
-                btn_modif.Enabled = true;
-                btn_ingresar.Enabled = false;
-                txtcodigo.Enabled = false;
-                txtnombre.Enabled = false;
-                txtdesc.Enabled = false;
-                rbhabilitado.Enabled = false;
-                rbinhabilitado.Enabled = false;
-                btn_cancel.Enabled = true;
-                btn_eliminar.Enabled = true; //se agrega
+                btnModificar.Enabled = true;
+                btnGuardar.Enabled = false;
+                txtCodigo.Enabled = false;
+                txtDescripcion.Enabled = false;
+                txtNombre.Enabled = false;
+                rbtnHabilitado.Enabled = false;
+                rbtnInhabilitado.Enabled = false;
+                btnCancelar.Enabled = true;
+                btnEliminar.Enabled = true; //se agrega
 
             }
             catch (Exception ex)
@@ -289,45 +290,45 @@ namespace CapaDiseno
         }
 
         //Trabajado por Alyson Rodríguez, 9959-21-829
-        private void btn_modif_Click(object sender, EventArgs e)
+        private void btnModificar_Click(object sender, EventArgs e)
         {
-            txtcodigo.Enabled = false;
-            btn_cancel.Enabled = true;
-            btn_actualizar.Enabled = true;
-            btn_modif.Enabled = false;
-            txtnombre.Enabled = true;
-            txtdesc.Enabled = true;
-            rbhabilitado.Enabled = true;
-            rbinhabilitado.Enabled = true;
-            btn_nuevo.Enabled = false;
-            gbestado.Enabled = true;
-            btn_eliminar.Enabled = false; //se agrega
+            txtCodigo.Enabled = false;
+            btnCancelar.Enabled = true;
+            btnActualizar.Enabled = true;
+            btnModificar.Enabled = false;
+            txtDescripcion.Enabled = true;
+            txtNombre.Enabled = true;
+            rbtnHabilitado.Enabled = true;
+            rbtnInhabilitado.Enabled = true;
+            btnNuevo.Enabled = false;
+            gbxEstado.Enabled = true;
+            btnEliminar.Enabled = false; //se agrega
         }
 
         //Trabajado por Alyson Rodríguez, 9959-21-829
-        private void btn_eliminar_Click_1(object sender, EventArgs e)
+        private void btnEliminar_Click_1(object sender, EventArgs e)
         {
             // Deshabilitar botones y campos según sea necesario
-            btn_nuevo.Enabled = true;
-            btn_actualizar.Enabled = false;
-            gbbuscar.Enabled = true;
-            btn_modif.Enabled = false;
-            rbhabilitado.Checked = false;
-            gbestado.Enabled = false;
-            txtnombre.Enabled = false;
-            txtdesc.Enabled = false;
-            btn_ingresar.Enabled = false;
-            btn_cancel.Enabled = false;
-            txtcodigo.Enabled = false;
-            btn_eliminar.Enabled = false;
+            btnNuevo.Enabled = true;
+            btnActualizar.Enabled = false;
+            gbxBuscar.Enabled = true;
+            btnModificar.Enabled = false;
+            rbtnHabilitado.Checked = false;
+            gbxEstado.Enabled = false;
+            txtDescripcion.Enabled = false;
+            txtNombre.Enabled = false;
+            btnGuardar.Enabled = false;
+            btnCancelar.Enabled = false;
+            txtCodigo.Enabled = false;
+            btnEliminar.Enabled = false;
 
             // Validar el estado seleccionado
             string estado;
-            if (rbhabilitado.Checked)
+            if (rbtnHabilitado.Checked)
             {
                 estado = "1"; // Habilitado
             }
-            else if (rbinhabilitado.Checked)
+            else if (rbtnInhabilitado.Checked)
             {
                 estado = "0"; // Inhabilitado
             }
@@ -338,7 +339,7 @@ namespace CapaDiseno
             }
 
             // Validar que se haya ingresado el ID del módulo
-            if (string.IsNullOrEmpty(txtcodigo.Text))
+            if (string.IsNullOrEmpty(txtCodigo.Text))
             {
                 MessageBox.Show("Falta ID del Módulo");
                 return; // Salir del método si falta el ID
@@ -347,7 +348,7 @@ namespace CapaDiseno
             try
             {
                 // Llamar al método de la lógica de negocio para realizar el borrado lógico
-                logic.EliminarModulo(txtcodigo.Text.ToString(), txtnombre.Text.ToString(), txtdesc.Text.ToString(), estado);
+                logic.funcEliminarModulo(txtCodigo.Text.ToString(), txtDescripcion.Text.ToString(), txtNombre.Text.ToString(), estado);
 
                 MessageBox.Show("Módulo eliminado correctamente.");
                 limpiar(); // Limpia los campos del formulario
@@ -360,20 +361,20 @@ namespace CapaDiseno
         // FIN BOTON ELIMINAR ####################################
 
         //María José para deshabilitar txt código
-        private void btn_cancel_Click_1(object sender, EventArgs e)
+        private void btnCancelar_Click(object sender, EventArgs e)
         {
             limpiar();
-            btn_modif.Enabled = false;
-            btn_actualizar.Enabled = false;
-            btn_cancel.Enabled = false;
-            btn_ingresar.Enabled = false;
-            txtnombre.Enabled = false;
-            txtdesc.Enabled = false;
-            gbbuscar.Enabled = true;
-            btn_nuevo.Enabled = true;
-            gbestado.Enabled = false;
-            txtcodigo.Enabled = false;
-            btn_eliminar.Enabled = false; //se agrega
+            btnModificar.Enabled = false;
+            btnActualizar.Enabled = false;
+            btnCancelar.Enabled = false;
+            btnGuardar.Enabled = false;
+            txtDescripcion.Enabled = false;
+            txtNombre.Enabled = false;
+            gbxBuscar.Enabled = true;
+            btnNuevo.Enabled = true;
+            gbxEstado.Enabled = false;
+            txtCodigo.Enabled = false;
+            btnEliminar.Enabled = false; //se agrega
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -382,7 +383,7 @@ namespace CapaDiseno
             this.Close();
         }
 
-        private void btn_ayuda_Click(object sender, EventArgs e)
+        private void btnAyuda_Click(object sender, EventArgs e)
         {
             Help.ShowHelp(this, "C:\\Ayuda_Seguridad\\" + "MantenimientoModulos.chm", "AyudaMantenimientoModulos.html");
         }
@@ -391,6 +392,7 @@ namespace CapaDiseno
         {
 
         }
+
     }
 
 }
