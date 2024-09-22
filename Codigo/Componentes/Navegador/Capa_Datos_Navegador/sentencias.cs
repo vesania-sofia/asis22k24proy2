@@ -13,6 +13,7 @@ namespace Capa_Datos_Navegador
 
         conexion cn = new conexion();
        
+        //******************************************** CODIGO HECHO POR BRAYAN HERNANDEZ ***************************** 
         public OdbcDataAdapter llenaTbl(string tabla, string tablaRelacionada, string campoDescriptivo, string columnaForanea, string columnaPrimariaRelacionada)
         {
             
@@ -86,10 +87,12 @@ namespace Capa_Datos_Navegador
                 }
             }
         }
+        //******************************************** CODIGO HECHO POR BRAYAN HERNANDEZ ***************************** 
 
 
+        //******************************************** CODIGO HECHO POR EMANUEL BARAHONA ***************************** 
 
-                    
+
         public string obtenerId(string tabla)
         {
             string[] camposDesc = obtenerCampos(tabla); 
@@ -132,6 +135,11 @@ namespace Capa_Datos_Navegador
             return Campos;
         }
 
+        //******************************************** CODIGO HECHO POR EMANUEL BARAHONA ***************************** 
+
+
+
+        //******************************************** CODIGO HECHO POR ANIKA ESCOTO ***************************** 
         public string ObtenerIdUsuarioPorUsername(string username)
         {
             
@@ -173,7 +181,9 @@ namespace Capa_Datos_Navegador
             catch (Exception ex) { Console.WriteLine(ex.Message.ToString() + " \nError en obtenerTipo, revise los parámetros de la tabla  \n -" + tabla.ToUpper() + "\n -"); }
             return Campos;
         }
+        //******************************************** CODIGO HECHO POR ANIKA ESCOTO ***************************** 
 
+        //******************************************** CODIGO HECHO POR JOEL LOPEZ ***************************** 
         public int contarReg(string idindice)
         {
             int Campos = 0;
@@ -207,6 +217,10 @@ namespace Capa_Datos_Navegador
             return indice2;
 
         }
+
+        //******************************************** CODIGO HECHO POR JOEL LOPEZ ***************************** 
+
+        //******************************************** CODIGO HECHO POR JORGE AVILA ***************************** 
         public string rutaReporte(string idindice)
         {
             string indice2 = "";
@@ -236,7 +250,9 @@ namespace Capa_Datos_Navegador
             return indice;
 
         }
+        //******************************************** CODIGO HECHO POR JORGE AVILA ***************************** 
 
+        //******************************************** CODIGO HECHO POR DIEGO MARROQUIN ***************************** 
         public string ProbarTabla(string tabla)
         {
             string error = "";
@@ -270,6 +286,9 @@ namespace Capa_Datos_Navegador
 
             return error;
         }
+
+       
+
         public int ProbarRegistros(string tabla)
         {
             int registros = 0;
@@ -290,6 +309,10 @@ namespace Capa_Datos_Navegador
             return registros;
         }
 
+        //******************************************** CODIGO HECHO POR DIEGO MARROQUIN ***************************** 
+
+
+        //******************************************** CODIGO HECHO POR BRAYAN HERNANDEZ ***************************** 
         public string[] obtenerCampos(string tabla)
         {
             string[] Campos = new string[30];
@@ -326,7 +349,10 @@ namespace Capa_Datos_Navegador
 
             return Campos;  
         }
+        //******************************************** CODIGO HECHO POR BRAYAN HERNANDEZ ***************************** 
 
+
+        //******************************************** CODIGO HECHO POR SEBASTIAN LETONA ***************************** 
         public List<(string nombreColumna, bool esAutoIncremental, bool esClaveForanea, bool esTinyInt)> obtenerColumnasYPropiedades(string nombreTabla)
         {
             List<(string, bool, bool, bool)> columnas = new List<(string, bool, bool, bool)>();
@@ -377,6 +403,10 @@ namespace Capa_Datos_Navegador
             return columnas;
         }
 
+        //******************************************** CODIGO HECHO POR SEBASTIAN LETONA ***************************** 
+
+        //******************************************** CODIGO HECHO POR PABLO FLORES ***************************** 
+
         public void ejecutarQueryConTransaccion(List<string> queries)
         {
             OdbcConnection connection = cn.probarConexion();
@@ -407,6 +437,9 @@ namespace Capa_Datos_Navegador
                 connection.Close();
             }
         }
+
+        
+
 
         public string[] ObtenerTipo(string tabla)
         {
@@ -443,6 +476,11 @@ namespace Capa_Datos_Navegador
 
             return Campos; 
         }
+
+        //******************************************** CODIGO HECHO POR PABLO FLORES ***************************** 
+
+
+        //******************************************** CODIGO HECHO POR JOSUE CACAO ***************************** 
         public string[] obtenerLLave(string tabla)
         {
             string[] Campos = new string[30];
@@ -483,6 +521,10 @@ namespace Capa_Datos_Navegador
             return items;
         }
 
+        //******************************************** CODIGO HECHO POR JOSUE CACAO ***************************** 
+
+
+
         string limpiarTipo(string cadena)
         {
             bool dim = false;
@@ -514,7 +556,7 @@ namespace Capa_Datos_Navegador
 
             return nuevaCadena;
         }
-
+        //******************************************** CODIGO HECHO POR MATY MANCILLA ***************************** 
         public string llaveCampo(string tabla, string campo, string valor)
         {
             string llave = "";
@@ -555,6 +597,10 @@ namespace Capa_Datos_Navegador
             return llave;
         }
 
+        //******************************************** CODIGO HECHO POR MATY MANCILLA ***************************** 
+
+
+        //******************************************** CODIGO HECHO POR BRAYAN HERNANDEZ ***************************** 
         public string IdModulo(string aplicacion)
         {
             string llave = "";
@@ -581,7 +627,10 @@ namespace Capa_Datos_Navegador
             catch (OdbcException ex) { Console.WriteLine(ex.ToString()); }
 
         }
+        //******************************************** CODIGO HECHO POR BRAYAN HERNANDEZ ***************************** 
 
+
+        //******************************************** CODIGO HECHO POR VICTOR CASTELLANOS ***************************** 
         public string obtenerClavePrimaria(string nombreTabla)
         {
             string clavePrimaria = "";
@@ -647,6 +696,7 @@ namespace Capa_Datos_Navegador
 
             return claveForanea;
         }
+        //******************************************** CODIGO HECHO POR VICTOR CASTELLANOS ***************************** 
 
     }
 }

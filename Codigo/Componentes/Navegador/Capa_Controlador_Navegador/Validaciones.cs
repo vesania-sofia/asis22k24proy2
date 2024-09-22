@@ -17,7 +17,7 @@ namespace Capa_Controlador_Navegador
         char dosp = (char)58;
         int contador;
         int contadordp = 0;
-
+        //******************************************** CODIGO HECHO POR JOEL LOPEZ ***************************** 
         public void CamposNumericos(KeyPressEventArgs e)
         {
 
@@ -49,6 +49,13 @@ namespace Capa_Controlador_Navegador
 
             }
         }
+
+
+        //******************************************** CODIGO HECHO POR JOEL LOPEZ ***************************** 
+
+
+
+        //******************************************** CODIGO HECHO POR JOSUE CACAO ***************************** 
         public void CamposNumerosYLetras(KeyPressEventArgs e)
         {
             try
@@ -80,6 +87,12 @@ namespace Capa_Controlador_Navegador
 
             }
         }
+
+
+        //******************************************** CODIGO HECHO POR VICTOR CASTELLANOS ***************************** 
+
+
+        //******************************************** CODIGO HECHO POR EMANUEL BARAHONA ***************************** 
         public void Combobox(KeyPressEventArgs e)
         {
             try
@@ -114,6 +127,11 @@ namespace Capa_Controlador_Navegador
 
             }
         }
+
+        //******************************************** CODIGO HECHO POR EMANUEL BARAHONA ***************************** 
+
+
+        //******************************************** CODIGO HECHO POR ANIKA ESCOTO ***************************** 
         public void CamposVchar(KeyPressEventArgs e)
         {
             try
@@ -170,6 +188,12 @@ namespace Capa_Controlador_Navegador
 
             }
         }
+
+        //******************************************** CODIGO HECHO POR ANIKA ESCOTO***************************** 
+
+
+        //******************************************** CODIGO HECHO POR MATY MANCILLA ***************************** 
+
         public void CamposLetras(KeyPressEventArgs e)
         {
             try
@@ -197,6 +221,11 @@ namespace Capa_Controlador_Navegador
 
             }
         }
+
+        //******************************************** CODIGO HECHO POR MATY MANCILLA ***************************** 
+
+
+        //******************************************** CODIGO HECHO POR SEBASTIAN LETONA ***************************** 
         public void Camposdecimales(KeyPressEventArgs e)
         {
 
@@ -250,6 +279,11 @@ namespace Capa_Controlador_Navegador
 
             }
         }
+
+        //******************************************** CODIGO HECHO POR SEBASTIAN LETONA ***************************** 
+
+
+        //******************************************** CODIGO HECHO POR JORGE  AVILA ***************************** 
         public void CamposHora(KeyPressEventArgs e)
         {
 
@@ -302,5 +336,6 @@ namespace Capa_Controlador_Navegador
 
             }
         }
+        //******************************************** CODIGO HECHO POR JORGE AVILA ***************************** 
     }
 }
