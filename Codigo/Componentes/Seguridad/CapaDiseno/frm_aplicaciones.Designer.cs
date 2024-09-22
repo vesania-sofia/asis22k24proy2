@@ -39,9 +39,6 @@
             this.Txt_descripcion = new System.Windows.Forms.TextBox();
             this.Txt_id = new System.Windows.Forms.Label();
             this.Txt_idaplicacion = new System.Windows.Forms.TextBox();
-            this.Gpb_estado = new System.Windows.Forms.GroupBox();
-            this.Rdb_inactivo = new System.Windows.Forms.RadioButton();
-            this.Rdb_activo = new System.Windows.Forms.RadioButton();
             this.Txt_titulo = new System.Windows.Forms.Label();
             this.Btn_cancelar = new System.Windows.Forms.Button();
             this.Btn_eliminar = new System.Windows.Forms.Button();
@@ -52,6 +49,9 @@
             this.Btn_ayuda = new System.Windows.Forms.Button();
             this.Btn_salir = new System.Windows.Forms.Button();
             this.Btn_nuevo = new System.Windows.Forms.Button();
+            this.Gpb_estado = new System.Windows.Forms.GroupBox();
+            this.Rdb_inhabilitado = new System.Windows.Forms.RadioButton();
+            this.Rdb_habilitado = new System.Windows.Forms.RadioButton();
             this.Gpb_buscar.SuspendLayout();
             this.Gpb_datos.SuspendLayout();
             this.Gpb_estado.SuspendLayout();
@@ -96,6 +96,7 @@
             // Gpb_datos
             // 
             this.Gpb_datos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.Gpb_datos.Controls.Add(this.Gpb_estado);
             this.Gpb_datos.Controls.Add(this.label3);
             this.Gpb_datos.Controls.Add(this.Txt_nombre);
             this.Gpb_datos.Controls.Add(this.Txt_descripcionA);
@@ -108,7 +109,7 @@
             this.Gpb_datos.Margin = new System.Windows.Forms.Padding(4);
             this.Gpb_datos.Name = "Gpb_datos";
             this.Gpb_datos.Padding = new System.Windows.Forms.Padding(4);
-            this.Gpb_datos.Size = new System.Drawing.Size(785, 154);
+            this.Gpb_datos.Size = new System.Drawing.Size(785, 236);
             this.Gpb_datos.TabIndex = 254;
             this.Gpb_datos.TabStop = false;
             this.Gpb_datos.Text = "Datos Aplicacion";
@@ -183,48 +184,6 @@
             this.Txt_idaplicacion.Name = "Txt_idaplicacion";
             this.Txt_idaplicacion.Size = new System.Drawing.Size(285, 26);
             this.Txt_idaplicacion.TabIndex = 226;
-            // 
-            // Gpb_estado
-            // 
-            this.Gpb_estado.AccessibleDescription = "Estado";
-            this.Gpb_estado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.Gpb_estado.Controls.Add(this.Rdb_inactivo);
-            this.Gpb_estado.Controls.Add(this.Rdb_activo);
-            this.Gpb_estado.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Gpb_estado.Location = new System.Drawing.Point(49, 395);
-            this.Gpb_estado.Margin = new System.Windows.Forms.Padding(4);
-            this.Gpb_estado.Name = "Gpb_estado";
-            this.Gpb_estado.Padding = new System.Windows.Forms.Padding(4);
-            this.Gpb_estado.Size = new System.Drawing.Size(785, 76);
-            this.Gpb_estado.TabIndex = 253;
-            this.Gpb_estado.TabStop = false;
-            this.Gpb_estado.Text = "Estado";
-            // 
-            // Rdb_inactivo
-            // 
-            this.Rdb_inactivo.AutoSize = true;
-            this.Rdb_inactivo.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Rdb_inactivo.Location = new System.Drawing.Point(342, 36);
-            this.Rdb_inactivo.Margin = new System.Windows.Forms.Padding(4);
-            this.Rdb_inactivo.Name = "Rdb_inactivo";
-            this.Rdb_inactivo.Size = new System.Drawing.Size(75, 23);
-            this.Rdb_inactivo.TabIndex = 1;
-            this.Rdb_inactivo.TabStop = true;
-            this.Rdb_inactivo.Text = "Inactivo";
-            this.Rdb_inactivo.UseVisualStyleBackColor = true;
-            // 
-            // Rdb_activo
-            // 
-            this.Rdb_activo.AutoSize = true;
-            this.Rdb_activo.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Rdb_activo.Location = new System.Drawing.Point(134, 36);
-            this.Rdb_activo.Margin = new System.Windows.Forms.Padding(4);
-            this.Rdb_activo.Name = "Rdb_activo";
-            this.Rdb_activo.Size = new System.Drawing.Size(67, 23);
-            this.Rdb_activo.TabIndex = 0;
-            this.Rdb_activo.TabStop = true;
-            this.Rdb_activo.Text = "Activo";
-            this.Rdb_activo.UseVisualStyleBackColor = true;
             // 
             // Txt_titulo
             // 
@@ -371,6 +330,44 @@
             this.Btn_nuevo.UseVisualStyleBackColor = false;
             this.Btn_nuevo.Click += new System.EventHandler(this.Btn_nuevo_Click);
             // 
+            // Gpb_estado
+            // 
+            this.Gpb_estado.Controls.Add(this.Rdb_inhabilitado);
+            this.Gpb_estado.Controls.Add(this.Rdb_habilitado);
+            this.Gpb_estado.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Gpb_estado.Location = new System.Drawing.Point(8, 158);
+            this.Gpb_estado.Margin = new System.Windows.Forms.Padding(4);
+            this.Gpb_estado.Name = "Gpb_estado";
+            this.Gpb_estado.Padding = new System.Windows.Forms.Padding(4);
+            this.Gpb_estado.Size = new System.Drawing.Size(769, 70);
+            this.Gpb_estado.TabIndex = 230;
+            this.Gpb_estado.TabStop = false;
+            this.Gpb_estado.Text = "Estado";
+            // 
+            // Rdb_inhabilitado
+            // 
+            this.Rdb_inhabilitado.AutoSize = true;
+            this.Rdb_inhabilitado.Location = new System.Drawing.Point(564, 25);
+            this.Rdb_inhabilitado.Margin = new System.Windows.Forms.Padding(4);
+            this.Rdb_inhabilitado.Name = "Rdb_inhabilitado";
+            this.Rdb_inhabilitado.Size = new System.Drawing.Size(111, 23);
+            this.Rdb_inhabilitado.TabIndex = 1;
+            this.Rdb_inhabilitado.TabStop = true;
+            this.Rdb_inhabilitado.Text = "Inhabilitado";
+            this.Rdb_inhabilitado.UseVisualStyleBackColor = true;
+            // 
+            // Rdb_habilitado
+            // 
+            this.Rdb_habilitado.AutoSize = true;
+            this.Rdb_habilitado.Location = new System.Drawing.Point(196, 25);
+            this.Rdb_habilitado.Margin = new System.Windows.Forms.Padding(4);
+            this.Rdb_habilitado.Name = "Rdb_habilitado";
+            this.Rdb_habilitado.Size = new System.Drawing.Size(100, 23);
+            this.Rdb_habilitado.TabIndex = 0;
+            this.Rdb_habilitado.TabStop = true;
+            this.Rdb_habilitado.Text = "Habilitado";
+            this.Rdb_habilitado.UseVisualStyleBackColor = true;
+            // 
             // frm_aplicaciones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -384,7 +381,6 @@
             this.Controls.Add(this.Btn_actualizar);
             this.Controls.Add(this.Btn_ingresar);
             this.Controls.Add(this.Btn_ayuda);
-            this.Controls.Add(this.Gpb_estado);
             this.Controls.Add(this.Btn_salir);
             this.Controls.Add(this.Btn_nuevo);
             this.Controls.Add(this.Txt_titulo);
@@ -419,9 +415,6 @@
         private System.Windows.Forms.TextBox Txt_descripcion;
         private System.Windows.Forms.Label Txt_id;
         private System.Windows.Forms.TextBox Txt_idaplicacion;
-        private System.Windows.Forms.GroupBox Gpb_estado;
-        private System.Windows.Forms.RadioButton Rdb_inactivo;
-        private System.Windows.Forms.RadioButton Rdb_activo;
         private System.Windows.Forms.Label Txt_titulo;
         private System.Windows.Forms.Button Btn_cancelar;
         private System.Windows.Forms.Button Btn_eliminar;
@@ -432,5 +425,8 @@
         private System.Windows.Forms.Button Btn_ayuda;
         private System.Windows.Forms.Button Btn_salir;
         private System.Windows.Forms.Button Btn_nuevo;
+        private System.Windows.Forms.GroupBox Gpb_estado;
+        private System.Windows.Forms.RadioButton Rdb_inhabilitado;
+        private System.Windows.Forms.RadioButton Rdb_habilitado;
     }
 }

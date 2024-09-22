@@ -31,6 +31,9 @@ namespace CapaDiseno
             Txt_nombre.Enabled = false;
             Txt_descripcion.Enabled = false;
             Gpb_estado.Enabled = false;
+            Rdb_habilitado.Checked = false;
+            Rdb_inhabilitado.Checked = false;
+
             ToolTip tnuevo = new ToolTip();
             tnuevo.SetToolTip(Btn_nuevo, "Crear aplicación");
             ToolTip tguardar = new ToolTip();
@@ -62,8 +65,8 @@ namespace CapaDiseno
             Txt_nombre.Text = "";
             Txt_descripcion.Text = "";
             Txt_buscar.Text = "";
-            Rdb_activo.Checked = false;
-            Rdb_inactivo.Checked = false;
+            Rdb_habilitado.Checked = false;
+            Rdb_inhabilitado.Checked = false;
             Txt_idaplicacion.Focus();
         }
 
@@ -117,13 +120,13 @@ namespace CapaDiseno
                         string estado = row[3].ToString();
                         if (estado == "1")
                         {
-                            Rdb_activo.Checked = true;
-                            Rdb_inactivo.Checked = false;
+                            Rdb_habilitado.Checked = true;
+                            Rdb_inhabilitado.Checked = false;
                         }
                         else if (estado == "0")
                         {
-                            Rdb_activo.Checked = false;
-                            Rdb_inactivo.Checked = true;
+                            Rdb_habilitado.Checked = false;
+                            Rdb_inhabilitado.Checked = true;
                         }
                     }
                 }
@@ -135,9 +138,12 @@ namespace CapaDiseno
                 Btn_nuevo.Enabled = false;
                 Txt_nombre.Enabled = false;
                 Txt_descripcion.Enabled = false;
-                Rdb_activo.Enabled = false;
-                Rdb_inactivo.Enabled = false;
+                Rdb_habilitado.Enabled = false;
+                Rdb_inhabilitado.Enabled = false;
                 Btn_eliminar.Enabled = true;
+                Gpb_estado.Enabled = false;
+                Rdb_habilitado.Enabled = true;
+                Rdb_inhabilitado.Enabled = true;
             }
             catch (Exception ex)
             {
@@ -148,8 +154,9 @@ namespace CapaDiseno
 
         private void Btn_nuevo_Click(object sender, EventArgs e)
         {
-            Rdb_activo.Checked = true;
             Gpb_estado.Enabled = true;
+            Rdb_habilitado.Checked = true;
+            Rdb_inhabilitado.Checked = false;
             Btn_ingresar.Enabled = true;
             Btn_cancelar.Enabled = true;
             Txt_idaplicacion.Enabled = true;
@@ -159,7 +166,9 @@ namespace CapaDiseno
             Btn_actualizar.Enabled = false;
             Gpb_buscar.Enabled = false;
             Btn_modificar.Enabled = false;
-            
+            Btn_eliminar.Enabled = false;
+
+
 
 
 
@@ -212,12 +221,12 @@ namespace CapaDiseno
             else
             {
                 string estado = "";
-                if (Rdb_activo.Checked)
+                if (Rdb_habilitado.Checked)
                 {
                     estado = "1";
                 }
 
-                if (Rdb_inactivo.Checked)
+                if (Rdb_inhabilitado.Checked)
                 {
                     estado = "0";
                 }
@@ -238,7 +247,8 @@ namespace CapaDiseno
 
         private void Btn_modificar_Click(object sender, EventArgs e)
         {
-            Rdb_activo.Checked = true;
+            Rdb_habilitado.Enabled = true;
+            Rdb_inhabilitado.Enabled = false;
             Gpb_estado.Enabled = true;
             Btn_nuevo.Enabled = false;
             Btn_actualizar.Enabled = true;
@@ -272,12 +282,12 @@ namespace CapaDiseno
             else
             {
                 string estado = "";
-                if (Rdb_activo.Checked)
+                if (Rdb_habilitado.Checked)
                 {
                     estado = "1";
                 }
 
-                if (Rdb_inactivo.Checked)
+                if (Rdb_inhabilitado.Checked)
                 {
                     estado = "0";
                 }
@@ -286,7 +296,7 @@ namespace CapaDiseno
                     estado = "1";
                 }
 
-                logic.actualizaraplicaciones(Txt_idaplicacion.Text.ToString(), Txt_nombre.Text.ToString(), Txt_descripcion.Text.ToString(), estado.ToString());
+                logic.funactualizaraplicaciones(Txt_idaplicacion.Text.ToString(), Txt_nombre.Text.ToString(), Txt_descripcion.Text.ToString(), estado.ToString());
                 MessageBox.Show("Modulo Modificado Correctamente");
                 prolimpiar();
                 Btn_cancelar.Enabled = false;
@@ -299,7 +309,8 @@ namespace CapaDiseno
                 Txt_idaplicacion.Enabled = false;
                 Txt_nombre.Enabled = false;
                 Txt_descripcion.Enabled = false;
-                Gpb_estado.Enabled = false;
+                Gpb_estado.Enabled = true;
+                Gpb_buscar.Enabled = true;
             }
         }
 
@@ -315,7 +326,7 @@ namespace CapaDiseno
                 if (confirmResult == DialogResult.Yes)
                 {
                     // Llamar al método de la capa lógica para eliminar el perfil
-                    logic.eliminaraplicaciones(Txt_idaplicacion.Text);
+                    logic.funeliminaraplicaciones(Txt_idaplicacion.Text);
 
                     // Opcionalmente, puedes desactivar botones o limpiar campos después de la eliminación
                     Txt_buscar.Enabled = true;
@@ -340,7 +351,6 @@ namespace CapaDiseno
             prolimpiar();
             Btn_nuevo.Enabled = true;
             Gpb_buscar.Enabled = true;
-            Btn_bsucar.Enabled = true;
             Btn_cancelar.Enabled = false;
             Btn_ingresar.Enabled = false;
             Btn_actualizar.Enabled = false;
@@ -349,6 +359,8 @@ namespace CapaDiseno
             Txt_nombre.Enabled = false;
             Txt_descripcion.Enabled = false;
             Gpb_estado.Enabled = false;
+            Rdb_habilitado.Enabled = true;
+            Rdb_inhabilitado.Enabled = true;
         }
     }
 }

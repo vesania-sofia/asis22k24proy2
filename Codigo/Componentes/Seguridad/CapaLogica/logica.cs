@@ -87,7 +87,7 @@ namespace CapaLogica
 
         }
 
-        //Trabajado por Alysson y María José
+
         public DataTable funConsultaLogicaAplicaciones(string sID_aplicacion)
         {
             try
@@ -174,6 +174,27 @@ namespace CapaLogica
             }
         }
 
+        public bool funeliminaraplicaciones(string scodigo)
+        {
+            try
+            {
+                bool result = sn.funeliminaraplicacion(scodigo);
+                if (result)
+                {
+                    MessageBox.Show("Perfil eliminado correctamente.");
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo eliminar el perfil.");
+                }
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return false;
+            }
+        }
 
         //###################  termina lo que hizo  Karla  Sofia Gómez Tobar #######################
 
@@ -327,11 +348,11 @@ namespace CapaLogica
         //---------------------------------------------------- Fin: GABRIELA SUC ---------------------------------------------------- 
 
         //Esta parte fue echa por Carlos Hernandez
-        public DataTable actualizaraplicaciones(string codigo, string nombre, string descripcion, string estado)
+        public DataTable funactualizaraplicaciones(string scodigo, string snombre, string sdescripcion, string sestado)
         {
             try
             {
-                OdbcDataAdapter dtModificar = sn.actualizaraplicacion(codigo, nombre, descripcion, estado);
+                OdbcDataAdapter dtModificar = sn.funactualizaraplicacion(scodigo, snombre, sdescripcion, sestado);
                 DataTable tableAplicacion = new DataTable();
                 dtModificar.Fill(tableAplicacion);
                 return tableAplicacion;
@@ -344,28 +365,7 @@ namespace CapaLogica
         }
         //termina lo que hizo carlos hernandez 
 
-        public bool eliminaraplicaciones(string codigo)
-        {
-            try
-            {
-                bool result = sn.eliminaraplicacion(codigo);
-                if (result)
-                {
-                    MessageBox.Show("Perfil eliminado correctamente.");
-                }
-                else
-                {
-                    MessageBox.Show("No se pudo eliminar el perfil.");
-                }
-                return result;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex);
-                return false;
-            }
-        }
-
+     
 
         //BUSCARRRRRR
         //kateryn de leon
