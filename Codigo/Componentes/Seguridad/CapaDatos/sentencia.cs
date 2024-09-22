@@ -35,7 +35,7 @@ namespace CapaDatos
         }
 
         //****************************************Kevin López***************************************************
-        public OdbcDataAdapter consultarModulos()
+        public OdbcDataAdapter funconsultarmodulos()
         {
             cn.conectar();
             string sqlModulos = "SELECT nombre_modulo FROM Tbl_modulos WHERE estado_modulo = 1";
@@ -46,7 +46,7 @@ namespace CapaDatos
         //****************************************FIN Kevin López***************************************************
 
         //****************************************Kevin López***************************************************
-        public OdbcDataAdapter consultarPerfiles()
+        public OdbcDataAdapter funconsultarperfiles()
         {
             cn.conectar();
             string sqlPerfiles = "SELECT nombre_perfil FROM Tbl_perfiles WHERE estado_perfil = 1";
@@ -396,7 +396,7 @@ namespace CapaDatos
 
         /* Creado por Emerzon Garcia */
 
-        public bool EliminarPerfil1(string ID_perfil)
+        public bool funeliminarperfil1(string sID_perfil)
         {
             try
             {
@@ -410,7 +410,7 @@ namespace CapaDatos
                 using (OdbcCommand cmd = new OdbcCommand(sqlEliminarPerfil, cn.conectar()))
                 {
                     // Agregar parámetro para evitar inyecciones SQL
-                    cmd.Parameters.AddWithValue("@ID_perfil", ID_perfil);
+                    cmd.Parameters.AddWithValue("@ID_perfil", sID_perfil);
 
                     // Ejecutar la consulta
                     int rowsAffected = cmd.ExecuteNonQuery();
@@ -418,7 +418,7 @@ namespace CapaDatos
                     // Insertar en bitácora si la eliminación fue exitosa
                     if (rowsAffected > 0)
                     {
-                        insertarBitacora(idUsuario, "Eliminó un perfil: " + ID_perfil, "tbl_perfil");
+                        insertarBitacora(idUsuario, "Eliminó un perfil: " + sID_perfil, "tbl_perfil");
                         return true; // Indica que la eliminación fue exitosa
                     }
                     else
@@ -666,7 +666,7 @@ namespace CapaDatos
             }
         }
         // termina
-        public OdbcDataAdapter validarIDperfiles()
+        public OdbcDataAdapter funagregarperfil()
         {
             try
             {
@@ -686,14 +686,14 @@ namespace CapaDatos
 
 
 
-        public OdbcDataAdapter insertarPerfil(string codigo, string nombre, string descripcion, string estado)
+        public OdbcDataAdapter proinsertarperfil(string scodigo, string snombre, string sdescripcion, string sestado)
         {
             cn.conectar();
             try
             {
-                string sqlPerfil = "INSERT INTO Tbl_perfiles (Pk_id_Perfil, nombre_perfil, descripcion_perfil, estado_perfil) VALUES ('" + codigo + "','" + nombre + "', '" + descripcion + "', " + estado + ");";
+                string sqlPerfil = "INSERT INTO Tbl_perfiles (Pk_id_Perfil, nombre_perfil, descripcion_perfil, estado_perfil) VALUES ('" + scodigo + "','" + snombre + "', '" + sdescripcion + "', " + sestado + ");";
                 OdbcDataAdapter datainsertarperfil = new OdbcDataAdapter(sqlPerfil, cn.conectar());
-                insertarBitacora(idUsuario, "Inserto un nuevo perfil: " + codigo + " - " + nombre, "Tbl_perfiles");
+                insertarBitacora(idUsuario, "Inserto un nuevo perfil: " + scodigo + " - " + snombre, "Tbl_perfiles");
                 return datainsertarperfil;
             }
             catch (Exception ex)
@@ -705,24 +705,24 @@ namespace CapaDatos
         //*****************ACA TERMINA LA PRIMERA PARTE ACTUALIZADA POR JOSUÉ DAVID PAZ GÓMEZ*************************
 
 
-        public OdbcDataAdapter ConsultarPerfil(string perfil)
+        public OdbcDataAdapter proconsultar(string sperfil)
         {
             cn.conectar();
-            string sqlPerfil = "SELECT * FROM Tbl_perfiles WHERE Pk_id_perfil = " + perfil;
+            string sqlPerfil = "SELECT * FROM Tbl_perfiles WHERE Pk_id_perfil = " + sperfil;
             OdbcDataAdapter dataTable = new OdbcDataAdapter(sqlPerfil, cn.conectar());
             insertarBitacora(idUsuario, "Realizo una consulta a perfiles ", "Tbl_perfiles");
 
             return dataTable;
         }
 
-        public OdbcDataAdapter ActualizarPerfil(string ID_perfil, string nombre, string descripcion, string estado)
+        public OdbcDataAdapter funactualizarperfil(string sID_perfil, string snombre, string sdescripcion, string sestado)
         {
             try
             {
                 cn.conectar();
-                string sqlactualizarperfil = "UPDATE Tbl_perfiles SET nombre_perfil = '" + nombre + "', descripcion_perfil = '" + descripcion + "', estado_perfil = '" + estado + "' WHERE Pk_id_perfil ='" + ID_perfil + "'";
+                string sqlactualizarperfil = "UPDATE Tbl_perfiles SET nombre_perfil = '" + snombre + "', descripcion_perfil = '" + sdescripcion + "', estado_perfil = '" + sestado + "' WHERE Pk_id_perfil ='" + sID_perfil + "'";
                 OdbcDataAdapter dataTable = new OdbcDataAdapter(sqlactualizarperfil, cn.conectar());
-                insertarBitacora(idUsuario, "Actualizo un perfil: " + ID_perfil + " - " + nombre, "Tbl_perfiles");
+                insertarBitacora(idUsuario, "Actualizo un perfil: " + sID_perfil + " - " + snombre, "Tbl_perfiles");
 
                 return dataTable;
             }
@@ -774,14 +774,14 @@ namespace CapaDatos
         //------------
 
         //****************************************************MODIFICADO POR JOSUE PAZ***********************************************
-        public OdbcDataAdapter insertarPermisosPerfilA(string codigoperfil, string nombreaplicacion, string ingresar, string modificar, string eliminar, string consulta, string imprimir)
+        public OdbcDataAdapter proinsertarpermisosperfil(string scodigoperfil, string snombreaplicacion, string singresar, string smodificar, string seliminar, string sconsulta, string simprimir)
         {
             string sCodigoAplicacion = " ";
             string sCodigoPerfil = "";
 
             try
             {
-                OdbcCommand sqlCodigoModulo = new OdbcCommand("SELECT Pk_id_aplicacion FROM Tbl_aplicaciones WHERE nombre_aplicacion = '" + nombreaplicacion + "' ", cn.conectar());
+                OdbcCommand sqlCodigoModulo = new OdbcCommand("SELECT Pk_id_aplicacion FROM Tbl_aplicaciones WHERE nombre_aplicacion = '" + snombreaplicacion + "' ", cn.conectar());
                 OdbcDataReader almacena = sqlCodigoModulo.ExecuteReader();
 
                 while (almacena.Read() == true)
@@ -789,7 +789,7 @@ namespace CapaDatos
                     sCodigoAplicacion = almacena.GetString(0);
                 }
 
-                OdbcCommand sqlCodigoPerfil = new OdbcCommand("SELECT Pk_id_perfil FROM Tbl_perfiles WHERE nombre_perfil = '" + codigoperfil + "' ", cn.conectar());
+                OdbcCommand sqlCodigoPerfil = new OdbcCommand("SELECT Pk_id_perfil FROM Tbl_perfiles WHERE nombre_perfil = '" + scodigoperfil + "' ", cn.conectar());
                 OdbcDataReader almacenaPerfil = sqlCodigoPerfil.ExecuteReader();
 
                 while (almacenaPerfil.Read() == true)
@@ -797,9 +797,9 @@ namespace CapaDatos
                     sCodigoPerfil = almacenaPerfil.GetString(0);
                 }
 
-                string sqlInsertarPermisosPerfilApp = "INSERT INTO Tbl_permisos_aplicacion_perfil(Fk_id_perfil, Fk_id_aplicacion, guardar_permiso, modificar_permiso, eliminar_permiso, buscar_permiso, imprimir_permiso) VALUES ('" + sCodigoPerfil + "', '" + sCodigoAplicacion + "', '" + ingresar + "', '" + modificar + "', '" + eliminar + "', '" + consulta + "', '" + imprimir + "');";
+                string sqlInsertarPermisosPerfilApp = "INSERT INTO Tbl_permisos_aplicacion_perfil(Fk_id_perfil, Fk_id_aplicacion, guardar_permiso, modificar_permiso, eliminar_permiso, buscar_permiso, imprimir_permiso) VALUES ('" + sCodigoPerfil + "', '" + sCodigoAplicacion + "', '" + singresar + "', '" + smodificar + "', '" + seliminar + "', '" + sconsulta + "', '" + simprimir + "');";
                 OdbcDataAdapter dataPermisosPerfilAplicacion = new OdbcDataAdapter(sqlInsertarPermisosPerfilApp, cn.conectar());
-                insertarBitacora(idUsuario, "Asigno permiso: " + nombreaplicacion + " a perfil: " + codigoperfil, "Tbl_permisos_aplicacion_perfil");
+                insertarBitacora(idUsuario, "Asigno permiso: " + snombreaplicacion + " a perfil: " + scodigoperfil, "Tbl_permisos_aplicacion_perfil");
 
 
                 almacena.Close();
@@ -822,7 +822,7 @@ namespace CapaDatos
 
         //--------------------------------- Emerzon Garcia -----------------------------------------------------------
 
-        public OdbcDataAdapter mostrarPerfilesYPermisos(string TablaPerfilUsuario)
+        public OdbcDataAdapter funmostrarperfilesypermisos(string sTablaPerfilUsuario)
         {
             try
             {
@@ -1602,7 +1602,7 @@ namespace CapaDatos
         //###################  termina lo que hizo  Karla  Sofia Gómez Tobar #######################
 
         //*********************************KEVIN LOPEZ*********************************************
-        public OdbcDataAdapter consultarAplicacionesP(string nombreModulo)
+        public OdbcDataAdapter funconsultaraplicacionesP(string snombreModulo)
         {
             cn.conectar();
 
@@ -1616,7 +1616,7 @@ namespace CapaDatos
         WHERE m.nombre_modulo = ?";
 
                 OdbcDataAdapter dataAplicaciones = new OdbcDataAdapter(sqlAplicaciones, cn.conectar());
-                dataAplicaciones.SelectCommand.Parameters.AddWithValue("?", nombreModulo);
+                dataAplicaciones.SelectCommand.Parameters.AddWithValue("?", snombreModulo);
 
                 // Registro de la bitacora
                 insertarBitacora(idUsuario, "Realizó una consulta a aplicaciones", "tbl_aplicacion");
