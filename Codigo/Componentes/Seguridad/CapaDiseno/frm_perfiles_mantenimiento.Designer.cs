@@ -28,21 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_perfiles_mantenimiento));
             this.btn_ayuda = new System.Windows.Forms.Button();
             this.gbbuscar = new System.Windows.Forms.GroupBox();
             this.btn_bsucarperfil = new System.Windows.Forms.Button();
-            this.tbx_buscarperfil = new System.Windows.Forms.TextBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txt_buscarperfil = new System.Windows.Forms.TextBox();
+            this.Gpb_datos = new System.Windows.Forms.GroupBox();
             this.txtdesc = new System.Windows.Forms.TextBox();
             this.txtnombre = new System.Windows.Forms.TextBox();
             this.txtcodigo = new System.Windows.Forms.TextBox();
             this.gbestado = new System.Windows.Forms.GroupBox();
             this.rbinhabilitado = new System.Windows.Forms.RadioButton();
             this.rbhabilitado = new System.Windows.Forms.RadioButton();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.Lbl_descripcion = new System.Windows.Forms.Label();
+            this.Lbl_nombre = new System.Windows.Forms.Label();
+            this.Lbl_codigoperfil = new System.Windows.Forms.Label();
+            this.Gpb_opciones = new System.Windows.Forms.GroupBox();
             this.btn_eli = new System.Windows.Forms.Button();
             this.btn_nuevo = new System.Windows.Forms.Button();
             this.btn_actualizar = new System.Windows.Forms.Button();
@@ -52,9 +53,9 @@
             this.btn_ingresar = new System.Windows.Forms.Button();
             this.btn_modif = new System.Windows.Forms.Button();
             this.gbbuscar.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.Gpb_datos.SuspendLayout();
             this.gbestado.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.Gpb_opciones.SuspendLayout();
             this.SuspendLayout();
             // 
             // btn_ayuda
@@ -73,7 +74,7 @@
             // gbbuscar
             // 
             this.gbbuscar.Controls.Add(this.btn_bsucarperfil);
-            this.gbbuscar.Controls.Add(this.tbx_buscarperfil);
+            this.gbbuscar.Controls.Add(this.txt_buscarperfil);
             this.gbbuscar.Location = new System.Drawing.Point(78, 18);
             this.gbbuscar.Margin = new System.Windows.Forms.Padding(4);
             this.gbbuscar.Name = "gbbuscar";
@@ -94,31 +95,31 @@
             this.btn_bsucarperfil.UseVisualStyleBackColor = true;
             this.btn_bsucarperfil.Click += new System.EventHandler(this.btn_bsucarperfil_Click_1);
             // 
-            // tbx_buscarperfil
+            // txt_buscarperfil
             // 
-            this.tbx_buscarperfil.Location = new System.Drawing.Point(95, 44);
-            this.tbx_buscarperfil.Margin = new System.Windows.Forms.Padding(4);
-            this.tbx_buscarperfil.Name = "tbx_buscarperfil";
-            this.tbx_buscarperfil.Size = new System.Drawing.Size(296, 26);
-            this.tbx_buscarperfil.TabIndex = 6;
+            this.txt_buscarperfil.Location = new System.Drawing.Point(95, 44);
+            this.txt_buscarperfil.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_buscarperfil.Name = "txt_buscarperfil";
+            this.txt_buscarperfil.Size = new System.Drawing.Size(296, 26);
+            this.txt_buscarperfil.TabIndex = 6;
             // 
-            // groupBox2
+            // Gpb_datos
             // 
-            this.groupBox2.Controls.Add(this.txtdesc);
-            this.groupBox2.Controls.Add(this.txtnombre);
-            this.groupBox2.Controls.Add(this.txtcodigo);
-            this.groupBox2.Controls.Add(this.gbestado);
-            this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Location = new System.Drawing.Point(15, 128);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox2.Size = new System.Drawing.Size(648, 360);
-            this.groupBox2.TabIndex = 254;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Datos";
+            this.Gpb_datos.Controls.Add(this.txtdesc);
+            this.Gpb_datos.Controls.Add(this.txtnombre);
+            this.Gpb_datos.Controls.Add(this.txtcodigo);
+            this.Gpb_datos.Controls.Add(this.gbestado);
+            this.Gpb_datos.Controls.Add(this.Lbl_descripcion);
+            this.Gpb_datos.Controls.Add(this.Lbl_nombre);
+            this.Gpb_datos.Controls.Add(this.Lbl_codigoperfil);
+            this.Gpb_datos.Location = new System.Drawing.Point(15, 128);
+            this.Gpb_datos.Margin = new System.Windows.Forms.Padding(4);
+            this.Gpb_datos.Name = "Gpb_datos";
+            this.Gpb_datos.Padding = new System.Windows.Forms.Padding(4);
+            this.Gpb_datos.Size = new System.Drawing.Size(648, 360);
+            this.Gpb_datos.TabIndex = 254;
+            this.Gpb_datos.TabStop = false;
+            this.Gpb_datos.Text = "Datos";
             // 
             // txtdesc
             // 
@@ -183,54 +184,54 @@
             this.rbhabilitado.UseVisualStyleBackColor = true;
             this.rbhabilitado.CheckedChanged += new System.EventHandler(this.rbhabilitado_CheckedChanged);
             // 
-            // label3
+            // Lbl_descripcion
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(60, 146);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(99, 20);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Descripción";
+            this.Lbl_descripcion.AutoSize = true;
+            this.Lbl_descripcion.Location = new System.Drawing.Point(60, 146);
+            this.Lbl_descripcion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Lbl_descripcion.Name = "Lbl_descripcion";
+            this.Lbl_descripcion.Size = new System.Drawing.Size(99, 20);
+            this.Lbl_descripcion.TabIndex = 2;
+            this.Lbl_descripcion.Text = "Descripción";
             // 
-            // label2
+            // Lbl_nombre
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(60, 106);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(68, 20);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Nombre";
+            this.Lbl_nombre.AutoSize = true;
+            this.Lbl_nombre.Location = new System.Drawing.Point(60, 106);
+            this.Lbl_nombre.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Lbl_nombre.Name = "Lbl_nombre";
+            this.Lbl_nombre.Size = new System.Drawing.Size(68, 20);
+            this.Lbl_nombre.TabIndex = 1;
+            this.Lbl_nombre.Text = "Nombre";
             // 
-            // label1
+            // Lbl_codigoperfil
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(60, 58);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(126, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Codigo de perfil";
+            this.Lbl_codigoperfil.AutoSize = true;
+            this.Lbl_codigoperfil.Location = new System.Drawing.Point(60, 58);
+            this.Lbl_codigoperfil.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Lbl_codigoperfil.Name = "Lbl_codigoperfil";
+            this.Lbl_codigoperfil.Size = new System.Drawing.Size(126, 20);
+            this.Lbl_codigoperfil.TabIndex = 0;
+            this.Lbl_codigoperfil.Text = "Codigo de perfil";
             // 
-            // groupBox1
+            // Gpb_opciones
             // 
-            this.groupBox1.Controls.Add(this.btn_eli);
-            this.groupBox1.Controls.Add(this.btn_nuevo);
-            this.groupBox1.Controls.Add(this.btn_actualizar);
-            this.groupBox1.Controls.Add(this.btnSalir);
-            this.groupBox1.Controls.Add(this.btn_salir);
-            this.groupBox1.Controls.Add(this.btn_cancel);
-            this.groupBox1.Controls.Add(this.btn_ingresar);
-            this.groupBox1.Controls.Add(this.btn_modif);
-            this.groupBox1.Location = new System.Drawing.Point(671, 137);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(152, 360);
-            this.groupBox1.TabIndex = 253;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Opciones";
+            this.Gpb_opciones.Controls.Add(this.btn_eli);
+            this.Gpb_opciones.Controls.Add(this.btn_nuevo);
+            this.Gpb_opciones.Controls.Add(this.btn_actualizar);
+            this.Gpb_opciones.Controls.Add(this.btnSalir);
+            this.Gpb_opciones.Controls.Add(this.btn_salir);
+            this.Gpb_opciones.Controls.Add(this.btn_cancel);
+            this.Gpb_opciones.Controls.Add(this.btn_ingresar);
+            this.Gpb_opciones.Controls.Add(this.btn_modif);
+            this.Gpb_opciones.Location = new System.Drawing.Point(671, 137);
+            this.Gpb_opciones.Margin = new System.Windows.Forms.Padding(4);
+            this.Gpb_opciones.Name = "Gpb_opciones";
+            this.Gpb_opciones.Padding = new System.Windows.Forms.Padding(4);
+            this.Gpb_opciones.Size = new System.Drawing.Size(152, 360);
+            this.Gpb_opciones.TabIndex = 253;
+            this.Gpb_opciones.TabStop = false;
+            this.Gpb_opciones.Text = "Opciones";
             // 
             // btn_eli
             // 
@@ -326,9 +327,10 @@
             this.ClientSize = new System.Drawing.Size(838, 514);
             this.Controls.Add(this.btn_ayuda);
             this.Controls.Add(this.gbbuscar);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.Gpb_datos);
+            this.Controls.Add(this.Gpb_opciones);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frm_perfiles_mantenimiento";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -336,11 +338,11 @@
             this.Load += new System.EventHandler(this.Frm_perfiles_mantenimiento_Load);
             this.gbbuscar.ResumeLayout(false);
             this.gbbuscar.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.Gpb_datos.ResumeLayout(false);
+            this.Gpb_datos.PerformLayout();
             this.gbestado.ResumeLayout(false);
             this.gbestado.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
+            this.Gpb_opciones.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -350,18 +352,18 @@
         private System.Windows.Forms.Button btn_ayuda;
         private System.Windows.Forms.GroupBox gbbuscar;
         private System.Windows.Forms.Button btn_bsucarperfil;
-        private System.Windows.Forms.TextBox tbx_buscarperfil;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.TextBox txt_buscarperfil;
+        private System.Windows.Forms.GroupBox Gpb_datos;
         private System.Windows.Forms.TextBox txtdesc;
         private System.Windows.Forms.TextBox txtnombre;
         private System.Windows.Forms.TextBox txtcodigo;
         private System.Windows.Forms.GroupBox gbestado;
         private System.Windows.Forms.RadioButton rbinhabilitado;
         private System.Windows.Forms.RadioButton rbhabilitado;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label Lbl_descripcion;
+        private System.Windows.Forms.Label Lbl_nombre;
+        private System.Windows.Forms.Label Lbl_codigoperfil;
+        private System.Windows.Forms.GroupBox Gpb_opciones;
         private System.Windows.Forms.Button btn_eli;
         private System.Windows.Forms.Button btn_nuevo;
         private System.Windows.Forms.Button btn_actualizar;

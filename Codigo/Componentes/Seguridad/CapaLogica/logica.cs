@@ -71,7 +71,7 @@ namespace CapaLogica
         {
             try
             {
-                using (OdbcDataAdapter cmpsAplicaciones = sn.consultarAplicaciones(ID_aplicacion)) //Cambio de referencia para fuuncionamiento de APlicaciones Usuarios
+                using (OdbcDataAdapter cmpsAplicaciones = sn.consultaraplicaciones(ID_aplicacion)) //Cambio de referencia para fuuncionamiento de APlicaciones Usuarios
                 {
                     DataTable tableAplicaciones = new DataTable();
                     cmpsAplicaciones.Fill(tableAplicaciones);
@@ -151,9 +151,9 @@ namespace CapaLogica
 
         //---------------------------------------------------- Inicio: GABRIELA SUC ---------------------------------------------------- 
 
-        public bool ModificarUsuario(string idUsuario, string nombre, string apellido, string correo, int estado_usuario, string respuesta)
+        public bool ModificarUsuario(string Id_Usuario, string nombre, string apellido, string correo, int estado_usuario, string pregunta, string respuesta)
         {
-            return sn.ModificarUsuario(idUsuario, nombre, apellido, correo, estado_usuario, respuesta);
+            return sn.ModificarUsuario(Id_Usuario, nombre, apellido, correo, estado_usuario, pregunta, respuesta);
         }
 
         //---------------------------------------------------- Fin: GABRIELA SUC ---------------------------------------------------- 
@@ -167,11 +167,11 @@ namespace CapaLogica
                 bool result = sn.EliminarPerfil1(ID_perfil);
                 if (result)
                 {
-                    MessageBox.Show("Perfil eliminado correctamente.");
+                    MessageBox.Show("Perfil eliminado correctamente.", "Eliminado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
-                    MessageBox.Show("No se pudo eliminar el perfil.");
+                    MessageBox.Show("No se pudo eliminar el perfil.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 return result;
             }
@@ -271,10 +271,10 @@ namespace CapaLogica
         //---------------------------------------------------- Inicio: GABRIELA SUC ---------------------------------------------------- 
 
         // Método para eliminar (inactivar) un usuario
-        public bool EliminarUsuario(string idUsuario)
+        public bool EliminarUsuario(string LlaveUsuario)
         {
             // Llama al método de la capa de datos para actualizar el estado
-            return sn.CambiarEstadoUsuario(idUsuario, 0);
+            return sn.CambiarEstadoUsuario(LlaveUsuario, 0);
         }
 
         //---------------------------------------------------- Fin: GABRIELA SUC ---------------------------------------------------- 
@@ -473,6 +473,7 @@ namespace CapaLogica
                 return false;
             }
         } // termina
+
 
 
 

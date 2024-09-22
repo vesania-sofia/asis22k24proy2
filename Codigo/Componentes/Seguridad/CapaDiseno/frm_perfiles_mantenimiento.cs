@@ -39,7 +39,7 @@ namespace CapaDiseno
 
         void limpiar()
         {
-            tbx_buscarperfil.Text = "";
+            txt_buscarperfil.Text = "";
             txtcodigo.Text = "";
             txtdesc.Text = "";
             txtnombre.Text = "";
@@ -51,7 +51,27 @@ namespace CapaDiseno
 
         private void Frm_perfiles_mantenimiento_Load(object sender, EventArgs e)
         {
+            txt_buscarperfil.KeyPress += new KeyPressEventHandler(SoloNumeros_KeyPress);
+            txtcodigo.KeyPress += new KeyPressEventHandler(SoloNumeros_KeyPress);
+            txtnombre.KeyPress += new KeyPressEventHandler(SoloLetras_KeyPress);
+            txtdesc.KeyPress += new KeyPressEventHandler(SoloLetras_KeyPress);
+            // Orden de tabulaciones
+            txt_buscarperfil.TabIndex = 0;
+            btn_bsucarperfil.TabIndex = 1;
+            txtcodigo.TabIndex = 2;
+            txtnombre.TabIndex = 3;
+            txtdesc.TabIndex = 4;
+            btn_nuevo.TabIndex = 5;
+            btn_ingresar.TabIndex = 6;
+            btn_modif.TabIndex = 7;
+            btn_actualizar.TabIndex = 8;
+            btn_eli.TabIndex = 9;
+            btn_cancel.TabIndex = 10;
 
+            //limitar caracteres
+            txtnombre.MaxLength = 50; // Limita el texto a 50 caracteres
+            txtdesc.MaxLength = 150;
+            txtcodigo.MaxLength = 20;
         }
 
       
@@ -60,7 +80,7 @@ namespace CapaDiseno
 
         private void btn_bsucarperfil_Click_1(object sender, EventArgs e)
         {
-            string perfil = tbx_buscarperfil.Text;
+            string perfil = txt_buscarperfil.Text;
             bool modificar = false;
             bool eliminar = false;
             try
@@ -382,5 +402,27 @@ namespace CapaDiseno
 
         //******** Fin KATERYN DE LEON y Gabriela Suc ********************************************************************
 
+        //Fernando García 0901-21-581
+        private void SoloNumeros_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Verificar si el carácter es un número o si es la tecla de Backspace
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+            {
+                // Si no es un número o la tecla de retroceso, cancelar el evento
+                e.Handled = true;
+                MessageBox.Show("Solo se permiten números.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void SoloLetras_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Verifica si la tecla presionada es una letra o una tecla de control como backspace
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
+            {
+                // Si no es una letra, espacio o tecla de control, cancela el evento
+                e.Handled = true;
+                MessageBox.Show("Solo se permiten letras.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
     }
 }
