@@ -23,21 +23,29 @@ namespace CapaDiseno
         public frm_asignacion_aplicaciones(string idUsuario)
         {
             InitializeComponent();
+            Btn_guardar.Enabled = false;
+            Btn_eliminar.Enabled = false;
+            Btn_limpiar.Enabled = false;
+            Cbo_usuarios.Enabled = false;
+            Cbo_modulos.Enabled = false;
+            Cbo_aplicaciones.Enabled = false;
+            Dgv_asignaciones.Enabled = false;
+            Dgv_aplicaciones_asignados.Enabled = false;
             logic = new logica(idUsuario);
             ToolTip tnuevo = new ToolTip();
-            tnuevo.SetToolTip(btn_agregar, "Crear Asignación");
+            tnuevo.SetToolTip(Btn_agregar, "Crear Asignación");
             ToolTip tbuscar = new ToolTip();
-            tbuscar.SetToolTip(btn_buscar, "Buscar Asignación");
+            tbuscar.SetToolTip(Btn_buscar, "Buscar Asignación");
             ToolTip tcancelar = new ToolTip();
-            tcancelar.SetToolTip(btn_limpiar, "Limpiar Datos");
+            tcancelar.SetToolTip(Btn_limpiar, "Limpiar Datos");
             ToolTip tguardar = new ToolTip();
-            tguardar.SetToolTip(btn_guardar, "Guardar Asignación");
+            tguardar.SetToolTip(Btn_guardar, "Guardar Asignación");
             ToolTip tsalir = new ToolTip();
-            tsalir.SetToolTip(btn_salir, "Salir Módulo de Asignación");
+            tsalir.SetToolTip(Btn_salir, "Salir Módulo de Asignación");
             ToolTip tayuda = new ToolTip();
-            tayuda.SetToolTip(btn_ayuda, "Ayuda");
+            tayuda.SetToolTip(Btn_ayuda, "Ayuda");
             ToolTip teliminar = new ToolTip();
-            teliminar.SetToolTip(btn_eliminar, "Cancelar Asignación");
+            teliminar.SetToolTip(Btn_eliminar, "Cancelar Asignación");
         }
         //####  FINALIZA ALYSON RODRIGUEZ 9959-21-829
 
@@ -52,11 +60,11 @@ namespace CapaDiseno
         {
             try
             {
-                DataTable dtPerfiles = logic.consultaLogicaUsuarios();
-                cbo_usuarios.Items.Clear();
+                DataTable dtPerfiles = logic.funconsultaLogicaUsuarios();
+                Cbo_usuarios.Items.Clear();
                 foreach (DataRow row in dtPerfiles.Rows)
                 {
-                    cbo_usuarios.Items.Add(row[0].ToString());
+                    Cbo_usuarios.Items.Add(row[0].ToString());
                 }
             }
             catch (Exception ex)
@@ -76,27 +84,28 @@ namespace CapaDiseno
 
         void limpieza()
         {
-            cbo_usuarios.Text = " ";
-            cbo_modulos.Text = " ";
-            cbo_aplicaciones.Text = " ";
+            Cbo_usuarios.Text = " ";
+            Cbo_modulos.Text = " ";
+            Cbo_aplicaciones.Text = " ";
         }
 
         void limpieza2()
         {
-            // Verificar si el DataGridView está vinculado a un DataTable
-            if (dgv_asignaciones.DataSource is DataTable dt)
-            {
-                // Limpiar las filas del DataTable (manteniendo las columnas)
-                dt.Clear();  // Esto eliminará las filas, pero mantendrá la estructura de las columnas
+            Cbo_usuarios.Text = " ";
+            Cbo_modulos.Text = " ";
+            Cbo_aplicaciones.Text = " ";
 
-                // Reiniciar el contador de filas si es necesario
-                iContadorFila = 0;
+            Dgv_aplicaciones_asignados.Columns.Clear();
+
+
+            if (iContadorFila > 0)
+            {
+                Dgv_asignaciones.Rows.RemoveAt(Dgv_asignaciones.CurrentRow.Index);
+                iContadorFila--;
             }
             else
             {
-                MessageBox.Show("El DataGridView no está enlazado a un DataTable.");
             }
-
         }
 
         // TRABAJADO POR ALYSON RODRIGURZ 9959-21-829
@@ -106,12 +115,12 @@ namespace CapaDiseno
             try
             {
                 DataTable dtModulos = logic.funconsultalogicamodulos();
-                cbo_modulos.Items.Clear();
+                Cbo_modulos.Items.Clear();
                 foreach (DataRow row in dtModulos.Rows)
                 {
-                    cbo_modulos.Items.Add(row[0].ToString());
+                    Cbo_modulos.Items.Add(row[0].ToString());
                 }
-                cbo_modulos.SelectedIndexChanged += new EventHandler(Cbo_modulos_SelectedIndexChanged);
+                Cbo_modulos.SelectedIndexChanged += new EventHandler(Cbo_modulos_SelectedIndexChanged);
             }
             catch (Exception ex)
             {
@@ -126,11 +135,11 @@ namespace CapaDiseno
         {
             try
             {
-                DataTable dtAplicaciones = logic.funconsultaLogicaaplicacionesP(nombreModulo);
-                cbo_aplicaciones.Items.Clear();
+                DataTable dtAplicaciones = logic.funConsultaLogicaAplicaciones(nombreModulo);
+                Cbo_aplicaciones.Items.Clear();
                 foreach (DataRow row in dtAplicaciones.Rows)
                 {
-                    cbo_aplicaciones.Items.Add(row["nombre_aplicacion"].ToString());
+                    Cbo_aplicaciones.Items.Add(row["nombre_aplicacion"].ToString());
                 }
             }
             catch (Exception ex)
@@ -147,9 +156,9 @@ namespace CapaDiseno
 
             // Limpiar las aplicaciones antes de agregar nuevas
 
-            if (cbo_modulos.SelectedIndex != -1)
+            if (Cbo_modulos.SelectedIndex != -1)
             {
-                string moduloSeleccionado = cbo_modulos.SelectedItem.ToString();
+                string moduloSeleccionado = Cbo_modulos.SelectedItem.ToString();
                 CargarAplicaciones(moduloSeleccionado);
             }
 
@@ -162,9 +171,9 @@ namespace CapaDiseno
         private void Cbo_aplicaciones_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-            if (cbo_aplicaciones.SelectedItem != null)
+            if (Cbo_aplicaciones.SelectedItem != null)
             {
-                string nombreAplicacion = cbo_aplicaciones.SelectedItem.ToString();
+                string nombreAplicacion = Cbo_aplicaciones.SelectedItem.ToString();
                 Console.WriteLine("Aplicación seleccionada: " + nombreAplicacion);
             }
 
@@ -180,27 +189,27 @@ namespace CapaDiseno
         {
 
             // Asegurarte de que el DataGridView esté vacío antes de configurar columnas
-            dgv_asignaciones.Columns.Clear();
+            Dgv_asignaciones.Columns.Clear();
 
             // Agregar las columnas necesarias al DataGridView
-            dgv_asignaciones.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "Fk_id_usuario", HeaderText = "Usuario" });
-            dgv_asignaciones.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "nombre_aplicacion", HeaderText = "Aplicación" });
-            dgv_asignaciones.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "guardar_permiso", HeaderText = "Ingresar" });
-            dgv_asignaciones.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "buscar_permiso", HeaderText = "Consultar" });
-            dgv_asignaciones.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "modificar_permiso", HeaderText = "Modificar" });
-            dgv_asignaciones.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "eliminar_permiso", HeaderText = "Eliminar" });
-            dgv_asignaciones.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "imprimir_permiso", HeaderText = "Imprimir" });
+            Dgv_asignaciones.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "Fk_id_usuario", HeaderText = "Usuario" });
+            Dgv_asignaciones.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "nombre_aplicacion", HeaderText = "Aplicación" });
+            Dgv_asignaciones.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "guardar_permiso", HeaderText = "Ingresar" });
+            Dgv_asignaciones.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "buscar_permiso", HeaderText = "Consultar" });
+            Dgv_asignaciones.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "modificar_permiso", HeaderText = "Modificar" });
+            Dgv_asignaciones.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "eliminar_permiso", HeaderText = "Eliminar" });
+            Dgv_asignaciones.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "imprimir_permiso", HeaderText = "Imprimir" });
 
 
             // Lista de las columnas que son CheckBox y necesitan configuración
-            string[] permisosColumnas = { "Ingresar", "Consultar", "Modificar", "Eliminar", "Imprimir" };
+            string[] sPermisosColumnas = { "Ingresar", "Consultar", "Modificar", "Eliminar", "Imprimir" };
 
-            foreach (string columna in permisosColumnas)
+            foreach (string columna in sPermisosColumnas)
             {
                 // Verificar si la columna existe en el DataGridView
-                if (dgv_asignaciones.Columns.Contains(columna))
+                if (Dgv_asignaciones.Columns.Contains(columna))
                 {
-                    if (dgv_asignaciones.Columns[columna] is DataGridViewCheckBoxColumn checkBoxColumn)
+                    if (Dgv_asignaciones.Columns[columna] is DataGridViewCheckBoxColumn checkBoxColumn)
                     {
                         // Configurar permisos habilitados o deshabilitados para cada columna CheckBox
                         checkBoxColumn.TrueValue = 1;
@@ -213,39 +222,28 @@ namespace CapaDiseno
 
 
         //Trabajado por Alyson Rodriguez 9959-21-829
-        public void ActualizarDataGridView()
+        public void actualizardatagriew()
         {
-            // Obtener los datos desde la base de datos
-            DataTable dt = logic.funcConsultaLogicaUsuarios("Tbl_permisos_aplicaciones_usuario");
 
-            // Verificar si hay datos
-            if (dt != null && dt.Rows.Count > 0)
+
+            try
             {
-                MessageBox.Show("Datos recibidos: " + dt.Rows.Count.ToString());
+                // Obtener los datos desde la base de datos
+                DataTable dt = logic.funConsultaLogicaUsuarios("Tbl_permisos_aplicaciones_usuario");
 
-                // Mensaje con los datos obtenidos
-                string datosObtenidos = "Datos recibidos:\n";
-
-                // Recorrer las filas y columnas para mostrar los datos
-                foreach (DataRow row in dt.Rows)
+                if (dt != null && dt.Rows.Count > 0)
                 {
-                    foreach (DataColumn column in dt.Columns)
-                    {
-                        datosObtenidos += $"{column.ColumnName}: {row[column]}\n";
-                    }
-                    datosObtenidos += "-------------------\n"; // Separador entre filas
+                    // Asignar el DataTable al DataGridView
+                    Dgv_aplicaciones_asignados.DataSource = dt;
                 }
-
-                // Asignar el DataTable al DataGridView directamente
-                dgv_asignaciones.DataSource = dt;
-
-                // Actualizar el DataGridView para reflejar los nuevos datos
-                dgv_asignaciones.Refresh();
-                ConfigurarColumnasCheckBox();
+                else
+                {
+                    MessageBox.Show("No se encontraron datos.");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("No se encontraron datos.");
+                MessageBox.Show($"Error al buscar los datos: {ex.Message}");
             }
         }
         //##################Finaliza##################
@@ -258,24 +256,55 @@ namespace CapaDiseno
 
 
         //Trabajado María José Véliz
+        private bool isInitialized = false;
         private void btn_agregar_Click_1(object sender, EventArgs e)
         {
-            if (cbo_aplicaciones.SelectedItem == null || cbo_usuarios.SelectedItem == null)
+            if (!isInitialized)
+            {
+                Btn_guardar.Enabled = true;
+                Cbo_usuarios.Enabled = true;
+                Cbo_modulos.Enabled = true;
+                Cbo_aplicaciones.Enabled = true;
+                Dgv_asignaciones.Enabled = true;
+                Btn_eliminar.Enabled = false;
+
+
+
+                MessageBox.Show("Empieza la asignación.", "Verificación", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                isInitialized = true; // Cambiar el estado a inicializado
+                return; // Salir del método después de la habilitación
+            }
+
+            // Verificar si los tres ComboBox tienen una selección
+            if (Cbo_usuarios.SelectedItem != null && Cbo_modulos.SelectedItem != null && Cbo_aplicaciones.SelectedItem != null)
+            {
+                Btn_eliminar.Enabled = true; // Activar botón Eliminar solo si los tres están seleccionados
+            }
+            else
+            {
+                Btn_eliminar.Enabled = false; // Desactivar si no se seleccionaron los tres
+            }
+
+
+            // Validar si hay campos vacíos
+            if (Cbo_aplicaciones.SelectedItem == null || Cbo_usuarios.SelectedItem == null)
             {
                 MessageBox.Show("Faltan Datos Por Seleccionar", "Verificación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return; // Salir del método si hay campos vacíos
             }
             else
             {
                 bool bUsuario_aplicacion_existente = false;
 
-                string sUsuario = cbo_usuarios.SelectedItem.ToString();
-                string sAplicacion = cbo_aplicaciones.SelectedItem.ToString();
+                string sUsuario = Cbo_usuarios.SelectedItem.ToString();
+                string sAplicacion = Cbo_aplicaciones.SelectedItem.ToString();
 
 
 
                 if (iContadorFila > 0)
                 {
-                    dgv_asignaciones.Rows.Add(sUsuario, sAplicacion);
+                    Dgv_asignaciones.Rows.Add(sUsuario, sAplicacion);
 
                     iContadorFila++;
 
@@ -283,9 +312,9 @@ namespace CapaDiseno
                 }
                 else
                 {
-                    foreach (DataGridViewRow Fila in dgv_asignaciones.Rows)
+                    foreach (DataGridViewRow Fila in Dgv_asignaciones.Rows)
                     {
-                        if (Fila.Cells[0].Value.ToString() == cbo_usuarios.SelectedItem.ToString() && Fila.Cells[1].Value.ToString() == cbo_aplicaciones.SelectedItem.ToString())
+                        if (Fila.Cells[0].Value.ToString() == Cbo_usuarios.SelectedItem.ToString() && Fila.Cells[1].Value.ToString() == Cbo_aplicaciones.SelectedItem.ToString())
 
                         {
                             bUsuario_aplicacion_existente = true;
@@ -298,7 +327,7 @@ namespace CapaDiseno
                     }
                     else
                     {
-                        dgv_asignaciones.Rows.Add(sUsuario, sAplicacion);
+                        Dgv_asignaciones.Rows.Add(sUsuario, sAplicacion);
                         iContadorFila++;
                     }
                 }
@@ -306,7 +335,6 @@ namespace CapaDiseno
                 limpieza();
             }
         }
-
         //Tremina
 
 
@@ -315,11 +343,24 @@ namespace CapaDiseno
 
         private void btn_buscar_Click_1(object sender, EventArgs e)
         {
-            ActualizarDataGridView();
+            Btn_eliminar.Enabled = false;
+            Btn_guardar.Enabled = false;
+            Btn_agregar.Enabled = false;
+            Btn_limpiar.Enabled = true;
+            Btn_eliminar.Enabled = false;
+            Dgv_aplicaciones_asignados.Enabled = true;
+            actualizardatagriew();
         }
 
         private void btn_remover_Click_1(object sender, EventArgs e)
         {
+            Btn_agregar.Enabled = true;
+            Cbo_usuarios.Enabled = false;
+            Cbo_modulos.Enabled = false;
+            Cbo_aplicaciones.Enabled = false;
+            Dgv_asignaciones.Enabled = false;
+            Btn_limpiar.Enabled = false;
+            Dgv_aplicaciones_asignados.Enabled = false;
             limpieza2();
         }
 
@@ -332,9 +373,34 @@ namespace CapaDiseno
             string sModificar;
             string sEliminar;
             string sImprimir;
+
             try
             {
-                foreach (DataGridViewRow Fila in dgv_asignaciones.Rows)
+                bool hayCheckboxMarcado = false; // Variable para verificar checkboxes
+
+                foreach (DataGridViewRow Fila in Dgv_asignaciones.Rows)
+                {
+                    // Verificar si hay algún checkbox marcado
+                    if ((bool)(Fila.Cells["Ingresar"].EditedFormattedValue) ||
+                        (bool)(Fila.Cells["Modificar"].EditedFormattedValue) ||
+                        (bool)(Fila.Cells["Eliminar"].EditedFormattedValue) ||
+                        (bool)(Fila.Cells["Consultar"].EditedFormattedValue) ||
+                        (bool)(Fila.Cells["Imprimir"].EditedFormattedValue))
+                    {
+                        hayCheckboxMarcado = true; // Al menos un checkbox está marcado
+                        break; // Salir del bucle si encontramos al menos un checkbox marcado
+                    }
+                }
+
+                // Si no hay checkboxes marcados, mostrar mensaje y salir
+                if (!hayCheckboxMarcado)
+                {
+                    MessageBox.Show("Debe seleccionar al menos una opción antes de guardar.", "Verificación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return; // Salir del método
+                }
+           
+
+                foreach (DataGridViewRow Fila in Dgv_asignaciones.Rows)
                 {
                     string sUsuario = Fila.Cells[0].Value.ToString();
                     string sAplicacion = Fila.Cells[1].Value.ToString();
@@ -385,19 +451,28 @@ namespace CapaDiseno
                         MessageBoxIcon.Information
                     );
 
-                    DataTable dtAplicaciones = logic.funcConsultaLogicaPermisosUsuarioAplicacion(sUsuario, sAplicacion, sIngresar, sConsulta, sModificar, sEliminar, sImprimir);
+                    DataTable dtAplicaciones = logic.funConsultaLogicaPermisosUsuarioAplicacion(sUsuario, sAplicacion, sIngresar, sConsulta, sModificar, sEliminar, sImprimir);
 
                 }
 
                 MessageBox.Show("Datos ingresados exitosamente");
+                Btn_guardar.Enabled = false;
+                Btn_eliminar.Enabled = false;
+                Btn_limpiar.Enabled = false;
+                Cbo_usuarios.Enabled = false;
+                Cbo_modulos.Enabled = false;
+                Cbo_aplicaciones.Enabled = false;
+                Dgv_asignaciones.Enabled = false;
+                Dgv_aplicaciones_asignados.Enabled = false;
                 limpieza();
-                dgv_asignaciones.Rows.Clear();
+                Dgv_asignaciones.Rows.Clear();
                 iContadorFila = 0;
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex);
             }
+
         }
         // FINALIZA ALYSON RODRIGUEZ 9959-21-829 
 
@@ -413,15 +488,32 @@ namespace CapaDiseno
 
         private void btn_eliminar_Click(object sender, EventArgs e)
         {
-            if (iContadorFila > 0)
+            Btn_agregar.Enabled = true;
+            Btn_guardar.Enabled = false;
+            Btn_limpiar.Enabled = false;
+            Cbo_usuarios.Enabled = false;
+            Cbo_modulos.Enabled = false;
+            Cbo_aplicaciones.Enabled = false;
+            Dgv_asignaciones.Enabled = false;
+
+            if (iContadorFila > 0 && Dgv_asignaciones.CurrentRow != null)
             {
-                dgv_asignaciones.Rows.RemoveAt(dgv_asignaciones.CurrentRow.Index);
+                // Eliminar la fila seleccionada
+                Dgv_asignaciones.Rows.RemoveAt(Dgv_asignaciones.CurrentRow.Index);
                 iContadorFila--;
+
+                // Limpiar los ComboBox para evitar agregar la misma relación
+                Cbo_usuarios.SelectedItem = null;
+                Cbo_aplicaciones.SelectedItem = null;
+
+                // Restablecer el estado de isInitialized
+                isInitialized = false; // Permitir que se muestre el mensaje la próxima vez que se agregue
             }
             else
             {
                 MessageBox.Show("No hay relaciones que eliminar");
             }
+
         }
     }
 }

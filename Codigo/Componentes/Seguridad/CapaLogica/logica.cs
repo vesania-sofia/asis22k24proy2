@@ -16,12 +16,12 @@ namespace CapaLogica
             sn = new sentencia(idUsuario);
         }
 
-        public DataTable consultaLogicaUsuarios()
+        public DataTable funconsultaLogicaUsuarios()
         {
 
             try
             {
-                OdbcDataAdapter dtUsuario = sn.consultarUsuarios();
+                OdbcDataAdapter dtUsuario = sn.funconsultarUsuarios();
                 DataTable tableUsuario = new DataTable();
                 dtUsuario.Fill(tableUsuario);
                 return tableUsuario;
@@ -72,6 +72,27 @@ namespace CapaLogica
             try
             {
                 using (OdbcDataAdapter cmpsAplicaciones = sn.proconsultaraplicaciones(sID_aplicacion)) //Cambio de referencia para fuuncionamiento de APlicaciones Usuarios
+                {
+                    DataTable tableAplicaciones = new DataTable();
+                    cmpsAplicaciones.Fill(tableAplicaciones);
+                    return tableAplicaciones;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return null;
+
+            }
+
+        }
+
+        //Trabajado por Alysson y María José
+        public DataTable funConsultaLogicaAplicaciones(string sID_aplicacion)
+        {
+            try
+            {
+                using (OdbcDataAdapter cmpsAplicaciones = sn.funconsultarAplicaciones(sID_aplicacion)) //Cambio de referencia para fuuncionamiento de APlicaciones Usuarios
                 {
                     DataTable tableAplicaciones = new DataTable();
                     cmpsAplicaciones.Fill(tableAplicaciones);
@@ -158,11 +179,11 @@ namespace CapaLogica
 
         //Trabajado María José Véliz
         //Se cambiaron de lugar los parámetros por la base de datos
-        public DataTable funcConsultaLogicaPermisosUsuarioAplicacion(string codigoUsuario, string nombreAplicacion, string ingresar, string consulta, string modificar, string eliminar, string imprimir)
+        public DataTable funConsultaLogicaPermisosUsuarioAplicacion(string sCodigoUsuario, string sNombreAplicacion, string sIngresar, string sConsulta, string sModificar, string sEliminar, string sImprimir)
         {
             try
             {
-                OdbcDataAdapter dtPermisosUA = sn.funcInsertarPermisosUA(codigoUsuario, nombreAplicacion, ingresar, consulta, modificar, eliminar, imprimir);
+                OdbcDataAdapter dtPermisosUA = sn.funInsertarPermisosUA(sCodigoUsuario, sNombreAplicacion, sIngresar, sConsulta, sModificar, sEliminar, sImprimir);
                 DataTable tablePermisosUA = new DataTable();
                 dtPermisosUA.Fill(tablePermisosUA);
                 return tablePermisosUA;
@@ -177,12 +198,12 @@ namespace CapaLogica
 
         //Trabajado por ALyson Rodriguez 9959-21-829
       
-        public DataTable funcConsultaLogicaUsuarios(string AplicacionUsuario)
+        public DataTable funConsultaLogicaUsuarios(string sAplicacionUsuario)
         {
 
             // Llamar al método que retorna un DataTable
             DataTable table = new DataTable();
-            OdbcDataAdapter dt = sn.funcMostrarUsuariosYPermisos(AplicacionUsuario); // Cambio en el nombre del método para reflejar permisos
+            OdbcDataAdapter dt = sn.funMostrarUsuariosYPermisos(sAplicacionUsuario); // Cambio en el nombre del método para reflejar permisos
             dt.Fill(table);
             return table;
         }
