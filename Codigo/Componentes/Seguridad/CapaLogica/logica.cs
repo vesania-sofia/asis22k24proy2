@@ -414,11 +414,11 @@ namespace CapaLogica
     
 
         //Trabajado por María José Véliz Ochoa, 9959-21-5909
-        public DataTable funcValidarIdModulos()
+        public DataTable funvalidaridmodulos()
         {
             try
             {
-                OdbcDataAdapter dtValidarIDModulo = sn.funcValidarIdModulos();
+                OdbcDataAdapter dtValidarIDModulo = sn.funvalidaridmodulos();
                 DataTable tableValidacionIdModulo = new DataTable();
                 dtValidarIDModulo.Fill(tableValidacionIdModulo);
                 return tableValidacionIdModulo;
@@ -505,12 +505,12 @@ namespace CapaLogica
 
 
         //Trabajado por María José Véliz Ochoa, 9959-21-5909
-        public bool funcIngresarModulo(string codigo, string nombre, string descripcion, string estado)
+        public bool funingresarmodulo(string sCodigo, string sNombre, string sDescripcion, string sEstado)
         {
             try
             {
                 // Ejecutar la inserción
-                sn.funcInsertarModulo(codigo, nombre, descripcion, estado);
+                sn.proinsertarmodulo(sCodigo, sNombre, sDescripcion, sEstado);
                 return true;
             }
             catch (Exception ex)
@@ -565,11 +565,11 @@ namespace CapaLogica
         //----------------------------------------------------------------------------------------
 
         //Trabajado por María José Véliz Ochoa, 9959-21-5909
-        public DataTable funcConsultaLogicaModulo(string ID_modulo)
+        public DataTable funconsultalogicamodulo(string sIdModulo)
         {
             try
             {
-                using (OdbcDataAdapter cmpsModulos = sn.funcConsultarModulos(ID_modulo))
+                using (OdbcDataAdapter cmpsModulos = sn.proconsultarmodulos(sIdModulo))
                 {
                     DataTable tablaModulos = new DataTable();
                     cmpsModulos.Fill(tablaModulos);
@@ -586,12 +586,12 @@ namespace CapaLogica
         // termina
 
 
-
-        public DataTable funcActualizarModulo(string ID_modulo, string nombre, string descripcion, string estado)
+        // Alyson Rodríguez 9959-21-829
+        public DataTable funactualizarmodulo(string sIdModulo, string sNombre, string sDescripcion, string sEstado)
         {
             try
             {
-                OdbcDataAdapter dtmodulo = sn.funcActualizarModulo(ID_modulo, nombre, descripcion, estado);
+                OdbcDataAdapter dtmodulo = sn.proactualizarmodulo(sIdModulo, sNombre, sDescripcion, sEstado);
                 DataTable tablamodulos = new DataTable();
                 dtmodulo.Fill(tablamodulos);
                 return tablamodulos;
@@ -617,11 +617,11 @@ namespace CapaLogica
         //FIN ###########
 
         //ELIMINAR MODULO ALYSON ##########################################
-        public DataTable funcEliminarModulo(string ID_modulo, string nombre, string descripcion, string estado)
+        public DataTable funeliminarmodulo(string sIdModulo, string sNombre, string sDescripcion, string sEstado)
         {
             try
             {
-                OdbcDataAdapter dtmodulo = sn.funcEliminarModulo(ID_modulo, nombre, descripcion, estado);
+                OdbcDataAdapter dtmodulo = sn.proeliminarmodulo(sIdModulo, sNombre, sDescripcion, sEstado);
                 DataTable tablamodulos = new DataTable();
                 dtmodulo.Fill(tablamodulos);
                 return tablamodulos;

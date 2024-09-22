@@ -649,7 +649,7 @@ namespace CapaDatos
 
 
         //Trabajado por María José Véliz Ochoa, 9959-21-5909
-        public OdbcDataAdapter funcValidarIdModulos()
+        public OdbcDataAdapter funvalidaridmodulos()
         {
             try
             {
@@ -736,7 +736,7 @@ namespace CapaDatos
 
         //Trabajado por María José Véliz Ochoa 9959-21-5909
         //se optó por usar OdbcCommand en lugar de OdbcDataAdapter, cambió estructura
-        public void funcInsertarModulo(string codigo, string nombre, string descripcion, string estado)
+        public void proinsertarmodulo(string sCodigo, string sNombre, string sDescripcion, string sEstado)
         {
             try
             {
@@ -753,15 +753,15 @@ namespace CapaDatos
                     using (OdbcCommand cmd = new OdbcCommand(query, connection))
                     {
                         // Agregar los parámetros al comando
-                        cmd.Parameters.AddWithValue("@Pk_id_modulo", codigo);
-                        cmd.Parameters.AddWithValue("@nombre_modulo", nombre);
-                        cmd.Parameters.AddWithValue("@descripcion_modulo", descripcion);
-                        cmd.Parameters.AddWithValue("@estado_modulo", estado);
+                        cmd.Parameters.AddWithValue("@Pk_id_modulo", sCodigo);
+                        cmd.Parameters.AddWithValue("@nombre_modulo", sNombre);
+                        cmd.Parameters.AddWithValue("@descripcion_modulo", sDescripcion);
+                        cmd.Parameters.AddWithValue("@estado_modulo", sEstado);
 
                         // Ejecutar el comando
                         cmd.ExecuteNonQuery();
 
-                        insertarBitacora(idUsuario, "Inserto un nuevo modulo: " + codigo + " - " + nombre, "tbl_modulos");
+                        insertarBitacora(idUsuario, "Inserto un nuevo modulo: " + sCodigo + " - " + sNombre, "tbl_modulos");
                     }
                 }
             }
@@ -853,25 +853,25 @@ namespace CapaDatos
         //------------Para formulario Mantenimiento Modulos---------
 
         //Trabajado por María José Véliz Ochoa, 9959-21-5909
-        public OdbcDataAdapter funcConsultarModulos(string modulo)
+        public OdbcDataAdapter proconsultarmodulos(string sModulo)
         {
             cn.conectar();
-            string sqlModulos = "SELECT * FROM tbl_modulos WHERE Pk_id_modulos = " + modulo;
+            string sqlModulos = "SELECT * FROM tbl_modulos WHERE Pk_id_modulos = " + sModulo;
             insertarBitacora(idUsuario, "Realizo una consulta a modulos", "tbl_modulos");
             OdbcDataAdapter dataTable = new OdbcDataAdapter(sqlModulos, cn.conectar());
             return dataTable;
         } //termina
 
-        //###############ALYSON RODRIGUEZ BOTON ACTUALIZAR : creo que solo cambie que el nombre de la tabla estuviera bien
-        public OdbcDataAdapter funcActualizarModulo(string ID_modulo, string nombre, string descripcion, string estado)
+        //###############ALYSON RODRIGUEZ BOTON ACTUALIZAR 
+        public OdbcDataAdapter proactualizarmodulo(string sIdModulo, string sNombre, string sDescripcion, string sEstado)
         {
-            Console.WriteLine("ESTO SE INGRESA EN LA SENTENCIA: " + ID_modulo + ", " + nombre + ", " + descripcion + ", " + estado);
+            Console.WriteLine("ESTO SE INGRESA EN LA SENTENCIA: " + sIdModulo + ", " + sNombre + ", " + sDescripcion + ", " + sEstado);
             try
             {
                 cn.conectar();
-                string sqlactualizarmodulo = "UPDATE tbl_modulos SET nombre_modulo = '" + nombre + "', descripcion_modulo = '" + descripcion + "', estado_modulo = '" + estado + "' WHERE PK_id_modulos ='" + ID_modulo + "'";
+                string sqlactualizarmodulo = "UPDATE tbl_modulos SET nombre_modulo = '" + sNombre + "', descripcion_modulo = '" + sDescripcion + "', estado_modulo = '" + sEstado + "' WHERE PK_id_modulos ='" + sIdModulo + "'";
                 OdbcDataAdapter dataTable = new OdbcDataAdapter(sqlactualizarmodulo, cn.conectar());
-                insertarBitacora(idUsuario, "Actualizo un modulo: " + ID_modulo + " - " + nombre, "tbl_modulos");
+                insertarBitacora(idUsuario, "Actualizo un modulo: " + sIdModulo + " - " + sNombre, "tbl_modulos");
                 return dataTable;
             }
             catch (Exception ex)
@@ -1177,9 +1177,9 @@ namespace CapaDatos
         }
 
         //###############INICIA CÓDIGO PARA BOTON ELIMINAR ALYSON RODRÍGUEZ 
-        public OdbcDataAdapter funcEliminarModulo(string ID_modulo, string nombre, string descripcion, string estado)
+        public OdbcDataAdapter proeliminarmodulo(string sIdModulo, string sNombre, string sDescripcion, string sEstado)
         {
-            Console.WriteLine("ESTO SE INGRESA EN LA SENTENCIA: " + ID_modulo + ", " + nombre + ", " + descripcion + ", " + estado);
+            Console.WriteLine("ESTO SE INGRESA EN LA SENTENCIA: " + sIdModulo + ", " + sNombre + ", " + sDescripcion + ", " + sEstado);
             try
             {
                 using (OdbcConnection connection = cn.conectar())
@@ -1189,9 +1189,9 @@ namespace CapaDatos
                     using (OdbcCommand command = new OdbcCommand(sqlBorrarModulo, connection))
                     {
                         // Agregar parámetros al comando
-                        command.Parameters.AddWithValue("?", nombre);
-                        command.Parameters.AddWithValue("?", descripcion);
-                        command.Parameters.AddWithValue("?", ID_modulo);
+                        command.Parameters.AddWithValue("?", sNombre);
+                        command.Parameters.AddWithValue("?", sDescripcion);
+                        command.Parameters.AddWithValue("?", sIdModulo);
 
                         // Crear un OdbcDataAdapter para ejecutar el comando de actualización
                         OdbcDataAdapter adapter = new OdbcDataAdapter();
@@ -1201,7 +1201,7 @@ namespace CapaDatos
                         adapter.UpdateCommand.ExecuteNonQuery();
 
                         // Registrar la acción en la bitácora
-                        insertarBitacora(idUsuario, "Eliminó un módulo: " + ID_modulo + " - " + nombre, "tbl_modulos");
+                        insertarBitacora(idUsuario, "Eliminó un módulo: " + sIdModulo + " - " + sNombre, "tbl_modulos");
 
                         return adapter; // Aunque no se usa típicamente así, se retorna el adaptador
                     }
