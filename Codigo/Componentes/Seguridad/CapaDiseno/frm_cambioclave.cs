@@ -12,6 +12,9 @@ using System.Data.Odbc;
 using System.Security.Cryptography;
 using CapaDatos;
 
+using System.IO; // Necesario para Directory, File, Path y SearchOption
+using System.Windows.Forms; // Necesario para MessageBox y Help
+
 namespace CapaDiseno
 {
     public partial class frm_cambioclave : Form
@@ -37,9 +40,13 @@ namespace CapaDiseno
         private void Button1_Click(object sender, EventArgs e)
         {
             txt_id.Enabled = false;
-            txt_clave.Enabled = true;
+            txt_clave.Enabled = false;
             txt_nombres.Enabled = false;
             txt_apellidos.Enabled = false;
+            btn_guardar1.Enabled = true;
+            txt_nueva_clave.Enabled = true;
+            txt_nueva_clave_repetida.Enabled = true;
+
 
             buscar = txt_idbuscar.Text.Trim();
 
@@ -49,7 +56,7 @@ namespace CapaDiseno
 
                 if (dtusuario.ToString() == null)
                 {
-                    MessageBox.Show("No existe");
+                    MessageBox.Show("No existe el usuario", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 }
                 else
@@ -80,7 +87,32 @@ namespace CapaDiseno
             txt_clave.Enabled = false;
             txt_nombres.Enabled = false;
             txt_apellidos.Enabled = false;
+            txt_nueva_clave.Enabled = false;
+            txt_nueva_clave_repetida.Enabled = false;
+            btn_guardar1.Enabled = false;
+            txt_idbuscar.KeyPress += new KeyPressEventHandler(SoloNumeros_KeyPress);
+            // Orden de tabulaciones
+            txt_idbuscar.TabIndex = 0;
+            Btn_buscar.TabIndex = 1;
+            txt_id.TabIndex = 2;
+            txt_clave.TabIndex = 3;
+            txt_nombres.TabIndex = 4;
+            txt_apellido.TabIndex = 5;
+            txt_nueva_clave.TabIndex = 6;
+            txt_nueva_clave_repetida.TabIndex = 7;
+            btn_guardar1.TabIndex = 8;
+            btn_salir1.TabIndex = 9;
 
+            //limitar caracteres
+            txt_id.MaxLength = 20; // Limita el texto a 50 caracteres
+            txt_id.MaxLength = 50;
+            txt_clave.MaxLength = 50;
+            txt_nombres.MaxLength = 50;
+            txt_nombre.MaxLength = 50;
+            txt_apellidos.MaxLength = 50;
+            txt_apellido.MaxLength = 50;
+            txt_nueva_clave.MaxLength = 50;
+            txt_nueva_clave_repetida.MaxLength = 50;
 
             try
             {
@@ -90,7 +122,6 @@ namespace CapaDiseno
                 // Verificar si dtusuario es nulo o no tiene filas
                 if (dtusuario == null || dtusuario.Rows.Count == 0)
                 {
-                    MessageBox.Show("Cambiar contraseña de usuarios");
                     return;
                 }
 
@@ -103,23 +134,23 @@ namespace CapaDiseno
                 // Controlar la visibilidad de los elementos según el perfil
                 if (perfil == "1")
                 {
-                    groupBox3.Visible = true;
-                    groupBox2.Visible = true;
-                    groupBox1.Visible = true;
+                    Gpb_modificar.Visible = true;
+                    Gpb_datospersonales.Visible = true;
+                    Gpb_datosusuario.Visible = true;
                     btn_ayuda.Visible = true;
 
-                    groupBox4.Visible = false;
+                    Gpb_contraseniausuario.Visible = false;
                     btn_guardar1.Visible = false;
                     btn_salir1.Visible = false;
                 }
                 else
                 {
-                    groupBox3.Visible = false;
-                    groupBox2.Visible = false;
-                    groupBox1.Visible = false;
+                    Gpb_modificar.Visible = false;
+                    Gpb_datospersonales.Visible = false;
+                    Gpb_datosusuario.Visible = false;
                     btn_ayuda.Visible = false;
 
-                    groupBox4.Visible = true;
+                    Gpb_contraseniausuario.Visible = true;
                     btn_guardar1.Visible = true;
                     btn_salir1.Visible = true;
                 }
@@ -178,6 +209,9 @@ namespace CapaDiseno
                             MessageBox.Show("Se cambió la contraseña exitosamente", "Cambio de contraseña", MessageBoxButtons.OK, MessageBoxIcon.Information);
                            // sn.insertarBitacora(usuario, "Se cambio contraseña ", "tbl_usuarios");
                             LimpiarTextBox();
+                            txt_nueva_clave_repetida.Enabled = false;
+                            txt_nueva_clave.Enabled = false;
+                            btn_guardar1.Enabled = false;
                         }
                         else
                         {
@@ -240,19 +274,92 @@ namespace CapaDiseno
         {
 
         }
-
+        //**********************KATERYN DE LEON ******************************
         private void Btn_ayuda_Click(object sender, EventArgs e)
         {
-            Help.ShowHelp(this, "C:\\Ayuda_Seguridad\\" + "CambioContraseña.chm", "cambio_contraseña.html");
+            // Help.ShowHelp(this, "C:\\Ayuda_Seguridad\\" + "CambioContraseña.chm", "cambio_contraseña.html");
+            // Define el directorio base desde donde comenzar la búsqueda
+            string baseDirectory = AppDomain.CurrentDomain.BaseDirectory; // Usando el directorio base del ejecutable
+
+            // Imprime la ruta base para verificar
+            MessageBox.Show("Ruta base: " + baseDirectory);
+
+            // Busca el archivo en el directorio base y sus subdirectorios
+            string pathAyuda = FindFileInDirectory(baseDirectory, "Ayuda_Seguridad", "frmCambioClave.chm");
+
+            // Imprimir la ruta generada para verificar
+            MessageBox.Show("Ruta de ayuda: " + pathAyuda);
+
+            // Verifica si el archivo existe antes de intentar abrirlo
+            if (!string.IsNullOrEmpty(pathAyuda))
+            {
+                MessageBox.Show("El archivo sí está.");
+                // Abre el archivo de ayuda .chm
+                Help.ShowHelp(this, pathAyuda);
+            }
+            else
+            {
+                // Si el archivo no existe, muestra un mensaje de error
+                MessageBox.Show("El archivo de ayuda no se encontró.");
+            }
         }
+        //**********************KATERYN DE LEON ******************************
+        private string FindFileInDirectory(string rootDirectory, string folderName, string fileName)
+        {
+            try
+            {
+                // Imprime la ruta raíz para verificar
+                MessageBox.Show("Buscando en: " + rootDirectory);
+
+                // Busca la carpeta y el archivo
+                foreach (string directory in Directory.GetDirectories(rootDirectory, folderName, SearchOption.AllDirectories))
+                {
+                    MessageBox.Show("Carpeta encontrada: " + directory); // Imprime las carpetas encontradas
+                    string filePath = Path.Combine(directory, fileName);
+                    if (File.Exists(filePath))
+                    {
+                        return filePath; // Devuelve la primera coincidencia encontrada
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al buscar el archivo: " + ex.Message);
+            }
+            return null; // No se encontró el archivo
+        }
+
+        //********FIN KATY********************************************************************
+
 
         private void Btn_salir_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-      
-            
-        
+        //Fernando García 0901-21-581
+        private void SoloNumeros_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Verificar si el carácter es un número o si es la tecla de Backspace
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+            {
+                // Si no es un número o la tecla de retroceso, cancelar el evento
+                e.Handled = true;
+                MessageBox.Show("Solo se permiten números.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void SoloLetras_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Verifica si la tecla presionada es una letra o una tecla de control como backspace
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
+            {
+                // Si no es una letra, espacio o tecla de control, cancela el evento
+                e.Handled = true;
+                MessageBox.Show("Solo se permiten letras.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+
     }
 }

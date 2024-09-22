@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_asignacion_aplicaciones));
             this.cbo_usuarios = new System.Windows.Forms.ComboBox();
             this.cbo_aplicaciones = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -47,7 +48,7 @@
             this.lbl_modulo = new System.Windows.Forms.Label();
             this.btn_salir = new System.Windows.Forms.Button();
             this.btn_finalizar = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
+            this.Lbl_titulo = new System.Windows.Forms.Label();
             this.btn_ayuda = new System.Windows.Forms.Button();
             this.btn_buscar = new System.Windows.Forms.Button();
             this.txt_buscar = new System.Windows.Forms.TextBox();
@@ -61,7 +62,7 @@
             this.cbo_usuarios.Location = new System.Drawing.Point(41, 47);
             this.cbo_usuarios.Margin = new System.Windows.Forms.Padding(4);
             this.cbo_usuarios.Name = "cbo_usuarios";
-            this.cbo_usuarios.Size = new System.Drawing.Size(160, 25);
+            this.cbo_usuarios.Size = new System.Drawing.Size(160, 29);
             this.cbo_usuarios.TabIndex = 0;
             // 
             // cbo_aplicaciones
@@ -70,8 +71,9 @@
             this.cbo_aplicaciones.Location = new System.Drawing.Point(407, 47);
             this.cbo_aplicaciones.Margin = new System.Windows.Forms.Padding(4);
             this.cbo_aplicaciones.Name = "cbo_aplicaciones";
-            this.cbo_aplicaciones.Size = new System.Drawing.Size(160, 25);
+            this.cbo_aplicaciones.Size = new System.Drawing.Size(160, 29);
             this.cbo_aplicaciones.TabIndex = 1;
+            this.cbo_aplicaciones.SelectedIndexChanged += new System.EventHandler(this.cbo_aplicaciones_SelectedIndexChanged_1);
             // 
             // label1
             // 
@@ -79,7 +81,7 @@
             this.label1.Location = new System.Drawing.Point(87, 26);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(59, 17);
+            this.label1.Size = new System.Drawing.Size(77, 21);
             this.label1.TabIndex = 2;
             this.label1.Text = "Usuarios";
             // 
@@ -89,7 +91,7 @@
             this.label2.Location = new System.Drawing.Point(447, 26);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(90, 17);
+            this.label2.Size = new System.Drawing.Size(117, 21);
             this.label2.TabIndex = 3;
             this.label2.Text = "Aplicaciones";
             // 
@@ -226,7 +228,7 @@
             this.cbo_modulos.Location = new System.Drawing.Point(227, 46);
             this.cbo_modulos.Margin = new System.Windows.Forms.Padding(4);
             this.cbo_modulos.Name = "cbo_modulos";
-            this.cbo_modulos.Size = new System.Drawing.Size(160, 25);
+            this.cbo_modulos.Size = new System.Drawing.Size(160, 29);
             this.cbo_modulos.TabIndex = 12;
             this.cbo_modulos.SelectedIndexChanged += new System.EventHandler(this.Cbo_modulos_SelectedIndexChanged);
             // 
@@ -236,7 +238,7 @@
             this.lbl_modulo.Location = new System.Drawing.Point(283, 26);
             this.lbl_modulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_modulo.Name = "lbl_modulo";
-            this.lbl_modulo.Size = new System.Drawing.Size(62, 17);
+            this.lbl_modulo.Size = new System.Drawing.Size(81, 21);
             this.lbl_modulo.TabIndex = 11;
             this.lbl_modulo.Text = "Modulos";
             // 
@@ -262,15 +264,15 @@
             this.btn_finalizar.UseVisualStyleBackColor = true;
             this.btn_finalizar.Click += new System.EventHandler(this.Btn_finalizar_Click);
             // 
-            // label3
+            // Lbl_titulo
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(178, 9);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(459, 24);
-            this.label3.TabIndex = 15;
-            this.label3.Text = "ASIGNACION DE APLICACIONES A USUARIOS";
+            this.Lbl_titulo.AutoSize = true;
+            this.Lbl_titulo.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_titulo.Location = new System.Drawing.Point(178, 9);
+            this.Lbl_titulo.Name = "Lbl_titulo";
+            this.Lbl_titulo.Size = new System.Drawing.Size(584, 33);
+            this.Lbl_titulo.TabIndex = 15;
+            this.Lbl_titulo.Text = "ASIGNACION DE APLICACIONES A USUARIOS";
             // 
             // btn_ayuda
             // 
@@ -293,29 +295,31 @@
             this.btn_buscar.TabIndex = 256;
             this.btn_buscar.Text = "Buscar";
             this.btn_buscar.UseVisualStyleBackColor = true;
+            this.btn_buscar.Click += new System.EventHandler(this.btn_buscar_Click);
             // 
             // txt_buscar
             // 
             this.txt_buscar.Location = new System.Drawing.Point(758, 171);
             this.txt_buscar.Name = "txt_buscar";
-            this.txt_buscar.Size = new System.Drawing.Size(99, 23);
+            this.txt_buscar.Size = new System.Drawing.Size(99, 27);
             this.txt_buscar.TabIndex = 257;
             // 
             // frm_asignacion_aplicaciones
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(878, 509);
             this.Controls.Add(this.txt_buscar);
             this.Controls.Add(this.btn_buscar);
             this.Controls.Add(this.btn_ayuda);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.Lbl_titulo);
             this.Controls.Add(this.btn_finalizar);
             this.Controls.Add(this.btn_salir);
             this.Controls.Add(this.Gpb_datos);
             this.Controls.Add(this.btn_remover);
             this.Controls.Add(this.dgv_asignaciones);
             this.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frm_asignacion_aplicaciones";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -349,7 +353,7 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn Modificar;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Eliminar;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Imprimir;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label Lbl_titulo;
         private System.Windows.Forms.Button btn_ayuda;
         private System.Windows.Forms.Button btn_buscar;
         private System.Windows.Forms.TextBox txt_buscar;

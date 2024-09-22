@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_asignacion_aplicaciones_perfiles));
             this.btn_finalizar = new System.Windows.Forms.Button();
             this.btn_salir = new System.Windows.Forms.Button();
             this.btn_remover = new System.Windows.Forms.Button();
@@ -48,7 +49,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btn_ayuda = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
+            this.Lbl_asignacionapperf = new System.Windows.Forms.Label();
             this.btn_buscar = new System.Windows.Forms.Button();
             this.txt_buscar = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_asignacionesperfiles)).BeginInit();
@@ -277,15 +278,16 @@
             this.btn_ayuda.UseVisualStyleBackColor = true;
             this.btn_ayuda.Click += new System.EventHandler(this.Btn_ayuda_Click);
             // 
-            // label3
+            // Lbl_asignacionapperf
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(95, 10);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(564, 33);
-            this.label3.TabIndex = 253;
-            this.label3.Text = "ASIGNACION DE APLICACIONES A PERFILES";
+            this.Lbl_asignacionapperf.AutoSize = true;
+            this.Lbl_asignacionapperf.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_asignacionapperf.Location = new System.Drawing.Point(95, 10);
+            this.Lbl_asignacionapperf.Name = "Lbl_asignacionapperf";
+            this.Lbl_asignacionapperf.Size = new System.Drawing.Size(564, 33);
+            this.Lbl_asignacionapperf.TabIndex = 253;
+            this.Lbl_asignacionapperf.Text = "ASIGNACION DE APLICACIONES A PERFILES";
+            this.Lbl_asignacionapperf.Click += new System.EventHandler(this.label3_Click);
             // 
             // btn_buscar
             // 
@@ -311,7 +313,7 @@
             this.ClientSize = new System.Drawing.Size(898, 410);
             this.Controls.Add(this.txt_buscar);
             this.Controls.Add(this.btn_buscar);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.Lbl_asignacionapperf);
             this.Controls.Add(this.btn_ayuda);
             this.Controls.Add(this.btn_finalizar);
             this.Controls.Add(this.btn_salir);
@@ -319,6 +321,7 @@
             this.Controls.Add(this.dgv_asignacionesperfiles);
             this.Controls.Add(this.Gpb_datos);
             this.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frm_asignacion_aplicaciones_perfiles";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -354,7 +357,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btn_ayuda;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label Lbl_asignacionapperf;
         private System.Windows.Forms.Button btn_buscar;
         private System.Windows.Forms.TextBox txt_buscar;
     }

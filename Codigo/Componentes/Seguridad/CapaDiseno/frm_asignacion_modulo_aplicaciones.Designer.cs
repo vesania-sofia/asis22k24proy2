@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_asignacion_modulo_aplicaciones));
             this.cmb_modulo = new System.Windows.Forms.ComboBox();
             this.cmb_apli = new System.Windows.Forms.ComboBox();
             this.lbl_modulos = new System.Windows.Forms.Label();
@@ -54,7 +55,7 @@
             // cmb_apli
             // 
             this.cmb_apli.FormattingEnabled = true;
-            this.cmb_apli.Location = new System.Drawing.Point(467, 54);
+            this.cmb_apli.Location = new System.Drawing.Point(431, 54);
             this.cmb_apli.Name = "cmb_apli";
             this.cmb_apli.Size = new System.Drawing.Size(245, 24);
             this.cmb_apli.TabIndex = 1;
@@ -74,7 +75,7 @@
             // 
             this.lbl_aplicaciones.AutoSize = true;
             this.lbl_aplicaciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_aplicaciones.Location = new System.Drawing.Point(552, 16);
+            this.lbl_aplicaciones.Location = new System.Drawing.Point(516, 16);
             this.lbl_aplicaciones.Name = "lbl_aplicaciones";
             this.lbl_aplicaciones.Size = new System.Drawing.Size(104, 20);
             this.lbl_aplicaciones.TabIndex = 3;
@@ -104,7 +105,7 @@
             // 
             // txt_aplicacion
             // 
-            this.txt_aplicacion.Location = new System.Drawing.Point(514, 96);
+            this.txt_aplicacion.Location = new System.Drawing.Point(479, 96);
             this.txt_aplicacion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txt_aplicacion.Name = "txt_aplicacion";
             this.txt_aplicacion.Size = new System.Drawing.Size(161, 22);
@@ -135,8 +136,8 @@
             // 
             // btn_salir
             // 
-            this.btn_salir.Location = new System.Drawing.Point(570, 599);
-            this.btn_salir.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_salir.Location = new System.Drawing.Point(692, 534);
+            this.btn_salir.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_salir.Name = "btn_salir";
             this.btn_salir.Size = new System.Drawing.Size(79, 35);
             this.btn_salir.TabIndex = 235;
@@ -148,19 +149,20 @@
             // 
             this.btn_ayuda.Image = global::CapaDiseno.Properties.Resources.icons8_ayuda_30;
             this.btn_ayuda.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btn_ayuda.Location = new System.Drawing.Point(773, 12);
+            this.btn_ayuda.Location = new System.Drawing.Point(692, 16);
             this.btn_ayuda.Name = "btn_ayuda";
             this.btn_ayuda.Size = new System.Drawing.Size(90, 36);
             this.btn_ayuda.TabIndex = 236;
             this.btn_ayuda.Text = "Ayuda";
             this.btn_ayuda.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_ayuda.UseVisualStyleBackColor = true;
+            this.btn_ayuda.Click += new System.EventHandler(this.btn_ayuda_Click);
             // 
             // frm_asignacion_modulo_aplicaciones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(891, 647);
+            this.ClientSize = new System.Drawing.Size(787, 596);
             this.Controls.Add(this.btn_ayuda);
             this.Controls.Add(this.btn_salir);
             this.Controls.Add(this.btn_crear);
@@ -172,6 +174,7 @@
             this.Controls.Add(this.lbl_modulos);
             this.Controls.Add(this.cmb_apli);
             this.Controls.Add(this.cmb_modulo);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frm_asignacion_modulo_aplicaciones";
             this.Text = "Modulos a aplicaciones";
             this.Load += new System.EventHandler(this.frm_asignacion_modulo_aplicaciones_Load);

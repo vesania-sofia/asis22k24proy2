@@ -21,7 +21,7 @@ namespace CapaDiseno
         public frm_cambio_contrasenia(string pregunta)
         {
             InitializeComponent();
-            Lbl_color.Text = pregunta;
+            Lbl_usuario.Text = pregunta;
             Txt_contrasenia.UseSystemPasswordChar = true;
             Txt_confirmacion.UseSystemPasswordChar = true;
         }
@@ -32,7 +32,7 @@ namespace CapaDiseno
 
             if (Txt_pregunta.Text.Trim() == "")
             {
-                MessageBox.Show("Debe ingresar un usuario");
+                MessageBox.Show("Debe ingresar un usuario", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
@@ -145,15 +145,19 @@ namespace CapaDiseno
 
             if (Txt_contrasenia.Text.Trim() == "")
             {
-                MessageBox.Show("Debe ingresar una contraseña");
+                MessageBox.Show("Debe ingresar una contraseña", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else if (Txt_contrasenia.Text.Length < 8)
+            {
+                MessageBox.Show("La contraseña debe tener al menos 8 caracteres", "Contraseña inválida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else if (Txt_confirmacion.Text.Trim() == "")
             {
-                MessageBox.Show("Ingrese la confirmación");
+                MessageBox.Show("Ingrese la confirmación", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else if (Txt_color.Text.Trim() == "")
             {
-                MessageBox.Show("Debe ingresar la respuesta a la pregunta de seguridad");
+                MessageBox.Show("Debe ingresar la respuesta a la pregunta de seguridad", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else if (Txt_contrasenia.Text.Trim() != Txt_confirmacion.Text.Trim())
             {
@@ -161,32 +165,39 @@ namespace CapaDiseno
             }
             else
             {
-                try
+                // Mensaje de confirmación
+                DialogResult confirmResult = MessageBox.Show("¿Está seguro de que desea modificar la contraseña?", "Confirmar cambio de contraseña", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (confirmResult == DialogResult.Yes)
                 {
-                    // Hashear la nueva contraseña ingresada con SHA-256
-                    string claveHasheada = HashPasswordSHA256(Txt_confirmacion.Text.Trim());
-
-                    // Obtener la respuesta ingresada
-                    string respuestaIngresada = Txt_color.Text.Trim();
-
-                    // Pasar la contraseña hasheada y la respuesta ingresada al método cambiarContrasenia
-                    bool bCambioExitoso = cambiarContrasenia.cambiarContrasenia(Txt_pregunta.Text, claveHasheada, respuestaIngresada);
-
-                    if (bCambioExitoso)
+                    try
                     {
-                        MessageBox.Show("Se cambió la contraseña exitosamente", "Cambio de contraseña", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        this.Close();
+                        // Hashear la nueva contraseña ingresada con SHA-256
+                        string claveHasheada = HashPasswordSHA256(Txt_confirmacion.Text.Trim());
+
+                        // Obtener la respuesta ingresada
+                        string respuestaIngresada = Txt_color.Text.Trim();
+
+                        // Pasar la contraseña hasheada y la respuesta ingresada al método cambiarContrasenia
+                        bool bCambioExitoso = cambiarContrasenia.cambiarContrasenia(Txt_pregunta.Text, claveHasheada, respuestaIngresada);
+
+                        if (bCambioExitoso)
+                        {
+                            MessageBox.Show("Se cambió la contraseña exitosamente", "Cambio de contraseña", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            this.Close();
+                        }
+                        else
+                        {
+                            MessageBox.Show("La respuesta de seguridad es incorrecta o no se pudo cambiar la contraseña", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        MessageBox.Show("La respuesta de seguridad es incorrecta o no se pudo cambiar la contraseña", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Console.WriteLine(ex);
+                        MessageBox.Show("No se pudo conectar a la base de datos", "Error de conexión", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex);
-                    MessageBox.Show("No se pudo conectar a la base de datos", "Error de conexión", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                // Si el usuario selecciona "No", simplemente no pasa nada
             }
         }
         // Método para hashear la contraseña usando SHA-256
