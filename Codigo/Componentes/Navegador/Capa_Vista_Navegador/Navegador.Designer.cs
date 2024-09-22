@@ -61,13 +61,12 @@
             // 
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(28, 538);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
+            this.dataGridView1.Location = new System.Drawing.Point(21, 437);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1064, 238);
+            this.dataGridView1.Size = new System.Drawing.Size(798, 193);
             this.dataGridView1.TabIndex = 6;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellClick);
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellContentClick);
@@ -89,7 +88,7 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.142859F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.142859F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.142859F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 27F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.Controls.Add(this.button1, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.btn_Reportes_Principal, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.Btn_Imprimir, 6, 0);
@@ -106,13 +105,12 @@
             this.tableLayoutPanel2.Controls.Add(this.Btn_Guardar, 2, 0);
             this.tableLayoutPanel2.Controls.Add(this.Btn_Modificar, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.Btn_Ingresar, 0, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(28, 39);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(21, 32);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1064, 90);
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 37F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(798, 73);
             this.tableLayoutPanel2.TabIndex = 8;
             // 
             // button1
@@ -124,10 +122,10 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(0, 45);
+            this.button1.Location = new System.Drawing.Point(0, 36);
             this.button1.Margin = new System.Windows.Forms.Padding(0);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 45);
+            this.button1.Size = new System.Drawing.Size(56, 37);
             this.button1.TabIndex = 16;
             this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.button1.UseVisualStyleBackColor = false;
@@ -142,10 +140,10 @@
             this.btn_Reportes_Principal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Reportes_Principal.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Reportes_Principal.Image = ((System.Drawing.Image)(resources.GetObject("btn_Reportes_Principal.Image")));
-            this.btn_Reportes_Principal.Location = new System.Drawing.Point(75, 45);
+            this.btn_Reportes_Principal.Location = new System.Drawing.Point(56, 36);
             this.btn_Reportes_Principal.Margin = new System.Windows.Forms.Padding(0);
             this.btn_Reportes_Principal.Name = "btn_Reportes_Principal";
-            this.btn_Reportes_Principal.Size = new System.Drawing.Size(75, 45);
+            this.btn_Reportes_Principal.Size = new System.Drawing.Size(56, 37);
             this.btn_Reportes_Principal.TabIndex = 15;
             this.btn_Reportes_Principal.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btn_Reportes_Principal.UseVisualStyleBackColor = false;
@@ -161,10 +159,10 @@
             this.Btn_Imprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_Imprimir.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_Imprimir.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Imprimir.Image")));
-            this.Btn_Imprimir.Location = new System.Drawing.Point(450, 0);
+            this.Btn_Imprimir.Location = new System.Drawing.Point(336, 0);
             this.Btn_Imprimir.Margin = new System.Windows.Forms.Padding(0);
             this.Btn_Imprimir.Name = "Btn_Imprimir";
-            this.Btn_Imprimir.Size = new System.Drawing.Size(75, 45);
+            this.Btn_Imprimir.Size = new System.Drawing.Size(56, 36);
             this.Btn_Imprimir.TabIndex = 14;
             this.Btn_Imprimir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_Imprimir.UseVisualStyleBackColor = false;
@@ -180,10 +178,10 @@
             this.Btn_Ayuda.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_Ayuda.ForeColor = System.Drawing.Color.Black;
             this.Btn_Ayuda.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Ayuda.Image")));
-            this.Btn_Ayuda.Location = new System.Drawing.Point(900, 0);
+            this.Btn_Ayuda.Location = new System.Drawing.Point(672, 0);
             this.Btn_Ayuda.Margin = new System.Windows.Forms.Padding(0);
             this.Btn_Ayuda.Name = "Btn_Ayuda";
-            this.Btn_Ayuda.Size = new System.Drawing.Size(75, 45);
+            this.Btn_Ayuda.Size = new System.Drawing.Size(56, 36);
             this.Btn_Ayuda.TabIndex = 1;
             this.Btn_Ayuda.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_Ayuda.UseVisualStyleBackColor = false;
@@ -198,10 +196,10 @@
             this.Btn_Salir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_Salir.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_Salir.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Salir.Image")));
-            this.Btn_Salir.Location = new System.Drawing.Point(975, 0);
+            this.Btn_Salir.Location = new System.Drawing.Point(728, 0);
             this.Btn_Salir.Margin = new System.Windows.Forms.Padding(0);
             this.Btn_Salir.Name = "Btn_Salir";
-            this.Btn_Salir.Size = new System.Drawing.Size(89, 45);
+            this.Btn_Salir.Size = new System.Drawing.Size(70, 36);
             this.Btn_Salir.TabIndex = 13;
             this.Btn_Salir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_Salir.UseVisualStyleBackColor = false;
@@ -216,10 +214,10 @@
             this.Btn_FlechaFin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_FlechaFin.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_FlechaFin.Image = ((System.Drawing.Image)(resources.GetObject("Btn_FlechaFin.Image")));
-            this.Btn_FlechaFin.Location = new System.Drawing.Point(825, 0);
+            this.Btn_FlechaFin.Location = new System.Drawing.Point(616, 0);
             this.Btn_FlechaFin.Margin = new System.Windows.Forms.Padding(0);
             this.Btn_FlechaFin.Name = "Btn_FlechaFin";
-            this.Btn_FlechaFin.Size = new System.Drawing.Size(75, 45);
+            this.Btn_FlechaFin.Size = new System.Drawing.Size(56, 36);
             this.Btn_FlechaFin.TabIndex = 11;
             this.Btn_FlechaFin.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_FlechaFin.UseVisualStyleBackColor = false;
@@ -234,10 +232,10 @@
             this.Btn_Siguiente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_Siguiente.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_Siguiente.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Siguiente.Image")));
-            this.Btn_Siguiente.Location = new System.Drawing.Point(750, 0);
+            this.Btn_Siguiente.Location = new System.Drawing.Point(560, 0);
             this.Btn_Siguiente.Margin = new System.Windows.Forms.Padding(0);
             this.Btn_Siguiente.Name = "Btn_Siguiente";
-            this.Btn_Siguiente.Size = new System.Drawing.Size(75, 45);
+            this.Btn_Siguiente.Size = new System.Drawing.Size(56, 36);
             this.Btn_Siguiente.TabIndex = 10;
             this.Btn_Siguiente.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_Siguiente.UseVisualStyleBackColor = false;
@@ -252,10 +250,10 @@
             this.Btn_Anterior.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_Anterior.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_Anterior.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Anterior.Image")));
-            this.Btn_Anterior.Location = new System.Drawing.Point(675, 0);
+            this.Btn_Anterior.Location = new System.Drawing.Point(504, 0);
             this.Btn_Anterior.Margin = new System.Windows.Forms.Padding(0);
             this.Btn_Anterior.Name = "Btn_Anterior";
-            this.Btn_Anterior.Size = new System.Drawing.Size(75, 45);
+            this.Btn_Anterior.Size = new System.Drawing.Size(56, 36);
             this.Btn_Anterior.TabIndex = 9;
             this.Btn_Anterior.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_Anterior.UseVisualStyleBackColor = false;
@@ -270,10 +268,10 @@
             this.Btn_FlechaInicio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_FlechaInicio.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_FlechaInicio.Image = ((System.Drawing.Image)(resources.GetObject("Btn_FlechaInicio.Image")));
-            this.Btn_FlechaInicio.Location = new System.Drawing.Point(600, 0);
+            this.Btn_FlechaInicio.Location = new System.Drawing.Point(448, 0);
             this.Btn_FlechaInicio.Margin = new System.Windows.Forms.Padding(0);
             this.Btn_FlechaInicio.Name = "Btn_FlechaInicio";
-            this.Btn_FlechaInicio.Size = new System.Drawing.Size(75, 45);
+            this.Btn_FlechaInicio.Size = new System.Drawing.Size(56, 36);
             this.Btn_FlechaInicio.TabIndex = 8;
             this.Btn_FlechaInicio.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_FlechaInicio.UseVisualStyleBackColor = false;
@@ -288,10 +286,10 @@
             this.Btn_Refrescar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_Refrescar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_Refrescar.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Refrescar.Image")));
-            this.Btn_Refrescar.Location = new System.Drawing.Point(525, 0);
+            this.Btn_Refrescar.Location = new System.Drawing.Point(392, 0);
             this.Btn_Refrescar.Margin = new System.Windows.Forms.Padding(0);
             this.Btn_Refrescar.Name = "Btn_Refrescar";
-            this.Btn_Refrescar.Size = new System.Drawing.Size(75, 45);
+            this.Btn_Refrescar.Size = new System.Drawing.Size(56, 36);
             this.Btn_Refrescar.TabIndex = 7;
             this.Btn_Refrescar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_Refrescar.UseVisualStyleBackColor = false;
@@ -307,10 +305,10 @@
             this.Btn_Consultar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_Consultar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_Consultar.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Consultar.Image")));
-            this.Btn_Consultar.Location = new System.Drawing.Point(375, 0);
+            this.Btn_Consultar.Location = new System.Drawing.Point(280, 0);
             this.Btn_Consultar.Margin = new System.Windows.Forms.Padding(0);
             this.Btn_Consultar.Name = "Btn_Consultar";
-            this.Btn_Consultar.Size = new System.Drawing.Size(75, 45);
+            this.Btn_Consultar.Size = new System.Drawing.Size(56, 36);
             this.Btn_Consultar.TabIndex = 5;
             this.Btn_Consultar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_Consultar.UseVisualStyleBackColor = false;
@@ -325,10 +323,10 @@
             this.Btn_Eliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_Eliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_Eliminar.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Eliminar.Image")));
-            this.Btn_Eliminar.Location = new System.Drawing.Point(300, 0);
+            this.Btn_Eliminar.Location = new System.Drawing.Point(224, 0);
             this.Btn_Eliminar.Margin = new System.Windows.Forms.Padding(0);
             this.Btn_Eliminar.Name = "Btn_Eliminar";
-            this.Btn_Eliminar.Size = new System.Drawing.Size(75, 45);
+            this.Btn_Eliminar.Size = new System.Drawing.Size(56, 36);
             this.Btn_Eliminar.TabIndex = 4;
             this.Btn_Eliminar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_Eliminar.UseVisualStyleBackColor = false;
@@ -343,10 +341,10 @@
             this.Btn_Cancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_Cancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_Cancelar.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Cancelar.Image")));
-            this.Btn_Cancelar.Location = new System.Drawing.Point(225, 0);
+            this.Btn_Cancelar.Location = new System.Drawing.Point(168, 0);
             this.Btn_Cancelar.Margin = new System.Windows.Forms.Padding(0);
             this.Btn_Cancelar.Name = "Btn_Cancelar";
-            this.Btn_Cancelar.Size = new System.Drawing.Size(75, 45);
+            this.Btn_Cancelar.Size = new System.Drawing.Size(56, 36);
             this.Btn_Cancelar.TabIndex = 3;
             this.Btn_Cancelar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_Cancelar.UseVisualStyleBackColor = false;
@@ -362,10 +360,10 @@
             this.Btn_Guardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_Guardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_Guardar.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Guardar.Image")));
-            this.Btn_Guardar.Location = new System.Drawing.Point(150, 0);
+            this.Btn_Guardar.Location = new System.Drawing.Point(112, 0);
             this.Btn_Guardar.Margin = new System.Windows.Forms.Padding(0);
             this.Btn_Guardar.Name = "Btn_Guardar";
-            this.Btn_Guardar.Size = new System.Drawing.Size(75, 45);
+            this.Btn_Guardar.Size = new System.Drawing.Size(56, 36);
             this.Btn_Guardar.TabIndex = 2;
             this.Btn_Guardar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_Guardar.UseVisualStyleBackColor = false;
@@ -380,10 +378,10 @@
             this.Btn_Modificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_Modificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_Modificar.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Modificar.Image")));
-            this.Btn_Modificar.Location = new System.Drawing.Point(75, 0);
+            this.Btn_Modificar.Location = new System.Drawing.Point(56, 0);
             this.Btn_Modificar.Margin = new System.Windows.Forms.Padding(0);
             this.Btn_Modificar.Name = "Btn_Modificar";
-            this.Btn_Modificar.Size = new System.Drawing.Size(75, 45);
+            this.Btn_Modificar.Size = new System.Drawing.Size(56, 36);
             this.Btn_Modificar.TabIndex = 1;
             this.Btn_Modificar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_Modificar.UseVisualStyleBackColor = false;
@@ -401,7 +399,7 @@
             this.Btn_Ingresar.Location = new System.Drawing.Point(0, 0);
             this.Btn_Ingresar.Margin = new System.Windows.Forms.Padding(0);
             this.Btn_Ingresar.Name = "Btn_Ingresar";
-            this.Btn_Ingresar.Size = new System.Drawing.Size(75, 45);
+            this.Btn_Ingresar.Size = new System.Drawing.Size(56, 36);
             this.Btn_Ingresar.TabIndex = 0;
             this.Btn_Ingresar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_Ingresar.UseVisualStyleBackColor = false;
@@ -415,15 +413,14 @@
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 27F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Controls.Add(this.lblTabla, 0, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(28, 137);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(21, 111);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 55F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1064, 55);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(798, 45);
             this.tableLayoutPanel1.TabIndex = 9;
             // 
             // lblTabla
@@ -431,10 +428,9 @@
             this.lblTabla.AutoSize = true;
             this.lblTabla.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblTabla.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTabla.Location = new System.Drawing.Point(4, 0);
-            this.lblTabla.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTabla.Location = new System.Drawing.Point(3, 0);
             this.lblTabla.Name = "lblTabla";
-            this.lblTabla.Size = new System.Drawing.Size(1056, 55);
+            this.lblTabla.Size = new System.Drawing.Size(792, 45);
             this.lblTabla.TabIndex = 0;
             this.lblTabla.Text = "Tabla";
             this.lblTabla.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -442,15 +438,14 @@
             // 
             // Navegador
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.dataGridView1);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Navegador";
-            this.Size = new System.Drawing.Size(1133, 800);
+            this.Size = new System.Drawing.Size(842, 650);
             this.Load += new System.EventHandler(this.Navegador_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
