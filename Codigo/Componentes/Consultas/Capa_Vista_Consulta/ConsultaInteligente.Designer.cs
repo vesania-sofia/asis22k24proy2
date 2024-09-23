@@ -921,6 +921,7 @@ namespace Capa_Vista_Consulta
             this.dgvMostrar1.RowTemplate.Height = 24;
             this.dgvMostrar1.Size = new System.Drawing.Size(337, 270);
             this.dgvMostrar1.TabIndex = 36;
+            this.dgvMostrar1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMostrar1_CellContentClick);
             // 
             // txtQueryEditadoFinal
             // 

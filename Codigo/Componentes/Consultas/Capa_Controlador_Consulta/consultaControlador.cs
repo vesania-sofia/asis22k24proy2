@@ -125,6 +125,34 @@ namespace Capa_Controlador_Consulta
             datos[4] = querySimple;
             return querySimple;
         }
+        public DataTable GenerarQuery(string[] datos, string nombreTabla)
+        {
+            string campo = datos[0];
+            string operador = datos[1];
+            string valor = datos[2];
+
+            string[] operadoresValidos = { "=", "<", "<=", ">", ">=", "LIKE", "NOT LIKE" };
+            if (!operadoresValidos.Contains(operador.ToUpper()))
+            {
+                throw new ArgumentException("Operador no válido");
+            }
+            string valorQuery;
+            if (operador.ToUpper().Contains("LIKE"))
+            {
+                valorQuery = $"'%{valor}%'";
+            }
+            else
+            {
+                valorQuery = $"'{valor}'";
+            }
+            string query = $"SELECT * FROM {nombreTabla} WHERE {campo} {operador} {valorQuery};";
+            Console.WriteLine($"Query generado: {query}");
+            OdbcDataAdapter adapter = csSentencias.EjecutarQuery(query);
+            DataTable tablaResultados = new DataTable();
+            adapter.Fill(tablaResultados);
+            return tablaResultados;
+        }
+
         public void InsertarDatos(string[] tipos, string[] datos, string tabla)
         {
             try

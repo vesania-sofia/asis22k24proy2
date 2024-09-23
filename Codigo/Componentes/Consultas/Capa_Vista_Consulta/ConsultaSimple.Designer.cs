@@ -64,6 +64,7 @@ namespace Capa_Vista_Consulta
             this.btnCancelar2.Size = new System.Drawing.Size(85, 66);
             this.btnCancelar2.TabIndex = 38;
             this.btnCancelar2.UseVisualStyleBackColor = true;
+            this.btnCancelar2.Click += new System.EventHandler(this.btnCancelar2_Click_1);
             // 
             // btnConsultar2
             // 
@@ -76,6 +77,7 @@ namespace Capa_Vista_Consulta
             this.btnConsultar2.Size = new System.Drawing.Size(93, 66);
             this.btnConsultar2.TabIndex = 36;
             this.btnConsultar2.UseVisualStyleBackColor = true;
+            this.btnConsultar2.Click += new System.EventHandler(this.btnConsultar2_Click_1);
             // 
             // label1
             // 
@@ -98,7 +100,7 @@ namespace Capa_Vista_Consulta
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(322, 28);
+            this.label3.Location = new System.Drawing.Point(343, 28);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(41, 17);
             this.label3.TabIndex = 41;
@@ -106,7 +108,7 @@ namespace Capa_Vista_Consulta
             // 
             // txtValor
             // 
-            this.txtValor.Location = new System.Drawing.Point(325, 60);
+            this.txtValor.Location = new System.Drawing.Point(346, 60);
             this.txtValor.Name = "txtValor";
             this.txtValor.Size = new System.Drawing.Size(169, 22);
             this.txtValor.TabIndex = 42;
@@ -124,7 +126,7 @@ namespace Capa_Vista_Consulta
             this.cboOperador.FormattingEnabled = true;
             this.cboOperador.Location = new System.Drawing.Point(207, 58);
             this.cboOperador.Name = "cboOperador";
-            this.cboOperador.Size = new System.Drawing.Size(71, 24);
+            this.cboOperador.Size = new System.Drawing.Size(107, 24);
             this.cboOperador.TabIndex = 44;
             // 
             // ConsultaSimple
