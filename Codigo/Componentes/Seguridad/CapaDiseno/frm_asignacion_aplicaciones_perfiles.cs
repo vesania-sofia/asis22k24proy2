@@ -228,14 +228,23 @@ namespace CapaDiseno
 
         private void btn_remover_Click_1(object sender, EventArgs e)
         {
-            if (iContadorFila > 0)
+            // Verificar si hay filas en el DataGridView
+            if (Dgv_asignacionesperfiles.Rows.Count > 0)
             {
-                Dgv_asignacionesperfiles.Rows.RemoveAt(Dgv_asignacionesperfiles.CurrentRow.Index);
-                iContadorFila--;
+                // Verificar si hay una fila seleccionada
+                if (Dgv_asignacionesperfiles.CurrentRow != null)
+                {
+                    // Eliminar la fila seleccionada
+                    Dgv_asignacionesperfiles.Rows.RemoveAt(Dgv_asignacionesperfiles.CurrentRow.Index);
+                }
+                else
+                {
+                    MessageBox.Show("Por favor, selecciona una fila para eliminar.");
+                }
             }
             else
             {
-                MessageBox.Show("No hay relaciones que eliminar");
+                MessageBox.Show("No hay filas en el DataGridView.");
             }
         }
 
@@ -431,6 +440,11 @@ namespace CapaDiseno
         }
 
         private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Dgv_asignacionesperfiles_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
 
         }

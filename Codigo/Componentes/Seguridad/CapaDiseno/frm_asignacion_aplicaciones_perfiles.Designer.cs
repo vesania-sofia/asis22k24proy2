@@ -85,6 +85,7 @@
             this.Dgv_asignacionesperfiles.RowHeadersWidth = 51;
             this.Dgv_asignacionesperfiles.Size = new System.Drawing.Size(739, 212);
             this.Dgv_asignacionesperfiles.TabIndex = 272;
+            this.Dgv_asignacionesperfiles.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgv_asignacionesperfiles_CellContentClick_1);
             // 
             // Perfil
             // 
@@ -247,7 +248,7 @@
             this.TableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 124F));
             this.TableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 131F));
             this.TableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 115F));
-            this.TableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 123F));
+            this.TableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 124F));
             this.TableLayoutPanel1.Controls.Add(this.Btn_agregar, 0, 0);
             this.TableLayoutPanel1.Controls.Add(this.Btn_ayuda, 5, 0);
             this.TableLayoutPanel1.Controls.Add(this.Btn_salir, 4, 0);
@@ -281,7 +282,7 @@
             this.Btn_ayuda.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.Btn_ayuda.FlatAppearance.BorderSize = 0;
             this.Btn_ayuda.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_ayuda.Location = new System.Drawing.Point(615, 0);
+            this.Btn_ayuda.Location = new System.Drawing.Point(614, 0);
             this.Btn_ayuda.Margin = new System.Windows.Forms.Padding(0);
             this.Btn_ayuda.Name = "Btn_ayuda";
             this.Btn_ayuda.Size = new System.Drawing.Size(111, 47);
@@ -295,7 +296,7 @@
             this.Btn_salir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.Btn_salir.FlatAppearance.BorderSize = 0;
             this.Btn_salir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_salir.Location = new System.Drawing.Point(500, 0);
+            this.Btn_salir.Location = new System.Drawing.Point(499, 0);
             this.Btn_salir.Margin = new System.Windows.Forms.Padding(0);
             this.Btn_salir.Name = "Btn_salir";
             this.Btn_salir.Size = new System.Drawing.Size(115, 47);
@@ -309,7 +310,7 @@
             this.Btn_buscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.Btn_buscar.FlatAppearance.BorderSize = 0;
             this.Btn_buscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_buscar.Location = new System.Drawing.Point(369, 0);
+            this.Btn_buscar.Location = new System.Drawing.Point(368, 0);
             this.Btn_buscar.Margin = new System.Windows.Forms.Padding(0);
             this.Btn_buscar.Name = "Btn_buscar";
             this.Btn_buscar.Size = new System.Drawing.Size(131, 47);
@@ -323,7 +324,7 @@
             this.Btn_remover.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.Btn_remover.FlatAppearance.BorderSize = 0;
             this.Btn_remover.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_remover.Location = new System.Drawing.Point(245, 0);
+            this.Btn_remover.Location = new System.Drawing.Point(244, 0);
             this.Btn_remover.Margin = new System.Windows.Forms.Padding(0);
             this.Btn_remover.Name = "Btn_remover";
             this.Btn_remover.Size = new System.Drawing.Size(124, 47);
@@ -340,7 +341,7 @@
             this.Btn_guardar.Location = new System.Drawing.Point(124, 0);
             this.Btn_guardar.Margin = new System.Windows.Forms.Padding(0);
             this.Btn_guardar.Name = "Btn_guardar";
-            this.Btn_guardar.Size = new System.Drawing.Size(121, 47);
+            this.Btn_guardar.Size = new System.Drawing.Size(120, 47);
             this.Btn_guardar.TabIndex = 276;
             this.Btn_guardar.UseVisualStyleBackColor = true;
             this.Btn_guardar.Click += new System.EventHandler(this.btn_finalizar_Click_1);
