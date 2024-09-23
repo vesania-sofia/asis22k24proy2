@@ -39,13 +39,14 @@ namespace Capa_Vista_Consulta
             this.txtValor = new System.Windows.Forms.TextBox();
             this.cboCampo = new System.Windows.Forms.ComboBox();
             this.cboOperador = new System.Windows.Forms.ComboBox();
+            this.label33 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvConsultar2)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvConsultar2
             // 
             this.dgvConsultar2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvConsultar2.Location = new System.Drawing.Point(28, 117);
+            this.dgvConsultar2.Location = new System.Drawing.Point(24, 178);
             this.dgvConsultar2.Name = "dgvConsultar2";
             this.dgvConsultar2.RowHeadersWidth = 51;
             this.dgvConsultar2.RowTemplate.Height = 24;
@@ -57,7 +58,7 @@ namespace Capa_Vista_Consulta
             this.btnCancelar2.FlatAppearance.BorderSize = 0;
             this.btnCancelar2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelar2.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelar2.Image")));
-            this.btnCancelar2.Location = new System.Drawing.Point(746, 19);
+            this.btnCancelar2.Location = new System.Drawing.Point(742, 80);
             this.btnCancelar2.Name = "btnCancelar2";
             this.btnCancelar2.Size = new System.Drawing.Size(96, 79);
             this.btnCancelar2.TabIndex = 38;
@@ -69,7 +70,7 @@ namespace Capa_Vista_Consulta
             this.btnConsultar2.FlatAppearance.BorderSize = 0;
             this.btnConsultar2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnConsultar2.Image = ((System.Drawing.Image)(resources.GetObject("btnConsultar2.Image")));
-            this.btnConsultar2.Location = new System.Drawing.Point(609, 19);
+            this.btnConsultar2.Location = new System.Drawing.Point(605, 80);
             this.btnConsultar2.Name = "btnConsultar2";
             this.btnConsultar2.Size = new System.Drawing.Size(105, 79);
             this.btnConsultar2.TabIndex = 36;
@@ -79,7 +80,7 @@ namespace Capa_Vista_Consulta
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(24, 34);
+            this.label1.Location = new System.Drawing.Point(20, 95);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(54, 19);
             this.label1.TabIndex = 39;
@@ -88,7 +89,7 @@ namespace Capa_Vista_Consulta
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(230, 34);
+            this.label2.Location = new System.Drawing.Point(226, 95);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(73, 19);
             this.label2.TabIndex = 40;
@@ -97,7 +98,7 @@ namespace Capa_Vista_Consulta
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(363, 34);
+            this.label3.Location = new System.Drawing.Point(359, 95);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(41, 19);
             this.label3.TabIndex = 41;
@@ -105,7 +106,7 @@ namespace Capa_Vista_Consulta
             // 
             // txtValor
             // 
-            this.txtValor.Location = new System.Drawing.Point(366, 72);
+            this.txtValor.Location = new System.Drawing.Point(362, 133);
             this.txtValor.Name = "txtValor";
             this.txtValor.Size = new System.Drawing.Size(190, 26);
             this.txtValor.TabIndex = 42;
@@ -113,7 +114,7 @@ namespace Capa_Vista_Consulta
             // cboCampo
             // 
             this.cboCampo.FormattingEnabled = true;
-            this.cboCampo.Location = new System.Drawing.Point(28, 69);
+            this.cboCampo.Location = new System.Drawing.Point(24, 130);
             this.cboCampo.Name = "cboCampo";
             this.cboCampo.Size = new System.Drawing.Size(163, 27);
             this.cboCampo.TabIndex = 43;
@@ -121,17 +122,29 @@ namespace Capa_Vista_Consulta
             // cboOperador
             // 
             this.cboOperador.FormattingEnabled = true;
-            this.cboOperador.Location = new System.Drawing.Point(232, 69);
+            this.cboOperador.Location = new System.Drawing.Point(228, 130);
             this.cboOperador.Name = "cboOperador";
             this.cboOperador.Size = new System.Drawing.Size(79, 27);
             this.cboOperador.TabIndex = 44;
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Font = new System.Drawing.Font("Times New Roman", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label33.Location = new System.Drawing.Point(329, 25);
+            this.label33.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(222, 36);
+            this.label33.TabIndex = 45;
+            this.label33.Text = "Consulta Simple";
             // 
             // ConsultaSimple
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(916, 384);
+            this.ClientSize = new System.Drawing.Size(916, 450);
+            this.Controls.Add(this.label33);
             this.Controls.Add(this.cboOperador);
             this.Controls.Add(this.cboCampo);
             this.Controls.Add(this.txtValor);
@@ -162,5 +175,6 @@ namespace Capa_Vista_Consulta
         private System.Windows.Forms.TextBox txtValor;
         private System.Windows.Forms.ComboBox cboCampo;
         private System.Windows.Forms.ComboBox cboOperador;
+        private System.Windows.Forms.Label label33;
     }
 }
