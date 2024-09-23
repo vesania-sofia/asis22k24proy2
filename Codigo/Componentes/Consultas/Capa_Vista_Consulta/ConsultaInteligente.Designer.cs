@@ -183,6 +183,7 @@ namespace Capa_Vista_Consulta
             this.Consulta.Controls.Add(this.tabEditar);
             this.Consulta.Controls.Add(this.tabBuscar);
             this.Consulta.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Consulta.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Consulta.Location = new System.Drawing.Point(0, 0);
             this.Consulta.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Consulta.Name = "Consulta";
@@ -203,11 +204,11 @@ namespace Capa_Vista_Consulta
             this.tabCreacion.Controls.Add(this.gbOrdenar);
             this.tabCreacion.Controls.Add(this.gbCondiciones);
             this.tabCreacion.Controls.Add(this.groupBox1);
-            this.tabCreacion.Location = new System.Drawing.Point(4, 22);
+            this.tabCreacion.Location = new System.Drawing.Point(4, 28);
             this.tabCreacion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tabCreacion.Name = "tabCreacion";
             this.tabCreacion.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tabCreacion.Size = new System.Drawing.Size(1000, 652);
+            this.tabCreacion.Size = new System.Drawing.Size(1000, 646);
             this.tabCreacion.TabIndex = 0;
             this.tabCreacion.Text = "Creacion";
             // 
@@ -250,7 +251,7 @@ namespace Capa_Vista_Consulta
             this.chbCondiciones.Location = new System.Drawing.Point(16, 228);
             this.chbCondiciones.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.chbCondiciones.Name = "chbCondiciones";
-            this.chbCondiciones.Size = new System.Drawing.Size(124, 17);
+            this.chbCondiciones.Size = new System.Drawing.Size(156, 23);
             this.chbCondiciones.TabIndex = 30;
             this.chbCondiciones.Text = "Agregar Condiciones";
             this.chbCondiciones.UseVisualStyleBackColor = true;
@@ -288,7 +289,7 @@ namespace Capa_Vista_Consulta
             this.label14.Location = new System.Drawing.Point(419, 466);
             this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(94, 13);
+            this.label14.Size = new System.Drawing.Size(119, 19);
             this.label14.TabIndex = 13;
             this.label14.Text = "Cadena Generada";
             this.label14.Click += new System.EventHandler(this.label14_Click);
@@ -330,7 +331,7 @@ namespace Capa_Vista_Consulta
             this.chbOrdenAscendente.Location = new System.Drawing.Point(147, 31);
             this.chbOrdenAscendente.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.chbOrdenAscendente.Name = "chbOrdenAscendente";
-            this.chbOrdenAscendente.Size = new System.Drawing.Size(78, 17);
+            this.chbOrdenAscendente.Size = new System.Drawing.Size(93, 23);
             this.chbOrdenAscendente.TabIndex = 1;
             this.chbOrdenAscendente.Text = "Acendente";
             this.chbOrdenAscendente.UseVisualStyleBackColor = true;
@@ -341,7 +342,7 @@ namespace Capa_Vista_Consulta
             this.chbOrdenDescendente.Location = new System.Drawing.Point(8, 31);
             this.chbOrdenDescendente.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.chbOrdenDescendente.Name = "chbOrdenDescendente";
-            this.chbOrdenDescendente.Size = new System.Drawing.Size(85, 17);
+            this.chbOrdenDescendente.Size = new System.Drawing.Size(100, 23);
             this.chbOrdenDescendente.TabIndex = 0;
             this.chbOrdenDescendente.Text = "Decendente";
             this.chbOrdenDescendente.UseVisualStyleBackColor = true;
@@ -349,19 +350,19 @@ namespace Capa_Vista_Consulta
             // cboOrdenarCampo
             // 
             this.cboOrdenarCampo.FormattingEnabled = true;
-            this.cboOrdenarCampo.Location = new System.Drawing.Point(97, 63);
+            this.cboOrdenarCampo.Location = new System.Drawing.Point(128, 63);
             this.cboOrdenarCampo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cboOrdenarCampo.Name = "cboOrdenarCampo";
-            this.cboOrdenarCampo.Size = new System.Drawing.Size(86, 21);
+            this.cboOrdenarCampo.Size = new System.Drawing.Size(86, 27);
             this.cboOrdenarCampo.TabIndex = 31;
             // 
             // cboOrdenar
             // 
             this.cboOrdenar.FormattingEnabled = true;
-            this.cboOrdenar.Location = new System.Drawing.Point(97, 28);
+            this.cboOrdenar.Location = new System.Drawing.Point(128, 28);
             this.cboOrdenar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cboOrdenar.Name = "cboOrdenar";
-            this.cboOrdenar.Size = new System.Drawing.Size(86, 21);
+            this.cboOrdenar.Size = new System.Drawing.Size(86, 27);
             this.cboOrdenar.TabIndex = 30;
             // 
             // label12
@@ -370,7 +371,7 @@ namespace Capa_Vista_Consulta
             this.label12.Location = new System.Drawing.Point(8, 66);
             this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(40, 13);
+            this.label12.Size = new System.Drawing.Size(54, 19);
             this.label12.TabIndex = 29;
             this.label12.Text = "Campo";
             // 
@@ -380,7 +381,7 @@ namespace Capa_Vista_Consulta
             this.label13.Location = new System.Drawing.Point(8, 28);
             this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(85, 13);
+            this.label13.Size = new System.Drawing.Size(116, 19);
             this.label13.TabIndex = 28;
             this.label13.Text = "Agrupar-Ordenar";
             // 
@@ -470,10 +471,10 @@ namespace Capa_Vista_Consulta
             // 
             // txtValorComparador
             // 
-            this.txtValorComparador.Location = new System.Drawing.Point(108, 106);
+            this.txtValorComparador.Location = new System.Drawing.Point(142, 106);
             this.txtValorComparador.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtValorComparador.Name = "txtValorComparador";
-            this.txtValorComparador.Size = new System.Drawing.Size(86, 20);
+            this.txtValorComparador.Size = new System.Drawing.Size(86, 26);
             this.txtValorComparador.TabIndex = 23;
             // 
             // label9
@@ -482,26 +483,26 @@ namespace Capa_Vista_Consulta
             this.label9.Location = new System.Drawing.Point(20, 106);
             this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(31, 13);
+            this.label9.Size = new System.Drawing.Size(41, 19);
             this.label9.TabIndex = 22;
             this.label9.Text = "Valor";
             // 
             // cboComparadorCampo
             // 
             this.cboComparadorCampo.FormattingEnabled = true;
-            this.cboComparadorCampo.Location = new System.Drawing.Point(108, 72);
+            this.cboComparadorCampo.Location = new System.Drawing.Point(142, 72);
             this.cboComparadorCampo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cboComparadorCampo.Name = "cboComparadorCampo";
-            this.cboComparadorCampo.Size = new System.Drawing.Size(86, 21);
+            this.cboComparadorCampo.Size = new System.Drawing.Size(86, 27);
             this.cboComparadorCampo.TabIndex = 21;
             // 
             // cboComparador
             // 
             this.cboComparador.FormattingEnabled = true;
-            this.cboComparador.Location = new System.Drawing.Point(108, 36);
+            this.cboComparador.Location = new System.Drawing.Point(142, 36);
             this.cboComparador.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cboComparador.Name = "cboComparador";
-            this.cboComparador.Size = new System.Drawing.Size(86, 21);
+            this.cboComparador.Size = new System.Drawing.Size(86, 27);
             this.cboComparador.TabIndex = 20;
             // 
             // label10
@@ -510,7 +511,7 @@ namespace Capa_Vista_Consulta
             this.label10.Location = new System.Drawing.Point(20, 73);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(40, 13);
+            this.label10.Size = new System.Drawing.Size(54, 19);
             this.label10.TabIndex = 19;
             this.label10.Text = "Campo";
             // 
@@ -520,7 +521,7 @@ namespace Capa_Vista_Consulta
             this.label11.Location = new System.Drawing.Point(20, 36);
             this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(88, 13);
+            this.label11.Size = new System.Drawing.Size(118, 19);
             this.label11.TabIndex = 18;
             this.label11.Text = "Tipo Comparador";
             // 
@@ -572,10 +573,10 @@ namespace Capa_Vista_Consulta
             // 
             // txtValorLogico
             // 
-            this.txtValorLogico.Location = new System.Drawing.Point(103, 104);
+            this.txtValorLogico.Location = new System.Drawing.Point(129, 101);
             this.txtValorLogico.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtValorLogico.Name = "txtValorLogico";
-            this.txtValorLogico.Size = new System.Drawing.Size(86, 20);
+            this.txtValorLogico.Size = new System.Drawing.Size(86, 26);
             this.txtValorLogico.TabIndex = 15;
             // 
             // label8
@@ -584,26 +585,26 @@ namespace Capa_Vista_Consulta
             this.label8.Location = new System.Drawing.Point(14, 104);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(31, 13);
+            this.label8.Size = new System.Drawing.Size(41, 19);
             this.label8.TabIndex = 14;
             this.label8.Text = "Valor";
             // 
             // cboLogicoCampo
             // 
             this.cboLogicoCampo.FormattingEnabled = true;
-            this.cboLogicoCampo.Location = new System.Drawing.Point(103, 69);
+            this.cboLogicoCampo.Location = new System.Drawing.Point(129, 66);
             this.cboLogicoCampo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cboLogicoCampo.Name = "cboLogicoCampo";
-            this.cboLogicoCampo.Size = new System.Drawing.Size(86, 21);
+            this.cboLogicoCampo.Size = new System.Drawing.Size(86, 27);
             this.cboLogicoCampo.TabIndex = 13;
             // 
             // cboLogico
             // 
             this.cboLogico.FormattingEnabled = true;
-            this.cboLogico.Location = new System.Drawing.Point(103, 33);
+            this.cboLogico.Location = new System.Drawing.Point(129, 30);
             this.cboLogico.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cboLogico.Name = "cboLogico";
-            this.cboLogico.Size = new System.Drawing.Size(86, 21);
+            this.cboLogico.Size = new System.Drawing.Size(86, 27);
             this.cboLogico.TabIndex = 12;
             // 
             // label6
@@ -612,7 +613,7 @@ namespace Capa_Vista_Consulta
             this.label6.Location = new System.Drawing.Point(14, 71);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(40, 13);
+            this.label6.Size = new System.Drawing.Size(54, 19);
             this.label6.TabIndex = 10;
             this.label6.Text = "Campo";
             // 
@@ -622,7 +623,7 @@ namespace Capa_Vista_Consulta
             this.label7.Location = new System.Drawing.Point(14, 33);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(86, 13);
+            this.label7.Size = new System.Drawing.Size(115, 19);
             this.label7.TabIndex = 9;
             this.label7.Text = "Operador Lógico";
             // 
@@ -693,7 +694,7 @@ namespace Capa_Vista_Consulta
             this.label5.Location = new System.Drawing.Point(435, 37);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(118, 13);
+            this.label5.Size = new System.Drawing.Size(151, 19);
             this.label5.TabIndex = 10;
             this.label5.Text = "Campos Seleccionados";
             // 
@@ -715,7 +716,7 @@ namespace Capa_Vista_Consulta
             this.txtAlias.Location = new System.Drawing.Point(138, 169);
             this.txtAlias.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtAlias.Name = "txtAlias";
-            this.txtAlias.Size = new System.Drawing.Size(164, 20);
+            this.txtAlias.Size = new System.Drawing.Size(164, 26);
             this.txtAlias.TabIndex = 8;
             // 
             // cboCampos
@@ -724,7 +725,7 @@ namespace Capa_Vista_Consulta
             this.cboCampos.Location = new System.Drawing.Point(138, 102);
             this.cboCampos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cboCampos.Name = "cboCampos";
-            this.cboCampos.Size = new System.Drawing.Size(164, 21);
+            this.cboCampos.Size = new System.Drawing.Size(164, 27);
             this.cboCampos.TabIndex = 7;
             // 
             // cboTabla
@@ -733,7 +734,7 @@ namespace Capa_Vista_Consulta
             this.cboTabla.Location = new System.Drawing.Point(138, 67);
             this.cboTabla.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cboTabla.Name = "cboTabla";
-            this.cboTabla.Size = new System.Drawing.Size(164, 21);
+            this.cboTabla.Size = new System.Drawing.Size(164, 27);
             this.cboTabla.TabIndex = 6;
             this.cboTabla.SelectedIndexChanged += new System.EventHandler(this.cboTabla_SelectedIndexChanged_1);
             // 
@@ -743,7 +744,7 @@ namespace Capa_Vista_Consulta
             this.chbTodosCampos.Location = new System.Drawing.Point(138, 141);
             this.chbTodosCampos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.chbTodosCampos.Name = "chbTodosCampos";
-            this.chbTodosCampos.Size = new System.Drawing.Size(112, 17);
+            this.chbTodosCampos.Size = new System.Drawing.Size(138, 23);
             this.chbTodosCampos.TabIndex = 5;
             this.chbTodosCampos.Text = "Todos los campos";
             this.chbTodosCampos.UseVisualStyleBackColor = true;
@@ -754,7 +755,7 @@ namespace Capa_Vista_Consulta
             this.txtNombreConsulta.Location = new System.Drawing.Point(138, 29);
             this.txtNombreConsulta.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtNombreConsulta.Name = "txtNombreConsulta";
-            this.txtNombreConsulta.Size = new System.Drawing.Size(164, 20);
+            this.txtNombreConsulta.Size = new System.Drawing.Size(164, 26);
             this.txtNombreConsulta.TabIndex = 4;
             // 
             // label4
@@ -763,7 +764,7 @@ namespace Capa_Vista_Consulta
             this.label4.Location = new System.Drawing.Point(14, 169);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(29, 13);
+            this.label4.Size = new System.Drawing.Size(39, 19);
             this.label4.TabIndex = 3;
             this.label4.Text = "Alias";
             // 
@@ -773,7 +774,7 @@ namespace Capa_Vista_Consulta
             this.label3.Location = new System.Drawing.Point(14, 104);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(45, 13);
+            this.label3.Size = new System.Drawing.Size(60, 19);
             this.label3.TabIndex = 2;
             this.label3.Text = "Campos";
             // 
@@ -783,7 +784,7 @@ namespace Capa_Vista_Consulta
             this.label2.Location = new System.Drawing.Point(14, 67);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(34, 13);
+            this.label2.Size = new System.Drawing.Size(42, 19);
             this.label2.TabIndex = 1;
             this.label2.Text = "Tabla";
             // 
@@ -793,7 +794,7 @@ namespace Capa_Vista_Consulta
             this.label1.Location = new System.Drawing.Point(14, 29);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(88, 13);
+            this.label1.Size = new System.Drawing.Size(117, 19);
             this.label1.TabIndex = 0;
             this.label1.Text = "Nombre Consulta";
             // 
@@ -804,11 +805,11 @@ namespace Capa_Vista_Consulta
             this.tabConsultas.Controls.Add(this.dgvConsultas);
             this.tabConsultas.Controls.Add(this.label16);
             this.tabConsultas.Controls.Add(this.gbListadoConsultas);
-            this.tabConsultas.Location = new System.Drawing.Point(4, 22);
+            this.tabConsultas.Location = new System.Drawing.Point(4, 28);
             this.tabConsultas.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tabConsultas.Name = "tabConsultas";
             this.tabConsultas.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tabConsultas.Size = new System.Drawing.Size(1000, 652);
+            this.tabConsultas.Size = new System.Drawing.Size(1000, 646);
             this.tabConsultas.TabIndex = 1;
             this.tabConsultas.Text = "Consultas";
             this.tabConsultas.Click += new System.EventHandler(this.tabConsultas_Click);
@@ -836,10 +837,10 @@ namespace Capa_Vista_Consulta
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(343, 28);
+            this.label16.Location = new System.Drawing.Point(342, 22);
             this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(94, 13);
+            this.label16.Size = new System.Drawing.Size(119, 19);
             this.label16.TabIndex = 2;
             this.label16.Text = "Cadena Generada";
             // 
@@ -877,7 +878,7 @@ namespace Capa_Vista_Consulta
             this.cboQuery1.Location = new System.Drawing.Point(70, 44);
             this.cboQuery1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cboQuery1.Name = "cboQuery1";
-            this.cboQuery1.Size = new System.Drawing.Size(161, 21);
+            this.cboQuery1.Size = new System.Drawing.Size(161, 27);
             this.cboQuery1.TabIndex = 1;
             this.cboQuery1.SelectedIndexChanged += new System.EventHandler(this.cboQuery1_SelectedIndexChanged);
             // 
@@ -887,7 +888,7 @@ namespace Capa_Vista_Consulta
             this.label15.Location = new System.Drawing.Point(4, 44);
             this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(35, 13);
+            this.label15.Size = new System.Drawing.Size(47, 19);
             this.label15.TabIndex = 1;
             this.label15.Text = "Query";
             // 
@@ -906,11 +907,11 @@ namespace Capa_Vista_Consulta
             this.tabEditar.Controls.Add(this.cboEditarNombreConsulta);
             this.tabEditar.Controls.Add(this.label23);
             this.tabEditar.Controls.Add(this.groupBox8);
-            this.tabEditar.Location = new System.Drawing.Point(4, 22);
+            this.tabEditar.Location = new System.Drawing.Point(4, 28);
             this.tabEditar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tabEditar.Name = "tabEditar";
             this.tabEditar.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tabEditar.Size = new System.Drawing.Size(1000, 652);
+            this.tabEditar.Size = new System.Drawing.Size(1000, 646);
             this.tabEditar.TabIndex = 2;
             this.tabEditar.Text = "Editar";
             // 
@@ -980,7 +981,7 @@ namespace Capa_Vista_Consulta
             this.label30.Location = new System.Drawing.Point(418, 479);
             this.label30.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(94, 13);
+            this.label30.Size = new System.Drawing.Size(119, 19);
             this.label30.TabIndex = 31;
             this.label30.Text = "Cadena Generada";
             // 
@@ -1021,7 +1022,7 @@ namespace Capa_Vista_Consulta
             this.chbEditarAscendente.Location = new System.Drawing.Point(147, 31);
             this.chbEditarAscendente.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.chbEditarAscendente.Name = "chbEditarAscendente";
-            this.chbEditarAscendente.Size = new System.Drawing.Size(78, 17);
+            this.chbEditarAscendente.Size = new System.Drawing.Size(93, 23);
             this.chbEditarAscendente.TabIndex = 1;
             this.chbEditarAscendente.Text = "Acendente";
             this.chbEditarAscendente.UseVisualStyleBackColor = true;
@@ -1032,7 +1033,7 @@ namespace Capa_Vista_Consulta
             this.chbEditarDescendente.Location = new System.Drawing.Point(8, 31);
             this.chbEditarDescendente.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.chbEditarDescendente.Name = "chbEditarDescendente";
-            this.chbEditarDescendente.Size = new System.Drawing.Size(85, 17);
+            this.chbEditarDescendente.Size = new System.Drawing.Size(100, 23);
             this.chbEditarDescendente.TabIndex = 0;
             this.chbEditarDescendente.Text = "Decendente";
             this.chbEditarDescendente.UseVisualStyleBackColor = true;
@@ -1041,19 +1042,19 @@ namespace Capa_Vista_Consulta
             // cboEditarCampoOrdenar
             // 
             this.cboEditarCampoOrdenar.FormattingEnabled = true;
-            this.cboEditarCampoOrdenar.Location = new System.Drawing.Point(97, 63);
+            this.cboEditarCampoOrdenar.Location = new System.Drawing.Point(128, 63);
             this.cboEditarCampoOrdenar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cboEditarCampoOrdenar.Name = "cboEditarCampoOrdenar";
-            this.cboEditarCampoOrdenar.Size = new System.Drawing.Size(86, 21);
+            this.cboEditarCampoOrdenar.Size = new System.Drawing.Size(86, 27);
             this.cboEditarCampoOrdenar.TabIndex = 31;
             // 
             // cboEditarOrdenar
             // 
             this.cboEditarOrdenar.FormattingEnabled = true;
-            this.cboEditarOrdenar.Location = new System.Drawing.Point(97, 28);
+            this.cboEditarOrdenar.Location = new System.Drawing.Point(128, 28);
             this.cboEditarOrdenar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cboEditarOrdenar.Name = "cboEditarOrdenar";
-            this.cboEditarOrdenar.Size = new System.Drawing.Size(86, 21);
+            this.cboEditarOrdenar.Size = new System.Drawing.Size(86, 27);
             this.cboEditarOrdenar.TabIndex = 30;
             // 
             // label31
@@ -1062,7 +1063,7 @@ namespace Capa_Vista_Consulta
             this.label31.Location = new System.Drawing.Point(8, 66);
             this.label31.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(40, 13);
+            this.label31.Size = new System.Drawing.Size(54, 19);
             this.label31.TabIndex = 29;
             this.label31.Text = "Campo";
             // 
@@ -1072,7 +1073,7 @@ namespace Capa_Vista_Consulta
             this.label32.Location = new System.Drawing.Point(8, 28);
             this.label32.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(85, 13);
+            this.label32.Size = new System.Drawing.Size(116, 19);
             this.label32.TabIndex = 28;
             this.label32.Text = "Agrupar-Ordenar";
             // 
@@ -1107,7 +1108,7 @@ namespace Capa_Vista_Consulta
             this.chbCondicionesEditar.Location = new System.Drawing.Point(8, 236);
             this.chbCondicionesEditar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.chbCondicionesEditar.Name = "chbCondicionesEditar";
-            this.chbCondicionesEditar.Size = new System.Drawing.Size(124, 17);
+            this.chbCondicionesEditar.Size = new System.Drawing.Size(156, 23);
             this.chbCondicionesEditar.TabIndex = 10;
             this.chbCondicionesEditar.Text = "Agregar Condiciones";
             this.chbCondicionesEditar.UseVisualStyleBackColor = true;
@@ -1172,10 +1173,10 @@ namespace Capa_Vista_Consulta
             // 
             // txtEditarValorComparacion
             // 
-            this.txtEditarValorComparacion.Location = new System.Drawing.Point(108, 106);
+            this.txtEditarValorComparacion.Location = new System.Drawing.Point(142, 106);
             this.txtEditarValorComparacion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtEditarValorComparacion.Name = "txtEditarValorComparacion";
-            this.txtEditarValorComparacion.Size = new System.Drawing.Size(86, 20);
+            this.txtEditarValorComparacion.Size = new System.Drawing.Size(86, 26);
             this.txtEditarValorComparacion.TabIndex = 23;
             // 
             // label24
@@ -1184,26 +1185,26 @@ namespace Capa_Vista_Consulta
             this.label24.Location = new System.Drawing.Point(20, 106);
             this.label24.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(31, 13);
+            this.label24.Size = new System.Drawing.Size(41, 19);
             this.label24.TabIndex = 22;
             this.label24.Text = "Valor";
             // 
             // cboEditarCampoComparador
             // 
             this.cboEditarCampoComparador.FormattingEnabled = true;
-            this.cboEditarCampoComparador.Location = new System.Drawing.Point(108, 72);
+            this.cboEditarCampoComparador.Location = new System.Drawing.Point(142, 72);
             this.cboEditarCampoComparador.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cboEditarCampoComparador.Name = "cboEditarCampoComparador";
-            this.cboEditarCampoComparador.Size = new System.Drawing.Size(86, 21);
+            this.cboEditarCampoComparador.Size = new System.Drawing.Size(86, 27);
             this.cboEditarCampoComparador.TabIndex = 21;
             // 
             // cboEditarComparador
             // 
             this.cboEditarComparador.FormattingEnabled = true;
-            this.cboEditarComparador.Location = new System.Drawing.Point(108, 36);
+            this.cboEditarComparador.Location = new System.Drawing.Point(142, 36);
             this.cboEditarComparador.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cboEditarComparador.Name = "cboEditarComparador";
-            this.cboEditarComparador.Size = new System.Drawing.Size(86, 21);
+            this.cboEditarComparador.Size = new System.Drawing.Size(86, 27);
             this.cboEditarComparador.TabIndex = 20;
             // 
             // label25
@@ -1212,7 +1213,7 @@ namespace Capa_Vista_Consulta
             this.label25.Location = new System.Drawing.Point(20, 73);
             this.label25.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(40, 13);
+            this.label25.Size = new System.Drawing.Size(54, 19);
             this.label25.TabIndex = 19;
             this.label25.Text = "Campo";
             // 
@@ -1222,7 +1223,7 @@ namespace Capa_Vista_Consulta
             this.label26.Location = new System.Drawing.Point(20, 36);
             this.label26.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(88, 13);
+            this.label26.Size = new System.Drawing.Size(118, 19);
             this.label26.TabIndex = 18;
             this.label26.Text = "Tipo Comparador";
             // 
@@ -1272,10 +1273,10 @@ namespace Capa_Vista_Consulta
             // 
             // txtEditarValorLogico
             // 
-            this.txtEditarValorLogico.Location = new System.Drawing.Point(103, 104);
+            this.txtEditarValorLogico.Location = new System.Drawing.Point(131, 104);
             this.txtEditarValorLogico.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtEditarValorLogico.Name = "txtEditarValorLogico";
-            this.txtEditarValorLogico.Size = new System.Drawing.Size(86, 20);
+            this.txtEditarValorLogico.Size = new System.Drawing.Size(86, 26);
             this.txtEditarValorLogico.TabIndex = 15;
             // 
             // label27
@@ -1284,26 +1285,26 @@ namespace Capa_Vista_Consulta
             this.label27.Location = new System.Drawing.Point(14, 104);
             this.label27.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(31, 13);
+            this.label27.Size = new System.Drawing.Size(41, 19);
             this.label27.TabIndex = 14;
             this.label27.Text = "Valor";
             // 
             // cboEditarCampoLogico
             // 
             this.cboEditarCampoLogico.FormattingEnabled = true;
-            this.cboEditarCampoLogico.Location = new System.Drawing.Point(103, 69);
+            this.cboEditarCampoLogico.Location = new System.Drawing.Point(131, 69);
             this.cboEditarCampoLogico.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cboEditarCampoLogico.Name = "cboEditarCampoLogico";
-            this.cboEditarCampoLogico.Size = new System.Drawing.Size(86, 21);
+            this.cboEditarCampoLogico.Size = new System.Drawing.Size(86, 27);
             this.cboEditarCampoLogico.TabIndex = 13;
             // 
             // cboEditarLogico
             // 
             this.cboEditarLogico.FormattingEnabled = true;
-            this.cboEditarLogico.Location = new System.Drawing.Point(103, 33);
+            this.cboEditarLogico.Location = new System.Drawing.Point(131, 33);
             this.cboEditarLogico.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cboEditarLogico.Name = "cboEditarLogico";
-            this.cboEditarLogico.Size = new System.Drawing.Size(86, 21);
+            this.cboEditarLogico.Size = new System.Drawing.Size(86, 27);
             this.cboEditarLogico.TabIndex = 12;
             // 
             // label28
@@ -1312,7 +1313,7 @@ namespace Capa_Vista_Consulta
             this.label28.Location = new System.Drawing.Point(14, 71);
             this.label28.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(40, 13);
+            this.label28.Size = new System.Drawing.Size(54, 19);
             this.label28.TabIndex = 10;
             this.label28.Text = "Campo";
             // 
@@ -1322,17 +1323,17 @@ namespace Capa_Vista_Consulta
             this.label29.Location = new System.Drawing.Point(14, 33);
             this.label29.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(86, 13);
+            this.label29.Size = new System.Drawing.Size(115, 19);
             this.label29.TabIndex = 9;
             this.label29.Text = "Operador Lógico";
             // 
             // cboEditarNombreConsulta
             // 
             this.cboEditarNombreConsulta.FormattingEnabled = true;
-            this.cboEditarNombreConsulta.Location = new System.Drawing.Point(325, 9);
+            this.cboEditarNombreConsulta.Location = new System.Drawing.Point(349, 7);
             this.cboEditarNombreConsulta.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cboEditarNombreConsulta.Name = "cboEditarNombreConsulta";
-            this.cboEditarNombreConsulta.Size = new System.Drawing.Size(175, 21);
+            this.cboEditarNombreConsulta.Size = new System.Drawing.Size(175, 27);
             this.cboEditarNombreConsulta.TabIndex = 8;
             this.cboEditarNombreConsulta.SelectedIndexChanged += new System.EventHandler(this.cboQuery2_SelectedIndexChanged);
             // 
@@ -1342,7 +1343,7 @@ namespace Capa_Vista_Consulta
             this.label23.Location = new System.Drawing.Point(195, 15);
             this.label23.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(114, 13);
+            this.label23.Size = new System.Drawing.Size(150, 19);
             this.label23.TabIndex = 7;
             this.label23.Text = "Nombre de la Consulta";
             // 
@@ -1412,7 +1413,7 @@ namespace Capa_Vista_Consulta
             this.label18.Location = new System.Drawing.Point(435, 37);
             this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(118, 13);
+            this.label18.Size = new System.Drawing.Size(151, 19);
             this.label18.TabIndex = 10;
             this.label18.Text = "Campos Seleccionados";
             // 
@@ -1434,7 +1435,7 @@ namespace Capa_Vista_Consulta
             this.txtEditarAlias.Location = new System.Drawing.Point(138, 169);
             this.txtEditarAlias.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtEditarAlias.Name = "txtEditarAlias";
-            this.txtEditarAlias.Size = new System.Drawing.Size(164, 20);
+            this.txtEditarAlias.Size = new System.Drawing.Size(164, 26);
             this.txtEditarAlias.TabIndex = 8;
             // 
             // cboEditarCampo
@@ -1443,7 +1444,7 @@ namespace Capa_Vista_Consulta
             this.cboEditarCampo.Location = new System.Drawing.Point(138, 102);
             this.cboEditarCampo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cboEditarCampo.Name = "cboEditarCampo";
-            this.cboEditarCampo.Size = new System.Drawing.Size(164, 21);
+            this.cboEditarCampo.Size = new System.Drawing.Size(164, 27);
             this.cboEditarCampo.TabIndex = 7;
             // 
             // cboEditarTabla
@@ -1452,7 +1453,7 @@ namespace Capa_Vista_Consulta
             this.cboEditarTabla.Location = new System.Drawing.Point(138, 67);
             this.cboEditarTabla.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cboEditarTabla.Name = "cboEditarTabla";
-            this.cboEditarTabla.Size = new System.Drawing.Size(164, 21);
+            this.cboEditarTabla.Size = new System.Drawing.Size(164, 27);
             this.cboEditarTabla.TabIndex = 6;
             // 
             // chbEditarTodosCampos
@@ -1461,7 +1462,7 @@ namespace Capa_Vista_Consulta
             this.chbEditarTodosCampos.Location = new System.Drawing.Point(138, 133);
             this.chbEditarTodosCampos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.chbEditarTodosCampos.Name = "chbEditarTodosCampos";
-            this.chbEditarTodosCampos.Size = new System.Drawing.Size(112, 17);
+            this.chbEditarTodosCampos.Size = new System.Drawing.Size(138, 23);
             this.chbEditarTodosCampos.TabIndex = 5;
             this.chbEditarTodosCampos.Text = "Todos los campos";
             this.chbEditarTodosCampos.UseVisualStyleBackColor = true;
@@ -1471,7 +1472,7 @@ namespace Capa_Vista_Consulta
             this.txtEditarNombreConsulta1.Location = new System.Drawing.Point(138, 29);
             this.txtEditarNombreConsulta1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtEditarNombreConsulta1.Name = "txtEditarNombreConsulta1";
-            this.txtEditarNombreConsulta1.Size = new System.Drawing.Size(164, 20);
+            this.txtEditarNombreConsulta1.Size = new System.Drawing.Size(164, 26);
             this.txtEditarNombreConsulta1.TabIndex = 4;
             // 
             // label19
@@ -1480,7 +1481,7 @@ namespace Capa_Vista_Consulta
             this.label19.Location = new System.Drawing.Point(14, 169);
             this.label19.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(29, 13);
+            this.label19.Size = new System.Drawing.Size(39, 19);
             this.label19.TabIndex = 3;
             this.label19.Text = "Alias";
             // 
@@ -1490,7 +1491,7 @@ namespace Capa_Vista_Consulta
             this.label20.Location = new System.Drawing.Point(14, 104);
             this.label20.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(45, 13);
+            this.label20.Size = new System.Drawing.Size(60, 19);
             this.label20.TabIndex = 2;
             this.label20.Text = "Campos";
             // 
@@ -1500,7 +1501,7 @@ namespace Capa_Vista_Consulta
             this.label21.Location = new System.Drawing.Point(14, 67);
             this.label21.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(34, 13);
+            this.label21.Size = new System.Drawing.Size(42, 19);
             this.label21.TabIndex = 1;
             this.label21.Text = "Tabla";
             // 
@@ -1510,7 +1511,7 @@ namespace Capa_Vista_Consulta
             this.label22.Location = new System.Drawing.Point(14, 29);
             this.label22.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(88, 13);
+            this.label22.Size = new System.Drawing.Size(117, 19);
             this.label22.TabIndex = 0;
             this.label22.Text = "Nombre Consulta";
             // 
@@ -1523,21 +1524,21 @@ namespace Capa_Vista_Consulta
             this.tabBuscar.Controls.Add(this.btnActualizar);
             this.tabBuscar.Controls.Add(this.btnBuscarQuery);
             this.tabBuscar.Controls.Add(this.label17);
-            this.tabBuscar.Location = new System.Drawing.Point(4, 22);
+            this.tabBuscar.Location = new System.Drawing.Point(4, 28);
             this.tabBuscar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tabBuscar.Name = "tabBuscar";
             this.tabBuscar.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tabBuscar.Size = new System.Drawing.Size(1000, 652);
+            this.tabBuscar.Size = new System.Drawing.Size(1000, 646);
             this.tabBuscar.TabIndex = 3;
             this.tabBuscar.Text = "Buscar-Eliminar";
             // 
             // cboQuery3
             // 
             this.cboQuery3.FormattingEnabled = true;
-            this.cboQuery3.Location = new System.Drawing.Point(124, 28);
+            this.cboQuery3.Location = new System.Drawing.Point(150, 22);
             this.cboQuery3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cboQuery3.Name = "cboQuery3";
-            this.cboQuery3.Size = new System.Drawing.Size(206, 21);
+            this.cboQuery3.Size = new System.Drawing.Size(206, 27);
             this.cboQuery3.TabIndex = 16;
             this.cboQuery3.SelectedIndexChanged += new System.EventHandler(this.cboQuery3_SelectedIndexChanged);
             // 
@@ -1598,7 +1599,7 @@ namespace Capa_Vista_Consulta
             this.label17.Location = new System.Drawing.Point(20, 30);
             this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(88, 13);
+            this.label17.Size = new System.Drawing.Size(117, 19);
             this.label17.TabIndex = 3;
             this.label17.Text = "Nombre Consulta";
             // 
