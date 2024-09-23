@@ -116,38 +116,49 @@ namespace Capa_Vista_Consulta
         private void btnNuevo_Click(object sender, EventArgs e)
         {
             //boton agregar, consulta simple
-            datos = new string[] { txtNombreConsulta.Text, "0", cboTabla.Text, chbTodosCampos.Text, txtQueryFinal.Text, "1" };
-            string camposSeleccionados;// Inicializamos la variable para los campos que se mostrarán en el query
-            if (chbTodosCampos.Checked)// Verificamos si el CheckBox de 'Todos los campos' está marcado
+            try
             {
-                camposSeleccionados = "*";// Si está marcado, mostramos "Todos los campos"
-            } else {
-                // Si no está marcado, verificamos si hay un campo seleccionado en el ComboBox
-                if (!string.IsNullOrEmpty(cboCampos.Text))
+                datos = new string[] { txtNombreConsulta.Text, "0", cboTabla.Text, chbTodosCampos.Text, txtQueryFinal.Text, "1" };
+                string camposSeleccionados;// Inicializamos la variable para los campos que se mostrarán en el query
+                if (chbTodosCampos.Checked)// Verificamos si el CheckBox de 'Todos los campos' está marcado
                 {
-                    // Si hay un campo seleccionado, lo mostramos
-                    camposSeleccionados = cboCampos.Text;
+                    camposSeleccionados = "*";// Si está marcado, mostramos "Todos los campos"
                 }
                 else
                 {
-                    // Si no hay campo seleccionado, dejamos un valor vacío o un mensaje de advertencia
-                    MessageBox.Show("Debe seleccionar o un campo o todos", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
+                    // Si no está marcado, verificamos si hay un campo seleccionado en el ComboBox
+                    if (!string.IsNullOrEmpty(cboCampos.Text))
+                    {
+                        // Si hay un campo seleccionado, lo mostramos
+                        camposSeleccionados = cboCampos.Text;
+                    }
+                    else
+                    {
+                        // Si no hay campo seleccionado, dejamos un valor vacío o un mensaje de advertencia
+                        MessageBox.Show("Debe seleccionar o un campo o todos", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
                 }
-            }
 
-            if (string.IsNullOrEmpty(txtQuery.Text))
-            {
-                // Si txtQuery está vacío, asignamos el valor inicial
-                txtQuery.Text = camposSeleccionados + " + " + txtAlias.Text + " + ";
-                datos[4] = txtQuery.Text;
-            } else {
-                // Si txtQuery ya tiene texto, agregamos el nuevo valor sin repetir el nombre de la consulta y el tipo
-                txtQuery.Text += Environment.NewLine + camposSeleccionados + " + " + txtAlias.Text + " + ";
-                datos[4] += txtQuery.Text;
+                if (string.IsNullOrEmpty(txtQuery.Text))
+                {
+                    // Si txtQuery está vacío, asignamos el valor inicial
+                    txtQuery.Text = camposSeleccionados + " + " + txtAlias.Text + " + ";
+                    datos[4] = txtQuery.Text;
+                }
+                else
+                {
+                    // Si txtQuery ya tiene texto, agregamos el nuevo valor sin repetir el nombre de la consulta y el tipo
+                    txtQuery.Text += Environment.NewLine + camposSeleccionados + " + " + txtAlias.Text + " + ";
+                    datos[4] += txtQuery.Text;
+                }
+                // Procesar los datos en la tabla correspondiente
+                csControlador.ingresar(tipos, datos, tabla);
             }
-            // Procesar los datos en la tabla correspondiente
-            csControlador.ingresar(tipos, datos, tabla);
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ocurrió un error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         private void chbCondiciones_CheckedChanged(object sender, EventArgs e)
         {
@@ -166,68 +177,110 @@ namespace Capa_Vista_Consulta
 
         private void btnAgregarComparacion_Click(object sender, EventArgs e)
         {
-            datosComplejo = new string[] { cboComparador.Text, cboComparadorCampo.Text, txtValorComparador.Text, txtQueryFinal.Text };
-            csControlador.ingresar(tipos, datosComplejo, tabla);
-            string queryGenerado = csControlador.GenerarQueryComplejo(datosComplejo, datos);
-            txtQueryFinal.Clear(); txtQueryFinal.Text = queryGenerado; datosComplejo = new string[0];
+            try
+            {
+                datosComplejo = new string[] { cboComparador.Text, cboComparadorCampo.Text, txtValorComparador.Text, txtQueryFinal.Text };
+                csControlador.ingresar(tipos, datosComplejo, tabla);
+                string queryGenerado = csControlador.GenerarQueryComplejo(datosComplejo, datos);
+                txtQueryFinal.Clear(); txtQueryFinal.Text = queryGenerado; datosComplejo = new string[0];
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ocurrió un error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         private void brnAgregarLogica_Click(object sender, EventArgs e)
         {
-            datosComplejo = new string[] { cboLogico.Text, cboLogicoCampo.Text, txtValorLogico.Text, txtQueryFinal.Text};
-            csControlador.ingresar(tipos, datosComplejo, tabla);
-            string queryGenerado = csControlador.GenerarQueryComplejo(datosComplejo, datos);
-            txtQueryFinal.Clear();txtQueryFinal.Text = queryGenerado;datosComplejo = new string[0];
+            try
+            {
+                datosComplejo = new string[] { cboLogico.Text, cboLogicoCampo.Text, txtValorLogico.Text, txtQueryFinal.Text };
+                csControlador.ingresar(tipos, datosComplejo, tabla);
+                string queryGenerado = csControlador.GenerarQueryComplejo(datosComplejo, datos);
+                txtQueryFinal.Clear(); txtQueryFinal.Text = queryGenerado; datosComplejo = new string[0];
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ocurrió un error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         private void btnAgregarConsultaSimple_Click(object sender, EventArgs e)
         {
-            string queryGenerado = csControlador.GenerarQuerySimple(datos);
-            txtQueryFinal.Text = queryGenerado;
+            try
+            {
+                string queryGenerado = csControlador.GenerarQuerySimple(datos);
+                txtQueryFinal.Text = queryGenerado;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ocurrió un error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         private void btnCrear_Click(object sender, EventArgs e)
         {
-            csControlador.InsertarDatos(tipos, datos, tabla);
-            ActualizarComboBox();
+            try
+            {
+                csControlador.InsertarDatos(tipos, datos, tabla);
+                ActualizarComboBox();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ocurrió un error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         private void btnAgregarOrden_Click(object sender, EventArgs e)
         {
             // Inicializar el array de datos
-            datosComplejo = new string[] { cboOrdenar.Text, cboOrdenarCampo.Text, "0", txtQueryFinal.Text };
-            // Verificar el tipo de operación
-            if (cboOrdenar.Text == "Ordenar")
+            try
             {
-                datosComplejo[0] = "ORDER BY";
-                if (chbOrdenAscendente.Checked)
+                datosComplejo = new string[] { cboOrdenar.Text, cboOrdenarCampo.Text, "0", txtQueryFinal.Text };
+                // Verificar el tipo de operación
+                if (cboOrdenar.Text == "Ordenar")
                 {
-                    datosComplejo[2] = "ASC"; // Agregar ASC si está seleccionado
+                    datosComplejo[0] = "ORDER BY";
+                    if (chbOrdenAscendente.Checked)
+                    {
+                        datosComplejo[2] = "ASC"; // Agregar ASC si está seleccionado
+                    }
+                    else if (chbOrdenDescendente.Checked)
+                    {
+                        datosComplejo[2] = "DESC"; // Agregar DESC si está seleccionado
+                    }
+                    else
+                    {
+                        MessageBox.Show("Si se desea agregar un ordenamiento, debe seleccionar el tipo.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
                 }
-                else if (chbOrdenDescendente.Checked)
+                else if (cboOrdenar.Text == "Agrupar")
                 {
-                    datosComplejo[2] = "DESC"; // Agregar DESC si está seleccionado
+                    datosComplejo[0] = "GROUP BY"; // Indicar que es una operación de agrupamiento
                 }
                 else
                 {
-                    MessageBox.Show("Si se desea agregar un ordenamiento, debe seleccionar el tipo.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Antes de agregar debe asignar valores.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
+                csControlador.ingresar(tipos, datosComplejo, tabla);
+                string queryGenerado = csControlador.GenerarQueryComplejo(datosComplejo, datos);
+                txtQueryFinal.Clear(); txtQueryFinal.Text = queryGenerado; datosComplejo = new string[0];
             }
-            else if (cboOrdenar.Text == "Agrupar")
+            catch (Exception ex)
             {
-                datosComplejo[0] = "GROUP BY"; // Indicar que es una operación de agrupamiento
+                MessageBox.Show($"Ocurrió un error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
-            {
-                MessageBox.Show("Antes de agregar debe asignar valores.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            csControlador.ingresar(tipos, datosComplejo, tabla);
-            string queryGenerado = csControlador.GenerarQueryComplejo(datosComplejo, datos);
-            txtQueryFinal.Clear(); txtQueryFinal.Text = queryGenerado; datosComplejo = new string[0];
         }
         private void btnConsultar_Click(object sender, EventArgs e)
         {
-            consultaControlador controlador = new consultaControlador();
-            string querySeleccionado = txtNombreConsulta.Text;
-            controlador.BuscarQuerySeleccionado(querySeleccionado, dgvConsultar, txtQueryFinal);
+            try
+            {
+                consultaControlador controlador = new consultaControlador();
+                string querySeleccionado = txtNombreConsulta.Text;
+                controlador.BuscarQuerySeleccionado(querySeleccionado, dgvConsultar, txtQueryFinal);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ocurrió un error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void ConsultaInteligente_Load(object sender, EventArgs e)
@@ -364,16 +417,23 @@ namespace Capa_Vista_Consulta
         private void btnEditar_Click_1(object sender, EventArgs e)
         {
             // Asegúrate de que consultaSeleccionada tiene un valor válido
-            if (string.IsNullOrEmpty(consultaSeleccionada))
+            try
             {
-                MessageBox.Show("Debe seleccionar una consulta para editar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                if (string.IsNullOrEmpty(consultaSeleccionada))
+                {
+                    MessageBox.Show("Debe seleccionar una consulta para editar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                // Actualiza datos con la consulta seleccionada
+                datos[0] = consultaSeleccionada; // Suponiendo que datos[0] es el nombre de la consulta
+                                                 // Procesar los datos en la tabla correspondiente
+                csControlador.ActualizarDatos(tipos, datos, tabla);
+                ActualizarComboBox();
             }
-            // Actualiza datos con la consulta seleccionada
-            datos[0] = consultaSeleccionada; // Suponiendo que datos[0] es el nombre de la consulta
-            // Procesar los datos en la tabla correspondiente
-            csControlador.ActualizarDatos(tipos, datos, tabla);
-            ActualizarComboBox();
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ocurrió un error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void cboConsultas_SelectedIndexChanged(object sender, EventArgs e)
@@ -391,45 +451,63 @@ namespace Capa_Vista_Consulta
         {
             //boton agregar, consulta simple
             // Datos que se van a procesar
-            datos = new string[] { cboEditarNombreConsulta.Text, "0", cboEditarTabla.Text, chbTodosCampos.Text, txtQueryEditadoFinal.Text, "1" };
-            // Inicializamos la variable para los campos que se mostrarán en el query
-            string camposSeleccionados;
-            // Verificamos si el CheckBox de 'Todos los campos' está marcado
-            if (chbEditarTodosCampos.Checked)
+            try
             {
-                // Si está marcado, mostramos "Todos los campos"
-                camposSeleccionados = "*";
-            } else {
-                // Si no está marcado, verificamos si hay un campo seleccionado en el ComboBox
-                if (!string.IsNullOrEmpty(cboEditarCampo.Text))
+                datos = new string[] { cboEditarNombreConsulta.Text, "0", cboEditarTabla.Text, chbTodosCampos.Text, txtQueryEditadoFinal.Text, "1" };
+                // Inicializamos la variable para los campos que se mostrarán en el query
+                string camposSeleccionados;
+                // Verificamos si el CheckBox de 'Todos los campos' está marcado
+                if (chbEditarTodosCampos.Checked)
                 {
-                    // Si hay un campo seleccionado, lo mostramos
-                    camposSeleccionados = cboEditarCampo.Text;
-                } else {
-                    // Si no hay campo seleccionado, dejamos un valor vacío o un mensaje de advertencia
-                    MessageBox.Show("Debe seleccionar o un campo o todos", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
+                    // Si está marcado, mostramos "Todos los campos"
+                    camposSeleccionados = "*";
                 }
+                else
+                {
+                    // Si no está marcado, verificamos si hay un campo seleccionado en el ComboBox
+                    if (!string.IsNullOrEmpty(cboEditarCampo.Text))
+                    {
+                        // Si hay un campo seleccionado, lo mostramos
+                        camposSeleccionados = cboEditarCampo.Text;
+                    }
+                    else
+                    {
+                        // Si no hay campo seleccionado, dejamos un valor vacío o un mensaje de advertencia
+                        MessageBox.Show("Debe seleccionar o un campo o todos", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                }
+                if (string.IsNullOrEmpty(txtQueryEditado.Text))
+                {
+                    // Si txtQuery está vacío, asignamos el valor inicial
+                    txtQueryEditado.Text = camposSeleccionados + " + " + txtEditarAlias.Text + " + ";
+                    datos[4] = txtQueryEditado.Text;
+                }
+                else
+                {
+                    // Si txtQuery ya tiene texto, agregamos el nuevo valor sin repetir el nombre de la consulta y el tipo
+                    txtQueryEditado.Text += Environment.NewLine + camposSeleccionados + " + " + txtEditarAlias.Text + " + ";
+                    datos[4] += txtQueryEditado.Text;
+                }
+                // Procesar los datos en la tabla correspondiente
+                csControlador.ingresar(tipos, datos, tabla);
             }
-            if (string.IsNullOrEmpty(txtQueryEditado.Text))
+            catch (Exception ex)
             {
-                // Si txtQuery está vacío, asignamos el valor inicial
-                txtQueryEditado.Text = camposSeleccionados + " + " + txtEditarAlias.Text + " + ";
-                datos[4] = txtQueryEditado.Text;
+                MessageBox.Show($"Ocurrió un error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
-            {
-                // Si txtQuery ya tiene texto, agregamos el nuevo valor sin repetir el nombre de la consulta y el tipo
-                txtQueryEditado.Text += Environment.NewLine + camposSeleccionados + " + " + txtEditarAlias.Text + " + ";
-                datos[4] += txtQueryEditado.Text;
-            }
-            // Procesar los datos en la tabla correspondiente
-            csControlador.ingresar(tipos, datos, tabla);
         }
         private void btnEditarCampoSimple_Click(object sender, EventArgs e)
         {
-            string queryGenerado = csControlador.GenerarQuerySimple(datos);
-            txtQueryEditadoFinal.Text = queryGenerado;
+            try
+            {
+                string queryGenerado = csControlador.GenerarQuerySimple(datos);
+                txtQueryEditadoFinal.Text = queryGenerado;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ocurrió un error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void button17_Click(object sender, EventArgs e)
@@ -486,56 +564,80 @@ namespace Capa_Vista_Consulta
         private void btnEditarOrdenar_Click(object sender, EventArgs e)
         {
             // Verificar que se haya seleccionado una operación válida
-            if (string.IsNullOrWhiteSpace(cboEditarOrdenar.Text) || string.IsNullOrWhiteSpace(cboEditarCampoOrdenar.Text))
+            try
             {
-                MessageBox.Show("Debe seleccionar una operación y un campo.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            // Inicializar el array de datos
-            datosComplejo = new string[] { cboEditarOrdenar.Text, cboEditarCampoOrdenar.Text, "0", txtQueryEditadoFinal.Text };
-            // Verificar el tipo de operación
-            if (cboEditarOrdenar.Text == "Ordenar")
-            {
-                datosComplejo[0] = "ORDER BY";
-                if (chbEditarAscendente.Checked)
+                if (string.IsNullOrWhiteSpace(cboEditarOrdenar.Text) || string.IsNullOrWhiteSpace(cboEditarCampoOrdenar.Text))
                 {
-                    datosComplejo[2] = "ASC"; // Agregar ASC si está seleccionado
-                } else if (chbEditarDescendente.Checked) {
-                    datosComplejo[2] = "DESC"; // Agregar DESC si está seleccionado
-                } else {
-                    MessageBox.Show("Si se desea agregar un ordenamiento, debe seleccionar el tipo.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Debe seleccionar una operación y un campo.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
+                // Inicializar el array de datos
+                datosComplejo = new string[] { cboEditarOrdenar.Text, cboEditarCampoOrdenar.Text, "0", txtQueryEditadoFinal.Text };
+                // Verificar el tipo de operación
+                if (cboEditarOrdenar.Text == "Ordenar")
+                {
+                    datosComplejo[0] = "ORDER BY";
+                    if (chbEditarAscendente.Checked)
+                    {
+                        datosComplejo[2] = "ASC"; // Agregar ASC si está seleccionado
+                    }
+                    else if (chbEditarDescendente.Checked)
+                    {
+                        datosComplejo[2] = "DESC"; // Agregar DESC si está seleccionado
+                    }
+                    else
+                    {
+                        MessageBox.Show("Si se desea agregar un ordenamiento, debe seleccionar el tipo.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                }
+                else if (cboEditarOrdenar.Text == "Agrupar")
+                {
+                    datosComplejo[0] = "GROUP BY"; // Indicar que es una operación de agrupamiento
+                }
+                else
+                {
+                    MessageBox.Show("Antes de agregar debe asignar valores.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                csControlador.ingresar(tipos, datosComplejo, tabla);
+                string queryGenerado = csControlador.GenerarQueryComplejo(datosComplejo, datos);
+                txtQueryEditadoFinal.Clear(); txtQueryEditadoFinal.Text = queryGenerado; datosComplejo = new string[0];
             }
-            else if (cboEditarOrdenar.Text == "Agrupar")
+            catch (Exception ex)
             {
-                datosComplejo[0] = "GROUP BY"; // Indicar que es una operación de agrupamiento
+                MessageBox.Show($"Ocurrió un error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
-            {
-                MessageBox.Show("Antes de agregar debe asignar valores.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            csControlador.ingresar(tipos, datosComplejo, tabla);
-            string queryGenerado = csControlador.GenerarQueryComplejo(datosComplejo, datos);
-            txtQueryEditadoFinal.Clear(); txtQueryEditadoFinal.Text = queryGenerado; datosComplejo = new string[0];
         }
 
         private void btnEditarLogico_Click(object sender, EventArgs e)
         {
-            datosComplejo = new string[] { cboEditarLogico.Text, cboEditarCampoLogico.Text, txtEditarValorLogico.Text, txtQueryEditadoFinal.Text };
-            csControlador.ingresar(tipos, datosComplejo, tabla);
-            string queryGenerado = csControlador.GenerarQueryComplejo(datosComplejo, datos);
-            txtQueryEditadoFinal.Clear(); txtQueryEditadoFinal.Text = queryGenerado; datosComplejo = new string[0];
+            try
+            {
+                datosComplejo = new string[] { cboEditarLogico.Text, cboEditarCampoLogico.Text, txtEditarValorLogico.Text, txtQueryEditadoFinal.Text };
+                csControlador.ingresar(tipos, datosComplejo, tabla);
+                string queryGenerado = csControlador.GenerarQueryComplejo(datosComplejo, datos);
+                txtQueryEditadoFinal.Clear(); txtQueryEditadoFinal.Text = queryGenerado; datosComplejo = new string[0];
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ocurrió un error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnEditarComparacion_Click(object sender, EventArgs e)
         {
-
-            datosComplejo = new string[] { cboEditarComparador.Text, cboEditarCampoComparador.Text, txtEditarValorComparacion.Text, txtQueryEditadoFinal.Text };
-            csControlador.ingresar(tipos, datosComplejo, tabla);
-            string queryGenerado = csControlador.GenerarQueryComplejo(datosComplejo, datos);
-            txtQueryEditadoFinal.Clear(); txtQueryEditadoFinal.Text = queryGenerado; datosComplejo = new string[0];
+            try
+            {
+                datosComplejo = new string[] { cboEditarComparador.Text, cboEditarCampoComparador.Text, txtEditarValorComparacion.Text, txtQueryEditadoFinal.Text };
+                csControlador.ingresar(tipos, datosComplejo, tabla);
+                string queryGenerado = csControlador.GenerarQueryComplejo(datosComplejo, datos);
+                txtQueryEditadoFinal.Clear(); txtQueryEditadoFinal.Text = queryGenerado; datosComplejo = new string[0];
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ocurrió un error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
 
@@ -563,9 +665,16 @@ namespace Capa_Vista_Consulta
 
         private void btnBuscarQuery1_Click(object sender, EventArgs e)
         {
-            consultaControlador controlador = new consultaControlador();
-            string querySeleccionado = cboQuery1.SelectedItem.ToString();
-            controlador.BuscarQuerySeleccionado(querySeleccionado, dgvConsultas, txtQuery11);
+            try
+            {
+                consultaControlador controlador = new consultaControlador();
+                string querySeleccionado = cboQuery1.SelectedItem.ToString();
+                controlador.BuscarQuerySeleccionado(querySeleccionado, dgvConsultas, txtQuery11);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ocurrió un error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void cboQuery1_SelectedIndexChanged(object sender, EventArgs e)
@@ -576,15 +685,23 @@ namespace Capa_Vista_Consulta
 
         private void btnBuscarQuery_Click(object sender, EventArgs e)
         {
-            consultaControlador controlador = new consultaControlador();
-            string querySeleccionado = cboQuery3.SelectedItem.ToString();
-            controlador.BuscarQuerySeleccionado(querySeleccionado, dgvEliminarBuscarConsulta, txtQuery11);
-
+            try
+            {
+                consultaControlador controlador = new consultaControlador();
+                string querySeleccionado = cboQuery3.SelectedItem.ToString();
+                controlador.BuscarQuerySeleccionado(querySeleccionado, dgvEliminarBuscarConsulta, txtQuery11);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ocurrió un error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnActualizar_Click(object sender, EventArgs e)
         {
-                // Obtener el nombre de la consulta seleccionada en el ComboBox
+            // Obtener el nombre de la consulta seleccionada en el ComboBox
+            try
+            {
                 string nombreConsultaSeleccionada = cboQuery3.SelectedItem?.ToString();
                 if (string.IsNullOrEmpty(nombreConsultaSeleccionada))
                 {
@@ -594,27 +711,39 @@ namespace Capa_Vista_Consulta
                 // Llamar al método del controlador para buscar y mostrar el query
                 consultaControlador controlador = new consultaControlador();
                 controlador.BuscarQuerySeleccionado(nombreConsultaSeleccionada, dgvEliminarBuscarConsulta, txtQuery11);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ocurrió un error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             // Obtener el nombre de la consulta seleccionada en cboQuery3
-            string consultaSeleccionada = cboQuery3.SelectedItem.ToString();
-            // Llamar al método de controlador para eliminar la consulta
-            if (!string.IsNullOrEmpty(consultaSeleccionada))
+            try
             {
-                consultaControlador eliminarControlador = new consultaControlador();
-                eliminarControlador.EliminarConsulta(consultaSeleccionada);
-                // Refrescar el DataGridView después de eliminar la consulta
-                // Esto puede incluir la llamada al método para recargar los datos, si es necesario
-                dgvEliminarBuscarConsulta.DataSource = null; // Limpiar el DataGridView
-                                                             
+                string consultaSeleccionada = cboQuery3.SelectedItem.ToString();
+                // Llamar al método de controlador para eliminar la consulta
+                if (!string.IsNullOrEmpty(consultaSeleccionada))
+                {
+                    consultaControlador eliminarControlador = new consultaControlador();
+                    eliminarControlador.EliminarConsulta(consultaSeleccionada);
+                    // Refrescar el DataGridView después de eliminar la consulta
+                    // Esto puede incluir la llamada al método para recargar los datos, si es necesario
+                    dgvEliminarBuscarConsulta.DataSource = null; // Limpiar el DataGridView
+
+                }
+                else
+                {
+                    MessageBox.Show("Por favor, seleccione una consulta para eliminar.");
+                }
+                ActualizarComboBox();
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Por favor, seleccione una consulta para eliminar.");
+                MessageBox.Show($"Ocurrió un error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            ActualizarComboBox();
         }
 
         private void tabConsultas_Click(object sender, EventArgs e)
@@ -629,12 +758,24 @@ namespace Capa_Vista_Consulta
 
         private void button1_Click(object sender, EventArgs e)
         {
-            consultaControlador controlador = new consultaControlador();
-            string querySeleccionado = cboEditarNombreConsulta.SelectedItem.ToString();
-            controlador.BuscarQuerySeleccionado(querySeleccionado, dgvMostrar1, txtQueryEditadoFinal);
+            try
+            {
+                consultaControlador controlador = new consultaControlador();
+                string querySeleccionado = cboEditarNombreConsulta.SelectedItem.ToString();
+                controlador.BuscarQuerySeleccionado(querySeleccionado, dgvMostrar1, txtQueryEditadoFinal);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ocurrió un error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgvMostrar1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
