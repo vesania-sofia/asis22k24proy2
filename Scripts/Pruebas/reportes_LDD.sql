@@ -1,5 +1,6 @@
 /*---------Reporteria----------*/
 
+/*Ya esta integrada en el script de Seguridad_LDD*/
 CREATE TABLE tbl_regreporteria (
   idregistro int NOT NULL AUTO_INCREMENT,
   ruta varchar(500) NOT NULL,

@@ -9,6 +9,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CapaLogica;
 
+using System.IO; // Necesario para Directory, File, Path y SearchOption
+using System.Windows.Forms; // Necesario para MessageBox y Help
+
+
 namespace CapaDiseno
 {
     public partial class frm_asignacion_aplicaciones_perfiles : Form
@@ -88,6 +92,13 @@ namespace CapaDiseno
 
             CargarPerfiles();
             CargarModulos();
+            cbo_perfiles.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbo_perfiles.SelectedIndex = -1;
+            cbo_modulos.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbo_modulos.SelectedIndex = -1;
+            cbo_aplicaciones.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbo_aplicaciones.SelectedIndex = -1;
+            txt_buscar.KeyPress += new KeyPressEventHandler(SoloNumeros_KeyPress);
         }
 //****************************************FIN Kevin López***************************************************
         void limpieza()
@@ -253,11 +264,62 @@ namespace CapaDiseno
                 MessageBox.Show("No hay relaciones que eliminar");
             }
         }
-
+        //**********************KATERYN DE LEON ******************************
         private void Btn_ayuda_Click(object sender, EventArgs e)
         {
-            Help.ShowHelp(this, "C:\\Ayuda_Seguridad\\" + "AyudaAsignacionAplicacionesPerfiles.chm", "Asignacion_Aplicaciones_Perfiles.html");
+            // Help.ShowHelp(this, "C:\\Ayuda_Seguridad\\" + "AyudaAsignacionAplicacionesPerfiles.chm", "Asignacion_Aplicaciones_Perfiles.html");
+            // Define el directorio base desde donde comenzar la búsqueda
+            string baseDirectory = AppDomain.CurrentDomain.BaseDirectory; // Usando el directorio base del ejecutable
+
+            // Imprime la ruta base para verificar
+            MessageBox.Show("Ruta base: " + baseDirectory);
+
+            // Busca el archivo en el directorio base y sus subdirectorios
+            string pathAyuda = FindFileInDirectory(baseDirectory, "Ayuda_Seguridad", "frmAsignacionAplicacionesPerfiles.chm");
+
+            // Imprimir la ruta generada para verificar
+            MessageBox.Show("Ruta de ayuda: " + pathAyuda);
+
+            // Verifica si el archivo existe antes de intentar abrirlo
+            if (!string.IsNullOrEmpty(pathAyuda))
+            {
+                MessageBox.Show("El archivo sí está.");
+                // Abre el archivo de ayuda .chm
+                Help.ShowHelp(this, pathAyuda);
+            }
+            else
+            {
+                // Si el archivo no existe, muestra un mensaje de error
+                MessageBox.Show("El archivo de ayuda no se encontró.");
+            }
         }
+        //**********************KATERYN DE LEON ******************************
+        private string FindFileInDirectory(string rootDirectory, string folderName, string fileName)
+        {
+            try
+            {
+                // Imprime la ruta raíz para verificar
+                MessageBox.Show("Buscando en: " + rootDirectory);
+
+                // Busca la carpeta y el archivo
+                foreach (string directory in Directory.GetDirectories(rootDirectory, folderName, SearchOption.AllDirectories))
+                {
+                    MessageBox.Show("Carpeta encontrada: " + directory); // Imprime las carpetas encontradas
+                    string filePath = Path.Combine(directory, fileName);
+                    if (File.Exists(filePath))
+                    {
+                        return filePath; // Devuelve la primera coincidencia encontrada
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al buscar el archivo: " + ex.Message);
+            }
+            return null; // No se encontró el archivo
+        }
+
+        //********FIN KATY********************************************************************
 
         private void dgv_asignacionesperfiles_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -354,6 +416,23 @@ namespace CapaDiseno
         {
             actualizardatagriew();
 
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        //Fernando García 0901-21-581
+        private void SoloNumeros_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Verificar si el carácter es un número o si es la tecla de Backspace
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+            {
+                // Si no es un número o la tecla de retroceso, cancelar el evento
+                e.Handled = true;
+                MessageBox.Show("Solo se permiten números.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
     }

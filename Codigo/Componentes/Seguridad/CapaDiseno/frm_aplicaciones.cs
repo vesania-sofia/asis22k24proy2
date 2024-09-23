@@ -9,6 +9,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CapaLogica;
 using System.Data.Odbc;
+
+using System.IO; // Necesario para Directory, File, Path y SearchOption
+using System.Windows.Forms; // Necesario para MessageBox y Help
+
 namespace CapaDiseno
 {
 
@@ -57,7 +61,27 @@ namespace CapaDiseno
 
         private void Frm_aplicaciones_Load(object sender, EventArgs e)
         {
+            txt_buscar.KeyPress += new KeyPressEventHandler(SoloNumeros_KeyPress);
+            txt_idaplicacion.KeyPress += new KeyPressEventHandler(SoloNumeros_KeyPress);
+            txt_nombre.KeyPress += new KeyPressEventHandler(SoloLetras_KeyPress);
+            txt_idaplicacion.KeyPress += new KeyPressEventHandler(SoloLetras_KeyPress);
+            // Orden de tabulaciones
+            txt_buscar.TabIndex = 0;
+            btn_bsucarap.TabIndex = 1;
+            txt_idaplicacion.TabIndex = 2;
+            txt_nombre.TabIndex = 3;
+            txt_descripcion.TabIndex = 4;
+            btn_nuevo.TabIndex = 5;
+            btn_ingresar.TabIndex = 6;
+            btn_modif.TabIndex = 7;
+            btn_actualizar.TabIndex = 8;
+            btn_eliminar.TabIndex = 9;
+            btn_cancel.TabIndex = 10;
 
+            //limitar caracteres
+            txt_nombre.MaxLength = 50; // Limita el texto a 50 caracteres
+            txt_descripcion.MaxLength = 150;
+            txt_idaplicacion.MaxLength = 20;
         }
 
 
@@ -87,7 +111,7 @@ namespace CapaDiseno
 
             if (string.IsNullOrWhiteSpace(aplicacion))
             {
-                MessageBox.Show("Por favor, ingrese un ID de una aplicacion.");
+                MessageBox.Show("Por favor, ingrese un ID de una aplicación.","Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -97,7 +121,7 @@ namespace CapaDiseno
 
                 if (dtAplicacion == null || dtAplicacion.Rows.Count == 0)
                 {
-                    MessageBox.Show("No se encontraro la aplicacion.");
+                    MessageBox.Show("No se encontró la aplicación.", "Aplicacion", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     return;
                 }
 
@@ -105,30 +129,15 @@ namespace CapaDiseno
                 {
                     if (row[0] != DBNull.Value) txt_idaplicacion.Text = row[0].ToString();
                     if (row[1] != DBNull.Value) txt_nombre.Text = row[1].ToString();
-                    if (row[2] != DBNull.Value) txt_descripcion.Text = row[2].ToString();
-                    if (row[3] != DBNull.Value)
-                    {
-                        string estado = row[3].ToString();
-                        if (estado == "1")
-                        {
-                            Rdb_activo.Checked = true;
-                            Rdb_inactivo.Checked = false;
-                        }
-                        else if (estado == "0")
-                        {
-                            Rdb_activo.Checked = false;
-                            Rdb_inactivo.Checked = true;
-                        }
-                    }
+                    if (row[2] != DBNull.Value) txt_descripcion.Text = row[2].ToString(); // Asegúrate de que esta columna exista en la consulta
                 }
 
                 btn_modif.Enabled = true;
                 btn_ingresar.Enabled = false;
                 txt_idaplicacion.Enabled = false;
                 txt_nombre.Enabled = false;
-                txt_descripcion.Enabled = false;
-                Rdb_activo.Enabled = false;
-                Rdb_inactivo.Enabled = false;
+                txt_descripcion.Enabled = false; // Asegúrate de que este campo esté habilitado si quieres mostrar la descripción
+
                 btn_eliminar.Enabled = true;
             }
             catch (Exception ex)
@@ -138,6 +147,8 @@ namespace CapaDiseno
             }
         }
 
+
+
         //###################  lo que hizo Karla  Sofia Gómez Tobar #######################
         private void btn_nuevo_Click_1(object sender, EventArgs e)
         {
@@ -146,15 +157,17 @@ namespace CapaDiseno
             btn_nuevo.Enabled = false;
             btn_actualizar.Enabled = false;
             gb_buscar.Enabled = false;
+            gb_datosaplicacion.Enabled = true;
             btn_modif.Enabled = false;
             btn_ingresar.Enabled = true;
             btn_cancel.Enabled = true;
             txt_idaplicacion.Enabled = true;
             txt_nombre.Enabled = true;
             txt_descripcion.Enabled = true;
-
-
-
+            btn_eliminar.Enabled = false;
+            txt_idaplicacion.Text = "";
+            txt_descripcion.Text = "";
+           
             try
             {
                 DataTable dtValidarID = logic.validarIDAplicacion();
@@ -191,14 +204,14 @@ namespace CapaDiseno
             if (txt_nombre.Text == "")
             {
 
-                MessageBox.Show("Falta Nombre de Aplicacion");
+                MessageBox.Show("Falta Nombre de Aplicacion", "Nombre de Aplicación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 btn_nuevo.Enabled = true;
                 txt_nombre.Enabled = false;
                 txt_descripcion.Enabled = false;
             }
             else if (txt_descripcion.Text == "")
             {
-                MessageBox.Show("Falta Descripcion de Aplicacion");
+                MessageBox.Show("Falta Descripcion de Aplicacion", "Descripcion", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 btn_nuevo.Enabled = true;
                 txt_nombre.Enabled = false;
                 txt_descripcion.Enabled = false;
@@ -222,12 +235,17 @@ namespace CapaDiseno
                 }
 
                 logic.insertaraplicaciones(txt_idaplicacion.Text.ToString(), txt_nombre.Text.ToString(), txt_descripcion.Text.ToString(), estado.ToString());
-                MessageBox.Show("Modulo Ingresado Correctamente");
+                MessageBox.Show("Modulo Ingresado Correctamente", "Modulo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 limpiar();
                 gb_buscar.Enabled = true;
                 btn_ingresar.Enabled = false;
                 btn_nuevo.Enabled = true;
                 txt_idaplicacion.Enabled = false;
+                btn_bsucarap.Enabled = true;
+                gb_datosaplicacion.Enabled = false;
+                Gpb_estado.Enabled = false;
+                btn_eliminar.Enabled = false;
+                btn_cancel.Enabled = false;
             }
         }
         //###################  termina lo que hizo  Karla  Sofia Gómez Tobar #######################
@@ -246,6 +264,7 @@ namespace CapaDiseno
             txt_idaplicacion.Enabled = false;
             txt_nombre.Enabled = true;
             txt_descripcion.Enabled = true;
+            btn_eliminar.Enabled = false;
         }
         //termina lo que hizo carlos hernandez 
         private void btn_actualizar_Click_1(object sender, EventArgs e)
@@ -253,14 +272,14 @@ namespace CapaDiseno
             if (txt_nombre.Text == "")
             {
 
-                MessageBox.Show("Falta Nombre de Aplicacion");
+                MessageBox.Show("Falta Nombre de Aplicacion", "Aplicacion", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 btn_nuevo.Enabled = true;
                 txt_nombre.Enabled = false;
                 txt_descripcion.Enabled = false;
             }
             else if (txt_descripcion.Text == "")
             {
-                MessageBox.Show("Falta Descripcion de Aplicacion");
+                MessageBox.Show("Falta Descripcion de Aplicacion", "Descripcion", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 btn_nuevo.Enabled = true;
                 txt_nombre.Enabled = false;
                 txt_descripcion.Enabled = false;
@@ -283,8 +302,20 @@ namespace CapaDiseno
                     estado = "1";
                 }
 
-                logic.actualizaraplicaciones(txt_idaplicacion.Text.ToString(), txt_nombre.Text.ToString(), txt_descripcion.Text.ToString(), estado.ToString());
-                MessageBox.Show("Modulo Modificado Correctamente");
+                // Confirmar antes de eliminar
+                var confirmResult = MessageBox.Show("¿Estás seguro de modificar este perfil?",
+                                                        "Confirmar Modificación",
+                                                        MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+
+                if (confirmResult == DialogResult.Yes)
+                {
+                    logic.actualizaraplicaciones(txt_idaplicacion.Text.ToString(), txt_nombre.Text.ToString(), txt_descripcion.Text.ToString(), estado.ToString());
+                    MessageBox.Show("Modulo Modificado Correctamente", "Modulo", MessageBoxButtons.OK, MessageBoxIcon.Information);         
+                }       
+                else
+                {
+                    MessageBox.Show("No se ha modificado el perfil seleccionado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
                 limpiar();
                 btn_cancel.Enabled = false;
                 btn_bsucarap.Enabled = true;
@@ -297,6 +328,8 @@ namespace CapaDiseno
                 txt_nombre.Enabled = false;
                 txt_descripcion.Enabled = false;
                 Gpb_estado.Enabled = false;
+                gb_buscar.Enabled = true;
+
             }
         }
 
@@ -308,28 +341,29 @@ namespace CapaDiseno
                 // Confirmar antes de eliminar
                 var confirmResult = MessageBox.Show("¿Estás seguro de eliminar este perfil?",
                                                     "Confirmar Eliminación",
-                                                    MessageBoxButtons.YesNo);
+                                                    MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
 
                 if (confirmResult == DialogResult.Yes)
                 {
                     // Llamar al método de la capa lógica para eliminar el perfil
-                    logic.eliminaraplicaciones(txt_idaplicacion.Text);
-
-                    // Opcionalmente, puedes desactivar botones o limpiar campos después de la eliminación
-                    txt_buscar.Enabled = true;
-                    btn_bsucarap.Enabled = false;
-                    btn_modif.Enabled = false;
-                    btn_nuevo.Enabled = true;
-                    txt_idaplicacion.Enabled = false;
-                    txt_descripcion.Enabled = false;
-                    Gpb_estado.Enabled = false;
-                    limpiar();  // Limpiar campos
+                    logic.eliminaraplicaciones(txt_idaplicacion.Text);                
                 }
             }
             else
             {
-                MessageBox.Show("No se ha seleccionado un perfil para eliminar.");
+                MessageBox.Show("No se ha seleccionado un perfil para eliminar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            // Opcionalmente, puedes desactivar botones o limpiar campos después de la eliminación
+            txt_buscar.Enabled = true;
+            btn_bsucarap.Enabled = false;
+            btn_modif.Enabled = false;
+            btn_nuevo.Enabled = true;
+            txt_idaplicacion.Enabled = false;
+            txt_descripcion.Enabled = false;
+            Gpb_estado.Enabled = false;
+            btn_bsucarap.Enabled = true;
+            btn_eliminar.Enabled = false;
+            limpiar();  // Limpiar campos
         }
         //aqui termina la parte de Carlos Hernandez
 
@@ -348,13 +382,93 @@ namespace CapaDiseno
             txt_nombre.Enabled = false;
             txt_descripcion.Enabled = false;
             Gpb_estado.Enabled = false;
+            btn_eliminar.Enabled = false;
 
         }
         //###################  termina lo que hizo  Karla  Sofia Gómez Tobar #######################
+
+
+        //****************************KATERYN DE LEON-******************************
         private void btn_ayuda_Click_1(object sender, EventArgs e)
         {
-            Help.ShowHelp(this, "C:\\Ayuda_Seguridad\\" + "MantenimientoAplicaciones.chm", "Mantenimiento_Aplicaciones.html");
+            // Help.ShowHelp(this, "C:\\Ayuda_Seguridad\\" + "MantenimientoAplicaciones.chm", "Mantenimiento_Aplicaciones.html");
+
+
+            // Define el directorio base desde donde comenzar la búsqueda
+            string baseDirectory = AppDomain.CurrentDomain.BaseDirectory; // Usando el directorio base del ejecutable
+
+            // Imprime la ruta base para verificar
+            MessageBox.Show("Ruta base: " + baseDirectory);
+
+            // Busca el archivo en el directorio base y sus subdirectorios
+            string pathAyuda = FindFileInDirectory(baseDirectory, "Ayuda_Seguridad", "frmAplicaciones.chm");
+
+            // Imprimir la ruta generada para verificar
+            MessageBox.Show("Ruta de ayuda: " + pathAyuda);
+
+            // Verifica si el archivo existe antes de intentar abrirlo
+            if (!string.IsNullOrEmpty(pathAyuda))
+            {
+                MessageBox.Show("El archivo sí está.");
+                // Abre el archivo de ayuda .chm
+                Help.ShowHelp(this, pathAyuda);
+            }
+            else
+            {
+                // Si el archivo no existe, muestra un mensaje de error
+                MessageBox.Show("El archivo de ayuda no se encontró.");
+            }
         }
-        
+
+        //**********************KATERYN DE LEON ******************************
+        private string FindFileInDirectory(string rootDirectory, string folderName, string fileName)
+        {
+            try
+            {
+                // Imprime la ruta raíz para verificar
+                MessageBox.Show("Buscando en: " + rootDirectory);
+
+                // Busca la carpeta y el archivo
+                foreach (string directory in Directory.GetDirectories(rootDirectory, folderName, SearchOption.AllDirectories))
+                {
+                    MessageBox.Show("Carpeta encontrada: " + directory); // Imprime las carpetas encontradas
+                    string filePath = Path.Combine(directory, fileName);
+                    if (File.Exists(filePath))
+                    {
+                        return filePath; // Devuelve la primera coincidencia encontrada
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al buscar el archivo: " + ex.Message);
+            }
+            return null; // No se encontró el archivo
+        }
+
+        //*************FIN KATERYN DE LEON***********************************************************
+
+        //Fernando García 0901-21-581
+        private void SoloNumeros_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Verificar si el carácter es un número o si es la tecla de Backspace
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+            {
+                // Si no es un número o la tecla de retroceso, cancelar el evento
+                e.Handled = true;
+                MessageBox.Show("Solo se permiten números.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void SoloLetras_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Verifica si la tecla presionada es una letra o una tecla de control como backspace
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
+            {
+                // Si no es una letra, espacio o tecla de control, cancela el evento
+                e.Handled = true;
+                MessageBox.Show("Solo se permiten letras.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
     }
 }
