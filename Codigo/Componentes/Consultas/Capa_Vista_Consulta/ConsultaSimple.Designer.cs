@@ -58,7 +58,7 @@ namespace Capa_Vista_Consulta
             this.btnCancelar2.FlatAppearance.BorderSize = 0;
             this.btnCancelar2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelar2.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelar2.Image")));
-            this.btnCancelar2.Location = new System.Drawing.Point(502, 13);
+            this.btnCancelar2.Location = new System.Drawing.Point(497, 13);
             this.btnCancelar2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnCancelar2.Name = "btnCancelar2";
             this.btnCancelar2.Size = new System.Drawing.Size(64, 54);
