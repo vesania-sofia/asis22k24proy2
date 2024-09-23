@@ -64,6 +64,7 @@ namespace Capa_Vista_Consulta
             this.btnCancelar2.Size = new System.Drawing.Size(64, 54);
             this.btnCancelar2.TabIndex = 38;
             this.btnCancelar2.UseVisualStyleBackColor = true;
+            this.btnCancelar2.Click += new System.EventHandler(this.btnCancelar2_Click_1);
             // 
             // btnConsultar2
             // 
@@ -76,6 +77,7 @@ namespace Capa_Vista_Consulta
             this.btnConsultar2.Size = new System.Drawing.Size(70, 54);
             this.btnConsultar2.TabIndex = 36;
             this.btnConsultar2.UseVisualStyleBackColor = true;
+            this.btnConsultar2.Click += new System.EventHandler(this.btnConsultar2_Click_1);
             // 
             // label1
             // 
@@ -102,6 +104,7 @@ namespace Capa_Vista_Consulta
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(242, 23);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(31, 13);
             this.label3.TabIndex = 41;
