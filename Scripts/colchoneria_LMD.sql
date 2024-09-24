@@ -5,14 +5,6 @@
 INSERT INTO `ayuda` (`Id_ayuda`, `Ruta`, `indice`, `estado`) VALUES
 (1, 'C:/Users/bhern/source/repos/ejecucion/ejecucion/AyudaHTML/AyudaNavegador.chm', 'AyudaNav.html', 1);
 
-
---
--- Volcado de datos para la tabla `casas`
---
-
-INSERT INTO `casas` (`id_casa`, `direccion`, `telefono`, `ciudad`, `estado`) VALUES
-(1, 'direccion', 12345678, 'ciudad', 1);
-
 --
 -- Volcado de datos para la tabla `detallefactura`
 --
@@ -187,76 +179,6 @@ INSERT INTO `pagos` (`Pk_id_pago`, `fk_id_factura`, `fecha_pago`, `monto_factura
 (9, 10, '2024-09-21', 900.00, 1);
 
 --
--- Volcado de datos para la tabla `perro`
---
-
-INSERT INTO `perro` (`id_perro`, `nombre`, `id_raza`, `estado`) VALUES
-(2, 'Rodolfo', 1, 1),
-(3, 'bolita', 5, 1),
-(4, 'qwe', 3, 1),
-(5, 'Tobi', 5, 1),
-(6, 'Chispitas', 3, 1),
-(7, 'manchas', 5, 1),
-(8, 'pancho', 4, 1),
-(9, 'chubasco', 2, 1),
-(10, 'Sebastian', 5, 1),
-(11, 'Letona', 3, 1),
-(12, 'qwe', 2, 1),
-(13, 'Pamcho', 4, 1),
-(14, 'qweqwe', 3, 1),
-(15, 'qqqq', 4, 0),
-(16, 'ppp', 4, 1),
-(17, 'Perro', 3, 0),
-(18, 'defwe', 2, 0),
-(19, 'Pancho', 5, 0),
-(20, 'wefw', 3, 0),
-(21, 'Juancho', 3, 1);
-
---
--- Volcado de datos para la tabla `razas`
---
-
-INSERT INTO `razas` (`id_raza`, `nombre_raza`, `estado`) VALUES
-(1, 'Labrador', 1),
-(2, 'Pastor Alemán', 1),
-(3, 'Golden Retriever', 1),
-(4, 'Bulldog', 1),
-(5, 'Poodle', 1);
-
---
--- Volcado de datos para la tabla `registrocasas`
---
-
-INSERT INTO `registrocasas` (`id_registrocasa`, `telefono_casa`, `direccion_casa`, `estado`) VALUES
-(1, 0, '12345678', 0);
-
---
--- Volcado de datos para la tabla `registroperro`
---
-
-INSERT INTO `registroperro` (`id_registroperro`, `nombre_perro`, `raza_perro`, `estado`, `id_perro`) VALUES
-(2, 'Rodolfo', 'Labrador', 0, 2),
-(3, 'bolita', 'Poodle', 0, 3),
-(4, 'qwe', 'Golden Retriever', 0, 4),
-(5, 'Tobi', 'Poodle', 0, 5),
-(6, 'Chispitas', 'Golden Retriever', 0, 6),
-(7, 'manchas', 'Poodle', 0, 7),
-(8, 'pancho', 'Bulldog', 0, 8),
-(9, 'chubasco', 'Pastor Alemán', 0, 9),
-(10, 'Sebastian', 'Poodle', 0, 10),
-(11, 'Letona', 'Golden Retriever', 0, 11),
-(12, 'qwe', 'Pastor Alemán', 0, 12),
-(13, 'Pamcho', 'Bulldog', 0, 13),
-(14, 'qweqwe', 'Golden Retriever', 0, 14),
-(15, 'qqqq', 'Bulldog', 0, 15),
-(16, 'ppp', 'Bulldog', 0, 16),
-(17, 'Perro', 'Golden Retriever', 0, 17),
-(18, 'defwe', 'Pastor Alemán', 0, 18),
-(19, 'wefwf', 'Pastor Alemán', 0, 19),
-(20, 'wefw', 'Golden Retriever', 0, 20),
-(21, 'Juancho', 'Golden Retriever', 0, 21);
-
---
 -- Volcado de datos para la tabla `registro_empleados`
 --
 
@@ -342,26 +264,6 @@ INSERT INTO `registro_empleados` (`codigo_registro`, `codigo_empleado`, `fecha_r
 (79, 68, '2020-06-06', '22:54:00', '22:54:00', '00:00:00', 1),
 (80, 105, '2020-06-06', '23:28:00', '23:29:00', '00:01:00', 1);
 
---
--- Volcado de datos para la tabla `reserva`
---
-
-INSERT INTO `reserva` (`id_reserva`, `nombre_cliente`, `monto_compra`, `sede_compra`, `estado`) VALUES
-(2, '2', 0, '', 0),
-(3, '3', 0, '100', 0),
-(4, '4', 0, '54', 0),
-(5, '5', 0, '5555', 0),
-(6, '6', 0, '222', 0),
-(7, 'ddd', 7, '5555', 0),
-(8, '8', 545544, 'qqqq', 0),
-(9, 'cliente', 1111, '9', 0),
-(10, 'cliente', 888, '10', 0),
-(11, 'cliente', 111, '11', 0),
-(12, '555', 0, 'cliente', 0),
-(13, 'cliente', 8888, '13', 0),
-(14, 'cliente', 777, '14', 0),
-(15, '5454', 0, 'wwww', 0),
-(16, 'cliente ', 888, 'sede', 0);
 
 --
 -- Volcado de datos para la tabla `tbl_aplicaciones`
