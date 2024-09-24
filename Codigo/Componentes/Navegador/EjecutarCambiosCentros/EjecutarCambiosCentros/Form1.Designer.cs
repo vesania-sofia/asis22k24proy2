@@ -1,5 +1,5 @@
 ﻿
-namespace WindowsFormsApp1
+namespace EjecutarCambiosCentros
 {
     partial class Form1
     {
@@ -35,21 +35,20 @@ namespace WindowsFormsApp1
             // navegador1
             // 
             this.navegador1.BackColor = System.Drawing.Color.White;
-            this.navegador1.Location = new System.Drawing.Point(1, 0);
+            this.navegador1.Location = new System.Drawing.Point(0, 2);
+            this.navegador1.Margin = new System.Windows.Forms.Padding(4);
             this.navegador1.Name = "navegador1";
-            this.navegador1.Size = new System.Drawing.Size(842, 812);
+            this.navegador1.Size = new System.Drawing.Size(1122, 1000);
             this.navegador1.TabIndex = 0;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(844, 663);
+            this.ClientSize = new System.Drawing.Size(1120, 786);
             this.Controls.Add(this.navegador1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Form1";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
 
         }

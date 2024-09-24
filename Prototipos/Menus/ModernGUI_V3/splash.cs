@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using CapaDiseno;
 //Comentado por George Mayén 25/02/2023
 namespace Interfac_V3   
 {
@@ -20,8 +21,10 @@ namespace Interfac_V3
             {
                 timer1.Stop();
                 this.Hide();
-                FormModulos b = new FormModulos();
+                CapaDiseno.frm_login b = new CapaDiseno.frm_login();
                 b.Show();
+                //FormModulos b = new FormModulos();
+                //b.Show();
                 //b.ShowDialog();
             }
         }

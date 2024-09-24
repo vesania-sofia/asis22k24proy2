@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9BB85DFC-5ED8-4DAB-8C1A-15F1A644CE17}</ProjectGuid>
+    <ProjectGuid>{C2D52024-49FC-4E16-83A1-A34A217511AB}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>WindowsFormsApp1</RootNamespace>
-    <AssemblyName>WindowsFormsApp1</AssemblyName>
+    <RootNamespace>EjecutarCambiosCentros</RootNamespace>
+    <AssemblyName>EjecutarCambiosCentros</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -33,18 +33,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CapaDatos, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
     <Reference Include="CapaDiseno">
       <HintPath>..\..\..\Seguridad\CapaDiseno\bin\Debug\CapaDiseno.dll</HintPath>
     </Reference>
-    <Reference Include="Capa_Controlador_Navegador, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
-    <Reference Include="Capa_Controlador_Reporteria, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
-    <Reference Include="Capa_Vista_Consulta, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
-    <Reference Include="Capa_Vista_Navegador, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\Capa_Vista_Navegador.dll</HintPath>
+    <Reference Include="Capa_Vista_Navegador">
+      <HintPath>..\..\Capa_Vista_Navegador\bin\Debug\Capa_Vista_Navegador.dll</HintPath>
     </Reference>
-    <Reference Include="Capa_Vista_Reporteria, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
     <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
     <Reference Include="System" />

@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Capa_Controlador_Navegador;
-using Capa_Datos_Navegador;
 using Capa_Controlador_Reporteria;
 using Capa_Vista_Reporteria;
 using Capa_Vista_Consulta;
 using CapaDatos;
+using System.IO;
 
 namespace Capa_Vista_Navegador
 {
@@ -23,7 +23,7 @@ namespace Capa_Vista_Navegador
         Form cerrar; // Formulario de cierre
         int correcto = 0; // Variable de control para verificar si todo está correcto
         string tabla = "def"; // Nombre de la tabla principal
-        string otratabla = "def"; // Nombre de una tabla secundaria
+         // Nombre de una tabla secundaria
         List<string> listaTablasAdicionales = new List<string>(); // Lista de tablas adicionales
 
         string nomForm; // Nombre del formulario
@@ -70,7 +70,8 @@ namespace Capa_Vista_Navegador
         {
             InitializeComponent();
             limpiarListaItems(); // Limpia la lista de items
-            this.AutoScaleMode = AutoScaleMode.Dpi; // Escala automática
+                                 // this.AutoScaleMode = AutoScaleMode.Dpi; // Escala automática
+            this.Dock = DockStyle.Fill;
             userActivo = idUsuario;
             aplActivo = idAplicacion;
             // Configuración del ToolTip
@@ -120,21 +121,23 @@ namespace Capa_Vista_Navegador
                         }
                         else
                         {
-                            if (numeroAlias() == logic.contarCampos(tabla)) // Verifica si el número de alias coincide con el número de campos de la tabla
+                            if (numeroAlias() == logic.ContarCampos(tabla)) // Verifica si el número de alias coincide con el número de campos de la tabla
                             {
                                 int i = 0;
-                                DataTable dt = logic.consultaLogica(tabla, tablarelacionada, campodescriptivo, columnaForanea, columnaprimararelacionada); // Realiza la consulta lógica de la tabla
+                                DataTable dt = logic.ConsultaLogica(tabla, tablarelacionada, campodescriptivo, columnaForanea, columnaprimararelacionada); // Realiza la consulta lógica de la tabla
                                 dataGridView1.DataSource = dt; // Asigna el resultado de la consulta al DataGridView
 
                                 // Asigna los alias como encabezados de las columnas
                                 int head = 0;
-                                while (head < logic.contarCampos(tabla))
+                                while (head < logic.ContarCampos(tabla))
                                 {
                                     dataGridView1.Columns[head].HeaderText = aliasC[head];
                                     head++;
                                 }
 
                                 CreaComponentes(); // Crea los componentes del formulario
+                                // Ocupa todo el espacio del contenedor, con margen si está configurado
+                               
                                 colorTitulo(); // Cambia el color del título
                                 lblTabla.ForeColor = Cfuente; // Asigna el color de la fuente al label de la tabla
                                 deshabilitarcampos_y_botones(); // Deshabilita los campos y botones inicialmente
@@ -155,7 +158,7 @@ namespace Capa_Vista_Navegador
                                                 // Asigna valores a los ComboBox según la lógica de la aplicación
                                                 if (modoCampoCombo[numCombo] == 1)
                                                 {
-                                                    componente.Text = logic.llaveCampoRev(tablaCombo[numCombo], campoCombo[numCombo], dataGridView1.CurrentRow.Cells[i].Value.ToString());
+                                                    componente.Text = logic.LlaveCampoRev(tablaCombo[numCombo], campoCombo[numCombo], dataGridView1.CurrentRow.Cells[i].Value.ToString());
                                                 }
                                                 else
                                                 {
@@ -202,7 +205,7 @@ namespace Capa_Vista_Navegador
                             else
                             {
                                 // Si el número de alias no coincide con el número de campos, muestra un mensaje de error y sale de la aplicación
-                                if (numeroAlias() < logic.contarCampos(tabla))
+                                if (numeroAlias() < logic.ContarCampos(tabla))
                                 {
                                     DialogResult validacion = MessageBox.Show(EstadoOK + "El número de Alias asignados es menor que el requerido \n Solucione este error para continuar...", "Verificación de requisitos", MessageBoxButtons.OK);
                                     if (validacion == DialogResult.OK)
@@ -212,7 +215,7 @@ namespace Capa_Vista_Navegador
                                 }
                                 else
                                 {
-                                    if (numeroAlias() > logic.contarCampos(tabla))
+                                    if (numeroAlias() > logic.ContarCampos(tabla))
                                     {
                                         DialogResult validacion = MessageBox.Show(EstadoOK + "El número de Alias asignados es mayor que el requerido \n Solucione este error para continuar...", "Verificación de requisitos", MessageBoxButtons.OK);
                                         if (validacion == DialogResult.OK)
@@ -352,11 +355,11 @@ namespace Capa_Vista_Navegador
             string AyudaOK = logic.TestTabla("ayuda");
             if (AyudaOK == "")
             {
-                if (logic.contarRegAyuda(ayudar) > 0)
+                if (logic.ContarRegAyuda(ayudar) > 0)
                 {
                     idyuda = ayudar;
-                    AsRuta = logic.MRuta(idyuda);
-                    AsIndice = logic.MIndice(idyuda);
+                    AsRuta = logic.ModRuta(idyuda);
+                    AsIndice = logic.ModIndice(idyuda);
                     if (AsRuta == "" || AsIndice == "" || AsRuta == null || AsIndice == null)
                     {
                         DialogResult validacion = MessageBox.Show("La Ruta o índice de la ayuda está vacía", "Verificación de requisitos", MessageBoxButtons.OK);
@@ -385,6 +388,9 @@ namespace Capa_Vista_Navegador
                 }
             }
         }
+
+
+
 
         public void asignarReporte(string repo)
         {
@@ -420,7 +426,14 @@ namespace Capa_Vista_Navegador
         }
         //******************************************** CODIGO HECHO POR JOSUE CACAO ***************************** 
 
+
+
+
+
+
+        //******************************************** CODIGO HECHO POR ANIKA ESCOTO***************************** 
         //******************************************** CODIGO HECHO POR ANIKA ESCOTO ***************************** 
+
         public void asignarComboConTabla(string tabla, string campoClave, string campoDisplay, int modo)
         {
             // Verifica si la tabla existe
@@ -497,9 +510,9 @@ namespace Capa_Vista_Navegador
         void CreaComponentes()
         {
             // Obtiene los campos, tipos de datos y llaves de la tabla
-            string[] Campos = logic.campos(tabla);
-            string[] Tipos = logic.tipos(tabla);
-            string[] LLaves = logic.llaves(tabla);
+            string[] Campos = logic.Campos(tabla);
+            string[] Tipos = logic.Tipos(tabla);
+            string[] LLaves = logic.Llaves(tabla);
             int i = 0;
             int fin = Campos.Length;
             while (i < fin)
@@ -663,12 +676,15 @@ namespace Capa_Vista_Navegador
         void crearTextBoxnumerico(String nom)
         {
             TextBox tb = new TextBox(); // Crea un nuevo TextBox
-            Point p = new Point(x + 125 + pos, y * pos); // Define la ubicación del TextBox
+
+            // Cálculo para centrar el TextBox
+            int centeredX = (this.ClientSize.Width / 2) - (tb.Width / 2); // Centra el TextBox horizontalmente
+            Point p = new Point(centeredX, y * pos); // Define la ubicación del TextBox
             tb.Location = p;
+
             tb.Name = nom; // Establece el nombre del TextBox
             this.Controls.Add(tb); // Añade el TextBox al formulario
             tb.KeyPress += Paravalidarnumeros_KeyPress; // Asigna la función de validación de números al evento KeyPress
-            this.KeyPress += Paravalidarnumeros_KeyPress; // Asegura que el evento KeyPress valide solo números
             pos++; // Incrementa la posición para el próximo control
         }
         //******************************************** CODIGO HECHO POR PABLO FLORES*****************************
@@ -765,13 +781,13 @@ namespace Capa_Vista_Navegador
             // Si hay una tabla y campo específicos para el ComboBox, se utilizan.
             if (tablaCombo[noComboAux] != null)
             {
-                items = logic.items(tablaCombo[noComboAux], campoCombo[noComboAux], campoDisplayCombo[noComboAux]);
+                items = logic.Items(tablaCombo[noComboAux], campoCombo[noComboAux], campoDisplayCombo[noComboAux]);
                 if (noCombo > noComboAux) { noComboAux++; }
             }
             else
             {
                 // Si no, se utiliza una tabla y campo por defecto (en este caso, películas).
-                items = logic.items("Peliculas", "idPelicula", "nombrePelicula");
+                items = logic.Items("Peliculas", "idPelicula", "nombrePelicula");
                 if (noCombo > noComboAux) { noComboAux++; }
             }
 
@@ -846,10 +862,10 @@ namespace Capa_Vista_Navegador
 
         public void actualizardatagriew()
         {
-            DataTable dt = logic.consultaLogica(tabla, tablarelacionada, campodescriptivo, columnaForanea, columnaprimararelacionada);
+            DataTable dt = logic.ConsultaLogica(tabla, tablarelacionada, campodescriptivo, columnaForanea, columnaprimararelacionada);
             dataGridView1.DataSource = dt;
             int head = 0;
-            while (head < logic.contarCampos(tabla))
+            while (head < logic.ContarCampos(tabla))
             {
                 dataGridView1.Columns[head].HeaderText = aliasC[head];
                 head++;
@@ -892,7 +908,7 @@ namespace Capa_Vista_Navegador
                                     // Si el componente es un ComboBox, se utiliza la lógica específica para obtener el valor correcto.
                                     if (modoCampoCombo[i] == 1)
                                     {
-                                        whereQuery += componente.Name + " = '" + logic.llaveCampolo(tablaCombo[i], campoCombo[i], componente.Text) + "' , ";
+                                        whereQuery += componente.Name + " = '" + logic.LlaveCampolo(tablaCombo[i], campoCombo[i], componente.Text) + "' , ";
                                     }
                                     else
                                     {
@@ -911,7 +927,7 @@ namespace Capa_Vista_Navegador
                                 {
                                     if (modoCampoCombo[i] == 1)
                                     {
-                                        whereQuery += componente.Name + " = " + logic.llaveCampolo(tablaCombo[i], campoCombo[i], componente.Text);
+                                        whereQuery += componente.Name + " = " + logic.LlaveCampolo(tablaCombo[i], campoCombo[i], componente.Text);
                                     }
                                     else
                                     {
@@ -968,7 +984,7 @@ namespace Capa_Vista_Navegador
                 if (componente is TextBox || componente is DateTimePicker || componente is ComboBox)
                 {
                     // Obtiene el nombre del campo de la tabla y el valor del control
-                    string nombreCampo = logic.campos(nombretabla)[posCampo];
+                    string nombreCampo = logic.Campos(nombretabla)[posCampo];
                     string valorCampo = string.Empty;
 
                     // Si el control es un ComboBox, obtiene el valor seleccionado (ID)
@@ -1019,7 +1035,7 @@ namespace Capa_Vista_Navegador
         string crearUpdate(string tabla, string nombreClavePrimaria, string nombreClaveForanea)
         {
             // Obtiene las columnas existentes en la tabla
-            string[] columnasTabla = logic.campos(tabla);
+            string[] columnasTabla = logic.Campos(tabla);
 
             string query = "UPDATE " + tabla + " SET ";
             string whereQuery = " WHERE ";
@@ -1087,7 +1103,7 @@ namespace Capa_Vista_Navegador
         public void guardadoforsozo()
         {
             // Ejecuta la consulta de inserción generada y limpia los campos del formulario
-            logic.nuevoQuery(crearInsert(tabla));
+            logic.NuevoQuery(crearInsert(tabla));
             foreach (Control componente in Controls)
             {
                 if (componente is TextBox || componente is DateTimePicker || componente is ComboBox)
@@ -1114,7 +1130,7 @@ namespace Capa_Vista_Navegador
         //******************************************** CODIGO HECHO POR DIEGO MARROQUIN***************************** 
         private void Btn_Ingresar_Click(object sender, EventArgs e)
         {
-            string[] Tipos = logic.tipos(tabla);
+            string[] Tipos = logic.Tipos(tabla);
 
             bool tipoInt = false;
             bool ExtraAI = false;
@@ -1127,7 +1143,7 @@ namespace Capa_Vista_Navegador
                 tipoInt = true;
 
                 // Obtiene el último ID insertado en la tabla si el campo es autoincrementable
-                auxId = logic.lastID(tabla);
+                auxId = logic.UltimoID(tabla);
 
                 // Verifica si el ID existe o la tabla está vacía
                 if (!string.IsNullOrEmpty(auxId))
@@ -1207,7 +1223,7 @@ namespace Capa_Vista_Navegador
                 activar = 1; // Define que se realizará una modificación
                 int i = 0;
 
-                string[] Tipos = logic.tipos(tabla);
+                string[] Tipos = logic.Tipos(tabla);
                 int numCombo = 0;
 
                 // Recorre los controles para habilitar la edición
@@ -1226,7 +1242,7 @@ namespace Capa_Vista_Navegador
                             {
                                 if (modoCampoCombo[numCombo] == 1)
                                 {
-                                    componente.Text = logic.llaveCampoRev(tablaCombo[numCombo], campoCombo[numCombo], dataGridView1.CurrentRow.Cells[i].Value.ToString());
+                                    componente.Text = logic.LlaveCampoRev(tablaCombo[numCombo], campoCombo[numCombo], dataGridView1.CurrentRow.Cells[i].Value.ToString());
                                 }
                                 else
                                 {
@@ -1332,7 +1348,7 @@ namespace Capa_Vista_Navegador
                             {
                                 if (modoCampoCombo[numCombo] == 1)
                                 {
-                                    componente.Text = logic.llaveCampoRev(tablaCombo[numCombo], campoCombo[numCombo], dataGridView1.CurrentRow.Cells[i].Value.ToString());
+                                    componente.Text = logic.LlaveCampoRev(tablaCombo[numCombo], campoCombo[numCombo], dataGridView1.CurrentRow.Cells[i].Value.ToString());
                                 }
                                 else
                                 {
@@ -1415,7 +1431,7 @@ namespace Capa_Vista_Navegador
                     if (respuestaEliminar == DialogResult.Yes)
                     {
                         // Proceder con la eliminación
-                        logic.nuevoQuery(crearDelete());
+                        logic.NuevoQuery(crearDelete());
                         actualizardatagriew();
 
                         // Mostrar un mensaje de éxito tras la eliminación
@@ -1524,7 +1540,7 @@ namespace Capa_Vista_Navegador
                         {
                             if (modoCampoCombo[numCombo] == 1)
                             {
-                                componente.Text = logic.llaveCampoRev(tablaCombo[numCombo], campoCombo[numCombo], dataGridView1.CurrentRow.Cells[i].Value.ToString());
+                                componente.Text = logic.LlaveCampoRev(tablaCombo[numCombo], campoCombo[numCombo], dataGridView1.CurrentRow.Cells[i].Value.ToString());
                             }
                             else
                             {
@@ -1590,7 +1606,7 @@ namespace Capa_Vista_Navegador
         private void Btn_Anterior_Click(object sender, EventArgs e)
         {
             int i = 0;
-            string[] Campos = logic.campos(tabla); // Obtiene los nombres de los campos de la tabla.
+            string[] Campos = logic.Campos(tabla); // Obtiene los nombres de los campos de la tabla.
 
             // Obtiene el índice de la fila seleccionada actualmente.
             int fila = dataGridView1.SelectedRows[0].Index;
@@ -1612,7 +1628,7 @@ namespace Capa_Vista_Navegador
                             // Si el componente es un ComboBox, utiliza lógica específica para recuperar el valor correcto.
                             if (modoCampoCombo[numCombo] == 1)
                             {
-                                componente.Text = logic.llaveCampoRev(tablaCombo[numCombo], campoCombo[numCombo], dataGridView1.CurrentRow.Cells[i].Value.ToString());
+                                componente.Text = logic.LlaveCampoRev(tablaCombo[numCombo], campoCombo[numCombo], dataGridView1.CurrentRow.Cells[i].Value.ToString());
                             }
                             else
                             {
@@ -1652,7 +1668,7 @@ namespace Capa_Vista_Navegador
         private void Btn_Siguiente_Click(object sender, EventArgs e)
         {
             int i = 0;
-            string[] Campos = logic.campos(tabla); // Obtiene los nombres de los campos de la tabla.
+            string[] Campos = logic.Campos(tabla); // Obtiene los nombres de los campos de la tabla.
 
             // Obtiene el índice de la fila seleccionada actualmente.
             int fila = dataGridView1.SelectedRows[0].Index;
@@ -1674,7 +1690,7 @@ namespace Capa_Vista_Navegador
                             // Si el componente es un ComboBox, utiliza lógica específica para recuperar el valor correcto.
                             if (modoCampoCombo[numCombo] == 1)
                             {
-                                componente.Text = logic.llaveCampoRev(tablaCombo[numCombo], campoCombo[numCombo], dataGridView1.CurrentRow.Cells[i].Value.ToString());
+                                componente.Text = logic.LlaveCampoRev(tablaCombo[numCombo], campoCombo[numCombo], dataGridView1.CurrentRow.Cells[i].Value.ToString());
                             }
                             else
                             {
@@ -1725,7 +1741,7 @@ namespace Capa_Vista_Navegador
 
             int i = 0;
             // Obtiene los nombres de las columnas de la tabla en la base de datos.
-            string[] Campos = logic.campos(tabla);
+            string[] Campos = logic.Campos(tabla);
 
             // Obtiene el índice de la fila actualmente seleccionada en el DataGridView.
             int fila = dataGridView1.SelectedRows[0].Index;
@@ -1747,7 +1763,7 @@ namespace Capa_Vista_Navegador
                             // Para los ComboBox, se verifica si el campo es clave externa (modoCampoCombo) y se obtiene el valor adecuado.
                             if (modoCampoCombo[numCombo] == 1)
                             {
-                                componente.Text = logic.llaveCampoRev(tablaCombo[numCombo], campoCombo[numCombo], dataGridView1.CurrentRow.Cells[i].Value.ToString());
+                                componente.Text = logic.LlaveCampoRev(tablaCombo[numCombo], campoCombo[numCombo], dataGridView1.CurrentRow.Cells[i].Value.ToString());
                             }
                             else
                             {
@@ -1790,7 +1806,7 @@ namespace Capa_Vista_Navegador
 
             int i = 0;
             // Obtiene los nombres de las columnas de la tabla en la base de datos.
-            string[] Campos = logic.campos(tabla);
+            string[] Campos = logic.Campos(tabla);
 
             int fila = dataGridView1.SelectedRows[0].Index;
             if (fila < dataGridView1.Rows.Count - 1)
@@ -1811,7 +1827,7 @@ namespace Capa_Vista_Navegador
                             // Para los ComboBox, se verifica si el campo es clave externa (modoCampoCombo) y se obtiene el valor adecuado.
                             if (modoCampoCombo[numCombo] == 1)
                             {
-                                componente.Text = logic.llaveCampoRev(tablaCombo[numCombo], campoCombo[numCombo], dataGridView1.CurrentRow.Cells[i].Value.ToString());
+                                componente.Text = logic.LlaveCampoRev(tablaCombo[numCombo], campoCombo[numCombo], dataGridView1.CurrentRow.Cells[i].Value.ToString());
                             }
                             else
                             {
@@ -1851,23 +1867,40 @@ namespace Capa_Vista_Navegador
         // Este método maneja el evento de clic del botón de Ayuda para mostrar el archivo de ayuda HTML asociado.
         private void Btn_Ayuda_Click(object sender, EventArgs e)
         {
-            try
-            {
-                // Intenta abrir el archivo de ayuda HTML utilizando la ruta y el índice proporcionados.
-                Help.ShowHelp(this, AsRuta, AsIndice);
-            }
-            catch (Exception ex)
-            {
-                // En caso de error, muestra un mensaje al usuario y registra el error en la consola.
-                MessageBox.Show("Ocurrió un error al abrir la ayuda: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Console.WriteLine("Error al abrir la ayuda: " + ex.ToString());
-                // Opcional: podrías registrar el error en un archivo de log.
-            }
+                try
+                {
+                    // Obtener el directorio raíz del proyecto subiendo suficientes niveles
+                    string projectRootPath = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\..\..\..\.."));
 
-            botonesYPermisosSinMensaje(); // Actualiza los permisos de los botones en función del usuario.
+                    // Combinar la ruta base con la carpeta "Ayuda\AyudaHTML"
+                    string ayudaPath = Path.Combine(projectRootPath, "Ayuda", "Ayuda_Navegador", AsRuta);
+
+                    // Mostrar la ruta en un MessageBox antes de proceder
+                    //MessageBox.Show("Buscando archivo de ayuda en la ruta: " + ayudaPath, "Ruta de Ayuda", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // Verificar que el archivo de ayuda exista antes de intentar abrirlo
+                    if (File.Exists(ayudaPath))
+                    {
+                        // Mostrar la ayuda utilizando la ruta completa y el índice
+                        Help.ShowHelp(this, ayudaPath, AsIndice);
+                    }
+                    else
+                    {
+                        // Mostrar un mensaje de error si el archivo de ayuda no se encuentra
+                        MessageBox.Show("No se encontró el archivo de ayuda en la ruta especificada.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Mostrar un mensaje de error en caso de una excepción
+                    MessageBox.Show("Ocurrió un error al abrir la ayuda: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Console.WriteLine("Error al abrir la ayuda: " + ex.ToString());
+                }
+
+                botonesYPermisosSinMensaje();       
         }
-        //******************************************** CODIGO HECHO POR VICTOR CASTELLANOS*****************************
-
+        //******************************************** CODIGO HECHO POR VICTOR CASTELLANOS***************************** 
+             
 
         //******************************************** CODIGO HECHO POR ANIKA ESCOTO *****************************
 
@@ -2204,24 +2237,24 @@ namespace Capa_Vista_Navegador
                         }
 
                         // Ejecuta las consultas para actualizar datos en múltiples tablas.
-                        logic.insertarDatosEnMultiplesTablas(queries);
+                        logic.InsertarDatosEnMultiplesTablas(queries);
                         MessageBox.Show("El registro ha sido actualizado correctamente en todas las tablas.", "Actualización Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         sn.insertarBitacora(idUsuario, "Actualizó registros en múltiples tablas", tabla, idAplicacion);
                         break;
 
                     case 2: // Insertar
                         string queryPrimeraTabla = crearInsert(tabla);
-                        logic.nuevoQuery(queryPrimeraTabla); // Inserta el nuevo registro en la tabla principal.
+                        logic.NuevoQuery(queryPrimeraTabla); // Inserta el nuevo registro en la tabla principal.
                         sn.insertarBitacora(idUsuario, "Se insertó en " + tabla, tabla, idAplicacion);
 
-                        string ultimoIdPrimeraTabla = logic.lastID(tabla); // Obtiene el último ID insertado en la tabla principal.
+                        string ultimoIdPrimeraTabla = logic.UltimoID(tabla); // Obtiene el último ID insertado en la tabla principal.
 
                         // Itera sobre las tablas adicionales para insertar registros relacionados.
                         foreach (string tablaAdicional in listaTablasAdicionales)
                         {
                             if (!string.IsNullOrEmpty(tablaAdicional))
                             {
-                                List<(string nombreColumna, bool esAutoIncremental, bool esClaveForanea, bool esTinyInt)> columnasAdicionales = logic.obtenerColumnasYPropiedadesLogica(tablaAdicional);
+                                List<(string nombreColumna, bool esAutoIncremental, bool esClaveForanea, bool esTinyInt)> columnasAdicionales = logic.ObtenerColumnasYPropiedadesLogica(tablaAdicional);
 
                                 List<string> valoresTablaAdicional = new List<string>();
                                 int pos = 1;
@@ -2261,7 +2294,7 @@ namespace Capa_Vista_Navegador
                         }
 
                         // Ejecuta las consultas para insertar datos en múltiples tablas.
-                        logic.insertarDatosEnMultiplesTablas(queries);
+                        logic.InsertarDatosEnMultiplesTablas(queries);
                         MessageBox.Show("El registro ha sido guardado correctamente.", "Guardado Exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         break;
 
@@ -2444,30 +2477,34 @@ namespace Capa_Vista_Navegador
             // Se obtiene el ID del usuario.
             string idUsuario1 = logic.ObtenerIdUsuario(idUsuario);
 
-            // Se instancia el objeto para manejar las consultas.
             sentencia sen = new sentencia();
-            sentencia con = new sentencia();
+            //DLL DE CONSULTAS
+            
+            ConsultaSimple nueva = new ConsultaSimple(tabla);
+            nueva.Show();
+            /* 
+             * sentencia con = new sentencia();
+             * bool per1 = con.consultarPermisos(idUsuario1, idAplicacion, 1);
+              bool per2 = con.consultarPermisos(idUsuario1, idAplicacion, 2);
+              bool per3 = con.consultarPermisos(idUsuario1, idAplicacion, 3);
+              bool per4 = con.consultarPermisos(idUsuario1, idAplicacion, 4);
+              bool per5 = con.consultarPermisos(idUsuario1, idAplicacion, 5);
 
-            // Se consultan los permisos del usuario para cada operación.
-            bool per1 = con.consultarPermisos(idUsuario1, idAplicacion, 1);
-            bool per2 = con.consultarPermisos(idUsuario1, idAplicacion, 2);
-            bool per3 = con.consultarPermisos(idUsuario1, idAplicacion, 3);
-            bool per4 = con.consultarPermisos(idUsuario1, idAplicacion, 4);
-            bool per5 = con.consultarPermisos(idUsuario1, idAplicacion, 5);
+              if (per1 == true && per2 == true && per3 == true && per4 == true && per5 == true)
+              {
+                  ConsultaInteligente nuevo = new ConsultaInteligente(tabla);
+                  nuevo.Show();
+              }
+              else
+              {
+                  ConsultaSimple nueva = new ConsultaSimple(tabla);
+                  nueva.Show();
+              }
 
-            // Si el usuario tiene todos los permisos, se muestra la consulta inteligente; de lo contrario, se muestra la consulta simple.
-            if (per1 == true && per2 == true && per3 == true && per4 == true && per5 == true)
-            {
-                ConsultaInteligente nuevo = new ConsultaInteligente(tabla);
-                nuevo.Show(); // Muestra el formulario de consulta inteligente.
-            }
-            else
-            {
-                ConsultaSimple nueva = new ConsultaSimple(tabla);
-                nueva.Show(); // Muestra el formulario de consulta simple.
-            }
+              //habilitar y deshabilitar según Usuario*/
 
-            // Habilita o deshabilita botones según los permisos del usuario.
+            // Se instancia el objeto para manejar las consultas.
+           
             botonesYPermisosSinMensaje();
         }
 

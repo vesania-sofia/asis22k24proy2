@@ -31,7 +31,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CapaDatos">
+    <Reference Include="CapaDatos, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Seguridad\CapaDatos\bin\Debug\CapaDatos.dll</HintPath>
     </Reference>
     <Reference Include="Capa_Controlador_Navegador">
@@ -40,9 +41,6 @@
     <Reference Include="Capa_Controlador_Reporteria, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Reporteador\Capa_Controlador_Reporteria\bin\Debug\Capa_Controlador_Reporteria.dll</HintPath>
-    </Reference>
-    <Reference Include="Capa_Datos_Navegador">
-      <HintPath>..\Capa_Datos_Navegador\bin\Debug\Capa_Datos_Navegador.dll</HintPath>
     </Reference>
     <Reference Include="Capa_Vista_Consulta">
       <HintPath>..\..\Consultas\Capa_Vista_Consulta\bin\Debug\Capa_Vista_Consulta.dll</HintPath>
@@ -131,6 +129,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\..\Seguridad\CapaDiseno\bin\Debug\CapaDatos.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
