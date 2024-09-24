@@ -207,6 +207,11 @@ namespace Capa_Vista_Consulta
         {
             try
             {
+                if (string.IsNullOrWhiteSpace(txtQuery.Text))
+                {
+                    MessageBox.Show("Por favor, ingrese una consulta válida.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
                 string queryGenerado = csControlador.GenerarQuerySimple(datos);
                 txtQueryFinal.Text = queryGenerado;
             }
@@ -273,6 +278,11 @@ namespace Capa_Vista_Consulta
         {
             try
             {
+                if (string.IsNullOrWhiteSpace(txtNombreConsulta.Text))
+                {
+                    MessageBox.Show("Por favor, ingrese una consulta válida.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
                 consultaControlador controlador = new consultaControlador();
                 string querySeleccionado = txtNombreConsulta.Text;
                 controlador.BuscarQuerySeleccionado(querySeleccionado, dgvConsultar, txtQueryFinal);
@@ -501,6 +511,11 @@ namespace Capa_Vista_Consulta
         {
             try
             {
+                if (string.IsNullOrWhiteSpace(txtQueryEditado.Text))
+                {
+                    MessageBox.Show("Por favor, ingrese una consulta válida.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
                 string queryGenerado = csControlador.GenerarQuerySimple(datos);
                 txtQueryEditadoFinal.Text = queryGenerado;
             }
@@ -614,6 +629,11 @@ namespace Capa_Vista_Consulta
         {
             try
             {
+                if (string.IsNullOrWhiteSpace(cboEditarCampoOrdenar.Text))
+                {
+                    MessageBox.Show("Por favor, ingrese una consulta válida.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
                 datosComplejo = new string[] { cboEditarLogico.Text, cboEditarCampoLogico.Text, txtEditarValorLogico.Text, txtQueryEditadoFinal.Text };
                 csControlador.ingresar(tipos, datosComplejo, tabla);
                 string queryGenerado = csControlador.GenerarQueryComplejo(datosComplejo, datos);
@@ -629,6 +649,11 @@ namespace Capa_Vista_Consulta
         {
             try
             {
+                if (string.IsNullOrWhiteSpace(cboEditarCampoComparador.Text))
+                {
+                    MessageBox.Show("Por favor, ingrese una consulta válida.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
                 datosComplejo = new string[] { cboEditarComparador.Text, cboEditarCampoComparador.Text, txtEditarValorComparacion.Text, txtQueryEditadoFinal.Text };
                 csControlador.ingresar(tipos, datosComplejo, tabla);
                 string queryGenerado = csControlador.GenerarQueryComplejo(datosComplejo, datos);
@@ -667,6 +692,11 @@ namespace Capa_Vista_Consulta
         {
             try
             {
+                if (string.IsNullOrWhiteSpace(cboQuery1.Text))
+                {
+                    MessageBox.Show("Por favor, ingrese una consulta válida.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
                 consultaControlador controlador = new consultaControlador();
                 string querySeleccionado = cboQuery1.SelectedItem.ToString();
                 controlador.BuscarQuerySeleccionado(querySeleccionado, dgvConsultas, txtQuery11);
@@ -687,6 +717,11 @@ namespace Capa_Vista_Consulta
         {
             try
             {
+                if (string.IsNullOrWhiteSpace(cboQuery3.Text))
+                {
+                    MessageBox.Show("Por favor, ingrese una consulta válida.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
                 consultaControlador controlador = new consultaControlador();
                 string querySeleccionado = cboQuery3.SelectedItem.ToString();
                 controlador.BuscarQuerySeleccionado(querySeleccionado, dgvEliminarBuscarConsulta, txtQuery11);
@@ -723,6 +758,11 @@ namespace Capa_Vista_Consulta
             // Obtener el nombre de la consulta seleccionada en cboQuery3
             try
             {
+                if (string.IsNullOrWhiteSpace(cboQuery3.Text))
+                {
+                    MessageBox.Show("Por favor, ingrese una consulta válida.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
                 string consultaSeleccionada = cboQuery3.SelectedItem.ToString();
                 // Llamar al método de controlador para eliminar la consulta
                 if (!string.IsNullOrEmpty(consultaSeleccionada))
@@ -760,6 +800,11 @@ namespace Capa_Vista_Consulta
         {
             try
             {
+                if (string.IsNullOrWhiteSpace(cboEditarNombreConsulta.Text))
+                {
+                    MessageBox.Show("Por favor, ingrese una consulta válida.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
                 consultaControlador controlador = new consultaControlador();
                 string querySeleccionado = cboEditarNombreConsulta.SelectedItem.ToString();
                 controlador.BuscarQuerySeleccionado(querySeleccionado, dgvMostrar1, txtQueryEditadoFinal);
@@ -776,6 +821,11 @@ namespace Capa_Vista_Consulta
         }
 
         private void dgvMostrar1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void groupBox8_Enter(object sender, EventArgs e)
         {
 
         }
