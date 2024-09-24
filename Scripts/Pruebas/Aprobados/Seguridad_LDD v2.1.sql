@@ -1,6 +1,6 @@
-DROP DATABASE  IF EXISTS `Colchoneria`;
-CREATE DATABASE IF NOT EXISTS `Colchoneria`;
-USE `Colchoneria`;
+DROP DATABASE  IF EXISTS `Seguridad`;
+CREATE DATABASE IF NOT EXISTS `Seguridad`;
+USE `Seguridad`;
 
 DROP TABLE IF EXISTS `Tbl_modulos`;
 CREATE TABLE IF NOT EXISTS `Tbl_modulos` (
@@ -319,14 +319,10 @@ ALTER TABLE tbl_bitacora DROP COLUMN Fk_id_aplicacion;
 ALTER TABLE `Tbl_bitacora`
 ADD COLUMN `tabla` VARCHAR(50) NOT NULL;
 
--- Brandon Boch - 0901-21-13093
-ALTER TABLE Tbl_bitacora
-ADD COLUMN aplicacion VARCHAR(10) NOT NULL;
-
 -- -----USUARIOS
 -- Agrega el primer usuario
 INSERT INTO `Tbl_usuarios` VALUES
-('1', 'admin', 'admin', 'admin', 'HO0aGo4nM94=', 'esduardo@gmail.com', '2022-07-02 21:00:48', '1', 'Color favorito', 'ROJO');
+('1', 'admin', 'admin', 'admin', 'HO0aGo4nM94=', 'esduardo@gmail.com', '2022-07-02 21:00:48', '1', 'COLOR FAVORITO', 'ROJO');
 
 
 

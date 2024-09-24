@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{16540293-3A90-41A7-9596-24EFD235E4EA}</ProjectGuid>
+    <ProjectGuid>{C2D52024-49FC-4E16-83A1-A34A217511AB}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>OtraPrueba</RootNamespace>
-    <AssemblyName>OtraPrueba</AssemblyName>
+    <RootNamespace>EjecutarCambiosCentros</RootNamespace>
+    <AssemblyName>EjecutarCambiosCentros</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

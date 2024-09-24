@@ -10,76 +10,71 @@ namespace Capa_Datos_Navegador
 {
     public class sentencias
     {
-
         conexion cn = new conexion();
-       
+
         //******************************************** CODIGO HECHO POR BRAYAN HERNANDEZ ***************************** 
+        // Método que llena una tabla con datos relacionados a otra tabla si es necesario.
         public OdbcDataAdapter llenaTbl(string tabla, string tablaRelacionada, string campoDescriptivo, string columnaForanea, string columnaPrimariaRelacionada)
         {
-            
             OdbcConnection conn = cn.probarConexion();
 
             try
             {
-                string[] camposDesc = obtenerCampos(tabla); 
-                string camposSelect = tabla + "." + camposDesc[0]; 
+                // Obtener los campos de la tabla principal
+                string[] camposDesc = obtenerCampos(tabla);
+                string camposSelect = tabla + "." + camposDesc[0];
 
-               
+                // Diccionario para evitar duplicados de columnas
                 Dictionary<string, int> columnasRegistradas = new Dictionary<string, int>();
-
-                
                 columnasRegistradas[camposDesc[0]] = 1;
 
-                
+                // Obtener las propiedades de las columnas de la tabla principal
                 var columnasPropiedades = obtenerColumnasYPropiedades(tabla);
 
-                
                 foreach (var (nombreColumna, esAutoIncremental, esClaveForanea, esTinyInt) in columnasPropiedades)
                 {
-                   
+                    // Evitar agregar la columna principal dos veces
                     if (nombreColumna == camposDesc[0])
                         continue;
 
+                    // Si es una clave foránea, hacer join con la tabla relacionada
                     if (esClaveForanea && tablaRelacionada != null && campoDescriptivo != null && columnaForanea != null && columnaPrimariaRelacionada != null)
                     {
-                       
                         camposSelect += ", " + tablaRelacionada + "." + campoDescriptivo + " AS " + campoDescriptivo;
                         columnasRegistradas[campoDescriptivo] = 1;
                     }
                     else
                     {
-                        
                         camposSelect += ", " + tabla + "." + nombreColumna;
                         columnasRegistradas[nombreColumna] = 1;
                     }
                 }
 
-                
+                // Crear el comando SQL para seleccionar los campos
                 string sql = "SELECT " + camposSelect + " FROM " + tabla;
 
-               
+                // Agregar el LEFT JOIN si hay una tabla relacionada
                 if (!string.IsNullOrEmpty(tablaRelacionada) && !string.IsNullOrEmpty(columnaForanea) && !string.IsNullOrEmpty(columnaPrimariaRelacionada))
                 {
                     sql += " LEFT JOIN " + tablaRelacionada + " ON " + tabla + "." + columnaForanea + " = " + tablaRelacionada + "." + columnaPrimariaRelacionada;
                 }
 
-               
+                // Filtrar por estado (activo o inactivo)
                 sql += " WHERE " + tabla + ".estado = 0 OR " + tabla + ".estado = 1";
 
-                
+                // Ordenar por la columna principal en orden descendente
                 sql += " ORDER BY " + camposDesc[0] + " DESC;";
 
-                
                 Console.WriteLine(sql);
 
-                
+                // Crear un adaptador de datos para ejecutar la consulta
                 OdbcDataAdapter dataTable = new OdbcDataAdapter(sql, conn);
 
                 return dataTable;
             }
             finally
             {
-               
+                // Cerrar la conexión después de ejecutar la consulta
                 if (conn != null && conn.State == ConnectionState.Open)
                 {
                     conn.Close();
@@ -91,12 +86,11 @@ namespace Capa_Datos_Navegador
 
 
         //******************************************** CODIGO HECHO POR EMANUEL BARAHONA ***************************** 
-
-
+        // Método que obtiene el último ID de una tabla
         public string obtenerId(string tabla)
         {
-            string[] camposDesc = obtenerCampos(tabla); 
-            string sql = "SELECT MAX(" + camposDesc[0] + ") FROM " + tabla + ";";             
+            string[] camposDesc = obtenerCampos(tabla);
+            string sql = "SELECT MAX(" + camposDesc[0] + ") FROM " + tabla + ";";
             string sid = "";
             OdbcCommand command = new OdbcCommand(sql, cn.probarConexion());
             OdbcDataReader reader = command.ExecuteReader();
@@ -120,7 +114,8 @@ namespace Capa_Datos_Navegador
             }
             return sid;
         }
-       
+
+        // Método para obtener datos adicionales de una tabla (no se especifica para qué se usan)
         public string[] obtenerExtra(string tabla)
         {
             string[] Campos = new string[30];
@@ -140,9 +135,9 @@ namespace Capa_Datos_Navegador
 
 
         //******************************************** CODIGO HECHO POR ANIKA ESCOTO ***************************** 
+        // Método para obtener el ID de usuario basado en su nombre de usuario
         public string ObtenerIdUsuarioPorUsername(string username)
         {
-            
             string sql = "SELECT Pk_id_usuario FROM tbl_usuarios WHERE username_usuario = ?";
 
             using (OdbcCommand command = new OdbcCommand(sql, cn.probarConexion()))
@@ -163,6 +158,7 @@ namespace Capa_Datos_Navegador
             }
         }
 
+        // Método que cuenta los campos en una tabla
         public int contarAlias(string tabla)
         {
             int Campos = 0;
@@ -175,15 +171,19 @@ namespace Capa_Datos_Navegador
                 while (reader.Read())
                 {
                     Campos++;
-
                 }
             }
-            catch (Exception ex) { Console.WriteLine(ex.Message.ToString() + " \nError en obtenerTipo, revise los parámetros de la tabla  \n -" + tabla.ToUpper() + "\n -"); }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message.ToString() + " \nError en obtenerTipo, revise los parámetros de la tabla  \n -" + tabla.ToUpper() + "\n -");
+            }
             return Campos;
         }
         //******************************************** CODIGO HECHO POR ANIKA ESCOTO ***************************** 
 
+
         //******************************************** CODIGO HECHO POR JOEL LOPEZ ***************************** 
+        // Método para contar registros en la tabla de ayuda
         public int contarReg(string idindice)
         {
             int Campos = 0;
@@ -195,12 +195,15 @@ namespace Capa_Datos_Navegador
                 while (reader.Read())
                 {
                     Campos++;
-
                 }
             }
-            catch (Exception ex) { Console.WriteLine(ex.Message.ToString() + " \nError en obtenerTipo, revise los parámetros de la tabla  \n -" + idindice.ToUpper() + "\n -"); }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message.ToString() + " \nError en obtenerTipo, revise los parámetros de la tabla  \n -" + idindice.ToUpper() + "\n -");
+            }
             return Campos;
         }
+
 
         public string modRuta(string idAyuda)
         {
@@ -220,11 +223,14 @@ namespace Capa_Datos_Navegador
             }
 
             return ruta;
-        }
 
+        // Método para obtener la ruta de un recurso basado en su
+        }
         //******************************************** CODIGO HECHO POR JOEL LOPEZ ***************************** 
 
+
         //******************************************** CODIGO HECHO POR JORGE AVILA ***************************** 
+        // Método que obtiene la ruta del reporte basada en el ID de la aplicación
         public string rutaReporte(string idindice)
         {
             string indice2 = "";
@@ -238,9 +244,11 @@ namespace Capa_Datos_Navegador
 
             reader.Close();
             return indice2;
-
         }
-        public string modIndice(string idAyuda)
+        
+        // Método para obtener un índice modificado basado en el ID de ayuda
+        public string modIndice(string idindice)
+
         {
             string indice = "";
             string query = "SELECT indice FROM ayuda WHERE id_ayuda = ?"; // Parámetro seguro
@@ -261,7 +269,9 @@ namespace Capa_Datos_Navegador
         }
         //******************************************** CODIGO HECHO POR JORGE AVILA ***************************** 
 
+
         //******************************************** CODIGO HECHO POR DIEGO MARROQUIN ***************************** 
+        // Método para probar si una tabla existe en la base de datos
         public string ProbarTabla(string tabla)
         {
             string error = "";
@@ -278,6 +288,7 @@ namespace Capa_Datos_Navegador
             return error;
         }
 
+        // Método para probar si una tabla tiene un campo de estado
         public string ProbarEstado(string tabla)
         {
             string error = "";
@@ -289,15 +300,12 @@ namespace Capa_Datos_Navegador
             }
             catch (Exception)
             {
-
                 error = "La tabla " + tabla.ToUpper() + " no contiene el campo de ESTADO";
             }
-
             return error;
         }
 
-       
-
+        // Método que cuenta los registros activos en una tabla
         public int ProbarRegistros(string tabla)
         {
             int registros = 0;
@@ -312,16 +320,15 @@ namespace Capa_Datos_Navegador
             }
             catch (Exception)
             {
-
             }
 
             return registros;
         }
-
         //******************************************** CODIGO HECHO POR DIEGO MARROQUIN ***************************** 
 
 
         //******************************************** CODIGO HECHO POR BRAYAN HERNANDEZ ***************************** 
+        // Método para obtener los nombres de los campos de una tabla
         public string[] obtenerCampos(string tabla)
         {
             string[] Campos = new string[30];
@@ -330,17 +337,17 @@ namespace Capa_Datos_Navegador
 
             try
             {
-                conn = cn.probarConexion(); 
+                conn = cn.probarConexion();
                 OdbcCommand command = new OdbcCommand("DESCRIBE " + tabla + "", conn);
                 OdbcDataReader reader = command.ExecuteReader();
 
                 while (reader.Read())
                 {
-                    Campos[i] = reader.GetValue(0).ToString();  
+                    Campos[i] = reader.GetValue(0).ToString();
                     i++;
                 }
 
-                reader.Close(); 
+                reader.Close();
             }
             catch (Exception ex)
             {
@@ -348,7 +355,6 @@ namespace Capa_Datos_Navegador
             }
             finally
             {
-               
                 if (conn != null && conn.State == System.Data.ConnectionState.Open)
                 {
                     conn.Close();
@@ -356,12 +362,13 @@ namespace Capa_Datos_Navegador
                 }
             }
 
-            return Campos;  
-        }
+            return Campos;
+        }
         //******************************************** CODIGO HECHO POR BRAYAN HERNANDEZ ***************************** 
 
 
         //******************************************** CODIGO HECHO POR SEBASTIAN LETONA ***************************** 
+        // Método para obtener las propiedades de las columnas de una tabla
         public List<(string nombreColumna, bool esAutoIncremental, bool esClaveForanea, bool esTinyInt)> obtenerColumnasYPropiedades(string nombreTabla)
         {
             List<(string, bool, bool, bool)> columnas = new List<(string, bool, bool, bool)>();
@@ -391,13 +398,13 @@ namespace Capa_Datos_Navegador
 
                 while (lector.Read())
                 {
-                    string nombreColumna = lector.GetString(0);  
-                    string tipoColumna = lector.GetString(1);    
-                    string columnaExtra = lector.GetString(5); 
+                    string nombreColumna = lector.GetString(0);
+                    string tipoColumna = lector.GetString(1);
+                    string columnaExtra = lector.GetString(5);
 
-                    bool esAutoIncremental = columnaExtra.Contains("auto_increment");  
-                    bool esClaveForanea = clavesForaneas.Contains(nombreColumna); 
-                    bool esTinyInt = tipoColumna.StartsWith("tinyint");  
+                    bool esAutoIncremental = columnaExtra.Contains("auto_increment");
+                    bool esClaveForanea = clavesForaneas.Contains(nombreColumna);
+                    bool esTinyInt = tipoColumna.StartsWith("tinyint");
 
                     columnas.Add((nombreColumna, esAutoIncremental, esClaveForanea, esTinyInt));
                 }
@@ -411,11 +418,11 @@ namespace Capa_Datos_Navegador
 
             return columnas;
         }
-
         //******************************************** CODIGO HECHO POR SEBASTIAN LETONA ***************************** 
 
-        //******************************************** CODIGO HECHO POR PABLO FLORES ***************************** 
 
+        //******************************************** CODIGO HECHO POR PABLO FLORES ***************************** 
+        // Método para ejecutar una serie de consultas SQL dentro de una transacción
         public void ejecutarQueryConTransaccion(List<string> queries)
         {
             OdbcConnection connection = cn.probarConexion();
@@ -447,9 +454,7 @@ namespace Capa_Datos_Navegador
             }
         }
 
-        
-
-
+        // Método para obtener los tipos de datos de los campos en una tabla
         public string[] ObtenerTipo(string tabla)
         {
             string[] Campos = new string[30];
@@ -458,7 +463,7 @@ namespace Capa_Datos_Navegador
 
             try
             {
-                conn = cn.probarConexion(); 
+                conn = cn.probarConexion();
                 OdbcCommand command = new OdbcCommand("DESCRIBE " + tabla + "", conn);
                 OdbcDataReader reader = command.ExecuteReader();
 
@@ -468,7 +473,7 @@ namespace Capa_Datos_Navegador
                     i++;
                 }
 
-                reader.Close(); 
+                reader.Close();
             }
             catch (Exception ex)
             {
@@ -483,13 +488,13 @@ namespace Capa_Datos_Navegador
                 }
             }
 
-            return Campos; 
-        }
-
+            return Campos;
+        }
         //******************************************** CODIGO HECHO POR PABLO FLORES ***************************** 
 
 
         //******************************************** CODIGO HECHO POR JOSUE CACAO ***************************** 
+        // Método para obtener las llaves de los campos en una tabla
         public string[] obtenerLLave(string tabla)
         {
             string[] Campos = new string[30];
@@ -506,10 +511,15 @@ namespace Capa_Datos_Navegador
 
                 }
             }
-            catch (Exception ex) { Console.WriteLine(ex.Message.ToString() + " \nError en obtenerTipo, revise los parametros de la tabla  \n -" + tabla + "\n -"); }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message.ToString() + " \nError en obtenerTipo, revise los parametros de la tabla  \n -" + tabla + "\n -");
+            }
 
             return Campos;
         }
+
+        // Método para obtener los ítems de un ComboBox desde la base de datos
         public Dictionary<string, string> obtenerItems(string tabla, string campoClave, string campoDisplay)
         {
             Dictionary<string, string> items = new Dictionary<string, string>();
@@ -520,7 +530,7 @@ namespace Capa_Datos_Navegador
 
                 while (reader.Read())
                 {
-                    items.Add(reader.GetValue(0).ToString(), reader.GetValue(1).ToString()); 
+                    items.Add(reader.GetValue(0).ToString(), reader.GetValue(1).ToString());
                 }
             }
             catch (Exception ex)
@@ -529,20 +539,22 @@ namespace Capa_Datos_Navegador
             }
             return items;
         }
-
         //******************************************** CODIGO HECHO POR JOSUE CACAO ***************************** 
 
 
-
+        //******************************************** CODIGO HECHO POR MATY MANCILLA ***************************** 
+        // Método que limpia el tipo de dato de una cadena, eliminando la dimensión del campo
         string limpiarTipo(string cadena)
         {
             bool dim = false;
             string nuevaCadena = "";
 
-
             for (int j = 0; j < cadena.Length; j++)
             {
-                if (cadena[j] == '(') { dim = true; }
+                if (cadena[j] == '(')
+                {
+                    dim = true;
+                }
             }
 
             if (dim == true)
@@ -565,7 +577,8 @@ namespace Capa_Datos_Navegador
 
             return nuevaCadena;
         }
-        //******************************************** CODIGO HECHO POR MATY MANCILLA ***************************** 
+
+        // Método para obtener la llave de un campo en la tabla
         public string llaveCampo(string tabla, string campo, string valor)
         {
             string llave = "";
@@ -582,6 +595,8 @@ namespace Capa_Datos_Navegador
             }
             return llave;
         }
+
+        // Método para obtener la llave de un campo en reverso (no está claro para qué se usa)
         public string llaveCampoReverso(string tabla, string campo, string valor)
         {
             string llave = "";
@@ -605,11 +620,11 @@ namespace Capa_Datos_Navegador
             }
             return llave;
         }
-
         //******************************************** CODIGO HECHO POR MATY MANCILLA ***************************** 
 
 
         //******************************************** CODIGO HECHO POR BRAYAN HERNANDEZ ***************************** 
+        // Método para obtener el ID del módulo basado en el ID de la aplicación
         public string IdModulo(string aplicacion)
         {
             string llave = "";
@@ -626,6 +641,8 @@ namespace Capa_Datos_Navegador
             }
             return llave;
         }
+
+        // Método para ejecutar una consulta SQL
         public void ejecutarQuery(string query)
         {
             try
@@ -633,13 +650,16 @@ namespace Capa_Datos_Navegador
                 OdbcCommand consulta = new OdbcCommand(query, cn.probarConexion());
                 consulta.ExecuteNonQuery();
             }
-            catch (OdbcException ex) { Console.WriteLine(ex.ToString()); }
-
+            catch (OdbcException ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
         }
         //******************************************** CODIGO HECHO POR BRAYAN HERNANDEZ ***************************** 
 
 
         //******************************************** CODIGO HECHO POR VICTOR CASTELLANOS ***************************** 
+        // Método para obtener la clave primaria de una tabla
         public string obtenerClavePrimaria(string nombreTabla)
         {
             string clavePrimaria = "";
@@ -671,6 +691,7 @@ namespace Capa_Datos_Navegador
             return clavePrimaria;
         }
 
+        // Método para obtener la clave foránea que referencia a otra tabla
         public string ObtenerClaveForanea(string tablaOrigen, string tablaReferencia)
         {
             string claveForanea = null;
@@ -689,7 +710,7 @@ namespace Capa_Datos_Navegador
 
                 if (reader.Read())
                 {
-                    claveForanea = reader.GetString(0); 
+                    claveForanea = reader.GetString(0);
                     Console.WriteLine($"Clave foránea de {tablaOrigen} que referencia a {tablaReferencia}: {claveForanea}");
                 }
                 else
@@ -706,6 +727,5 @@ namespace Capa_Datos_Navegador
             return claveForanea;
         }
         //******************************************** CODIGO HECHO POR VICTOR CASTELLANOS ***************************** 
-
     }
 }

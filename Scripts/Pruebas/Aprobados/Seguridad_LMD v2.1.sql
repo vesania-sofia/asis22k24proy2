@@ -92,9 +92,7 @@ INSERT INTO `Tbl_asignacion_modulo_aplicacion` VALUES
 ('8000', '8000');
 
 -- -----PERMISOS DE APLICACIONES A PERFILES
-INSERT INTO `Tbl_permisos_aplicacion_perfil` 
-(`Fk_id_perfil`, `Fk_id_aplicacion`, `guardar_permiso`, `modificar_permiso`, `eliminar_permiso`, `buscar_permiso`, `imprimir_permiso`)
-VALUES
+INSERT INTO `Tbl_permisos_aplicacion_perfil` VALUES
 ('1', '1000', '1', '1', '1', '1', '1'),
 ('1', '1001', '1', '1', '1', '1', '1'),
 ('1', '1002', '1', '1', '1', '1', '1'),
@@ -169,9 +167,7 @@ INSERT INTO `Tbl_perfiles` VALUES
 -- Asignar permisos de aplicaciones a los nuevos perfiles
 
 -- Auditor
-INSERT INTO `Tbl_permisos_aplicacion_perfil` 
-(`Fk_id_perfil`, `Fk_id_aplicacion`, `guardar_permiso`, `modificar_permiso`, `eliminar_permiso`, `buscar_permiso`, `imprimir_permiso`)
-VALUES
+INSERT INTO `Tbl_permisos_aplicacion_perfil` VALUES
 ('9', '1000', '1', '1', '1', '1', '1'),
 ('9', '1001', '1', '1', '1', '1', '1'),
 ('9', '1002', '1', '1', '1', '1', '1'),
@@ -207,9 +203,7 @@ VALUES
 ('9', '8000', '1', '1', '1', '1', '1');
 
 -- Soporte Técnico
-INSERT INTO `Tbl_permisos_aplicacion_perfil`
-(`Fk_id_perfil`, `Fk_id_aplicacion`, `guardar_permiso`, `modificar_permiso`, `eliminar_permiso`, `buscar_permiso`, `imprimir_permiso`)
-VALUES 
+INSERT INTO `Tbl_permisos_aplicacion_perfil` VALUES
 ('10', '1000', '1', '1', '1', '1', '1'),
 ('10', '1001', '1', '1', '1', '1', '1'),
 ('10', '1002', '1', '1', '1', '1', '1'),
@@ -245,9 +239,7 @@ VALUES
 ('10', '8000', '1', '1', '1', '1', '1');
 
 -- Administrador
-INSERT INTO `Tbl_permisos_aplicacion_perfil` 
-(`Fk_id_perfil`, `Fk_id_aplicacion`, `guardar_permiso`, `modificar_permiso`, `eliminar_permiso`, `buscar_permiso`, `imprimir_permiso`)
-VALUES
+INSERT INTO `Tbl_permisos_aplicacion_perfil` VALUES
 ('11', '1000', '1', '1', '1', '1', '1'),
 ('11', '1001', '1', '1', '1', '1', '1'),
 ('11', '1002', '1', '1', '1', '1', '1'),
@@ -283,9 +275,7 @@ VALUES
 ('11', '8000', '1', '1', '1', '1', '1');
 
 -- Gestor de Proyectos
-INSERT INTO `Tbl_permisos_aplicacion_perfil` 
-(`Fk_id_perfil`, `Fk_id_aplicacion`, `guardar_permiso`, `modificar_permiso`, `eliminar_permiso`, `buscar_permiso`, `imprimir_permiso`)
-VALUES
+INSERT INTO `Tbl_permisos_aplicacion_perfil` VALUES
 ('12', '1000', '1', '1', '1', '1', '1'),
 ('12', '1001', '1', '1', '1', '1', '1'),
 ('12', '1002', '1', '1', '1', '1', '1'),
@@ -321,9 +311,7 @@ VALUES
 ('12', '8000', '1', '1', '1', '1', '1');
 
 -- Gestor de Datos
-INSERT INTO `Tbl_permisos_aplicacion_perfil`
-(`Fk_id_perfil`, `Fk_id_aplicacion`, `guardar_permiso`, `modificar_permiso`, `eliminar_permiso`, `buscar_permiso`, `imprimir_permiso`)
-VALUES
+INSERT INTO `Tbl_permisos_aplicacion_perfil` VALUES
 ('13', '1000', '1', '1', '1', '1', '1'),
 ('13', '1001', '1', '1', '1', '1', '1'),
 ('13', '1002', '1', '1', '1', '1', '1'),

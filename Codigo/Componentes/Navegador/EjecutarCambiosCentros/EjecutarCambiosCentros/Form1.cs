@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace OtraPrueba
+namespace EjecutarCambiosCentros
 {
     public partial class Form1 : Form
     {
@@ -26,9 +26,8 @@ namespace OtraPrueba
             navegador1.asignarTablas(tablas);
             navegador1.ObtenerIdAplicacion("1000");
             navegador1.ObtenerIdUsuario("admin");
-            navegador1.asignarAyuda("1");
+            navegador1.asignarAyuda("2");
             navegador1.asignarNombreForm("VENTAS");
         }
     }
 }
-
