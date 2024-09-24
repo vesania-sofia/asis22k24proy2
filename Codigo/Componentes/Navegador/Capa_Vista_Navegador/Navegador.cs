@@ -7,12 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
 using Capa_Controlador_Navegador;
 using Capa_Datos_Navegador;
 using Capa_Controlador_Reporteria;
 using Capa_Vista_Reporteria;
 using Capa_Vista_Consulta;
 using CapaDatos;
+using System.IO;
 
 namespace Capa_Vista_Navegador
 {
@@ -69,8 +71,13 @@ namespace Capa_Vista_Navegador
         public Navegador()
         {
             InitializeComponent();
+            this.Dock = DockStyle.Fill;
             limpiarListaItems(); // Limpia la lista de items
-            this.AutoScaleMode = AutoScaleMode.Dpi; // Escala automática
+
+            this.Load += new System.EventHandler(this.Navegador_Load);
+            this.Load += Navegador_Load; // Asociar el evento Load
+            this.Resize += Navegador_Resize; // Asociar el evento Resize
+
             userActivo = idUsuario;
             aplActivo = idAplicacion;
             // Configuración del ToolTip
@@ -96,11 +103,17 @@ namespace Capa_Vista_Navegador
             ayuda_tp.SetToolTip(Btn_Imprimir, "Mostrar un Reporte");
             ayuda_tp.SetToolTip(button1, "Asignar Documento de Ayuda");
             ayuda_tp.SetToolTip(btn_Reportes_Principal, "Mostrar un Reporte");
+
+            
         }
 
         // Método para manejar la carga del navegador
         private void Navegador_Load(object sender, EventArgs e)
         {
+            //Funciones para centrar
+            CentrarComponentes();
+            CentrarLabel();
+
             colorDialog1.Color = nuevoColor; // Asigna el color de fondo seleccionado
             this.BackColor = colorDialog1.Color; // Aplica el color de fondo al formulario
             botonesYPermisos(); // Asigna los permisos a los botones según el usuario
@@ -504,22 +517,44 @@ namespace Capa_Vista_Navegador
             int fin = Campos.Length;
             while (i < fin)
             {
-                // Ajusta la posición y el desplazamiento de los componentes según el número de campos
-                if (noCampos == 6 || noCampos == 11 || noCampos == 16 || noCampos == 21) { pos = 8; }
-                if (noCampos >= 6 && noCampos < 10) { x = 300; }
-                if (noCampos >= 11 && noCampos < 15) { x = 600; }
-                if (noCampos >= 16 && noCampos < 20) { x = 900; }
-                if (noCampos >= 21 && noCampos < 25) { x = 900; }
+                // Obtener el ancho del formulario
+                int totalWidth = this.ClientSize.Width;
+                int baseX = (totalWidth - 100) / 2; // Centrar ajustando 100 según sea necesario
+                int pos = 0;
 
-                // Crea un Label para cada campo
-                Label lb = new Label();
-                lb.Text = aliasC[i];
-                Point p = new Point(x + pos, y * pos);
-                lb.Location = p;
-                lb.Name = "lb_" + Campos[i];
-                lb.Font = fuente;
-                lb.ForeColor = Cfuente;
-                this.Controls.Add(lb);
+                // Ajuste de desplazamiento en función de noCampos
+                if (noCampos == 6 || noCampos == 11 || noCampos == 16 || noCampos == 21) { pos = 8; }
+
+                // Ajustar la posición X según el número de campos
+                if (noCampos >= 6 && noCampos < 10) { x = baseX; }
+                if (noCampos >= 11 && noCampos < 15) { x = baseX + 300; }
+                if (noCampos >= 16 && noCampos < 20) { x = baseX + 600; }
+                if (noCampos >= 21 && noCampos < 25) { x = baseX + 900; }
+
+                int offsetY = 250; // Cambia este valor para ajustar la posición vertical de todas las etiquetas
+
+                for (int a = 0; a < noCampos; a++)
+                {
+                    // Verificar si se está ejecutando el bucle
+                    Console.WriteLine($"Añadiendo Label {a + 1} de {noCampos}");
+
+                    // Crear la etiqueta (Label)
+                    Label lb = new Label();
+                    lb.Text = aliasC[a]; // Asignar el texto a la etiqueta
+                    lb.Name = "lb_" + Campos[a]; // Asignar el nombre de la etiqueta
+                    lb.Font = fuente; // Asignar la fuente
+                    lb.ForeColor = Cfuente; // Asignar el color
+
+                    // Ajuste de posición para depurar: Usar posiciones simples y visibles
+                    lb.Location = new Point(60, offsetY + (a * 30)); // Ajustar el margen superior aquí
+
+                    // Imprimir la posición de la etiqueta
+                    Console.WriteLine($"Posición Label {a + 1}: X = {lb.Location.X}, Y = {lb.Location.Y}");
+
+                    // Añadir la etiqueta al formulario
+                    this.Controls.Add(lb);
+                }
+
 
                 // Verifica si el campo es una clave primaria y no es el primer campo
                 if (LLaves[i] == "PRI" && i != 0)
@@ -645,74 +680,81 @@ namespace Capa_Vista_Navegador
         //******************************************** CODIGO HECHO POR PABLO FLORES*****************************
 
         // Función que crea un botón con un estado inicial de "Activado" y lo añade al formulario
-        void crearBotonEstado(String nom)
+        void crearBotonEstado(string nom)
         {
-            Button btn = new Button(); // Crea un nuevo botón
+            Button btn = new Button(); 
             Point p = new Point(x + 125 + pos, y * pos); // Define la ubicación del botón
             btn.Location = p;
             btn.Text = "Activado"; // Establece el texto inicial del botón
             btn.BackColor = Color.Green; // Establece el color de fondo inicial
-            btn.Click += new EventHandler(func_click); // Asigna la función de clic al botón
-            btn.Name = nom; // Establece el nombre del botón
-            btn.Enabled = false; // Deshabilita el botón inicialmente
-            this.Controls.Add(btn); // Añade el botón al formulario
+            btn.Click += new EventHandler(func_click); 
+            btn.Name = nom; 
+            btn.Enabled = false; 
+            btn.Size = new Size(150, 30); // Establece el tamaño del TextBox (ancho, alto)
+            this.Controls.Add(btn); 
             pos++; // Incrementa la posición para el próximo control
         }
 
         // Función que crea un TextBox para números y lo añade al formulario
-        void crearTextBoxnumerico(String nom)
+        void crearTextBoxnumerico(string nom)
         {
-            TextBox tb = new TextBox(); // Crea un nuevo TextBox
+            TextBox tb = new TextBox(); 
             Point p = new Point(x + 125 + pos, y * pos); // Define la ubicación del TextBox
             tb.Location = p;
-            tb.Name = nom; // Establece el nombre del TextBox
-            this.Controls.Add(tb); // Añade el TextBox al formulario
-            tb.KeyPress += Paravalidarnumeros_KeyPress; // Asigna la función de validación de números al evento KeyPress
-            this.KeyPress += Paravalidarnumeros_KeyPress; // Asegura que el evento KeyPress valide solo números
+            tb.Name = nom; 
+            tb.Size = new Size(260, 30); // Establece el tamaño del TextBox 
+            this.Controls.Add(tb); 
+            tb.KeyPress += Paravalidarnumeros_KeyPress; 
+            this.KeyPress += Paravalidarnumeros_KeyPress; 
             pos++; // Incrementa la posición para el próximo control
         }
+
         //******************************************** CODIGO HECHO POR PABLO FLORES*****************************
 
         //******************************************** CODIGO HECHO POR EMANUEL BARAHONA*****************************
 
         // Función que crea un TextBox para texto de tipo varchar y lo añade al formulario
-        void crearTextBoxvarchar(String nom)
+        void crearTextBoxvarchar(string nom)
         {
-            TextBox tb = new TextBox(); // Crea un nuevo TextBox
+            TextBox tb = new TextBox(); 
             Point p = new Point(x + 125 + pos, y * pos); // Define la ubicación del TextBox
             tb.Location = p;
-            tb.Name = nom; // Establece el nombre del TextBox
-            this.Controls.Add(tb); // Añade el TextBox al formulario
-            tb.KeyPress += Paravalidarvarchar_KeyPress; // Asigna la función de validación varchar al evento KeyPress
-            this.KeyPress += Paravalidarvarchar_KeyPress; // Asegura que el evento KeyPress valide solo varchar
+            tb.Name = nom; 
+            tb.Size = new Size(260, 30); // Establece el tamaño del TextBox (ancho, alto)
+            this.Controls.Add(tb); 
+            tb.KeyPress += Paravalidarvarchar_KeyPress; 
+            this.KeyPress += Paravalidarvarchar_KeyPress;
             pos++; // Incrementa la posición para el próximo control
         }
 
-        // Función que crea un TextBox para la hora y lo añade al formulario
-        void crearcampohora(String nom)
+        // Función que crea un TextBox para horas y lo añade al formulario
+        void crearcampohora(string nom)
         {
             TextBox tb = new TextBox(); // Crea un nuevo TextBox
             Point p = new Point(x + 125 + pos, y * pos); // Define la ubicación del TextBox
             tb.Location = p;
-            tb.Name = nom; // Establece el nombre del TextBox
-            this.Controls.Add(tb); // Añade el TextBox al formulario
-            tb.KeyPress += Paravalidarhora_KeyPress; // Asigna la función de validación de hora al evento KeyPress
-            this.KeyPress += Paravalidarhora_KeyPress; // Asegura que el evento KeyPress valide solo hora
+            tb.Name = nom; 
+            tb.Size = new Size(260, 30); // Establece el tamaño del TextBox (ancho, alto)
+            this.Controls.Add(tb); 
+            tb.KeyPress += Paravalidarhora_KeyPress; 
+            this.KeyPress += Paravalidarhora_KeyPress; 
             pos++; // Incrementa la posición para el próximo control
         }
 
         // Función que crea un TextBox para decimales y lo añade al formulario
-        void crearcampodecimales(String nom)
+        void crearcampodecimales(string nom)
         {
             TextBox tb = new TextBox(); // Crea un nuevo TextBox
             Point p = new Point(x + 125 + pos, y * pos); // Define la ubicación del TextBox
             tb.Location = p;
-            tb.Name = nom; // Establece el nombre del TextBox
-            this.Controls.Add(tb); // Añade el TextBox al formulario
-            tb.KeyPress += Paravalidardecimales_KeyPress; // Asigna la función de validación de decimales al evento KeyPress
-            this.KeyPress += Paravalidardecimales_KeyPress; // Asegura que el evento KeyPress valide solo decimales
+            tb.Name = nom; 
+            tb.Size = new Size(260, 30); // Establece el tamaño del TextBox (ancho, alto)
+            this.Controls.Add(tb); 
+            tb.KeyPress += Paravalidardecimales_KeyPress; 
+            this.KeyPress += Paravalidardecimales_KeyPress; 
             pos++; // Incrementa la posición para el próximo control
         }
+
         //******************************************** CODIGO HECHO POR EMANUEL BARAHONA*****************************
 
 
@@ -757,7 +799,7 @@ namespace Capa_Vista_Navegador
         }
 
         // Este método crea y configura un ComboBox dinámicamente basado en los parámetros y la lógica del sistema.
-        void crearComboBox(String nom)
+        void crearComboBox(string nom)
         {
             // Se obtienen los elementos para el ComboBox, que son una lista de pares clave-valor.
             Dictionary<string, string> items;
@@ -781,6 +823,7 @@ namespace Capa_Vista_Navegador
             Point p = new Point(x + 125 + pos, y * pos);
             cb.Location = p;
             cb.Name = nom;  // Se asigna el nombre al ComboBox.
+            cb.Size = new Size(260, 30); // Establece el tamaño del ComboBox (ancho, alto).
 
             // Se utiliza un BindingSource para enlazar los elementos al ComboBox.
             BindingSource bs = new BindingSource();
@@ -796,23 +839,25 @@ namespace Capa_Vista_Navegador
             pos++;
         }
 
+
         //******************************************** CODIGO HECHO POR VICTOR CASTELLANOS*****************************
 
 
 
         //******************************************** CODIGO HECHO POR BRAYAN HERNANDEZ***************************** 
-        void crearDateTimePicker(String nom)
+        void crearDateTimePicker(string nom)
         {
             DateTimePicker dtp = new DateTimePicker();
             Point p = new Point(x + 125 + pos, y * pos);
             dtp.Location = p;
             dtp.Format = DateTimePickerFormat.Custom;
             dtp.CustomFormat = "yyyy-MM-dd";
-            dtp.Width = 100;
+            dtp.Size = new Size(260, 30); // Establece el tamaño del DateTimePicker (ancho, alto).
             dtp.Name = nom;
             this.Controls.Add(dtp);
             pos++;
         }
+
 
         public void deshabilitarcampos_y_botones()
         {
@@ -1853,15 +1898,32 @@ namespace Capa_Vista_Navegador
         {
             try
             {
-                // Intenta abrir el archivo de ayuda HTML utilizando la ruta y el índice proporcionados.
-                Help.ShowHelp(this, AsRuta, AsIndice);
+                // Obtener el directorio raíz del proyecto subiendo suficientes niveles
+                string projectRootPath = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\..\..\..\.."));
+
+                // Combinar la ruta base con la carpeta "Ayuda\AyudaHTML"
+                string ayudaPath = Path.Combine(projectRootPath, @"Ayuda", "AyudaNavegador", AsRuta);
+
+                // Mostrar la ruta en un MessageBox antes de proceder
+                MessageBox.Show("Buscando archivo de ayuda en la ruta: " + ayudaPath, "Ruta de Ayuda", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Verificar que el archivo de ayuda exista antes de intentar abrirlo
+                if (File.Exists(ayudaPath))
+                {
+                    // Mostrar la ayuda utilizando la ruta completa y el índice
+                    Help.ShowHelp(this, ayudaPath, AsIndice);
+                }
+                else
+                {
+                    // Mostrar un mensaje de error si el archivo de ayuda no se encuentra
+                    MessageBox.Show("No se encontró el archivo de ayuda en la ruta especificada.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             catch (Exception ex)
             {
-                // En caso de error, muestra un mensaje al usuario y registra el error en la consola.
+                // Mostrar un mensaje de error en caso de una excepción
                 MessageBox.Show("Ocurrió un error al abrir la ayuda: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Console.WriteLine("Error al abrir la ayuda: " + ex.ToString());
-                // Opcional: podrías registrar el error en un archivo de log.
             }
 
             botonesYPermisosSinMensaje(); // Actualiza los permisos de los botones en función del usuario.
@@ -2305,36 +2367,89 @@ namespace Capa_Vista_Navegador
             foreach (Control componente in Controls)
             {
                 // Si el control es un TextBox, DateTimePicker o ComboBox, se actualiza su texto con el valor de la celda correspondiente.
-                if (componente is TextBox || componente is DateTimePicker || componente is ComboBox)
+                if (componente is TextBox tb)
                 {
-                    componente.Text = dataGridView1.CurrentRow.Cells[i].Value.ToString();
+                    tb.Text = dataGridView1.CurrentRow.Cells[i].Value.ToString();
+                    tb.TextAlign = HorizontalAlignment.Center; // Centra el texto en el TextBox
                     i++; // Incrementa el índice para pasar a la siguiente celda.
                 }
 
+                if (componente is DateTimePicker dtp)
+                {
+                    dtp.Value = DateTime.Parse(dataGridView1.CurrentRow.Cells[i].Value.ToString());
+                    i++;
+                }
+
+                if (componente is ComboBox cb)
+                {
+                    cb.SelectedValue = dataGridView1.CurrentRow.Cells[i].Value.ToString();
+                    i++;
+                }
+
                 // Si el control es un Button, se actualiza su texto y color de fondo según el valor de la celda (0 o 1).
-                if (componente is Button)
+                if (componente is Button btn)
                 {
                     string var1 = dataGridView1.CurrentRow.Cells[i].Value.ToString();
                     if (var1 == "0")
                     {
-                        componente.Text = "Desactivado";
-                        componente.BackColor = Color.Red;
+                        btn.Text = "Desactivado";
+                        btn.BackColor = Color.Red;
                     }
                     if (var1 == "1")
                     {
-                        componente.Text = "Activado";
-                        componente.BackColor = Color.Green;
+                        btn.Text = "Activado";
+                        btn.BackColor = Color.Green;
                     }
                 }
             }
         }
+
         //******************************************** CODIGO HECHO POR MATY MANCILLA *****************************
+
+        //******************************************** CODIGO HECHO POR JOSUE CACAO *******************************
+        private void CentrarComponentes()
+        {
+            Console.WriteLine("Corriendo función");
+
+            int totalWidth = this.ClientSize.Width;
+            // Centrar el DataGridView
+            if (dataGridView1.Visible)
+            {
+                int centrar = (totalWidth - dataGridView1.Width) / 2;
+                int nuevaPosicionY = dataGridView1.Location.Y - 120; 
+                int centrarX = (totalWidth - dataGridView1.Width) / 2;
+
+                // Centrar verticalmente en el formulario
+                int centrarY = (this.Height - dataGridView1.Height) / 2;
+
+                dataGridView1.Location = new Point(centrarX, centrarY);
+                dataGridView1.Location = new Point(centrar, nuevaPosicionY); // Cambia el valor de Y
+            }
+
+            // Centrar el TableLayoutPanel (navegador)
+            if (tableLayoutPanel2.Visible)
+            {
+                int centrar = (totalWidth - tableLayoutPanel2.Width) / 2;
+                tableLayoutPanel2.Location = new Point(centrar, tableLayoutPanel2.Location.Y); // Y original 
+            }
+        }
+
+        private void CentrarLabel()
+        {
+            // Calcular la posición para centrar la etiqueta
+            int posX = (this.ClientSize.Width - lblTabla.Width) / 2;
+            int posY = 175;
+            lblTabla.Location = new Point(posX, posY);
+        }
+
+        //******************************************** CODIGO HECHO POR JOSUE CACAO *******************************
 
         // Este método es un placeholder y no tiene ninguna implementación. Es posible que esté destinado a futuras funcionalidades.
         private void Contenido_Click(object sender, EventArgs e)
         {
             // Código a implementar
         }
+
         //******************************************** CODIGO HECHO POR EMANUEL BARAHONA *****************************
 
         // Este método maneja el evento de clic en el botón de ayuda.
@@ -2424,6 +2539,7 @@ namespace Capa_Vista_Navegador
             }
         }
 
+      
         // Este método maneja el evento de clic en el botón principal de reportes.
         // Abre el menú de reportería.
         private void btn_Reportes_Principal_Click(object sender, EventArgs e)
@@ -2496,6 +2612,11 @@ namespace Capa_Vista_Navegador
 
             // Muestra el formulario de ayudas.
             ayudas.Show();
+        }
+
+        private void Navegador_Resize(object sender, EventArgs e)
+        {
+            CentrarLabel();
         }
 
         //******************************************** CODIGO HECHO POR VICTOR CASTELLANOS *****************************

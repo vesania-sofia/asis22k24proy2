@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.Odbc;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,13 +29,25 @@ namespace Capa_Vista_Navegador
         //******************************************** CODIGO HECHO POR VICTOR CASTELLANOS ***************************** 
         private void Button1_Click(object sender, EventArgs e)
         {
+            // Obtener el directorio base de la aplicación
+            string basePath = AppDomain.CurrentDomain.BaseDirectory;
+            // Combinar el directorio base con la carpeta "Ayuda"
+            string ayudaPath = Path.Combine(basePath, "Ayuda");
+
             OpenFileDialog rutaFile = new OpenFileDialog();
-            rutaFile.InitialDirectory = "c:\\";
+            rutaFile.InitialDirectory = ayudaPath;  // Establecer la carpeta predeterminada como Ayuda
             rutaFile.Filter = "chm files (*.chm)|*.chm";  // Filtro para seleccionar archivos .chm
-            if (rutaFile.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            rutaFile.Title = "Seleccionar archivo de ayuda .chm";  // Título del cuadro de diálogo
+
+            if (rutaFile.ShowDialog() == DialogResult.OK)
             {
-                txtruta.Text = rutaFile.FileName;  // Asignar la ruta seleccionada al campo de texto
+                // Obtener solo el nombre del archivo (sin la ruta completa)
+                string fileName = Path.GetFileName(rutaFile.FileName);
+
+                // Asignar el nombre del archivo al campo de texto
+                txtruta.Text = fileName;
             }
+
         }
 
         private void Button2_Click(object sender, EventArgs e)
@@ -174,12 +187,22 @@ namespace Capa_Vista_Navegador
         // Método que permite seleccionar un archivo HTML desde un diálogo
         private void Button2_Click_1(object sender, EventArgs e)
         {
+            // Obtener el directorio base de la aplicación
+            string basePath = AppDomain.CurrentDomain.BaseDirectory;
+
+            // Combinar la ruta base con la carpeta "HTML"
+            string htmlDirectory = Path.Combine(basePath, @"..\..\..\HTML");
+
             OpenFileDialog rutaFile = new OpenFileDialog();
-            rutaFile.InitialDirectory = "c:\\";
-            rutaFile.Filter = "chm files (*.html)|*.html";
+            rutaFile.InitialDirectory = Path.GetFullPath(htmlDirectory);  // Establecer el directorio inicial como la carpeta "HTML"
+            rutaFile.Filter = "HTML files (*.html)|*.html";  // Filtro para solo mostrar archivos .html
             if (rutaFile.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                txtindice.Text = rutaFile.SafeFileName;  // Guardar solo el nombre del archivo sin la ruta completa
+                // Obtener solo el nombre del archivo (sin la ruta completa)
+                string fileName = Path.GetFileName(rutaFile.FileName);
+
+                // Asignar el nombre del archivo al campo de texto
+                txtindice.Text = fileName;
             }
         }
 
