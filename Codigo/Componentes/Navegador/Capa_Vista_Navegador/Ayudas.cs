@@ -118,7 +118,7 @@ namespace Capa_Vista_Navegador
             }
             else
             {
-                logic.nuevoQuery(crearInsert());
+                logic.NuevoQuery(crearInsert());
                 txtindice.Clear();
                 txtruta.Clear();
                 MessageBox.Show("Ayuda agregada Correctamente!");
@@ -149,7 +149,7 @@ namespace Capa_Vista_Navegador
             }
             else
             {
-                logic.nuevoQuery(crearUpdate());
+                logic.NuevoQuery(crearUpdate());
                 txtindice.Clear();
                 txtruta.Clear();
                 MessageBox.Show("Ayuda modificada correctamente");
@@ -166,7 +166,7 @@ namespace Capa_Vista_Navegador
             }
             else
             {
-                logic.nuevoQuery(crearDelete());
+                logic.NuevoQuery(crearDelete());
                 txtindice.Clear();
                 txtruta.Clear();
                 MessageBox.Show("Ayuda eliminada Correctamente");
