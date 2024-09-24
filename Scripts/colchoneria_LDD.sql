@@ -42,6 +42,22 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `cambiarContraModulo` (IN `p_usuario
     END IF;
 END$$
 
+-- Cambio de contraseña procedimiento ----------------------------------------------------------------------
+CREATE DEFINER=`root`@`localhost` PROCEDURE `cambioContrasenia` (IN `p_usuario` VARCHAR(20))   BEGIN
+    DECLARE usuario_existe INT;
+
+    SELECT COUNT(*) INTO usuario_existe
+    FROM tbl_usuarios
+    WHERE username_usuario = p_usuario;
+
+    -- Si el usuario existe, actualiza el tiempo de última conexión
+    IF usuario_existe > 0 THEN        
+        SELECT 'Usuario encontrado' AS resu;
+    ELSE
+        SELECT 'Usuario no encontrado' AS resu;
+    END IF;
+END$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `cambiarContrasenia` (IN `usuario` VARCHAR(255), IN `nuevaContrasenia` VARCHAR(255), IN `respuestaSeguridad` VARCHAR(255))   BEGIN
     DECLARE respuestaGuardada VARCHAR(255);
     DECLARE usuarioExiste INT;
@@ -73,21 +89,6 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `cambiarContrasenia` (IN `usuario` V
             -- Devolver resultado si la respuesta de seguridad es incorrecta
             SELECT 'Respuesta de seguridad incorrecta' AS resultado;
         END IF;
-    END IF;
-END$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `cambioContrasenia` (IN `p_usuario` VARCHAR(20))   BEGIN
-    DECLARE usuario_existe INT;
-
-    SELECT COUNT(*) INTO usuario_existe
-    FROM tbl_usuarios
-    WHERE username_usuario = p_usuario;
-
-    -- Si el usuario existe, actualiza el tiempo de última conexión
-    IF usuario_existe > 0 THEN        
-        SELECT 'Usuario encontrado' AS resu;
-    ELSE
-        SELECT 'Usuario no encontrado' AS resu;
     END IF;
 END$$
 
@@ -123,24 +124,10 @@ CREATE TABLE `ayuda` (
   `Ruta` varchar(255) DEFAULT NULL,
   `indice` varchar(255) DEFAULT NULL,
   `estado` tinyint(1) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_c
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `casas`
---
-
-CREATE TABLE `casas` (
-  `id_casa` int(11) NOT NULL,
-  `direccion` varchar(50) NOT NULL,
-  `telefono` int(11) NOT NULL,
-  `ciudad` varchar(50) NOT NULL,
-  `estado` tinyint(4) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-
 -- --------------------------------------------------------
+
 
 --
 -- Estructura de tabla para la tabla `detallefactura`
@@ -203,62 +190,6 @@ CREATE TABLE `pagos` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `perro`
---
-
-CREATE TABLE `perro` (
-  `id_perro` int(11) NOT NULL,
-  `nombre` varchar(50) NOT NULL,
-  `id_raza` int(50) NOT NULL,
-  `estado` tinyint(4) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `razas`
---
-
-CREATE TABLE `razas` (
-  `id_raza` int(11) NOT NULL,
-  `nombre_raza` varchar(50) NOT NULL,
-  `estado` tinyint(4) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `registrocasas`
---
-
-CREATE TABLE `registrocasas` (
-  `id_registrocasa` int(11) NOT NULL,
-  `telefono_casa` int(11) NOT NULL,
-  `direccion_casa` varchar(50) NOT NULL,
-  `estado` tinyint(4) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `registroperro`
---
-
-CREATE TABLE `registroperro` (
-  `id_registroperro` int(11) NOT NULL,
-  `nombre_perro` varchar(50) NOT NULL,
-  `raza_perro` varchar(50) NOT NULL,
-  `estado` tinyint(4) NOT NULL DEFAULT 1,
-  `id_perro` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `registro_empleados`
 --
 
@@ -271,22 +202,6 @@ CREATE TABLE `registro_empleados` (
   `total_de_horas` time DEFAULT NULL,
   `estado` tinyint(4) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `reserva`
---
-
-CREATE TABLE `reserva` (
-  `id_reserva` int(11) NOT NULL,
-  `nombre_cliente` varchar(50) NOT NULL,
-  `monto_compra` int(11) NOT NULL,
-  `sede_compra` varchar(50) NOT NULL,
-  `estado` tinyint(4) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
 
 -- --------------------------------------------------------
 
@@ -609,44 +524,13 @@ ALTER TABLE `pagos`
   ADD PRIMARY KEY (`Pk_id_pago`),
   ADD KEY `fk_id_factura` (`fk_id_factura`);
 
---
--- Indices de la tabla `perro`
---
-ALTER TABLE `perro`
-  ADD PRIMARY KEY (`id_perro`),
-  ADD KEY `fk_id_raza` (`id_raza`);
 
---
--- Indices de la tabla `razas`
---
-ALTER TABLE `razas`
-  ADD PRIMARY KEY (`id_raza`);
-
---
--- Indices de la tabla `registrocasas`
---
-ALTER TABLE `registrocasas`
-  ADD PRIMARY KEY (`id_registrocasa`);
-
---
--- Indices de la tabla `registroperro`
---
-ALTER TABLE `registroperro`
-  ADD PRIMARY KEY (`id_registroperro`),
-  ADD KEY `fk_registroperro_perro` (`id_perro`);
-
---
 -- Indices de la tabla `registro_empleados`
 --
 ALTER TABLE `registro_empleados`
   ADD PRIMARY KEY (`codigo_registro`),
   ADD KEY `fk_codigo_empleado` (`codigo_empleado`);
 
---
--- Indices de la tabla `reserva`
---
-ALTER TABLE `reserva`
-  ADD PRIMARY KEY (`id_reserva`);
 
 --
 -- Indices de la tabla `tbl_aplicaciones`
@@ -839,18 +723,6 @@ ALTER TABLE `detallefactura`
 --
 ALTER TABLE `pagos`
   ADD CONSTRAINT `pagos_ibfk_1` FOREIGN KEY (`fk_id_factura`) REFERENCES `factura` (`Pk_id_factura`);
-
---
--- Filtros para la tabla `perro`
---
-ALTER TABLE `perro`
-  ADD CONSTRAINT `fk_id_raza` FOREIGN KEY (`id_raza`) REFERENCES `razas` (`id_raza`);
-
---
--- Filtros para la tabla `registroperro`
---
-ALTER TABLE `registroperro`
-  ADD CONSTRAINT `fk_registroperro_perro` FOREIGN KEY (`id_perro`) REFERENCES `perro` (`id_perro`);
 
 --
 -- Filtros para la tabla `registro_empleados`
