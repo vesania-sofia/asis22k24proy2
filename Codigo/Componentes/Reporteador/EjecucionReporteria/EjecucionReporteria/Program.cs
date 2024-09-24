@@ -14,8 +14,8 @@ namespace EjecucionReporteria
         [STAThread]
         static void Main()
         {
-
-                Application.EnableVisualStyles();
+            // Realizado por: Mario Alfredo Martínez Friely - 0901-21-13651
+            Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
                 Application.Run(new Capa_Vista_Reporteria.menu_reporteria());
 

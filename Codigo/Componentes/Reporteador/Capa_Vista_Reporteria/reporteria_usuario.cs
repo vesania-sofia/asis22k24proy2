@@ -42,7 +42,7 @@ namespace Capa_Vista_Reporteria
 
         private void tabla_registro_DoubleClick(object sender, EventArgs e)
         {
-            //se habilita la funcion de modificar y eliminar para el reporte seleccionado 
+            //se habilita la función de modificar y eliminar para el reporte seleccionado 
             if (Dgv_Regreporteria.CurrentRow.Index != -1)
             {
                 Txt_nombre.Text = Dgv_Regreporteria.CurrentRow.Cells[2].Value.ToString();
@@ -62,19 +62,14 @@ namespace Capa_Vista_Reporteria
 
         private void Btn_Buscar_Click(object sender, EventArgs e)
         {
-            //mostramos todos los reportes que hay en la base de datos segun lo introducido en el textbox y la desplegamos
+            //mostramos todos los reportes que hay en la base de datos según lo introducido en el textbox y la desplegamos
             DataTable data = controlador.queryReporteria(Txt_nombre);
             Dgv_Regreporteria.DataSource = data;
         }
 
-        private void visualizar(string ruta)
-        {
-            System.Threading.Thread.Sleep(3000);
-        }
-
         private async void Btn_VerReporte_Click(object sender, EventArgs e)
         {
-
+            // Realizado por: Cristyan Emilio Lorenzana Hernández - 0901-21-12546
             //si el reporte tiene estado visible entonces se ejecuta otra forma para mostrar el reporte
             if (sEstado.Equals("Visible"))
             {
@@ -84,9 +79,9 @@ namespace Capa_Vista_Reporteria
                 {
                     cargar.Show();
 
-                    await Task.Run(() => visualizar(sRuta));
-                    visualizar newFormVisualizar = new visualizar(sRuta);
-                    newFormVisualizar.Show();
+                    await Task.Run(() => System.Threading.Thread.Sleep(3000));
+                    visualizar ver = new visualizar(sRuta);
+                    ver.Show();
 
                     cargar.Close();
                 }
