@@ -28,11 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_asignacion_aplicaciones_perfiles));
-            this.btn_finalizar = new System.Windows.Forms.Button();
-            this.btn_salir = new System.Windows.Forms.Button();
-            this.btn_remover = new System.Windows.Forms.Button();
-            this.dgv_asignacionesperfiles = new System.Windows.Forms.DataGridView();
+            this.label3 = new System.Windows.Forms.Label();
+            this.Dgv_asignacionesperfiles = new System.Windows.Forms.DataGridView();
             this.Perfil = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Aplicacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ingresar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -41,59 +38,40 @@
             this.Eliminar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Imprimir = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Gpb_datos = new System.Windows.Forms.GroupBox();
-            this.cbo_modulos = new System.Windows.Forms.ComboBox();
-            this.lbl_modulo = new System.Windows.Forms.Label();
-            this.cbo_perfiles = new System.Windows.Forms.ComboBox();
-            this.cbo_aplicaciones = new System.Windows.Forms.ComboBox();
-            this.btn_agregar = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.btn_ayuda = new System.Windows.Forms.Button();
-            this.Lbl_asignacionapperf = new System.Windows.Forms.Label();
-            this.btn_buscar = new System.Windows.Forms.Button();
-            this.txt_buscar = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_asignacionesperfiles)).BeginInit();
+            this.Cbo_modulos = new System.Windows.Forms.ComboBox();
+            this.Txt_modulos = new System.Windows.Forms.Label();
+            this.Cbo_perfiles = new System.Windows.Forms.ComboBox();
+            this.Cbo_aplicaciones = new System.Windows.Forms.ComboBox();
+            this.Txt_perfiles = new System.Windows.Forms.Label();
+            this.Txt_aplicaciones = new System.Windows.Forms.Label();
+            this.TableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.Btn_salir = new System.Windows.Forms.Button();
+            this.Txt_titulo = new System.Windows.Forms.Label();
+            this.Btn_agregar = new System.Windows.Forms.Button();
+            this.Btn_ayuda = new System.Windows.Forms.Button();
+            this.Btn_buscar = new System.Windows.Forms.Button();
+            this.Btn_remover = new System.Windows.Forms.Button();
+            this.Btn_guardar = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.Dgv_asignacionesperfiles)).BeginInit();
             this.Gpb_datos.SuspendLayout();
+            this.TableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // btn_finalizar
+            // label3
             // 
-            this.btn_finalizar.Location = new System.Drawing.Point(760, 288);
-            this.btn_finalizar.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_finalizar.Name = "btn_finalizar";
-            this.btn_finalizar.Size = new System.Drawing.Size(100, 30);
-            this.btn_finalizar.TabIndex = 28;
-            this.btn_finalizar.Text = "Guardar";
-            this.btn_finalizar.UseVisualStyleBackColor = true;
-            this.btn_finalizar.Click += new System.EventHandler(this.Btn_finalizar_Click);
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Haettenschweiler", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(156, 9);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(0, 37);
+            this.label3.TabIndex = 274;
             // 
-            // btn_salir
+            // Dgv_asignacionesperfiles
             // 
-            this.btn_salir.Location = new System.Drawing.Point(760, 335);
-            this.btn_salir.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_salir.Name = "btn_salir";
-            this.btn_salir.Size = new System.Drawing.Size(100, 30);
-            this.btn_salir.TabIndex = 27;
-            this.btn_salir.Text = "Salir";
-            this.btn_salir.UseVisualStyleBackColor = true;
-            this.btn_salir.Click += new System.EventHandler(this.Btn_salir_Click);
-            // 
-            // btn_remover
-            // 
-            this.btn_remover.Location = new System.Drawing.Point(760, 235);
-            this.btn_remover.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_remover.Name = "btn_remover";
-            this.btn_remover.Size = new System.Drawing.Size(100, 33);
-            this.btn_remover.TabIndex = 26;
-            this.btn_remover.Text = "Quitar";
-            this.btn_remover.UseVisualStyleBackColor = true;
-            this.btn_remover.Click += new System.EventHandler(this.Btn_remover_Click);
-            // 
-            // dgv_asignacionesperfiles
-            // 
-            this.dgv_asignacionesperfiles.AllowUserToAddRows = false;
-            this.dgv_asignacionesperfiles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_asignacionesperfiles.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Dgv_asignacionesperfiles.AllowUserToAddRows = false;
+            this.Dgv_asignacionesperfiles.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.Dgv_asignacionesperfiles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Dgv_asignacionesperfiles.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Perfil,
             this.Aplicacion,
             this.Ingresar,
@@ -101,13 +79,13 @@
             this.Modificar,
             this.Eliminar,
             this.Imprimir});
-            this.dgv_asignacionesperfiles.Location = new System.Drawing.Point(13, 167);
-            this.dgv_asignacionesperfiles.Margin = new System.Windows.Forms.Padding(4);
-            this.dgv_asignacionesperfiles.Name = "dgv_asignacionesperfiles";
-            this.dgv_asignacionesperfiles.RowHeadersWidth = 51;
-            this.dgv_asignacionesperfiles.Size = new System.Drawing.Size(739, 212);
-            this.dgv_asignacionesperfiles.TabIndex = 25;
-            this.dgv_asignacionesperfiles.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_asignacionesperfiles_CellContentClick);
+            this.Dgv_asignacionesperfiles.Location = new System.Drawing.Point(67, 330);
+            this.Dgv_asignacionesperfiles.Margin = new System.Windows.Forms.Padding(4);
+            this.Dgv_asignacionesperfiles.Name = "Dgv_asignacionesperfiles";
+            this.Dgv_asignacionesperfiles.RowHeadersWidth = 51;
+            this.Dgv_asignacionesperfiles.Size = new System.Drawing.Size(739, 212);
+            this.Dgv_asignacionesperfiles.TabIndex = 272;
+            this.Dgv_asignacionesperfiles.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgv_asignacionesperfiles_CellContentClick_1);
             // 
             // Perfil
             // 
@@ -177,159 +155,230 @@
             // 
             // Gpb_datos
             // 
-            this.Gpb_datos.Controls.Add(this.cbo_modulos);
-            this.Gpb_datos.Controls.Add(this.lbl_modulo);
-            this.Gpb_datos.Controls.Add(this.cbo_perfiles);
-            this.Gpb_datos.Controls.Add(this.cbo_aplicaciones);
-            this.Gpb_datos.Controls.Add(this.btn_agregar);
-            this.Gpb_datos.Controls.Add(this.label1);
-            this.Gpb_datos.Controls.Add(this.label2);
-            this.Gpb_datos.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Gpb_datos.Location = new System.Drawing.Point(13, 45);
+            this.Gpb_datos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.Gpb_datos.Controls.Add(this.Cbo_modulos);
+            this.Gpb_datos.Controls.Add(this.Txt_modulos);
+            this.Gpb_datos.Controls.Add(this.Cbo_perfiles);
+            this.Gpb_datos.Controls.Add(this.Cbo_aplicaciones);
+            this.Gpb_datos.Controls.Add(this.Txt_perfiles);
+            this.Gpb_datos.Controls.Add(this.Txt_aplicaciones);
+            this.Gpb_datos.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Gpb_datos.Location = new System.Drawing.Point(67, 203);
             this.Gpb_datos.Margin = new System.Windows.Forms.Padding(4);
             this.Gpb_datos.Name = "Gpb_datos";
             this.Gpb_datos.Padding = new System.Windows.Forms.Padding(4);
-            this.Gpb_datos.Size = new System.Drawing.Size(722, 101);
-            this.Gpb_datos.TabIndex = 24;
+            this.Gpb_datos.Size = new System.Drawing.Size(739, 101);
+            this.Gpb_datos.TabIndex = 273;
             this.Gpb_datos.TabStop = false;
             this.Gpb_datos.Text = "Datos";
             // 
-            // cbo_modulos
+            // Cbo_modulos
             // 
-            this.cbo_modulos.FormattingEnabled = true;
-            this.cbo_modulos.Location = new System.Drawing.Point(221, 50);
-            this.cbo_modulos.Margin = new System.Windows.Forms.Padding(4);
-            this.cbo_modulos.Name = "cbo_modulos";
-            this.cbo_modulos.Size = new System.Drawing.Size(160, 29);
-            this.cbo_modulos.TabIndex = 14;
-            this.cbo_modulos.SelectedIndexChanged += new System.EventHandler(this.Cbo_modulos_SelectedIndexChanged);
+            this.Cbo_modulos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.Cbo_modulos.Cursor = System.Windows.Forms.Cursors.No;
+            this.Cbo_modulos.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Cbo_modulos.FormattingEnabled = true;
+            this.Cbo_modulos.Location = new System.Drawing.Point(300, 51);
+            this.Cbo_modulos.Margin = new System.Windows.Forms.Padding(4);
+            this.Cbo_modulos.Name = "Cbo_modulos";
+            this.Cbo_modulos.Size = new System.Drawing.Size(160, 23);
+            this.Cbo_modulos.TabIndex = 14;
             // 
-            // lbl_modulo
+            // Txt_modulos
             // 
-            this.lbl_modulo.AutoSize = true;
-            this.lbl_modulo.Location = new System.Drawing.Point(262, 30);
-            this.lbl_modulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbl_modulo.Name = "lbl_modulo";
-            this.lbl_modulo.Size = new System.Drawing.Size(81, 21);
-            this.lbl_modulo.TabIndex = 13;
-            this.lbl_modulo.Text = "Modulos";
+            this.Txt_modulos.AutoSize = true;
+            this.Txt_modulos.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_modulos.Location = new System.Drawing.Point(348, 26);
+            this.Txt_modulos.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Txt_modulos.Name = "Txt_modulos";
+            this.Txt_modulos.Size = new System.Drawing.Size(63, 19);
+            this.Txt_modulos.TabIndex = 13;
+            this.Txt_modulos.Text = "Modulos";
             // 
-            // cbo_perfiles
+            // Cbo_perfiles
             // 
-            this.cbo_perfiles.FormattingEnabled = true;
-            this.cbo_perfiles.Location = new System.Drawing.Point(24, 51);
-            this.cbo_perfiles.Margin = new System.Windows.Forms.Padding(4);
-            this.cbo_perfiles.Name = "cbo_perfiles";
-            this.cbo_perfiles.Size = new System.Drawing.Size(160, 29);
-            this.cbo_perfiles.TabIndex = 0;
-            this.cbo_perfiles.SelectedIndexChanged += new System.EventHandler(this.cbo_perfiles_SelectedIndexChanged);
+            this.Cbo_perfiles.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.Cbo_perfiles.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Cbo_perfiles.FormattingEnabled = true;
+            this.Cbo_perfiles.Location = new System.Drawing.Point(96, 51);
+            this.Cbo_perfiles.Margin = new System.Windows.Forms.Padding(4);
+            this.Cbo_perfiles.Name = "Cbo_perfiles";
+            this.Cbo_perfiles.Size = new System.Drawing.Size(160, 23);
+            this.Cbo_perfiles.TabIndex = 0;
             // 
-            // cbo_aplicaciones
+            // Cbo_aplicaciones
             // 
-            this.cbo_aplicaciones.FormattingEnabled = true;
-            this.cbo_aplicaciones.Location = new System.Drawing.Point(418, 50);
-            this.cbo_aplicaciones.Margin = new System.Windows.Forms.Padding(4);
-            this.cbo_aplicaciones.Name = "cbo_aplicaciones";
-            this.cbo_aplicaciones.Size = new System.Drawing.Size(160, 29);
-            this.cbo_aplicaciones.TabIndex = 1;
-            this.cbo_aplicaciones.SelectedIndexChanged += new System.EventHandler(this.cbo_aplicaciones_SelectedIndexChanged);
+            this.Cbo_aplicaciones.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.Cbo_aplicaciones.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Cbo_aplicaciones.FormattingEnabled = true;
+            this.Cbo_aplicaciones.Location = new System.Drawing.Point(502, 51);
+            this.Cbo_aplicaciones.Margin = new System.Windows.Forms.Padding(4);
+            this.Cbo_aplicaciones.Name = "Cbo_aplicaciones";
+            this.Cbo_aplicaciones.Size = new System.Drawing.Size(160, 23);
+            this.Cbo_aplicaciones.TabIndex = 1;
             // 
-            // btn_agregar
+            // Txt_perfiles
             // 
-            this.btn_agregar.Location = new System.Drawing.Point(606, 47);
-            this.btn_agregar.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_agregar.Name = "btn_agregar";
-            this.btn_agregar.Size = new System.Drawing.Size(91, 30);
-            this.btn_agregar.TabIndex = 10;
-            this.btn_agregar.Text = "Agregar";
-            this.btn_agregar.UseVisualStyleBackColor = true;
-            this.btn_agregar.Click += new System.EventHandler(this.Btn_agregar_Click);
+            this.Txt_perfiles.AutoSize = true;
+            this.Txt_perfiles.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_perfiles.Location = new System.Drawing.Point(142, 26);
+            this.Txt_perfiles.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Txt_perfiles.Name = "Txt_perfiles";
+            this.Txt_perfiles.Size = new System.Drawing.Size(53, 19);
+            this.Txt_perfiles.TabIndex = 2;
+            this.Txt_perfiles.Text = "Perfiles";
             // 
-            // label1
+            // Txt_aplicaciones
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(70, 30);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(65, 21);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Perfiles";
+            this.Txt_aplicaciones.AutoSize = true;
+            this.Txt_aplicaciones.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_aplicaciones.Location = new System.Drawing.Point(526, 25);
+            this.Txt_aplicaciones.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Txt_aplicaciones.Name = "Txt_aplicaciones";
+            this.Txt_aplicaciones.Size = new System.Drawing.Size(86, 19);
+            this.Txt_aplicaciones.TabIndex = 3;
+            this.Txt_aplicaciones.Text = "Aplicaciones";
             // 
-            // label2
+            // TableLayoutPanel1
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(442, 30);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(117, 21);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Aplicaciones";
+            this.TableLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.TableLayoutPanel1.ColumnCount = 6;
+            this.TableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.77519F));
+            this.TableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.22481F));
+            this.TableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 124F));
+            this.TableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 131F));
+            this.TableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 115F));
+            this.TableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 126F));
+            this.TableLayoutPanel1.Controls.Add(this.Btn_agregar, 0, 0);
+            this.TableLayoutPanel1.Controls.Add(this.Btn_ayuda, 5, 0);
+            this.TableLayoutPanel1.Controls.Add(this.Btn_salir, 4, 0);
+            this.TableLayoutPanel1.Controls.Add(this.Btn_buscar, 3, 0);
+            this.TableLayoutPanel1.Controls.Add(this.Btn_remover, 2, 0);
+            this.TableLayoutPanel1.Controls.Add(this.Btn_guardar, 1, 0);
+            this.TableLayoutPanel1.Location = new System.Drawing.Point(67, 128);
+            this.TableLayoutPanel1.Name = "TableLayoutPanel1";
+            this.TableLayoutPanel1.RowCount = 1;
+            this.TableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.TableLayoutPanel1.Size = new System.Drawing.Size(739, 47);
+            this.TableLayoutPanel1.TabIndex = 282;
             // 
-            // btn_ayuda
+            // Btn_salir
             // 
-            this.btn_ayuda.Image = global::CapaDiseno.Properties.Resources.icons8_ayuda_30;
-            this.btn_ayuda.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btn_ayuda.Location = new System.Drawing.Point(774, 24);
-            this.btn_ayuda.Name = "btn_ayuda";
-            this.btn_ayuda.Size = new System.Drawing.Size(86, 36);
-            this.btn_ayuda.TabIndex = 252;
-            this.btn_ayuda.Text = "Ayuda";
-            this.btn_ayuda.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_ayuda.UseVisualStyleBackColor = true;
-            this.btn_ayuda.Click += new System.EventHandler(this.Btn_ayuda_Click);
+            this.Btn_salir.BackgroundImage = global::CapaDiseno.Properties.Resources.salir1;
+            this.Btn_salir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Btn_salir.FlatAppearance.BorderSize = 0;
+            this.Btn_salir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_salir.Location = new System.Drawing.Point(497, 0);
+            this.Btn_salir.Margin = new System.Windows.Forms.Padding(0);
+            this.Btn_salir.Name = "Btn_salir";
+            this.Btn_salir.Size = new System.Drawing.Size(115, 47);
+            this.Btn_salir.TabIndex = 277;
+            this.Btn_salir.UseVisualStyleBackColor = true;
+            this.Btn_salir.Click += new System.EventHandler(this.btn_salir_Click_1);
             // 
-            // Lbl_asignacionapperf
+            // Txt_titulo
             // 
-            this.Lbl_asignacionapperf.AutoSize = true;
-            this.Lbl_asignacionapperf.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_asignacionapperf.Location = new System.Drawing.Point(95, 10);
-            this.Lbl_asignacionapperf.Name = "Lbl_asignacionapperf";
-            this.Lbl_asignacionapperf.Size = new System.Drawing.Size(564, 33);
-            this.Lbl_asignacionapperf.TabIndex = 253;
-            this.Lbl_asignacionapperf.Text = "ASIGNACION DE APLICACIONES A PERFILES";
-            this.Lbl_asignacionapperf.Click += new System.EventHandler(this.label3_Click);
+            this.Txt_titulo.AutoSize = true;
+            this.Txt_titulo.Font = new System.Drawing.Font("Haettenschweiler", 26F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_titulo.ForeColor = System.Drawing.Color.Transparent;
+            this.Txt_titulo.Location = new System.Drawing.Point(143, 44);
+            this.Txt_titulo.Name = "Txt_titulo";
+            this.Txt_titulo.Size = new System.Drawing.Size(599, 37);
+            this.Txt_titulo.TabIndex = 283;
+            this.Txt_titulo.Text = "A s i g n a c i o n  d e  A p l i c a c i o n e s  a  P e r f i l e s";
+            this.Txt_titulo.Click += new System.EventHandler(this.label4_Click);
             // 
-            // btn_buscar
+            // Btn_agregar
             // 
-            this.btn_buscar.Location = new System.Drawing.Point(760, 177);
-            this.btn_buscar.Name = "btn_buscar";
-            this.btn_buscar.Size = new System.Drawing.Size(100, 33);
-            this.btn_buscar.TabIndex = 254;
-            this.btn_buscar.Text = "Buscar";
-            this.btn_buscar.UseVisualStyleBackColor = true;
-            this.btn_buscar.Click += new System.EventHandler(this.btn_buscar_Click);
+            this.Btn_agregar.BackgroundImage = global::CapaDiseno.Properties.Resources.agregar1;
+            this.Btn_agregar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Btn_agregar.FlatAppearance.BorderSize = 0;
+            this.Btn_agregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_agregar.Location = new System.Drawing.Point(0, 0);
+            this.Btn_agregar.Margin = new System.Windows.Forms.Padding(0);
+            this.Btn_agregar.Name = "Btn_agregar";
+            this.Btn_agregar.Size = new System.Drawing.Size(123, 47);
+            this.Btn_agregar.TabIndex = 279;
+            this.Btn_agregar.UseVisualStyleBackColor = true;
+            this.Btn_agregar.Click += new System.EventHandler(this.btn_agregar_Click_1);
             // 
-            // txt_buscar
+            // Btn_ayuda
             // 
-            this.txt_buscar.Location = new System.Drawing.Point(760, 119);
-            this.txt_buscar.Name = "txt_buscar";
-            this.txt_buscar.Size = new System.Drawing.Size(100, 27);
-            this.txt_buscar.TabIndex = 255;
+            this.Btn_ayuda.BackgroundImage = global::CapaDiseno.Properties.Resources.ayuda1;
+            this.Btn_ayuda.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Btn_ayuda.FlatAppearance.BorderSize = 0;
+            this.Btn_ayuda.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_ayuda.Location = new System.Drawing.Point(612, 0);
+            this.Btn_ayuda.Margin = new System.Windows.Forms.Padding(0);
+            this.Btn_ayuda.Name = "Btn_ayuda";
+            this.Btn_ayuda.Size = new System.Drawing.Size(111, 47);
+            this.Btn_ayuda.TabIndex = 280;
+            this.Btn_ayuda.UseVisualStyleBackColor = true;
+            this.Btn_ayuda.Click += new System.EventHandler(this.btn_ayuda_Click_1);
+            // 
+            // Btn_buscar
+            // 
+            this.Btn_buscar.BackgroundImage = global::CapaDiseno.Properties.Resources.buscar1;
+            this.Btn_buscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Btn_buscar.FlatAppearance.BorderSize = 0;
+            this.Btn_buscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_buscar.Location = new System.Drawing.Point(366, 0);
+            this.Btn_buscar.Margin = new System.Windows.Forms.Padding(0);
+            this.Btn_buscar.Name = "Btn_buscar";
+            this.Btn_buscar.Size = new System.Drawing.Size(131, 47);
+            this.Btn_buscar.TabIndex = 278;
+            this.Btn_buscar.UseVisualStyleBackColor = true;
+            this.Btn_buscar.Click += new System.EventHandler(this.btn_buscar_Click_1);
+            // 
+            // Btn_remover
+            // 
+            this.Btn_remover.BackgroundImage = global::CapaDiseno.Properties.Resources.borrar1;
+            this.Btn_remover.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Btn_remover.FlatAppearance.BorderSize = 0;
+            this.Btn_remover.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_remover.Location = new System.Drawing.Point(242, 0);
+            this.Btn_remover.Margin = new System.Windows.Forms.Padding(0);
+            this.Btn_remover.Name = "Btn_remover";
+            this.Btn_remover.Size = new System.Drawing.Size(124, 47);
+            this.Btn_remover.TabIndex = 281;
+            this.Btn_remover.UseVisualStyleBackColor = true;
+            this.Btn_remover.Click += new System.EventHandler(this.btn_remover_Click_1);
+            // 
+            // Btn_guardar
+            // 
+            this.Btn_guardar.BackgroundImage = global::CapaDiseno.Properties.Resources.guardar1;
+            this.Btn_guardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Btn_guardar.FlatAppearance.BorderSize = 0;
+            this.Btn_guardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_guardar.Location = new System.Drawing.Point(123, 0);
+            this.Btn_guardar.Margin = new System.Windows.Forms.Padding(0);
+            this.Btn_guardar.Name = "Btn_guardar";
+            this.Btn_guardar.Size = new System.Drawing.Size(119, 47);
+            this.Btn_guardar.TabIndex = 276;
+            this.Btn_guardar.UseVisualStyleBackColor = true;
+            this.Btn_guardar.Click += new System.EventHandler(this.btn_finalizar_Click_1);
             // 
             // frm_asignacion_aplicaciones_perfiles
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(898, 410);
-            this.Controls.Add(this.txt_buscar);
-            this.Controls.Add(this.btn_buscar);
-            this.Controls.Add(this.Lbl_asignacionapperf);
-            this.Controls.Add(this.btn_ayuda);
-            this.Controls.Add(this.btn_finalizar);
-            this.Controls.Add(this.btn_salir);
-            this.Controls.Add(this.btn_remover);
-            this.Controls.Add(this.dgv_asignacionesperfiles);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(133)))), ((int)(((byte)(223)))));
+            this.ClientSize = new System.Drawing.Size(889, 574);
+            this.Controls.Add(this.Txt_titulo);
+            this.Controls.Add(this.TableLayoutPanel1);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.Dgv_asignacionesperfiles);
             this.Controls.Add(this.Gpb_datos);
             this.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frm_asignacion_aplicaciones_perfiles";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Asignacion de aplicaciones a perfiles";
             this.Load += new System.EventHandler(this.Frm_asignacion_aplicaciones_perfiles_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_asignacionesperfiles)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Dgv_asignacionesperfiles)).EndInit();
             this.Gpb_datos.ResumeLayout(false);
             this.Gpb_datos.PerformLayout();
+            this.TableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -337,10 +386,14 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btn_finalizar;
-        private System.Windows.Forms.Button btn_salir;
-        private System.Windows.Forms.Button btn_remover;
-        private System.Windows.Forms.DataGridView dgv_asignacionesperfiles;
+        private System.Windows.Forms.Button Btn_remover;
+        private System.Windows.Forms.Button Btn_ayuda;
+        private System.Windows.Forms.Button Btn_agregar;
+        private System.Windows.Forms.Button Btn_buscar;
+        private System.Windows.Forms.Button Btn_salir;
+        private System.Windows.Forms.Button Btn_guardar;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DataGridView Dgv_asignacionesperfiles;
         private System.Windows.Forms.DataGridViewTextBoxColumn Perfil;
         private System.Windows.Forms.DataGridViewTextBoxColumn Aplicacion;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Ingresar;
@@ -349,16 +402,13 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn Eliminar;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Imprimir;
         private System.Windows.Forms.GroupBox Gpb_datos;
-        public System.Windows.Forms.ComboBox cbo_modulos;
-        private System.Windows.Forms.Label lbl_modulo;
-        public System.Windows.Forms.ComboBox cbo_perfiles;
-        private System.Windows.Forms.ComboBox cbo_aplicaciones;
-        private System.Windows.Forms.Button btn_agregar;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btn_ayuda;
-        private System.Windows.Forms.Label Lbl_asignacionapperf;
-        private System.Windows.Forms.Button btn_buscar;
-        private System.Windows.Forms.TextBox txt_buscar;
+        public System.Windows.Forms.ComboBox Cbo_modulos;
+        private System.Windows.Forms.Label Txt_modulos;
+        public System.Windows.Forms.ComboBox Cbo_perfiles;
+        private System.Windows.Forms.ComboBox Cbo_aplicaciones;
+        private System.Windows.Forms.Label Txt_perfiles;
+        private System.Windows.Forms.Label Txt_aplicaciones;
+        private System.Windows.Forms.TableLayoutPanel TableLayoutPanel1;
+        private System.Windows.Forms.Label Txt_titulo;
     }
 }

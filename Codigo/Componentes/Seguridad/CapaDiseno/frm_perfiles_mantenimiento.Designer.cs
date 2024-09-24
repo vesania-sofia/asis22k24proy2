@@ -28,349 +28,398 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_perfiles_mantenimiento));
-            this.btn_ayuda = new System.Windows.Forms.Button();
-            this.gbbuscar = new System.Windows.Forms.GroupBox();
-            this.btn_bsucarperfil = new System.Windows.Forms.Button();
-            this.txt_buscarperfil = new System.Windows.Forms.TextBox();
+            this.Btn_eliminar = new System.Windows.Forms.Button();
+            this.Btn_modificar = new System.Windows.Forms.Button();
+            this.Btn_actualizar = new System.Windows.Forms.Button();
+            this.Btn_ayuda = new System.Windows.Forms.Button();
+            this.Btn_cancelar = new System.Windows.Forms.Button();
+            this.Btn_salir = new System.Windows.Forms.Button();
+            this.Btn_guardar = new System.Windows.Forms.Button();
+            this.Btn_ingreso = new System.Windows.Forms.Button();
+            this.Txt_titulo = new System.Windows.Forms.Label();
+            this.Gpb_buscarperfiles = new System.Windows.Forms.GroupBox();
+            this.Btn_buscarperfil = new System.Windows.Forms.Button();
+            this.Tbx_buscarperfil = new System.Windows.Forms.TextBox();
             this.Gpb_datos = new System.Windows.Forms.GroupBox();
-            this.txtdesc = new System.Windows.Forms.TextBox();
-            this.txtnombre = new System.Windows.Forms.TextBox();
-            this.txtcodigo = new System.Windows.Forms.TextBox();
-            this.gbestado = new System.Windows.Forms.GroupBox();
-            this.rbinhabilitado = new System.Windows.Forms.RadioButton();
-            this.rbhabilitado = new System.Windows.Forms.RadioButton();
-            this.Lbl_descripcion = new System.Windows.Forms.Label();
-            this.Lbl_nombre = new System.Windows.Forms.Label();
-            this.Lbl_codigoperfil = new System.Windows.Forms.Label();
-            this.Gpb_opciones = new System.Windows.Forms.GroupBox();
-            this.btn_eli = new System.Windows.Forms.Button();
-            this.btn_nuevo = new System.Windows.Forms.Button();
-            this.btn_actualizar = new System.Windows.Forms.Button();
-            this.btnSalir = new System.Windows.Forms.Button();
-            this.btn_salir = new System.Windows.Forms.Button();
-            this.btn_cancel = new System.Windows.Forms.Button();
-            this.btn_ingresar = new System.Windows.Forms.Button();
-            this.btn_modif = new System.Windows.Forms.Button();
-            this.gbbuscar.SuspendLayout();
+            this.Txt_descipcion = new System.Windows.Forms.TextBox();
+            this.Txt_nombre = new System.Windows.Forms.TextBox();
+            this.Txt_codigo = new System.Windows.Forms.TextBox();
+            this.Txt_descripciondat = new System.Windows.Forms.Label();
+            this.Txt_nombredat = new System.Windows.Forms.Label();
+            this.Txt_codigoperfil = new System.Windows.Forms.Label();
+            this.Gpb_estado = new System.Windows.Forms.GroupBox();
+            this.Rdb_inhabilitado = new System.Windows.Forms.RadioButton();
+            this.Rdb_habilitado = new System.Windows.Forms.RadioButton();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.Gpb_buscarperfiles.SuspendLayout();
             this.Gpb_datos.SuspendLayout();
-            this.gbestado.SuspendLayout();
-            this.Gpb_opciones.SuspendLayout();
+            this.Gpb_estado.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // btn_ayuda
+            // Btn_eliminar
             // 
-            this.btn_ayuda.Image = global::CapaDiseno.Properties.Resources.icons8_ayuda_30;
-            this.btn_ayuda.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btn_ayuda.Location = new System.Drawing.Point(737, 18);
-            this.btn_ayuda.Name = "btn_ayuda";
-            this.btn_ayuda.Size = new System.Drawing.Size(86, 36);
-            this.btn_ayuda.TabIndex = 256;
-            this.btn_ayuda.Text = "Ayuda";
-            this.btn_ayuda.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_ayuda.UseVisualStyleBackColor = true;
-            this.btn_ayuda.Click += new System.EventHandler(this.btn_ayuda_Click_1);
+            this.Btn_eliminar.BackgroundImage = global::CapaDiseno.Properties.Resources.borrar1;
+            this.Btn_eliminar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Btn_eliminar.FlatAppearance.BorderSize = 0;
+            this.Btn_eliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_eliminar.Location = new System.Drawing.Point(336, 0);
+            this.Btn_eliminar.Margin = new System.Windows.Forms.Padding(0);
+            this.Btn_eliminar.Name = "Btn_eliminar";
+            this.Btn_eliminar.Size = new System.Drawing.Size(86, 39);
+            this.Btn_eliminar.TabIndex = 282;
+            this.Btn_eliminar.UseVisualStyleBackColor = true;
+            this.Btn_eliminar.Click += new System.EventHandler(this.btn_eli_Click);
             // 
-            // gbbuscar
+            // Btn_modificar
             // 
-            this.gbbuscar.Controls.Add(this.btn_bsucarperfil);
-            this.gbbuscar.Controls.Add(this.txt_buscarperfil);
-            this.gbbuscar.Location = new System.Drawing.Point(78, 18);
-            this.gbbuscar.Margin = new System.Windows.Forms.Padding(4);
-            this.gbbuscar.Name = "gbbuscar";
-            this.gbbuscar.Padding = new System.Windows.Forms.Padding(4);
-            this.gbbuscar.Size = new System.Drawing.Size(648, 102);
-            this.gbbuscar.TabIndex = 255;
-            this.gbbuscar.TabStop = false;
-            this.gbbuscar.Text = "Buscar perfiles";
+            this.Btn_modificar.BackgroundImage = global::CapaDiseno.Properties.Resources.editar1;
+            this.Btn_modificar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Btn_modificar.FlatAppearance.BorderSize = 0;
+            this.Btn_modificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_modificar.Location = new System.Drawing.Point(254, 0);
+            this.Btn_modificar.Margin = new System.Windows.Forms.Padding(0);
+            this.Btn_modificar.Name = "Btn_modificar";
+            this.Btn_modificar.Size = new System.Drawing.Size(82, 39);
+            this.Btn_modificar.TabIndex = 281;
+            this.Btn_modificar.UseVisualStyleBackColor = true;
+            this.Btn_modificar.Click += new System.EventHandler(this.btn_modif_Click);
             // 
-            // btn_bsucarperfil
+            // Btn_actualizar
             // 
-            this.btn_bsucarperfil.Location = new System.Drawing.Point(427, 41);
-            this.btn_bsucarperfil.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_bsucarperfil.Name = "btn_bsucarperfil";
-            this.btn_bsucarperfil.Size = new System.Drawing.Size(100, 30);
-            this.btn_bsucarperfil.TabIndex = 7;
-            this.btn_bsucarperfil.Text = "Buscar";
-            this.btn_bsucarperfil.UseVisualStyleBackColor = true;
-            this.btn_bsucarperfil.Click += new System.EventHandler(this.btn_bsucarperfil_Click_1);
+            this.Btn_actualizar.BackgroundImage = global::CapaDiseno.Properties.Resources.guardar2;
+            this.Btn_actualizar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Btn_actualizar.FlatAppearance.BorderSize = 0;
+            this.Btn_actualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_actualizar.Location = new System.Drawing.Point(169, 0);
+            this.Btn_actualizar.Margin = new System.Windows.Forms.Padding(0);
+            this.Btn_actualizar.Name = "Btn_actualizar";
+            this.Btn_actualizar.Size = new System.Drawing.Size(85, 39);
+            this.Btn_actualizar.TabIndex = 280;
+            this.Btn_actualizar.UseVisualStyleBackColor = true;
+            this.Btn_actualizar.Click += new System.EventHandler(this.btn_actualizar_Click);
             // 
-            // txt_buscarperfil
+            // Btn_ayuda
             // 
-            this.txt_buscarperfil.Location = new System.Drawing.Point(95, 44);
-            this.txt_buscarperfil.Margin = new System.Windows.Forms.Padding(4);
-            this.txt_buscarperfil.Name = "txt_buscarperfil";
-            this.txt_buscarperfil.Size = new System.Drawing.Size(296, 26);
-            this.txt_buscarperfil.TabIndex = 6;
+            this.Btn_ayuda.BackgroundImage = global::CapaDiseno.Properties.Resources.ayuda1;
+            this.Btn_ayuda.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Btn_ayuda.FlatAppearance.BorderSize = 0;
+            this.Btn_ayuda.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_ayuda.Location = new System.Drawing.Point(587, 0);
+            this.Btn_ayuda.Margin = new System.Windows.Forms.Padding(0);
+            this.Btn_ayuda.Name = "Btn_ayuda";
+            this.Btn_ayuda.Size = new System.Drawing.Size(74, 39);
+            this.Btn_ayuda.TabIndex = 279;
+            this.Btn_ayuda.UseVisualStyleBackColor = true;
+            this.Btn_ayuda.Click += new System.EventHandler(this.btn_ayuda_Click);
+            // 
+            // Btn_cancelar
+            // 
+            this.Btn_cancelar.BackgroundImage = global::CapaDiseno.Properties.Resources.cancelar;
+            this.Btn_cancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Btn_cancelar.FlatAppearance.BorderSize = 0;
+            this.Btn_cancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_cancelar.Location = new System.Drawing.Point(422, 0);
+            this.Btn_cancelar.Margin = new System.Windows.Forms.Padding(0);
+            this.Btn_cancelar.Name = "Btn_cancelar";
+            this.Btn_cancelar.Size = new System.Drawing.Size(87, 39);
+            this.Btn_cancelar.TabIndex = 278;
+            this.Btn_cancelar.UseVisualStyleBackColor = true;
+            this.Btn_cancelar.Click += new System.EventHandler(this.btn_cancel_Click);
+            // 
+            // Btn_salir
+            // 
+            this.Btn_salir.BackgroundImage = global::CapaDiseno.Properties.Resources.salir1;
+            this.Btn_salir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Btn_salir.FlatAppearance.BorderSize = 0;
+            this.Btn_salir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_salir.Location = new System.Drawing.Point(509, 0);
+            this.Btn_salir.Margin = new System.Windows.Forms.Padding(0);
+            this.Btn_salir.Name = "Btn_salir";
+            this.Btn_salir.Size = new System.Drawing.Size(78, 39);
+            this.Btn_salir.TabIndex = 277;
+            this.Btn_salir.UseVisualStyleBackColor = true;
+            this.Btn_salir.Click += new System.EventHandler(this.btnSalir_Click);
+            // 
+            // Btn_guardar
+            // 
+            this.Btn_guardar.BackgroundImage = global::CapaDiseno.Properties.Resources.guardar1;
+            this.Btn_guardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Btn_guardar.FlatAppearance.BorderSize = 0;
+            this.Btn_guardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_guardar.Location = new System.Drawing.Point(87, 0);
+            this.Btn_guardar.Margin = new System.Windows.Forms.Padding(0);
+            this.Btn_guardar.Name = "Btn_guardar";
+            this.Btn_guardar.Size = new System.Drawing.Size(82, 39);
+            this.Btn_guardar.TabIndex = 276;
+            this.Btn_guardar.UseVisualStyleBackColor = true;
+            this.Btn_guardar.Click += new System.EventHandler(this.btn_ingresar_Click);
+            // 
+            // Btn_ingreso
+            // 
+            this.Btn_ingreso.BackgroundImage = global::CapaDiseno.Properties.Resources.agregar1;
+            this.Btn_ingreso.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Btn_ingreso.FlatAppearance.BorderSize = 0;
+            this.Btn_ingreso.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_ingreso.Location = new System.Drawing.Point(0, 0);
+            this.Btn_ingreso.Margin = new System.Windows.Forms.Padding(0);
+            this.Btn_ingreso.Name = "Btn_ingreso";
+            this.Btn_ingreso.Size = new System.Drawing.Size(87, 39);
+            this.Btn_ingreso.TabIndex = 275;
+            this.Btn_ingreso.UseVisualStyleBackColor = true;
+            this.Btn_ingreso.Click += new System.EventHandler(this.btn_nuevo_Click_1);
+            // 
+            // Txt_titulo
+            // 
+            this.Txt_titulo.AutoSize = true;
+            this.Txt_titulo.Font = new System.Drawing.Font("Haettenschweiler", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_titulo.ForeColor = System.Drawing.Color.Transparent;
+            this.Txt_titulo.Location = new System.Drawing.Point(258, 59);
+            this.Txt_titulo.Name = "Txt_titulo";
+            this.Txt_titulo.Size = new System.Drawing.Size(399, 44);
+            this.Txt_titulo.TabIndex = 274;
+            this.Txt_titulo.Text = "MANTENIMIENTO DE PERFILES ";
+            // 
+            // Gpb_buscarperfiles
+            // 
+            this.Gpb_buscarperfiles.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.Gpb_buscarperfiles.Controls.Add(this.Btn_buscarperfil);
+            this.Gpb_buscarperfiles.Controls.Add(this.Tbx_buscarperfil);
+            this.Gpb_buscarperfiles.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Gpb_buscarperfiles.Location = new System.Drawing.Point(108, 360);
+            this.Gpb_buscarperfiles.Margin = new System.Windows.Forms.Padding(4);
+            this.Gpb_buscarperfiles.Name = "Gpb_buscarperfiles";
+            this.Gpb_buscarperfiles.Padding = new System.Windows.Forms.Padding(4);
+            this.Gpb_buscarperfiles.Size = new System.Drawing.Size(310, 126);
+            this.Gpb_buscarperfiles.TabIndex = 273;
+            this.Gpb_buscarperfiles.TabStop = false;
+            this.Gpb_buscarperfiles.Text = "Buscar perfiles";
+            // 
+            // Btn_buscarperfil
+            // 
+            this.Btn_buscarperfil.BackgroundImage = global::CapaDiseno.Properties.Resources.buscar1;
+            this.Btn_buscarperfil.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Btn_buscarperfil.FlatAppearance.BorderSize = 0;
+            this.Btn_buscarperfil.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_buscarperfil.Location = new System.Drawing.Point(39, 34);
+            this.Btn_buscarperfil.Margin = new System.Windows.Forms.Padding(0);
+            this.Btn_buscarperfil.Name = "Btn_buscarperfil";
+            this.Btn_buscarperfil.Size = new System.Drawing.Size(87, 71);
+            this.Btn_buscarperfil.TabIndex = 266;
+            this.Btn_buscarperfil.UseVisualStyleBackColor = true;
+            this.Btn_buscarperfil.Click += new System.EventHandler(this.btn_bsucarperfil_Click);
+            // 
+            // Tbx_buscarperfil
+            // 
+            this.Tbx_buscarperfil.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Tbx_buscarperfil.Location = new System.Drawing.Point(146, 57);
+            this.Tbx_buscarperfil.Margin = new System.Windows.Forms.Padding(4);
+            this.Tbx_buscarperfil.Name = "Tbx_buscarperfil";
+            this.Tbx_buscarperfil.Size = new System.Drawing.Size(117, 27);
+            this.Tbx_buscarperfil.TabIndex = 6;
             // 
             // Gpb_datos
             // 
-            this.Gpb_datos.Controls.Add(this.txtdesc);
-            this.Gpb_datos.Controls.Add(this.txtnombre);
-            this.Gpb_datos.Controls.Add(this.txtcodigo);
-            this.Gpb_datos.Controls.Add(this.gbestado);
-            this.Gpb_datos.Controls.Add(this.Lbl_descripcion);
-            this.Gpb_datos.Controls.Add(this.Lbl_nombre);
-            this.Gpb_datos.Controls.Add(this.Lbl_codigoperfil);
-            this.Gpb_datos.Location = new System.Drawing.Point(15, 128);
+            this.Gpb_datos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.Gpb_datos.Controls.Add(this.Txt_descipcion);
+            this.Gpb_datos.Controls.Add(this.Txt_nombre);
+            this.Gpb_datos.Controls.Add(this.Txt_codigo);
+            this.Gpb_datos.Controls.Add(this.Txt_descripciondat);
+            this.Gpb_datos.Controls.Add(this.Txt_nombredat);
+            this.Gpb_datos.Controls.Add(this.Txt_codigoperfil);
+            this.Gpb_datos.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Gpb_datos.Location = new System.Drawing.Point(108, 232);
             this.Gpb_datos.Margin = new System.Windows.Forms.Padding(4);
             this.Gpb_datos.Name = "Gpb_datos";
             this.Gpb_datos.Padding = new System.Windows.Forms.Padding(4);
-            this.Gpb_datos.Size = new System.Drawing.Size(648, 360);
-            this.Gpb_datos.TabIndex = 254;
+            this.Gpb_datos.Size = new System.Drawing.Size(661, 100);
+            this.Gpb_datos.TabIndex = 272;
             this.Gpb_datos.TabStop = false;
             this.Gpb_datos.Text = "Datos";
             // 
-            // txtdesc
+            // Txt_descipcion
             // 
-            this.txtdesc.Location = new System.Drawing.Point(248, 143);
-            this.txtdesc.Margin = new System.Windows.Forms.Padding(4);
-            this.txtdesc.Multiline = true;
-            this.txtdesc.Name = "txtdesc";
-            this.txtdesc.Size = new System.Drawing.Size(296, 45);
-            this.txtdesc.TabIndex = 6;
+            this.Txt_descipcion.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_descipcion.Location = new System.Drawing.Point(386, 52);
+            this.Txt_descipcion.Margin = new System.Windows.Forms.Padding(4);
+            this.Txt_descipcion.Multiline = true;
+            this.Txt_descipcion.Name = "Txt_descipcion";
+            this.Txt_descipcion.Size = new System.Drawing.Size(258, 26);
+            this.Txt_descipcion.TabIndex = 6;
             // 
-            // txtnombre
+            // Txt_nombre
             // 
-            this.txtnombre.Location = new System.Drawing.Point(248, 102);
-            this.txtnombre.Margin = new System.Windows.Forms.Padding(4);
-            this.txtnombre.Name = "txtnombre";
-            this.txtnombre.Size = new System.Drawing.Size(296, 26);
-            this.txtnombre.TabIndex = 5;
+            this.Txt_nombre.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_nombre.Location = new System.Drawing.Point(216, 51);
+            this.Txt_nombre.Margin = new System.Windows.Forms.Padding(4);
+            this.Txt_nombre.Name = "Txt_nombre";
+            this.Txt_nombre.Size = new System.Drawing.Size(151, 27);
+            this.Txt_nombre.TabIndex = 5;
             // 
-            // txtcodigo
+            // Txt_codigo
             // 
-            this.txtcodigo.Location = new System.Drawing.Point(248, 54);
-            this.txtcodigo.Margin = new System.Windows.Forms.Padding(4);
-            this.txtcodigo.Name = "txtcodigo";
-            this.txtcodigo.Size = new System.Drawing.Size(132, 26);
-            this.txtcodigo.TabIndex = 4;
+            this.Txt_codigo.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_codigo.Location = new System.Drawing.Point(55, 52);
+            this.Txt_codigo.Margin = new System.Windows.Forms.Padding(4);
+            this.Txt_codigo.Name = "Txt_codigo";
+            this.Txt_codigo.Size = new System.Drawing.Size(137, 27);
+            this.Txt_codigo.TabIndex = 4;
             // 
-            // gbestado
+            // Txt_descripciondat
             // 
-            this.gbestado.Controls.Add(this.rbinhabilitado);
-            this.gbestado.Controls.Add(this.rbhabilitado);
-            this.gbestado.Location = new System.Drawing.Point(72, 208);
-            this.gbestado.Margin = new System.Windows.Forms.Padding(4);
-            this.gbestado.Name = "gbestado";
-            this.gbestado.Padding = new System.Windows.Forms.Padding(4);
-            this.gbestado.Size = new System.Drawing.Size(481, 131);
-            this.gbestado.TabIndex = 3;
-            this.gbestado.TabStop = false;
-            this.gbestado.Text = "Estado";
+            this.Txt_descripciondat.AutoSize = true;
+            this.Txt_descripciondat.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_descripciondat.Location = new System.Drawing.Point(453, 22);
+            this.Txt_descripciondat.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Txt_descripciondat.Name = "Txt_descripciondat";
+            this.Txt_descripciondat.Size = new System.Drawing.Size(107, 22);
+            this.Txt_descripciondat.TabIndex = 2;
+            this.Txt_descripciondat.Text = "Descripción";
             // 
-            // rbinhabilitado
+            // Txt_nombredat
             // 
-            this.rbinhabilitado.AutoSize = true;
-            this.rbinhabilitado.Location = new System.Drawing.Point(284, 69);
-            this.rbinhabilitado.Margin = new System.Windows.Forms.Padding(4);
-            this.rbinhabilitado.Name = "rbinhabilitado";
-            this.rbinhabilitado.Size = new System.Drawing.Size(114, 24);
-            this.rbinhabilitado.TabIndex = 1;
-            this.rbinhabilitado.TabStop = true;
-            this.rbinhabilitado.Text = "Inhabilitado";
-            this.rbinhabilitado.UseVisualStyleBackColor = true;
+            this.Txt_nombredat.AutoSize = true;
+            this.Txt_nombredat.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_nombredat.Location = new System.Drawing.Point(254, 22);
+            this.Txt_nombredat.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Txt_nombredat.Name = "Txt_nombredat";
+            this.Txt_nombredat.Size = new System.Drawing.Size(74, 22);
+            this.Txt_nombredat.TabIndex = 1;
+            this.Txt_nombredat.Text = "Nombre";
             // 
-            // rbhabilitado
+            // Txt_codigoperfil
             // 
-            this.rbhabilitado.AutoSize = true;
-            this.rbhabilitado.Location = new System.Drawing.Point(89, 69);
-            this.rbhabilitado.Margin = new System.Windows.Forms.Padding(4);
-            this.rbhabilitado.Name = "rbhabilitado";
-            this.rbhabilitado.Size = new System.Drawing.Size(105, 24);
-            this.rbhabilitado.TabIndex = 0;
-            this.rbhabilitado.TabStop = true;
-            this.rbhabilitado.Text = "Habilitado";
-            this.rbhabilitado.UseVisualStyleBackColor = true;
-            this.rbhabilitado.CheckedChanged += new System.EventHandler(this.rbhabilitado_CheckedChanged);
+            this.Txt_codigoperfil.AutoSize = true;
+            this.Txt_codigoperfil.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_codigoperfil.Location = new System.Drawing.Point(51, 22);
+            this.Txt_codigoperfil.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Txt_codigoperfil.Name = "Txt_codigoperfil";
+            this.Txt_codigoperfil.Size = new System.Drawing.Size(141, 22);
+            this.Txt_codigoperfil.TabIndex = 0;
+            this.Txt_codigoperfil.Text = "Codigo de perfil";
             // 
-            // Lbl_descripcion
+            // Gpb_estado
             // 
-            this.Lbl_descripcion.AutoSize = true;
-            this.Lbl_descripcion.Location = new System.Drawing.Point(60, 146);
-            this.Lbl_descripcion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.Lbl_descripcion.Name = "Lbl_descripcion";
-            this.Lbl_descripcion.Size = new System.Drawing.Size(99, 20);
-            this.Lbl_descripcion.TabIndex = 2;
-            this.Lbl_descripcion.Text = "Descripción";
+            this.Gpb_estado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.Gpb_estado.Controls.Add(this.Rdb_inhabilitado);
+            this.Gpb_estado.Controls.Add(this.Rdb_habilitado);
+            this.Gpb_estado.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Gpb_estado.Location = new System.Drawing.Point(426, 360);
+            this.Gpb_estado.Margin = new System.Windows.Forms.Padding(4);
+            this.Gpb_estado.Name = "Gpb_estado";
+            this.Gpb_estado.Padding = new System.Windows.Forms.Padding(4);
+            this.Gpb_estado.Size = new System.Drawing.Size(343, 126);
+            this.Gpb_estado.TabIndex = 271;
+            this.Gpb_estado.TabStop = false;
+            this.Gpb_estado.Text = "Estado";
             // 
-            // Lbl_nombre
+            // Rdb_inhabilitado
             // 
-            this.Lbl_nombre.AutoSize = true;
-            this.Lbl_nombre.Location = new System.Drawing.Point(60, 106);
-            this.Lbl_nombre.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.Lbl_nombre.Name = "Lbl_nombre";
-            this.Lbl_nombre.Size = new System.Drawing.Size(68, 20);
-            this.Lbl_nombre.TabIndex = 1;
-            this.Lbl_nombre.Text = "Nombre";
+            this.Rdb_inhabilitado.AutoSize = true;
+            this.Rdb_inhabilitado.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Rdb_inhabilitado.Location = new System.Drawing.Point(190, 46);
+            this.Rdb_inhabilitado.Margin = new System.Windows.Forms.Padding(4);
+            this.Rdb_inhabilitado.Name = "Rdb_inhabilitado";
+            this.Rdb_inhabilitado.Size = new System.Drawing.Size(110, 23);
+            this.Rdb_inhabilitado.TabIndex = 1;
+            this.Rdb_inhabilitado.TabStop = true;
+            this.Rdb_inhabilitado.Text = "Inhabilitado";
+            this.Rdb_inhabilitado.UseVisualStyleBackColor = true;
             // 
-            // Lbl_codigoperfil
+            // Rdb_habilitado
             // 
-            this.Lbl_codigoperfil.AutoSize = true;
-            this.Lbl_codigoperfil.Location = new System.Drawing.Point(60, 58);
-            this.Lbl_codigoperfil.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.Lbl_codigoperfil.Name = "Lbl_codigoperfil";
-            this.Lbl_codigoperfil.Size = new System.Drawing.Size(126, 20);
-            this.Lbl_codigoperfil.TabIndex = 0;
-            this.Lbl_codigoperfil.Text = "Codigo de perfil";
+            this.Rdb_habilitado.AutoSize = true;
+            this.Rdb_habilitado.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Rdb_habilitado.Location = new System.Drawing.Point(47, 46);
+            this.Rdb_habilitado.Margin = new System.Windows.Forms.Padding(4);
+            this.Rdb_habilitado.Name = "Rdb_habilitado";
+            this.Rdb_habilitado.Size = new System.Drawing.Size(101, 23);
+            this.Rdb_habilitado.TabIndex = 0;
+            this.Rdb_habilitado.TabStop = true;
+            this.Rdb_habilitado.Text = "Habilitado";
+            this.Rdb_habilitado.UseVisualStyleBackColor = true;
             // 
-            // Gpb_opciones
+            // tableLayoutPanel1
             // 
-            this.Gpb_opciones.Controls.Add(this.btn_eli);
-            this.Gpb_opciones.Controls.Add(this.btn_nuevo);
-            this.Gpb_opciones.Controls.Add(this.btn_actualizar);
-            this.Gpb_opciones.Controls.Add(this.btnSalir);
-            this.Gpb_opciones.Controls.Add(this.btn_salir);
-            this.Gpb_opciones.Controls.Add(this.btn_cancel);
-            this.Gpb_opciones.Controls.Add(this.btn_ingresar);
-            this.Gpb_opciones.Controls.Add(this.btn_modif);
-            this.Gpb_opciones.Location = new System.Drawing.Point(671, 137);
-            this.Gpb_opciones.Margin = new System.Windows.Forms.Padding(4);
-            this.Gpb_opciones.Name = "Gpb_opciones";
-            this.Gpb_opciones.Padding = new System.Windows.Forms.Padding(4);
-            this.Gpb_opciones.Size = new System.Drawing.Size(152, 360);
-            this.Gpb_opciones.TabIndex = 253;
-            this.Gpb_opciones.TabStop = false;
-            this.Gpb_opciones.Text = "Opciones";
-            // 
-            // btn_eli
-            // 
-            this.btn_eli.Location = new System.Drawing.Point(21, 222);
-            this.btn_eli.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_eli.Name = "btn_eli";
-            this.btn_eli.Size = new System.Drawing.Size(100, 30);
-            this.btn_eli.TabIndex = 9;
-            this.btn_eli.Text = "Eliminar";
-            this.btn_eli.UseVisualStyleBackColor = true;
-            this.btn_eli.Click += new System.EventHandler(this.btn_eli_Click_1);
-            // 
-            // btn_nuevo
-            // 
-            this.btn_nuevo.Location = new System.Drawing.Point(21, 35);
-            this.btn_nuevo.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_nuevo.Name = "btn_nuevo";
-            this.btn_nuevo.Size = new System.Drawing.Size(100, 30);
-            this.btn_nuevo.TabIndex = 7;
-            this.btn_nuevo.Text = "Nuevo";
-            this.btn_nuevo.UseVisualStyleBackColor = true;
-            this.btn_nuevo.Click += new System.EventHandler(this.btn_nuevo_Click);
-            // 
-            // btn_actualizar
-            // 
-            this.btn_actualizar.Location = new System.Drawing.Point(21, 127);
-            this.btn_actualizar.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_actualizar.Name = "btn_actualizar";
-            this.btn_actualizar.Size = new System.Drawing.Size(100, 30);
-            this.btn_actualizar.TabIndex = 6;
-            this.btn_actualizar.Text = "Actualizar";
-            this.btn_actualizar.UseVisualStyleBackColor = true;
-            this.btn_actualizar.Click += new System.EventHandler(this.btn_actualizar_Click_1);
-            // 
-            // btnSalir
-            // 
-            this.btnSalir.Location = new System.Drawing.Point(21, 321);
-            this.btnSalir.Margin = new System.Windows.Forms.Padding(4);
-            this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(100, 30);
-            this.btnSalir.TabIndex = 5;
-            this.btnSalir.Text = "Salir";
-            this.btnSalir.UseVisualStyleBackColor = true;
-            this.btnSalir.Click += new System.EventHandler(this.button1_Click_1);
-            // 
-            // btn_salir
-            // 
-            this.btn_salir.Location = new System.Drawing.Point(581, 46);
-            this.btn_salir.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_salir.Name = "btn_salir";
-            this.btn_salir.Size = new System.Drawing.Size(95, 30);
-            this.btn_salir.TabIndex = 4;
-            this.btn_salir.Text = "Salir";
-            this.btn_salir.UseVisualStyleBackColor = true;
-            // 
-            // btn_cancel
-            // 
-            this.btn_cancel.Location = new System.Drawing.Point(21, 268);
-            this.btn_cancel.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_cancel.Name = "btn_cancel";
-            this.btn_cancel.Size = new System.Drawing.Size(100, 30);
-            this.btn_cancel.TabIndex = 3;
-            this.btn_cancel.Text = "Cancelar";
-            this.btn_cancel.UseVisualStyleBackColor = true;
-            this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click_1);
-            // 
-            // btn_ingresar
-            // 
-            this.btn_ingresar.Location = new System.Drawing.Point(21, 80);
-            this.btn_ingresar.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_ingresar.Name = "btn_ingresar";
-            this.btn_ingresar.Size = new System.Drawing.Size(100, 30);
-            this.btn_ingresar.TabIndex = 0;
-            this.btn_ingresar.Text = "Guardar";
-            this.btn_ingresar.UseVisualStyleBackColor = true;
-            this.btn_ingresar.Click += new System.EventHandler(this.btn_ingresar_Click_1);
-            // 
-            // btn_modif
-            // 
-            this.btn_modif.Location = new System.Drawing.Point(21, 175);
-            this.btn_modif.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_modif.Name = "btn_modif";
-            this.btn_modif.Size = new System.Drawing.Size(100, 30);
-            this.btn_modif.TabIndex = 1;
-            this.btn_modif.Text = "Modificar";
-            this.btn_modif.UseVisualStyleBackColor = true;
-            this.btn_modif.Click += new System.EventHandler(this.btn_modif_Click_1);
+            this.tableLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.tableLayoutPanel1.ColumnCount = 8;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 51.47929F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 48.52071F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 85F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 82F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 86F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 87F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 78F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 73F));
+            this.tableLayoutPanel1.Controls.Add(this.Btn_ingreso, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.Btn_salir, 6, 0);
+            this.tableLayoutPanel1.Controls.Add(this.Btn_eliminar, 4, 0);
+            this.tableLayoutPanel1.Controls.Add(this.Btn_cancelar, 5, 0);
+            this.tableLayoutPanel1.Controls.Add(this.Btn_actualizar, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.Btn_ayuda, 7, 0);
+            this.tableLayoutPanel1.Controls.Add(this.Btn_modificar, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.Btn_guardar, 1, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(108, 146);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(661, 39);
+            this.tableLayoutPanel1.TabIndex = 283;
+            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
             // frm_perfiles_mantenimiento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(838, 514);
-            this.Controls.Add(this.btn_ayuda);
-            this.Controls.Add(this.gbbuscar);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(133)))), ((int)(((byte)(223)))));
+            this.ClientSize = new System.Drawing.Size(867, 559);
+            this.Controls.Add(this.tableLayoutPanel1);
+            this.Controls.Add(this.Txt_titulo);
+            this.Controls.Add(this.Gpb_buscarperfiles);
             this.Controls.Add(this.Gpb_datos);
-            this.Controls.Add(this.Gpb_opciones);
+            this.Controls.Add(this.Gpb_estado);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frm_perfiles_mantenimiento";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Mantenimiento de Perfiles";
             this.Load += new System.EventHandler(this.Frm_perfiles_mantenimiento_Load);
-            this.gbbuscar.ResumeLayout(false);
-            this.gbbuscar.PerformLayout();
+            this.Gpb_buscarperfiles.ResumeLayout(false);
+            this.Gpb_buscarperfiles.PerformLayout();
             this.Gpb_datos.ResumeLayout(false);
             this.Gpb_datos.PerformLayout();
-            this.gbestado.ResumeLayout(false);
-            this.gbestado.PerformLayout();
-            this.Gpb_opciones.ResumeLayout(false);
+            this.Gpb_estado.ResumeLayout(false);
+            this.Gpb_estado.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button btn_ayuda;
-        private System.Windows.Forms.GroupBox gbbuscar;
-        private System.Windows.Forms.Button btn_bsucarperfil;
-        private System.Windows.Forms.TextBox txt_buscarperfil;
+        private System.Windows.Forms.Button Btn_eliminar;
+        private System.Windows.Forms.Button Btn_modificar;
+        private System.Windows.Forms.Button Btn_actualizar;
+        private System.Windows.Forms.Button Btn_ayuda;
+        private System.Windows.Forms.Button Btn_cancelar;
+        private System.Windows.Forms.Button Btn_salir;
+        private System.Windows.Forms.Button Btn_guardar;
+        private System.Windows.Forms.Button Btn_ingreso;
+        private System.Windows.Forms.Label Txt_titulo;
+        private System.Windows.Forms.GroupBox Gpb_buscarperfiles;
+        private System.Windows.Forms.Button Btn_buscarperfil;
+        private System.Windows.Forms.TextBox Tbx_buscarperfil;
         private System.Windows.Forms.GroupBox Gpb_datos;
-        private System.Windows.Forms.TextBox txtdesc;
-        private System.Windows.Forms.TextBox txtnombre;
-        private System.Windows.Forms.TextBox txtcodigo;
-        private System.Windows.Forms.GroupBox gbestado;
-        private System.Windows.Forms.RadioButton rbinhabilitado;
-        private System.Windows.Forms.RadioButton rbhabilitado;
-        private System.Windows.Forms.Label Lbl_descripcion;
-        private System.Windows.Forms.Label Lbl_nombre;
-        private System.Windows.Forms.Label Lbl_codigoperfil;
-        private System.Windows.Forms.GroupBox Gpb_opciones;
-        private System.Windows.Forms.Button btn_eli;
-        private System.Windows.Forms.Button btn_nuevo;
-        private System.Windows.Forms.Button btn_actualizar;
-        private System.Windows.Forms.Button btnSalir;
-        private System.Windows.Forms.Button btn_salir;
-        private System.Windows.Forms.Button btn_cancel;
-        private System.Windows.Forms.Button btn_ingresar;
-        private System.Windows.Forms.Button btn_modif;
+        private System.Windows.Forms.TextBox Txt_descipcion;
+        private System.Windows.Forms.TextBox Txt_nombre;
+        private System.Windows.Forms.TextBox Txt_codigo;
+        private System.Windows.Forms.Label Txt_descripciondat;
+        private System.Windows.Forms.Label Txt_nombredat;
+        private System.Windows.Forms.Label Txt_codigoperfil;
+        private System.Windows.Forms.GroupBox Gpb_estado;
+        private System.Windows.Forms.RadioButton Rdb_inhabilitado;
+        private System.Windows.Forms.RadioButton Rdb_habilitado;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     }
 }

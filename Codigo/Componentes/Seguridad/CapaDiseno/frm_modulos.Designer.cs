@@ -1,6 +1,6 @@
 ﻿namespace CapaDiseno
 {
-    partial class frm_modulos
+    partial class frmMantemientoMódulos
     {
         /// <summary>
         /// Required designer variable.
@@ -28,351 +28,381 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_modulos));
-            this.btn_ayuda = new System.Windows.Forms.Button();
-            this.gbbuscar = new System.Windows.Forms.GroupBox();
-            this.btn_bsucarmodulo = new System.Windows.Forms.Button();
-            this.txt_buscarmodulo = new System.Windows.Forms.TextBox();
+            this.Gpb_buscar = new System.Windows.Forms.GroupBox();
+            this.Txt_buscar = new System.Windows.Forms.TextBox();
             this.Gpb_datos = new System.Windows.Forms.GroupBox();
-            this.txtdesc = new System.Windows.Forms.TextBox();
-            this.txtcodigo = new System.Windows.Forms.TextBox();
-            this.gbestado = new System.Windows.Forms.GroupBox();
-            this.rbinhabilitado = new System.Windows.Forms.RadioButton();
-            this.rbhabilitado = new System.Windows.Forms.RadioButton();
-            this.Lbl_descripcion = new System.Windows.Forms.Label();
-            this.Lbl_nombre = new System.Windows.Forms.Label();
-            this.Lbl_codigomodulo = new System.Windows.Forms.Label();
-            this.txtnombre = new System.Windows.Forms.TextBox();
-            this.Gpb_opciones = new System.Windows.Forms.GroupBox();
-            this.btn_eliminar = new System.Windows.Forms.Button();
-            this.btn_nuevo = new System.Windows.Forms.Button();
-            this.btn_actualizar = new System.Windows.Forms.Button();
-            this.Btn_exit = new System.Windows.Forms.Button();
-            this.btn_salir = new System.Windows.Forms.Button();
-            this.btn_cancel = new System.Windows.Forms.Button();
-            this.btn_ingresar = new System.Windows.Forms.Button();
-            this.btn_modif = new System.Windows.Forms.Button();
-            this.gbbuscar.SuspendLayout();
+            this.Txt_nombre = new System.Windows.Forms.TextBox();
+            this.Txt_codigo = new System.Windows.Forms.TextBox();
+            this.Gpb_estado = new System.Windows.Forms.GroupBox();
+            this.Rdb_inhabilitado = new System.Windows.Forms.RadioButton();
+            this.Rdb_habilitado = new System.Windows.Forms.RadioButton();
+            this.Txt_descripcionmodulo = new System.Windows.Forms.Label();
+            this.Txt_nombremodulo = new System.Windows.Forms.Label();
+            this.Txt_id = new System.Windows.Forms.Label();
+            this.Txt_descripcion = new System.Windows.Forms.TextBox();
+            this.Btn_cancelar = new System.Windows.Forms.Button();
+            this.Btn_eliminar = new System.Windows.Forms.Button();
+            this.Btn_modificar = new System.Windows.Forms.Button();
+            this.Btn_buscar = new System.Windows.Forms.Button();
+            this.Btn_actualizar = new System.Windows.Forms.Button();
+            this.Btn_guardar = new System.Windows.Forms.Button();
+            this.Btn_ayuda = new System.Windows.Forms.Button();
+            this.Btn_salir = new System.Windows.Forms.Button();
+            this.Btn_agregar = new System.Windows.Forms.Button();
+            this.Txt_titulo = new System.Windows.Forms.Label();
+            this.Gpb_buscar.SuspendLayout();
             this.Gpb_datos.SuspendLayout();
-            this.gbestado.SuspendLayout();
-            this.Gpb_opciones.SuspendLayout();
+            this.Gpb_estado.SuspendLayout();
             this.SuspendLayout();
             // 
-            // btn_ayuda
+            // Gpb_buscar
             // 
-            this.btn_ayuda.Image = global::CapaDiseno.Properties.Resources.icons8_ayuda_30;
-            this.btn_ayuda.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btn_ayuda.Location = new System.Drawing.Point(706, 45);
-            this.btn_ayuda.Name = "btn_ayuda";
-            this.btn_ayuda.Size = new System.Drawing.Size(86, 36);
-            this.btn_ayuda.TabIndex = 256;
-            this.btn_ayuda.Text = "Ayuda";
-            this.btn_ayuda.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_ayuda.UseVisualStyleBackColor = true;
-            this.btn_ayuda.Click += new System.EventHandler(this.btn_ayuda_Click_1);
+            this.Gpb_buscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.Gpb_buscar.Controls.Add(this.Txt_buscar);
+            this.Gpb_buscar.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Gpb_buscar.Location = new System.Drawing.Point(169, 145);
+            this.Gpb_buscar.Margin = new System.Windows.Forms.Padding(4);
+            this.Gpb_buscar.Name = "Gpb_buscar";
+            this.Gpb_buscar.Padding = new System.Windows.Forms.Padding(4);
+            this.Gpb_buscar.Size = new System.Drawing.Size(648, 98);
+            this.Gpb_buscar.TabIndex = 255;
+            this.Gpb_buscar.TabStop = false;
+            this.Gpb_buscar.Text = "Buscar Módulo";
             // 
-            // gbbuscar
+            // Txt_buscar
             // 
-            this.gbbuscar.Controls.Add(this.btn_bsucarmodulo);
-            this.gbbuscar.Controls.Add(this.txt_buscarmodulo);
-            this.gbbuscar.Location = new System.Drawing.Point(87, 23);
-            this.gbbuscar.Margin = new System.Windows.Forms.Padding(4);
-            this.gbbuscar.Name = "gbbuscar";
-            this.gbbuscar.Padding = new System.Windows.Forms.Padding(4);
-            this.gbbuscar.Size = new System.Drawing.Size(606, 102);
-            this.gbbuscar.TabIndex = 255;
-            this.gbbuscar.TabStop = false;
-            this.gbbuscar.Text = "Buscar Módulo";
-            // 
-            // btn_bsucarmodulo
-            // 
-            this.btn_bsucarmodulo.Location = new System.Drawing.Point(427, 41);
-            this.btn_bsucarmodulo.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_bsucarmodulo.Name = "btn_bsucarmodulo";
-            this.btn_bsucarmodulo.Size = new System.Drawing.Size(100, 30);
-            this.btn_bsucarmodulo.TabIndex = 7;
-            this.btn_bsucarmodulo.Text = "Buscar";
-            this.btn_bsucarmodulo.UseVisualStyleBackColor = true;
-            this.btn_bsucarmodulo.Click += new System.EventHandler(this.btn_bsucarmodulo_Click_1);
-            // 
-            // txt_buscarmodulo
-            // 
-            this.txt_buscarmodulo.Location = new System.Drawing.Point(95, 44);
-            this.txt_buscarmodulo.Margin = new System.Windows.Forms.Padding(4);
-            this.txt_buscarmodulo.Name = "txt_buscarmodulo";
-            this.txt_buscarmodulo.Size = new System.Drawing.Size(296, 26);
-            this.txt_buscarmodulo.TabIndex = 6;
+            this.Txt_buscar.Location = new System.Drawing.Point(37, 36);
+            this.Txt_buscar.Margin = new System.Windows.Forms.Padding(4);
+            this.Txt_buscar.Name = "Txt_buscar";
+            this.Txt_buscar.Size = new System.Drawing.Size(573, 26);
+            this.Txt_buscar.TabIndex = 6;
             // 
             // Gpb_datos
             // 
-            this.Gpb_datos.Controls.Add(this.txtdesc);
-            this.Gpb_datos.Controls.Add(this.txtcodigo);
-            this.Gpb_datos.Controls.Add(this.gbestado);
-            this.Gpb_datos.Controls.Add(this.Lbl_descripcion);
-            this.Gpb_datos.Controls.Add(this.Lbl_nombre);
-            this.Gpb_datos.Controls.Add(this.Lbl_codigomodulo);
-            this.Gpb_datos.Controls.Add(this.txtnombre);
-            this.Gpb_datos.Location = new System.Drawing.Point(15, 133);
+            this.Gpb_datos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.Gpb_datos.Controls.Add(this.Txt_nombre);
+            this.Gpb_datos.Controls.Add(this.Txt_codigo);
+            this.Gpb_datos.Controls.Add(this.Gpb_estado);
+            this.Gpb_datos.Controls.Add(this.Txt_descripcionmodulo);
+            this.Gpb_datos.Controls.Add(this.Txt_nombremodulo);
+            this.Gpb_datos.Controls.Add(this.Txt_id);
+            this.Gpb_datos.Controls.Add(this.Txt_descripcion);
+            this.Gpb_datos.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Gpb_datos.Location = new System.Drawing.Point(169, 251);
             this.Gpb_datos.Margin = new System.Windows.Forms.Padding(4);
             this.Gpb_datos.Name = "Gpb_datos";
             this.Gpb_datos.Padding = new System.Windows.Forms.Padding(4);
-            this.Gpb_datos.Size = new System.Drawing.Size(648, 360);
+            this.Gpb_datos.Size = new System.Drawing.Size(648, 347);
             this.Gpb_datos.TabIndex = 254;
             this.Gpb_datos.TabStop = false;
             this.Gpb_datos.Text = "Datos";
             // 
-            // txtdesc
+            // Txt_nombre
             // 
-            this.txtdesc.Location = new System.Drawing.Point(248, 143);
-            this.txtdesc.Margin = new System.Windows.Forms.Padding(4);
-            this.txtdesc.Multiline = true;
-            this.txtdesc.Name = "txtdesc";
-            this.txtdesc.Size = new System.Drawing.Size(296, 45);
-            this.txtdesc.TabIndex = 2;
-            this.txtdesc.Tag = "2";
+            this.Txt_nombre.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_nombre.Location = new System.Drawing.Point(246, 96);
+            this.Txt_nombre.Margin = new System.Windows.Forms.Padding(4);
+            this.Txt_nombre.Multiline = true;
+            this.Txt_nombre.Name = "Txt_nombre";
+            this.Txt_nombre.Size = new System.Drawing.Size(296, 26);
+            this.Txt_nombre.TabIndex = 2;
+            this.Txt_nombre.Tag = "2";
             // 
-            // txtcodigo
+            // Txt_codigo
             // 
-            this.txtcodigo.Location = new System.Drawing.Point(248, 54);
-            this.txtcodigo.Margin = new System.Windows.Forms.Padding(4);
-            this.txtcodigo.Name = "txtcodigo";
-            this.txtcodigo.Size = new System.Drawing.Size(132, 26);
-            this.txtcodigo.TabIndex = 4;
+            this.Txt_codigo.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_codigo.Location = new System.Drawing.Point(246, 41);
+            this.Txt_codigo.Margin = new System.Windows.Forms.Padding(4);
+            this.Txt_codigo.Name = "Txt_codigo";
+            this.Txt_codigo.Size = new System.Drawing.Size(297, 24);
+            this.Txt_codigo.TabIndex = 4;
             // 
-            // gbestado
+            // Gpb_estado
             // 
-            this.gbestado.Controls.Add(this.rbinhabilitado);
-            this.gbestado.Controls.Add(this.rbhabilitado);
-            this.gbestado.Location = new System.Drawing.Point(72, 208);
-            this.gbestado.Margin = new System.Windows.Forms.Padding(4);
-            this.gbestado.Name = "gbestado";
-            this.gbestado.Padding = new System.Windows.Forms.Padding(4);
-            this.gbestado.Size = new System.Drawing.Size(481, 131);
-            this.gbestado.TabIndex = 3;
-            this.gbestado.TabStop = false;
-            this.gbestado.Text = "Estado";
+            this.Gpb_estado.Controls.Add(this.Rdb_inhabilitado);
+            this.Gpb_estado.Controls.Add(this.Rdb_habilitado);
+            this.Gpb_estado.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Gpb_estado.Location = new System.Drawing.Point(102, 208);
+            this.Gpb_estado.Margin = new System.Windows.Forms.Padding(4);
+            this.Gpb_estado.Name = "Gpb_estado";
+            this.Gpb_estado.Padding = new System.Windows.Forms.Padding(4);
+            this.Gpb_estado.Size = new System.Drawing.Size(441, 101);
+            this.Gpb_estado.TabIndex = 3;
+            this.Gpb_estado.TabStop = false;
+            this.Gpb_estado.Text = "Estado";
             // 
-            // rbinhabilitado
+            // Rdb_inhabilitado
             // 
-            this.rbinhabilitado.AutoSize = true;
-            this.rbinhabilitado.Location = new System.Drawing.Point(284, 69);
-            this.rbinhabilitado.Margin = new System.Windows.Forms.Padding(4);
-            this.rbinhabilitado.Name = "rbinhabilitado";
-            this.rbinhabilitado.Size = new System.Drawing.Size(114, 24);
-            this.rbinhabilitado.TabIndex = 1;
-            this.rbinhabilitado.TabStop = true;
-            this.rbinhabilitado.Text = "Inhabilitado";
-            this.rbinhabilitado.UseVisualStyleBackColor = true;
+            this.Rdb_inhabilitado.AutoSize = true;
+            this.Rdb_inhabilitado.Location = new System.Drawing.Point(248, 44);
+            this.Rdb_inhabilitado.Margin = new System.Windows.Forms.Padding(4);
+            this.Rdb_inhabilitado.Name = "Rdb_inhabilitado";
+            this.Rdb_inhabilitado.Size = new System.Drawing.Size(111, 23);
+            this.Rdb_inhabilitado.TabIndex = 1;
+            this.Rdb_inhabilitado.TabStop = true;
+            this.Rdb_inhabilitado.Text = "Inhabilitado";
+            this.Rdb_inhabilitado.UseVisualStyleBackColor = true;
             // 
-            // rbhabilitado
+            // Rdb_habilitado
             // 
-            this.rbhabilitado.AutoSize = true;
-            this.rbhabilitado.Location = new System.Drawing.Point(89, 69);
-            this.rbhabilitado.Margin = new System.Windows.Forms.Padding(4);
-            this.rbhabilitado.Name = "rbhabilitado";
-            this.rbhabilitado.Size = new System.Drawing.Size(105, 24);
-            this.rbhabilitado.TabIndex = 0;
-            this.rbhabilitado.TabStop = true;
-            this.rbhabilitado.Text = "Habilitado";
-            this.rbhabilitado.UseVisualStyleBackColor = true;
+            this.Rdb_habilitado.AutoSize = true;
+            this.Rdb_habilitado.Location = new System.Drawing.Point(73, 44);
+            this.Rdb_habilitado.Margin = new System.Windows.Forms.Padding(4);
+            this.Rdb_habilitado.Name = "Rdb_habilitado";
+            this.Rdb_habilitado.Size = new System.Drawing.Size(100, 23);
+            this.Rdb_habilitado.TabIndex = 0;
+            this.Rdb_habilitado.TabStop = true;
+            this.Rdb_habilitado.Text = "Habilitado";
+            this.Rdb_habilitado.UseVisualStyleBackColor = true;
+            this.Rdb_habilitado.CheckedChanged += new System.EventHandler(this.Rdb_habilitado_CheckedChanged);
             // 
-            // Lbl_descripcion
+            // Txt_descripcionmodulo
             // 
-            this.Lbl_descripcion.AutoSize = true;
-            this.Lbl_descripcion.Location = new System.Drawing.Point(60, 146);
-            this.Lbl_descripcion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.Lbl_descripcion.Name = "Lbl_descripcion";
-            this.Lbl_descripcion.Size = new System.Drawing.Size(99, 20);
-            this.Lbl_descripcion.TabIndex = 2;
-            this.Lbl_descripcion.Text = "Descripción";
+            this.Txt_descripcionmodulo.AutoSize = true;
+            this.Txt_descripcionmodulo.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_descripcionmodulo.Location = new System.Drawing.Point(98, 155);
+            this.Txt_descripcionmodulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Txt_descripcionmodulo.Name = "Txt_descripcionmodulo";
+            this.Txt_descripcionmodulo.Size = new System.Drawing.Size(89, 19);
+            this.Txt_descripcionmodulo.TabIndex = 2;
+            this.Txt_descripcionmodulo.Text = "Descripción";
             // 
-            // Lbl_nombre
+            // Txt_nombremodulo
             // 
-            this.Lbl_nombre.AutoSize = true;
-            this.Lbl_nombre.Location = new System.Drawing.Point(60, 106);
-            this.Lbl_nombre.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.Lbl_nombre.Name = "Lbl_nombre";
-            this.Lbl_nombre.Size = new System.Drawing.Size(68, 20);
-            this.Lbl_nombre.TabIndex = 1;
-            this.Lbl_nombre.Text = "Nombre";
+            this.Txt_nombremodulo.AutoSize = true;
+            this.Txt_nombremodulo.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_nombremodulo.Location = new System.Drawing.Point(98, 103);
+            this.Txt_nombremodulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Txt_nombremodulo.Name = "Txt_nombremodulo";
+            this.Txt_nombremodulo.Size = new System.Drawing.Size(64, 19);
+            this.Txt_nombremodulo.TabIndex = 1;
+            this.Txt_nombremodulo.Text = "Nombre";
             // 
-            // Lbl_codigomodulo
+            // Txt_id
             // 
-            this.Lbl_codigomodulo.AutoSize = true;
-            this.Lbl_codigomodulo.Location = new System.Drawing.Point(60, 58);
-            this.Lbl_codigomodulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.Lbl_codigomodulo.Name = "Lbl_codigomodulo";
-            this.Lbl_codigomodulo.Size = new System.Drawing.Size(143, 20);
-            this.Lbl_codigomodulo.TabIndex = 0;
-            this.Lbl_codigomodulo.Text = "Codigo de Modulo";
+            this.Txt_id.AutoSize = true;
+            this.Txt_id.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_id.Location = new System.Drawing.Point(98, 46);
+            this.Txt_id.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Txt_id.Name = "Txt_id";
+            this.Txt_id.Size = new System.Drawing.Size(140, 19);
+            this.Txt_id.TabIndex = 0;
+            this.Txt_id.Text = "Código de Módulo";
             // 
-            // txtnombre
+            // Txt_descripcion
             // 
-            this.txtnombre.Location = new System.Drawing.Point(248, 102);
-            this.txtnombre.Margin = new System.Windows.Forms.Padding(4);
-            this.txtnombre.Name = "txtnombre";
-            this.txtnombre.Size = new System.Drawing.Size(296, 26);
-            this.txtnombre.TabIndex = 1;
-            this.txtnombre.Tag = "1";
+            this.Txt_descripcion.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_descripcion.Location = new System.Drawing.Point(245, 150);
+            this.Txt_descripcion.Margin = new System.Windows.Forms.Padding(4);
+            this.Txt_descripcion.Name = "Txt_descripcion";
+            this.Txt_descripcion.Size = new System.Drawing.Size(297, 24);
+            this.Txt_descripcion.TabIndex = 1;
+            this.Txt_descripcion.Tag = "1";
             // 
-            // Gpb_opciones
+            // Btn_cancelar
             // 
-            this.Gpb_opciones.Controls.Add(this.btn_eliminar);
-            this.Gpb_opciones.Controls.Add(this.btn_nuevo);
-            this.Gpb_opciones.Controls.Add(this.btn_actualizar);
-            this.Gpb_opciones.Controls.Add(this.Btn_exit);
-            this.Gpb_opciones.Controls.Add(this.btn_salir);
-            this.Gpb_opciones.Controls.Add(this.btn_cancel);
-            this.Gpb_opciones.Controls.Add(this.btn_ingresar);
-            this.Gpb_opciones.Controls.Add(this.btn_modif);
-            this.Gpb_opciones.Location = new System.Drawing.Point(671, 133);
-            this.Gpb_opciones.Margin = new System.Windows.Forms.Padding(4);
-            this.Gpb_opciones.Name = "Gpb_opciones";
-            this.Gpb_opciones.Padding = new System.Windows.Forms.Padding(4);
-            this.Gpb_opciones.Size = new System.Drawing.Size(152, 360);
-            this.Gpb_opciones.TabIndex = 253;
-            this.Gpb_opciones.TabStop = false;
-            this.Gpb_opciones.Text = "Opciones";
+            this.Btn_cancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.Btn_cancelar.BackgroundImage = global::CapaDiseno.Properties.Resources.cancelar;
+            this.Btn_cancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Btn_cancelar.FlatAppearance.BorderSize = 0;
+            this.Btn_cancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_cancelar.Location = new System.Drawing.Point(630, 76);
+            this.Btn_cancelar.Margin = new System.Windows.Forms.Padding(0);
+            this.Btn_cancelar.Name = "Btn_cancelar";
+            this.Btn_cancelar.Size = new System.Drawing.Size(93, 42);
+            this.Btn_cancelar.TabIndex = 290;
+            this.Btn_cancelar.UseVisualStyleBackColor = false;
+            this.Btn_cancelar.Click += new System.EventHandler(this.Btn_cancelar_Click);
             // 
-            // btn_eliminar
+            // Btn_eliminar
             // 
-            this.btn_eliminar.Location = new System.Drawing.Point(21, 217);
-            this.btn_eliminar.Name = "btn_eliminar";
-            this.btn_eliminar.Size = new System.Drawing.Size(100, 30);
-            this.btn_eliminar.TabIndex = 7;
-            this.btn_eliminar.Text = "Eliminar";
-            this.btn_eliminar.UseVisualStyleBackColor = true;
-            this.btn_eliminar.Click += new System.EventHandler(this.btn_eliminar_Click_1);
+            this.Btn_eliminar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.Btn_eliminar.BackgroundImage = global::CapaDiseno.Properties.Resources.borrar1;
+            this.Btn_eliminar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Btn_eliminar.FlatAppearance.BorderSize = 0;
+            this.Btn_eliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_eliminar.Location = new System.Drawing.Point(537, 76);
+            this.Btn_eliminar.Margin = new System.Windows.Forms.Padding(0);
+            this.Btn_eliminar.Name = "Btn_eliminar";
+            this.Btn_eliminar.Size = new System.Drawing.Size(93, 42);
+            this.Btn_eliminar.TabIndex = 289;
+            this.Btn_eliminar.UseVisualStyleBackColor = false;
+            this.Btn_eliminar.Click += new System.EventHandler(this.Btn_eliminar_Click_1);
             // 
-            // btn_nuevo
+            // Btn_modificar
             // 
-            this.btn_nuevo.Location = new System.Drawing.Point(21, 23);
-            this.btn_nuevo.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_nuevo.Name = "btn_nuevo";
-            this.btn_nuevo.Size = new System.Drawing.Size(100, 30);
-            this.btn_nuevo.TabIndex = 0;
-            this.btn_nuevo.Tag = "0";
-            this.btn_nuevo.Text = "Nuevo";
-            this.btn_nuevo.UseVisualStyleBackColor = true;
-            this.btn_nuevo.Click += new System.EventHandler(this.btn_nuevo_Click_1);
+            this.Btn_modificar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.Btn_modificar.BackgroundImage = global::CapaDiseno.Properties.Resources.editar1;
+            this.Btn_modificar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Btn_modificar.FlatAppearance.BorderSize = 0;
+            this.Btn_modificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_modificar.Location = new System.Drawing.Point(444, 76);
+            this.Btn_modificar.Margin = new System.Windows.Forms.Padding(0);
+            this.Btn_modificar.Name = "Btn_modificar";
+            this.Btn_modificar.Size = new System.Drawing.Size(93, 42);
+            this.Btn_modificar.TabIndex = 288;
+            this.Btn_modificar.UseVisualStyleBackColor = false;
+            this.Btn_modificar.Click += new System.EventHandler(this.Btn_modificar_Click);
             // 
-            // btn_actualizar
+            // Btn_buscar
             // 
-            this.btn_actualizar.Location = new System.Drawing.Point(21, 115);
-            this.btn_actualizar.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_actualizar.Name = "btn_actualizar";
-            this.btn_actualizar.Size = new System.Drawing.Size(100, 30);
-            this.btn_actualizar.TabIndex = 6;
-            this.btn_actualizar.Text = "Actualizar";
-            this.btn_actualizar.UseVisualStyleBackColor = true;
-            this.btn_actualizar.Click += new System.EventHandler(this.btn_actualizar_Click_1);
+            this.Btn_buscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.Btn_buscar.BackgroundImage = global::CapaDiseno.Properties.Resources.buscar1;
+            this.Btn_buscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Btn_buscar.FlatAppearance.BorderSize = 0;
+            this.Btn_buscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_buscar.Location = new System.Drawing.Point(351, 76);
+            this.Btn_buscar.Margin = new System.Windows.Forms.Padding(0);
+            this.Btn_buscar.Name = "Btn_buscar";
+            this.Btn_buscar.Size = new System.Drawing.Size(93, 42);
+            this.Btn_buscar.TabIndex = 287;
+            this.Btn_buscar.UseVisualStyleBackColor = false;
+            this.Btn_buscar.Click += new System.EventHandler(this.Btn_buscar_Click);
             // 
-            // Btn_exit
+            // Btn_actualizar
             // 
-            this.Btn_exit.Location = new System.Drawing.Point(21, 309);
-            this.Btn_exit.Margin = new System.Windows.Forms.Padding(4);
-            this.Btn_exit.Name = "Btn_exit";
-            this.Btn_exit.Size = new System.Drawing.Size(100, 30);
-            this.Btn_exit.TabIndex = 5;
-            this.Btn_exit.Text = "Salir";
-            this.Btn_exit.UseVisualStyleBackColor = true;
-            this.Btn_exit.Click += new System.EventHandler(this.button1_Click_1);
+            this.Btn_actualizar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.Btn_actualizar.BackgroundImage = global::CapaDiseno.Properties.Resources.guardar2;
+            this.Btn_actualizar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Btn_actualizar.FlatAppearance.BorderSize = 0;
+            this.Btn_actualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_actualizar.Location = new System.Drawing.Point(258, 76);
+            this.Btn_actualizar.Margin = new System.Windows.Forms.Padding(0);
+            this.Btn_actualizar.Name = "Btn_actualizar";
+            this.Btn_actualizar.Size = new System.Drawing.Size(93, 42);
+            this.Btn_actualizar.TabIndex = 286;
+            this.Btn_actualizar.UseVisualStyleBackColor = false;
+            this.Btn_actualizar.Click += new System.EventHandler(this.Btn_actualizar_Click_1);
             // 
-            // btn_salir
+            // Btn_guardar
             // 
-            this.btn_salir.Location = new System.Drawing.Point(581, 46);
-            this.btn_salir.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_salir.Name = "btn_salir";
-            this.btn_salir.Size = new System.Drawing.Size(95, 30);
-            this.btn_salir.TabIndex = 4;
-            this.btn_salir.Text = "Salir";
-            this.btn_salir.UseVisualStyleBackColor = true;
+            this.Btn_guardar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.Btn_guardar.BackgroundImage = global::CapaDiseno.Properties.Resources.guardar1;
+            this.Btn_guardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Btn_guardar.FlatAppearance.BorderSize = 0;
+            this.Btn_guardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_guardar.Location = new System.Drawing.Point(165, 76);
+            this.Btn_guardar.Margin = new System.Windows.Forms.Padding(0);
+            this.Btn_guardar.Name = "Btn_guardar";
+            this.Btn_guardar.Size = new System.Drawing.Size(93, 42);
+            this.Btn_guardar.TabIndex = 285;
+            this.Btn_guardar.UseVisualStyleBackColor = false;
+            this.Btn_guardar.Click += new System.EventHandler(this.Btn_guardar_Click_1);
             // 
-            // btn_cancel
+            // Btn_ayuda
             // 
-            this.btn_cancel.Location = new System.Drawing.Point(21, 267);
-            this.btn_cancel.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_cancel.Name = "btn_cancel";
-            this.btn_cancel.Size = new System.Drawing.Size(100, 30);
-            this.btn_cancel.TabIndex = 3;
-            this.btn_cancel.Text = "Cancelar";
-            this.btn_cancel.UseVisualStyleBackColor = true;
-            this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click_1);
+            this.Btn_ayuda.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.Btn_ayuda.BackgroundImage = global::CapaDiseno.Properties.Resources.ayuda1;
+            this.Btn_ayuda.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Btn_ayuda.FlatAppearance.BorderSize = 0;
+            this.Btn_ayuda.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_ayuda.Location = new System.Drawing.Point(816, 76);
+            this.Btn_ayuda.Margin = new System.Windows.Forms.Padding(0);
+            this.Btn_ayuda.Name = "Btn_ayuda";
+            this.Btn_ayuda.Size = new System.Drawing.Size(93, 42);
+            this.Btn_ayuda.TabIndex = 284;
+            this.Btn_ayuda.UseVisualStyleBackColor = false;
+            this.Btn_ayuda.Click += new System.EventHandler(this.Btn_ayuda_Click);
             // 
-            // btn_ingresar
+            // Btn_salir
             // 
-            this.btn_ingresar.Location = new System.Drawing.Point(21, 68);
-            this.btn_ingresar.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_ingresar.Name = "btn_ingresar";
-            this.btn_ingresar.Size = new System.Drawing.Size(100, 30);
-            this.btn_ingresar.TabIndex = 3;
-            this.btn_ingresar.Tag = "3";
-            this.btn_ingresar.Text = "Ingresar";
-            this.btn_ingresar.UseVisualStyleBackColor = true;
-            this.btn_ingresar.Click += new System.EventHandler(this.btn_ingresar_Click_1);
+            this.Btn_salir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.Btn_salir.BackgroundImage = global::CapaDiseno.Properties.Resources.salir1;
+            this.Btn_salir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Btn_salir.FlatAppearance.BorderSize = 0;
+            this.Btn_salir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_salir.Location = new System.Drawing.Point(723, 76);
+            this.Btn_salir.Margin = new System.Windows.Forms.Padding(0);
+            this.Btn_salir.Name = "Btn_salir";
+            this.Btn_salir.Size = new System.Drawing.Size(93, 42);
+            this.Btn_salir.TabIndex = 283;
+            this.Btn_salir.UseVisualStyleBackColor = false;
+            this.Btn_salir.Click += new System.EventHandler(this.button1_Click);
             // 
-            // btn_modif
+            // Btn_agregar
             // 
-            this.btn_modif.Location = new System.Drawing.Point(21, 169);
-            this.btn_modif.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_modif.Name = "btn_modif";
-            this.btn_modif.Size = new System.Drawing.Size(100, 30);
-            this.btn_modif.TabIndex = 1;
-            this.btn_modif.Text = "Modificar";
-            this.btn_modif.UseVisualStyleBackColor = true;
-            this.btn_modif.Click += new System.EventHandler(this.btn_modif_Click_1);
+            this.Btn_agregar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.Btn_agregar.BackgroundImage = global::CapaDiseno.Properties.Resources.agregar1;
+            this.Btn_agregar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Btn_agregar.FlatAppearance.BorderSize = 0;
+            this.Btn_agregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_agregar.Location = new System.Drawing.Point(72, 76);
+            this.Btn_agregar.Margin = new System.Windows.Forms.Padding(0);
+            this.Btn_agregar.Name = "Btn_agregar";
+            this.Btn_agregar.Size = new System.Drawing.Size(93, 42);
+            this.Btn_agregar.TabIndex = 277;
+            this.Btn_agregar.UseVisualStyleBackColor = false;
+            this.Btn_agregar.Click += new System.EventHandler(this.Btn_agregar_Click);
             // 
-            // frm_modulos
+            // Txt_titulo
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.Txt_titulo.AutoSize = true;
+            this.Txt_titulo.Font = new System.Drawing.Font("Haettenschweiler", 26F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_titulo.ForeColor = System.Drawing.Color.Transparent;
+            this.Txt_titulo.Location = new System.Drawing.Point(273, 18);
+            this.Txt_titulo.Name = "Txt_titulo";
+            this.Txt_titulo.Size = new System.Drawing.Size(439, 37);
+            this.Txt_titulo.TabIndex = 291;
+            this.Txt_titulo.Text = "M a n t e n i m i e n t o   d e   M ó d u l o s";
+            // 
+            // frmMantemientoMódulos
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(838, 514);
-            this.Controls.Add(this.btn_ayuda);
-            this.Controls.Add(this.gbbuscar);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(133)))), ((int)(((byte)(223)))));
+            this.ClientSize = new System.Drawing.Size(973, 611);
+            this.Controls.Add(this.Txt_titulo);
+            this.Controls.Add(this.Btn_cancelar);
+            this.Controls.Add(this.Btn_eliminar);
+            this.Controls.Add(this.Btn_modificar);
+            this.Controls.Add(this.Btn_buscar);
+            this.Controls.Add(this.Btn_actualizar);
+            this.Controls.Add(this.Btn_guardar);
+            this.Controls.Add(this.Btn_ayuda);
+            this.Controls.Add(this.Btn_salir);
+            this.Controls.Add(this.Btn_agregar);
+            this.Controls.Add(this.Gpb_buscar);
             this.Controls.Add(this.Gpb_datos);
-            this.Controls.Add(this.Gpb_opciones);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "frm_modulos";
+            this.Name = "frmMantemientoMódulos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Mantenimiento de Modulos";
             this.Load += new System.EventHandler(this.Frm_modulos_Load);
-            this.gbbuscar.ResumeLayout(false);
-            this.gbbuscar.PerformLayout();
+            this.Gpb_buscar.ResumeLayout(false);
+            this.Gpb_buscar.PerformLayout();
             this.Gpb_datos.ResumeLayout(false);
             this.Gpb_datos.PerformLayout();
-            this.gbestado.ResumeLayout(false);
-            this.gbestado.PerformLayout();
-            this.Gpb_opciones.ResumeLayout(false);
+            this.Gpb_estado.ResumeLayout(false);
+            this.Gpb_estado.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btn_ayuda;
-        private System.Windows.Forms.GroupBox gbbuscar;
-        private System.Windows.Forms.Button btn_bsucarmodulo;
-        private System.Windows.Forms.TextBox txt_buscarmodulo;
+        private System.Windows.Forms.GroupBox Gpb_buscar;
+        private System.Windows.Forms.TextBox Txt_buscar;
         private System.Windows.Forms.GroupBox Gpb_datos;
-        private System.Windows.Forms.TextBox txtdesc;
-        private System.Windows.Forms.TextBox txtcodigo;
-        private System.Windows.Forms.GroupBox gbestado;
-        private System.Windows.Forms.RadioButton rbinhabilitado;
-        private System.Windows.Forms.RadioButton rbhabilitado;
-        private System.Windows.Forms.Label Lbl_descripcion;
-        private System.Windows.Forms.Label Lbl_nombre;
-        private System.Windows.Forms.Label Lbl_codigomodulo;
-        private System.Windows.Forms.TextBox txtnombre;
-        private System.Windows.Forms.GroupBox Gpb_opciones;
-        private System.Windows.Forms.Button btn_eliminar;
-        private System.Windows.Forms.Button btn_nuevo;
-        private System.Windows.Forms.Button btn_actualizar;
-        private System.Windows.Forms.Button Btn_exit;
-        private System.Windows.Forms.Button btn_salir;
-        private System.Windows.Forms.Button btn_cancel;
-        private System.Windows.Forms.Button btn_ingresar;
-        private System.Windows.Forms.Button btn_modif;
+        private System.Windows.Forms.TextBox Txt_nombre;
+        private System.Windows.Forms.TextBox Txt_codigo;
+        private System.Windows.Forms.GroupBox Gpb_estado;
+        private System.Windows.Forms.RadioButton Rdb_inhabilitado;
+        private System.Windows.Forms.RadioButton Rdb_habilitado;
+        private System.Windows.Forms.Label Txt_descripcionmodulo;
+        private System.Windows.Forms.Label Txt_nombremodulo;
+        private System.Windows.Forms.Label Txt_id;
+        private System.Windows.Forms.TextBox Txt_descripcion;
+        private System.Windows.Forms.Button Btn_ayuda;
+        private System.Windows.Forms.Button Btn_salir;
+        private System.Windows.Forms.Button Btn_agregar;
+        private System.Windows.Forms.Button Btn_guardar;
+        private System.Windows.Forms.Button Btn_actualizar;
+        private System.Windows.Forms.Button Btn_buscar;
+        private System.Windows.Forms.Button Btn_modificar;
+        private System.Windows.Forms.Button Btn_eliminar;
+        private System.Windows.Forms.Button Btn_cancelar;
+        private System.Windows.Forms.Label Txt_titulo;
     }
 }

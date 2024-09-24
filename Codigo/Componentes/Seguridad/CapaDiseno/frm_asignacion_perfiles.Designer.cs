@@ -28,299 +28,367 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_asignacion_perfiles));
-            this.dgv_asignacion_perfiles = new System.Windows.Forms.DataGridView();
+            this.Gpb_consulta = new System.Windows.Forms.GroupBox();
+            this.Dgv_perfiles_asignados = new System.Windows.Forms.DataGridView();
+            this.Gpb_datos = new System.Windows.Forms.GroupBox();
+            this.lbl_perfiles = new System.Windows.Forms.Label();
+            this.Cbo_perfiles = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.Cbo_usuario = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.Txt_titulo = new System.Windows.Forms.Label();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.Btn_buscar = new System.Windows.Forms.Button();
+            this.Btn_remover = new System.Windows.Forms.Button();
+            this.Btn_agregar = new System.Windows.Forms.Button();
+            this.Btn_guardar = new System.Windows.Forms.Button();
+            this.Btn_cancelar = new System.Windows.Forms.Button();
+            this.Btn_salir = new System.Windows.Forms.Button();
+            this.Dgv_asignacion_perfiles = new System.Windows.Forms.DataGridView();
             this.Usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NombrePerfil = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gpb_consultaperfilesusuarios = new System.Windows.Forms.GroupBox();
-            this.dgv_perfiles_asignados = new System.Windows.Forms.DataGridView();
-            this.btn_Buscar = new System.Windows.Forms.Button();
-            this.gpb_perfilesusuarios = new System.Windows.Forms.GroupBox();
-            this.Lbl_perfiles = new System.Windows.Forms.Label();
-            this.cbo_perfiles = new System.Windows.Forms.ComboBox();
-            this.Lbl_usuario = new System.Windows.Forms.Label();
-            this.cbo_usuario = new System.Windows.Forms.ComboBox();
-            this.btn_quitar = new System.Windows.Forms.Button();
-            this.Lbl_asignacionperfiles = new System.Windows.Forms.Label();
-            this.btn_ayuda = new System.Windows.Forms.Button();
-            this.Gpb_opciones = new System.Windows.Forms.GroupBox();
-            this.btn_cancel = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.btn_nuevo = new System.Windows.Forms.Button();
-            this.btn_ingresar = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_asignacion_perfiles)).BeginInit();
-            this.gpb_consultaperfilesusuarios.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_perfiles_asignados)).BeginInit();
-            this.gpb_perfilesusuarios.SuspendLayout();
-            this.Gpb_opciones.SuspendLayout();
+            this.label5 = new System.Windows.Forms.Label();
+            this.Gpb_vista_previa = new System.Windows.Forms.GroupBox();
+            this.Btn_ayuda = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.Dgv_perfiles_asignados)).BeginInit();
+            this.Gpb_datos.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Dgv_asignacion_perfiles)).BeginInit();
+            this.Gpb_vista_previa.SuspendLayout();
             this.SuspendLayout();
             // 
-            // dgv_asignacion_perfiles
+            // Gpb_consulta
             // 
-            this.dgv_asignacion_perfiles.AllowUserToAddRows = false;
-            this.dgv_asignacion_perfiles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_asignacion_perfiles.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Gpb_consulta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.Gpb_consulta.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Gpb_consulta.Location = new System.Drawing.Point(44, 370);
+            this.Gpb_consulta.Margin = new System.Windows.Forms.Padding(4);
+            this.Gpb_consulta.Name = "Gpb_consulta";
+            this.Gpb_consulta.Padding = new System.Windows.Forms.Padding(4);
+            this.Gpb_consulta.Size = new System.Drawing.Size(711, 211);
+            this.Gpb_consulta.TabIndex = 4;
+            this.Gpb_consulta.TabStop = false;
+            this.Gpb_consulta.Text = "Consulta de Perfiles de Usuarios";
+            // 
+            // Dgv_perfiles_asignados
+            // 
+            this.Dgv_perfiles_asignados.AllowUserToAddRows = false;
+            this.Dgv_perfiles_asignados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Dgv_perfiles_asignados.Location = new System.Drawing.Point(206, 397);
+            this.Dgv_perfiles_asignados.Margin = new System.Windows.Forms.Padding(4);
+            this.Dgv_perfiles_asignados.Name = "Dgv_perfiles_asignados";
+            this.Dgv_perfiles_asignados.Size = new System.Drawing.Size(490, 175);
+            this.Dgv_perfiles_asignados.TabIndex = 8;
+            // 
+            // Gpb_datos
+            // 
+            this.Gpb_datos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.Gpb_datos.Controls.Add(this.lbl_perfiles);
+            this.Gpb_datos.Controls.Add(this.Cbo_perfiles);
+            this.Gpb_datos.Controls.Add(this.label1);
+            this.Gpb_datos.Controls.Add(this.Cbo_usuario);
+            this.Gpb_datos.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Gpb_datos.Location = new System.Drawing.Point(44, 161);
+            this.Gpb_datos.Margin = new System.Windows.Forms.Padding(4);
+            this.Gpb_datos.Name = "Gpb_datos";
+            this.Gpb_datos.Padding = new System.Windows.Forms.Padding(4);
+            this.Gpb_datos.Size = new System.Drawing.Size(256, 188);
+            this.Gpb_datos.TabIndex = 5;
+            this.Gpb_datos.TabStop = false;
+            this.Gpb_datos.Text = "Datos";
+            // 
+            // lbl_perfiles
+            // 
+            this.lbl_perfiles.AutoSize = true;
+            this.lbl_perfiles.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_perfiles.Location = new System.Drawing.Point(80, 92);
+            this.lbl_perfiles.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_perfiles.Name = "lbl_perfiles";
+            this.lbl_perfiles.Size = new System.Drawing.Size(53, 19);
+            this.lbl_perfiles.TabIndex = 7;
+            this.lbl_perfiles.Text = "Perfiles";
+            // 
+            // Cbo_perfiles
+            // 
+            this.Cbo_perfiles.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Cbo_perfiles.FormattingEnabled = true;
+            this.Cbo_perfiles.Location = new System.Drawing.Point(11, 127);
+            this.Cbo_perfiles.Margin = new System.Windows.Forms.Padding(4);
+            this.Cbo_perfiles.Name = "Cbo_perfiles";
+            this.Cbo_perfiles.Size = new System.Drawing.Size(199, 23);
+            this.Cbo_perfiles.TabIndex = 6;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(80, 28);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(56, 19);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Usuario";
+            // 
+            // Cbo_usuario
+            // 
+            this.Cbo_usuario.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Cbo_usuario.FormattingEnabled = true;
+            this.Cbo_usuario.Location = new System.Drawing.Point(11, 54);
+            this.Cbo_usuario.Margin = new System.Windows.Forms.Padding(4);
+            this.Cbo_usuario.Name = "Cbo_usuario";
+            this.Cbo_usuario.Size = new System.Drawing.Size(199, 23);
+            this.Cbo_usuario.TabIndex = 4;
+            this.Cbo_usuario.SelectedIndexChanged += new System.EventHandler(this.Cbo_usuario_SelectedIndexChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(246, 18);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(0, 24);
+            this.label2.TabIndex = 6;
+            // 
+            // Txt_titulo
+            // 
+            this.Txt_titulo.AutoSize = true;
+            this.Txt_titulo.Font = new System.Drawing.Font("Haettenschweiler", 26F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_titulo.ForeColor = System.Drawing.Color.Transparent;
+            this.Txt_titulo.Location = new System.Drawing.Point(132, 18);
+            this.Txt_titulo.Name = "Txt_titulo";
+            this.Txt_titulo.Size = new System.Drawing.Size(554, 37);
+            this.Txt_titulo.TabIndex = 259;
+            this.Txt_titulo.Text = "A s i g n a c i o n   d e  p e r f i l e s   a   U s u a r i o s";
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.tableLayoutPanel1.ColumnCount = 6;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel1.Controls.Add(this.Btn_buscar, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.Btn_remover, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.Btn_agregar, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.Btn_guardar, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.Btn_cancelar, 4, 0);
+            this.tableLayoutPanel1.Controls.Add(this.Btn_salir, 5, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 85);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(717, 42);
+            this.tableLayoutPanel1.TabIndex = 265;
+            // 
+            // Btn_buscar
+            // 
+            this.Btn_buscar.BackgroundImage = global::CapaDiseno.Properties.Resources.buscar1;
+            this.Btn_buscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Btn_buscar.FlatAppearance.BorderSize = 0;
+            this.Btn_buscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_buscar.Location = new System.Drawing.Point(357, 0);
+            this.Btn_buscar.Margin = new System.Windows.Forms.Padding(0);
+            this.Btn_buscar.Name = "Btn_buscar";
+            this.Btn_buscar.Size = new System.Drawing.Size(119, 42);
+            this.Btn_buscar.TabIndex = 259;
+            this.Btn_buscar.UseVisualStyleBackColor = true;
+            this.Btn_buscar.Click += new System.EventHandler(this.Btn_buscar_Click);
+            // 
+            // Btn_remover
+            // 
+            this.Btn_remover.BackgroundImage = global::CapaDiseno.Properties.Resources.borrar1;
+            this.Btn_remover.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Btn_remover.FlatAppearance.BorderSize = 0;
+            this.Btn_remover.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_remover.Location = new System.Drawing.Point(238, 0);
+            this.Btn_remover.Margin = new System.Windows.Forms.Padding(0);
+            this.Btn_remover.Name = "Btn_remover";
+            this.Btn_remover.Size = new System.Drawing.Size(119, 42);
+            this.Btn_remover.TabIndex = 260;
+            this.Btn_remover.UseVisualStyleBackColor = true;
+            this.Btn_remover.Click += new System.EventHandler(this.Btn_remover_Click);
+            // 
+            // Btn_agregar
+            // 
+            this.Btn_agregar.BackgroundImage = global::CapaDiseno.Properties.Resources.agregar1;
+            this.Btn_agregar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Btn_agregar.FlatAppearance.BorderSize = 0;
+            this.Btn_agregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_agregar.Location = new System.Drawing.Point(0, 0);
+            this.Btn_agregar.Margin = new System.Windows.Forms.Padding(0);
+            this.Btn_agregar.Name = "Btn_agregar";
+            this.Btn_agregar.Size = new System.Drawing.Size(119, 42);
+            this.Btn_agregar.TabIndex = 258;
+            this.Btn_agregar.UseVisualStyleBackColor = true;
+            this.Btn_agregar.Click += new System.EventHandler(this.Btn_agregar_Click);
+            // 
+            // Btn_guardar
+            // 
+            this.Btn_guardar.BackgroundImage = global::CapaDiseno.Properties.Resources.guardar1;
+            this.Btn_guardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Btn_guardar.FlatAppearance.BorderSize = 0;
+            this.Btn_guardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_guardar.Location = new System.Drawing.Point(119, 0);
+            this.Btn_guardar.Margin = new System.Windows.Forms.Padding(0);
+            this.Btn_guardar.Name = "Btn_guardar";
+            this.Btn_guardar.Size = new System.Drawing.Size(115, 42);
+            this.Btn_guardar.TabIndex = 261;
+            this.Btn_guardar.UseVisualStyleBackColor = true;
+            this.Btn_guardar.Click += new System.EventHandler(this.Btn_guardar_Click);
+            // 
+            // Btn_cancelar
+            // 
+            this.Btn_cancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.Btn_cancelar.BackgroundImage = global::CapaDiseno.Properties.Resources.cancelar;
+            this.Btn_cancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Btn_cancelar.FlatAppearance.BorderSize = 0;
+            this.Btn_cancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_cancelar.Location = new System.Drawing.Point(476, 0);
+            this.Btn_cancelar.Margin = new System.Windows.Forms.Padding(0);
+            this.Btn_cancelar.Name = "Btn_cancelar";
+            this.Btn_cancelar.Size = new System.Drawing.Size(119, 42);
+            this.Btn_cancelar.TabIndex = 291;
+            this.Btn_cancelar.UseVisualStyleBackColor = false;
+            this.Btn_cancelar.Click += new System.EventHandler(this.Btn_cancelar_Click);
+            // 
+            // Btn_salir
+            // 
+            this.Btn_salir.BackgroundImage = global::CapaDiseno.Properties.Resources.salir1;
+            this.Btn_salir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Btn_salir.FlatAppearance.BorderSize = 0;
+            this.Btn_salir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_salir.Location = new System.Drawing.Point(595, 0);
+            this.Btn_salir.Margin = new System.Windows.Forms.Padding(0);
+            this.Btn_salir.Name = "Btn_salir";
+            this.Btn_salir.Size = new System.Drawing.Size(106, 42);
+            this.Btn_salir.TabIndex = 262;
+            this.Btn_salir.UseVisualStyleBackColor = true;
+            this.Btn_salir.Click += new System.EventHandler(this.Btn_salir_Click);
+            // 
+            // Dgv_asignacion_perfiles
+            // 
+            this.Dgv_asignacion_perfiles.AllowUserToAddRows = false;
+            this.Dgv_asignacion_perfiles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Dgv_asignacion_perfiles.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Usuario,
             this.NombrePerfil});
-            this.dgv_asignacion_perfiles.Location = new System.Drawing.Point(242, 24);
-            this.dgv_asignacion_perfiles.Margin = new System.Windows.Forms.Padding(4);
-            this.dgv_asignacion_perfiles.Name = "dgv_asignacion_perfiles";
-            this.dgv_asignacion_perfiles.RowHeadersWidth = 51;
-            this.dgv_asignacion_perfiles.Size = new System.Drawing.Size(325, 148);
-            this.dgv_asignacion_perfiles.TabIndex = 1;
+            this.Dgv_asignacion_perfiles.Location = new System.Drawing.Point(388, 188);
+            this.Dgv_asignacion_perfiles.Margin = new System.Windows.Forms.Padding(4);
+            this.Dgv_asignacion_perfiles.Name = "Dgv_asignacion_perfiles";
+            this.Dgv_asignacion_perfiles.Size = new System.Drawing.Size(325, 148);
+            this.Dgv_asignacion_perfiles.TabIndex = 266;
             // 
             // Usuario
             // 
             this.Usuario.HeaderText = "Usuario";
-            this.Usuario.MinimumWidth = 6;
             this.Usuario.Name = "Usuario";
             this.Usuario.Width = 140;
             // 
             // NombrePerfil
             // 
             this.NombrePerfil.HeaderText = "Perfil";
-            this.NombrePerfil.MinimumWidth = 6;
             this.NombrePerfil.Name = "NombrePerfil";
             this.NombrePerfil.Width = 140;
             // 
-            // gpb_consultaperfilesusuarios
+            // label5
             // 
-            this.gpb_consultaperfilesusuarios.Controls.Add(this.dgv_perfiles_asignados);
-            this.gpb_consultaperfilesusuarios.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gpb_consultaperfilesusuarios.Location = new System.Drawing.Point(44, 291);
-            this.gpb_consultaperfilesusuarios.Margin = new System.Windows.Forms.Padding(4);
-            this.gpb_consultaperfilesusuarios.Name = "gpb_consultaperfilesusuarios";
-            this.gpb_consultaperfilesusuarios.Padding = new System.Windows.Forms.Padding(4);
-            this.gpb_consultaperfilesusuarios.Size = new System.Drawing.Size(586, 210);
-            this.gpb_consultaperfilesusuarios.TabIndex = 4;
-            this.gpb_consultaperfilesusuarios.TabStop = false;
-            this.gpb_consultaperfilesusuarios.Text = "Consulta de Perfiles de Usuarios";
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(80, 28);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(0, 19);
+            this.label5.TabIndex = 5;
             // 
-            // dgv_perfiles_asignados
+            // Gpb_vista_previa
             // 
-            this.dgv_perfiles_asignados.AllowUserToAddRows = false;
-            this.dgv_perfiles_asignados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_perfiles_asignados.Location = new System.Drawing.Point(125, 24);
-            this.dgv_perfiles_asignados.Margin = new System.Windows.Forms.Padding(4);
-            this.dgv_perfiles_asignados.Name = "dgv_perfiles_asignados";
-            this.dgv_perfiles_asignados.RowHeadersWidth = 51;
-            this.dgv_perfiles_asignados.Size = new System.Drawing.Size(355, 175);
-            this.dgv_perfiles_asignados.TabIndex = 8;
+            this.Gpb_vista_previa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.Gpb_vista_previa.Controls.Add(this.label5);
+            this.Gpb_vista_previa.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Gpb_vista_previa.Location = new System.Drawing.Point(290, 161);
+            this.Gpb_vista_previa.Margin = new System.Windows.Forms.Padding(4);
+            this.Gpb_vista_previa.Name = "Gpb_vista_previa";
+            this.Gpb_vista_previa.Padding = new System.Windows.Forms.Padding(4);
+            this.Gpb_vista_previa.Size = new System.Drawing.Size(493, 188);
+            this.Gpb_vista_previa.TabIndex = 8;
+            this.Gpb_vista_previa.TabStop = false;
+            this.Gpb_vista_previa.Text = "Vista Previa";
             // 
-            // btn_Buscar
+            // Btn_ayuda
             // 
-            this.btn_Buscar.Location = new System.Drawing.Point(34, 207);
-            this.btn_Buscar.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_Buscar.Name = "btn_Buscar";
-            this.btn_Buscar.Size = new System.Drawing.Size(79, 35);
-            this.btn_Buscar.TabIndex = 251;
-            this.btn_Buscar.Tag = "5";
-            this.btn_Buscar.Text = "Buscar";
-            this.btn_Buscar.UseVisualStyleBackColor = true;
-            this.btn_Buscar.Click += new System.EventHandler(this.btn_Buscar_Click);
-            // 
-            // gpb_perfilesusuarios
-            // 
-            this.gpb_perfilesusuarios.Controls.Add(this.Lbl_perfiles);
-            this.gpb_perfilesusuarios.Controls.Add(this.cbo_perfiles);
-            this.gpb_perfilesusuarios.Controls.Add(this.Lbl_usuario);
-            this.gpb_perfilesusuarios.Controls.Add(this.cbo_usuario);
-            this.gpb_perfilesusuarios.Controls.Add(this.dgv_asignacion_perfiles);
-            this.gpb_perfilesusuarios.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gpb_perfilesusuarios.Location = new System.Drawing.Point(44, 84);
-            this.gpb_perfilesusuarios.Margin = new System.Windows.Forms.Padding(4);
-            this.gpb_perfilesusuarios.Name = "gpb_perfilesusuarios";
-            this.gpb_perfilesusuarios.Padding = new System.Windows.Forms.Padding(4);
-            this.gpb_perfilesusuarios.Size = new System.Drawing.Size(586, 188);
-            this.gpb_perfilesusuarios.TabIndex = 5;
-            this.gpb_perfilesusuarios.TabStop = false;
-            this.gpb_perfilesusuarios.Text = "Asignacion de Perfiles a Usuarios";
-            // 
-            // Lbl_perfiles
-            // 
-            this.Lbl_perfiles.AutoSize = true;
-            this.Lbl_perfiles.Location = new System.Drawing.Point(80, 92);
-            this.Lbl_perfiles.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.Lbl_perfiles.Name = "Lbl_perfiles";
-            this.Lbl_perfiles.Size = new System.Drawing.Size(65, 21);
-            this.Lbl_perfiles.TabIndex = 7;
-            this.Lbl_perfiles.Text = "Perfiles";
-            // 
-            // cbo_perfiles
-            // 
-            this.cbo_perfiles.FormattingEnabled = true;
-            this.cbo_perfiles.Location = new System.Drawing.Point(11, 127);
-            this.cbo_perfiles.Margin = new System.Windows.Forms.Padding(4);
-            this.cbo_perfiles.Name = "cbo_perfiles";
-            this.cbo_perfiles.Size = new System.Drawing.Size(199, 29);
-            this.cbo_perfiles.TabIndex = 6;
-            // 
-            // Lbl_usuario
-            // 
-            this.Lbl_usuario.AutoSize = true;
-            this.Lbl_usuario.Location = new System.Drawing.Point(80, 28);
-            this.Lbl_usuario.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.Lbl_usuario.Name = "Lbl_usuario";
-            this.Lbl_usuario.Size = new System.Drawing.Size(70, 21);
-            this.Lbl_usuario.TabIndex = 5;
-            this.Lbl_usuario.Text = "Usuario";
-            // 
-            // cbo_usuario
-            // 
-            this.cbo_usuario.FormattingEnabled = true;
-            this.cbo_usuario.Location = new System.Drawing.Point(11, 54);
-            this.cbo_usuario.Margin = new System.Windows.Forms.Padding(4);
-            this.cbo_usuario.Name = "cbo_usuario";
-            this.cbo_usuario.Size = new System.Drawing.Size(199, 29);
-            this.cbo_usuario.TabIndex = 4;
-            this.cbo_usuario.SelectedIndexChanged += new System.EventHandler(this.Cbo_usuario_SelectedIndexChanged);
-            // 
-            // btn_quitar
-            // 
-            this.btn_quitar.Location = new System.Drawing.Point(34, 152);
-            this.btn_quitar.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_quitar.Name = "btn_quitar";
-            this.btn_quitar.Size = new System.Drawing.Size(79, 36);
-            this.btn_quitar.TabIndex = 9;
-            this.btn_quitar.Text = "Quitar";
-            this.btn_quitar.UseVisualStyleBackColor = true;
-            this.btn_quitar.Click += new System.EventHandler(this.Btn_quitar_Click);
-            // 
-            // Lbl_asignacionperfiles
-            // 
-            this.Lbl_asignacionperfiles.AutoSize = true;
-            this.Lbl_asignacionperfiles.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_asignacionperfiles.Location = new System.Drawing.Point(246, 18);
-            this.Lbl_asignacionperfiles.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.Lbl_asignacionperfiles.Name = "Lbl_asignacionperfiles";
-            this.Lbl_asignacionperfiles.Size = new System.Drawing.Size(437, 33);
-            this.Lbl_asignacionperfiles.TabIndex = 6;
-            this.Lbl_asignacionperfiles.Text = "Asignacion de perfiles a Usuarios";
-            this.Lbl_asignacionperfiles.Click += new System.EventHandler(this.label2_Click);
-            // 
-            // btn_ayuda
-            // 
-            this.btn_ayuda.Image = global::CapaDiseno.Properties.Resources.icons8_ayuda_30;
-            this.btn_ayuda.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btn_ayuda.Location = new System.Drawing.Point(731, 6);
-            this.btn_ayuda.Name = "btn_ayuda";
-            this.btn_ayuda.Size = new System.Drawing.Size(86, 36);
-            this.btn_ayuda.TabIndex = 252;
-            this.btn_ayuda.Text = "Ayuda";
-            this.btn_ayuda.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_ayuda.UseVisualStyleBackColor = true;
-            this.btn_ayuda.Click += new System.EventHandler(this.Btn_ayuda_Click);
-            // 
-            // Gpb_opciones
-            // 
-            this.Gpb_opciones.Controls.Add(this.btn_Buscar);
-            this.Gpb_opciones.Controls.Add(this.btn_cancel);
-            this.Gpb_opciones.Controls.Add(this.btn_quitar);
-            this.Gpb_opciones.Controls.Add(this.button5);
-            this.Gpb_opciones.Controls.Add(this.btn_nuevo);
-            this.Gpb_opciones.Controls.Add(this.btn_ingresar);
-            this.Gpb_opciones.Location = new System.Drawing.Point(653, 84);
-            this.Gpb_opciones.Margin = new System.Windows.Forms.Padding(4);
-            this.Gpb_opciones.Name = "Gpb_opciones";
-            this.Gpb_opciones.Padding = new System.Windows.Forms.Padding(4);
-            this.Gpb_opciones.Size = new System.Drawing.Size(144, 326);
-            this.Gpb_opciones.TabIndex = 258;
-            this.Gpb_opciones.TabStop = false;
-            this.Gpb_opciones.Text = "Opciones";
-            // 
-            // btn_cancel
-            // 
-            this.btn_cancel.Location = new System.Drawing.Point(34, 265);
-            this.btn_cancel.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_cancel.Name = "btn_cancel";
-            this.btn_cancel.Size = new System.Drawing.Size(79, 34);
-            this.btn_cancel.TabIndex = 254;
-            this.btn_cancel.Text = "Cancelar";
-            this.btn_cancel.UseVisualStyleBackColor = true;
-            this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(581, 46);
-            this.button5.Margin = new System.Windows.Forms.Padding(4);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(95, 30);
-            this.button5.TabIndex = 4;
-            this.button5.Text = "Salir";
-            this.button5.UseVisualStyleBackColor = true;
-            // 
-            // btn_nuevo
-            // 
-            this.btn_nuevo.Location = new System.Drawing.Point(34, 92);
-            this.btn_nuevo.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_nuevo.Name = "btn_nuevo";
-            this.btn_nuevo.Size = new System.Drawing.Size(79, 33);
-            this.btn_nuevo.TabIndex = 253;
-            this.btn_nuevo.Tag = "0";
-            this.btn_nuevo.Text = "Guardar";
-            this.btn_nuevo.UseVisualStyleBackColor = true;
-            this.btn_nuevo.Click += new System.EventHandler(this.btn_nuevo_Click);
-            // 
-            // btn_ingresar
-            // 
-            this.btn_ingresar.Location = new System.Drawing.Point(34, 31);
-            this.btn_ingresar.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_ingresar.Name = "btn_ingresar";
-            this.btn_ingresar.Size = new System.Drawing.Size(79, 35);
-            this.btn_ingresar.TabIndex = 250;
-            this.btn_ingresar.Tag = "5";
-            this.btn_ingresar.Text = "Agregar";
-            this.btn_ingresar.UseVisualStyleBackColor = true;
-            this.btn_ingresar.Click += new System.EventHandler(this.btn_ingresar_Click);
+            this.Btn_ayuda.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.Btn_ayuda.BackgroundImage = global::CapaDiseno.Properties.Resources.ayuda1;
+            this.Btn_ayuda.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Btn_ayuda.FlatAppearance.BorderSize = 0;
+            this.Btn_ayuda.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_ayuda.Location = new System.Drawing.Point(713, 85);
+            this.Btn_ayuda.Margin = new System.Windows.Forms.Padding(0);
+            this.Btn_ayuda.Name = "Btn_ayuda";
+            this.Btn_ayuda.Size = new System.Drawing.Size(124, 42);
+            this.Btn_ayuda.TabIndex = 267;
+            this.Btn_ayuda.UseVisualStyleBackColor = false;
             // 
             // frm_asignacion_perfiles
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(829, 514);
-            this.Controls.Add(this.Gpb_opciones);
-            this.Controls.Add(this.btn_ayuda);
-            this.Controls.Add(this.Lbl_asignacionperfiles);
-            this.Controls.Add(this.gpb_perfilesusuarios);
-            this.Controls.Add(this.gpb_consultaperfilesusuarios);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(133)))), ((int)(((byte)(226)))));
+            this.ClientSize = new System.Drawing.Size(865, 601);
+            this.Controls.Add(this.Dgv_perfiles_asignados);
+            this.Controls.Add(this.Btn_ayuda);
+            this.Controls.Add(this.Dgv_asignacion_perfiles);
+            this.Controls.Add(this.Gpb_vista_previa);
+            this.Controls.Add(this.tableLayoutPanel1);
+            this.Controls.Add(this.Txt_titulo);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.Gpb_datos);
+            this.Controls.Add(this.Gpb_consulta);
             this.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frm_asignacion_perfiles";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Asignacion de Perfiles a Usuarios";
             this.Load += new System.EventHandler(this.Frm_asignacion_perfiles_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_asignacion_perfiles)).EndInit();
-            this.gpb_consultaperfilesusuarios.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_perfiles_asignados)).EndInit();
-            this.gpb_perfilesusuarios.ResumeLayout(false);
-            this.gpb_perfilesusuarios.PerformLayout();
-            this.Gpb_opciones.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.Dgv_perfiles_asignados)).EndInit();
+            this.Gpb_datos.ResumeLayout(false);
+            this.Gpb_datos.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.Dgv_asignacion_perfiles)).EndInit();
+            this.Gpb_vista_previa.ResumeLayout(false);
+            this.Gpb_vista_previa.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.DataGridView dgv_asignacion_perfiles;
-        private System.Windows.Forms.GroupBox gpb_consultaperfilesusuarios;
-        private System.Windows.Forms.GroupBox gpb_perfilesusuarios;
-        private System.Windows.Forms.Button btn_quitar;
-        private System.Windows.Forms.Label Lbl_perfiles;
-        private System.Windows.Forms.ComboBox cbo_perfiles;
-        private System.Windows.Forms.Label Lbl_usuario;
-        private System.Windows.Forms.ComboBox cbo_usuario;
-        private System.Windows.Forms.Label Lbl_asignacionperfiles;
+        private System.Windows.Forms.GroupBox Gpb_consulta;
+        private System.Windows.Forms.GroupBox Gpb_datos;
+        private System.Windows.Forms.Label lbl_perfiles;
+        private System.Windows.Forms.ComboBox Cbo_perfiles;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox Cbo_usuario;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DataGridView Dgv_perfiles_asignados;
+        private System.Windows.Forms.Label Txt_titulo;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Button Btn_buscar;
+        private System.Windows.Forms.Button Btn_agregar;
+        private System.Windows.Forms.Button Btn_salir;
+        private System.Windows.Forms.Button Btn_remover;
+        private System.Windows.Forms.Button Btn_guardar;
+        private System.Windows.Forms.DataGridView Dgv_asignacion_perfiles;
         private System.Windows.Forms.DataGridViewTextBoxColumn Usuario;
         private System.Windows.Forms.DataGridViewTextBoxColumn NombrePerfil;
-        private System.Windows.Forms.Button btn_ayuda;
-        private System.Windows.Forms.GroupBox Gpb_opciones;
-        private System.Windows.Forms.Button btn_cancel;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button btn_nuevo;
-        private System.Windows.Forms.Button btn_ingresar;
-        private System.Windows.Forms.Button btn_Buscar;
-        private System.Windows.Forms.DataGridView dgv_perfiles_asignados;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.GroupBox Gpb_vista_previa;
+        private System.Windows.Forms.Button Btn_ayuda;
+        private System.Windows.Forms.Button Btn_cancelar;
     }
 }

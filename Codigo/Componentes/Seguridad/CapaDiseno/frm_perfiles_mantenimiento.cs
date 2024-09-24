@@ -8,8 +8,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.IO; // Necesario para Directory, File, Path y SearchOption
-using System.Windows.Forms; // Necesario para MessageBox y Help
 
 namespace CapaDiseno
 {
@@ -17,19 +15,19 @@ namespace CapaDiseno
     {
         logica logic;
 
-        public frm_perfiles_mantenimiento(string idUsuario)
+        public frm_perfiles_mantenimiento(string sidUsuario)
         {
             InitializeComponent();
-            btn_modif.Enabled = false;
-            btn_actualizar.Enabled = false;
-            btn_cancel.Enabled = false;
-            logic = new logica(idUsuario);
-            txtcodigo.Enabled = false;
-            txtnombre.Enabled = false;
-            txtdesc.Enabled = false;
-            btn_ingresar.Enabled = false;
-            gbestado.Enabled = false;
-            btn_eli.Enabled = false;   // se agrega el boton eliminar 
+            Btn_modificar.Enabled = false;
+            Btn_actualizar.Enabled = false;
+            Btn_cancelar.Enabled = false;
+            logic = new logica(sidUsuario);
+            Txt_codigo.Enabled = false;
+            Txt_nombre.Enabled = false;
+            Txt_descipcion.Enabled = false;
+            Btn_guardar.Enabled = false;
+            Gpb_estado.Enabled = false;
+            Btn_eliminar.Enabled = false;   // se agrega el boton eliminar 
 
         }
 
@@ -39,139 +37,155 @@ namespace CapaDiseno
 
         void limpiar()
         {
-            txt_buscarperfil.Text = "";
-            txtcodigo.Text = "";
-            txtdesc.Text = "";
-            txtnombre.Text = "";
-            rbhabilitado.Checked = false;
-            rbinhabilitado.Checked = false;
-            txtcodigo.Focus();
+            Tbx_buscarperfil.Text = "";
+            Txt_codigo.Text = "";
+            Txt_descipcion.Text = "";
+            Txt_nombre.Text = "";
+            Rdb_habilitado.Checked = false;
+            Rdb_inhabilitado.Checked = false;
+            Txt_codigo.Focus();
         }
      
-        //Fernando García - 0901-21-581
+
         private void Frm_perfiles_mantenimiento_Load(object sender, EventArgs e)
         {
-            txt_buscarperfil.KeyPress += new KeyPressEventHandler(SoloNumeros_KeyPress);
-            txtcodigo.KeyPress += new KeyPressEventHandler(SoloNumeros_KeyPress);
-            txtnombre.KeyPress += new KeyPressEventHandler(SoloLetras_KeyPress);
-            txtdesc.KeyPress += new KeyPressEventHandler(SoloLetras_KeyPress);
-            // Orden de tabulaciones
-            txt_buscarperfil.TabIndex = 0;
-            btn_bsucarperfil.TabIndex = 1;
-            txtcodigo.TabIndex = 2;
-            txtnombre.TabIndex = 3;
-            txtdesc.TabIndex = 4;
-            btn_nuevo.TabIndex = 5;
-            btn_ingresar.TabIndex = 6;
-            btn_modif.TabIndex = 7;
-            btn_actualizar.TabIndex = 8;
-            btn_eli.TabIndex = 9;
-            btn_cancel.TabIndex = 10;
 
-            //limitar caracteres
-            txtnombre.MaxLength = 50; // Limita el texto a 50 caracteres
-            txtdesc.MaxLength = 150;
-            txtcodigo.MaxLength = 20;
         }
 
+     
 
-        private void btn_bsucarperfil_Click_1(object sender, EventArgs e)
+
+        private void rbhabilitado_CheckedChanged(object sender, EventArgs e)
         {
-            string perfil = txt_buscarperfil.Text;
-            bool modificar = false;
-            bool eliminar = false;
-            try
+
+        }
+
+        private void btn_ingresar_Click(object sender, EventArgs e)
+        {
+            Txt_nombre.Enabled = false;
+            Txt_descipcion.Enabled = false;
+
+
+
+            if (Txt_nombre.Text == "")
             {
-                DataTable dtModulos = logic.ConsultaLogicaPerfil(perfil);
+                MessageBox.Show("Falta Nombre de Perfil");
 
-                foreach (DataRow row in dtModulos.Rows)
+                Btn_ingreso.Enabled = true;
+
+            }
+            else if (Txt_descipcion.Text == "")
+            {
+                MessageBox.Show("Falta Descripcion del Perfil");
+                Btn_ingreso.Enabled = true;
+
+            }
+
+            else
+            {
+                string sestado = "";
+                if (Rdb_habilitado.Checked)
                 {
-                    if (row[0] != null)
-                        modificar = true;
-                    eliminar = true;
-
-                    txtcodigo.Text = (row[0].ToString());
-                    txtnombre.Text = (row[1].ToString());
-                    txtdesc.Text = (row[2].ToString());
-                    if (row[3].ToString() == "1")
-                    {
-                        rbhabilitado.Checked = true;
-                        rbinhabilitado.Checked = false;
-
-                    }
-                    if (row[3].ToString() == "0")
-                    {
-                        rbinhabilitado.Checked = true;
-                        rbhabilitado.Checked = false;
-
-                    }
+                    sestado = "1";
                 }
 
-                if (modificar == true)
+                if (Rdb_inhabilitado.Checked)
                 {
-                    btn_modif.Enabled = true;
-                    btn_ingresar.Enabled = false;
-                    txtcodigo.Enabled = false;
-                    txtnombre.Enabled = false;
-                    txtdesc.Enabled = false;
-                    rbhabilitado.Enabled = false;
-                    rbinhabilitado.Enabled = false;
+                   sestado = "0";
                 }
-
-                if (eliminar == true)             // se crean las ventanas aviertas para el boton eliminar 
-                {
-                    btn_eli.Enabled = true;
-                    btn_ingresar.Enabled = false;
-                    txtcodigo.Enabled = false;
-                    txtnombre.Enabled = false;
-                    txtdesc.Enabled = false;
-                    rbhabilitado.Enabled = false;
-                    rbinhabilitado.Enabled = false;
-                }
-
                 else
                 {
-                    btn_modif.Enabled = false;
-                    MessageBox.Show("No se encontró el perfil buscado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    sestado = "1";
                 }
 
-            }
-            catch (InvalidOperationException ex)
-            {
-                Console.WriteLine(ex);
+                logic.funingresarperfiles(Txt_codigo.Text.ToString(), Txt_nombre.Text.ToString(), Txt_descipcion.Text.ToString(), sestado.ToString());
+                MessageBox.Show("Perfil Ingresado Correctamente");
+                limpiar();
+                Gpb_buscarperfiles.Enabled = true;
+                Btn_ingreso.Enabled = true;
+                Btn_guardar.Enabled = false;
             }
         }
 
-        private void btn_nuevo_Click(object sender, EventArgs e)
+        private void btn_actualizar_Click(object sender, EventArgs e)
         {
-            btn_nuevo.Enabled = false;
-            btn_actualizar.Enabled = false;
-            btn_eli.Enabled = false;
-            gbbuscar.Enabled = false;
-            btn_modif.Enabled = false;
-            rbhabilitado.Checked = true;
-            txtnombre.Enabled = true;
-            txtdesc.Enabled = true;
-            btn_ingresar.Enabled = true;
-            btn_cancel.Enabled = true;
-            gbestado.Enabled = true;
-            Gpb_datos.Enabled = true;
-            txtcodigo.Enabled = true;
-            rbinhabilitado.Enabled = true;
-            rbhabilitado.Enabled = true;
+            if (Txt_nombre.Text == "")
+            {
+                MessageBox.Show("Falta Nombre de Perfil");
+                Btn_ingreso.Enabled = true;
+
+            }
+            else if (Txt_descipcion.Text == "")
+            {
+                MessageBox.Show("Falta Descripcion del Perfil");
+                Btn_ingreso.Enabled = true;
+
+            }
+
+            else
+            {
+                string sestado = "";
+                if (Rdb_habilitado.Checked)
+                {
+                    sestado = "1";
+                }
+
+                if (Rdb_inhabilitado.Checked)
+                {
+                    sestado = "0";
+                }
+                else
+                {
+                   sestado = "1";
+                }
+
+                logic.funactualizar(Txt_codigo.Text.ToString(), Txt_nombre.Text.ToString(), Txt_descipcion.Text.ToString(), sestado.ToString());
+                MessageBox.Show("Perfil Actualizado Correctamente");
+                Btn_modificar.Enabled = false;
+                Btn_actualizar.Enabled = false;
+                Btn_cancelar.Enabled = false;
+                Btn_guardar.Enabled = false;
+                Btn_ingreso.Enabled = true;
+                Txt_codigo.Enabled = false;
+                Txt_nombre.Enabled = false;
+                Txt_descipcion.Enabled = false;
+                Gpb_estado.Enabled = false;
+                limpiar();
+
+            }
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btn_nuevo_Click_1(object sender, EventArgs e)
+        {
+            Btn_ingreso.Enabled = false;
+            Btn_actualizar.Enabled = false;
+            Gpb_buscarperfiles.Enabled = false;
+            Btn_modificar.Enabled = false;
+            Rdb_habilitado.Checked = true;
+            Rdb_inhabilitado.Checked = true;
+            Gpb_estado.Enabled = true;
+            Txt_nombre.Enabled = true;
+            Txt_descipcion.Enabled = true;
+            Btn_guardar.Enabled = true;
+            Btn_cancelar.Enabled = true;
 
             try
             {
-                DataTable dtValidarID = logic.validarIDperfiles();
+                DataTable dtValidarID = logic.funagregar();
                 foreach (DataRow row in dtValidarID.Rows)
                 {
                     if (row[0].ToString() == "")
                     {
-                        txtcodigo.Text = "1";
+                        Txt_codigo.Text = "1";
                     }
                     else
                     {
-                        txtcodigo.Text = row[0].ToString();
+                        Txt_codigo.Text = row[0].ToString();
                     }
                 }
             }
@@ -183,268 +197,132 @@ namespace CapaDiseno
             }
         }
 
-        private void btn_ingresar_Click_1(object sender, EventArgs e)
+        private void btn_modif_Click(object sender, EventArgs e)
         {
-            txtnombre.Enabled = false;
-            txtdesc.Enabled = false;
-            Gpb_datos.Enabled = false;
-            gbestado.Enabled = false;
-
-
-            if (txtnombre.Text == "")
-            {
-                MessageBox.Show("Falta Nombre de Perfil", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                btn_nuevo.Enabled = true;
-
-            }
-            else if (txtdesc.Text == "")
-            {
-                MessageBox.Show("Falta Descripcion del Perfil", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                btn_nuevo.Enabled = true;
-
-            }
-
-            else
-            {
-                string estado = "";
-                if (rbhabilitado.Checked)
-                {
-                    estado = "1";
-                }
-
-                if (rbinhabilitado.Checked)
-                {
-                    estado = "0";
-                }
-                else
-                {
-                    estado = "1";
-                }
-
-                logic.ingresarperfiles(txtcodigo.Text.ToString(), txtnombre.Text.ToString(), txtdesc.Text.ToString(), estado.ToString());
-                MessageBox.Show("Perfil Ingresado Correctamente", "Perfil", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                limpiar();
-                gbbuscar.Enabled = true;
-                btn_nuevo.Enabled = true;
-                btn_ingresar.Enabled = false;
-            }
+            Txt_codigo.Enabled = false;
+            Btn_ingreso.Enabled = false;
+            Btn_cancelar.Enabled = true;
+            Btn_actualizar.Enabled = true;
+            Btn_modificar.Enabled = false;
+            Txt_nombre.Enabled = true;
+            Txt_descipcion.Enabled = true;
+            Rdb_habilitado.Enabled = true;
+            Rdb_inhabilitado.Enabled = true;
+            Gpb_estado.Enabled = true;
         }
-
-        private void btn_actualizar_Click_1(object sender, EventArgs e)
+        /* creado por Emerzon Garcia */ 
+        private void btn_eli_Click(object sender, EventArgs e)
         {
-            if (txtnombre.Text == "")
-            {
-                MessageBox.Show("Falta Nombre de Perfil", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                btn_nuevo.Enabled = true;
-
-            }
-            else if (txtdesc.Text == "")
-            {
-                MessageBox.Show("Falta Descripcion del Perfil", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                btn_nuevo.Enabled = true;
-
-            }
-
-            else
-            {
-                string estado = "";
-                if (rbhabilitado.Checked)
-                {
-                    estado = "1";
-                }
-
-                if (rbinhabilitado.Checked)
-                {
-                    estado = "0";
-                }
-                else
-                {
-                    estado = "1";
-                }
-
-                // Confirmar antes de eliminar
-                var confirmResult = MessageBox.Show("¿Estás seguro de modificar este perfil?",
-                                                        "Confirmar Modificación",
-                                                        MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
-
-                if (confirmResult == DialogResult.Yes)
-                {
-                    logic.Actualizarperfil(txtcodigo.Text.ToString(), txtnombre.Text.ToString(), txtdesc.Text.ToString(), estado.ToString());
-                    MessageBox.Show("Perfil Actualizado Correctamente", "Perfil", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    MessageBox.Show("No se ha modificado el perfil seleccionado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-
-                btn_modif.Enabled = false;
-                btn_actualizar.Enabled = false;
-                btn_cancel.Enabled = false;
-                btn_ingresar.Enabled = false;
-                btn_nuevo.Enabled = true;
-                txtcodigo.Enabled = false;
-                txtnombre.Enabled = false;
-                txtdesc.Enabled = false;
-                gbestado.Enabled = false;
-                btn_eli.Enabled = false;
-                limpiar();
-            }
-        }
-
-        private void btn_modif_Click_1(object sender, EventArgs e)
-        {
-            txtcodigo.Enabled = false;
-            btn_nuevo.Enabled = false;
-            btn_cancel.Enabled = true;
-            btn_actualizar.Enabled = true;
-            btn_modif.Enabled = false;
-            txtnombre.Enabled = true;
-            txtdesc.Enabled = true;
-            rbhabilitado.Enabled = true;
-            rbinhabilitado.Enabled = true;
-            gbestado.Enabled = true;
-            Gpb_datos.Enabled = true;
-        }
-
-        /* creado por Emerzon Garcia */
-        private void btn_eli_Click_1(object sender, EventArgs e)
-        {
-            if (!string.IsNullOrEmpty(txtcodigo.Text))
+            if (!string.IsNullOrEmpty(Txt_codigo.Text))
             {
                 // Confirmar antes de eliminar
                 var confirmResult = MessageBox.Show("¿Estás seguro de eliminar este perfil?",
                                                     "Confirmar Eliminación",
-                                                    MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                                                    MessageBoxButtons.YesNo);
 
                 if (confirmResult == DialogResult.Yes)
                 {
                     // Llamar al método de la capa lógica para eliminar el perfil
-                    logic.Eliminarperfil(txtcodigo.Text);
+                    logic.funeliminarperfil(Txt_codigo.Text);
+
+                    // Opcionalmente, puedes desactivar botones o limpiar campos después de la eliminación
+                    Btn_modificar.Enabled = false;
+                    Btn_actualizar.Enabled = false;
+                    Btn_cancelar.Enabled = false;
+                    Btn_guardar.Enabled = false;
+                    Btn_ingreso.Enabled = true;
+                    Txt_codigo.Enabled = false;
+                    Gpb_estado.Enabled = false;  // Desactiva el grupo de radio buttons
+                    limpiar();  // Limpiar campos
                 }
             }
             else
             {
-                MessageBox.Show("No se ha seleccionado un perfil para eliminar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("No se ha seleccionado un perfil para eliminar.");
             }
-
-            // Opcionalmente, puedes desactivar botones o limpiar campos después de la eliminación
-            btn_modif.Enabled = false;
-            btn_actualizar.Enabled = false;
-            btn_cancel.Enabled = false;
-            btn_ingresar.Enabled = false;
-            btn_nuevo.Enabled = true;
-            txtcodigo.Enabled = false;
-            gbestado.Enabled = false;  // Desactiva el grupo de radio buttons
-            btn_eli.Enabled = false;
-            Gpb_datos.Enabled = false;
-            gbbuscar.Enabled = true;
-            limpiar();  // Limpiar campos
         }
 
-        private void btn_cancel_Click_1(object sender, EventArgs e)
+        private void btn_cancel_Click(object sender, EventArgs e)
         {
             limpiar();
-            btn_modif.Enabled = false;
-            btn_actualizar.Enabled = false;
-            btn_cancel.Enabled = false;
-            btn_ingresar.Enabled = false;
-            txtnombre.Enabled = false;
-            txtdesc.Enabled = false;
-            gbbuscar.Enabled = true;
-            btn_nuevo.Enabled = true;
-            gbestado.Enabled = false;
-            btn_eli.Enabled = false;
-            Gpb_datos.Enabled = false;
-
+            Btn_modificar.Enabled = false;
+            Btn_actualizar.Enabled = false;
+            Btn_cancelar.Enabled = false;
+            Btn_guardar.Enabled = false;
+            Txt_nombre.Enabled = false;
+            Txt_descipcion.Enabled = false;
+            Gpb_buscarperfiles.Enabled = true;
+            Btn_ingreso.Enabled = true;
+            Gpb_estado.Enabled = false;
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
+        private void btnSalir_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void rbhabilitado_CheckedChanged(object sender, EventArgs e)
+        private void btn_ayuda_Click(object sender, EventArgs e)
         {
-
+            Help.ShowHelp(this, "C:\\Ayuda_Seguridad\\" + "MantenimientoPerfiles.chm", "AyudaMantenimientoPerfiles.html");
         }
-        //********************** KATERYN DE LEON y Gabriela Suc ********************************************
-        private void btn_ayuda_Click_1(object sender, EventArgs e)
+
+        private void btn_bsucarperfil_Click(object sender, EventArgs e)
         {
-            //Help.ShowHelp(this, "C:\\Ayuda_Seguridad\\" + "MantenimientoPerfiles.chm", "AyudaMantenimientoPerfiles.html");
-            // Define el directorio base desde donde comenzar la búsqueda
-            string baseDirectory = AppDomain.CurrentDomain.BaseDirectory; // Usando el directorio base del ejecutable
+            string sperfil = Tbx_buscarperfil.Text;
 
-            // Imprime la ruta base para verificar
-            MessageBox.Show("Ruta base: " + baseDirectory);
-
-            // Busca el archivo en el directorio base y sus subdirectorios
-            string pathAyuda = FindFileInDirectory(baseDirectory, "Ayuda_Seguridad", "ayudaPerfiles.chm");
-
-            // Imprimir la ruta generada para verificar
-            MessageBox.Show("Ruta de ayuda: " + pathAyuda);
-
-            // Verifica si el archivo existe antes de intentar abrirlo
-            if (!string.IsNullOrEmpty(pathAyuda))
+            if (string.IsNullOrWhiteSpace(sperfil))
             {
-                MessageBox.Show("El archivo sí está.");
-                // Abre el archivo de ayuda .chm
-                Help.ShowHelp(this, pathAyuda);
+                MessageBox.Show("Por favor, ingrese un ID de una aplicacion.");
+                return;
             }
-            else
-            {
-                // Si el archivo no existe, muestra un mensaje de error
-                MessageBox.Show("El archivo de ayuda no se encontró.");
-            }
-        }
-        //********************** KATERYN DE LEON y Gabriela Suc  ********************************************
-        private string FindFileInDirectory(string rootDirectory, string folderName, string fileName)
-        {
+
             try
             {
-                // Imprime la ruta raíz para verificar
-                MessageBox.Show("Buscando en: " + rootDirectory);
+                DataTable dtModulos = logic.funconsultarperfil(sperfil);
 
-                // Busca la carpeta y el archivo
-                foreach (string directory in Directory.GetDirectories(rootDirectory, folderName, SearchOption.AllDirectories))
+                if (dtModulos == null || dtModulos.Rows.Count == 0)
                 {
-                    MessageBox.Show("Carpeta encontrada: " + directory); // Imprime las carpetas encontradas
-                    string filePath = Path.Combine(directory, fileName);
-                    if (File.Exists(filePath))
+                    MessageBox.Show("No se encontraro la aplicacion.");
+                    return;
+                }
+
+                foreach (DataRow row in dtModulos.Rows)
+                {
+                    if (row[0] != DBNull.Value) Txt_codigo.Text = row[0].ToString();
+                    if (row[1] != DBNull.Value) Txt_nombre.Text = row[1].ToString();
+                    if (row[2] != DBNull.Value) Txt_descipcion.Text = row[2].ToString();
+                    if (row[3] != DBNull.Value)
                     {
-                        return filePath; // Devuelve la primera coincidencia encontrada
+                        string estado = row[3].ToString();
+                        if (estado == "1")
+                        {
+                            Rdb_habilitado.Checked = true;
+                            Rdb_inhabilitado.Checked = false;
+                        }
+                        else if (estado == "0")
+                        {
+                            Rdb_habilitado.Checked = false;
+                            Rdb_inhabilitado.Checked = true;
+                        }
                     }
                 }
+
+                Btn_modificar.Enabled = true;
+                Btn_guardar.Enabled = false;
+                Txt_codigo.Enabled = false;
+                Txt_nombre.Enabled = false;
+                Txt_descipcion.Enabled = false;
+                Rdb_habilitado.Enabled = false;
+                Rdb_inhabilitado.Enabled = false;
+                Btn_eliminar.Enabled = true;
+                Btn_ingreso.Enabled = false;
+                Btn_cancelar.Enabled = true;
+                Gpb_estado.Enabled = false;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al buscar el archivo: " + ex.Message);
-            }
-            return null; // No se encontró el archivo
-        }
-
-        //******** Fin KATERYN DE LEON y Gabriela Suc ********************************************************************
-
-        //Fernando García 0901-21-581
-        private void SoloNumeros_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            // Verificar si el carácter es un número o si es la tecla de Backspace
-            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
-            {
-                // Si no es un número o la tecla de retroceso, cancelar el evento
-                e.Handled = true;
-                MessageBox.Show("Solo se permiten números.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
-
-        private void SoloLetras_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            // Verifica si la tecla presionada es una letra o una tecla de control como backspace
-            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
-            {
-                // Si no es una letra, espacio o tecla de control, cancela el evento
-                e.Handled = true;
-                MessageBox.Show("Solo se permiten letras.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Error: " + ex.Message);
+                Console.WriteLine(ex);
             }
         }
     }
