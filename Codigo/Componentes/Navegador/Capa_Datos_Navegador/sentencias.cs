@@ -223,8 +223,6 @@ namespace Capa_Datos_Navegador
             }
 
             return ruta;
-
-        // Método para obtener la ruta de un recurso basado en su
         }
         //******************************************** CODIGO HECHO POR JOEL LOPEZ ***************************** 
 
@@ -245,10 +243,9 @@ namespace Capa_Datos_Navegador
             reader.Close();
             return indice2;
         }
-        
-        // Método para obtener un índice modificado basado en el ID de ayuda
-        public string modIndice(string idindice)
 
+        // Método para obtener un índice modificado basado en el ID de ayuda
+        public string modIndice(string idAyuda)
         {
             string indice = "";
             string query = "SELECT indice FROM ayuda WHERE id_ayuda = ?"; // Parámetro seguro

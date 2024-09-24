@@ -32,9 +32,6 @@ namespace Capa_Controlador_Navegador
             return dtTabla;
         }
 
-
-        public string MIindice1(string Indice1)
-
         // Modifica el índice proporcionado a través de la lógica interna
         public string ModIndice(string sIndice1)
 
