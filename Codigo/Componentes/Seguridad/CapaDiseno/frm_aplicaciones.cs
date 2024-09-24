@@ -9,10 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CapaLogica;
 using System.Data.Odbc;
-
-using System.IO; // Necesario para Directory, File, Path y SearchOption
-using System.Windows.Forms; // Necesario para MessageBox y Help
-
 namespace CapaDiseno
 {
 
@@ -25,120 +21,129 @@ namespace CapaDiseno
         public frm_aplicaciones(string idUsuario)
         {
             InitializeComponent();
-            btn_cancel.Enabled = false;
-            btn_ingresar.Enabled = false;
-            btn_actualizar.Enabled = false;
-            btn_modif.Enabled = false;
-            btn_eliminar.Enabled = false;
+            Btn_cancelar.Enabled = false;
+            Btn_ingresar.Enabled = false;
+            Btn_actualizar.Enabled = false;
+            Btn_modificar.Enabled = false;
+            Btn_eliminar.Enabled = false;
             logic = new logica(idUsuario);
-            txt_idaplicacion.Enabled = false;
-            txt_nombre.Enabled = false;
-            txt_descripcion.Enabled = false;
+            Txt_idaplicacion.Enabled = false;
+            Txt_nombre.Enabled = false;
+            Txt_descripcion.Enabled = false;
             Gpb_estado.Enabled = false;
+            Rdb_habilitado.Checked = false;
+            Rdb_inhabilitado.Checked = false;
+
+            ToolTip tnuevo = new ToolTip();
+            tnuevo.SetToolTip(Btn_nuevo, "Crear aplicación");
+            ToolTip tguardar = new ToolTip();
+            tguardar.SetToolTip(Btn_ingresar, "Guardar aplicación");
+            ToolTip tactualizar = new ToolTip();
+            tactualizar.SetToolTip(Btn_modificar, "Actualizar Cambios");
+            ToolTip tbuscar = new ToolTip();
+            tbuscar.SetToolTip(Btn_bsucar, "Buscar aplicación");
+            ToolTip teditar = new ToolTip();
+            teditar.SetToolTip(Btn_modificar, "Modificar aplicación");
+            ToolTip teliminar = new ToolTip();
+            teliminar.SetToolTip(Btn_eliminar, "Eliminar aplicación");
+            ToolTip tcancelar = new ToolTip();
+            tcancelar.SetToolTip(Btn_cancelar, "Cancelar Cambios");
+            ToolTip tsalir = new ToolTip();
+            tsalir.SetToolTip(Btn_salir, "Salir Mantenimiento de aplicaciones");
+            ToolTip tayuda = new ToolTip();
+            tayuda.SetToolTip(Btn_ayuda, "Ayuda");
         }
-        //###################  termina lo que hizo  Karla  Sofia Gómez Tobar #######################
+     
         public frm_aplicaciones()
         {
         }
 
-        //###################  lo que hizo Karla  Sofia Gómez Tobar #######################
-        void limpiar()
+
+        void prolimpiar()
         {
-            txt_idaplicacion.Text = "";
-            txt_nombre.Text = "";
-            txt_descripcion.Text = "";
-            txt_buscar.Text = "";
-            Rdb_activo.Checked = false;
-            Rdb_inactivo.Checked = false;
-            txt_idaplicacion.Focus();
+            Txt_idaplicacion.Text = "";
+            Txt_nombre.Text = "";
+            Txt_descripcion.Text = "";
+            Txt_buscar.Text = "";
+            Rdb_habilitado.Checked = false;
+            Rdb_inhabilitado.Checked = false;
+            Txt_idaplicacion.Focus();
         }
 
-        //###################  termina lo que hizo  Karla  Sofia Gómez Tobar #######################
-        private void GroupBox2_Enter(object sender, EventArgs e)
-        {
 
-        }
 
         private void Frm_aplicaciones_Load(object sender, EventArgs e)
         {
-            txt_buscar.KeyPress += new KeyPressEventHandler(SoloNumeros_KeyPress);
-            txt_idaplicacion.KeyPress += new KeyPressEventHandler(SoloNumeros_KeyPress);
-            txt_nombre.KeyPress += new KeyPressEventHandler(SoloLetras_KeyPress);
-            txt_idaplicacion.KeyPress += new KeyPressEventHandler(SoloLetras_KeyPress);
-            // Orden de tabulaciones
-            txt_buscar.TabIndex = 0;
-            btn_bsucarap.TabIndex = 1;
-            txt_idaplicacion.TabIndex = 2;
-            txt_nombre.TabIndex = 3;
-            txt_descripcion.TabIndex = 4;
-            btn_nuevo.TabIndex = 5;
-            btn_ingresar.TabIndex = 6;
-            btn_modif.TabIndex = 7;
-            btn_actualizar.TabIndex = 8;
-            btn_eliminar.TabIndex = 9;
-            btn_cancel.TabIndex = 10;
 
-            //limitar caracteres
-            txt_nombre.MaxLength = 50; // Limita el texto a 50 caracteres
-            txt_descripcion.MaxLength = 150;
-            txt_idaplicacion.MaxLength = 20;
         }
 
 
         private void Btn_salir_Click(object sender, EventArgs e)
         {
             this.Close();
+            prolimpiar();
         }
 
-        private void GroupBox1_Enter(object sender, EventArgs e)
-        {
 
+        private void Btn_ayuda_Click(object sender, EventArgs e)
+        {
+            Help.ShowHelp(this, "C:\\Ayuda_Seguridad\\" + "MantenimientoAplicaciones.chm", "Mantenimiento_Aplicaciones.html");
         }
 
-        //###################  lo que hizo Karla  Sofia Gómez Tobar #######################
-        private void btn_salir_Click_1(object sender, EventArgs e)
+        private void Btn_bsucar_Click(object sender, EventArgs e)
         {
-            limpiar();
-            this.Close();
-        }
-        //###################  termina lo que hizo  Karla  Sofia Gómez Tobar ######################
-
-
-        //###################  lo que hizo Karla  Sofia Gómez Tobar #######################
-        private void btn_bsucarap_Click(object sender, EventArgs e)
-        {
-            string aplicacion = txt_buscar.Text;
+            string aplicacion = Txt_buscar.Text;
 
             if (string.IsNullOrWhiteSpace(aplicacion))
             {
-                MessageBox.Show("Por favor, ingrese un ID de una aplicación.","Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Por favor, ingrese un ID de una aplicacion.");
                 return;
             }
 
             try
             {
-                DataTable dtAplicacion = logic.consultaLogicaAplicaciones(aplicacion);
+                DataTable dtAplicacion = logic.funconsultaLogicaAplicaciones(aplicacion);
 
                 if (dtAplicacion == null || dtAplicacion.Rows.Count == 0)
                 {
-                    MessageBox.Show("No se encontró la aplicación.", "Aplicacion", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show("No se encontraro la aplicacion.");
                     return;
                 }
 
                 foreach (DataRow row in dtAplicacion.Rows)
                 {
-                    if (row[0] != DBNull.Value) txt_idaplicacion.Text = row[0].ToString();
-                    if (row[1] != DBNull.Value) txt_nombre.Text = row[1].ToString();
-                    if (row[2] != DBNull.Value) txt_descripcion.Text = row[2].ToString(); // Asegúrate de que esta columna exista en la consulta
+                    if (row[0] != DBNull.Value) Txt_idaplicacion.Text = row[0].ToString();
+                    if (row[1] != DBNull.Value) Txt_nombre.Text = row[1].ToString();
+                    if (row[2] != DBNull.Value) Txt_descripcion.Text = row[2].ToString();
+                    if (row[3] != DBNull.Value)
+                    {
+                        string estado = row[3].ToString();
+                        if (estado == "1")
+                        {
+                            Rdb_habilitado.Checked = true;
+                            Rdb_inhabilitado.Checked = false;
+                        }
+                        else if (estado == "0")
+                        {
+                            Rdb_habilitado.Checked = false;
+                            Rdb_inhabilitado.Checked = true;
+                        }
+                    }
                 }
 
-                btn_modif.Enabled = true;
-                btn_ingresar.Enabled = false;
-                txt_idaplicacion.Enabled = false;
-                txt_nombre.Enabled = false;
-                txt_descripcion.Enabled = false; // Asegúrate de que este campo esté habilitado si quieres mostrar la descripción
-
-                btn_eliminar.Enabled = true;
+                Btn_modificar.Enabled = true;
+                Btn_cancelar.Enabled = true;
+                Btn_ingresar.Enabled = false;
+                Txt_idaplicacion.Enabled = false;
+                Btn_nuevo.Enabled = false;
+                Txt_nombre.Enabled = false;
+                Txt_descripcion.Enabled = false;
+                Rdb_habilitado.Enabled = false;
+                Rdb_inhabilitado.Enabled = false;
+                Btn_eliminar.Enabled = true;
+                Gpb_estado.Enabled = false;
+                Rdb_habilitado.Enabled = true;
+                Rdb_inhabilitado.Enabled = true;
             }
             catch (Exception ex)
             {
@@ -147,30 +152,29 @@ namespace CapaDiseno
             }
         }
 
-
-
-        //###################  lo que hizo Karla  Sofia Gómez Tobar #######################
-        private void btn_nuevo_Click_1(object sender, EventArgs e)
+        private void Btn_nuevo_Click(object sender, EventArgs e)
         {
-            Rdb_activo.Checked = true;
             Gpb_estado.Enabled = true;
-            btn_nuevo.Enabled = false;
-            btn_actualizar.Enabled = false;
-            gb_buscar.Enabled = false;
-            gb_datosaplicacion.Enabled = true;
-            btn_modif.Enabled = false;
-            btn_ingresar.Enabled = true;
-            btn_cancel.Enabled = true;
-            txt_idaplicacion.Enabled = true;
-            txt_nombre.Enabled = true;
-            txt_descripcion.Enabled = true;
-            btn_eliminar.Enabled = false;
-            txt_idaplicacion.Text = "";
-            txt_descripcion.Text = "";
-           
+            Rdb_habilitado.Checked = true;
+            Rdb_inhabilitado.Checked = false;
+            Btn_ingresar.Enabled = true;
+            Btn_cancelar.Enabled = true;
+            Txt_idaplicacion.Enabled = true;
+            Txt_nombre.Enabled = true;
+            Txt_descripcion.Enabled = true;
+            Btn_nuevo.Enabled = false;
+            Btn_actualizar.Enabled = false;
+            Gpb_buscar.Enabled = false;
+            Btn_modificar.Enabled = false;
+            Btn_eliminar.Enabled = false;
+
+
+
+
+
             try
             {
-                DataTable dtValidarID = logic.validarIDAplicacion();
+                DataTable dtValidarID = logic.funvalidarIDAplicacion();
                 if (dtValidarID == null || dtValidarID.Rows.Count == 0)
                 {
 
@@ -180,7 +184,7 @@ namespace CapaDiseno
                 {
                     if (row[0] != DBNull.Value)
                     {
-                        txt_idaplicacion.Text = row[0].ToString();
+                        Txt_idaplicacion.Text = row[0].ToString();
                     }
                 }
 
@@ -192,40 +196,37 @@ namespace CapaDiseno
                 return;
             }
         }
-        //###################  termina lo que hizo  Karla  Sofia Gómez Tobar #######################
 
-
-        //###################  lo que hizo Karla  Sofia Gómez Tobar #######################
-        private void btn_ingresar_Click_1(object sender, EventArgs e)
+        private void Btn_ingresar_Click(object sender, EventArgs e)
         {
-            txt_nombre.Enabled = false;
-            txt_descripcion.Enabled = false;
+            Txt_nombre.Enabled = false;
+            Txt_descripcion.Enabled = false;
 
-            if (txt_nombre.Text == "")
+            if (Txt_nombre.Text == "")
             {
 
-                MessageBox.Show("Falta Nombre de Aplicacion", "Nombre de Aplicación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                btn_nuevo.Enabled = true;
-                txt_nombre.Enabled = false;
-                txt_descripcion.Enabled = false;
+                MessageBox.Show("Falta Nombre de Aplicacion");
+                Btn_nuevo.Enabled = true;
+                Txt_nombre.Enabled = false;
+                Txt_descripcion.Enabled = false;
             }
-            else if (txt_descripcion.Text == "")
+            else if (Txt_descripcion.Text == "")
             {
-                MessageBox.Show("Falta Descripcion de Aplicacion", "Descripcion", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                btn_nuevo.Enabled = true;
-                txt_nombre.Enabled = false;
-                txt_descripcion.Enabled = false;
+                MessageBox.Show("Falta Descripcion de Aplicacion");
+                Btn_nuevo.Enabled = true;
+                Txt_nombre.Enabled = false;
+                Txt_descripcion.Enabled = false;
             }
 
             else
             {
                 string estado = "";
-                if (Rdb_activo.Checked)
+                if (Rdb_habilitado.Checked)
                 {
                     estado = "1";
                 }
 
-                if (Rdb_inactivo.Checked)
+                if (Rdb_inhabilitado.Checked)
                 {
                     estado = "0";
                 }
@@ -234,66 +235,59 @@ namespace CapaDiseno
                     estado = "1";
                 }
 
-                logic.insertaraplicaciones(txt_idaplicacion.Text.ToString(), txt_nombre.Text.ToString(), txt_descripcion.Text.ToString(), estado.ToString());
-                MessageBox.Show("Modulo Ingresado Correctamente", "Modulo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                limpiar();
-                gb_buscar.Enabled = true;
-                btn_ingresar.Enabled = false;
-                btn_nuevo.Enabled = true;
-                txt_idaplicacion.Enabled = false;
-                btn_bsucarap.Enabled = true;
-                gb_datosaplicacion.Enabled = false;
-                Gpb_estado.Enabled = false;
-                btn_eliminar.Enabled = false;
-                btn_cancel.Enabled = false;
+                logic.funinsertaraplicaciones(Txt_idaplicacion.Text.ToString(), Txt_nombre.Text.ToString(), Txt_descripcion.Text.ToString(), estado.ToString());
+                MessageBox.Show("Modulo Ingresado Correctamente");
+                prolimpiar();
+                Gpb_buscar.Enabled = true;
+                Btn_ingresar.Enabled = false;
+                Btn_nuevo.Enabled = true;
+                Txt_idaplicacion.Enabled = false;
             }
         }
-        //###################  termina lo que hizo  Karla  Sofia Gómez Tobar #######################
 
-        //esto fue echo por Carlos hernandez
-        private void btn_modif_Click_1(object sender, EventArgs e)
+        private void Btn_modificar_Click(object sender, EventArgs e)
         {
-            Rdb_activo.Checked = true;
+            Rdb_habilitado.Enabled = true;
+            Rdb_inhabilitado.Enabled = false;
             Gpb_estado.Enabled = true;
-            btn_nuevo.Enabled = false;
-            btn_actualizar.Enabled = true;
-            gb_buscar.Enabled = false;
-            btn_modif.Enabled = false;
-            btn_ingresar.Enabled = false;
-            btn_cancel.Enabled = true;
-            txt_idaplicacion.Enabled = false;
-            txt_nombre.Enabled = true;
-            txt_descripcion.Enabled = true;
-            btn_eliminar.Enabled = false;
+            Btn_nuevo.Enabled = false;
+            Btn_actualizar.Enabled = true;
+            Gpb_buscar.Enabled = false;
+            Btn_modificar.Enabled = false;
+            Btn_ingresar.Enabled = false;
+            Btn_cancelar.Enabled = true;
+            Txt_idaplicacion.Enabled = false;
+            Txt_nombre.Enabled = true;
+            Txt_descripcion.Enabled = true;
         }
-        //termina lo que hizo carlos hernandez 
-        private void btn_actualizar_Click_1(object sender, EventArgs e)
+
+        private void Btn_actualizar_Click(object sender, EventArgs e)
         {
-            if (txt_nombre.Text == "")
+            if (Txt_nombre.Text == "")
             {
 
-                MessageBox.Show("Falta Nombre de Aplicacion", "Aplicacion", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                btn_nuevo.Enabled = true;
-                txt_nombre.Enabled = false;
-                txt_descripcion.Enabled = false;
+                MessageBox.Show("Falta Nombre de Aplicacion");
+                Btn_nuevo.Enabled = true;
+                Txt_nombre.Enabled = false;
+                Txt_descripcion.Enabled = false;
             }
-            else if (txt_descripcion.Text == "")
+            else if (Txt_descripcion.Text == "")
             {
-                MessageBox.Show("Falta Descripcion de Aplicacion", "Descripcion", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                btn_nuevo.Enabled = true;
-                txt_nombre.Enabled = false;
-                txt_descripcion.Enabled = false;
+                MessageBox.Show("Falta Descripcion de Aplicacion");
+                Btn_nuevo.Enabled = true;
+                Txt_nombre.Enabled = false;
+                Txt_descripcion.Enabled = false;
             }
 
             else
             {
                 string estado = "";
-                if (Rdb_activo.Checked)
+                if (Rdb_habilitado.Checked)
                 {
                     estado = "1";
                 }
 
-                if (Rdb_inactivo.Checked)
+                if (Rdb_inhabilitado.Checked)
                 {
                     estado = "0";
                 }
@@ -302,173 +296,73 @@ namespace CapaDiseno
                     estado = "1";
                 }
 
-                // Confirmar antes de eliminar
-                var confirmResult = MessageBox.Show("¿Estás seguro de modificar este perfil?",
-                                                        "Confirmar Modificación",
-                                                        MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
-
-                if (confirmResult == DialogResult.Yes)
-                {
-                    logic.actualizaraplicaciones(txt_idaplicacion.Text.ToString(), txt_nombre.Text.ToString(), txt_descripcion.Text.ToString(), estado.ToString());
-                    MessageBox.Show("Modulo Modificado Correctamente", "Modulo", MessageBoxButtons.OK, MessageBoxIcon.Information);         
-                }       
-                else
-                {
-                    MessageBox.Show("No se ha modificado el perfil seleccionado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                limpiar();
-                btn_cancel.Enabled = false;
-                btn_bsucarap.Enabled = true;
-                btn_nuevo.Enabled = true;
-                btn_ingresar.Enabled = false;
-                btn_actualizar.Enabled = false;
-                btn_modif.Enabled = false;
-                btn_eliminar.Enabled = false;
-                txt_idaplicacion.Enabled = false;
-                txt_nombre.Enabled = false;
-                txt_descripcion.Enabled = false;
-                Gpb_estado.Enabled = false;
-                gb_buscar.Enabled = true;
-
+                logic.funactualizaraplicaciones(Txt_idaplicacion.Text.ToString(), Txt_nombre.Text.ToString(), Txt_descripcion.Text.ToString(), estado.ToString());
+                MessageBox.Show("Modulo Modificado Correctamente");
+                prolimpiar();
+                Btn_cancelar.Enabled = false;
+                Btn_bsucar.Enabled = true;
+                Btn_nuevo.Enabled = true;
+                Btn_ingresar.Enabled = false;
+                Btn_actualizar.Enabled = false;
+                Btn_modificar.Enabled = false;
+                Btn_eliminar.Enabled = false;
+                Txt_idaplicacion.Enabled = false;
+                Txt_nombre.Enabled = false;
+                Txt_descripcion.Enabled = false;
+                Gpb_estado.Enabled = true;
+                Gpb_buscar.Enabled = true;
             }
         }
 
-        //aqui inica lo que hizo Carlos Hernandez
-        private void btn_eliminar_Click_1(object sender, EventArgs e)
+        private void Btn_eliminar_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(txt_idaplicacion.Text))
+            if (!string.IsNullOrEmpty(Txt_idaplicacion.Text))
             {
                 // Confirmar antes de eliminar
                 var confirmResult = MessageBox.Show("¿Estás seguro de eliminar este perfil?",
                                                     "Confirmar Eliminación",
-                                                    MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+                                                    MessageBoxButtons.YesNo);
 
                 if (confirmResult == DialogResult.Yes)
                 {
                     // Llamar al método de la capa lógica para eliminar el perfil
-                    logic.eliminaraplicaciones(txt_idaplicacion.Text);                
+                    logic.funeliminaraplicaciones(Txt_idaplicacion.Text);
+
+                    // Opcionalmente, puedes desactivar botones o limpiar campos después de la eliminación
+                    Txt_buscar.Enabled = true;
+                    Btn_bsucar.Enabled = false;
+                    Btn_modificar.Enabled = false;
+                    Btn_nuevo.Enabled = true;
+                    Txt_idaplicacion.Enabled = false;
+                    Txt_descripcion.Enabled = false;
+                    Gpb_estado.Enabled = false;
+                    prolimpiar();  // Limpiar campos
                 }
             }
             else
             {
-                MessageBox.Show("No se ha seleccionado un perfil para eliminar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("No se ha seleccionado un perfil para eliminar.");
             }
-            // Opcionalmente, puedes desactivar botones o limpiar campos después de la eliminación
-            txt_buscar.Enabled = true;
-            btn_bsucarap.Enabled = false;
-            btn_modif.Enabled = false;
-            btn_nuevo.Enabled = true;
-            txt_idaplicacion.Enabled = false;
-            txt_descripcion.Enabled = false;
+        }
+
+
+        private void Btn_cancelar_Click(object sender, EventArgs e)
+        {
+            prolimpiar();
+            Btn_nuevo.Enabled = true;
+            Gpb_buscar.Enabled = true;
+            Btn_cancelar.Enabled = false;
+            Btn_ingresar.Enabled = false;
+            Btn_actualizar.Enabled = false;
+            Btn_modificar.Enabled = false;
+            Txt_idaplicacion.Enabled = false;
+            Txt_nombre.Enabled = false;
+            Txt_descripcion.Enabled = false;
             Gpb_estado.Enabled = false;
-            btn_bsucarap.Enabled = true;
-            btn_eliminar.Enabled = false;
-            limpiar();  // Limpiar campos
-        }
-        //aqui termina la parte de Carlos Hernandez
-
-        //###################  lo que hizo Karla  Sofia Gómez Tobar #######################
-        private void btn_cancel_Click_1(object sender, EventArgs e)
-        {
-            limpiar();
-            btn_nuevo.Enabled = true;
-            gb_buscar.Enabled = true;
-            btn_bsucarap.Enabled = true;
-            btn_cancel.Enabled = false;
-            btn_ingresar.Enabled = false;
-            btn_actualizar.Enabled = false;
-            btn_modif.Enabled = false;
-            txt_idaplicacion.Enabled = false;
-            txt_nombre.Enabled = false;
-            txt_descripcion.Enabled = false;
-            Gpb_estado.Enabled = false;
-            btn_eliminar.Enabled = false;
-
-        }
-        //###################  termina lo que hizo  Karla  Sofia Gómez Tobar #######################
-
-
-        //****************************KATERYN DE LEON-******************************
-        private void btn_ayuda_Click_1(object sender, EventArgs e)
-        {
-            // Help.ShowHelp(this, "C:\\Ayuda_Seguridad\\" + "MantenimientoAplicaciones.chm", "Mantenimiento_Aplicaciones.html");
-
-
-            // Define el directorio base desde donde comenzar la búsqueda
-            string baseDirectory = AppDomain.CurrentDomain.BaseDirectory; // Usando el directorio base del ejecutable
-
-            // Imprime la ruta base para verificar
-            MessageBox.Show("Ruta base: " + baseDirectory);
-
-            // Busca el archivo en el directorio base y sus subdirectorios
-            string pathAyuda = FindFileInDirectory(baseDirectory, "Ayuda_Seguridad", "frmAplicaciones.chm");
-
-            // Imprimir la ruta generada para verificar
-            MessageBox.Show("Ruta de ayuda: " + pathAyuda);
-
-            // Verifica si el archivo existe antes de intentar abrirlo
-            if (!string.IsNullOrEmpty(pathAyuda))
-            {
-                MessageBox.Show("El archivo sí está.");
-                // Abre el archivo de ayuda .chm
-                Help.ShowHelp(this, pathAyuda);
-            }
-            else
-            {
-                // Si el archivo no existe, muestra un mensaje de error
-                MessageBox.Show("El archivo de ayuda no se encontró.");
-            }
-        }
-
-        //**********************KATERYN DE LEON ******************************
-        private string FindFileInDirectory(string rootDirectory, string folderName, string fileName)
-        {
-            try
-            {
-                // Imprime la ruta raíz para verificar
-                MessageBox.Show("Buscando en: " + rootDirectory);
-
-                // Busca la carpeta y el archivo
-                foreach (string directory in Directory.GetDirectories(rootDirectory, folderName, SearchOption.AllDirectories))
-                {
-                    MessageBox.Show("Carpeta encontrada: " + directory); // Imprime las carpetas encontradas
-                    string filePath = Path.Combine(directory, fileName);
-                    if (File.Exists(filePath))
-                    {
-                        return filePath; // Devuelve la primera coincidencia encontrada
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al buscar el archivo: " + ex.Message);
-            }
-            return null; // No se encontró el archivo
-        }
-
-        //*************FIN KATERYN DE LEON***********************************************************
-
-        //Fernando García 0901-21-581
-        private void SoloNumeros_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            // Verificar si el carácter es un número o si es la tecla de Backspace
-            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
-            {
-                // Si no es un número o la tecla de retroceso, cancelar el evento
-                e.Handled = true;
-                MessageBox.Show("Solo se permiten números.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
-
-        private void SoloLetras_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            // Verifica si la tecla presionada es una letra o una tecla de control como backspace
-            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
-            {
-                // Si no es una letra, espacio o tecla de control, cancela el evento
-                e.Handled = true;
-                MessageBox.Show("Solo se permiten letras.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+            Rdb_habilitado.Enabled = true;
+            Rdb_inhabilitado.Enabled = true;
         }
     }
 }
+
+//###################  termina lo que hizo  Karla  Sofia Gómez Tobar #######################

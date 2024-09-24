@@ -158,16 +158,16 @@ namespace CapaDiseno
         }
 
         bool ventanaMostrarModulos = false;
-        frm_modulos mostrarModulos = new frm_modulos();
+        frmMantemientoMódulos mostrarModulos = new frmMantemientoMódulos();
 
         private void ModulosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form frmC = Application.OpenForms.Cast<Form>().FirstOrDefault(x => x is frm_modulos);
+            Form frmC = Application.OpenForms.Cast<Form>().FirstOrDefault(x => x is frmMantemientoMódulos);
             if (ventanaMostrarModulos == false || frmC == null)
             {
                 if (frmC == null)
                 {
-                    mostrarModulos = new frm_modulos(idUsuario);
+                    mostrarModulos = new frmMantemientoMódulos(idUsuario);
                 }
 
                 mostrarModulos.MdiParent = this;

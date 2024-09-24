@@ -98,7 +98,7 @@ namespace CapaDiseno
 
                 if (string.IsNullOrEmpty(buscar))
                 {
-                    dtusuario = logica1.consultaLogicaUsuarios();
+                    dtusuario = logica1.funconsultaLogicaUsuarios();
                 }
                 else
                 {
@@ -255,7 +255,7 @@ namespace CapaDiseno
                 {
                     MessageBox.Show("El usuario ha sido eliminado correctamente (cambiado a estado Inactivo).", "Verificación", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     limpiar(); // Limpiar los campos después de la actualización
-                    Dgv_usuarios.DataSource = logica1.consultaLogicaUsuarios(); // Actualizar DataGridView
+                    Dgv_usuarios.DataSource = logica1.funconsultaLogicaUsuarios(); // Actualizar DataGridView
                 }
                 else
                 {
