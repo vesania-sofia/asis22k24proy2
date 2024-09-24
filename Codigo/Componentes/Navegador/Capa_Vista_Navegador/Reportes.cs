@@ -108,7 +108,7 @@ namespace Capa_Vista_Navegador
             }
            else
             {
-                logic.nuevoQuery(crearInsert());
+                logic.NuevoQuery(crearInsert());
 
 				txtpath.Clear();
 
