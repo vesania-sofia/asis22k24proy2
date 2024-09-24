@@ -8,12 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Capa_Controlador_Navegador;
-using Capa_Datos_Navegador ;
 using Capa_Controlador_Reporteria;
 using Capa_Vista_Reporteria;
 using Capa_Vista_Consulta;
 using CapaDatos;
-
+using System.IO;
 
 namespace Capa_Vista_Navegador
 {
@@ -353,7 +352,7 @@ namespace Capa_Vista_Navegador
                 {
                     idyuda = ayudar;
                     AsRuta = logic.MRuta(idyuda);
-                    AsIndice = logic.MIndice(idyuda);
+                    AsIndice = logic.MIindice1(idyuda);
                     if (AsRuta == "" || AsIndice == "" || AsRuta == null || AsIndice == null)
                     {
                         DialogResult validacion = MessageBox.Show("La Ruta o índice de la ayuda está vacía", "Verificación de requisitos", MessageBoxButtons.OK);
@@ -382,6 +381,9 @@ namespace Capa_Vista_Navegador
                 }
             }
         }
+
+
+
 
         public void asignarReporte(string repo)
         {
@@ -415,6 +417,9 @@ namespace Capa_Vista_Navegador
             lblTabla.Text = nomForm;
         }
         //******************************************** CODIGO HECHO POR JOSUE CACAO ***************************** 
+
+
+
 
 
         //******************************************** CODIGO HECHO POR ANIKA ESCOTO***************************** 
@@ -1828,22 +1833,55 @@ namespace Capa_Vista_Navegador
         {
             try
             {
-                Help.ShowHelp(this, AsRuta, AsIndice); // Abre el menú de ayuda HTML
+                try
+                {
+                    // Obtener el directorio raíz del proyecto subiendo suficientes niveles
+                    string projectRootPath = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\..\..\..\.."));
+
+                    // Combinar la ruta base con la carpeta "Ayuda\AyudaHTML"
+                    string ayudaPath = Path.Combine(projectRootPath, "Ayuda","Ayuda_Navegador", AsRuta);
+
+                    // Mostrar la ruta en un MessageBox antes de proceder
+                    //MessageBox.Show("Buscando archivo de ayuda en la ruta: " + ayudaPath, "Ruta de Ayuda", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // Verificar que el archivo de ayuda exista antes de intentar abrirlo
+                    if (File.Exists(ayudaPath))
+                    {
+                        // Mostrar la ayuda utilizando la ruta completa y el índice
+                        Help.ShowHelp(this, ayudaPath, AsIndice);
+                    }
+                    else
+                    {
+                        // Mostrar un mensaje de error si el archivo de ayuda no se encuentra
+                        MessageBox.Show("No se encontró el archivo de ayuda en la ruta especificada.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Mostrar un mensaje de error en caso de una excepción
+                    MessageBox.Show("Ocurrió un error al abrir la ayuda: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Console.WriteLine("Error al abrir la ayuda: " + ex.ToString());
+                }
+
+                botonesYPermisosSinMensaje();
+
             }
             catch (Exception ex)
             {
-                // Opción 1: Mostrar un mensaje de error al usuario
+                // Muestra un mensaje de error si ocurre algún problema
                 MessageBox.Show("Ocurrió un error al abrir la ayuda: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                // Opción 2: Registrar el error en la consola para propósitos de depuración
+                // También puedes imprimir el error en la consola para propósitos de depuración
                 Console.WriteLine("Error al abrir la ayuda: " + ex.ToString());
 
-                // Opción 3: Podrías agregar un registro de error en un archivo de log si es necesario
+                // Opción adicional: registrar el error en un archivo de log si es necesario
                 // LogError(ex); // Función que guarda el error en un archivo de texto o en otro lugar
             }
 
+            // Cualquier otra lógica relacionada con los permisos o botones
             botonesYPermisosSinMensaje();
         }
+
         //******************************************** CODIGO HECHO POR VICTOR CASTELLANOS***************************** 
 
         //******************************************** CODIGO HECHO POR ANIKA ESCOTO ***************************** 
@@ -2348,28 +2386,32 @@ namespace Capa_Vista_Navegador
         {
 
             string idUsuario1 = logic.ObtenerIdUsuario(idUsuario);
-            //MessageBox.Show("el usuario es: " + idUsuario1 + " " + idAplicacion);
+           
             sentencia sen = new sentencia();
             //DLL DE CONSULTAS
-            sentencia con = new sentencia();
-            bool per1 = con.consultarPermisos(idUsuario1, idAplicacion, 1);
-            bool per2 = con.consultarPermisos(idUsuario1, idAplicacion, 2);
-            bool per3 = con.consultarPermisos(idUsuario1, idAplicacion, 3);
-            bool per4 = con.consultarPermisos(idUsuario1, idAplicacion, 4);
-            bool per5 = con.consultarPermisos(idUsuario1, idAplicacion, 5);
+            
+            ConsultaSimple nueva = new ConsultaSimple(tabla);
+            nueva.Show();
+            /* 
+             * sentencia con = new sentencia();
+             * bool per1 = con.consultarPermisos(idUsuario1, idAplicacion, 1);
+              bool per2 = con.consultarPermisos(idUsuario1, idAplicacion, 2);
+              bool per3 = con.consultarPermisos(idUsuario1, idAplicacion, 3);
+              bool per4 = con.consultarPermisos(idUsuario1, idAplicacion, 4);
+              bool per5 = con.consultarPermisos(idUsuario1, idAplicacion, 5);
 
-            if (per1 == true && per2 == true && per3 == true && per4 == true && per5 == true)
-            {
-                ConsultaInteligente nuevo = new ConsultaInteligente(tabla);
-                nuevo.Show();
-            }
-            else
-            {
-                ConsultaSimple nueva = new ConsultaSimple(tabla);
-                nueva.Show();
-            }
+              if (per1 == true && per2 == true && per3 == true && per4 == true && per5 == true)
+              {
+                  ConsultaInteligente nuevo = new ConsultaInteligente(tabla);
+                  nuevo.Show();
+              }
+              else
+              {
+                  ConsultaSimple nueva = new ConsultaSimple(tabla);
+                  nueva.Show();
+              }
 
-            //habilitar y deshabilitar según Usuario
+              //habilitar y deshabilitar según Usuario*/
             botonesYPermisosSinMensaje();
         }
         //******************************************** CODIGO HECHO POR BRAYAN HERNANDEZ ***************************** 

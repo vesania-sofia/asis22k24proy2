@@ -29,7 +29,7 @@ namespace Capa_Controlador_Navegador
 
         }
 
-        public string MIndice(string Indice1)
+        public string MIindice1(string Indice1)
         {
             string indice = sn.modIndice(Indice1);
 

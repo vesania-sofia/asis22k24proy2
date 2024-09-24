@@ -202,20 +202,24 @@ namespace Capa_Datos_Navegador
             return Campos;
         }
 
-        public string modRuta(string idindice)
+        public string modRuta(string idAyuda)
         {
+            string ruta = "";
+            string query = "SELECT Ruta FROM ayuda WHERE Id_ayuda = ?"; // Parámetro seguro
 
-
-            string indice2 = " ";
-            OdbcCommand command = new OdbcCommand("SELECT * FROM ayuda Where id_ayuda=" + idindice + ";", cn.probarConexion());
-            OdbcDataReader reader = command.ExecuteReader();
-            while (reader.Read())
+            using (OdbcCommand command = new OdbcCommand(query, cn.probarConexion()))
             {
-                indice2 = reader.GetValue(1).ToString();
-
+                command.Parameters.AddWithValue("id_ayuda", idAyuda);
+                using (OdbcDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        ruta = reader.GetString(0); // Asignamos el valor de la columna Ruta
+                    }
+                }
             }
-            return indice2;
 
+            return ruta;
         }
 
         //******************************************** CODIGO HECHO POR JOEL LOPEZ ***************************** 
@@ -236,19 +240,24 @@ namespace Capa_Datos_Navegador
             return indice2;
 
         }
-        public string modIndice(string idindice)
+        public string modIndice(string idAyuda)
         {
-            string indice = " ";
-            OdbcCommand command = new OdbcCommand("SELECT * FROM ayuda WHERE id_ayuda = " + idindice + ";", cn.probarConexion());
-            OdbcDataReader reader = command.ExecuteReader();
-            while (reader.Read())
+            string indice = "";
+            string query = "SELECT indice FROM ayuda WHERE id_ayuda = ?"; // Parámetro seguro
+
+            using (OdbcCommand command = new OdbcCommand(query, cn.probarConexion()))
             {
-                indice = reader.GetValue(2).ToString();
+                command.Parameters.AddWithValue("Id_ayuda", idAyuda);
+                using (OdbcDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        indice = reader.GetString(0); // Asignamos el valor de la columna Indice
+                    }
+                }
             }
 
-
             return indice;
-
         }
         //******************************************** CODIGO HECHO POR JORGE AVILA ***************************** 
 

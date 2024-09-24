@@ -19,6 +19,8 @@ namespace Capa_Vista_Navegador
         OdbcConnection conn = new OdbcConnection("Dsn=colchoneria");
         string[] aliasC = new string[40];
 
+        Boolean bConfirmRuta = true;
+
         public Ayudas()
         {
             InitializeComponent();
@@ -29,13 +31,37 @@ namespace Capa_Vista_Navegador
         //******************************************** CODIGO HECHO POR VICTOR CASTELLANOS ***************************** 
         private void Button1_Click(object sender, EventArgs e)
         {
-            OpenFileDialog rutaFile = new OpenFileDialog();
-            rutaFile.InitialDirectory = "c:\\";
-            rutaFile.Filter = "chm files (*.chm)|*.chm";
-            if (rutaFile.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
 
-                txtruta.Text = rutaFile.FileName;
+            OpenFileDialog Ofd_Reporte = new OpenFileDialog();
+            Ofd_Reporte.Filter = "All files (*.*)|*.*";
+            if (Ofd_Reporte.ShowDialog() == DialogResult.OK)
+            {
+                txtruta.Text = Ofd_Reporte.FileName;
+                string[] sSeparatingStrings = { "\\" };
+                string sText = txtruta.Text;
+                string[] sWords = sText.Split(sSeparatingStrings, System.StringSplitOptions.RemoveEmptyEntries);
+                string db = "";
+                Boolean bRuta = false;
+                for (int i = 0; i < sWords.Length; i++)
+                {
+                    if (bRuta)
+                    {
+                        if (i < sWords.Length - 1)
+                        {
+                            db += sWords[i] + '\\' + '\\';
+                        }
+                        else
+                        {
+                            db += sWords[i];
+                        }
+                    }
+                    if (sWords[i].Equals("Ayuda"))
+                    {
+                        bRuta = true;
+                    }
+                }
+                txtruta.Text = db;
+                bConfirmRuta = false;
             }
         }
       
