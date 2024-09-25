@@ -57,10 +57,9 @@ namespace Capa_Vista_Reporteria
 
         private void tabla_registro_DoubleClick(object sender, EventArgs e)
         {
-            //se habilita la funcion de modificar y eliminar para el reporte seleccionado 
+            //se habilita la función de modificar y eliminar para el reporte seleccionado 
             if (Dgv_Regreporteria.CurrentRow.Index != -1)
             {
-
                 Btn_Guardar.Enabled = false;
                 Btn_Modificar.Enabled = true;
                 Btn_Eliminar.Enabled = true;
@@ -82,6 +81,7 @@ namespace Capa_Vista_Reporteria
             Cbo_Aplicacion.DataSource = applicationCodes;
         }
 
+        // Realizado por: José Daniel Sierra Cruz - 0901-21-12740
         private void cargarModulos()
         {
             List<string> limpiarTexbox = new List<string>();
@@ -100,7 +100,7 @@ namespace Capa_Vista_Reporteria
 
         private void Btn_Modificar_Click(object sender, EventArgs e)
         {
-            //aqui recibimos los nuevos datos en los diferente txtbox y se lo mandamos a la funcion ModReporteador que esta en controlador.cs
+            //aquí recibimos los nuevos datos en los diferente textbox y se lo mandamos a la función ModReporteria que esta en controlador.cs
             if (bConfirmRuta)
             {
                 Txt_Ruta.Text = Txt_Ruta.Text.Replace("\\", "\\\\");
@@ -135,13 +135,14 @@ namespace Capa_Vista_Reporteria
             Cbo_Estado.SelectedIndex = 0;
         }
 
+        // Realizado por: Shelly Marysabel Ordoñez Matias - 0901-21-1795
         public async void visualizar(string sRuta)
         {
             if (!string.IsNullOrEmpty(sRuta))
             {
                 string sEstado = Convert.ToString(Cbo_Estado.Text);
 
-                // aqui realizamos una comprobacion de ver si el reporte esta en estado visible y el usuario lo pueda ver si no esta visible entonces le saldra un mensaje al usuario
+                // aqui realizamos una comprobación de ver si el reporte esta en estado visible y el usuario lo pueda ver si no esta visible entonces le saldrá un mensaje al usuario
                 if (sEstado == "Visible")
                 {
                     using (Cargar cargar = new Cargar())
@@ -170,7 +171,6 @@ namespace Capa_Vista_Reporteria
 
         private void Btn_Examinar_Click(object sender, EventArgs e)
         {
-
             OpenFileDialog Ofd_Reporte = new OpenFileDialog();
             Ofd_Reporte.Filter = "All files (*.*)|*.*";
             if (Ofd_Reporte.ShowDialog() == DialogResult.OK)

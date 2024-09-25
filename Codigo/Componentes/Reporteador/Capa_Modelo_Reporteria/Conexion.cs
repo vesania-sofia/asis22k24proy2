@@ -9,6 +9,7 @@ namespace Capa_Modelo_Reporteria
 {
     public class Conexion
     {
+        // Realizado por Ammy Patricia Catún López - 0901-21-4857
         public OdbcConnection conexion()
         {
 
