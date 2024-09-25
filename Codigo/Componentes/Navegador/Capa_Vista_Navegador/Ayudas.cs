@@ -36,33 +36,12 @@ namespace Capa_Vista_Navegador
             Ofd_Reporte.Filter = "All files (*.*)|*.*";
             if (Ofd_Reporte.ShowDialog() == DialogResult.OK)
             {
-                txtruta.Text = Ofd_Reporte.FileName;
-                string[] sSeparatingStrings = { "\\" };
-                string sText = txtruta.Text;
-                string[] sWords = sText.Split(sSeparatingStrings, System.StringSplitOptions.RemoveEmptyEntries);
-                string db = "";
-                Boolean bRuta = false;
-                for (int i = 0; i < sWords.Length; i++)
-                {
-                    if (bRuta)
-                    {
-                        if (i < sWords.Length - 1)
-                        {
-                            db += sWords[i] + '\\' + '\\';
-                        }
-                        else
-                        {
-                            db += sWords[i];
-                        }
-                    }
-                    if (sWords[i].Equals("Ayuda"))
-                    {
-                        bRuta = true;
-                    }
-                }
-                txtruta.Text = db;
+                // Obtén solo el nombre del archivo
+                txtruta.Text = System.IO.Path.GetFileName(Ofd_Reporte.FileName);
+
+                // Ahora txtruta.Text solo contiene "AyudaNavegador.chm" o el nombre del archivo seleccionado
                 bConfirmRuta = false;
-            }  
+            }
          }
 
             private void Button2_Click(object sender, EventArgs e)

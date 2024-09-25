@@ -1892,7 +1892,7 @@ namespace Capa_Vista_Navegador
                     string ayudaPath = Path.Combine(projectRootPath, "Ayuda", "Ayuda_Navegador", AsRuta);
 
                     // Mostrar la ruta en un MessageBox antes de proceder
-                    //MessageBox.Show("Buscando archivo de ayuda en la ruta: " + ayudaPath, "Ruta de Ayuda", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Buscando archivo de ayuda en la ruta: " + ayudaPath, "Ruta de Ayuda", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     // Verificar que el archivo de ayuda exista antes de intentar abrirlo
                     if (File.Exists(ayudaPath))
