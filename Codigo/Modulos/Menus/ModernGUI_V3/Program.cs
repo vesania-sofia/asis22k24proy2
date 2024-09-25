@@ -4,9 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace EjecucionSeguridad
+namespace Interfac_V3           
 {
-    internal static class Program
+    static class Program
     {
         /// <summary>
         /// Punto de entrada principal para la aplicación.
@@ -16,7 +16,9 @@ namespace EjecucionSeguridad
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            //Application.Run(new FormPrincipal());
             Application.Run(new Capa_Vista_Seguridad.frm_login());
+           //Application.Run(new splash());
         }
     }
 }
