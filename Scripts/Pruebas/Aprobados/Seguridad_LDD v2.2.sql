@@ -311,9 +311,11 @@ DELIMITER ;
 ALTER TABLE tbl_bitacora_de_eventos RENAME TO tbl_bitacora;
 SHOW CREATE TABLE tbl_bitacora;
 
+
 -- Fernando García - 0901-21-581 - 60%
 ALTER TABLE `Tbl_bitacora`
 ADD COLUMN `tabla` VARCHAR(50) NOT NULL;
+
 
 -- -----USUARIOS
 -- Agrega el primer usuario
@@ -325,6 +327,9 @@ INSERT INTO `Tbl_usuarios` VALUES
 -- Vamos a hashear admin para que puedea ingresar al programa
 -- Deshabilitar el modo seguro en
 -- edit->preferences->SQL Editor -> al final deshabilitar safe updates -> reconectar
+
+-- Debe salir de la conexion y reconectar, volver a seleccionar y correr
+
 UPDATE tbl_usuarios
 SET password_usuario = SHA2('HO0aGo4nM94=', 256)
 WHERE username_usuario = 'admin';

@@ -153,10 +153,12 @@ VALUES
 ('7', '7000', '1', '1', '1', '1', '1'),
 ('8', '8000', '1', '1', '1', '1', '1');
 
+
 INSERT INTO `Tbl_asignaciones_perfils_usuario` 
 (Fk_id_usuario,Fk_id_perfil)
 VALUES
 ('1', '1'); 
+
 
 -- -----CREACION DE NUEVOS ROLES (carlos.H)
 -- Insertar nuevos roles en la tabla Tbl_perfiles
