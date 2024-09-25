@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data;
 using System.Data.Odbc;
-using Capa_Datos_Navegador;
+using Capa_Modelo_Navegador;
 
 namespace Capa_Controlador_Navegador
 {

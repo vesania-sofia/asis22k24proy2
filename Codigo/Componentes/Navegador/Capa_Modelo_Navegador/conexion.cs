@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Capa_Datos_Navegador
+namespace Capa_Modelo_Navegador
 {
     // Clase para gestionar la conexión a la base de datos utilizando ODBC.
     class conexion

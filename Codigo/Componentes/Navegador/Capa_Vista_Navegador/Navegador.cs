@@ -530,8 +530,11 @@ namespace Capa_Vista_Navegador
                 Point p = new Point(x + pos, y * pos);
                 lb.Location = p;
                 lb.Name = "lb_" + Campos[i];
-                lb.Font = fuente;
+                lb.Font = new Font(fuente.FontFamily, fuente.Size * 1.3f, FontStyle.Bold | fuente.Style);                // Incrementa el tamaño de la fuente en un 20%
                 lb.ForeColor = Cfuente;
+
+                // Opcional: Ajustar el tamaño del Label si es necesario
+                lb.AutoSize = true; // Est
                 this.Controls.Add(lb);
 
                 // Verifica si el campo es una clave primaria y no es el primer campo
@@ -661,6 +664,8 @@ namespace Capa_Vista_Navegador
         void crearBotonEstado(String nom)
         {
             Button btn = new Button(); // Crea un nuevo botón
+            btn.Width = (int)(btn.Width * 1.2);
+            btn.Height = (int)(btn.Height * 1.2);
             Point p = new Point(x + 125 + pos, y * pos); // Define la ubicación del botón
             btn.Location = p;
             btn.Text = "Activado"; // Establece el texto inicial del botón
@@ -673,18 +678,19 @@ namespace Capa_Vista_Navegador
         }
 
         // Función que crea un TextBox para números y lo añade al formulario
+
+
         void crearTextBoxnumerico(String nom)
         {
-            TextBox tb = new TextBox(); // Crea un nuevo TextBox
-
-            // Cálculo para centrar el TextBox
-            int centeredX = (this.ClientSize.Width / 2) - (tb.Width / 2); // Centra el TextBox horizontalmente
-            Point p = new Point(centeredX, y * pos); // Define la ubicación del TextBox
+            TextBox tb = new TextBox();
+            tb.Width = (int)(tb.Width * 1.2);
+            tb.Height = (int)(tb.Height * 1.2);// Crea un nuevo TextBox
+            Point p = new Point(x + 125 + pos, y * pos); // Define la ubicación del TextBox
             tb.Location = p;
-
             tb.Name = nom; // Establece el nombre del TextBox
             this.Controls.Add(tb); // Añade el TextBox al formulario
             tb.KeyPress += Paravalidarnumeros_KeyPress; // Asigna la función de validación de números al evento KeyPress
+            this.KeyPress += Paravalidarnumeros_KeyPress; // Asegura que el evento KeyPress valide solo números
             pos++; // Incrementa la posición para el próximo control
         }
         //******************************************** CODIGO HECHO POR PABLO FLORES*****************************
@@ -695,6 +701,8 @@ namespace Capa_Vista_Navegador
         void crearTextBoxvarchar(String nom)
         {
             TextBox tb = new TextBox(); // Crea un nuevo TextBox
+            tb.Width = (int)(tb.Width * 1.2);
+            tb.Height = (int)(tb.Height * 1.2);
             Point p = new Point(x + 125 + pos, y * pos); // Define la ubicación del TextBox
             tb.Location = p;
             tb.Name = nom; // Establece el nombre del TextBox
@@ -708,6 +716,8 @@ namespace Capa_Vista_Navegador
         void crearcampohora(String nom)
         {
             TextBox tb = new TextBox(); // Crea un nuevo TextBox
+            tb.Width = (int)(tb.Width * 1.2);
+            tb.Height = (int)(tb.Height * 1.2);
             Point p = new Point(x + 125 + pos, y * pos); // Define la ubicación del TextBox
             tb.Location = p;
             tb.Name = nom; // Establece el nombre del TextBox
@@ -721,6 +731,8 @@ namespace Capa_Vista_Navegador
         void crearcampodecimales(String nom)
         {
             TextBox tb = new TextBox(); // Crea un nuevo TextBox
+            tb.Width = (int)(tb.Width * 1.2);
+            tb.Height = (int)(tb.Height * 1.2);
             Point p = new Point(x + 125 + pos, y * pos); // Define la ubicación del TextBox
             tb.Location = p;
             tb.Name = nom; // Establece el nombre del TextBox
@@ -793,6 +805,8 @@ namespace Capa_Vista_Navegador
 
             // Se crea un nuevo ComboBox.
             ComboBox cb = new ComboBox();
+            cb.Width = (int)(cb.Width * 1.2);
+            cb.Height = (int)(cb.Height * 1.2);
             // Se define la ubicación del ComboBox en el formulario.
             Point p = new Point(x + 125 + pos, y * pos);
             cb.Location = p;
@@ -820,6 +834,8 @@ namespace Capa_Vista_Navegador
         void crearDateTimePicker(String nom)
         {
             DateTimePicker dtp = new DateTimePicker();
+            dtp.Width = (int)(dtp.Width * 1.2);
+            dtp.Height = (int)(dtp.Height * 1.2);
             Point p = new Point(x + 125 + pos, y * pos);
             dtp.Location = p;
             dtp.Format = DateTimePickerFormat.Custom;
