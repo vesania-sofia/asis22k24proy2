@@ -12,7 +12,7 @@ namespace Capa_Modelo_Navegador
     class conexion
     {
         // Método que prueba la conexión a la base de datos utilizando una DSN específica.
-        public OdbcConnection probarConexion()
+        public OdbcConnection ProbarConexion()
         {
             // Crear una nueva conexión utilizando la DSN especificada.
             OdbcConnection conn = new OdbcConnection("dsn=colchoneria");

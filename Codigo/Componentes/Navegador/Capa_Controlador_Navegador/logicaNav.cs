@@ -15,7 +15,7 @@ namespace Capa_Controlador_Navegador
         // Obtiene el último ID insertado en la tabla especificada
         public string UltimoID(string sTabla)
         {
-            string sUltimoID = sn.obtenerId(sTabla);
+            string sUltimoID = sn.ObtenerId(sTabla);
             Console.WriteLine(sUltimoID);
             return sUltimoID;
         }
@@ -23,7 +23,7 @@ namespace Capa_Controlador_Navegador
         // Realiza una consulta lógica sobre la tabla y la tabla relacionada, devolviendo un DataTable con los resultados
         public DataTable ConsultaLogica(string sTabla, string sTablaRelacionada, string sCampodesc, string sColumnaForanea, string sColumnaPrimaraRelacionada)
         {
-            OdbcDataAdapter dt = sn.llenaTbl(sTabla, sTablaRelacionada, sCampodesc, sColumnaForanea, sColumnaPrimaraRelacionada);
+            OdbcDataAdapter dt = sn.LlenaTbl(sTabla, sTablaRelacionada, sCampodesc, sColumnaForanea, sColumnaPrimaraRelacionada);
             DataTable dtTabla = new DataTable();
             dt.Fill(dtTabla);
             return dtTabla;
@@ -33,14 +33,14 @@ namespace Capa_Controlador_Navegador
         public string ModIndice(string sIndice1)
 
         {
-            string sIndice = sn.modIndice(sIndice1);
+            string sIndice = sn.ModIndice(sIndice1);
             return sIndice;
         }
 
         // Modifica la ruta proporcionada a través de la lógica interna
         public string ModRuta(string sRuta1)
         {
-            string sRuta = sn.modRuta(sRuta1);
+            string sRuta = sn.ModRuta(sRuta1);
             return sRuta;
         }
 
@@ -53,7 +53,7 @@ namespace Capa_Controlador_Navegador
         // Obtiene una lista de columnas y sus propiedades (si son autoincrementales, claves foráneas, etc.) para la tabla dada
         public List<(string nombreColumna, bool esAutoIncremental, bool esClaveForanea, bool esTinyInt)> ObtenerColumnasYPropiedadesLogica(string sNombreTabla)
         {
-            return sn.obtenerColumnasYPropiedades(sNombreTabla);
+            return sn.ObtenerColumnasYPropiedades(sNombreTabla);
         }
 
         // Prueba el estado de la tabla en la base de datos
@@ -71,19 +71,19 @@ namespace Capa_Controlador_Navegador
         // Cuenta los campos (columnas) en la tabla especificada
         public int ContarCampos(string sTabla)
         {
-            return sn.contarAlias(sTabla);
+            return sn.ContarAlias(sTabla);
         }
 
         // Cuenta los registros de ayuda en la tabla especificada
         public int ContarRegAyuda(string sTabla)
         {
-            return sn.contarReg(sTabla);
+            return sn.ContarReg(sTabla);
         }
 
         // Devuelve un array con los nombres de los campos de la tabla especificada
         public string[] Campos(string sTabla)
         {
-            string[] sCampos = sn.obtenerCampos(sTabla);
+            string[] sCampos = sn.ObtenerCampos(sTabla);
             return sCampos;
         }
 
@@ -97,41 +97,41 @@ namespace Capa_Controlador_Navegador
         // Devuelve un array con las llaves primarias de la tabla especificada
         public string[] Llaves(string sTabla)
         {
-            string[] sLlaves = sn.obtenerLLave(sTabla);
+            string[] sLlaves = sn.ObtenerLLave(sTabla);
             return sLlaves;
         }
 
         // Obtiene los elementos para un ComboBox basado en la tabla y campos especificados
         public Dictionary<string, string> Items(string sTabla, string sCampoClave, string sCampoDisplay)
         {
-            return sn.obtenerItems(sTabla, sCampoClave, sCampoDisplay);
+            return sn.ObtenerItems(sTabla, sCampoClave, sCampoDisplay);
         }
 
         // Devuelve la clave primaria correspondiente a un valor específico en un campo específico de la tabla
         public string LlaveCampolo(string sTabla, string sCampo, string sValor)
         {
-            string sLlave = sn.llaveCampo(sTabla, sCampo, sValor);
+            string sLlave = sn.LlaveCampo(sTabla, sCampo, sValor);
             return sLlave;
         }
 
         // Devuelve la clave primaria en reverso para un valor específico en un campo específico de la tabla
         public string LlaveCampoRev(string sTabla, string sCampo, string sValor)
         {
-            string sLlave = sn.llaveCampoReverso(sTabla, sCampo, sValor);
+            string sLlave = sn.LlaveCampoReverso(sTabla, sCampo, sValor);
             return sLlave;
         }
 
         // Obtiene el ID de un reporte basado en su nombre
         public string ObtenerIdReporte(string sId)
         {
-            string sLlave = sn.rutaReporte(sId);
+            string sLlave = sn.RutaReporte(sId);
             return sLlave;
         }
 
         // Ejecuta una nueva consulta en la base de datos
         public void NuevoQuery(string sQuery)
         {
-            sn.ejecutarQuery(sQuery);
+            sn.EjecutarQuery(sQuery);
         }
 
         // Obtiene el ID de un usuario basado en su nombre de usuario
@@ -144,13 +144,13 @@ namespace Capa_Controlador_Navegador
         public void InsertarDatosEnMultiplesTablas(List<string> lsQueries)
         {
             sentencias sn = new sentencias();
-            sn.ejecutarQueryConTransaccion(lsQueries);
+            sn.EjecutarQueryConTransaccion(lsQueries);
         }
 
         // Obtiene la clave primaria de una tabla específica
         public string ObtenerClavePrimaria(string sNombreTabla)
         {
-            return sn.obtenerClavePrimaria(sNombreTabla);
+            return sn.ObtenerClavePrimaria(sNombreTabla);
         }
 
         // Obtiene la clave foránea de una tabla referenciada
