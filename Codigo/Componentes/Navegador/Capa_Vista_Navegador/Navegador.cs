@@ -70,7 +70,7 @@ namespace Capa_Vista_Navegador
         public Navegador()
         {
             InitializeComponent();
-            limpiarListaItems(); // Limpia la lista de items
+            LimpiarListaItems(); // Limpia la lista de items
                                  // this.AutoScaleMode = AutoScaleMode.Dpi; // Escala automática
             this.Dock = DockStyle.Fill;
             sUsuarioActivo = sIdUsuario; // Actualizado: nombre de la variable para el usuario activo
@@ -96,8 +96,8 @@ namespace Capa_Vista_Navegador
             tpAyuda.SetToolTip(Btn_Ayuda, "Ver la ayuda del formulario.");
             tpAyuda.SetToolTip(Btn_Salir, "Cerrar el formulario actual.");
             tpAyuda.SetToolTip(Btn_Imprimir, "Mostrar un Reporte");
-            tpAyuda.SetToolTip(button1, "Asignar Documento de Ayuda");
-            tpAyuda.SetToolTip(btn_Reportes_Principal, "Mostrar un Reporte");
+            tpAyuda.SetToolTip(Btn_AyudaBox, "Asignar Documento de Ayuda");
+            tpAyuda.SetToolTip(Btn_Reportes_Principal, "Mostrar un Reporte");
         }
 
 
@@ -106,15 +106,15 @@ namespace Capa_Vista_Navegador
         {
             colorDialog1.Color = cNuevoColorFondo; // Asigna el color de fondo seleccionado
             this.BackColor = colorDialog1.Color; // Aplica el color de fondo al formulario
-            botonesYPermisos(); // Asigna los permisos a los botones según el usuario
+            BotonesYPermisos(); // Asigna los permisos a los botones según el usuario
 
             if (sTablaPrincipal != "def") // Verifica si la sTablaPrincipal no es "def" (valor por defecto)
             {
-                string TablaOK = logic.TestTabla(sTablaPrincipal); // Verifica la existencia de la sTablaPrincipal
-                if (TablaOK == "" && iCorrecto == 0) // Si la sTablaPrincipal existe y no hay errores previos
+                string sTablaOK = logic.TestTabla(sTablaPrincipal); // Verifica la existencia de la sTablaPrincipal
+                if (sTablaOK == "" && iCorrecto == 0) // Si la sTablaPrincipal existe y no hay errores previos
                 {
-                    string EstadoOK = logic.TestEstado(sTablaPrincipal); // Verifica el estado de la sTablaPrincipal
-                    if (EstadoOK == "" && iCorrecto == 0) // Si el estado de la sTablaPrincipal es correcto
+                    string sEstadoOK = logic.TestEstado(sTablaPrincipal); // Verifica el estado de la sTablaPrincipal
+                    if (sEstadoOK == "" && iCorrecto == 0) // Si el estado de la sTablaPrincipal es correcto
                     {
                         if (sEstadoAyuda == "0") // Verifica si hay registros en la sTablaPrincipal Ayuda
                         {
@@ -123,26 +123,26 @@ namespace Capa_Vista_Navegador
                         }
                         else
                         {
-                            if (numeroAlias() == logic.ContarCampos(sTablaPrincipal)) // Verifica si el número de alias coincide con el número de campos de la sTablaPrincipal
+                            if (NumeroAlias() == logic.ContarCampos(sTablaPrincipal)) // Verifica si el número de alias coincide con el número de campos de la sTablaPrincipal
                             {
-                                int i = 0;
+                                int iIndex = 0;
                                 DataTable dt = logic.ConsultaLogica(sTablaPrincipal, sTablaRelacionada, sCampoDescriptivo, sColumnaForanea, sColumnaPrimariaRelacionada); // Realiza la consulta lógica de la sTablaPrincipal
-                                dataGridView1.DataSource = dt; // Asigna el resultado de la consulta al DataGridView
+                                Dgv_Informacion.DataSource = dt; // Asigna el resultado de la consulta al DataGridView
 
                                 // Asigna los alias como encabezados de las columnas
-                                int head = 0;
-                                while (head < logic.ContarCampos(sTablaPrincipal))
+                                int iHead = 0;
+                                while (iHead < logic.ContarCampos(sTablaPrincipal))
                                 {
-                                    dataGridView1.Columns[head].HeaderText = arrAliasCampos[head];
-                                    head++;
+                                    Dgv_Informacion.Columns[iHead].HeaderText = arrAliasCampos[iHead];
+                                    iHead++;
                                 }
 
                                 CreaComponentes(); // Crea los componentes del formulario
                                                    // Ocupa todo el espacio del contenedor, con margen si está configurado
 
-                                colorTitulo(); // Cambia el color del título
-                                lblTabla.ForeColor = cColorFuente; // Asigna el color de la fuente al label de la sTablaPrincipal
-                                deshabilitarcampos_y_botones(); // Deshabilita los campos y botones inicialmente
+                                ColorTitulo(); // Cambia el color del título
+                                Txt_Tabla.ForeColor = cColorFuente; // Asigna el color de la fuente al label de la sTablaPrincipal
+                                Deshabilitarcampos_y_botones(); // Deshabilita los campos y botones inicialmente
 
                                 Btn_Modificar.Enabled = true;
                                 Btn_Eliminar.Enabled = true;
@@ -150,7 +150,7 @@ namespace Capa_Vista_Navegador
                                 // Verifica si hay registros en la sTablaPrincipal y habilita/deshabilita controles según corresponda
                                 if (logic.TestRegistros(sTablaPrincipal) > 0)
                                 {
-                                    int numCombo = 0;
+                                    int iNumCombo = 0;
                                     foreach (Control componente in Controls)
                                     {
                                         if (componente is TextBox || componente is DateTimePicker || componente is ComboBox)
@@ -158,34 +158,34 @@ namespace Capa_Vista_Navegador
                                             if (componente is ComboBox)
                                             {
                                                 // Asigna valores a los ComboBox según la lógica de la aplicación
-                                                if (arrModoCampoCombo[numCombo] == 1)
+                                                if (arrModoCampoCombo[iNumCombo] == 1)
                                                 {
-                                                    componente.Text = logic.LlaveCampoRev(arrTablaCombo[numCombo], arrCampoCombo[numCombo], dataGridView1.CurrentRow.Cells[i].Value.ToString());
+                                                    componente.Text = logic.LlaveCampoRev(arrTablaCombo[iNumCombo], arrCampoCombo[iNumCombo], Dgv_Informacion.CurrentRow.Cells[iIndex].Value.ToString());
                                                 }
                                                 else
                                                 {
-                                                    componente.Text = dataGridView1.CurrentRow.Cells[i].Value.ToString();
+                                                    componente.Text = Dgv_Informacion.CurrentRow.Cells[iIndex].Value.ToString();
                                                 }
 
-                                                numCombo++;
+                                                iNumCombo++;
                                             }
                                             else
                                             {
-                                                componente.Text = dataGridView1.CurrentRow.Cells[i].Value.ToString();
+                                                componente.Text = Dgv_Informacion.CurrentRow.Cells[iIndex].Value.ToString();
                                             }
 
-                                            i++;
+                                            iIndex++;
                                         }
                                         if (componente is Button)
                                         {
                                             // Configura los botones según el estado del registro
-                                            string var1 = dataGridView1.CurrentRow.Cells[i].Value.ToString();
-                                            if (var1 == "0")
+                                            string sVar1 = Dgv_Informacion.CurrentRow.Cells[iIndex].Value.ToString();
+                                            if (sVar1 == "0")
                                             {
                                                 componente.Text = "Desactivado";
                                                 componente.BackColor = Color.Red;
                                             }
-                                            if (var1 == "1")
+                                            if (sVar1 == "1")
                                             {
                                                 componente.Text = "Activado";
                                                 componente.BackColor = Color.Green;
@@ -207,20 +207,20 @@ namespace Capa_Vista_Navegador
                             else
                             {
                                 // Si el número de alias no coincide con el número de campos, muestra un mensaje de error y sale de la aplicación
-                                if (numeroAlias() < logic.ContarCampos(sTablaPrincipal))
+                                if (NumeroAlias() < logic.ContarCampos(sTablaPrincipal))
                                 {
-                                    DialogResult validacion = MessageBox.Show(EstadoOK + "El número de Alias asignados es menor que el requerido \n Solucione este error para continuar...", "Verificación de requisitos", MessageBoxButtons.OK);
-                                    if (validacion == DialogResult.OK)
+                                    DialogResult drValidacion = MessageBox.Show(sEstadoOK + "El número de Alias asignados es menor que el requerido \n Solucione este error para continuar...", "Verificación de requisitos", MessageBoxButtons.OK);
+                                    if (drValidacion == DialogResult.OK)
                                     {
                                         Application.Exit();
                                     }
                                 }
                                 else
                                 {
-                                    if (numeroAlias() > logic.ContarCampos(sTablaPrincipal))
+                                    if (NumeroAlias() > logic.ContarCampos(sTablaPrincipal))
                                     {
-                                        DialogResult validacion = MessageBox.Show(EstadoOK + "El número de Alias asignados es mayor que el requerido \n Solucione este error para continuar...", "Verificación de requisitos", MessageBoxButtons.OK);
-                                        if (validacion == DialogResult.OK)
+                                        DialogResult drValidacion = MessageBox.Show(sEstadoOK + "El número de Alias asignados es mayor que el requerido \n Solucione este error para continuar...", "Verificación de requisitos", MessageBoxButtons.OK);
+                                        if (drValidacion == DialogResult.OK)
                                         {
                                             Application.Exit();
                                         }
@@ -232,8 +232,8 @@ namespace Capa_Vista_Navegador
                     else
                     {
                         // Muestra un mensaje de error si el estado de la sTablaPrincipal no es correcto y sale de la aplicación
-                        DialogResult validacion = MessageBox.Show(EstadoOK + "\n Solucione este error para continuar...", "Verificación de requisitos", MessageBoxButtons.OK);
-                        if (validacion == DialogResult.OK)
+                        DialogResult drValidacion = MessageBox.Show(sEstadoOK + "\n Solucione este error para continuar...", "Verificación de requisitos", MessageBoxButtons.OK);
+                        if (drValidacion == DialogResult.OK)
                         {
                             Application.Exit();
                         }
@@ -242,8 +242,8 @@ namespace Capa_Vista_Navegador
                 else
                 {
                     // Muestra un mensaje de error si la sTablaPrincipal no existe y sale de la aplicación
-                    DialogResult validacion = MessageBox.Show(TablaOK + "\n Solucione este error para continuar...", "Verificación de requisitos", MessageBoxButtons.OK);
-                    if (validacion == DialogResult.OK)
+                    DialogResult drValidacion = MessageBox.Show(sTablaOK + "\n Solucione este error para continuar...", "Verificación de requisitos", MessageBoxButtons.OK);
+                    if (drValidacion == DialogResult.OK)
                     {
                         Application.Exit();
                     }
@@ -260,7 +260,7 @@ namespace Capa_Vista_Navegador
 
         //******************************************** CODIGO HECHO POR DIEGO MARROQUIN ***************************** 
 
-        void colorTitulo()
+        void ColorTitulo()
         {
             foreach (Control componente in Controls)
             {
@@ -271,179 +271,179 @@ namespace Capa_Vista_Navegador
             }
         }
 
-        public void ObtenerIdUsuario(string idUsuario)
+        public void ObtenerIdUsuario(string sIdUsuario)
         {
-            this.sIdUsuario = idUsuario; // Asigna el ID del usuario
+            this.sIdUsuario = sIdUsuario; // Asigna el ID del usuario
         }
 
-        public void asignarforaneas(string table, string tablarela, string campodescri, string columnafora, string columnaprimaria)
+        public void AsignarForaneas(string sTabla, string sTablarela, string sCampoDescri, string sColumnaFora, string sColumnaPrimaria)
         {
-            sTablaPrincipal = table;
-            sTablaRelacionada = tablarela;
-            sCampoDescriptivo = campodescri;
-            sColumnaForanea = columnafora;
-            sColumnaPrimariaRelacionada = columnaprimaria; // Asigna las claves foráneas y relacionadas entre tablas
+            sTablaPrincipal = sTabla;
+            sTablaRelacionada = sTablarela;
+            sCampoDescriptivo = sCampoDescri;
+            sColumnaForanea = sColumnaFora;
+            sColumnaPrimariaRelacionada = sColumnaPrimaria; // Asigna las claves foráneas y relacionadas entre tablas
         }
         //******************************************** CODIGO HECHO POR DIEGO MARROQUIN ***************************** 
 
         //******************************************** CODIGO HECHO POR BRAYAN HERNANDEZ ***************************** 
-        public void ObtenerIdAplicacion(string idAplicacion)
+        public void ObtenerIdAplicacion(string sIdAplicacion)
         {
-            this.sIdAplicacion = idAplicacion; // Asigna el ID de la aplicación
+            this.sIdAplicacion = sIdAplicacion; // Asigna el ID de la aplicación
         }
 
 
-        private int numeroAlias()
+        private int NumeroAlias()
         {
-            int i = 0;
-            foreach (string cad in arrAliasCampos) // Cambiado aliasC a arrAliasCampos
+            int iIndex = 0;
+            foreach (string sCad in arrAliasCampos)
             {
-                if (cad != null && cad != "")
+                if (sCad != null && sCad != "")
                 {
-                    i++;
+                    iIndex++;
                 }
             }
-            return i; // Devuelve el número de alias asignados
+            return iIndex; // Devuelve el número de alias asignados
         }
 
-        public string obtenerDatoTabla(int pos)
+        public string ObtenerDatoTabla(int iPos)
         {
-            pos = pos - 1;
-            return dataGridView1.CurrentRow.Cells[pos].Value.ToString(); // Devuelve un dato específico de la sTablaPrincipal según la posición
+            iPos = iPos - 1;
+            return Dgv_Informacion.CurrentRow.Cells[iPos].Value.ToString(); // Devuelve un dato específico de la sTablaPrincipal según la posición
         }
 
         //******************************************** CODIGO HECHO POR BRAYAN HERNANDEZ ***************************** 
 
-        public string obtenerDatoCampos(int pos)
+        public string ObtenerDatoCampos(int iPos)
         {
-            int i = 0;
-            pos = pos - 1;  // Ajuste del índice, ya que 'pos' es 1-based, pero los arrays son 0-based
-            string dato = "";
+            int iIndex = 0;
+            iPos = iPos - 1;  // Ajuste del índice, ya que 'pos' es 1-based, pero los arrays son 0-based
+            string sDato = "";
 
             // Recorre los controles relevantes: TextBox, DateTimePicker, ComboBox
             foreach (Control componente in Controls)
             {
                 if (componente is TextBox || componente is DateTimePicker || componente is ComboBox)
                 {
-                    if (i == pos)  // Verifica si el índice coincide con el solicitado
+                    if (iIndex == iPos)  // Verifica si el índice coincide con el solicitado
                     {
                         // Obtiene el valor del control según su tipo
                         if (componente is TextBox || componente is ComboBox)
                         {
-                            dato = componente.Text;  // Para TextBox y ComboBox, toma el texto
+                            sDato = componente.Text;  // Para TextBox y ComboBox, toma el texto
                         }
                         else if (componente is DateTimePicker dateTimePicker)
                         {
-                            dato = dateTimePicker.Value.ToString("yyyy-MM-dd");  // Formato de fecha
+                            sDato = dateTimePicker.Value.ToString("yyyy-MM-dd");  // Formato de fecha
                         }
                         break;  // Una vez encontrado el campo, termina el ciclo
                     }
-                    i++;  // Incrementa el índice solo si es un control relevante
+                    iIndex++;  // Incrementa el índice solo si es un control relevante
                 }
             }
 
-            return dato; // Devuelve el valor del campo encontrado
+            return sDato; // Devuelve el valor del campo encontrado
         }
 
-        public void asignarAlias(string[] alias)
+        public void AsignarAlias(string[] arrAlias)
         {
-            alias.CopyTo(arrAliasCampos, 0); // Cambiado aliasC a arrAliasCampos
+            arrAlias.CopyTo(arrAliasCampos, 0); // Cambiado aliasC a arrAliasCampos
         }
 
         //******************************************** CODIGO HECHO POR PABLO FLORES ***************************** 
 
-        public void asignarAyuda(string ayudar)
+        public void AsignarAyuda(string sAyudar)
         {
-            string AyudaOK = logic.TestTabla("ayuda");
-            if (AyudaOK == "")
+            string sAyudaOK = logic.TestTabla("ayuda");
+            if (sAyudaOK == "")
             {
-                if (logic.ContarRegAyuda(ayudar) > 0)
+                if (logic.ContarRegAyuda(sAyudar) > 0)
                 {
-                    sIdAyuda = ayudar; // Cambiado idyuda a sIdAyuda
-                    sRutaAyuda = logic.ModRuta(sIdAyuda); // Cambiado AsRuta a sRutaAyuda
-                    sIndiceAyuda = logic.ModIndice(sIdAyuda); // Cambiado AsIndice a sIndiceAyuda
+                    sIdAyuda = sAyudar; 
+                    sRutaAyuda = logic.ModRuta(sIdAyuda);
+                    sIndiceAyuda = logic.ModIndice(sIdAyuda); 
                     if (sRutaAyuda == "" || sIndiceAyuda == "" || sRutaAyuda == null || sIndiceAyuda == null)
                     {
-                        DialogResult validacion = MessageBox.Show("La Ruta o índice de la ayuda está vacía", "Verificación de requisitos", MessageBoxButtons.OK);
-                        if (validacion == DialogResult.OK)
+                        DialogResult drValidacion = MessageBox.Show("La Ruta o índice de la ayuda está vacía", "Verificación de requisitos", MessageBoxButtons.OK);
+                        if (drValidacion == DialogResult.OK)
                         {
-                            iCorrecto = 1; // Cambiado correcto a iCorrecto
+                            iCorrecto = 1; 
                         }
                     }
                 }
                 else
                 {
-                    DialogResult validacion = MessageBox.Show("Por favor verifique el id de Ayuda asignado al form", "Verificación de requisitos", MessageBoxButtons.OK);
-                    if (validacion == DialogResult.OK)
+                    DialogResult drValidacion = MessageBox.Show("Por favor verifique el id de Ayuda asignado al form", "Verificación de requisitos", MessageBoxButtons.OK);
+                    if (drValidacion == DialogResult.OK)
                     {
-                        iCorrecto = 1; // Cambiado correcto a iCorrecto
+                        iCorrecto = 1;
                     }
                 }
 
             }
             else
             {
-                DialogResult validacion = MessageBox.Show(AyudaOK + ", Por favor incluirla", "Verificación de requisitos", MessageBoxButtons.OK);
-                if (validacion == DialogResult.OK)
+                DialogResult drValidacion = MessageBox.Show(sAyudaOK + ", Por favor incluirla", "Verificación de requisitos", MessageBoxButtons.OK);
+                if (drValidacion == DialogResult.OK)
                 {
-                    iCorrecto = 1; // Cambiado correcto a iCorrecto
+                    iCorrecto = 1; 
                 }
             }
         }
 
-        public void asignarReporte(string repo)
+        public void AsignarReporte(string sRepo)
         {
-            sIdReporte = repo; // Cambiado idRepo a sIdReporte
+            sIdReporte = sRepo; 
         }
 
         //******************************************** CODIGO HECHO POR VICTOR CASTELLANOS ***************************** 
 
-        public void asignarSalida(Form salida)
+        public void AsignarSalida(Form frmSalida)
         {
-            frmCerrar = salida; // Cambiado frmCerrar a frmCerrar
+            frmCerrar = frmSalida; 
         }
 
-        public void asignarColorFuente(Color FuenteC)
+        public void AsignarColorFuente(Color colFuenteC)
         {
-            cColorFuente = FuenteC; // Cambiado Cfuente a cColorFuente
+            cColorFuente = colFuenteC; 
         }
 
-        public void asignarTabla(string table)
+        public void AsignarTabla(string sTabla)
         {
-            sTablaPrincipal = table; // Cambiado sTablaPrincipal a sTablaPrincipal
+            sTablaPrincipal = sTabla; 
         }
 
-        public void asignarTablas(List<string> tablas)
+        public void AsignarTablas(List<string> lstTablas)
         {
-            lstTablasAdicionales = tablas; // Cambiado listaTablasAdicionales a lstTablasAdicionales
+            lstTablasAdicionales = lstTablas; 
         }
 
-        public void asignarNombreForm(string nom)
+        public void AsignarNombreForm(string sNom)
         {
-            sNombreFormulario = nom; // Cambiado sNombreFormulario a sNombreFormulario
-            lblTabla.Text = sNombreFormulario; // Cambiado sNombreFormulario a sNombreFormulario
+            sNombreFormulario = sNom; 
+            Txt_Tabla.Text = sNombreFormulario; 
         }
 
         //******************************************** CODIGO HECHO POR JOSUE CACAO ***************************** 
 
-        public void asignarComboConTabla(string sTablaPrincipal, string campoClave, string campoDisplay, int modo)
+        public void AsignarComboConTabla(string sTablaPrincipal, string sCampoClave, string sCampoDisplay, int iModo)
         {
             // Verifica si la sTablaPrincipal existe
-            string TablaOK = logic.TestTabla(sTablaPrincipal);
-            if (TablaOK == "")
+            string sTablaOK = logic.TestTabla(sTablaPrincipal);
+            if (sTablaOK == "")
             {
                 // Asigna los valores para el combo
-                arrModoCampoCombo[iNumeroCombos] = modo; // Cambiado arrModoCampoCombo a arrModoCampoCombo y noCombo a iNumeroCombos
-                arrTablaCombo[iNumeroCombos] = sTablaPrincipal; // Cambiado arrTablaCombo a arrTablaCombo
-                arrCampoCombo[iNumeroCombos] = campoClave; // Cambiado arrCampoCombo a arrCampoCombo
-                arrCampoDisplayCombo[iNumeroCombos] = campoDisplay; // Cambiado campoDisplayCombo a arrCampoDisplayCombo
-                iNumeroCombos++; // Cambiado noCombo a iNumeroCombos
+                arrModoCampoCombo[iNumeroCombos] = iModo; 
+                arrTablaCombo[iNumeroCombos] = sTablaPrincipal;
+                arrCampoCombo[iNumeroCombos] = sCampoClave;
+                arrCampoDisplayCombo[iNumeroCombos] = sCampoDisplay; 
+                iNumeroCombos++; 
             }
             else
             {
                 // Muestra error si la sTablaPrincipal o campo son incorrectos
-                DialogResult validacion = MessageBox.Show(TablaOK + ", o el campo seleccionado\n para el ComboBox es incorrecto", "Verificación de requisitos", MessageBoxButtons.OK);
-                if (validacion == DialogResult.OK)
+                DialogResult drValidacion = MessageBox.Show(sTablaOK + ", o el campo seleccionado\n para el ComboBox es incorrecto", "Verificación de requisitos", MessageBoxButtons.OK);
+                if (drValidacion == DialogResult.OK)
                 {
                     iCorrecto = 1; // Cambiado correcto a iCorrecto
                 }
@@ -452,48 +452,48 @@ namespace Capa_Vista_Navegador
 
         //******************************************** CODIGO HECHO POR ANIKA ESCOTO ***************************** 
 
-        public void asignarColorFondo(Color nuevo)
+        public void AsignarColorFondo(Color colNuevo)
         {
-            cNuevoColorFondo = nuevo; // Cambiado nuevoColor a cNuevoColorFondo
+            cNuevoColorFondo = colNuevo; 
         }
 
-        public void asignarComboConLista(int pos, string lista)
+        public void AsignarComboConLista(int iPos, string sLista)
         {
-            iPosicionCombo = pos - 1; // Cambiado posCombo a iPosicionCombo
-            limpiarLista(lista);
-            arrModoCampoCombo[iNumeroCombos] = 0; // Cambiado arrModoCampoCombo a arrModoCampoCombo y noCombo a iNumeroCombos
-            iNumeroCombos++; // Cambiado noCombo a iNumeroCombos
+            iPosicionCombo = iPos - 1; 
+            LimpiarLista(sLista);
+            arrModoCampoCombo[iNumeroCombos] = 0; 
+            iNumeroCombos++;
         }
 
-        void limpiarLista(string cadena)
+        void LimpiarLista(string sCadena)
         {
-            limpiarListaItems();
-            int contadorCadena = 0;
-            int contadorArray = 0;
-            string palabra = "";
-            while (contadorCadena < cadena.Length)
+            LimpiarListaItems();
+            int iContadorCadena = 0;
+            int iContadorArray = 0;
+            string sPalabra = "";
+            while (iContadorCadena < sCadena.Length)
             {
-                if (cadena[contadorCadena] != '|')
+                if (sCadena[iContadorCadena] != '|')
                 {
-                    palabra += cadena[contadorCadena];
-                    contadorCadena++;
+                    sPalabra += sCadena[iContadorCadena];
+                    iContadorCadena++;
                 }
                 else
                 {
-                    arrListaItems[contadorArray] = palabra; // Cambiado listaItems a arrListaItems
-                    palabra = "";
-                    contadorArray++;
-                    contadorCadena++;
+                    arrListaItems[iContadorArray] = sPalabra; 
+                    sPalabra = "";
+                    iContadorArray++;
+                    iContadorCadena++;
                 }
             }
         }
 
 
-        void limpiarListaItems()
+        void LimpiarListaItems()
         {
-            for (int i = 0; i < arrListaItems.Length; i++) // Cambiado listaItems a arrListaItems
+            for (int iIndex = 0; iIndex < arrListaItems.Length; iIndex++) 
             {
-                arrListaItems[i] = ""; // Limpia los elementos de la lista de items
+                arrListaItems[iIndex] = ""; 
             }
         }
         //******************************************** CODIGO HECHO POR SEBASTIAN LETONA ***************************** 
@@ -502,115 +502,115 @@ namespace Capa_Vista_Navegador
         void CreaComponentes()
         {
             // Obtiene los campos, tipos de datos y llaves de la sTablaPrincipal
-            string[] Campos = logic.Campos(sTablaPrincipal); // Cambiado sTablaPrincipal a sTablaPrincipal
-            string[] Tipos = logic.Tipos(sTablaPrincipal); // Cambiado sTablaPrincipal a sTablaPrincipal
-            string[] LLaves = logic.Llaves(sTablaPrincipal); // Cambiado sTablaPrincipal a sTablaPrincipal
-            int i = 0;
-            int fin = Campos.Length;
-            while (i < fin)
+            string[] sCampos = logic.Campos(sTablaPrincipal); 
+            string[] sTipos = logic.Tipos(sTablaPrincipal); 
+            string[] sLlaves = logic.Llaves(sTablaPrincipal); 
+            int iIndex = 0;
+            int iFin = sCampos.Length;
+            while (iIndex < iFin)
             {
                 // Ajusta la posición y el desplazamiento de los componentes según el número de campos
-                if (iNumeroCampos == 6 || iNumeroCampos == 11 || iNumeroCampos == 16 || iNumeroCampos == 21) { iPosicionInicial = 8; } // Cambiado noCampos a iNumeroCampos y pos a iPosicionInicial
-                if (iNumeroCampos >= 6 && iNumeroCampos < 10) { iPosicionX = 300; } // Cambiado x a iPosicionX
-                if (iNumeroCampos >= 11 && iNumeroCampos < 15) { iPosicionX = 600; } // Cambiado x a iPosicionX
-                if (iNumeroCampos >= 16 && iNumeroCampos < 20) { iPosicionX = 900; } // Cambiado x a iPosicionX
-                if (iNumeroCampos >= 21 && iNumeroCampos < 25) { iPosicionX = 900; } // Cambiado x a iPosicionX
+                if (iNumeroCampos == 6 || iNumeroCampos == 11 || iNumeroCampos == 16 || iNumeroCampos == 21) { iPosicionInicial = 8; }
+                if (iNumeroCampos >= 6 && iNumeroCampos < 10) { iPosicionX = 300; } 
+                if (iNumeroCampos >= 11 && iNumeroCampos < 15) { iPosicionX = 600; } 
+                if (iNumeroCampos >= 16 && iNumeroCampos < 20) { iPosicionX = 900; } 
+                if (iNumeroCampos >= 21 && iNumeroCampos < 25) { iPosicionX = 900; } 
 
                 // Crea un Label para cada campo
                 Label lb = new Label();
-                lb.Text = arrAliasCampos[i]; // Cambiado aliasC a arrAliasCampos
-                Point p = new Point(iPosicionX + iPosicionInicial, iPosicionY * iPosicionInicial); // Cambiado x a iPosicionX, y a iPosicionY y pos a iPosicionInicial
+                lb.Text = arrAliasCampos[iIndex]; 
+                Point p = new Point(iPosicionX + iPosicionInicial, iPosicionY * iPosicionInicial); 
                 lb.Location = p;
-                lb.Name = "lb_" + Campos[i];
-                lb.Font = new Font(fFuenteLabels.FontFamily, fFuenteLabels.Size * 1.3f, FontStyle.Bold | fFuenteLabels.Style); // Cambiado fuente a fFuenteLabels
-                lb.ForeColor = cColorFuente; // Cambiado Cfuente a cColorFuente
+                lb.Name = "lb_" + sCampos[iIndex];
+                lb.Font = new Font(fFuenteLabels.FontFamily, fFuenteLabels.Size * 1.3f, FontStyle.Bold | fFuenteLabels.Style); 
+                lb.ForeColor = cColorFuente; 
 
                 // Opcional: Ajustar el tamaño del Label si es necesario
                 lb.AutoSize = true;
                 this.Controls.Add(lb);
 
                 // Verifica si el campo es una clave primaria y no es el primer campo
-                if (LLaves[i] == "PRI" && i != 0)
+                if (sLlaves[iIndex] == "PRI" && iIndex != 0)
                 {
-                    LLaves[i] = "MUL"; // Cambia la llave a "MUL" para manejarla como una clave foránea
+                    sLlaves[iIndex] = "MUL"; // Cambia la llave a "MUL" para manejarla como una clave foránea
                 }
 
                 // Dependiendo del tipo de campo, crea el componente adecuado
-                switch (Tipos[i])
+                switch (sTipos[iIndex])
                 {
                     case "int":
-                        arrTipoCampos[iNumeroCampos - 1] = "Num"; // Cambiado tipoCampo a arrTipoCampos y noCampos a iNumeroCampos
-                        if (LLaves[i] != "MUL")
+                        arrTipoCampos[iNumeroCampos - 1] = "Num"; 
+                        if (sLlaves[iIndex] != "MUL")
                         {
-                            crearTextBoxnumerico(Campos[i]); // Crea un TextBox numérico
+                            CrearTextBoxNumerico(sCampos[iIndex]); // Crea un TextBox numérico
                         }
                         else
                         {
-                            crearComboBox(Campos[i]); // Crea un ComboBox si es una clave foránea
+                            CrearComboBox(sCampos[iIndex]); // Crea un ComboBox si es una clave foránea
                         }
                         break;
 
                     case "varchar":
-                        arrTipoCampos[iNumeroCampos - 1] = "Text"; // Cambiado tipoCampo a arrTipoCampos y noCampos a iNumeroCampos
-                        if (LLaves[i] != "MUL")
+                        arrTipoCampos[iNumeroCampos - 1] = "Text"; 
+                        if (sLlaves[iIndex] != "MUL")
                         {
-                            crearTextBoxvarchar(Campos[i]); // Crea un TextBox para texto
+                            CrearTextBoxVarchar(sCampos[iIndex]); // Crea un TextBox para texto
                         }
                         else
                         {
-                            crearComboBox(Campos[i]); // Crea un ComboBox si es una clave foránea
+                            CrearComboBox(sCampos[iIndex]); // Crea un ComboBox si es una clave foránea
                         }
                         break;
 
                     case "date":
                     case "datetime":
-                        arrTipoCampos[iNumeroCampos - 1] = "Text"; // Cambiado tipoCampo a arrTipoCampos y noCampos a iNumeroCampos
-                        if (LLaves[i] != "MUL")
+                        arrTipoCampos[iNumeroCampos - 1] = "Text";
+                        if (sLlaves[iIndex] != "MUL")
                         {
-                            crearDateTimePicker(Campos[i]); // Crea un DateTimePicker para fechas
+                            CrearDateTimePicker(sCampos[iIndex]); // Crea un DateTimePicker para fechas
                         }
                         else
                         {
-                            crearComboBox(Campos[i]); // Crea un ComboBox si es una clave foránea
+                            CrearComboBox(sCampos[iIndex]); // Crea un ComboBox si es una clave foránea
                         }
                         break;
 
                     case "text":
-                        arrTipoCampos[iNumeroCampos - 1] = "Text"; // Cambiado tipoCampo a arrTipoCampos y noCampos a iNumeroCampos
-                        if (LLaves[i] != "MUL")
+                        arrTipoCampos[iNumeroCampos - 1] = "Text";
+                        if (sLlaves[iIndex] != "MUL")
                         {
-                            crearTextBoxvarchar(Campos[i]); // Crea un TextBox para texto largo
+                            CrearTextBoxVarchar(sCampos[iIndex]); // Crea un TextBox para texto largo
                         }
                         else
                         {
-                            crearComboBox(Campos[i]); // Crea un ComboBox si es una clave foránea
+                            CrearComboBox(sCampos[iIndex]); // Crea un ComboBox si es una clave foránea
                         }
                         break;
 
                     case "time":
-                        arrTipoCampos[iNumeroCampos - 1] = "Text"; // Cambiado tipoCampo a arrTipoCampos y noCampos a iNumeroCampos
-                        crearcampohora(Campos[i]); // Crea un TextBox para horas
+                        arrTipoCampos[iNumeroCampos - 1] = "Text";
+                        CrearCampoHora(sCampos[iIndex]); // Crea un TextBox para horas
                         break;
 
                     case "float":
                     case "decimal":
                     case "double":
-                        arrTipoCampos[iNumeroCampos - 1] = "Text"; // Cambiado tipoCampo a arrTipoCampos y noCampos a iNumeroCampos
-                        crearcampodecimales(Campos[i]); // Crea un TextBox para valores decimales
+                        arrTipoCampos[iNumeroCampos - 1] = "Text";
+                        CrearCampoDecimales(sCampos[iIndex]); // Crea un TextBox para valores decimales
                         break;
 
                     case "tinyint":
-                        arrTipoCampos[iNumeroCampos - 1] = "Num"; // Cambiado tipoCampo a arrTipoCampos y noCampos a iNumeroCampos
-                        if (LLaves[i] != "MUL")
+                        arrTipoCampos[iNumeroCampos - 1] = "Num";
+                        if (sLlaves[iIndex] != "MUL")
                         {
-                            crearBotonEstado(Campos[i]); // Crea un botón para indicar estado activado/desactivado
+                            CrearBotonEstado(sCampos[iIndex]); // Crea un botón para indicar estado activado/desactivado
                         }
                         break;
 
                     default:
-                        if (Tipos[i] != null && Tipos[i] != "")
+                        if (sTipos[iIndex] != null && sTipos[iIndex] != "")
                         {
-                            DialogResult validacion = MessageBox.Show("La sTablaPrincipal " + sTablaPrincipal + " posee un campo " + Tipos[i] + ", este tipo de dato no es reconocido por el navegador\n Solucione este problema...", "Verificación de requisitos", MessageBoxButtons.OK); // Cambiado sTablaPrincipal a sTablaPrincipal
+                            DialogResult validacion = MessageBox.Show("La sTablaPrincipal " + sTablaPrincipal + " posee un campo " + sTipos[iIndex] + ", este tipo de dato no es reconocido por el navegador\n Solucione este problema...", "Verificación de requisitos", MessageBoxButtons.OK); 
                             if (validacion == DialogResult.OK)
                             {
                                 Application.Exit(); // Termina la aplicación si se encuentra un tipo de dato no reconocido
@@ -618,8 +618,8 @@ namespace Capa_Vista_Navegador
                         }
                         break;
                 }
-                iNumeroCampos++; // Cambiado noCampos a iNumeroCampos
-                i++;
+                iNumeroCampos++; 
+                iIndex++;
             }
         }
         //******************************************** CODIGO HECHO POR JORGE AVILA***************************** 
@@ -627,23 +627,23 @@ namespace Capa_Vista_Navegador
         //******************************************** CODIGO HECHO POR DIEGO MARROQUIN*****************************
 
         // Función que maneja el evento click de los botones, cambiando su estado entre "Activado" y "Desactivado"
-        void func_click(object sender, EventArgs e)
+        void Func_click(object sender, EventArgs e)
         {
             foreach (Control componente in Controls) // Itera sobre todos los controles en el formulario
             {
                 if (componente is Button) // Verifica si el control es un botón
                 {
-                    if (iEstadoFormulario == 1) // Cambiado estado a iEstadoFormulario
+                    if (iEstadoFormulario == 1) 
                     {
                         componente.Text = "Desactivado"; // Cambia el texto del botón a "Desactivado"
                         componente.BackColor = Color.Red; // Cambia el color de fondo a rojo
-                        iEstadoFormulario = 0; // Cambiado estado a iEstadoFormulario
+                        iEstadoFormulario = 0;
                     }
                     else // Si el estado no es 1 (es decir, es 0)
                     {
                         componente.Text = "Activado"; // Cambia el texto del botón a "Activado"
                         componente.BackColor = Color.Green; // Cambia el color de fondo a verde
-                        iEstadoFormulario = 1; // Cambiado estado a iEstadoFormulario
+                        iEstadoFormulario = 1; 
                     }
                 }
             }
@@ -653,84 +653,84 @@ namespace Capa_Vista_Navegador
         //******************************************** CODIGO HECHO POR PABLO FLORES*****************************
 
         // Función que crea un botón con un estado inicial de "Activado" y lo añade al formulario
-        void crearBotonEstado(String nom)
+        void CrearBotonEstado(String sNom)
         {
             Button btn = new Button(); // Crea un nuevo botón
             btn.Width = (int)(btn.Width * 1.2);
             btn.Height = (int)(btn.Height * 1.2);
-            Point p = new Point(iPosicionX + 125 + iPosicionInicial, iPosicionY * iPosicionInicial); // Cambiado x a iPosicionX, y a iPosicionY, pos a iPosicionInicial
+            Point p = new Point(iPosicionX + 125 + iPosicionInicial, iPosicionY * iPosicionInicial);
             btn.Location = p;
             btn.Text = "Activado"; // Establece el texto inicial del botón
             btn.BackColor = Color.Green; // Establece el color de fondo inicial
-            btn.Click += new EventHandler(func_click); // Asigna la función de clic al botón
-            btn.Name = nom; // Establece el nombre del botón
+            btn.Click += new EventHandler(Func_click); // Asigna la función de clic al botón
+            btn.Name = sNom; // Establece el nombre del botón
             btn.Enabled = false; // Deshabilita el botón inicialmente
             this.Controls.Add(btn); // Añade el botón al formulario
-            iPosicionInicial++; // Cambiado pos a iPosicionInicial
+            iPosicionInicial++; 
         }
 
         // Función que crea un TextBox para números y lo añade al formulario
-        void crearTextBoxnumerico(String nom)
+        void CrearTextBoxNumerico(String sNom)
         {
             TextBox tb = new TextBox();
             tb.Width = (int)(tb.Width * 1.2);
             tb.Height = (int)(tb.Height * 1.2); // Crea un nuevo TextBox
-            Point p = new Point(iPosicionX + 125 + iPosicionInicial, iPosicionY * iPosicionInicial); // Cambiado x a iPosicionX, y a iPosicionY, pos a iPosicionInicial
+            Point p = new Point(iPosicionX + 125 + iPosicionInicial, iPosicionY * iPosicionInicial);
             tb.Location = p;
-            tb.Name = nom; // Establece el nombre del TextBox
+            tb.Name = sNom; // Establece el nombre del TextBox
             this.Controls.Add(tb); // Añade el TextBox al formulario
-            tb.KeyPress += Paravalidarnumeros_KeyPress; // Asigna la función de validación de números al evento KeyPress
-            this.KeyPress += Paravalidarnumeros_KeyPress; // Asegura que el evento KeyPress valide solo números
-            iPosicionInicial++; // Cambiado pos a iPosicionInicial
+            tb.KeyPress += ParaValidarNumeros_KeyPress; // Asigna la función de validación de números al evento KeyPress
+            this.KeyPress += ParaValidarNumeros_KeyPress; // Asegura que el evento KeyPress valide solo números
+            iPosicionInicial++;
         }
         //******************************************** CODIGO HECHO POR PABLO FLORES*****************************
 
         //******************************************** CODIGO HECHO POR EMANUEL BARAHONA*****************************
 
         // Función que crea un TextBox para texto de tipo varchar y lo añade al formulario
-        void crearTextBoxvarchar(String nom)
+        void CrearTextBoxVarchar(String sNom)
         {
             TextBox tb = new TextBox(); // Crea un nuevo TextBox
             tb.Width = (int)(tb.Width * 1.2);
             tb.Height = (int)(tb.Height * 1.2);
-            Point p = new Point(iPosicionX + 125 + iPosicionInicial, iPosicionY * iPosicionInicial); // Cambiado x a iPosicionX, y a iPosicionY, pos a iPosicionInicial
+            Point p = new Point(iPosicionX + 125 + iPosicionInicial, iPosicionY * iPosicionInicial);
             tb.Location = p;
-            tb.Name = nom; // Establece el nombre del TextBox
+            tb.Name = sNom; // Establece el nombre del TextBox
             this.Controls.Add(tb); // Añade el TextBox al formulario
-            tb.KeyPress += Paravalidarvarchar_KeyPress; // Asigna la función de validación varchar al evento KeyPress
-            this.KeyPress += Paravalidarvarchar_KeyPress; // Asegura que el evento KeyPress valide solo varchar
-            iPosicionInicial++; // Cambiado pos a iPosicionInicial
+            tb.KeyPress += ParaValidarVarchar_KeyPress; // Asigna la función de validación varchar al evento KeyPress
+            this.KeyPress += ParaValidarVarchar_KeyPress; // Asegura que el evento KeyPress valide solo varchar
+            iPosicionInicial++;
         }
 
 
         // Función que crea un TextBox para la hora y lo añade al formulario
-        void crearcampohora(String nom)
+        void CrearCampoHora(String sNom)
         {
             TextBox tb = new TextBox(); // Crea un nuevo TextBox
             tb.Width = (int)(tb.Width * 1.2);
             tb.Height = (int)(tb.Height * 1.2);
-            Point p = new Point(iPosicionX + 125 + iPosicionInicial, iPosicionY * iPosicionInicial); // Cambiado x a iPosicionX, y a iPosicionY, pos a iPosicionInicial
+            Point p = new Point(iPosicionX + 125 + iPosicionInicial, iPosicionY * iPosicionInicial); 
             tb.Location = p;
-            tb.Name = nom; // Establece el nombre del TextBox
+            tb.Name = sNom; // Establece el nombre del TextBox
             this.Controls.Add(tb); // Añade el TextBox al formulario
-            tb.KeyPress += Paravalidarhora_KeyPress; // Asigna la función de validación de hora al evento KeyPress
-            this.KeyPress += Paravalidarhora_KeyPress; // Asegura que el evento KeyPress valide solo hora
-            iPosicionInicial++; // Cambiado pos a iPosicionInicial
+            tb.KeyPress += ParaValidarHora_KeyPress; // Asigna la función de validación de hora al evento KeyPress
+            this.KeyPress += ParaValidarHora_KeyPress; // Asegura que el evento KeyPress valide solo hora
+            iPosicionInicial++;
         }
 
         // Función que crea un TextBox para decimales y lo añade al formulario
-        void crearcampodecimales(String nom)
+        void CrearCampoDecimales(String sNom)
         {
             TextBox tb = new TextBox(); // Crea un nuevo TextBox
             tb.Width = (int)(tb.Width * 1.2);
             tb.Height = (int)(tb.Height * 1.2);
-            Point p = new Point(iPosicionX + 125 + iPosicionInicial, iPosicionY * iPosicionInicial); // Cambiado x a iPosicionX, y a iPosicionY, pos a iPosicionInicial
+            Point p = new Point(iPosicionX + 125 + iPosicionInicial, iPosicionY * iPosicionInicial); 
             tb.Location = p;
-            tb.Name = nom; // Establece el nombre del TextBox
+            tb.Name = sNom; // Establece el nombre del TextBox
             this.Controls.Add(tb); // Añade el TextBox al formulario
-            tb.KeyPress += Paravalidardecimales_KeyPress; // Asigna la función de validación de decimales al evento KeyPress
-            this.KeyPress += Paravalidardecimales_KeyPress; // Asegura que el evento KeyPress valide solo decimales
-            iPosicionInicial++; // Cambiado pos a iPosicionInicial
+            tb.KeyPress += ParaValidarDecimales_KeyPress; // Asigna la función de validación de decimales al evento KeyPress
+            this.KeyPress += ParaValidarDecimales_KeyPress; // Asegura que el evento KeyPress valide solo decimales
+            iPosicionInicial++; 
         }
         //******************************************** CODIGO HECHO POR EMANUEL BARAHONA*****************************
 
@@ -738,59 +738,59 @@ namespace Capa_Vista_Navegador
 
         // Estos métodos manejan eventos KeyPress para validar diferentes tipos de entradas en los controles.
 
-        private void Paravalidardecimales_KeyPress(object sender, KeyPressEventArgs e)
+        private void ParaValidarDecimales_KeyPress(object sender, KeyPressEventArgs e)
         {
             // Valida que el input sea un número decimal.
             v.Camposdecimales(e);
         }
 
-        private void Paravalidarnumeros_KeyPress(object sender, KeyPressEventArgs e)
+        private void ParaValidarNumeros_KeyPress(object sender, KeyPressEventArgs e)
         {
             // Valida que el input sea un número entero.
             v.CamposNumericos(e);
         }
 
-        private void Paravalidarhora_KeyPress(object sender, KeyPressEventArgs e)
+        private void ParaValidarHora_KeyPress(object sender, KeyPressEventArgs e)
         {
             // Valida que el input siga el formato de hora.
             v.CamposHora(e);
         }
 
-        private void Paravalidarvarchar_KeyPress(object sender, KeyPressEventArgs e)
+        private void ParaValidarVarchar_KeyPress(object sender, KeyPressEventArgs e)
         {
             // Valida que el input sea un texto tipo varchar.
             v.CamposVchar(e);
         }
 
-        private void Paravalidartexto_KeyPress(object sender, KeyPressEventArgs e)
+        private void ParaValidarTexto_KeyPress(object sender, KeyPressEventArgs e)
         {
             // Valida que el input contenga solo letras.
             v.CamposLetras(e);
         }
 
-        private void Paravalidacombo_KeyPress(object sender, KeyPressEventArgs e)
+        private void ParaValidarCombo_KeyPress(object sender, KeyPressEventArgs e)
         {
             // Maneja la validación del input en un ComboBox.
             v.Combobox(e);
         }
 
         // Este método crea y configura un ComboBox dinámicamente basado en los parámetros y la lógica del sistema.
-        void crearComboBox(String nom)
+        void CrearComboBox(String sNom)
         {
             // Se obtienen los elementos para el ComboBox, que son una lista de pares clave-valor.
-            Dictionary<string, string> items;
+            Dictionary<string, string> dicItems;
 
             // Si hay una sTablaPrincipal y campo específicos para el ComboBox, se utilizan.
-            if (arrTablaCombo[iNumeroCombosAux] != null) // Cambiado arrTablaCombo a arrTablaCombo y noComboAux a iNumeroCombosAux
+            if (arrTablaCombo[iNumeroCombosAux] != null) 
             {
-                items = logic.Items(arrTablaCombo[iNumeroCombosAux], arrCampoCombo[iNumeroCombosAux], arrCampoDisplayCombo[iNumeroCombosAux]); // Cambiado arrTablaCombo a arrTablaCombo, arrCampoCombo a arrCampoCombo y campoDisplayCombo a arrCampoDisplayCombo
-                if (iNumeroCombos > iNumeroCombosAux) { iNumeroCombosAux++; } // Cambiado noCombo a iNumeroCombos y noComboAux a iNumeroCombosAux
+                dicItems = logic.Items(arrTablaCombo[iNumeroCombosAux], arrCampoCombo[iNumeroCombosAux], arrCampoDisplayCombo[iNumeroCombosAux]); 
+                if (iNumeroCombos > iNumeroCombosAux) { iNumeroCombosAux++; } 
             }
             else
             {
                 // Si no, se utiliza una sTablaPrincipal y campo por defecto (en este caso, películas).
-                items = logic.Items("Peliculas", "idPelicula", "nombrePelicula");
-                if (iNumeroCombos > iNumeroCombosAux) { iNumeroCombosAux++; } // Cambiado noCombo a iNumeroCombos y noComboAux a iNumeroCombosAux
+                dicItems = logic.Items("Peliculas", "idPelicula", "nombrePelicula");
+                if (iNumeroCombos > iNumeroCombosAux) { iNumeroCombosAux++; } 
             }
 
             // Se crea un nuevo ComboBox.
@@ -798,13 +798,13 @@ namespace Capa_Vista_Navegador
             cb.Width = (int)(cb.Width * 1.2);
             cb.Height = (int)(cb.Height * 1.2);
             // Se define la ubicación del ComboBox en el formulario.
-            Point p = new Point(iPosicionX + 125 + iPosicionInicial, iPosicionY * iPosicionInicial); // Cambiado x a iPosicionX, y a iPosicionY, pos a iPosicionInicial
+            Point p = new Point(iPosicionX + 125 + iPosicionInicial, iPosicionY * iPosicionInicial); 
             cb.Location = p;
-            cb.Name = nom;  // Se asigna el nombre al ComboBox.
+            cb.Name = sNom;  // Se asigna el nombre al ComboBox.
 
             // Se utiliza un BindingSource para enlazar los elementos al ComboBox.
             BindingSource bs = new BindingSource();
-            bs.DataSource = items;
+            bs.DataSource = dicItems;
 
             // Se asigna el DataSource al ComboBox, mostrando el nombre y guardando la clave.
             cb.DataSource = bs;
@@ -813,28 +813,28 @@ namespace Capa_Vista_Navegador
 
             // Se añade el ComboBox al formulario.
             this.Controls.Add(cb);
-            iPosicionInicial++; // Cambiado pos a iPosicionInicial
+            iPosicionInicial++; 
         }
 
         //******************************************** CODIGO HECHO POR VICTOR CASTELLANOS*****************************
 
         //******************************************** CODIGO HECHO POR BRAYAN HERNANDEZ***************************** 
-        void crearDateTimePicker(String nom)
+        void CrearDateTimePicker(String sNom)
         {
             DateTimePicker dtp = new DateTimePicker();
             dtp.Width = (int)(dtp.Width * 1.2);
             dtp.Height = (int)(dtp.Height * 1.2);
-            Point p = new Point(iPosicionX + 125 + iPosicionInicial, iPosicionY * iPosicionInicial); // Cambiado x a iPosicionX, y a iPosicionY, pos a iPosicionInicial
+            Point p = new Point(iPosicionX + 125 + iPosicionInicial, iPosicionY * iPosicionInicial); 
             dtp.Location = p;
             dtp.Format = DateTimePickerFormat.Custom;
             dtp.CustomFormat = "yyyy-MM-dd";
             dtp.Width = 100;
-            dtp.Name = nom;
+            dtp.Name = sNom;
             this.Controls.Add(dtp);
-            iPosicionInicial++; // Cambiado pos a iPosicionInicial
+            iPosicionInicial++; 
         }
 
-        public void deshabilitarcampos_y_botones()
+        public void Deshabilitarcampos_y_botones()
         {
             foreach (Control componente in Controls)
             {
@@ -849,7 +849,7 @@ namespace Capa_Vista_Navegador
             Btn_Cancelar.Enabled = false;
         }
 
-        public void habilitarcampos_y_botones()
+        public void HabilitarCampos_y_Botones()
         {
             foreach (Control componente in Controls)
             {
@@ -864,15 +864,15 @@ namespace Capa_Vista_Navegador
             Btn_Cancelar.Enabled = true;
         }
 
-        public void actualizardatagriew()
+        public void ActualizarDataGridView()
         {
-            DataTable dt = logic.ConsultaLogica(sTablaPrincipal, sTablaRelacionada, sCampoDescriptivo, sColumnaForanea, sColumnaPrimariaRelacionada); // Cambiado sTablaPrincipal a sTablaPrincipal, tablarelacionada a sTablaRelacionada, campodescriptivo a sCampoDescriptivo, columnaForanea a sColumnaForanea, columnaprimararelacionada a sColumnaPrimariaRelacionada
-            dataGridView1.DataSource = dt;
-            int head = 0;
-            while (head < logic.ContarCampos(sTablaPrincipal)) // Cambiado sTablaPrincipal a sTablaPrincipal
+            DataTable dt = logic.ConsultaLogica(sTablaPrincipal, sTablaRelacionada, sCampoDescriptivo, sColumnaForanea, sColumnaPrimariaRelacionada); 
+            Dgv_Informacion.DataSource = dt;
+            int iHead = 0;
+            while (iHead < logic.ContarCampos(sTablaPrincipal)) 
             {
-                dataGridView1.Columns[head].HeaderText = arrAliasCampos[head]; // Cambiado aliasC a arrAliasCampos
-                head++;
+                Dgv_Informacion.Columns[iHead].HeaderText = arrAliasCampos[iHead]; 
+                iHead++;
             }
         }
 
@@ -883,13 +883,13 @@ namespace Capa_Vista_Navegador
 
         // Este método genera una consulta SQL para "eliminar" un registro de la base de datos.
         // En lugar de eliminar físicamente el registro, se actualiza el campo 'estado' a 0, lo que indica que está inactivo.
-        string crearDelete()
+        string CrearDelete()
         {
             // Inicia la construcción de la consulta SQL con la instrucción UPDATE para la sTablaPrincipal especificada.
-            string query = "UPDATE " + sTablaPrincipal + " SET estado=0"; // Cambiado sTablaPrincipal a sTablaPrincipal
+            string sQuery = "UPDATE " + sTablaPrincipal + " SET estado=0"; 
 
             // Esta variable construye la cláusula WHERE de la consulta SQL.
-            string whereQuery = " WHERE  ";
+            string sWhereQuery = " WHERE  ";
 
             int iPosicionCampo = 0;  // Posición del campo en la sTablaPrincipal. Cambiado posCampo a iPosicionCampo
             int iIndiceCombo = 0;    // Índice utilizado para ComboBoxes. Cambiado i a iIndiceCombo
@@ -905,80 +905,80 @@ namespace Capa_Vista_Navegador
                     if (iPosicionCampo == 0)
                     {
                         // Determina el tipo de campo (texto o numérico) y construye la cláusula WHERE correspondiente.
-                        switch (arrTipoCampos[iPosicionCampo]) // Cambiado tipoCampo a arrTipoCampos
+                        switch (arrTipoCampos[iPosicionCampo]) 
                         {
                             case "Text": // Si el campo es de tipo texto.
                                 if (componente is ComboBox)
                                 {
                                     // Si el componente es un ComboBox, se utiliza la lógica específica para obtener el valor correcto.
-                                    if (arrModoCampoCombo[iIndiceCombo] == 1) // Cambiado arrModoCampoCombo a arrModoCampoCombo y i a iIndiceCombo
+                                    if (arrModoCampoCombo[iIndiceCombo] == 1) 
                                     {
-                                        whereQuery += componente.Name + " = '" + logic.LlaveCampolo(arrTablaCombo[iIndiceCombo], arrCampoCombo[iIndiceCombo], componente.Text) + "' , "; // Cambiado arrTablaCombo a arrTablaCombo y arrCampoCombo a arrCampoCombo
+                                        sWhereQuery += componente.Name + " = '" + logic.LlaveCampolo(arrTablaCombo[iIndiceCombo], arrCampoCombo[iIndiceCombo], componente.Text) + "' , "; // Cambiado arrTablaCombo a arrTablaCombo y arrCampoCombo a arrCampoCombo
                                     }
                                     else
                                     {
-                                        whereQuery += componente.Name + " = '" + componente.Text + "' , ";
+                                        sWhereQuery += componente.Name + " = '" + componente.Text + "' , ";
                                     }
-                                    iIndiceCombo++; // Cambiado i a iIndiceCombo
+                                    iIndiceCombo++; 
                                 }
                                 else
                                 {
-                                    whereQuery += componente.Name + " = '" + componente.Text + "' , ";
+                                    sWhereQuery += componente.Name + " = '" + componente.Text + "' , ";
                                 }
                                 break;
 
                             case "Num": // Si el campo es de tipo numérico.
                                 if (componente is ComboBox)
                                 {
-                                    if (arrModoCampoCombo[iIndiceCombo] == 1) // Cambiado arrModoCampoCombo a arrModoCampoCombo y i a iIndiceCombo
+                                    if (arrModoCampoCombo[iIndiceCombo] == 1) 
                                     {
-                                        whereQuery += componente.Name + " = " + logic.LlaveCampolo(arrTablaCombo[iIndiceCombo], arrCampoCombo[iIndiceCombo], componente.Text); // Cambiado arrTablaCombo a arrTablaCombo y arrCampoCombo a arrCampoCombo
+                                        sWhereQuery += componente.Name + " = " + logic.LlaveCampolo(arrTablaCombo[iIndiceCombo], arrCampoCombo[iIndiceCombo], componente.Text); // Cambiado arrTablaCombo a arrTablaCombo y arrCampoCombo a arrCampoCombo
                                     }
                                     else
                                     {
-                                        whereQuery += componente.Name + " = " + componente.Text;
+                                        sWhereQuery += componente.Name + " = " + componente.Text;
                                     }
-                                    iIndiceCombo++; // Cambiado i a iIndiceCombo
+                                    iIndiceCombo++; 
                                 }
                                 else
                                 {
-                                    whereQuery += componente.Name + " = " + componente.Text;
+                                    sWhereQuery += componente.Name + " = " + componente.Text;
                                 }
                                 break;
                         }
                     }
-                    iPosicionCampo++; // Cambiado posCampo a iPosicionCampo
+                    iPosicionCampo++; 
                 }
             }
 
             // Elimina posibles espacios y comas al final de las cadenas.
-            sCampos = sCampos.TrimEnd(' '); // Cambiado campos a sCampos
+            sCampos = sCampos.TrimEnd(' ');
             sCampos = sCampos.TrimEnd(',');
-            whereQuery = whereQuery.TrimEnd(' ');
-            whereQuery = whereQuery.TrimEnd(',');
+            sWhereQuery = sWhereQuery.TrimEnd(' ');
+            sWhereQuery = sWhereQuery.TrimEnd(',');
 
             // Completa la construcción de la consulta SQL uniendo la cláusula WHERE.
-            query += whereQuery + ";";
+            sQuery += sWhereQuery + ";";
 
             // Imprime la consulta en la consola para depuración.
-            Console.Write(query);
+            Console.Write(sQuery);
 
             // Retorna la consulta construida.
-            return query;
+            return sQuery;
         }
 
         //******************************************** CODIGO HECHO POR MATY MANCILLA*****************************
 
         //******************************************** CODIGO HECHO POR JOEL LOPEZ***************************** 
-        string crearInsert(string sNombreTabla) // Cambiado nombretabla a sNombreTabla
+        string CrearInsert(string sNombreTabla) 
         {
             // Inicializa las cadenas para la consulta INSERT y los valores a insertar
-            string query = "INSERT INTO " + sNombreTabla + " ("; // Cambiado nombretabla a sNombreTabla
-            string sValores = "VALUES ("; // Cambiado valores a sValores
+            string sQuery = "INSERT INTO " + sNombreTabla + " ("; 
+            string sValores = "VALUES ("; 
 
-            int iPosicionCampo = 0;       // Cambiado posCampo a iPosicionCampo
-            string sCampos = "";          // Cambiado campos a sCampos
-            string sValoresCampos = "";   // Cambiado valoresCampos a sValoresCampos
+            int iPosicionCampo = 0;     
+            string sCampos = "";         
+            string sValoresCampos = "";   
 
             // Recorre todos los controles del formulario
             foreach (Control componente in Controls)
@@ -987,37 +987,37 @@ namespace Capa_Vista_Navegador
                 if (componente is TextBox || componente is DateTimePicker || componente is ComboBox)
                 {
                     // Obtiene el nombre del campo de la sTablaPrincipal y el valor del control
-                    string sNombreCampo = logic.Campos(sNombreTabla)[iPosicionCampo]; // Cambiado nombreCampo a sNombreCampo y nombretabla a sNombreTabla
-                    string sValorCampo = string.Empty; // Cambiado valorCampo a sValorCampo
+                    string sNombreCampo = logic.Campos(sNombreTabla)[iPosicionCampo]; 
+                    string sValorCampo = string.Empty; 
 
                     // Si el control es un ComboBox, obtiene el valor seleccionado (ID)
                     if (componente is ComboBox cb)
                     {
-                        sValorCampo = cb.SelectedValue.ToString(); // Cambiado valorCampo a sValorCampo
+                        sValorCampo = cb.SelectedValue.ToString(); 
                     }
                     else
                     {
-                        sValorCampo = componente.Text; // Cambiado valorCampo a sValorCampo
+                        sValorCampo = componente.Text;
                     }
 
                     // Si el valor del campo no está vacío, lo agrega a las cadenas de campos y valores
-                    if (!string.IsNullOrEmpty(sValorCampo)) // Cambiado valorCampo a sValorCampo
+                    if (!string.IsNullOrEmpty(sValorCampo))
                     {
-                        sCampos += sNombreCampo + ", "; // Cambiado campos a sCampos y nombreCampo a sNombreCampo
-                        sValoresCampos += "'" + sValorCampo + "', "; // Cambiado valoresCampos a sValoresCampos y valorCampo a sValorCampo
+                        sCampos += sNombreCampo + ", "; 
+                        sValoresCampos += "'" + sValorCampo + "', "; 
                     }
 
-                    iPosicionCampo++; // Cambiado posCampo a iPosicionCampo
+                    iPosicionCampo++; 
                 }
             }
 
             // Elimina las últimas comas y cierra las instrucciones
-            sCampos = sCampos.TrimEnd(' ', ','); // Cambiado campos a sCampos
-            sValoresCampos = sValoresCampos.TrimEnd(' ', ','); // Cambiado valoresCampos a sValoresCampos
+            sCampos = sCampos.TrimEnd(' ', ','); 
+            sValoresCampos = sValoresCampos.TrimEnd(' ', ','); 
 
-            query += sCampos + ") " + sValores + sValoresCampos + ");"; // Cambiado valores a sValores y campos a sCampos
+            sQuery += sCampos + ") " + sValores + sValoresCampos + ");"; 
 
-            return query;
+            return sQuery;
         }
         //******************************************** CODIGO HECHO POR JOEL LOPEZ***************************** 
 
@@ -1035,15 +1035,15 @@ namespace Capa_Vista_Navegador
             }
         }
 
-        string crearUpdate(string sTablaPrincipal, string sNombreClavePrimaria, string sNombreClaveForanea) // Cambiado sTablaPrincipal a sTablaPrincipal, nombreClavePrimaria a sNombreClavePrimaria, nombreClaveForanea a sNombreClaveForanea
+        string CrearUpdate(string sTablaPrincipal, string sNombreClavePrimaria, string sNombreClaveForanea) 
         {
             // Obtiene las columnas existentes en la sTablaPrincipal
             string[] arrColumnasTabla = logic.Campos(sTablaPrincipal); // Cambiado columnasTabla a arrColumnasTabla y sTablaPrincipal a sTablaPrincipal
 
-            string query = "UPDATE " + sTablaPrincipal + " SET "; // Cambiado sTablaPrincipal a sTablaPrincipal
-            string whereQuery = " WHERE ";
-            int iIndice = 0;           // Cambiado i a iIndice
-            string sCampos = "";        // Cambiado campos a sCampos
+            string sQuery = "UPDATE " + sTablaPrincipal + " SET "; // Cambiado sTablaPrincipal a sTablaPrincipal
+            string sWhereQuery = " WHERE ";
+            int iIndice = 0;           
+            string sCampos = "";        
 
             // Recorre todos los controles, incluyendo los anidados
             foreach (Control componente in GetAllControls(this))
@@ -1054,60 +1054,60 @@ namespace Capa_Vista_Navegador
                     Console.WriteLine($"Evaluando control: {sNombreCampo} para la sTablaPrincipal: {sTablaPrincipal}");
 
                     // Verifica si el control corresponde a una columna de la sTablaPrincipal
-                    if (arrColumnasTabla.Contains(sNombreCampo)) // Cambiado columnasTabla a arrColumnasTabla y nombreCampo a sNombreCampo
+                    if (arrColumnasTabla.Contains(sNombreCampo)) 
                     {
                         // Excluye claves primarias y foráneas
-                        if (sNombreCampo != sNombreClavePrimaria && sNombreCampo != sNombreClaveForanea) // Cambiado nombreCampo a sNombreCampo, nombreClavePrimaria a sNombreClavePrimaria, nombreClaveForanea a sNombreClaveForanea
+                        if (sNombreCampo != sNombreClavePrimaria && sNombreCampo != sNombreClaveForanea) 
                         {
-                            string sValorCampo = componente.Text; // Cambiado valorCampo a sValorCampo
-                            sCampos += $"{sNombreCampo} = '{sValorCampo}', "; // Cambiado nombreCampo a sNombreCampo, campos a sCampos, valorCampo a sValorCampo
-                            iIndice++; // Cambiado i a iIndice
+                            string sValorCampo = componente.Text; 
+                            sCampos += $"{sNombreCampo} = '{sValorCampo}', ";
+                            iIndice++; 
                             Console.WriteLine($"Asignando valor '{sValorCampo}' al campo '{sNombreCampo}' en la sTablaPrincipal '{sTablaPrincipal}'");
                         }
                         else
                         {
-                            Console.WriteLine($"El campo {sNombreCampo} es clave primaria o foránea y no se actualizará."); // Cambiado nombreCampo a sNombreCampo
+                            Console.WriteLine($"El campo {sNombreCampo} es clave primaria o foránea y no se actualizará."); 
                         }
                     }
                     else
                     {
-                        Console.WriteLine($"El control {sNombreCampo} no corresponde a una columna en la sTablaPrincipal {sTablaPrincipal}"); // Cambiado nombreCampo a sNombreCampo, sTablaPrincipal a sTablaPrincipal
+                        Console.WriteLine($"El control {sNombreCampo} no corresponde a una columna en la sTablaPrincipal {sTablaPrincipal}"); 
                     }
                 }
             }
 
-            if (string.IsNullOrEmpty(sCampos)) // Cambiado campos a sCampos
+            if (string.IsNullOrEmpty(sCampos))
             {
-                Console.WriteLine($"No hay campos para actualizar en la sTablaPrincipal {sTablaPrincipal}"); // Cambiado sTablaPrincipal a sTablaPrincipal
+                Console.WriteLine($"No hay campos para actualizar en la sTablaPrincipal {sTablaPrincipal}"); 
                 return null;
             }
 
-            sCampos = sCampos.TrimEnd(' ', ','); // Cambiado campos a sCampos
+            sCampos = sCampos.TrimEnd(' ', ','); 
 
             // Usa la clave primaria o foránea en la cláusula WHERE
-            string sValorClave = dataGridView1.CurrentRow.Cells[0].Value.ToString(); // Cambiado valorClave a sValorClave
-            if (!string.IsNullOrEmpty(sNombreClaveForanea)) // Cambiado nombreClaveForanea a sNombreClaveForanea
+            string sValorClave = Dgv_Informacion.CurrentRow.Cells[0].Value.ToString(); 
+            if (!string.IsNullOrEmpty(sNombreClaveForanea)) 
             {
-                whereQuery += $"{sNombreClaveForanea} = '{sValorClave}'"; // Cambiado nombreClaveForanea a sNombreClaveForanea y valorClave a sValorClave
+                sWhereQuery += $"{sNombreClaveForanea} = '{sValorClave}'"; 
             }
             else
             {
-                whereQuery += $"{sNombreClavePrimaria} = '{sValorClave}'"; // Cambiado nombreClavePrimaria a sNombreClavePrimaria y valorClave a sValorClave
+                sWhereQuery += $"{sNombreClavePrimaria} = '{sValorClave}'"; 
             }
 
-            query += sCampos + whereQuery + ";"; // Cambiado campos a sCampos
-            Console.WriteLine("Consulta generada para el UPDATE: " + query);
+            sQuery += sCampos + sWhereQuery + ";"; 
+            Console.WriteLine("Consulta generada para el UPDATE: " + sQuery);
 
-            return query;
+            return sQuery;
         }
 
         //******************************************** CODIGO HECHO POR BRAYAN HERNANDEZ***************************** 
 
         //******************************************** CODIGO HECHO POR PABLO FLORES***************************** 
-        public void guardadoforsozo()
+        public void GuardadoForsozo()
         {
             // Ejecuta la consulta de inserción generada y limpia los campos del formulario
-            logic.NuevoQuery(crearInsert(sTablaPrincipal)); // Cambiado sTablaPrincipal a sTablaPrincipal
+            logic.NuevoQuery(CrearInsert(sTablaPrincipal)); 
             foreach (Control componente in Controls)
             {
                 if (componente is TextBox || componente is DateTimePicker || componente is ComboBox)
@@ -1116,10 +1116,10 @@ namespace Capa_Vista_Navegador
                     componente.Text = "";
                 }
             }
-            actualizardatagriew();
+            ActualizarDataGridView();
         }
 
-        public void habilitarallbotones() // Habilita todos los botones
+        public void HabilitarTodosBotones() // Habilita todos los botones
         {
             Btn_Guardar.Enabled = true;
             Btn_Ingresar.Enabled = true;
@@ -1134,47 +1134,47 @@ namespace Capa_Vista_Navegador
         //******************************************** CODIGO HECHO POR DIEGO MARROQUIN***************************** 
         private void Btn_Ingresar_Click(object sender, EventArgs e)
         {
-            string[] arrTipos = logic.Tipos(sTablaPrincipal); // Cambiado Tipos a arrTipos y sTablaPrincipal a sTablaPrincipal
+            string[] arrTipos = logic.Tipos(sTablaPrincipal); 
 
-            bool bTipoInt = false; // Cambiado tipoInt a bTipoInt
-            bool bExtraAI = false; // Cambiado ExtraAI a bExtraAI
-            string sAuxId = "";    // Cambiado auxId a sAuxId
-            int iAuxLastId = 0;     // Cambiado auxLastId a iAuxLastId
+            bool bTipoInt = false; 
+            bool bExtraAI = false; 
+            string sAuxId = "";   
+            int iAuxLastId = 0;  
 
             // Verifica si el primer campo de la sTablaPrincipal es de tipo entero y autoincremental
-            if (arrTipos[0] == "int") // Cambiado Tipos a arrTipos
+            if (arrTipos[0] == "int") 
             {
-                bTipoInt = true; // Cambiado tipoInt a bTipoInt
+                bTipoInt = true; 
 
                 // Obtiene el último ID insertado en la sTablaPrincipal si el campo es autoincrementable
-                sAuxId = logic.UltimoID(sTablaPrincipal); // Cambiado auxId a sAuxId y sTablaPrincipal a sTablaPrincipal
+                sAuxId = logic.UltimoID(sTablaPrincipal); 
 
                 // Verifica si el ID existe o la sTablaPrincipal está vacía
-                if (!string.IsNullOrEmpty(sAuxId)) // Cambiado auxId a sAuxId
+                if (!string.IsNullOrEmpty(sAuxId)) 
                 {
-                    iAuxLastId = Int32.Parse(sAuxId); // Cambiado auxLastId a iAuxLastId y auxId a sAuxId
+                    iAuxLastId = Int32.Parse(sAuxId);
                 }
                 else
                 {
                     iAuxLastId = 0; // Si no hay registros previos, inicializa el ID en 0
                 }
 
-                bExtraAI = true; // Cambiado ExtraAI a bExtraAI
+                bExtraAI = true; 
             }
 
             iActivar = 2; // Define que se realizará una inserción
-            habilitarcampos_y_botones();
+            HabilitarCampos_y_Botones();
 
             foreach (Control componente in Controls)
             {
-                if (componente is TextBox && bTipoInt && bExtraAI) // Cambiado tipoInt a bTipoInt y ExtraAI a bExtraAI
+                if (componente is TextBox && bTipoInt && bExtraAI) 
                 {
                     // Incrementa el último ID para el nuevo registro
-                    iAuxLastId += 1; // Cambiado auxLastId a iAuxLastId
-                    componente.Text = iAuxLastId.ToString(); // Cambiado auxLastId a iAuxLastId
+                    iAuxLastId += 1; 
+                    componente.Text = iAuxLastId.ToString(); 
                     componente.Enabled = false; // Deshabilita el campo autoincremental para que no sea editable
-                    bTipoInt = false; // Cambiado tipoInt a bTipoInt
-                    bExtraAI = false; // Cambiado ExtraAI a bExtraAI
+                    bTipoInt = false;
+                    bExtraAI = false; 
                 }
                 else if (componente is TextBox || componente is DateTimePicker || componente is ComboBox)
                 {
@@ -1192,7 +1192,7 @@ namespace Capa_Vista_Navegador
                 Btn_Cancelar.Enabled = true;
             }
 
-            botonesYPermisosSinMensaje();
+            BotonesYPermisosSinMensaje();
             // Habilita y deshabilita botones según el usuario
             Btn_Ingresar.Enabled = false;
             Btn_Modificar.Enabled = false;
@@ -1207,7 +1207,7 @@ namespace Capa_Vista_Navegador
             try
             {
                 // Muestra un mensaje de confirmación antes de proceder con la modificación
-                DialogResult result = MessageBox.Show(
+                DialogResult drResult = MessageBox.Show(
                     "Está a punto de modificar un registro existente.\n\n" +
                     "Asegúrese de que todos los datos sean correctos antes de continuar.\n\n" +
                     "¿Desea proceder con la modificación de este registro?",
@@ -1218,18 +1218,18 @@ namespace Capa_Vista_Navegador
                 );
 
                 // Si el usuario selecciona "No", se cancela la operación
-                if (result == DialogResult.No)
+                if (drResult == DialogResult.No)
                 {
                     return;
                 }
 
                 // Habilita campos para edición
-                habilitarcampos_y_botones();
-                iActivar = 1; // Define que se realizará una modificación, Cambiado activar a iAccionFormulario
-                int iIndice = 0; // Cambiado i a iIndice
+                HabilitarCampos_y_Botones();
+                iActivar = 1; // Define que se realizará una modificación
+                int iIndice = 0; 
 
-                string[] arrTipos = logic.Tipos(sTablaPrincipal); // Cambiado Tipos a arrTipos y sTablaPrincipal a sTablaPrincipal
-                int iNumCombo = 0; // Cambiado numCombo a iNumCombo
+                string[] arrTipos = logic.Tipos(sTablaPrincipal); 
+                int iNumCombo = 0; 
 
                 // Recorre los controles para habilitar la edición
                 foreach (Control componente in Controls)
@@ -1237,7 +1237,7 @@ namespace Capa_Vista_Navegador
                     if (componente is TextBox || componente is DateTimePicker || componente is ComboBox)
                     {
                         // Deshabilita el campo del ID si es entero (autoincremental)
-                        if (iIndice == 0 && arrTipos[0] == "int") // Cambiado i a iIndice y Tipos a arrTipos
+                        if (iIndice == 0 && arrTipos[0] == "int")
                         {
                             componente.Enabled = false;
                         }
@@ -1245,48 +1245,48 @@ namespace Capa_Vista_Navegador
                         {
                             if (componente is ComboBox)
                             {
-                                if (arrModoCampoCombo[iNumCombo] == 1) // Cambiado arrModoCampoCombo a arrModoCampoCombo y numCombo a iNumCombo
+                                if (arrModoCampoCombo[iNumCombo] == 1) 
                                 {
-                                    componente.Text = logic.LlaveCampoRev(arrTablaCombo[iNumCombo], arrCampoCombo[iNumCombo], dataGridView1.CurrentRow.Cells[iIndice].Value.ToString()); // Cambiado arrTablaCombo a arrTablaCombo, arrCampoCombo a arrCampoCombo y i a iIndice
+                                    componente.Text = logic.LlaveCampoRev(arrTablaCombo[iNumCombo], arrCampoCombo[iNumCombo], Dgv_Informacion.CurrentRow.Cells[iIndice].Value.ToString());
                                 }
                                 else
                                 {
-                                    componente.Text = dataGridView1.CurrentRow.Cells[iIndice].Value.ToString(); // Cambiado i a iIndice
+                                    componente.Text = Dgv_Informacion.CurrentRow.Cells[iIndice].Value.ToString(); 
                                 }
-                                iNumCombo++; // Cambiado numCombo a iNumCombo
+                                iNumCombo++; 
                             }
                             else
                             {
-                                componente.Text = dataGridView1.CurrentRow.Cells[iIndice].Value.ToString(); // Cambiado i a iIndice
+                                componente.Text = Dgv_Informacion.CurrentRow.Cells[iIndice].Value.ToString();
                             }
                         }
 
-                        iIndice++; // Cambiado i a iIndice
+                        iIndice++;
                     }
 
                     if (componente is Button)
                     {
                         componente.Enabled = true;
-                        string sEstadoRegistro = dataGridView1.CurrentRow.Cells[iIndice].Value.ToString(); // Cambiado var1 a sEstadoRegistro y i a iIndice
+                        string sEstadoRegistro = Dgv_Informacion.CurrentRow.Cells[iIndice].Value.ToString(); 
 
-                        if (sEstadoRegistro == "0") // Cambiado var1 a sEstadoRegistro
+                        if (sEstadoRegistro == "0") 
                         {
                             componente.Text = "Desactivado";
                             componente.BackColor = Color.Red;
-                            iEstadoFormulario = 0; // Cambiado estado a iEstadoFormulario
+                            iEstadoFormulario = 0; 
                         }
-                        else if (sEstadoRegistro == "1") // Cambiado var1 a sEstadoRegistro
+                        else if (sEstadoRegistro == "1") 
                         {
                             componente.Text = "Activado";
                             componente.BackColor = Color.Green;
-                            iEstadoFormulario = 1; // Cambiado estado a iEstadoFormulario
+                            iEstadoFormulario = 1; 
                         }
                         componente.Enabled = true;
                     }
                 }
 
                 // Habilita y deshabilita botones según el usuario
-                botonesYPermisosSinMensaje();
+                BotonesYPermisosSinMensaje();
                 Btn_Ingresar.Enabled = false;
                 Btn_Modificar.Enabled = false;
                 Btn_Eliminar.Enabled = false;
@@ -1301,7 +1301,7 @@ namespace Capa_Vista_Navegador
                     "Por favor, intente nuevamente o contacte al administrador del sistema.",
                     "Error en la Modificación",
                     MessageBoxButtons.OK,
-                    MessageBoxIcon.Error // Icono de error para hacer el mensaje más claro
+                    MessageBoxIcon.Error 
                 );
             }
         }
@@ -1314,9 +1314,9 @@ namespace Capa_Vista_Navegador
         {
             try
             {
-                sn.insertarBitacora(sIdUsuario, "Se presionó el botón cancelar en " + sTablaPrincipal, sTablaPrincipal, sIdAplicacion); // Cambiado idUsuario a sIdUsuario, sTablaPrincipal a sTablaPrincipal, idAplicacion a sIdAplicacion
-                                                                                                                                        // Mostrar un mensaje de confirmación antes de cancelar la operación actual
-                DialogResult result = MessageBox.Show(
+                sn.insertarBitacora(sIdUsuario, "Se presionó el botón cancelar en " + sTablaPrincipal, sTablaPrincipal, sIdAplicacion); 
+                                                                                                                                        
+                DialogResult drResult = MessageBox.Show(
                     "Está a punto de cancelar los cambios no guardados.\n\n" +
                     "Cualquier dato ingresado se perderá.\n\n" +
                     "¿Desea realmente cancelar la operación?",
@@ -1327,7 +1327,7 @@ namespace Capa_Vista_Navegador
                 );
 
                 // Si el usuario selecciona "No", se cancela la operación de cancelación
-                if (result == DialogResult.No)
+                if (drResult == DialogResult.No)
                 {
                     return;
                 }
@@ -1341,43 +1341,43 @@ namespace Capa_Vista_Navegador
                 Btn_Refrescar.Enabled = true;
 
                 // Actualizar el DataGridView y los controles a su estado original
-                actualizardatagriew();
-                if (logic.TestRegistros(sTablaPrincipal) > 0) // Cambiado sTablaPrincipal a sTablaPrincipal
+                ActualizarDataGridView();
+                if (logic.TestRegistros(sTablaPrincipal) > 0) 
                 {
-                    int iIndice = 0; // Cambiado i a iIndice
-                    int iNumCombo = 0; // Cambiado numCombo a iNumCombo
+                    int iIndice = 0; 
+                    int iNumCombo = 0; 
                     foreach (Control componente in Controls)
                     {
                         if (componente is TextBox || componente is DateTimePicker || componente is ComboBox)
                         {
                             if (componente is ComboBox)
                             {
-                                if (arrModoCampoCombo[iNumCombo] == 1) // Cambiado arrModoCampoCombo a arrModoCampoCombo y numCombo a iNumCombo
+                                if (arrModoCampoCombo[iNumCombo] == 1)
                                 {
-                                    componente.Text = logic.LlaveCampoRev(arrTablaCombo[iNumCombo], arrCampoCombo[iNumCombo], dataGridView1.CurrentRow.Cells[iIndice].Value.ToString()); // Cambiado arrTablaCombo a arrTablaCombo, arrCampoCombo a arrCampoCombo y i a iIndice
+                                    componente.Text = logic.LlaveCampoRev(arrTablaCombo[iNumCombo], arrCampoCombo[iNumCombo], Dgv_Informacion.CurrentRow.Cells[iIndice].Value.ToString()); 
                                 }
                                 else
                                 {
-                                    componente.Text = dataGridView1.CurrentRow.Cells[iIndice].Value.ToString(); // Cambiado i a iIndice
+                                    componente.Text = Dgv_Informacion.CurrentRow.Cells[iIndice].Value.ToString(); 
                                 }
-                                iNumCombo++; // Cambiado numCombo a iNumCombo
+                                iNumCombo++;
                             }
                             else
                             {
-                                componente.Text = dataGridView1.CurrentRow.Cells[iIndice].Value.ToString(); // Cambiado i a iIndice
+                                componente.Text = Dgv_Informacion.CurrentRow.Cells[iIndice].Value.ToString(); 
                             }
                             componente.Enabled = false;
-                            iIndice++; // Cambiado i a iIndice
+                            iIndice++;
                         }
                         if (componente is Button)
                         {
-                            string sEstadoRegistro = dataGridView1.CurrentRow.Cells[iIndice].Value.ToString(); // Cambiado var1 a sEstadoRegistro y i a iIndice
-                            if (sEstadoRegistro == "0") // Cambiado var1 a sEstadoRegistro
+                            string sEstadoRegistro = Dgv_Informacion.CurrentRow.Cells[iIndice].Value.ToString(); 
+                            if (sEstadoRegistro == "0") 
                             {
                                 componente.Text = "Desactivado";
                                 componente.BackColor = Color.Red;
                             }
-                            if (sEstadoRegistro == "1") // Cambiado var1 a sEstadoRegistro
+                            if (sEstadoRegistro == "1") 
                             {
                                 componente.Text = "Activado";
                                 componente.BackColor = Color.Green;
@@ -1388,7 +1388,7 @@ namespace Capa_Vista_Navegador
                 }
 
                 // Habilitar/deshabilitar según los permisos del usuario
-                botonesYPermisosSinMensaje();
+                BotonesYPermisosSinMensaje();
             }
             catch (Exception ex)
             {
@@ -1410,7 +1410,7 @@ namespace Capa_Vista_Navegador
         {
             try
             {
-                if (!bPresionado) // Cambiado presionado a bPresionado
+                if (!bPresionado) 
                 {
                     // Habilitar y deshabilitar botones según el estado de eliminación
                     Btn_Guardar.Enabled = false;
@@ -1418,12 +1418,12 @@ namespace Capa_Vista_Navegador
                     Btn_Eliminar.Enabled = true;
                     Btn_Cancelar.Enabled = true;
                     Btn_Ingresar.Enabled = false;
-                    bPresionado = true; // Cambiado presionado a bPresionado
+                    bPresionado = true; 
                 }
                 else
                 {
                     // Mostrar un mensaje de confirmación antes de proceder con la eliminación
-                    DialogResult respuestaEliminar = MessageBox.Show(
+                    DialogResult drRespuestaEliminar = MessageBox.Show(
                         "Está a punto de eliminar permanentemente este registro del sistema.\n\n" +
                         "Esta operación no se puede deshacer. ¿Está seguro de que desea continuar?",
                         "Confirmación de Eliminación - " + sNombreFormulario, // Cambiado sNombreFormulario a sNombreFormulario
@@ -1432,11 +1432,11 @@ namespace Capa_Vista_Navegador
                         MessageBoxDefaultButton.Button2 // Opción "No" predeterminada
                     );
 
-                    if (respuestaEliminar == DialogResult.Yes)
+                    if (drRespuestaEliminar == DialogResult.Yes)
                     {
                         // Proceder con la eliminación
-                        logic.NuevoQuery(crearDelete());
-                        actualizardatagriew();
+                        logic.NuevoQuery(CrearDelete());
+                        ActualizarDataGridView();
 
                         // Mostrar un mensaje de éxito tras la eliminación
                         MessageBox.Show(
@@ -1452,9 +1452,9 @@ namespace Capa_Vista_Navegador
                         Btn_Cancelar.Enabled = false;
                         Btn_Eliminar.Enabled = true;
                         Btn_Ingresar.Enabled = true;
-                        bPresionado = false; // Cambiado presionado a bPresionado
+                        bPresionado = false;
                     }
-                    else if (respuestaEliminar == DialogResult.No)
+                    else if (drRespuestaEliminar == DialogResult.No)
                     {
                         // Si el usuario cancela la operación de eliminación
                         MessageBox.Show(
@@ -1470,14 +1470,14 @@ namespace Capa_Vista_Navegador
                         Btn_Eliminar.Enabled = true;
                         Btn_Cancelar.Enabled = true;
                         Btn_Ingresar.Enabled = false;
-                        bPresionado = true; // Cambiado presionado a bPresionado
+                        bPresionado = true; 
                     }
                 }
 
                 // Habilitar/deshabilitar botones según los permisos del usuario
-                botonesYPermisosSinMensaje();
-                bPresionado = true; // Cambiado presionado a bPresionado
-                sn.insertarBitacora(sIdUsuario, "Se actualizó el estado en " + sTablaPrincipal, sTablaPrincipal, sIdAplicacion); // Cambiado idUsuario a sIdUsuario, sTablaPrincipal a sTablaPrincipal, idAplicacion a sIdAplicacion
+                BotonesYPermisosSinMensaje();
+                bPresionado = true;
+                sn.insertarBitacora(sIdUsuario, "Se actualizó el estado en " + sTablaPrincipal, sTablaPrincipal, sIdAplicacion); 
             }
             catch (Exception ex)
             {
@@ -1494,35 +1494,6 @@ namespace Capa_Vista_Navegador
         }
         //******************************************** CODIGO HECHO POR VICTOR CASTELLANOS***************************** 
 
-        //******************************************** CODIGO HECHO POR SEBASTIAN LETONA***************************** 
-        private void Btn_Imprimir_Click(object sender, EventArgs e)
-        {
-            //DLL DE IMPRESION, FORMATO DE REPORTES.
-            string sLlaveReporte = ""; // Cambiado llave a sLlaveReporte
-            if (sIdReporte != "") // Cambiado idRepo a sIdReporte
-            {
-                sLlaveReporte = logic.ObtenerIdReporte(sIdReporte); // Cambiado llave a sLlaveReporte y idRepo a sIdReporte
-            }
-            else
-            {
-                MessageBox.Show("No se asignó ningún reporte....");
-            }
-
-            if (sLlaveReporte != "")
-            {
-                Clientes cl = new Clientes(sLlaveReporte); // Cambiado llave a sLlaveReporte
-                cl.Show();
-            }
-            else
-            {
-                MessageBox.Show("El Id Asignado es incorrecto");
-            }
-
-            //habilitar y deshabilitar según Usuario
-            botonesYPermisosSinMensaje();
-        }
-
-        //******************************************** CODIGO HECHO POR SEBASTIAN LETONA***************************** 
 
         //******************************************** CODIGO HECHO POR VICTOR CASTELLANOS***************************** 
         private void Btn_Refrescar_Click(object sender, EventArgs e)
@@ -1530,11 +1501,11 @@ namespace Capa_Vista_Navegador
             try
             {
                 // Refrescar la DataGridView y actualizar los controles
-                actualizardatagriew();
+                ActualizarDataGridView();
 
                 // Iterar sobre los controles y actualizar sus valores con los datos del DataGridView
-                int i = 0;
-                int iNumCombo = 0; // Cambiado numCombo a iNumCombo
+                int iIndex = 0;
+                int iNumCombo = 0;
                 foreach (Control componente in Controls)
                 {
                     if (componente is TextBox || componente is DateTimePicker || componente is ComboBox)
@@ -1543,24 +1514,24 @@ namespace Capa_Vista_Navegador
                         {
                             if (arrModoCampoCombo[iNumCombo] == 1) // Cambiado numCombo a iNumCombo
                             {
-                                componente.Text = logic.LlaveCampoRev(arrTablaCombo[iNumCombo], arrCampoCombo[iNumCombo], dataGridView1.CurrentRow.Cells[i].Value.ToString());
+                                componente.Text = logic.LlaveCampoRev(arrTablaCombo[iNumCombo], arrCampoCombo[iNumCombo], Dgv_Informacion.CurrentRow.Cells[iIndex].Value.ToString());
                             }
                             else
                             {
-                                componente.Text = dataGridView1.CurrentRow.Cells[i].Value.ToString();
+                                componente.Text = Dgv_Informacion.CurrentRow.Cells[iIndex].Value.ToString();
                             }
-                            iNumCombo++; // Cambiado numCombo a iNumCombo
+                            iNumCombo++; 
                         }
                         else
                         {
-                            componente.Text = dataGridView1.CurrentRow.Cells[i].Value.ToString();
+                            componente.Text = Dgv_Informacion.CurrentRow.Cells[iIndex].Value.ToString();
                         }
 
-                        i++;
+                        iIndex++;
                     }
                     if (componente is Button)
                     {
-                        string sVarEstado = dataGridView1.CurrentRow.Cells[i].Value.ToString(); // Cambiado var1 a sVarEstado
+                        string sVarEstado = Dgv_Informacion.CurrentRow.Cells[iIndex].Value.ToString(); 
                         if (sVarEstado == "0")
                         {
                             componente.Text = "Desactivado";
@@ -1576,7 +1547,7 @@ namespace Capa_Vista_Navegador
                 }
 
                 // Habilitar y deshabilitar botones según permisos del usuario
-                botonesYPermisosSinMensaje();
+                BotonesYPermisosSinMensaje();
 
                 // Mostrar mensaje de éxito al refrescar los datos
                 MessageBox.Show(
@@ -1603,42 +1574,42 @@ namespace Capa_Vista_Navegador
         // Este método maneja el evento de clic en el botón "Anterior".
         private void Btn_Anterior_Click(object sender, EventArgs e)
         {
-            int i = 0;
-            string[] arrCampos = logic.Campos(sTablaPrincipal); // Cambiado Campos a arrCampos y sTablaPrincipal a sTablaPrincipal
+            int iIndex = 0;
+            string[] arrCampos = logic.Campos(sTablaPrincipal); 
 
-            int iFila = dataGridView1.SelectedRows[0].Index; // Cambiado fila a iFila
+            int iFila = Dgv_Informacion.SelectedRows[0].Index; 
 
             if (iFila > 0)
             {
-                dataGridView1.Rows[iFila - 1].Selected = true; // Cambiado fila a iFila
-                dataGridView1.CurrentCell = dataGridView1.Rows[iFila - 1].Cells[0]; // Cambiado fila a iFila
+                Dgv_Informacion.Rows[iFila - 1].Selected = true; 
+                Dgv_Informacion.CurrentCell = Dgv_Informacion.Rows[iFila - 1].Cells[0];
 
-                int iNumCombo = 0; // Cambiado numCombo a iNumCombo
+                int iNumCombo = 0;
                 foreach (Control componente in Controls)
                 {
                     if (componente is TextBox || componente is DateTimePicker || componente is ComboBox)
                     {
                         if (componente is ComboBox)
                         {
-                            if (arrModoCampoCombo[iNumCombo] == 1) // Cambiado numCombo a iNumCombo
+                            if (arrModoCampoCombo[iNumCombo] == 1) 
                             {
-                                componente.Text = logic.LlaveCampoRev(arrTablaCombo[iNumCombo], arrCampoCombo[iNumCombo], dataGridView1.CurrentRow.Cells[i].Value.ToString());
+                                componente.Text = logic.LlaveCampoRev(arrTablaCombo[iNumCombo], arrCampoCombo[iNumCombo], Dgv_Informacion.CurrentRow.Cells[iIndex].Value.ToString());
                             }
                             else
                             {
-                                componente.Text = dataGridView1.CurrentRow.Cells[i].Value.ToString();
+                                componente.Text = Dgv_Informacion.CurrentRow.Cells[iIndex].Value.ToString();
                             }
-                            iNumCombo++; // Cambiado numCombo a iNumCombo
+                            iNumCombo++; 
                         }
                         else
                         {
-                            componente.Text = dataGridView1.CurrentRow.Cells[i].Value.ToString();
+                            componente.Text = Dgv_Informacion.CurrentRow.Cells[iIndex].Value.ToString();
                         }
-                        i++;
+                        iIndex++;
                     }
                     if (componente is Button)
                     {
-                        string sVarEstado = dataGridView1.CurrentRow.Cells[i].Value.ToString(); // Cambiado var1 a sVarEstado
+                        string sVarEstado = Dgv_Informacion.CurrentRow.Cells[iIndex].Value.ToString(); 
                         if (sVarEstado == "0")
                         {
                             componente.Text = "Desactivado";
@@ -1658,42 +1629,42 @@ namespace Capa_Vista_Navegador
         // Este método maneja el evento de clic en el botón "Siguiente".
         private void Btn_Siguiente_Click(object sender, EventArgs e)
         {
-            int i = 0;
-            string[] arrCampos = logic.Campos(sTablaPrincipal); // Cambiado Campos a arrCampos y sTablaPrincipal a sTablaPrincipal
+            int iIndex = 0;
+            string[] arrCampos = logic.Campos(sTablaPrincipal); 
 
-            int iFila = dataGridView1.SelectedRows[0].Index; // Cambiado fila a iFila
+            int iFila = Dgv_Informacion.SelectedRows[0].Index; 
 
-            if (iFila < dataGridView1.Rows.Count - 1)
+            if (iFila < Dgv_Informacion.Rows.Count - 1)
             {
-                dataGridView1.Rows[iFila + 1].Selected = true; // Cambiado fila a iFila
-                dataGridView1.CurrentCell = dataGridView1.Rows[iFila + 1].Cells[0]; // Cambiado fila a iFila
+                Dgv_Informacion.Rows[iFila + 1].Selected = true; 
+                Dgv_Informacion.CurrentCell = Dgv_Informacion.Rows[iFila + 1].Cells[0]; 
 
-                int iNumCombo = 0; // Cambiado numCombo a iNumCombo
+                int iNumCombo = 0; 
                 foreach (Control componente in Controls)
                 {
                     if (componente is TextBox || componente is DateTimePicker || componente is ComboBox)
                     {
                         if (componente is ComboBox)
                         {
-                            if (arrModoCampoCombo[iNumCombo] == 1) // Cambiado numCombo a iNumCombo
+                            if (arrModoCampoCombo[iNumCombo] == 1) 
                             {
-                                componente.Text = logic.LlaveCampoRev(arrTablaCombo[iNumCombo], arrCampoCombo[iNumCombo], dataGridView1.CurrentRow.Cells[i].Value.ToString());
+                                componente.Text = logic.LlaveCampoRev(arrTablaCombo[iNumCombo], arrCampoCombo[iNumCombo], Dgv_Informacion.CurrentRow.Cells[iIndex].Value.ToString());
                             }
                             else
                             {
-                                componente.Text = dataGridView1.CurrentRow.Cells[i].Value.ToString();
+                                componente.Text = Dgv_Informacion.CurrentRow.Cells[iIndex].Value.ToString();
                             }
-                            iNumCombo++; // Cambiado numCombo a iNumCombo
+                            iNumCombo++;
                         }
                         else
                         {
-                            componente.Text = dataGridView1.CurrentRow.Cells[i].Value.ToString();
+                            componente.Text = Dgv_Informacion.CurrentRow.Cells[iIndex].Value.ToString();
                         }
-                        i++;
+                        iIndex++;
                     }
                     if (componente is Button)
                     {
-                        string sVarEstado = dataGridView1.CurrentRow.Cells[i].Value.ToString(); // Cambiado var1 a sVarEstado
+                        string sVarEstado = Dgv_Informacion.CurrentRow.Cells[iIndex].Value.ToString();
                         if (sVarEstado == "0")
                         {
                             componente.Text = "Desactivado";
@@ -1722,23 +1693,23 @@ namespace Capa_Vista_Navegador
         private void Btn_FlechaFin_Click(object sender, EventArgs e)
         {
             // Selecciona la penúltima fila (contando desde cero) en el DataGridView y la establece como la fila actual.
-            dataGridView1.Rows[dataGridView1.Rows.Count - 2].Selected = true;
-            dataGridView1.CurrentCell = dataGridView1.Rows[dataGridView1.Rows.Count - 2].Cells[0];
+            Dgv_Informacion.Rows[Dgv_Informacion.Rows.Count - 2].Selected = true;
+            Dgv_Informacion.CurrentCell = Dgv_Informacion.Rows[Dgv_Informacion.Rows.Count - 2].Cells[0];
 
-            int i = 0;
+            int iIndex = 0;
             // Obtiene los nombres de las columnas de la sTablaPrincipal en la base de datos.
-            string[] arrCampos = logic.Campos(sTablaPrincipal); // Cambiado Campos a arrCampos
+            string[] arrCampos = logic.Campos(sTablaPrincipal); 
 
             // Obtiene el índice de la fila actualmente seleccionada en el DataGridView.
-            int iFila = dataGridView1.SelectedRows[0].Index; // Cambiado fila a iFila
-            if (iFila < dataGridView1.Rows.Count - 1)
+            int iFila = Dgv_Informacion.SelectedRows[0].Index; 
+            if (iFila < Dgv_Informacion.Rows.Count - 1)
             {
                 // Vuelve a seleccionar la penúltima fila para asegurarse de que es la fila correcta.
-                dataGridView1.Rows[dataGridView1.Rows.Count - 2].Selected = true;
-                dataGridView1.CurrentCell = dataGridView1.Rows[dataGridView1.Rows.Count - 2].Cells[0];
+                Dgv_Informacion.Rows[Dgv_Informacion.Rows.Count - 2].Selected = true;
+                Dgv_Informacion.CurrentCell = Dgv_Informacion.Rows[Dgv_Informacion.Rows.Count - 2].Cells[0];
 
-                int iNumCombo = 0; // Cambiado numCombo a iNumCombo
-                                   // Itera sobre todos los controles en el formulario.
+                int iNumCombo = 0; 
+                 // Itera sobre todos los controles en el formulario.
                 foreach (Control componente in Controls)
                 {
                     // Si el control es un TextBox, DateTimePicker o ComboBox, actualiza su valor con el valor correspondiente de la celda seleccionada en el DataGridView.
@@ -1747,26 +1718,26 @@ namespace Capa_Vista_Navegador
                         if (componente is ComboBox)
                         {
                             // Para los ComboBox, se verifica si el campo es clave externa (arrModoCampoCombo) y se obtiene el valor adecuado.
-                            if (arrModoCampoCombo[iNumCombo] == 1) // Cambiado numCombo a iNumCombo
+                            if (arrModoCampoCombo[iNumCombo] == 1) 
                             {
-                                componente.Text = logic.LlaveCampoRev(arrTablaCombo[iNumCombo], arrCampoCombo[iNumCombo], dataGridView1.CurrentRow.Cells[i].Value.ToString());
+                                componente.Text = logic.LlaveCampoRev(arrTablaCombo[iNumCombo], arrCampoCombo[iNumCombo], Dgv_Informacion.CurrentRow.Cells[iIndex].Value.ToString());
                             }
                             else
                             {
-                                componente.Text = dataGridView1.CurrentRow.Cells[i].Value.ToString();
+                                componente.Text = Dgv_Informacion.CurrentRow.Cells[iIndex].Value.ToString();
                             }
                             iNumCombo++; // Cambiado numCombo a iNumCombo
                         }
                         else
                         {
-                            componente.Text = dataGridView1.CurrentRow.Cells[i].Value.ToString();
+                            componente.Text = Dgv_Informacion.CurrentRow.Cells[iIndex].Value.ToString();
                         }
-                        i++;
+                        iIndex++;
                     }
                     // Si el control es un botón, se actualiza su estado dependiendo del valor de la celda en la fila seleccionada.
                     if (componente is Button)
                     {
-                        string sVarEstado = dataGridView1.CurrentRow.Cells[i].Value.ToString(); // Cambiado var1 a sVarEstado
+                        string sVarEstado = Dgv_Informacion.CurrentRow.Cells[iIndex].Value.ToString(); // Cambiado var1 a sVarEstado
                         if (sVarEstado == "0")
                         {
                             componente.Text = "Desactivado";
@@ -1787,21 +1758,21 @@ namespace Capa_Vista_Navegador
         private void Btn_FlechaInicio_Click(object sender, EventArgs e)
         {
             // Selecciona la primera fila en el DataGridView y la establece como la fila actual.
-            dataGridView1.Rows[0].Selected = true;
-            dataGridView1.CurrentCell = dataGridView1.Rows[0].Cells[0];
+            Dgv_Informacion.Rows[0].Selected = true;
+            Dgv_Informacion.CurrentCell = Dgv_Informacion.Rows[0].Cells[0];
 
-            int i = 0;
+            int iIndex = 0;
             // Obtiene los nombres de las columnas de la sTablaPrincipal en la base de datos.
-            string[] arrCampos = logic.Campos(sTablaPrincipal); // Cambiado Campos a arrCampos
+            string[] arrCampos = logic.Campos(sTablaPrincipal);
 
-            int iFila = dataGridView1.SelectedRows[0].Index; // Cambiado fila a iFila
-            if (iFila < dataGridView1.Rows.Count - 1)
+            int iFila = Dgv_Informacion.SelectedRows[0].Index;
+            if (iFila < Dgv_Informacion.Rows.Count - 1)
             {
                 // Vuelve a seleccionar la primera fila para asegurarse de que es la fila correcta.
-                dataGridView1.Rows[0].Selected = true;
-                dataGridView1.CurrentCell = dataGridView1.Rows[0].Cells[0];
+                Dgv_Informacion.Rows[0].Selected = true;
+                Dgv_Informacion.CurrentCell = Dgv_Informacion.Rows[0].Cells[0];
 
-                int iNumCombo = 0; // Cambiado numCombo a iNumCombo
+                int iNumCombo = 0;
                                    // Itera sobre todos los controles en el formulario.
                 foreach (Control componente in Controls)
                 {
@@ -1811,26 +1782,26 @@ namespace Capa_Vista_Navegador
                         if (componente is ComboBox)
                         {
                             // Para los ComboBox, se verifica si el campo es clave externa (arrModoCampoCombo) y se obtiene el valor adecuado.
-                            if (arrModoCampoCombo[iNumCombo] == 1) // Cambiado numCombo a iNumCombo
+                            if (arrModoCampoCombo[iNumCombo] == 1) 
                             {
-                                componente.Text = logic.LlaveCampoRev(arrTablaCombo[iNumCombo], arrCampoCombo[iNumCombo], dataGridView1.CurrentRow.Cells[i].Value.ToString());
+                                componente.Text = logic.LlaveCampoRev(arrTablaCombo[iNumCombo], arrCampoCombo[iNumCombo], Dgv_Informacion.CurrentRow.Cells[iIndex].Value.ToString());
                             }
                             else
                             {
-                                componente.Text = dataGridView1.CurrentRow.Cells[i].Value.ToString();
+                                componente.Text = Dgv_Informacion.CurrentRow.Cells[iIndex].Value.ToString();
                             }
-                            iNumCombo++; // Cambiado numCombo a iNumCombo
+                            iNumCombo++;
                         }
                         else
                         {
-                            componente.Text = dataGridView1.CurrentRow.Cells[i].Value.ToString();
+                            componente.Text = Dgv_Informacion.CurrentRow.Cells[iIndex].Value.ToString();
                         }
-                        i++;
+                        iIndex++;
                     }
                     // Si el control es un botón, se actualiza su estado dependiendo del valor de la celda en la fila seleccionada.
                     if (componente is Button)
                     {
-                        string sVarEstado = dataGridView1.CurrentRow.Cells[i].Value.ToString(); // Cambiado var1 a sVarEstado
+                        string sVarEstado = Dgv_Informacion.CurrentRow.Cells[iIndex].Value.ToString();
                         if (sVarEstado == "0")
                         {
                             componente.Text = "Desactivado";
@@ -1852,7 +1823,7 @@ namespace Capa_Vista_Navegador
         //******************************************** CODIGO HECHO POR VICTOR CASTELLANOS *****************************
 
         // Este método configura los botones del formulario en función de los permisos del usuario, sin mostrar mensajes.
-        public void botonesYPermisosSinMensaje()
+        public void BotonesYPermisosSinMensaje()
         {
             try
             {
@@ -1861,18 +1832,18 @@ namespace Capa_Vista_Navegador
                 // Lista de botones en el formulario que se habilitarán o deshabilitarán según los permisos del usuario.
                 Button[] arrBotones = { Btn_Ingresar, Btn_Consultar, Btn_Modificar, Btn_Eliminar, Btn_Imprimir };
 
-                for (int i = 0; i < arrPermisosText.Length; i++)
+                for (int iIndex = 0; iIndex < arrPermisosText.Length; iIndex++)
                 {
                     // Consulta el ID del usuario actual.
                     string sIdUsuario1 = logic.ObtenerIdUsuario(sIdUsuario);
                     sentencia sen = new sentencia();
                     // Verifica si el usuario tiene permiso para la acción correspondiente.
-                    bool tienePermiso = sn.consultarPermisos(sIdUsuario1, sIdAplicacion, i + 1);
+                    bool bTienePermiso = sn.consultarPermisos(sIdUsuario1, sIdAplicacion, iIndex + 1);
 
                     // Si el botón existe (no es nulo), se habilita o deshabilita según los permisos del usuario.
-                    if (arrBotones[i] != null)
+                    if (arrBotones[iIndex] != null)
                     {
-                        arrBotones[i].Enabled = tienePermiso;
+                        arrBotones[iIndex].Enabled = bTienePermiso;
                     }
                 }
             }
@@ -1891,7 +1862,7 @@ namespace Capa_Vista_Navegador
         //******************************************** CODIGO HECHO POR JOSUE CACAO *****************************
 
         // Este método configura los botones del formulario basándose en los permisos del usuario y muestra un mensaje con los botones habilitados y deshabilitados.
-        public void botonesYPermisos()
+        public void BotonesYPermisos()
         {
             try
             {
@@ -1902,33 +1873,33 @@ namespace Capa_Vista_Navegador
                 string sBotonesPermitidos = "";   // Variable para almacenar los botones que el usuario tiene permiso de usar.
                 string sBotonesNoPermitidos = ""; // Variable para almacenar los botones que el usuario no tiene permiso de usar.
 
-                for (int i = 0; i < arrPermisosText.Length; i++)
+                for (int iIndex = 0; iIndex < arrPermisosText.Length; iIndex++)
                 {
                     // Obtiene el ID del usuario actual.
                     string sIdUsuario1 = logic.ObtenerIdUsuario(sIdUsuario);
                     sentencia sen = new sentencia();
                     // Consulta si el usuario tiene el permiso correspondiente.
-                    bool tienePermiso = sn.consultarPermisos(sIdUsuario1, sIdAplicacion, i + 1);
+                    bool bTienePermiso = sn.consultarPermisos(sIdUsuario1, sIdAplicacion, iIndex + 1);
 
-                    if (arrBotones[i] != null)
+                    if (arrBotones[iIndex] != null)
                     {
-                        arrBotones[i].Enabled = tienePermiso; // Habilita o deshabilita el botón según el permiso.
+                        arrBotones[iIndex].Enabled = bTienePermiso; // Habilita o deshabilita el botón según el permiso.
 
-                        if (arrBotones[i].Enabled)
+                        if (arrBotones[iIndex].Enabled)
                         {
                             // Si el botón está habilitado, se agrega a la lista de botones permitidos.
-                            sBotonesPermitidos += arrPermisosText[i] + ", ";
+                            sBotonesPermitidos += arrPermisosText[iIndex] + ", ";
                         }
                         else
                         {
                             // Si el botón está deshabilitado, se agrega a la lista de botones no permitidos.
-                            sBotonesNoPermitidos += arrPermisosText[i] + ", ";
+                            sBotonesNoPermitidos += arrPermisosText[iIndex] + ", ";
                         }
                     }
                     else
                     {
                         // Si el botón no se encuentra, se agrega a la lista de botones no permitidos.
-                        sBotonesNoPermitidos += arrPermisosText[i] + ", ";
+                        sBotonesNoPermitidos += arrPermisosText[iIndex] + ", ";
                     }
                 }
 
@@ -1969,7 +1940,7 @@ namespace Capa_Vista_Navegador
             try
             {
                 // Muestra un mensaje de confirmación antes de proceder con el guardado.
-                DialogResult result = MessageBox.Show(
+                DialogResult drResult = MessageBox.Show(
                     "Está a punto de guardar un nuevo registro en el sistema.\n\n" +
                     "Asegúrese de que toda la información ingresada sea correcta.\n\n" +
                     "¿Desea continuar con el guardado?",
@@ -1979,13 +1950,13 @@ namespace Capa_Vista_Navegador
                 );
 
                 // Si el usuario selecciona "No", se cancela la operación.
-                if (result == DialogResult.No)
+                if (drResult == DialogResult.No)
                 {
                     return;
                 }
 
                 // Verifica si todos los campos están llenos antes de proceder.
-                bool lleno = true;
+                bool bLleno = true;
 
                 foreach (Control componente in Controls)
                 {
@@ -1993,14 +1964,14 @@ namespace Capa_Vista_Navegador
                     {
                         if (string.IsNullOrEmpty(componente.Text))
                         {
-                            lleno = false;
+                            bLleno = false;
                             break; // Si encuentra un campo vacío, sale del bucle.
                         }
                     }
                 }
 
                 // Si hay campos vacíos, muestra un mensaje de advertencia y no guarda el registro.
-                if (!lleno)
+                if (!bLleno)
                 {
                     MessageBox.Show(
                         "Por favor, complete todos los campos antes de guardar.\n\n" +
@@ -2020,7 +1991,7 @@ namespace Capa_Vista_Navegador
                 {
                     case 1: // Actualizar
                         string sClavePrimariaPrincipal = logic.ObtenerClavePrimaria(sTablaPrincipal);
-                        string sQueryPrincipal = crearUpdate(sTablaPrincipal, sClavePrimariaPrincipal, null);
+                        string sQueryPrincipal = CrearUpdate(sTablaPrincipal, sClavePrimariaPrincipal, null);
                         lstQueries.Add(sQueryPrincipal); // Añade la consulta principal a la lista.
 
                         // Itera sobre las tablas adicionales para actualizar registros relacionados.
@@ -2030,7 +2001,7 @@ namespace Capa_Vista_Navegador
                             {
                                 string sClavePrimariaAdicional = logic.ObtenerClavePrimaria(sTablaAdicional);
                                 string sClaveForaneaAdicional = logic.ObtenerClaveForanea(sTablaAdicional, sTablaPrincipal);
-                                string sQueryAdicional = crearUpdate(sTablaAdicional, sClavePrimariaAdicional, sClaveForaneaAdicional);
+                                string sQueryAdicional = CrearUpdate(sTablaAdicional, sClavePrimariaAdicional, sClaveForaneaAdicional);
 
                                 if (!string.IsNullOrEmpty(sQueryAdicional))
                                 {
@@ -2046,7 +2017,7 @@ namespace Capa_Vista_Navegador
                         break;
 
                     case 2: // Insertar
-                        string sQueryPrimeraTabla = crearInsert(sTablaPrincipal);
+                        string sQueryPrimeraTabla = CrearInsert(sTablaPrincipal);
                         logic.NuevoQuery(sQueryPrimeraTabla); // Inserta el nuevo registro en la tabla principal.
                         sn.insertarBitacora(sIdUsuario, "Se insertó en " + sTablaPrincipal, sTablaPrincipal, sIdAplicacion);
 
@@ -2063,25 +2034,25 @@ namespace Capa_Vista_Navegador
                                 int iPos = 1;
 
                                 // Construye las consultas para las tablas adicionales.
-                                foreach (var columna in lstColumnasAdicionales)
+                                foreach (var varColumna in lstColumnasAdicionales)
                                 {
                                     string sValorCampo;
 
-                                    if (columna.bEsAutoIncremental)
+                                    if (varColumna.bEsAutoIncremental)
                                     {
                                         continue;
                                     }
-                                    else if (columna.bEsTinyInt)
+                                    else if (varColumna.bEsTinyInt)
                                     {
                                         sValorCampo = "1"; // Asigna 1 para campos de tipo TinyInt.
                                     }
-                                    else if (columna.bEsClaveForanea)
+                                    else if (varColumna.bEsClaveForanea)
                                     {
                                         sValorCampo = sUltimoIdPrimeraTabla.ToString(); // Usa el ID de la tabla principal como clave foránea.
                                     }
                                     else
                                     {
-                                        sValorCampo = obtenerDatoCampos(iPos); // Obtiene el valor del campo.
+                                        sValorCampo = ObtenerDatoCampos(iPos); // Obtiene el valor del campo.
                                     }
 
                                     lstValoresTablaAdicional.Add($"'{sValorCampo}'");
@@ -2107,9 +2078,9 @@ namespace Capa_Vista_Navegador
                 }
 
                 // Actualiza la vista de datos y deshabilita los campos después de la operación.
-                actualizardatagriew();
-                deshabilitarcampos_y_botones();
-                botonesYPermisosSinMensaje();
+                ActualizarDataGridView();
+                Deshabilitarcampos_y_botones();
+                BotonesYPermisosSinMensaje();
             }
             catch (Exception ex)
             {
@@ -2129,7 +2100,6 @@ namespace Capa_Vista_Navegador
 
 
 
-        // Aquí está la función crearInsertFactura
 
         //******************************************** CODIGO HECHO POR MATY MANCILLA *****************************
 
@@ -2138,20 +2108,20 @@ namespace Capa_Vista_Navegador
         // con los valores correspondientes de la fila seleccionada en el DataGridView.
         private void DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            int i = 0; // Índice para recorrer las celdas del DataGridView.
+            int iIndex = 0; // Índice para recorrer las celdas del DataGridView.
             foreach (Control componente in Controls)
             {
                 // Si el control es un TextBox, DateTimePicker o ComboBox, se actualiza su texto con el valor de la celda correspondiente.
                 if (componente is TextBox || componente is DateTimePicker || componente is ComboBox)
                 {
-                    componente.Text = dataGridView1.CurrentRow.Cells[i].Value.ToString();
-                    i++; // Incrementa el índice para pasar a la siguiente celda.
+                    componente.Text = Dgv_Informacion.CurrentRow.Cells[iIndex].Value.ToString();
+                    iIndex++; // Incrementa el índice para pasar a la siguiente celda.
                 }
 
                 // Si el control es un Button, se actualiza su texto y color de fondo según el valor de la celda (0 o 1).
                 if (componente is Button)
                 {
-                    string sValorCelda = dataGridView1.CurrentRow.Cells[i].Value.ToString();
+                    string sValorCelda = Dgv_Informacion.CurrentRow.Cells[iIndex].Value.ToString();
                     if (sValorCelda == "0")
                     {
                         componente.Text = "Desactivado";
@@ -2207,8 +2177,8 @@ namespace Capa_Vista_Navegador
             else
             {
                 // Si hay un problema con la tabla, muestra un mensaje de advertencia
-                DialogResult validacion = MessageBox.Show(sAyudaOK + " \n Solucione este error para continuar...", "Verificación de requisitos", MessageBoxButtons.OK);
-                if (validacion == DialogResult.OK)
+                DialogResult drValidacion = MessageBox.Show(sAyudaOK + " \n Solucione este error para continuar...", "Verificación de requisitos", MessageBoxButtons.OK);
+                if (drValidacion == DialogResult.OK)
                 {
                     // Acción adicional si el usuario presiona OK (actualmente no implementada)
                 }
@@ -2254,7 +2224,7 @@ namespace Capa_Vista_Navegador
         }
 
         // Maneja el evento de clic en el botón principal de reportes.
-        private void btn_Reportes_Principal_Click(object sender, EventArgs e)
+        private void Btn_Reportes_Principal_Click(object sender, EventArgs e)
         {
             menu_reporteria reportes = new menu_reporteria();
             reportes.Show(); // Muestra el formulario del menú de reportes.
@@ -2271,7 +2241,7 @@ namespace Capa_Vista_Navegador
             ConsultaSimple nueva = new ConsultaSimple(sTablaPrincipal);
             nueva.Show();
 
-            botonesYPermisosSinMensaje();
+            BotonesYPermisosSinMensaje();
         }
 
 
@@ -2282,7 +2252,7 @@ namespace Capa_Vista_Navegador
 
         // Este método maneja el evento de clic en el botón principal de reportes.
         // Abre el menú de reportería.
-        private void btn_Reportes_Principal_Click_1(object sender, EventArgs e)
+        private void Btn_Reportes_Principal_Click_1(object sender, EventArgs e)
         {
             // Se crea una instancia del formulario de menú de reportería.
             menu_reporteria reportes = new menu_reporteria();
@@ -2293,7 +2263,7 @@ namespace Capa_Vista_Navegador
 
         // Este método maneja el evento de clic en el botón de ayuda (button1).
         // Abre el formulario de ayudas.
-        private void button1_Click(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)
         {
             // Se crea una instancia del formulario de ayudas.
             Ayudas ayudas = new Ayudas();
@@ -2315,7 +2285,7 @@ namespace Capa_Vista_Navegador
                             // Si hay un TextBox con datos, pregunta al usuario si desea guardar antes de salir.
                             if (componente.Text != "" && componente is TextBox)
                             {
-                                DialogResult respuestaGuardar = MessageBox.Show(
+                                DialogResult drRespuestaGuardar = MessageBox.Show(
                                     "Se ha detectado una operación de guardado en curso.\n\n" +
                                     "¿Desea guardar los cambios antes de salir?",
                                     "Confirmación de Salida - " + sNombreFormulario,
@@ -2324,18 +2294,18 @@ namespace Capa_Vista_Navegador
                                 );
 
                                 // Si el usuario elige "Yes", se guarda y luego se cierra el formulario.
-                                if (respuestaGuardar == DialogResult.Yes)
+                                if (drRespuestaGuardar == DialogResult.Yes)
                                 {
-                                    guardadoforsozo();
+                                    GuardadoForsozo();
                                     frmCerrar.Visible = false;
                                 }
                                 // Si el usuario elige "No", se cierra el formulario sin guardar.
-                                else if (respuestaGuardar == DialogResult.No)
+                                else if (drRespuestaGuardar == DialogResult.No)
                                 {
                                     frmCerrar.Visible = false;
                                 }
                                 // Si el usuario elige "Cancel", se cancela la salida y permanece en el formulario.
-                                else if (respuestaGuardar == DialogResult.Cancel)
+                                else if (drRespuestaGuardar == DialogResult.Cancel)
                                 {
                                     return;
                                 }
@@ -2351,7 +2321,7 @@ namespace Capa_Vista_Navegador
                             // Si hay un TextBox con datos, pregunta al usuario si desea regresar y finalizar la operación antes de salir.
                             if (componente.Text != "" && componente is TextBox)
                             {
-                                DialogResult respuestaModificar = MessageBox.Show(
+                                DialogResult drRespuestaModificar = MessageBox.Show(
                                     "Se ha detectado una operación de modificación en curso.\n\n" +
                                     "¿Desea regresar y finalizar la operación antes de salir?",
                                     "Confirmación de Salida - " + sNombreFormulario,
@@ -2360,17 +2330,17 @@ namespace Capa_Vista_Navegador
                                 );
 
                                 // Si el usuario elige "Yes", se cancela la salida y permanece en el formulario.
-                                if (respuestaModificar == DialogResult.Yes)
+                                if (drRespuestaModificar == DialogResult.Yes)
                                 {
                                     return;
                                 }
                                 // Si el usuario elige "No", se cierra el formulario sin finalizar la modificación.
-                                else if (respuestaModificar == DialogResult.No)
+                                else if (drRespuestaModificar == DialogResult.No)
                                 {
                                     frmCerrar.Visible = false;
                                 }
                                 // Si el usuario elige "Cancel", se cancela la salida y permanece en el formulario.
-                                else if (respuestaModificar == DialogResult.Cancel)
+                                else if (drRespuestaModificar == DialogResult.Cancel)
                                 {
                                     return;
                                 }
@@ -2386,7 +2356,7 @@ namespace Capa_Vista_Navegador
                             // Si hay un TextBox con datos, pregunta al usuario si desea regresar y finalizar la operación antes de salir.
                             if (componente.Text != "" && componente is TextBox)
                             {
-                                DialogResult respuestaEliminar = MessageBox.Show(
+                                DialogResult drRespuestaEliminar = MessageBox.Show(
                                     "Se ha detectado una operación de eliminación en curso.\n\n" +
                                     "¿Desea regresar y finalizar la operación antes de salir?",
                                     "Confirmación de Salida - " + sNombreFormulario,
@@ -2395,17 +2365,17 @@ namespace Capa_Vista_Navegador
                                 );
 
                                 // Si el usuario elige "Yes", se cancela la salida y permanece en el formulario.
-                                if (respuestaEliminar == DialogResult.Yes)
+                                if (drRespuestaEliminar == DialogResult.Yes)
                                 {
                                     return;
                                 }
                                 // Si el usuario elige "No", se cierra el formulario sin finalizar la eliminación.
-                                else if (respuestaEliminar == DialogResult.No)
+                                else if (drRespuestaEliminar == DialogResult.No)
                                 {
                                     frmCerrar.Visible = false;
                                 }
                                 // Si el usuario elige "Cancel", se cancela la salida y permanece en el formulario.
-                                else if (respuestaEliminar == DialogResult.Cancel)
+                                else if (drRespuestaEliminar == DialogResult.Cancel)
                                 {
                                     return;
                                 }
@@ -2414,7 +2384,7 @@ namespace Capa_Vista_Navegador
                     }
 
                     // Confirma finalmente si el usuario desea salir del formulario si no hay operaciones pendientes.
-                    DialogResult confirmacionFinal = MessageBox.Show(
+                    DialogResult drConfirmacionFinal = MessageBox.Show(
                         "¿Está seguro de que desea salir del formulario?",
                         "Confirmación de Salida",
                         MessageBoxButtons.YesNo,
@@ -2422,7 +2392,7 @@ namespace Capa_Vista_Navegador
                     );
 
                     // Si el usuario confirma, cierra el formulario.
-                    if (confirmacionFinal == DialogResult.Yes)
+                    if (drConfirmacionFinal == DialogResult.Yes)
                     {
                         frmCerrar.Visible = false;
                     }
@@ -2451,19 +2421,19 @@ namespace Capa_Vista_Navegador
             try
             {
                 // Obtener el directorio raíz del proyecto subiendo suficientes niveles
-                string projectRootPath = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\..\..\..\.."));
+                string sProjectRootPath = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\..\..\..\.."));
 
                 // Combinar la ruta base con la carpeta "Ayuda\AyudaHTML"
-                string ayudaPath = Path.Combine(projectRootPath, "Ayuda", "Ayuda_Navegador", sRutaAyuda);
+                string sAyudaPath = Path.Combine(sProjectRootPath, "Ayuda", "Ayuda_Navegador", sRutaAyuda);
 
                 // Mostrar la ruta en un MessageBox antes de proceder
                 //MessageBox.Show("Buscando archivo de ayuda en la ruta: " + ayudaPath, "Ruta de Ayuda", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 // Verificar que el archivo de ayuda exista antes de intentar abrirlo
-                if (File.Exists(ayudaPath))
+                if (File.Exists(sAyudaPath))
                 {
                     // Mostrar la ayuda utilizando la ruta completa y el índice
-                    Help.ShowHelp(this, ayudaPath, sIndiceAyuda);
+                    Help.ShowHelp(this, sAyudaPath, sIndiceAyuda);
                 }
                 else
                 {
@@ -2478,7 +2448,7 @@ namespace Capa_Vista_Navegador
                 Console.WriteLine("Error al abrir la ayuda: " + ex.ToString());
             }
 
-            botonesYPermisosSinMensaje();
+            BotonesYPermisosSinMensaje();
         }
 
         //******************************************** CODIGO HECHO POR VICTOR CASTELLANOS *****************************
