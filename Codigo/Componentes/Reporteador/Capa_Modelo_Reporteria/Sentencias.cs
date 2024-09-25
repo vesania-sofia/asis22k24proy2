@@ -13,7 +13,7 @@ namespace Capa_Modelo_Reporteria
     {
         string sTabla_reporteria = "tbl_regreporteria";
         Conexion conexion = new Conexion();
-        public OdbcDataAdapter DisplayReportes()// metodo que obtiene el contenido de la tabla reportes
+        public OdbcDataAdapter DisplayReportes()// método que obtiene el contenido de la tabla reportes
         {
             string sSql = "SELECT idregistro, ruta, nombre_archivo, aplicacion, estado, fk_id_modulos FROM " + sTabla_reporteria + " WHERE idregistro IS NOT NULL AND idregistro != '';";
             OdbcDataAdapter dataTable = new OdbcDataAdapter();
@@ -28,6 +28,8 @@ namespace Capa_Modelo_Reporteria
             }
             return dataTable;
         }
+
+        // Realizado por: Wendy Elizabeth Sacayon Fajardo - 0901-21-135
         public void registrarReporte(string id_reporte, string ruta, string nombre_archivo, string aplicacion, string estado, string modulo)
         {
             //la variable campos es una variable plana donde se ponen los nombres de las columnas para guardar el reporte
@@ -45,7 +47,7 @@ namespace Capa_Modelo_Reporteria
         }
         public void eliminarReporte(string sId_reporte)
         {
-            //funcion para eliminar el reporte seleccionado, donde se utiliza la tabla declarada globalmente y el numero de reporte que se pasa por parametro.
+            //funcioón para eliminar el reporte seleccionado, donde se utiliza la tabla declarada globalmente y el número de reporte que se pasa por parametro.
             try
             {
                 string sSql = "delete from " + sTabla_reporteria + " where idregistro = " + sId_reporte + "; ";
@@ -57,9 +59,11 @@ namespace Capa_Modelo_Reporteria
                 Console.WriteLine(ex.Message.ToString() + " \nNo se puede eliminar el registro " + sId_reporte + " en la tabla " + sTabla_reporteria);
             }
         }
+
+        // Realizado por: Miguel Alexander Crisóstomo Aguilón - 0901-19-20485
         public void ModificarReporte(string sRuta, string sNombre_archivo, string sAplicacion, string sEstado, string sId_reporte, string sModulo)
         {
-            //aqui estamos haciendo la comprobacion de que si tuvo una conexion con la base de datos
+            //aqui estamos haciendo la comprobación de que si tuvo una conexión con la base de datos
             try
             {
                 //aqui con los datos recibidos le mandamos la instruccion a la base de datos, para poderlo modificar lo buscamos por id
@@ -73,6 +77,7 @@ namespace Capa_Modelo_Reporteria
                 Console.WriteLine("Error en CapaModeloReporteria --> Sentencias" + e);
             }
         }
+
         public OdbcDataAdapter queryReportes(string sQuery)
         {
             string sql = "SELECT * FROM " + sTabla_reporteria + " WHERE ruta LIKE '%" + sQuery + "%' OR nombre_archivo LIKE '%" + sQuery + "%';";
@@ -80,6 +85,8 @@ namespace Capa_Modelo_Reporteria
             OdbcDataAdapter dataTable = new OdbcDataAdapter(sql, conexion.conexion());
             return dataTable;
         }
+
+        // Realizado por: Pedro Alejandro Citalán Herrera - 0901-20-16151
         public string queryRutastring(string sQuery)
         {
             string sql = "SELECT ruta FROM " + sTabla_reporteria + " WHERE aplicacion LIKE '%" + sQuery + "%';";
@@ -130,6 +137,7 @@ namespace Capa_Modelo_Reporteria
             return applicationCodes;
         }
 
+        // Realizado por Ammy Patricia Catún López - 0901-21-4857
         public List<string> getModulos()
         {
             string sQuery = "SELECT pk_id_modulos, estado_modulo FROM tbl_modulos;";

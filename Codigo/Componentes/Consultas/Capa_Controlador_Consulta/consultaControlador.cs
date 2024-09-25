@@ -125,29 +125,95 @@ namespace Capa_Controlador_Consulta
             datos[4] = querySimple;
             return querySimple;
         }
-        public void InsertarDatos(string[] tipos, string[] datos, string tabla)
+        public DataTable GenerarQuery(string[] datos, string nombreTabla)
         {
-            try
+            string campo = datos[0];
+            string operador = datos[1];
+            string valor = datos[2];
+
+            string[] operadoresValidos = { "=", "<", "<=", ">", ">=", "LIKE", "NOT LIKE" };
+            if (!operadoresValidos.Contains(operador.ToUpper()))
             {
-                string queryGenerado = datos[4]; // Asumimos que el query ya fue generado
-                string nombreConsulta = datos[0];
-                string tipoConsulta = datos[1];
-                string status = datos[5];
-                // Construir el tipo para el método de inserción
-                string tipo = string.Join(",", tipos);
-                // Construir el dato para el método de inserción
-                string dato = $"'{nombreConsulta}','{tipoConsulta}','{queryGenerado}','{status}'";
-                // Llamar a la capa de modelo para insertar la consulta
-                csSentencias.insertar(dato, tipo, tabla);
-                MessageBox.Show("Datos guardados correctamente");
+                throw new ArgumentException("Operador no válido");
             }
-            catch (Exception ex)
+            string valorQuery;
+            if (operador.ToUpper().Contains("LIKE"))
             {
-                // Manejar posibles errores
-                Console.WriteLine($"Error al insertar los datos: {ex.Message}");
-                MessageBox.Show("Error al insertar, revisar Consola...","Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                valorQuery = $"'%{valor}%'";
             }
+            else
+            {
+                valorQuery = $"'{valor}'";
+            }
+            string query = $"SELECT * FROM {nombreTabla} WHERE {campo} {operador} {valorQuery};";
+            Console.WriteLine($"Query generado: {query}");
+            OdbcDataAdapter adapter = csSentencias.EjecutarQuery(query);
+            DataTable tablaResultados = new DataTable();
+            adapter.Fill(tablaResultados);
+            return tablaResultados;
         }
+
+public void InsertarDatos(string[] tipos, string[] datos, string tabla)
+{
+    try
+    {
+        // Verificación de que el array datos no es null y tiene al menos 6 elementos
+        if (datos == null || datos.Length < 6)
+        {
+            MessageBox.Show("Los datos proporcionados son inválidos o incompletos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return; // Salir de la función si el array no está correctamente inicializado
+        }
+
+        // Verificación de que los datos no sean nulos o estén vacíos
+        if (string.IsNullOrEmpty(datos[0]))
+        {
+            MessageBox.Show("El nombre de la consulta no puede estar vacío", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return;
+        }
+
+        if (string.IsNullOrEmpty(datos[1]))
+        {
+            MessageBox.Show("El tipo de consulta no puede estar vacío", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return;
+        }
+
+        if (string.IsNullOrEmpty(datos[4]))
+        {
+            MessageBox.Show("El query generado no puede estar vacío", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return;
+        }
+
+        if (string.IsNullOrEmpty(datos[5]))
+        {
+            MessageBox.Show("El estado de la consulta no puede estar vacío", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return;
+        }
+
+        // Si todo está bien, proceder con la inserción
+        string queryGenerado = datos[4]; // Asumimos que el query ya fue generado
+        string nombreConsulta = datos[0];
+        string tipoConsulta = datos[1];
+        string status = datos[5];
+
+        // Construir el tipo para el método de inserción
+        string tipo = string.Join(",", tipos);
+
+        // Construir el dato para el método de inserción
+        string dato = $"'{nombreConsulta}','{tipoConsulta}','{queryGenerado}','{status}'";
+
+        // Llamar a la capa de modelo para insertar la consulta
+        csSentencias.insertar(dato, tipo, tabla);
+
+        MessageBox.Show("Datos guardados correctamente");
+    }
+    catch (Exception ex)
+    {
+        // Manejar posibles errores de manera más específica
+        Console.WriteLine($"Error al insertar los datos: {ex.Message}");
+        MessageBox.Show("Error al insertar, revisar Consola...", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+    }
+}
+
 
         public void obtenerColumbasPorTabla(ComboBox comboBoxCampos, string tabla)
         {
