@@ -560,6 +560,9 @@ ALTER TABLE `tbl_bitacora`
   ADD PRIMARY KEY (`Pk_id_bitacora`),
   ADD KEY `Fk_id_usuario` (`Fk_id_usuario`);
 
+
+ALTER TABLE Tbl_bitacora
+ADD COLUMN aplicacion VARCHAR(10) NOT NULL;
 --
 -- Indices de la tabla `tbl_consultainteligente`
 --

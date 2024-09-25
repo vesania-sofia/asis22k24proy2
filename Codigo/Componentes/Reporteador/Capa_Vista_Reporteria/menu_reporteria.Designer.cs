@@ -124,6 +124,7 @@ namespace Capa_Vista_Reporteria
             this.IsMdiContainer = true;
             this.Name = "menu_reporteria";
             this.Text = "menu_reporteria";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.flowLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Pic_1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pic_2)).EndInit();

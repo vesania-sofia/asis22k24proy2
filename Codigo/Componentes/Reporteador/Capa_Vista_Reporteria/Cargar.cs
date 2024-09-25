@@ -12,6 +12,7 @@ namespace Capa_Vista_Reporteria
 {
     public partial class Cargar : Form
     {
+        // Realizado por: Pedro Alejandro Citalán Herrera - 0901-20-16151
         public Cargar()
         {
             InitializeComponent();
