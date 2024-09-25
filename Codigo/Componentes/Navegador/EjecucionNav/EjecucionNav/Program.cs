@@ -16,7 +16,7 @@ namespace EjecucionNav
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Capa_Vista_Navegador.Navegador());
+            Application.Run(new CapaDiseno.frm_login());
         }
     }
 }
