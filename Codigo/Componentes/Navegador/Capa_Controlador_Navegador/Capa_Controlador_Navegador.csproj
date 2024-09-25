@@ -31,8 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Capa_Datos_Navegador">
-      <HintPath>..\Capa_Datos_Navegador\bin\Debug\Capa_Datos_Navegador.dll</HintPath>
+    <Reference Include="Capa_Modelo_Navegador, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Capa_Modelo_Navegador\bin\Debug\Capa_Modelo_Navegador.dll</HintPath>
     </Reference>
     <Reference Include="Capa_Vista_Navegador">
       <HintPath>..\Capa_Vista_Navegador\bin\Debug\Capa_Vista_Navegador.dll</HintPath>

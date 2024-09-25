@@ -6,7 +6,7 @@ using System.Text;
 using System.Data;
 using System.Threading.Tasks;
 
-namespace Capa_Datos_Navegador
+namespace Capa_Modelo_Navegador
 {
     public class sentencias
     {
@@ -352,7 +352,7 @@ namespace Capa_Datos_Navegador
             }
             finally
             {
-                if (conn != null && conn.State == System.Data.ConnectionState.Open)
+                if (conn != null && conn.State == ConnectionState.Open)
                 {
                     conn.Close();
                     Console.WriteLine("Conexión cerrada después de obtener los campos");
@@ -478,7 +478,7 @@ namespace Capa_Datos_Navegador
             }
             finally
             {
-                if (conn != null && conn.State == System.Data.ConnectionState.Open)
+                if (conn != null && conn.State == ConnectionState.Open)
                 {
                     conn.Close();
                     Console.WriteLine("Conexión cerrada después de obtener el tipo de los campos");
