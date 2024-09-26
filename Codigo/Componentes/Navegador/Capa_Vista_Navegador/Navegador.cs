@@ -1035,71 +1035,93 @@ namespace Capa_Vista_Navegador
             }
         }
 
-        string CrearUpdate(string sTablaPrincipal, string sNombreClavePrimaria, string sNombreClaveForanea) 
+        string CrearUpdate(string sTablaPrincipal, string sNombreClavePrimaria, string sNombreClaveForanea)
         {
             // Obtiene las columnas existentes en la sTablaPrincipal
-            string[] arrColumnasTabla = logic.Campos(sTablaPrincipal); // Cambiado columnasTabla a arrColumnasTabla y sTablaPrincipal a sTablaPrincipal
+            string[] arrColumnasTabla = logic.Campos(sTablaPrincipal);
 
-            string sQuery = "UPDATE " + sTablaPrincipal + " SET "; // Cambiado sTablaPrincipal a sTablaPrincipal
+            string sQuery = "UPDATE " + sTablaPrincipal + " SET ";
             string sWhereQuery = " WHERE ";
-            int iIndice = 0;           
-            string sCampos = "";        
+            string sCampos = "";
 
             // Recorre todos los controles, incluyendo los anidados
             foreach (Control componente in GetAllControls(this))
             {
-                if (componente is TextBox || componente is DateTimePicker || componente is ComboBox)
+                if (componente is TextBox || componente is DateTimePicker || componente is ComboBox || componente is Button)
                 {
-                    string sNombreCampo = componente.Name; // Cambiado nombreCampo a sNombreCampo
-                    Console.WriteLine($"Evaluando control: {sNombreCampo} para la sTablaPrincipal: {sTablaPrincipal}");
+                    string sNombreCampo = componente.Name;
+                    Console.WriteLine($"Evaluando control: {sNombreCampo} para la tabla: {sTablaPrincipal}");
 
-                    // Verifica si el control corresponde a una columna de la sTablaPrincipal
-                    if (arrColumnasTabla.Contains(sNombreCampo)) 
+                    // Verifica si el control corresponde a una columna de la tabla
+                    if (arrColumnasTabla.Contains(sNombreCampo))
                     {
                         // Excluye claves primarias y foráneas
-                        if (sNombreCampo != sNombreClavePrimaria && sNombreCampo != sNombreClaveForanea) 
+                        if (sNombreCampo != sNombreClavePrimaria && sNombreCampo != sNombreClaveForanea)
                         {
-                            string sValorCampo = componente.Text; 
+                            string sValorCampo = "";
+
+                            // Si el componente es un botón, verifica su estado (Activado/Desactivado)
+                            if (componente is Button)
+                            {
+                                // Verifica el texto del botón y asigna '1' o '0' según corresponda
+                                if (componente.Text == "Activado")
+                                {
+                                    sValorCampo = "1";  // Activo
+                                }
+                                else if (componente.Text == "Desactivado")
+                                {
+                                    sValorCampo = "0";  // Inactivo
+                                }
+                                Console.WriteLine($"Botón {sNombreCampo} con valor {sValorCampo} procesado como Activado/Desactivado.");
+                            }
+                            else
+                            {
+                                sValorCampo = componente.Text;
+                            }
+
+                            // Agrega el campo y su valor a la sentencia SQL
                             sCampos += $"{sNombreCampo} = '{sValorCampo}', ";
-                            iIndice++; 
-                            Console.WriteLine($"Asignando valor '{sValorCampo}' al campo '{sNombreCampo}' en la sTablaPrincipal '{sTablaPrincipal}'");
                         }
                         else
                         {
-                            Console.WriteLine($"El campo {sNombreCampo} es clave primaria o foránea y no se actualizará."); 
+                            Console.WriteLine($"El campo {sNombreCampo} es clave primaria o foránea y no se actualizará.");
                         }
                     }
                     else
                     {
-                        Console.WriteLine($"El control {sNombreCampo} no corresponde a una columna en la sTablaPrincipal {sTablaPrincipal}"); 
+                        Console.WriteLine($"El control {sNombreCampo} no corresponde a una columna en la tabla {sTablaPrincipal}");
                     }
                 }
             }
 
+            // Si no se encontraron campos para actualizar
             if (string.IsNullOrEmpty(sCampos))
             {
-                Console.WriteLine($"No hay campos para actualizar en la sTablaPrincipal {sTablaPrincipal}"); 
+                Console.WriteLine($"No hay campos para actualizar en la tabla {sTablaPrincipal}");
                 return null;
             }
 
-            sCampos = sCampos.TrimEnd(' ', ','); 
+            // Elimina la coma final del último campo
+            sCampos = sCampos.TrimEnd(' ', ',');
 
             // Usa la clave primaria o foránea en la cláusula WHERE
-            string sValorClave = Dgv_Informacion.CurrentRow.Cells[0].Value.ToString(); 
-            if (!string.IsNullOrEmpty(sNombreClaveForanea)) 
+            string sValorClave = Dgv_Informacion.CurrentRow.Cells[0].Value.ToString();
+            if (!string.IsNullOrEmpty(sNombreClaveForanea))
             {
-                sWhereQuery += $"{sNombreClaveForanea} = '{sValorClave}'"; 
+                sWhereQuery += $"{sNombreClaveForanea} = '{sValorClave}'";
             }
             else
             {
-                sWhereQuery += $"{sNombreClavePrimaria} = '{sValorClave}'"; 
+                sWhereQuery += $"{sNombreClavePrimaria} = '{sValorClave}'";
             }
 
-            sQuery += sCampos + sWhereQuery + ";"; 
+            // Combina la sentencia de SET con la cláusula WHERE
+            sQuery += sCampos + sWhereQuery + ";";
             Console.WriteLine("Consulta generada para el UPDATE: " + sQuery);
 
             return sQuery;
         }
+
 
         //******************************************** CODIGO HECHO POR BRAYAN HERNANDEZ***************************** 
 
@@ -1990,30 +2012,39 @@ namespace Capa_Vista_Navegador
                 switch (iActivar)
                 {
                     case 1: // Actualizar
-                        string sClavePrimariaPrincipal = logic.ObtenerClavePrimaria(sTablaPrincipal);
-                        string sQueryPrincipal = CrearUpdate(sTablaPrincipal, sClavePrimariaPrincipal, null);
-                        lstQueries.Add(sQueryPrincipal); // Añade la consulta principal a la lista.
-
-                        // Itera sobre las tablas adicionales para actualizar registros relacionados.
-                        foreach (string sTablaAdicional in lstTablasAdicionales)
+                        try
                         {
-                            if (!string.IsNullOrEmpty(sTablaAdicional))
-                            {
-                                string sClavePrimariaAdicional = logic.ObtenerClavePrimaria(sTablaAdicional);
-                                string sClaveForaneaAdicional = logic.ObtenerClaveForanea(sTablaAdicional, sTablaPrincipal);
-                                string sQueryAdicional = CrearUpdate(sTablaAdicional, sClavePrimariaAdicional, sClaveForaneaAdicional);
+                            string sClavePrimariaPrincipal = logic.ObtenerClavePrimaria(sTablaPrincipal);
+                            string sQueryPrincipal = CrearUpdate(sTablaPrincipal, sClavePrimariaPrincipal, null);
+                            lstQueries.Add(sQueryPrincipal); // Añade la consulta principal a la lista.
 
-                                if (!string.IsNullOrEmpty(sQueryAdicional))
+                            // Itera sobre las tablas adicionales para actualizar registros relacionados.
+                            foreach (string sTablaAdicional in lstTablasAdicionales)
+                            {
+                                if (!string.IsNullOrEmpty(sTablaAdicional))
                                 {
-                                    lstQueries.Add(sQueryAdicional); // Añade la consulta adicional a la lista.
+                                    string sClavePrimariaAdicional = logic.ObtenerClavePrimaria(sTablaAdicional);
+                                    string sClaveForaneaAdicional = logic.ObtenerClaveForanea(sTablaAdicional, sTablaPrincipal);
+                                    string sQueryAdicional = CrearUpdate(sTablaAdicional, sClavePrimariaAdicional, sClaveForaneaAdicional);
+
+                                    if (!string.IsNullOrEmpty(sQueryAdicional))
+                                    {
+                                        lstQueries.Add(sQueryAdicional); // Añade la consulta adicional a la lista.
+                                    }
                                 }
                             }
-                        }
 
-                        // Ejecuta las consultas para actualizar datos en múltiples tablas.
-                        logic.InsertarDatosEnMultiplesTablas(lstQueries);
-                        MessageBox.Show("El registro ha sido actualizado correctamente en todas las tablas.", "Actualización Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        sn.insertarBitacora(sIdUsuario, "Actualizó registros en múltiples tablas", sTablaPrincipal, sIdAplicacion);
+                            // Ejecuta las consultas para actualizar datos en múltiples tablas.
+                            logic.InsertarDatosEnMultiplesTablas(lstQueries);
+                            MessageBox.Show("El registro ha sido actualizado correctamente en todas las tablas.", "Actualización Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                            // Inserta en la bitácora
+                            sn.insertarBitacora(sIdUsuario, "Actualizó registros en múltiples tablas", sTablaPrincipal, sIdAplicacion);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show($"Ocurrió un error al actualizar los registros: {ex.Message}", "Error de Actualización", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                         break;
 
                     case 2: // Insertar
