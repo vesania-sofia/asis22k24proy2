@@ -21,6 +21,7 @@ namespace Capa_Vista_Seguridad
         {
             InitializeComponent();
             logic = new logica(sidUsuario);
+            actualizardatagriew1();
         }
 
         public frm_asignacion_aplicaciones_perfiles()
@@ -359,6 +360,7 @@ namespace Capa_Vista_Seguridad
                 }
 
                 MessageBox.Show("Datos ingresados exitosamente");
+                actualizardatagriew1();
                 limpieza();
                 Dgv_asignacionesperfiles.Rows.Clear();
                 iContadorFila = 0;
@@ -395,40 +397,40 @@ namespace Capa_Vista_Seguridad
                 //MessageBox.Show("Datos recibidos: " + dt.Rows.Count.ToString());
 
                 // Limpiar las columnas anteriores
-                Dgv_asignacionesperfiles.Columns.Clear();
+                Dgv_asignaciones.Columns.Clear();
 
                 // Crear y agregar las columnas manualmente
-                Dgv_asignacionesperfiles.Columns.Add("Perfil", "Perfil");
-                Dgv_asignacionesperfiles.Columns["Perfil"].DataPropertyName = "Fk_id_perfil";
+                Dgv_asignaciones.Columns.Add("Perfil", "Perfil");
+                Dgv_asignaciones.Columns["Perfil"].DataPropertyName = "Fk_id_perfil";
 
-                Dgv_asignacionesperfiles.Columns.Add("Aplicacion", "Aplicacion");
-                Dgv_asignacionesperfiles.Columns["Aplicacion"].DataPropertyName = "nombre_aplicacion";
+                Dgv_asignaciones.Columns.Add("Aplicacion", "Aplicacion");
+                Dgv_asignaciones.Columns["Aplicacion"].DataPropertyName = "nombre_aplicacion";
 
                 // Agregar columnas de permisos como TextBox
-                Dgv_asignacionesperfiles.Columns.Add("Ingresar", "Ingresar");
-                Dgv_asignacionesperfiles.Columns["Ingresar"].DataPropertyName = "guardar_permiso";
+                Dgv_asignaciones.Columns.Add("Ingresar", "Ingresar");
+                Dgv_asignaciones.Columns["Ingresar"].DataPropertyName = "guardar_permiso";
 
-                Dgv_asignacionesperfiles.Columns.Add("Consultar", "Consultar");
-                Dgv_asignacionesperfiles.Columns["Consultar"].DataPropertyName = "buscar_permiso";
+                Dgv_asignaciones.Columns.Add("Consultar", "Consultar");
+                Dgv_asignaciones.Columns["Consultar"].DataPropertyName = "buscar_permiso";
 
-                Dgv_asignacionesperfiles.Columns.Add("Modificar", "Modificar");
-                Dgv_asignacionesperfiles.Columns["Modificar"].DataPropertyName = "modificar_permiso";
+                Dgv_asignaciones.Columns.Add("Modificar", "Modificar");
+                Dgv_asignaciones.Columns["Modificar"].DataPropertyName = "modificar_permiso";
 
-                Dgv_asignacionesperfiles.Columns.Add("Eliminar", "Eliminar");
-                Dgv_asignacionesperfiles.Columns["Eliminar"].DataPropertyName = "eliminar_permiso";
+                Dgv_asignaciones.Columns.Add("Eliminar", "Eliminar");
+                Dgv_asignaciones.Columns["Eliminar"].DataPropertyName = "eliminar_permiso";
 
-                Dgv_asignacionesperfiles.Columns.Add("Imprimir", "Imprimir");
-                Dgv_asignacionesperfiles.Columns["Imprimir"].DataPropertyName = "imprimir_permiso";
+                Dgv_asignaciones.Columns.Add("Imprimir", "Imprimir");
+                Dgv_asignaciones.Columns["Imprimir"].DataPropertyName = "imprimir_permiso";
 
                 // Asegúrate de que las columnas son de texto y centrar el contenido
                 foreach (var column in new[] { "Ingresar", "Consultar", "Modificar", "Eliminar", "Imprimir" })
                 {
-                    Dgv_asignacionesperfiles.Columns[column].ValueType = typeof(string);
-                    Dgv_asignacionesperfiles.Columns[column].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                    Dgv_asignaciones.Columns[column].ValueType = typeof(string);
+                    Dgv_asignaciones.Columns[column].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 }
 
                 // Asignar el DataTable al DataGridView
-                Dgv_asignacionesperfiles.DataSource = dt;
+                Dgv_asignaciones.DataSource = dt;
 
                 // Convertir booleanos a "0" o "1"
                 foreach (DataRow row in dt.Rows)
@@ -440,7 +442,7 @@ namespace Capa_Vista_Seguridad
                     row["imprimir_permiso"] = (Convert.ToBoolean(row["imprimir_permiso"]) ? "1" : "0");
                 }
 
-                Dgv_asignacionesperfiles.Refresh();
+                Dgv_asignaciones.Refresh();
             }
             else
             {

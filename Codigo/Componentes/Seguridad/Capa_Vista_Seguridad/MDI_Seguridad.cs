@@ -440,6 +440,11 @@ namespace Capa_Vista_Seguridad
             return null;
         }
 
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
         //------------------------------------------ Fin KATERYN DE LEON y Gabriela Suc ------------------------------------------
 
 

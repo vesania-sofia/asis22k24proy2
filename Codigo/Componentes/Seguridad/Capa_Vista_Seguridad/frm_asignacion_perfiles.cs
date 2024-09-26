@@ -56,6 +56,7 @@ namespace Capa_Vista_Seguridad
             // Asocia el evento SelectedIndexChanged después de poblar el ComboBox
             Cbo_usuario.SelectedIndexChanged += new EventHandler(Cbo_usuario_SelectedIndexChanged);
             Cbo_perfiles.SelectedIndexChanged += new EventHandler(Cbo_perfiles_SelectedIndexChanged2);
+            proactualizardatagriew();
         }
 
 
@@ -201,9 +202,9 @@ namespace Capa_Vista_Seguridad
             Cbo_perfiles.Text = " ";
             Cbo_perfiles.SelectedIndex = -1;
             Cbo_usuario.SelectedIndex = -1;
-
-            Dgv_perfiles_asignados.Columns.Clear();
             
+            //Dgv_perfiles_asignados.Columns.Clear();
+            proactualizardatagriew();
 
             if (iContadorFila > 0)
             {
@@ -214,6 +215,7 @@ namespace Capa_Vista_Seguridad
             {
                 
             }
+            Btn_salir.Enabled = true;
         }
 
         void prolimpiezaIngreso()
@@ -275,6 +277,7 @@ namespace Capa_Vista_Seguridad
 
         private void Btn_agregar_Click(object sender, EventArgs e)
         {
+            Btn_salir.Enabled = false;
             if (Cbo_usuario.SelectedItem == null || Cbo_perfiles.SelectedItem == null)
             {
                 MessageBox.Show("Faltan Datos Por Seleccionar", "Verificación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -320,7 +323,7 @@ namespace Capa_Vista_Seguridad
                     Gpb_consulta.Enabled = false;
                 }
 
-                prolimpiezaIngreso();
+               // prolimpiezaIngreso();
             }
         }
 
@@ -355,6 +358,7 @@ namespace Capa_Vista_Seguridad
                 logic.funconsultaLogicaInsertarPerfilUsuario(susuarioSeleccionado, sperfilSeleccionado);
 
                 MessageBox.Show("Asignación de usuario y perfil ingresada correctamente.");
+
                 prolimpieza();
 
                 // Configuración de botones y controles después de la inserción
@@ -369,6 +373,7 @@ namespace Capa_Vista_Seguridad
                 Btn_buscar.Enabled = true;
                 Gpb_consulta.Enabled = true;
                 prolimpieza();
+                proactualizardatagriew();
             }
         }
 

@@ -48,6 +48,7 @@ namespace Capa_Vista_Seguridad
             tsalir.SetToolTip(Btn_salir, "Salir Mantenimiento Módulos");
             ToolTip tayuda = new ToolTip();
             tayuda.SetToolTip(Btn_ayuda, "Ayuda");
+            mostrarmodulos();
         }
 
         public frmMantemientoMódulos()
@@ -64,6 +65,38 @@ namespace Capa_Vista_Seguridad
             Rdb_inhabilitado.Checked = false;
             Txt_codigo.Focus();
         }
+
+        /*********Ismar Cortez********************/
+        /*********Mostrar modulos*******************/
+
+        void mostrarmodulos()
+        {
+            try
+            {
+                DataTable dtmodulos;
+
+                dtmodulos = logic.Funmostrarmodulos();
+
+
+                if (dtmodulos == null || dtmodulos.Rows.Count == 0)
+                {
+                    MessageBox.Show("No existen registros.", "Verificación", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    Dgv_modulos.DataSource = dtmodulos;
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al buscar: " + ex.Message);
+            }
+
+        }
+
+        /****************************************/
 
 
         private void Frm_modulos_Load(object sender, EventArgs e)
@@ -171,6 +204,7 @@ namespace Capa_Vista_Seguridad
                 Btn_guardar.Enabled = false;
                 Txt_codigo.Enabled = false;
                 Btn_eliminar.Enabled = false; //se agrega
+                mostrarmodulos();
             }
         }
 
@@ -228,6 +262,7 @@ namespace Capa_Vista_Seguridad
                 Txt_nombre.Enabled = false;
                 Btn_eliminar.Enabled = false; //se agrega  ALyson #####################
                 limpiar();
+                mostrarmodulos();
             }
         }
 
@@ -353,6 +388,7 @@ namespace Capa_Vista_Seguridad
                 logic.funeliminarmodulo(Txt_codigo.Text.ToString(), Txt_descripcion.Text.ToString(), Txt_nombre.Text.ToString(), sEstado);
 
                 MessageBox.Show("Módulo eliminado correctamente.");
+                mostrarmodulos();
                 limpiar(); // Limpia los campos del formulario
             }
             catch (Exception ex)

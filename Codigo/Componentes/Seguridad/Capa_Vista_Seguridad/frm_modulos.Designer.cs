@@ -50,9 +50,11 @@
             this.Btn_ayuda = new System.Windows.Forms.Button();
             this.Btn_salir = new System.Windows.Forms.Button();
             this.Btn_agregar = new System.Windows.Forms.Button();
+            this.Dgv_modulos = new System.Windows.Forms.DataGridView();
             this.Gpb_buscar.SuspendLayout();
             this.Gpb_datos.SuspendLayout();
             this.Gpb_estado.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Dgv_modulos)).BeginInit();
             this.SuspendLayout();
             // 
             // Gpb_buscar
@@ -60,11 +62,11 @@
             this.Gpb_buscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
             this.Gpb_buscar.Controls.Add(this.Txt_buscar);
             this.Gpb_buscar.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Gpb_buscar.Location = new System.Drawing.Point(169, 145);
+            this.Gpb_buscar.Location = new System.Drawing.Point(154, 132);
             this.Gpb_buscar.Margin = new System.Windows.Forms.Padding(4);
             this.Gpb_buscar.Name = "Gpb_buscar";
             this.Gpb_buscar.Padding = new System.Windows.Forms.Padding(4);
-            this.Gpb_buscar.Size = new System.Drawing.Size(648, 98);
+            this.Gpb_buscar.Size = new System.Drawing.Size(651, 98);
             this.Gpb_buscar.TabIndex = 255;
             this.Gpb_buscar.TabStop = false;
             this.Gpb_buscar.Text = "Buscar Módulo";
@@ -80,6 +82,7 @@
             // Gpb_datos
             // 
             this.Gpb_datos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.Gpb_datos.Controls.Add(this.Dgv_modulos);
             this.Gpb_datos.Controls.Add(this.Txt_nombre);
             this.Gpb_datos.Controls.Add(this.Txt_codigo);
             this.Gpb_datos.Controls.Add(this.Gpb_estado);
@@ -88,11 +91,11 @@
             this.Gpb_datos.Controls.Add(this.Txt_id);
             this.Gpb_datos.Controls.Add(this.Txt_descripcion);
             this.Gpb_datos.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Gpb_datos.Location = new System.Drawing.Point(169, 251);
+            this.Gpb_datos.Location = new System.Drawing.Point(156, 238);
             this.Gpb_datos.Margin = new System.Windows.Forms.Padding(4);
             this.Gpb_datos.Name = "Gpb_datos";
             this.Gpb_datos.Padding = new System.Windows.Forms.Padding(4);
-            this.Gpb_datos.Size = new System.Drawing.Size(648, 347);
+            this.Gpb_datos.Size = new System.Drawing.Size(648, 421);
             this.Gpb_datos.TabIndex = 254;
             this.Gpb_datos.TabStop = false;
             this.Gpb_datos.Text = "Datos";
@@ -100,7 +103,7 @@
             // Txt_nombre
             // 
             this.Txt_nombre.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txt_nombre.Location = new System.Drawing.Point(246, 96);
+            this.Txt_nombre.Location = new System.Drawing.Point(245, 69);
             this.Txt_nombre.Margin = new System.Windows.Forms.Padding(4);
             this.Txt_nombre.Multiline = true;
             this.Txt_nombre.Name = "Txt_nombre";
@@ -111,7 +114,7 @@
             // Txt_codigo
             // 
             this.Txt_codigo.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txt_codigo.Location = new System.Drawing.Point(246, 41);
+            this.Txt_codigo.Location = new System.Drawing.Point(246, 27);
             this.Txt_codigo.Margin = new System.Windows.Forms.Padding(4);
             this.Txt_codigo.Name = "Txt_codigo";
             this.Txt_codigo.Size = new System.Drawing.Size(297, 28);
@@ -122,11 +125,11 @@
             this.Gpb_estado.Controls.Add(this.Rdb_inhabilitado);
             this.Gpb_estado.Controls.Add(this.Rdb_habilitado);
             this.Gpb_estado.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Gpb_estado.Location = new System.Drawing.Point(102, 208);
+            this.Gpb_estado.Location = new System.Drawing.Point(102, 144);
             this.Gpb_estado.Margin = new System.Windows.Forms.Padding(4);
             this.Gpb_estado.Name = "Gpb_estado";
             this.Gpb_estado.Padding = new System.Windows.Forms.Padding(4);
-            this.Gpb_estado.Size = new System.Drawing.Size(441, 101);
+            this.Gpb_estado.Size = new System.Drawing.Size(441, 76);
             this.Gpb_estado.TabIndex = 3;
             this.Gpb_estado.TabStop = false;
             this.Gpb_estado.Text = "Estado";
@@ -134,7 +137,7 @@
             // Rdb_inhabilitado
             // 
             this.Rdb_inhabilitado.AutoSize = true;
-            this.Rdb_inhabilitado.Location = new System.Drawing.Point(248, 44);
+            this.Rdb_inhabilitado.Location = new System.Drawing.Point(248, 29);
             this.Rdb_inhabilitado.Margin = new System.Windows.Forms.Padding(4);
             this.Rdb_inhabilitado.Name = "Rdb_inhabilitado";
             this.Rdb_inhabilitado.Size = new System.Drawing.Size(131, 25);
@@ -146,7 +149,7 @@
             // Rdb_habilitado
             // 
             this.Rdb_habilitado.AutoSize = true;
-            this.Rdb_habilitado.Location = new System.Drawing.Point(73, 44);
+            this.Rdb_habilitado.Location = new System.Drawing.Point(74, 29);
             this.Rdb_habilitado.Margin = new System.Windows.Forms.Padding(4);
             this.Rdb_habilitado.Name = "Rdb_habilitado";
             this.Rdb_habilitado.Size = new System.Drawing.Size(118, 25);
@@ -160,7 +163,7 @@
             // 
             this.Txt_descripcionmodulo.AutoSize = true;
             this.Txt_descripcionmodulo.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txt_descripcionmodulo.Location = new System.Drawing.Point(98, 155);
+            this.Txt_descripcionmodulo.Location = new System.Drawing.Point(69, 111);
             this.Txt_descripcionmodulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Txt_descripcionmodulo.Name = "Txt_descripcionmodulo";
             this.Txt_descripcionmodulo.Size = new System.Drawing.Size(107, 21);
@@ -171,7 +174,7 @@
             // 
             this.Txt_nombremodulo.AutoSize = true;
             this.Txt_nombremodulo.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txt_nombremodulo.Location = new System.Drawing.Point(98, 103);
+            this.Txt_nombremodulo.Location = new System.Drawing.Point(69, 69);
             this.Txt_nombremodulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Txt_nombremodulo.Name = "Txt_nombremodulo";
             this.Txt_nombremodulo.Size = new System.Drawing.Size(77, 21);
@@ -182,7 +185,7 @@
             // 
             this.Txt_id.AutoSize = true;
             this.Txt_id.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txt_id.Location = new System.Drawing.Point(98, 46);
+            this.Txt_id.Location = new System.Drawing.Point(69, 27);
             this.Txt_id.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Txt_id.Name = "Txt_id";
             this.Txt_id.Size = new System.Drawing.Size(169, 21);
@@ -192,7 +195,7 @@
             // Txt_descripcion
             // 
             this.Txt_descripcion.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txt_descripcion.Location = new System.Drawing.Point(245, 150);
+            this.Txt_descripcion.Location = new System.Drawing.Point(244, 108);
             this.Txt_descripcion.Margin = new System.Windows.Forms.Padding(4);
             this.Txt_descripcion.Name = "Txt_descripcion";
             this.Txt_descripcion.Size = new System.Drawing.Size(297, 28);
@@ -204,7 +207,7 @@
             this.Txt_titulo.AutoSize = true;
             this.Txt_titulo.Font = new System.Drawing.Font("Haettenschweiler", 26F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Txt_titulo.ForeColor = System.Drawing.Color.Transparent;
-            this.Txt_titulo.Location = new System.Drawing.Point(273, 18);
+            this.Txt_titulo.Location = new System.Drawing.Point(198, 9);
             this.Txt_titulo.Name = "Txt_titulo";
             this.Txt_titulo.Size = new System.Drawing.Size(561, 45);
             this.Txt_titulo.TabIndex = 291;
@@ -217,7 +220,7 @@
             this.Btn_cancelar.FlatAppearance.BorderSize = 0;
             this.Btn_cancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_cancelar.Image = global::Capa_Vista_Seguridad.Properties.Resources.cancelar1;
-            this.Btn_cancelar.Location = new System.Drawing.Point(581, 76);
+            this.Btn_cancelar.Location = new System.Drawing.Point(568, 63);
             this.Btn_cancelar.Margin = new System.Windows.Forms.Padding(0);
             this.Btn_cancelar.Name = "Btn_cancelar";
             this.Btn_cancelar.Size = new System.Drawing.Size(69, 57);
@@ -232,7 +235,7 @@
             this.Btn_eliminar.FlatAppearance.BorderSize = 0;
             this.Btn_eliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_eliminar.Image = global::Capa_Vista_Seguridad.Properties.Resources.borrar11;
-            this.Btn_eliminar.Location = new System.Drawing.Point(512, 76);
+            this.Btn_eliminar.Location = new System.Drawing.Point(499, 63);
             this.Btn_eliminar.Margin = new System.Windows.Forms.Padding(0);
             this.Btn_eliminar.Name = "Btn_eliminar";
             this.Btn_eliminar.Size = new System.Drawing.Size(69, 57);
@@ -247,7 +250,7 @@
             this.Btn_modificar.FlatAppearance.BorderSize = 0;
             this.Btn_modificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_modificar.Image = global::Capa_Vista_Seguridad.Properties.Resources.editar11;
-            this.Btn_modificar.Location = new System.Drawing.Point(443, 76);
+            this.Btn_modificar.Location = new System.Drawing.Point(430, 63);
             this.Btn_modificar.Margin = new System.Windows.Forms.Padding(0);
             this.Btn_modificar.Name = "Btn_modificar";
             this.Btn_modificar.Size = new System.Drawing.Size(69, 57);
@@ -262,7 +265,7 @@
             this.Btn_buscar.FlatAppearance.BorderSize = 0;
             this.Btn_buscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_buscar.Image = global::Capa_Vista_Seguridad.Properties.Resources.buscar11;
-            this.Btn_buscar.Location = new System.Drawing.Point(374, 76);
+            this.Btn_buscar.Location = new System.Drawing.Point(361, 63);
             this.Btn_buscar.Margin = new System.Windows.Forms.Padding(0);
             this.Btn_buscar.Name = "Btn_buscar";
             this.Btn_buscar.Size = new System.Drawing.Size(69, 57);
@@ -277,7 +280,7 @@
             this.Btn_actualizar.FlatAppearance.BorderSize = 0;
             this.Btn_actualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_actualizar.Image = global::Capa_Vista_Seguridad.Properties.Resources.guardar21;
-            this.Btn_actualizar.Location = new System.Drawing.Point(305, 76);
+            this.Btn_actualizar.Location = new System.Drawing.Point(292, 63);
             this.Btn_actualizar.Margin = new System.Windows.Forms.Padding(0);
             this.Btn_actualizar.Name = "Btn_actualizar";
             this.Btn_actualizar.Size = new System.Drawing.Size(69, 57);
@@ -292,7 +295,7 @@
             this.Btn_guardar.FlatAppearance.BorderSize = 0;
             this.Btn_guardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_guardar.Image = global::Capa_Vista_Seguridad.Properties.Resources.guardar12;
-            this.Btn_guardar.Location = new System.Drawing.Point(236, 76);
+            this.Btn_guardar.Location = new System.Drawing.Point(223, 63);
             this.Btn_guardar.Margin = new System.Windows.Forms.Padding(0);
             this.Btn_guardar.Name = "Btn_guardar";
             this.Btn_guardar.Size = new System.Drawing.Size(69, 57);
@@ -307,7 +310,7 @@
             this.Btn_ayuda.FlatAppearance.BorderSize = 0;
             this.Btn_ayuda.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_ayuda.Image = global::Capa_Vista_Seguridad.Properties.Resources.ayuda11;
-            this.Btn_ayuda.Location = new System.Drawing.Point(749, 76);
+            this.Btn_ayuda.Location = new System.Drawing.Point(736, 63);
             this.Btn_ayuda.Margin = new System.Windows.Forms.Padding(0);
             this.Btn_ayuda.Name = "Btn_ayuda";
             this.Btn_ayuda.Size = new System.Drawing.Size(69, 57);
@@ -322,7 +325,7 @@
             this.Btn_salir.FlatAppearance.BorderSize = 0;
             this.Btn_salir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_salir.Image = global::Capa_Vista_Seguridad.Properties.Resources.salir11;
-            this.Btn_salir.Location = new System.Drawing.Point(680, 76);
+            this.Btn_salir.Location = new System.Drawing.Point(667, 63);
             this.Btn_salir.Margin = new System.Windows.Forms.Padding(0);
             this.Btn_salir.Name = "Btn_salir";
             this.Btn_salir.Size = new System.Drawing.Size(69, 57);
@@ -337,7 +340,7 @@
             this.Btn_agregar.FlatAppearance.BorderSize = 0;
             this.Btn_agregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_agregar.Image = global::Capa_Vista_Seguridad.Properties.Resources.agregar11;
-            this.Btn_agregar.Location = new System.Drawing.Point(167, 76);
+            this.Btn_agregar.Location = new System.Drawing.Point(154, 63);
             this.Btn_agregar.Margin = new System.Windows.Forms.Padding(0);
             this.Btn_agregar.Name = "Btn_agregar";
             this.Btn_agregar.Size = new System.Drawing.Size(69, 57);
@@ -345,12 +348,26 @@
             this.Btn_agregar.UseVisualStyleBackColor = false;
             this.Btn_agregar.Click += new System.EventHandler(this.Btn_agregar_Click);
             // 
+            // Dgv_modulos
+            // 
+            this.Dgv_modulos.AllowUserToAddRows = false;
+            this.Dgv_modulos.AllowUserToDeleteRows = false;
+            this.Dgv_modulos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.Dgv_modulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Dgv_modulos.Location = new System.Drawing.Point(7, 227);
+            this.Dgv_modulos.Name = "Dgv_modulos";
+            this.Dgv_modulos.ReadOnly = true;
+            this.Dgv_modulos.RowHeadersWidth = 72;
+            this.Dgv_modulos.RowTemplate.Height = 31;
+            this.Dgv_modulos.Size = new System.Drawing.Size(634, 194);
+            this.Dgv_modulos.TabIndex = 259;
+            // 
             // frmMantemientoMódulos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(133)))), ((int)(((byte)(223)))));
-            this.ClientSize = new System.Drawing.Size(973, 611);
+            this.ClientSize = new System.Drawing.Size(973, 685);
             this.Controls.Add(this.Txt_titulo);
             this.Controls.Add(this.Btn_cancelar);
             this.Controls.Add(this.Btn_eliminar);
@@ -376,6 +393,7 @@
             this.Gpb_datos.PerformLayout();
             this.Gpb_estado.ResumeLayout(false);
             this.Gpb_estado.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Dgv_modulos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -404,5 +422,6 @@
         private System.Windows.Forms.Button Btn_eliminar;
         private System.Windows.Forms.Button Btn_cancelar;
         private System.Windows.Forms.Label Txt_titulo;
+        private System.Windows.Forms.DataGridView Dgv_modulos;
     }
 }

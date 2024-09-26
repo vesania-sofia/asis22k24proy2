@@ -73,11 +73,11 @@
             // 
             this.Dgv_perfiles_asignados.AllowUserToAddRows = false;
             this.Dgv_perfiles_asignados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Dgv_perfiles_asignados.Location = new System.Drawing.Point(206, 397);
+            this.Dgv_perfiles_asignados.Location = new System.Drawing.Point(55, 397);
             this.Dgv_perfiles_asignados.Margin = new System.Windows.Forms.Padding(4);
             this.Dgv_perfiles_asignados.Name = "Dgv_perfiles_asignados";
             this.Dgv_perfiles_asignados.RowHeadersWidth = 51;
-            this.Dgv_perfiles_asignados.Size = new System.Drawing.Size(490, 175);
+            this.Dgv_perfiles_asignados.Size = new System.Drawing.Size(641, 175);
             this.Dgv_perfiles_asignados.TabIndex = 8;
             // 
             // Gpb_datos
@@ -236,12 +236,13 @@
             this.Btn_buscar.FlatAppearance.BorderSize = 0;
             this.Btn_buscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_buscar.Image = global::Capa_Vista_Seguridad.Properties.Resources.buscar11;
-            this.Btn_buscar.Location = new System.Drawing.Point(252, 83);
+            this.Btn_buscar.Location = new System.Drawing.Point(321, 83);
             this.Btn_buscar.Margin = new System.Windows.Forms.Padding(0);
             this.Btn_buscar.Name = "Btn_buscar";
             this.Btn_buscar.Size = new System.Drawing.Size(69, 57);
             this.Btn_buscar.TabIndex = 259;
             this.Btn_buscar.UseVisualStyleBackColor = false;
+            this.Btn_buscar.Visible = false;
             this.Btn_buscar.Click += new System.EventHandler(this.Btn_buscar_Click);
             // 
             // Btn_remover
@@ -296,7 +297,7 @@
             this.Btn_cancelar.FlatAppearance.BorderSize = 0;
             this.Btn_cancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_cancelar.Image = global::Capa_Vista_Seguridad.Properties.Resources.cancelar1;
-            this.Btn_cancelar.Location = new System.Drawing.Point(321, 83);
+            this.Btn_cancelar.Location = new System.Drawing.Point(252, 83);
             this.Btn_cancelar.Margin = new System.Windows.Forms.Padding(0);
             this.Btn_cancelar.Name = "Btn_cancelar";
             this.Btn_cancelar.Size = new System.Drawing.Size(69, 57);

@@ -69,7 +69,7 @@
             this.Txt_modulos.Font = new System.Drawing.Font("Haettenschweiler", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Txt_modulos.Location = new System.Drawing.Point(234, 54);
             this.Txt_modulos.Name = "Txt_modulos";
-            this.Txt_modulos.Size = new System.Drawing.Size(75, 26);
+            this.Txt_modulos.Size = new System.Drawing.Size(67, 24);
             this.Txt_modulos.TabIndex = 2;
             this.Txt_modulos.Text = "Modulos";
             // 
@@ -80,7 +80,7 @@
             this.Txt_aplicaciones.Font = new System.Drawing.Font("Haettenschweiler", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Txt_aplicaciones.Location = new System.Drawing.Point(766, 54);
             this.Txt_aplicaciones.Name = "Txt_aplicaciones";
-            this.Txt_aplicaciones.Size = new System.Drawing.Size(106, 26);
+            this.Txt_aplicaciones.Size = new System.Drawing.Size(96, 24);
             this.Txt_aplicaciones.TabIndex = 3;
             this.Txt_aplicaciones.Text = "Aplicaciones";
             // 
@@ -91,7 +91,7 @@
             this.Btn_crear.FlatAppearance.BorderSize = 0;
             this.Btn_crear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_crear.Image = global::Capa_Vista_Seguridad.Properties.Resources.agregar11;
-            this.Btn_crear.Location = new System.Drawing.Point(545, 99);
+            this.Btn_crear.Location = new System.Drawing.Point(487, 99);
             this.Btn_crear.Margin = new System.Windows.Forms.Padding(2);
             this.Btn_crear.Name = "Btn_crear";
             this.Btn_crear.Size = new System.Drawing.Size(69, 57);
@@ -106,12 +106,13 @@
             this.Btn_ver.FlatAppearance.BorderSize = 0;
             this.Btn_ver.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_ver.Image = global::Capa_Vista_Seguridad.Properties.Resources.buscar11;
-            this.Btn_ver.Location = new System.Drawing.Point(476, 99);
+            this.Btn_ver.Location = new System.Drawing.Point(551, 99);
             this.Btn_ver.Margin = new System.Windows.Forms.Padding(2);
             this.Btn_ver.Name = "Btn_ver";
             this.Btn_ver.Size = new System.Drawing.Size(69, 57);
             this.Btn_ver.TabIndex = 14;
             this.Btn_ver.UseVisualStyleBackColor = false;
+            this.Btn_ver.Visible = false;
             this.Btn_ver.Click += new System.EventHandler(this.btn_ver_Click);
             // 
             // Txt_aplicacion
@@ -135,18 +136,18 @@
             // 
             this.Dgv_asignaciones_modulo_aplicacion.AllowUserToAddRows = false;
             this.Dgv_asignaciones_modulo_aplicacion.AllowUserToDeleteRows = false;
-            this.Dgv_asignaciones_modulo_aplicacion.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.Dgv_asignaciones_modulo_aplicacion.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Dgv_asignaciones_modulo_aplicacion.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.Dgv_asignaciones_modulo_aplicacion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Dgv_asignaciones_modulo_aplicacion.Location = new System.Drawing.Point(32, 186);
+            this.Dgv_asignaciones_modulo_aplicacion.Location = new System.Drawing.Point(31, 182);
             this.Dgv_asignaciones_modulo_aplicacion.Margin = new System.Windows.Forms.Padding(2);
             this.Dgv_asignaciones_modulo_aplicacion.Name = "Dgv_asignaciones_modulo_aplicacion";
             this.Dgv_asignaciones_modulo_aplicacion.ReadOnly = true;
             this.Dgv_asignaciones_modulo_aplicacion.RowHeadersWidth = 72;
             this.Dgv_asignaciones_modulo_aplicacion.RowTemplate.Height = 31;
-            this.Dgv_asignaciones_modulo_aplicacion.Size = new System.Drawing.Size(1044, 399);
+            this.Dgv_asignaciones_modulo_aplicacion.Size = new System.Drawing.Size(1044, 269);
             this.Dgv_asignaciones_modulo_aplicacion.TabIndex = 11;
             // 
             // btn_salir
@@ -196,7 +197,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(133)))), ((int)(((byte)(223)))));
-            this.ClientSize = new System.Drawing.Size(1104, 596);
+            this.ClientSize = new System.Drawing.Size(1104, 462);
             this.Controls.Add(this.Txt_titulo);
             this.Controls.Add(this.Btn_ayuda);
             this.Controls.Add(this.btn_salir);

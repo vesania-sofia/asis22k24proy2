@@ -29,6 +29,7 @@ namespace Capa_Vista_Seguridad
             Btn_guardar.Enabled = false;
             Gpb_estado.Enabled = false;
             Btn_eliminar.Enabled = false;   // se agrega el boton eliminar 
+            mostrarperfiles();
 
         }
 
@@ -46,6 +47,38 @@ namespace Capa_Vista_Seguridad
             Rdb_inhabilitado.Checked = false;
             Txt_codigo.Focus();
         }
+
+        /*Ismar Cortez/
+        /Mostrar perfiles*/
+        void mostrarperfiles()
+        {
+            try
+            {
+                DataTable dtperfiles;
+
+                dtperfiles = logic.Funmostrarperfiles();
+
+
+                if (dtperfiles == null || dtperfiles.Rows.Count == 0)
+                {
+                    MessageBox.Show("No existen registros.", "Verificación", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    Dgv_perfiles.DataSource = dtperfiles;
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al buscar: " + ex.Message);
+            }
+
+        }
+        /********************************************************************/
+
+
      
 
         private void Frm_perfiles_mantenimiento_Load(object sender, EventArgs e)
@@ -77,9 +110,17 @@ namespace Capa_Vista_Seguridad
 
         private void btn_ingresar_Click(object sender, EventArgs e)
         {
+            Txt_codigo.Enabled=false;
             Txt_nombre.Enabled = false;
             Txt_descipcion.Enabled = false;
 
+            if (Txt_codigo.Text == "")
+            {
+                MessageBox.Show("Falta el código");
+
+                Btn_ingreso.Enabled = true;
+
+            }
 
 
             if (Txt_nombre.Text == "")
@@ -115,6 +156,7 @@ namespace Capa_Vista_Seguridad
 
                 logic.funingresarperfiles(Txt_codigo.Text.ToString(), Txt_nombre.Text.ToString(), Txt_descipcion.Text.ToString(), sestado.ToString());
                 MessageBox.Show("Perfil Ingresado Correctamente");
+                mostrarperfiles();
                 limpiar();
                 Gpb_buscarperfiles.Enabled = true;
                 Btn_ingreso.Enabled = true;
@@ -156,6 +198,7 @@ namespace Capa_Vista_Seguridad
 
                 logic.funactualizar(Txt_codigo.Text.ToString(), Txt_nombre.Text.ToString(), Txt_descipcion.Text.ToString(), sestado.ToString());
                 MessageBox.Show("Perfil Actualizado Correctamente");
+                mostrarperfiles();
                 Btn_modificar.Enabled = false;
                 Btn_actualizar.Enabled = false;
                 Btn_cancelar.Enabled = false;
@@ -177,6 +220,7 @@ namespace Capa_Vista_Seguridad
 
         private void btn_nuevo_Click_1(object sender, EventArgs e)
         {
+            Txt_codigo.Enabled = true;
             Btn_ingreso.Enabled = false;
             Btn_actualizar.Enabled = false;
             Gpb_buscarperfiles.Enabled = false;
@@ -189,27 +233,27 @@ namespace Capa_Vista_Seguridad
             Btn_guardar.Enabled = true;
             Btn_cancelar.Enabled = true;
 
-            try
-            {
-                DataTable dtValidarID = logic.funagregar();
-                foreach (DataRow row in dtValidarID.Rows)
-                {
-                    if (row[0].ToString() == "")
-                    {
-                        Txt_codigo.Text = "1";
-                    }
-                    else
-                    {
-                        Txt_codigo.Text = row[0].ToString();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
+            //try
+            //{
+            //    DataTable dtValidarID = logic.funagregar();
+            //    foreach (DataRow row in dtValidarID.Rows)
+            //    {
+            //        if (row[0].ToString() == "")
+            //        {
+            //            Txt_codigo.Text = "1";
+            //        }
+            //        else
+            //        {
+            //            Txt_codigo.Text = row[0].ToString();
+            //        }
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
 
-                Console.WriteLine(ex);
-                return;
-            }
+            //    Console.WriteLine(ex);
+            //    return;
+            //}
         }
 
         private void btn_modif_Click(object sender, EventArgs e)
@@ -225,7 +269,7 @@ namespace Capa_Vista_Seguridad
             Rdb_inhabilitado.Enabled = true;
             Gpb_estado.Enabled = true;
         }
-        /* creado por Emerzon Garcia */ 
+        /* creado por Emerzon Garcia */
         private void btn_eli_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(Txt_codigo.Text))
@@ -239,7 +283,8 @@ namespace Capa_Vista_Seguridad
                 {
                     // Llamar al método de la capa lógica para eliminar el perfil
                     logic.funeliminarperfil(Txt_codigo.Text);
-
+                    MessageBox.Show("Perfil Eliminado Correctamente");
+                    mostrarperfiles();
                     // Opcionalmente, puedes desactivar botones o limpiar campos después de la eliminación
                     Btn_modificar.Enabled = false;
                     Btn_actualizar.Enabled = false;
@@ -359,7 +404,7 @@ namespace Capa_Vista_Seguridad
 
             if (string.IsNullOrWhiteSpace(sperfil))
             {
-                MessageBox.Show("Por favor, ingrese un ID de una aplicacion.");
+                MessageBox.Show("Por favor, ingrese un ID de perfil.");
                 return;
             }
 
@@ -369,7 +414,7 @@ namespace Capa_Vista_Seguridad
 
                 if (dtModulos == null || dtModulos.Rows.Count == 0)
                 {
-                    MessageBox.Show("No se encontraro la aplicacion.");
+                    MessageBox.Show("No se encontraro el perfil.");
                     return;
                 }
 

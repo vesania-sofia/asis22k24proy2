@@ -37,6 +37,36 @@ namespace Capa_Modelo_Seguridad
             return dataUsuarios;
         }
 
+        /**********Ismar Cortez*************************/
+        /*********Mostrar modulo**********************/
+        public OdbcDataAdapter funmodulos()
+        {
+            cn.conectar();
+            string smodulos = "SELECT Pk_id_modulos as ID_Modulos, nombre_modulo as Modulo, descripcion_modulo as Descripcion, estado_modulo as Estado FROM Tbl_modulos";
+            OdbcDataAdapter datamodulos = new OdbcDataAdapter(smodulos, cn.conectar());
+            funInsertarBitacora(idUsuario, "Realizo una consulta a modulos", "tbl_modulos", "1001");
+            return datamodulos;
+        }
+        /**************************************************/
+
+
+        /*****************Ismar Cortez**************/
+        /**************Mostrar perfiles*************/
+        public OdbcDataAdapter funperfiles()
+        {
+            cn.conectar();
+            string sperfiles = "SELECT Pk_id_perfil as ID_Perfiles, nombre_perfil as Perfil, descripcion_perfil as Descripcion, estado_perfil as Estado FROM Tbl_perfiles";
+            OdbcDataAdapter dataperfiles = new OdbcDataAdapter(sperfiles, cn.conectar());
+            funInsertarBitacora(idUsuario, "Realizo una consulta a perfiles", "tbl_perfiles", "1001");
+            return dataperfiles;
+        }
+        /*********************************************/
+
+
+
+
+
+
         //****************************************Kevin López***************************************************
         public OdbcDataAdapter funconsultarmodulos()
         {
@@ -148,20 +178,21 @@ namespace Capa_Modelo_Seguridad
             {
                 // Consulta para obtener usuarios y permisos aplicaciones segun modulos
                 string sql = @"
-                    SELECT 
-                    au.Fk_id_usuario, 
-                    a.nombre_aplicacion, 
-                    au.guardar_permiso, 
-                    au.buscar_permiso, 
-                    au.modificar_permiso, 
-                    au.eliminar_permiso, 
-                    au.imprimir_permiso
-                FROM 
-                    Tbl_permisos_aplicaciones_usuario au
-                JOIN 
-                    Tbl_aplicaciones a ON au.Fk_id_aplicacion = a.Pk_id_aplicacion
-                JOIN 
-                    Tbl_usuarios u ON au.Fk_id_usuario = u.Pk_id_usuario; 
+                        SELECT 
+                            au.Fk_id_usuario AS ID_Usuario, 
+                            u.nombre_usuario AS Nombre_Usuario,
+                            a.nombre_aplicacion AS Aplicacion, 
+                            au.guardar_permiso AS Guardar, 
+                            au.buscar_permiso AS Buscar, 
+                            au.modificar_permiso AS Modificar, 
+                            au.eliminar_permiso AS Eliminar, 
+                            au.imprimir_permiso AS Imprimir
+                        FROM 
+                            Tbl_permisos_aplicaciones_usuario au
+                        JOIN 
+                            Tbl_aplicaciones a ON au.Fk_id_aplicacion = a.Pk_id_aplicacion
+                        JOIN 
+                            Tbl_usuarios u ON au.Fk_id_usuario = u.Pk_id_usuario;
                 ";
 
                 OdbcDataAdapter dataTable = new OdbcDataAdapter(sql, cn.conectar());
@@ -282,7 +313,16 @@ namespace Capa_Modelo_Seguridad
             OdbcDataAdapter dataTable = new OdbcDataAdapter(ssqlAplicaciones, cn.conectar());
             return dataTable;
         }
-
+        /*******************IsmarCortez******************************************/
+        public OdbcDataAdapter funmostraraplicaciones()
+        {
+            cn.conectar();
+            string saplicaciones = "SELECT Pk_id_aplicacion as ID_Aplicacion, nombre_aplicacion as Aplicacion, descripcion_aplicacion as Descripcion, estado_aplicacion as Estado FROM Tbl_aplicaciones";
+            OdbcDataAdapter dataaplicaciones = new OdbcDataAdapter(saplicaciones, cn.conectar());
+            funInsertarBitacora(idUsuario, "Realizo una consulta a aplicaciones", "tbl_aplicaciones", "1001");
+            return dataaplicaciones;
+        }
+        /***********************************************************************/
         public void proinsertaraplicacion(string scodigo, string snombre, string sdescripcion, string sestado)
         {
             try

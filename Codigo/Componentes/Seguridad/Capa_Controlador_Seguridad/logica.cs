@@ -37,6 +37,65 @@ namespace Capa_Controlador_Seguridad
 
         }
 
+        public DataTable Funmostraraplicaciones() {
+            try
+            {
+                OdbcDataAdapter dtaplicaciones = sn.funmostraraplicaciones();
+                DataTable tableaplicaciones = new DataTable();
+                dtaplicaciones.Fill(tableaplicaciones);
+                return tableaplicaciones;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return null;
+            }
+
+        }
+
+        /*********Ismar Cortez***********************/
+        /*********Mostrar modulos*******************/
+        public DataTable Funmostrarmodulos()
+        {
+            try
+            {
+                OdbcDataAdapter dtmodulos = sn.funmodulos();
+                DataTable tablemodulos = new DataTable();
+                dtmodulos.Fill(tablemodulos);
+                return tablemodulos;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return null;
+            }
+
+        }
+        /**********************************************/
+
+        /***************Ismar Cortez************/
+        /*************Mostrar perfiles***********/
+        public DataTable Funmostrarperfiles()
+        {
+            try
+            {
+                OdbcDataAdapter dtaplicaciones = sn.funperfiles();
+                DataTable tableaplicaciones = new DataTable();
+                dtaplicaciones.Fill(tableaplicaciones);
+                return tableaplicaciones;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return null;
+            }
+
+        }
+        /**********************************************/
+
+
+
+
         public DataTable funconsultalogicamodulos()
         {
             try

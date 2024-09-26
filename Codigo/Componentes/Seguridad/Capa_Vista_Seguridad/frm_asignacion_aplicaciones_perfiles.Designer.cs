@@ -53,15 +53,17 @@
             this.Btn_remover = new System.Windows.Forms.Button();
             this.Btn_guardar = new System.Windows.Forms.Button();
             this.Btn_cancelar = new System.Windows.Forms.Button();
+            this.Dgv_asignaciones = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_asignacionesperfiles)).BeginInit();
             this.Gpb_datos.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Dgv_asignaciones)).BeginInit();
             this.SuspendLayout();
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Haettenschweiler", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(156, 9);
+            this.label3.Location = new System.Drawing.Point(375, 15);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(0, 44);
             this.label3.TabIndex = 274;
@@ -79,11 +81,11 @@
             this.Modificar,
             this.Eliminar,
             this.Imprimir});
-            this.Dgv_asignacionesperfiles.Location = new System.Drawing.Point(67, 330);
+            this.Dgv_asignacionesperfiles.Location = new System.Drawing.Point(29, 328);
             this.Dgv_asignacionesperfiles.Margin = new System.Windows.Forms.Padding(4);
             this.Dgv_asignacionesperfiles.Name = "Dgv_asignacionesperfiles";
             this.Dgv_asignacionesperfiles.RowHeadersWidth = 51;
-            this.Dgv_asignacionesperfiles.Size = new System.Drawing.Size(739, 212);
+            this.Dgv_asignacionesperfiles.Size = new System.Drawing.Size(729, 212);
             this.Dgv_asignacionesperfiles.TabIndex = 272;
             this.Dgv_asignacionesperfiles.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgv_asignacionesperfiles_CellContentClick_1);
             // 
@@ -163,7 +165,7 @@
             this.Gpb_datos.Controls.Add(this.Txt_perfiles);
             this.Gpb_datos.Controls.Add(this.Txt_aplicaciones);
             this.Gpb_datos.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Gpb_datos.Location = new System.Drawing.Point(67, 203);
+            this.Gpb_datos.Location = new System.Drawing.Point(286, 209);
             this.Gpb_datos.Margin = new System.Windows.Forms.Padding(4);
             this.Gpb_datos.Name = "Gpb_datos";
             this.Gpb_datos.Padding = new System.Windows.Forms.Padding(4);
@@ -245,7 +247,7 @@
             this.Txt_titulo.AutoSize = true;
             this.Txt_titulo.Font = new System.Drawing.Font("Haettenschweiler", 26F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Txt_titulo.ForeColor = System.Drawing.Color.Transparent;
-            this.Txt_titulo.Location = new System.Drawing.Point(143, 44);
+            this.Txt_titulo.Location = new System.Drawing.Point(278, 59);
             this.Txt_titulo.Name = "Txt_titulo";
             this.Txt_titulo.Size = new System.Drawing.Size(774, 45);
             this.Txt_titulo.TabIndex = 283;
@@ -259,7 +261,7 @@
             this.Btn_agregar.FlatAppearance.BorderSize = 0;
             this.Btn_agregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_agregar.Image = global::Capa_Vista_Seguridad.Properties.Resources.agregar11;
-            this.Btn_agregar.Location = new System.Drawing.Point(67, 128);
+            this.Btn_agregar.Location = new System.Drawing.Point(286, 134);
             this.Btn_agregar.Margin = new System.Windows.Forms.Padding(0);
             this.Btn_agregar.Name = "Btn_agregar";
             this.Btn_agregar.Size = new System.Drawing.Size(69, 57);
@@ -274,7 +276,7 @@
             this.Btn_ayuda.FlatAppearance.BorderSize = 0;
             this.Btn_ayuda.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_ayuda.Image = global::Capa_Vista_Seguridad.Properties.Resources.ayuda11;
-            this.Btn_ayuda.Location = new System.Drawing.Point(737, 128);
+            this.Btn_ayuda.Location = new System.Drawing.Point(956, 134);
             this.Btn_ayuda.Margin = new System.Windows.Forms.Padding(0);
             this.Btn_ayuda.Name = "Btn_ayuda";
             this.Btn_ayuda.Size = new System.Drawing.Size(69, 57);
@@ -289,7 +291,7 @@
             this.Btn_salir.FlatAppearance.BorderSize = 0;
             this.Btn_salir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_salir.Image = global::Capa_Vista_Seguridad.Properties.Resources.salir11;
-            this.Btn_salir.Location = new System.Drawing.Point(668, 128);
+            this.Btn_salir.Location = new System.Drawing.Point(887, 134);
             this.Btn_salir.Margin = new System.Windows.Forms.Padding(0);
             this.Btn_salir.Name = "Btn_salir";
             this.Btn_salir.Size = new System.Drawing.Size(69, 57);
@@ -304,12 +306,13 @@
             this.Btn_buscar.FlatAppearance.BorderSize = 0;
             this.Btn_buscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_buscar.Image = global::Capa_Vista_Seguridad.Properties.Resources.buscar11;
-            this.Btn_buscar.Location = new System.Drawing.Point(274, 128);
+            this.Btn_buscar.Location = new System.Drawing.Point(562, 134);
             this.Btn_buscar.Margin = new System.Windows.Forms.Padding(0);
             this.Btn_buscar.Name = "Btn_buscar";
             this.Btn_buscar.Size = new System.Drawing.Size(69, 57);
             this.Btn_buscar.TabIndex = 278;
             this.Btn_buscar.UseVisualStyleBackColor = false;
+            this.Btn_buscar.Visible = false;
             this.Btn_buscar.Click += new System.EventHandler(this.btn_buscar_Click_1);
             // 
             // Btn_remover
@@ -319,7 +322,7 @@
             this.Btn_remover.FlatAppearance.BorderSize = 0;
             this.Btn_remover.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_remover.Image = global::Capa_Vista_Seguridad.Properties.Resources.borrar11;
-            this.Btn_remover.Location = new System.Drawing.Point(205, 128);
+            this.Btn_remover.Location = new System.Drawing.Point(424, 134);
             this.Btn_remover.Margin = new System.Windows.Forms.Padding(0);
             this.Btn_remover.Name = "Btn_remover";
             this.Btn_remover.Size = new System.Drawing.Size(69, 57);
@@ -334,7 +337,7 @@
             this.Btn_guardar.FlatAppearance.BorderSize = 0;
             this.Btn_guardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_guardar.Image = global::Capa_Vista_Seguridad.Properties.Resources.guardar12;
-            this.Btn_guardar.Location = new System.Drawing.Point(136, 128);
+            this.Btn_guardar.Location = new System.Drawing.Point(355, 134);
             this.Btn_guardar.Margin = new System.Windows.Forms.Padding(0);
             this.Btn_guardar.Name = "Btn_guardar";
             this.Btn_guardar.Size = new System.Drawing.Size(69, 57);
@@ -349,20 +352,36 @@
             this.Btn_cancelar.FlatAppearance.BorderSize = 0;
             this.Btn_cancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_cancelar.Image = global::Capa_Vista_Seguridad.Properties.Resources.cancelar1;
-            this.Btn_cancelar.Location = new System.Drawing.Point(343, 128);
+            this.Btn_cancelar.Location = new System.Drawing.Point(493, 134);
             this.Btn_cancelar.Margin = new System.Windows.Forms.Padding(0);
             this.Btn_cancelar.Name = "Btn_cancelar";
             this.Btn_cancelar.Size = new System.Drawing.Size(69, 57);
             this.Btn_cancelar.TabIndex = 292;
             this.Btn_cancelar.UseVisualStyleBackColor = false;
+            this.Btn_cancelar.Visible = false;
             this.Btn_cancelar.Click += new System.EventHandler(this.Btn_cancelar_Click);
+            // 
+            // Dgv_asignaciones
+            // 
+            this.Dgv_asignaciones.AllowUserToAddRows = false;
+            this.Dgv_asignaciones.AllowUserToDeleteRows = false;
+            this.Dgv_asignaciones.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.Dgv_asignaciones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Dgv_asignaciones.Location = new System.Drawing.Point(775, 328);
+            this.Dgv_asignaciones.Name = "Dgv_asignaciones";
+            this.Dgv_asignaciones.ReadOnly = true;
+            this.Dgv_asignaciones.RowHeadersWidth = 72;
+            this.Dgv_asignaciones.RowTemplate.Height = 31;
+            this.Dgv_asignaciones.Size = new System.Drawing.Size(501, 212);
+            this.Dgv_asignaciones.TabIndex = 293;
             // 
             // frm_asignacion_aplicaciones_perfiles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(133)))), ((int)(((byte)(223)))));
-            this.ClientSize = new System.Drawing.Size(889, 574);
+            this.ClientSize = new System.Drawing.Size(1288, 574);
+            this.Controls.Add(this.Dgv_asignaciones);
             this.Controls.Add(this.Btn_cancelar);
             this.Controls.Add(this.Btn_agregar);
             this.Controls.Add(this.Txt_titulo);
@@ -384,6 +403,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_asignacionesperfiles)).EndInit();
             this.Gpb_datos.ResumeLayout(false);
             this.Gpb_datos.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Dgv_asignaciones)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -415,5 +435,6 @@
         private System.Windows.Forms.Label Txt_aplicaciones;
         private System.Windows.Forms.Label Txt_titulo;
         private System.Windows.Forms.Button Btn_cancelar;
+        private System.Windows.Forms.DataGridView Dgv_asignaciones;
     }
 }
