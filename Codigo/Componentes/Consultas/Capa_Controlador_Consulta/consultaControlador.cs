@@ -365,5 +365,20 @@ public void InsertarDatos(string[] tipos, string[] datos, string tabla)
             csSentencias.EliminarConsulta(nombreConsulta);
         }
         //Fin participacion Sebastian Luna
+
+        // ayudas
+        public string MIndice(string Indice1)
+        {
+            string indice = csSentencias.modIndice(Indice1);
+
+            return indice;
+        }
+
+        public string MRuta(string Ruta1)
+        {
+            string ruta = csSentencias.modRuta(Ruta1);
+
+            return ruta;
+        }
     }
 }   
