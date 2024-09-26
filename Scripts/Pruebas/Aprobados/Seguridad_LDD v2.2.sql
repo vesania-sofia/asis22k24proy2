@@ -1,6 +1,6 @@
-DROP DATABASE  IF EXISTS `Seguridad`;
-CREATE DATABASE IF NOT EXISTS `Seguridad`;
-USE `Seguridad`;
+DROP DATABASE  IF EXISTS `Colchoneria`;
+CREATE DATABASE IF NOT EXISTS `Colchoneria`;
+USE `Colchoneria`;
 
 DROP TABLE IF EXISTS `Tbl_modulos`;
 CREATE TABLE IF NOT EXISTS `Tbl_modulos` (

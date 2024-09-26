@@ -104,7 +104,7 @@
             this.lbl_perfiles.Location = new System.Drawing.Point(80, 92);
             this.lbl_perfiles.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_perfiles.Name = "lbl_perfiles";
-            this.lbl_perfiles.Size = new System.Drawing.Size(100, 33);
+            this.lbl_perfiles.Size = new System.Drawing.Size(72, 22);
             this.lbl_perfiles.TabIndex = 7;
             this.lbl_perfiles.Text = "Perfiles";
             // 
@@ -115,8 +115,9 @@
             this.Cbo_perfiles.Location = new System.Drawing.Point(11, 127);
             this.Cbo_perfiles.Margin = new System.Windows.Forms.Padding(4);
             this.Cbo_perfiles.Name = "Cbo_perfiles";
-            this.Cbo_perfiles.Size = new System.Drawing.Size(199, 34);
+            this.Cbo_perfiles.Size = new System.Drawing.Size(199, 27);
             this.Cbo_perfiles.TabIndex = 6;
+            this.Cbo_perfiles.SelectedIndexChanged += new System.EventHandler(this.Cbo_perfiles_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -125,7 +126,7 @@
             this.label1.Location = new System.Drawing.Point(80, 28);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(102, 33);
+            this.label1.Size = new System.Drawing.Size(72, 22);
             this.label1.TabIndex = 5;
             this.label1.Text = "Usuario";
             // 
@@ -136,7 +137,7 @@
             this.Cbo_usuario.Location = new System.Drawing.Point(11, 54);
             this.Cbo_usuario.Margin = new System.Windows.Forms.Padding(4);
             this.Cbo_usuario.Name = "Cbo_usuario";
-            this.Cbo_usuario.Size = new System.Drawing.Size(199, 34);
+            this.Cbo_usuario.Size = new System.Drawing.Size(199, 27);
             this.Cbo_usuario.TabIndex = 4;
             this.Cbo_usuario.SelectedIndexChanged += new System.EventHandler(this.Cbo_usuario_SelectedIndexChanged);
             // 
@@ -147,7 +148,7 @@
             this.label2.Location = new System.Drawing.Point(246, 18);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(0, 44);
+            this.label2.Size = new System.Drawing.Size(0, 33);
             this.label2.TabIndex = 6;
             // 
             // Txt_titulo
@@ -157,7 +158,7 @@
             this.Txt_titulo.ForeColor = System.Drawing.Color.Transparent;
             this.Txt_titulo.Location = new System.Drawing.Point(132, 18);
             this.Txt_titulo.Name = "Txt_titulo";
-            this.Txt_titulo.Size = new System.Drawing.Size(990, 63);
+            this.Txt_titulo.Size = new System.Drawing.Size(717, 45);
             this.Txt_titulo.TabIndex = 259;
             this.Txt_titulo.Text = "A s i g n a c i o n   d e  p e r f i l e s   a   U s u a r i o s";
             // 
@@ -196,7 +197,7 @@
             this.label5.Location = new System.Drawing.Point(80, 28);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(0, 33);
+            this.label5.Size = new System.Drawing.Size(0, 22);
             this.label5.TabIndex = 5;
             // 
             // Gpb_vista_previa
@@ -320,7 +321,7 @@
             // 
             // frm_asignacion_perfiles
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 27F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(133)))), ((int)(((byte)(226)))));
             this.ClientSize = new System.Drawing.Size(865, 601);

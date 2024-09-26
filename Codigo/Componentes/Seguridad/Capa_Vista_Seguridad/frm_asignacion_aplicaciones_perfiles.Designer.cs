@@ -52,6 +52,7 @@
             this.Btn_buscar = new System.Windows.Forms.Button();
             this.Btn_remover = new System.Windows.Forms.Button();
             this.Btn_guardar = new System.Windows.Forms.Button();
+            this.Btn_cancelar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_asignacionesperfiles)).BeginInit();
             this.Gpb_datos.SuspendLayout();
             this.SuspendLayout();
@@ -174,7 +175,7 @@
             // Cbo_modulos
             // 
             this.Cbo_modulos.BackColor = System.Drawing.Color.White;
-            this.Cbo_modulos.Cursor = System.Windows.Forms.Cursors.No;
+            this.Cbo_modulos.Cursor = System.Windows.Forms.Cursors.Default;
             this.Cbo_modulos.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Cbo_modulos.FormattingEnabled = true;
             this.Cbo_modulos.Location = new System.Drawing.Point(300, 51);
@@ -215,6 +216,7 @@
             this.Cbo_aplicaciones.Name = "Cbo_aplicaciones";
             this.Cbo_aplicaciones.Size = new System.Drawing.Size(160, 27);
             this.Cbo_aplicaciones.TabIndex = 1;
+            this.Cbo_aplicaciones.SelectedIndexChanged += new System.EventHandler(this.Cbo_aplicaciones_SelectedIndexChanged_1);
             // 
             // Txt_perfiles
             // 
@@ -340,12 +342,28 @@
             this.Btn_guardar.UseVisualStyleBackColor = false;
             this.Btn_guardar.Click += new System.EventHandler(this.btn_finalizar_Click_1);
             // 
+            // Btn_cancelar
+            // 
+            this.Btn_cancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.Btn_cancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Btn_cancelar.FlatAppearance.BorderSize = 0;
+            this.Btn_cancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_cancelar.Image = global::Capa_Vista_Seguridad.Properties.Resources.cancelar1;
+            this.Btn_cancelar.Location = new System.Drawing.Point(343, 128);
+            this.Btn_cancelar.Margin = new System.Windows.Forms.Padding(0);
+            this.Btn_cancelar.Name = "Btn_cancelar";
+            this.Btn_cancelar.Size = new System.Drawing.Size(69, 57);
+            this.Btn_cancelar.TabIndex = 292;
+            this.Btn_cancelar.UseVisualStyleBackColor = false;
+            this.Btn_cancelar.Click += new System.EventHandler(this.Btn_cancelar_Click);
+            // 
             // frm_asignacion_aplicaciones_perfiles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(133)))), ((int)(((byte)(223)))));
             this.ClientSize = new System.Drawing.Size(889, 574);
+            this.Controls.Add(this.Btn_cancelar);
             this.Controls.Add(this.Btn_agregar);
             this.Controls.Add(this.Txt_titulo);
             this.Controls.Add(this.Btn_guardar);
@@ -396,5 +414,6 @@
         private System.Windows.Forms.Label Txt_perfiles;
         private System.Windows.Forms.Label Txt_aplicaciones;
         private System.Windows.Forms.Label Txt_titulo;
+        private System.Windows.Forms.Button Btn_cancelar;
     }
 }

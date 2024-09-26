@@ -91,6 +91,9 @@ namespace Capa_Vista_Seguridad
             Cbo_usuarios.Text = " ";
             Cbo_modulos.Text = " ";
             Cbo_aplicaciones.Text = " ";
+            Cbo_usuarios.SelectedIndex = -1;
+            Cbo_modulos.SelectedIndex = -1;
+            Cbo_aplicaciones.SelectedIndex = -1;
         }
 
         void limpieza2()
@@ -98,7 +101,9 @@ namespace Capa_Vista_Seguridad
             Cbo_usuarios.Text = " ";
             Cbo_modulos.Text = " ";
             Cbo_aplicaciones.Text = " ";
-
+            Cbo_usuarios.SelectedIndex = -1;
+            Cbo_modulos.SelectedIndex = -1;
+            Cbo_aplicaciones.SelectedIndex = -1;
             Dgv_aplicaciones_asignados.Columns.Clear();
 
 
@@ -265,81 +270,65 @@ namespace Capa_Vista_Seguridad
         {
             if (!isInitialized)
             {
-                Btn_guardar.Enabled = true;
+                // Primera vez que se presiona el botón
+                Btn_guardar.Enabled = false;
                 Cbo_usuarios.Enabled = true;
                 Cbo_modulos.Enabled = true;
                 Cbo_aplicaciones.Enabled = true;
                 Dgv_asignaciones.Enabled = true;
                 Btn_eliminar.Enabled = false;
                 Btn_limpiar.Enabled = true;
-
-
+                Btn_buscar.Enabled = false;
                 MessageBox.Show("Empieza la asignación.", "Verificación", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                isInitialized = true; // Cambiar el estado a inicializado
-                return; // Salir del método después de la habilitación
-            }
-
-            // Verificar si los tres ComboBox tienen una selección
-            if (Cbo_usuarios.SelectedItem != null && Cbo_modulos.SelectedItem != null && Cbo_aplicaciones.SelectedItem != null)
-            {
-                Btn_eliminar.Enabled = true; // Activar botón Eliminar solo si los tres están seleccionados
+                isInitialized = true;
+                return;
             }
             else
             {
-                Btn_eliminar.Enabled = false; // Desactivar si no se seleccionaron los tres
-            }
-
-
-            // Validar si hay campos vacíos
-            if (Cbo_aplicaciones.SelectedItem == null || Cbo_usuarios.SelectedItem == null)
-            {
-                MessageBox.Show("Faltan Datos Por Seleccionar", "Verificación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return; // Salir del método si hay campos vacíos
-            }
-            else
-            {
-                bool bUsuario_aplicacion_existente = false;
-
-                string sUsuario = Cbo_usuarios.SelectedItem.ToString();
-                string sAplicacion = Cbo_aplicaciones.SelectedItem.ToString();
-
-
-
-                if (iContadorFila > 0)
+                // Segunda vez que se presiona el botón
+                if (Cbo_usuarios.SelectedItem != null && Cbo_modulos.SelectedItem != null && Cbo_aplicaciones.SelectedItem != null)
                 {
-                    Dgv_asignaciones.Rows.Add(sUsuario, sAplicacion);
+                    // Deshabilitar ComboBox
+                    Cbo_usuarios.Enabled = false;
+                    Cbo_modulos.Enabled = false;
+                    Cbo_aplicaciones.Enabled = false;
 
-                    iContadorFila++;
+                    Btn_eliminar.Enabled = true;
+                    Btn_guardar.Enabled = true;
+                    Btn_agregar.Enabled = false;
+                    Btn_buscar.Enabled = false;
 
+                    string sUsuario = Cbo_usuarios.SelectedItem.ToString();
+                    string sAplicacion = Cbo_aplicaciones.SelectedItem.ToString();
 
-                }
-                else
-                {
+                    bool bUsuario_aplicacion_existente = false;
                     foreach (DataGridViewRow Fila in Dgv_asignaciones.Rows)
                     {
-                        if (Fila.Cells[0].Value.ToString() == Cbo_usuarios.SelectedItem.ToString() && Fila.Cells[1].Value.ToString() == Cbo_aplicaciones.SelectedItem.ToString())
-
+                        if (Fila.Cells[0].Value?.ToString() == sUsuario && Fila.Cells[1].Value?.ToString() == sAplicacion)
                         {
                             bUsuario_aplicacion_existente = true;
+                            break;
                         }
                     }
 
-                    if (bUsuario_aplicacion_existente == true)
-                    {
-                        MessageBox.Show("Ya existe una relacion del usuario con la aplicacion");
-                    }
-                    else
+                    if (!bUsuario_aplicacion_existente)
                     {
                         Dgv_asignaciones.Rows.Add(sUsuario, sAplicacion);
                         iContadorFila++;
+                        // No llamamos a limpieza() aquí para mantener los valores seleccionados
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ya existe una relación del usuario con la aplicación");
                     }
                 }
-
-                limpieza();
+                else
+                {
+                    MessageBox.Show("Faltan Datos Por Seleccionar", "Verificación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
             }
         }
-        //Tremina
+        //Termina
 
 
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -352,21 +341,35 @@ namespace Capa_Vista_Seguridad
             Btn_agregar.Enabled = false;
             Btn_limpiar.Enabled = true;
             Btn_eliminar.Enabled = false;
+            Cbo_aplicaciones.Enabled = false;
+            Cbo_modulos.Enabled = false;
+            Cbo_usuarios.Enabled = false;
             Dgv_aplicaciones_asignados.Enabled = true;
             actualizardatagriew();
         }
 
         private void btn_remover_Click_1(object sender, EventArgs e)
         {
-            Btn_agregar.Enabled = true;
+            ReiniciarEstado();
+        }
+
+        private void ReiniciarEstado()
+        {
+            isInitialized = false;
+            Btn_guardar.Enabled = false;
+            Btn_eliminar.Enabled = false;
+            Btn_limpiar.Enabled = false;
             Cbo_usuarios.Enabled = false;
             Cbo_modulos.Enabled = false;
             Cbo_aplicaciones.Enabled = false;
             Dgv_asignaciones.Enabled = false;
-            Btn_limpiar.Enabled = false;
             Dgv_aplicaciones_asignados.Enabled = false;
-            Btn_guardar.Enabled = false;
-            limpieza2();
+            Btn_agregar.Enabled = true;
+            Btn_buscar.Enabled = true;
+
+            limpieza();
+            Dgv_asignaciones.Rows.Clear();
+            iContadorFila = 0;
         }
 
         // FINALIZA ALYSON RODRIGUEZ 9959-21-829 
@@ -469,6 +472,8 @@ namespace Capa_Vista_Seguridad
                 Cbo_aplicaciones.Enabled = false;
                 Dgv_asignaciones.Enabled = false;
                 Dgv_aplicaciones_asignados.Enabled = false;
+                Btn_agregar.Enabled = true;
+                Btn_buscar.Enabled = true;
                 limpieza();
                 Dgv_asignaciones.Rows.Clear();
                 iContadorFila = 0;
@@ -562,32 +567,22 @@ namespace Capa_Vista_Seguridad
 
         private void btn_eliminar_Click(object sender, EventArgs e)
         {
-            Btn_agregar.Enabled = true;
-            Btn_guardar.Enabled = false;
-            Btn_limpiar.Enabled = false;
-            Cbo_usuarios.Enabled = false;
-            Cbo_modulos.Enabled = false;
-            Cbo_aplicaciones.Enabled = false;
-            Dgv_asignaciones.Enabled = false;
-
             if (iContadorFila > 0 && Dgv_asignaciones.CurrentRow != null)
             {
                 // Eliminar la fila seleccionada
                 Dgv_asignaciones.Rows.RemoveAt(Dgv_asignaciones.CurrentRow.Index);
                 iContadorFila--;
 
-                // Limpiar los ComboBox para evitar agregar la misma relación
-                Cbo_usuarios.SelectedItem = null;
-                Cbo_aplicaciones.SelectedItem = null;
-
-                // Restablecer el estado de isInitialized
-                isInitialized = false; // Permitir que se muestre el mensaje la próxima vez que se agregue
+                // Mostrar mensaje de confirmación
+                MessageBox.Show("Relación eliminada correctamente.", "Eliminación", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                MessageBox.Show("No hay relaciones que eliminar");
+                MessageBox.Show("No hay relaciones que eliminar", "Eliminación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
+            // Reiniciar el estado del formulario
+            ReiniciarEstado();
         }
     }
 }

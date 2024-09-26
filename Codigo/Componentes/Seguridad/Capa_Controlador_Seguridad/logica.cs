@@ -113,8 +113,6 @@ namespace Capa_Controlador_Seguridad
 
         public DataTable funconsultaLogicaPerfilesUsuarios()
         {
-
-
             try
             {
                 OdbcDataAdapter dt = sn.funmostrarPerfilesDeUsuario();
@@ -127,8 +125,6 @@ namespace Capa_Controlador_Seguridad
                 Console.WriteLine(ex);
                 return null;
             }
-
-
         }
 
         public bool funconsultaLogicaInsertarPerfilUsuario(string scodigoUsuario, string scodigoPerfil)
@@ -824,13 +820,5 @@ namespace Capa_Controlador_Seguridad
                 return false;
             }
         }
-
-
-
     }
-
-
-
 }
-
-
