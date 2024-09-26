@@ -478,6 +478,7 @@ namespace Capa_Vista_Seguridad
             Cmb_Pregunta.Enabled = true;
             Txt_respuesta.Enabled = true;
 
+            Btn_nuevo.Enabled = false;
 
             //limpiar
 

@@ -88,12 +88,13 @@ namespace Capa_Vista_Seguridad
 //****************************************Kevin López***************************************************
         private void Frm_asignacion_aplicaciones_perfiles_Load(object sender, EventArgs e)
         {
-
             CargarPerfiles();
             CargarModulos();
             Cbo_aplicaciones.DropDownStyle = ComboBoxStyle.DropDownList;
             Cbo_modulos.DropDownStyle = ComboBoxStyle.DropDownList;
             Cbo_perfiles.DropDownStyle = ComboBoxStyle.DropDownList;
+            Btn_guardar.Enabled = false;
+            Btn_remover.Enabled = false;
         }
 //****************************************FIN Kevin López***************************************************
         void limpieza()
@@ -166,7 +167,7 @@ namespace Capa_Vista_Seguridad
 
             if (dt != null && dt.Rows.Count > 0)
             {
-                MessageBox.Show("Datos recibidos: " + dt.Rows.Count.ToString());
+                //MessageBox.Show("Datos recibidos: " + dt.Rows.Count.ToString());
 
                 // Asignar los nombres de las columnas en el DataGridView
                 Dgv_asignacionesperfiles.Columns["Perfil"].DataPropertyName = "Fk_id_perfil";
@@ -250,6 +251,17 @@ namespace Capa_Vista_Seguridad
             {
                 MessageBox.Show("No hay filas en el DataGridView.");
             }
+
+            Btn_guardar.Enabled = false;
+            Btn_agregar.Enabled = true;
+            Btn_remover.Enabled = false;
+            Btn_buscar.Enabled = true;
+            Cbo_aplicaciones.Enabled = true;
+            Cbo_modulos.Enabled = true;
+            Cbo_perfiles.Enabled = true;
+            Cbo_aplicaciones.SelectedIndex = -1;
+            Cbo_modulos.SelectedIndex = -1;
+            Cbo_perfiles.SelectedIndex = -1;
         }
 
 
@@ -278,12 +290,26 @@ namespace Capa_Vista_Seguridad
 
             // Agregar la nueva relación
             Dgv_asignacionesperfiles.Rows.Add(sPerfil, sAplicacion);
+
+            // Habilitar los botones de guardar y eliminar
+            Btn_guardar.Enabled = true;
+            Btn_remover.Enabled = true;
+
+            Btn_agregar.Enabled = false;
+            Btn_buscar.Enabled = false;
+
+            // Opcional: deshabilitar los ComboBox para evitar cambios
+            Cbo_aplicaciones.Enabled = false;
+            Cbo_modulos.Enabled = false;
+            Cbo_perfiles.Enabled = false;
+
             limpieza(); // Limpiar los combos
             //***************************HECHO POR KEVIN LOPEZ********************************************
         }
         //*******************TRABAJADO POR JOSUE PAZ 0901-21-5560**********************************************************
         private void btn_finalizar_Click_1(object sender, EventArgs e)
         {
+
             string singresar;
             string sconsulta;
             string smodificar;
@@ -336,6 +362,16 @@ namespace Capa_Vista_Seguridad
                 limpieza();
                 Dgv_asignacionesperfiles.Rows.Clear();
                 iContadorFila = 0;
+                Btn_agregar.Enabled = true;
+                Btn_buscar.Enabled = true;
+                Btn_remover.Enabled = false;
+                Btn_guardar.Enabled = false;
+                Cbo_aplicaciones.SelectedIndex = -1;
+                Cbo_modulos.SelectedIndex = -1;
+                Cbo_perfiles.SelectedIndex = -1;
+                Cbo_aplicaciones.Enabled = true;
+                Cbo_modulos.Enabled = true;
+                Cbo_perfiles.Enabled = true;
             }
             catch (Exception ex)
             {
@@ -356,7 +392,7 @@ namespace Capa_Vista_Seguridad
 
             if (dt != null && dt.Rows.Count > 0)
             {
-                MessageBox.Show("Datos recibidos: " + dt.Rows.Count.ToString());
+                //MessageBox.Show("Datos recibidos: " + dt.Rows.Count.ToString());
 
                 // Limpiar las columnas anteriores
                 Dgv_asignacionesperfiles.Columns.Clear();
@@ -365,7 +401,7 @@ namespace Capa_Vista_Seguridad
                 Dgv_asignacionesperfiles.Columns.Add("Perfil", "Perfil");
                 Dgv_asignacionesperfiles.Columns["Perfil"].DataPropertyName = "Fk_id_perfil";
 
-                Dgv_asignacionesperfiles.Columns.Add("Aplicacion", "Aplicación");
+                Dgv_asignacionesperfiles.Columns.Add("Aplicacion", "Aplicacion");
                 Dgv_asignacionesperfiles.Columns["Aplicacion"].DataPropertyName = "nombre_aplicacion";
 
                 // Agregar columnas de permisos como TextBox
@@ -415,8 +451,10 @@ namespace Capa_Vista_Seguridad
 
         private void btn_buscar_Click_1(object sender, EventArgs e)
         {
-            Btn_agregar.Enabled = false;
-
+            Btn_agregar.Enabled = true;
+            Cbo_aplicaciones.Enabled = false;
+            Cbo_modulos.Enabled = false;
+            Cbo_perfiles.Enabled = false;
             actualizardatagriew1();
         }
         //***************** KATERYN DE LEON y Gabriela Suc***************************************************
@@ -509,6 +547,34 @@ namespace Capa_Vista_Seguridad
         {
 
 
+        }
+
+        private void Cbo_aplicaciones_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+        }
+
+        private void Btn_cancelar_Click(object sender, EventArgs e)
+        {
+            Btn_agregar.Enabled = true;
+            Btn_guardar.Enabled = false;
+            Btn_remover.Enabled = false;
+            Btn_buscar.Enabled = true;
+            Cbo_aplicaciones.SelectedIndex = -1;
+            Cbo_modulos.SelectedIndex = -1;
+            Cbo_perfiles.SelectedIndex = -1;
+            Cbo_aplicaciones.Enabled = true;
+            Cbo_modulos.Enabled = true;
+            Cbo_perfiles.Enabled = true;
+            // Verificar si hay una fuente de datos
+            if (Dgv_asignacionesperfiles.DataSource != null)
+            {
+                // Crear una nueva DataTable vacía con las mismas columnas que el original
+                DataTable dt = (DataTable)Dgv_asignacionesperfiles.DataSource;
+                dt.Rows.Clear(); // Limpiar solo las filas, las columnas se mantienen.
+
+                // Reasignar el DataTable vacío como fuente de datos
+                Dgv_asignacionesperfiles.DataSource = dt;
+            }
         }
     }
     //******************ACA TERMINA********************************************************

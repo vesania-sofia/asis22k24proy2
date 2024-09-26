@@ -56,10 +56,7 @@ namespace Capa_Vista_Seguridad
             // Asocia el evento SelectedIndexChanged después de poblar el ComboBox
             Cbo_usuario.SelectedIndexChanged += new EventHandler(Cbo_usuario_SelectedIndexChanged);
             Cbo_perfiles.SelectedIndexChanged += new EventHandler(Cbo_perfiles_SelectedIndexChanged2);
-            
-
         }
-
 
 
         public void prollenarseUsuario(string tabla, string campo1, string campo2)
@@ -114,7 +111,7 @@ namespace Capa_Vista_Seguridad
                 var selectedItem = (ComboBoxItemU)Cbo_usuario.SelectedItem;
                 valorSeleccionadousuario = selectedItem.Value;
                 
-                MessageBox.Show($"Valor seleccionado: {valorSeleccionadousuario}", "Valor Seleccionado");
+               // MessageBox.Show($"Valor seleccionado: {valorSeleccionadousuario}", "Valor Seleccionado");
             }
         }
 
@@ -172,7 +169,7 @@ namespace Capa_Vista_Seguridad
                 var selectedItem = (ComboBoxItemP)Cbo_perfiles.SelectedItem;
                 valorSeleccionadoperfiles = selectedItem.Value;
                 // Mostrar el valor en un MessageBox
-                MessageBox.Show($"Valor seleccionado: {valorSeleccionadoperfiles}", "Valor Seleccionado");
+               // MessageBox.Show($"Valor seleccionado: {valorSeleccionadoperfiles}", "Valor Seleccionado");
             }
         }
 
@@ -188,6 +185,8 @@ namespace Capa_Vista_Seguridad
         {
             Cbo_perfiles.DropDownStyle = ComboBoxStyle.DropDownList;
             Cbo_usuario.DropDownStyle = ComboBoxStyle.DropDownList;
+            Btn_guardar.Enabled = false;
+            Btn_remover.Enabled = false;
         }
 
         private void Dgv_perfiles_asignados_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -200,7 +199,9 @@ namespace Capa_Vista_Seguridad
         {
             Cbo_usuario.Text = " ";
             Cbo_perfiles.Text = " ";
-            
+            Cbo_perfiles.SelectedIndex = -1;
+            Cbo_usuario.SelectedIndex = -1;
+
             Dgv_perfiles_asignados.Columns.Clear();
             
 
@@ -219,7 +220,8 @@ namespace Capa_Vista_Seguridad
         {
             Cbo_usuario.Text = " ";
             Cbo_perfiles.Text = " ";
- 
+            Cbo_perfiles.SelectedIndex = -1;
+            Cbo_usuario.SelectedIndex = -1;
         }
 
         public static int iContadorFila = 0;
@@ -248,9 +250,7 @@ namespace Capa_Vista_Seguridad
         }
 
         public void proactualizardatagriew()
-        {
-            
-            
+        {     
             try
             {
                 // Llamar a la capa lógica para obtener los datos de la asignación (modulo-aplicación)
@@ -271,7 +271,6 @@ namespace Capa_Vista_Seguridad
                 MessageBox.Show($"Error al buscar los datos: {ex.Message}");
             }
         }
-
 
 
         private void Btn_agregar_Click(object sender, EventArgs e)
@@ -364,9 +363,9 @@ namespace Capa_Vista_Seguridad
                 Cbo_usuario.Enabled = true;
                 Cbo_perfiles.Enabled = true;
                 Btn_agregar.Enabled = true;
-                Btn_guardar.Enabled = true;
+                Btn_guardar.Enabled = false;
                 Btn_cancelar.Enabled = true;
-                Btn_remover.Enabled = true;
+                Btn_remover.Enabled = false;
                 Btn_buscar.Enabled = true;
                 Gpb_consulta.Enabled = true;
                 prolimpieza();
@@ -409,6 +408,9 @@ namespace Capa_Vista_Seguridad
             Btn_remover.Enabled = false;
             Gpb_consulta.Enabled = true;
             prolimpieza();
+            Cbo_usuario.SelectedIndex = -1;
+            Cbo_perfiles.SelectedIndex = -1;
+            Btn_guardar.Enabled = false;
         }
 
         private void Btn_salir_Click(object sender, EventArgs e)
@@ -488,6 +490,11 @@ namespace Capa_Vista_Seguridad
 
             // Retorna null si no se encontró el archivo
             return null;
+        }
+
+        private void Cbo_perfiles_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Btn_guardar.Enabled = true;
         }
         //************* Fin KATERYN DE LEON y Gabriela Suc ************************
     }

@@ -118,10 +118,10 @@ namespace Capa_Modelo_Seguridad
                 }
                 almacenaUsuario.Close();
                 sqlCodigoUsuario.Connection.Close();
-                MessageBox.Show(sCodigoUsuario);
+                //MessageBox.Show(sCodigoUsuario);
                 // Inserta los permisos usando el código de la aplicación y el código del usuario
                 string sqlInsertarPermisosUA = "INSERT INTO Tbl_permisos_aplicaciones_usuario(Fk_id_usuario, Fk_id_aplicacion, guardar_permiso, buscar_permiso, modificar_permiso, eliminar_permiso, imprimir_permiso) VALUES ('" + sCodigoUsuario + "','" + sCodigoAplicacion + "', '" + sIngresar + "', '" + sConsulta + "', '" + sModificar + "', '" + sEliminar + "', '" + sImprimir + "');";
-                MessageBox.Show(sqlInsertarPermisosUA);
+               // MessageBox.Show(sqlInsertarPermisosUA);
                 // Ejecuta el comando de inserción
                 OdbcDataAdapter dataPermisosUA = new OdbcDataAdapter(sqlInsertarPermisosUA, cn.conectar());
                 // Inserta en la bitácora
@@ -148,21 +148,21 @@ namespace Capa_Modelo_Seguridad
             {
                 // Consulta para obtener usuarios y permisos aplicaciones segun modulos
                 string sql = @"
-        SELECT 
-        au.Fk_id_usuario, 
-        a.nombre_aplicacion, 
-        au.guardar_permiso, 
-        au.buscar_permiso, 
-        au.modificar_permiso, 
-        au.eliminar_permiso, 
-        au.imprimir_permiso
-    FROM 
-        Tbl_permisos_aplicaciones_usuario au
-    JOIN 
-        Tbl_aplicaciones a ON au.Fk_id_aplicacion = a.Pk_id_aplicacion
-    JOIN 
-        Tbl_usuarios u ON au.Fk_id_usuario = u.Pk_id_usuario; 
-";
+                    SELECT 
+                    au.Fk_id_usuario, 
+                    a.nombre_aplicacion, 
+                    au.guardar_permiso, 
+                    au.buscar_permiso, 
+                    au.modificar_permiso, 
+                    au.eliminar_permiso, 
+                    au.imprimir_permiso
+                FROM 
+                    Tbl_permisos_aplicaciones_usuario au
+                JOIN 
+                    Tbl_aplicaciones a ON au.Fk_id_aplicacion = a.Pk_id_aplicacion
+                JOIN 
+                    Tbl_usuarios u ON au.Fk_id_usuario = u.Pk_id_usuario; 
+                ";
 
                 OdbcDataAdapter dataTable = new OdbcDataAdapter(sql, cn.conectar());
                 return dataTable;
@@ -225,7 +225,7 @@ namespace Capa_Modelo_Seguridad
 
         public void proinsertarPerfilUsuario(string scodigoUsuario, string scodigoPerfil)
         {
-            MessageBox.Show(scodigoUsuario + " " + scodigoPerfil);
+            //MessageBox.Show(scodigoUsuario + " " + scodigoPerfil);
 
             try
             {
@@ -243,7 +243,7 @@ namespace Capa_Modelo_Seguridad
                         // Agregar los parámetros al comando
                         cmd.Parameters.AddWithValue("@Fk_id_usuario", scodigoUsuario);
                         cmd.Parameters.AddWithValue("@Fk_id_perfil", scodigoPerfil);
-                        MessageBox.Show(cmd.ToString());
+                        //MessageBox.Show(cmd.ToString());
                         // Ejecutar el comando
                         cmd.ExecuteNonQuery();
                         funInsertarBitacora(idUsuario, "Inserto un nuevo modulo: " + scodigoUsuario + " - " + scodigoPerfil, "Tbl_asignaciones_perfils_usuario", "1001");
@@ -265,8 +265,8 @@ namespace Capa_Modelo_Seguridad
 
                 string sqlIDAplicacion = "SELECT MAX(Pk_id_aplicacion)+1 FROM tbl_aplicaciones";
                 OdbcDataAdapter dataIDAplicacion = new OdbcDataAdapter(sqlIDAplicacion, cn.conectar());
-                return dataIDAplicacion;
                 funInsertarBitacora(idUsuario, "Se selecciono una aplicación", "tbl_aplicaciones", "1001");
+                return dataIDAplicacion;           
             }
             catch (Exception ex)
             {
@@ -666,8 +666,8 @@ namespace Capa_Modelo_Seguridad
 
                 string sqlIDmodulo = "SELECT MAX(Pk_id_modulo)+1 FROM tbl_modulos";
                 OdbcDataAdapter dataIDmodulo = new OdbcDataAdapter(sqlIDmodulo, cn.conectar());
-                return dataIDmodulo;
                 funInsertarBitacora(idUsuario, "Se mostraron los modulos", "tbl_modulos", "1001");
+                return dataIDmodulo;
             }
             catch (Exception ex)
             {
@@ -925,7 +925,7 @@ namespace Capa_Modelo_Seguridad
             try
             {
                 ds = new DataSet();
-                string query = $"SELECT PK_id_bitacora as Id, FK_id_usuario as Usuario, fecha_bitacora, hora_bitacora, host_bitacora, ip_bitacora, accion_bitacora, tabla, aplicacion FROM tbl_bitacora WHERE {sCampo} LIKE ?";
+                string query = $"SELECT PK_id_bitacora as Id, FK_id_usuario as Usuario, Fk_id_aplicacion as Aplicacion, fecha_bitacora as Fecha, hora_bitacora as Hora, host_bitacora as Host, ip_bitacora as IP, accion_bitacora as Accion, tabla  as Tabla FROM tbl_bitacora WHERE {sCampo} LIKE ?";
 
                 using (OdbcConnection conexion = cn.conectar())
                 {
@@ -966,7 +966,7 @@ namespace Capa_Modelo_Seguridad
                         string susuario = resultado.ToString();
 
                         string sconsulta = @"INSERT INTO tbl_bitacora 
-                                (Fk_id_usuario, Fk_id_aplicacion,fecha_bitacora, hora_bitacora, host_bitacora, ip_bitacora, accion_bitacora, tabla) 
+                                (Fk_id_usuario, Fk_id_aplicacion, fecha_bitacora, hora_bitacora, host_bitacora, ip_bitacora, accion_bitacora, tabla) 
                                 VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
                         using (OdbcCommand cmd = new OdbcCommand(sconsulta, conexion))
