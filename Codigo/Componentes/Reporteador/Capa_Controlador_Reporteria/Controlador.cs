@@ -141,5 +141,19 @@ namespace Capa_Controlador_Reporteria
             nextId = nextId + 1;
             return nextId.ToString();
         }
+
+        public string MIndice(string Indice1)
+        {
+            string indice = sentencias.modIndice(Indice1);
+
+            return indice;
+        }
+
+        public string MRuta(string Ruta1)
+        {
+            string ruta = sentencias.modRuta(Ruta1);
+
+            return ruta;
+        }
     }
 }
