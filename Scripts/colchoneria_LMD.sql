@@ -853,6 +853,16 @@ INSERT INTO `tbl_usuarios` (`Pk_id_usuario`, `nombre_usuario`, `apellido_usuario
 (1, 'admin', 'admin', 'admin', '52c88f064ed5ed9161d01f634f5e3bfcf5c77fec94fb398b6690e1b41178eb6c', 'esduardo@gmail.com', '2024-09-21 00:55:40', 1, 'COLOR FAVORITO', 'ROJO'),
 (2, 'Ismar', 'Cortez', 'Ismar', 'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f', 'icortezs@miumg.edu.gt', '2024-09-17 17:32:03', 1, 'Nombre de familiar', 'Eunice');
 
+-- Se actualiza la contraseña de admin, ya que no debe ingresarse hasheado manualmente
+UPDATE `tbl_usuarios` SET `password_usuario` = 'HO0aGo4nM94=' WHERE `Pk_id_usuario` = 1;
+
+-- Se eliminó el usuario 2 porque solo el admin debe crearse desde la base de datos
+DELETE FROM `tbl_usuarios` WHERE `Pk_id_usuario` = 2;
+
+-- Se hashea la contraseña
+UPDATE tbl_usuarios
+SET password_usuario = SHA2('HO0aGo4nM94=', 256) 
+WHERE username_usuario = 'admin';
 --
 -- Volcado de datos para la tabla `venta`
 --

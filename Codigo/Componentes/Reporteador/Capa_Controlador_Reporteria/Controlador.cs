@@ -21,9 +21,10 @@ namespace Capa_Controlador_Reporteria
             return tabla;
         }
 
+        // Realizado por: Angel Gerardo Ajanel Tol - 0901-21-10584
         public int guardarReporte(TextBox idReporte, string sRuta, string sNombre_archivo, string sAplicacion, string sEstado, string sModulo)
         {
-            //se valida que el textbox no este vacio o con espacios en blanco
+            //se valida que el textbox no este vacío o con espacios en blanco
             if (string.IsNullOrEmpty(idReporte.Text) || string.IsNullOrEmpty(sRuta) || string.IsNullOrEmpty(sNombre_archivo) ||
                 string.IsNullOrEmpty(sAplicacion) || string.IsNullOrEmpty(sEstado) || string.IsNullOrEmpty(sModulo))
             {
@@ -39,7 +40,7 @@ namespace Capa_Controlador_Reporteria
 
         public int borrar_reporte(TextBox idReporte)
         {
-            //se valida que el textbox no este vacio o con espacios en blanco
+            //se valida que el textbox no este vacío o con espacios en blanco
             if (string.IsNullOrEmpty(idReporte.Text))
             {
                 MessageBox.Show("El campo no puede estar vacío", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -62,9 +63,10 @@ namespace Capa_Controlador_Reporteria
             }
         }
 
+        // Realizado por: Francisco Javier Chamo Morales - 0901-21-17951
         public int ModReporteria(string sRuta, string sNombre_archivo, string sAplicacion, string sEstado, TextBox idReporte, string sModulo)
         {
-            //se valida que el textbox no este vacio o con espacios en blanco
+            //se valida que el textbox no este vacío o con espacios en blanco
             if (string.IsNullOrEmpty(idReporte.Text) || string.IsNullOrEmpty(sRuta) || string.IsNullOrEmpty(sNombre_archivo) ||
                 string.IsNullOrEmpty(sAplicacion) || string.IsNullOrEmpty(sEstado) || string.IsNullOrEmpty(sModulo))
             {
@@ -97,6 +99,7 @@ namespace Capa_Controlador_Reporteria
             return tabla2;
         }
 
+        // Realizado por: José Andrés Verón Canel - 0901-21-9780
         public string queryRuta(string aplicacion)
         {
             string sRuta;
@@ -125,6 +128,7 @@ namespace Capa_Controlador_Reporteria
             return applicationCodes;
         }
 
+        // Realizado por: Elvir Amarildo Sandoval Pleitez - 0901-21-5538
         public List<string> listadoModulos()
         {
             List<string> moduleCodes = sentencias.getModulos();
