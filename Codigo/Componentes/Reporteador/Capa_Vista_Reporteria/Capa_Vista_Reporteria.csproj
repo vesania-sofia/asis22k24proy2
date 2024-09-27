@@ -154,6 +154,9 @@
     <EmbeddedResource Include="reporteria_usuario.resx">
       <DependentUpon>reporteria_usuario.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="visualizar.resx">
+      <DependentUpon>visualizar.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
