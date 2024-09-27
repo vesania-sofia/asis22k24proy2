@@ -38,6 +38,8 @@ namespace Capa_Vista_Seguridad
             Txt_apellido.KeyPress += new KeyPressEventHandler(SoloLetras_KeyPress);
             Txt_respuesta.KeyPress += new KeyPressEventHandler(SoloLetras_KeyPress);
             Txt_buscar.KeyPress += new KeyPressEventHandler(txt_buscar_KeyPress);
+            funmostrarusuarios();
+
         }
 
         public frm_usuarios()
@@ -83,6 +85,38 @@ namespace Capa_Vista_Seguridad
             Cmb_Pregunta.SelectedIndex = -1;
 
         }
+
+        /********************Ismar Cortez*****************************************************/
+        void funmostrarusuarios() {
+            try
+            {
+                DataTable dtusuario;
+
+                if (string.IsNullOrEmpty(buscar))
+                {
+                    dtusuario = logica1.funconsultaLogicaUsuarios();
+                }
+                else
+                {
+                    dtusuario = logica1.buscar(buscar);
+                }
+
+                if (dtusuario == null || dtusuario.Rows.Count == 0)
+                {
+                    MessageBox.Show("No existen registros.", "Verificación", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    Dgv_usuarios.DataSource = dtusuario;
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al encontrar usuarios " + ex.Message);
+            }
+        }
+        /****************************************************************************************/
 
         private void Button1_Click_1(object sender, EventArgs e)
         {
@@ -508,6 +542,11 @@ namespace Capa_Vista_Seguridad
         private void folderBrowserDialog1_HelpRequest(object sender, EventArgs e)
         {
 
+        }
+
+        private void Btn_actualizar_Click(object sender, EventArgs e)
+        {
+  
         }
 
         private void Button1_Click(object sender, EventArgs e)

@@ -48,12 +48,12 @@
             this.Gbp_datos2 = new System.Windows.Forms.GroupBox();
             this.Dgv_aplicaciones_asignados = new System.Windows.Forms.DataGridView();
             this.Btn_salir = new System.Windows.Forms.Button();
-            this.Btn_limpiar = new System.Windows.Forms.Button();
             this.Btn_buscar = new System.Windows.Forms.Button();
             this.Btn_agregar = new System.Windows.Forms.Button();
             this.Btn_guardar = new System.Windows.Forms.Button();
             this.Btn_eliminar = new System.Windows.Forms.Button();
             this.Btn_ayuda = new System.Windows.Forms.Button();
+            this.Btn_limpiar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_asignaciones)).BeginInit();
             this.Gpb_datos.SuspendLayout();
             this.Gbp_datos2.SuspendLayout();
@@ -194,7 +194,7 @@
             // 
             // Gpb_datos
             // 
-            this.Gpb_datos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.Gpb_datos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Gpb_datos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
             this.Gpb_datos.Controls.Add(this.Cbo_modulos);
@@ -290,21 +290,6 @@
             this.Btn_salir.UseVisualStyleBackColor = false;
             this.Btn_salir.Click += new System.EventHandler(this.btn_salir_Click_1);
             // 
-            // Btn_limpiar
-            // 
-            this.Btn_limpiar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.Btn_limpiar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.Btn_limpiar.FlatAppearance.BorderSize = 0;
-            this.Btn_limpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_limpiar.Image = global::Capa_Vista_Seguridad.Properties.Resources.cancelar1;
-            this.Btn_limpiar.Location = new System.Drawing.Point(254, 83);
-            this.Btn_limpiar.Margin = new System.Windows.Forms.Padding(0);
-            this.Btn_limpiar.Name = "Btn_limpiar";
-            this.Btn_limpiar.Size = new System.Drawing.Size(69, 57);
-            this.Btn_limpiar.TabIndex = 260;
-            this.Btn_limpiar.UseVisualStyleBackColor = false;
-            this.Btn_limpiar.Click += new System.EventHandler(this.btn_remover_Click_1);
-            // 
             // Btn_buscar
             // 
             this.Btn_buscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
@@ -318,6 +303,7 @@
             this.Btn_buscar.Size = new System.Drawing.Size(69, 57);
             this.Btn_buscar.TabIndex = 259;
             this.Btn_buscar.UseVisualStyleBackColor = false;
+            this.Btn_buscar.Visible = false;
             this.Btn_buscar.Click += new System.EventHandler(this.btn_buscar_Click_1);
             // 
             // Btn_agregar
@@ -380,6 +366,22 @@
             this.Btn_ayuda.TabIndex = 263;
             this.Btn_ayuda.UseVisualStyleBackColor = false;
             this.Btn_ayuda.Click += new System.EventHandler(this.btn_ayuda_Click_1);
+            // 
+            // Btn_limpiar
+            // 
+            this.Btn_limpiar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.Btn_limpiar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Btn_limpiar.FlatAppearance.BorderSize = 0;
+            this.Btn_limpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_limpiar.Image = global::Capa_Vista_Seguridad.Properties.Resources.cancelar1;
+            this.Btn_limpiar.Location = new System.Drawing.Point(254, 83);
+            this.Btn_limpiar.Margin = new System.Windows.Forms.Padding(0);
+            this.Btn_limpiar.Name = "Btn_limpiar";
+            this.Btn_limpiar.Size = new System.Drawing.Size(69, 57);
+            this.Btn_limpiar.TabIndex = 260;
+            this.Btn_limpiar.UseVisualStyleBackColor = false;
+            this.Btn_limpiar.Visible = false;
+            this.Btn_limpiar.Click += new System.EventHandler(this.btn_remover_Click_1);
             // 
             // frm_asignacion_aplicaciones
             // 

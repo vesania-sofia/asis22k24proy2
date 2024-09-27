@@ -53,8 +53,9 @@ namespace Capa_Vista_Seguridad
             tsalir.SetToolTip(Btn_salir, "Salir Mantenimiento de aplicaciones");
             ToolTip tayuda = new ToolTip();
             tayuda.SetToolTip(Btn_ayuda, "Ayuda");
+            mostraraplicaciones();
         }
-     
+
         public frm_aplicaciones()
         {
         }
@@ -71,6 +72,34 @@ namespace Capa_Vista_Seguridad
             Txt_idaplicacion.Focus();
         }
 
+        /**************Ismar Cortez*********************/
+        /***************Mostrar aplicaciones**************/
+        void mostraraplicaciones(){
+            try
+            {
+                DataTable dtaplicaciones;
+           
+                dtaplicaciones = logic.Funmostraraplicaciones();
+                
+
+                if (dtaplicaciones == null || dtaplicaciones.Rows.Count == 0)
+                {
+                    MessageBox.Show("No existen registros.", "Verificación", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    Dgv_aplicaciones.DataSource = dtaplicaciones;
+
+                  
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al buscar: " + ex.Message);
+            }
+
+        }
+        /*************************************************/
 
 
         private void Frm_aplicaciones_Load(object sender, EventArgs e)
@@ -173,29 +202,29 @@ namespace Capa_Vista_Seguridad
 
 
 
-            try
-            {
-                DataTable dtValidarID = logic.funvalidarIDAplicacion();
-                if (dtValidarID == null || dtValidarID.Rows.Count == 0)
-                {
+            //try
+            //{
+            //    DataTable dtValidarID = logic.funvalidarIDAplicacion();
+            //    if (dtValidarID == null || dtValidarID.Rows.Count == 0)
+            //    {
 
-                    return;
-                }
-                foreach (DataRow row in dtValidarID.Rows)
-                {
-                    if (row[0] != DBNull.Value)
-                    {
-                        Txt_idaplicacion.Text = row[0].ToString();
-                    }
-                }
+            //        return;
+            //    }
+            //    foreach (DataRow row in dtValidarID.Rows)
+            //    {
+            //        if (row[0] != DBNull.Value)
+            //        {
+            //            Txt_idaplicacion.Text = row[0].ToString();
+            //        }
+            //    }
 
-            }
-            catch (Exception ex)
-            {
+            //}
+            //catch (Exception ex)
+            //{
 
-                Console.WriteLine(ex);
-                return;
-            }
+            //    Console.WriteLine(ex);
+            //    return;
+            //}
         }
 
         private void Btn_ingresar_Click(object sender, EventArgs e)
@@ -243,6 +272,7 @@ namespace Capa_Vista_Seguridad
                 Btn_ingresar.Enabled = false;
                 Btn_nuevo.Enabled = true;
                 Txt_idaplicacion.Enabled = false;
+                mostraraplicaciones();
             }
         }
 
@@ -299,6 +329,7 @@ namespace Capa_Vista_Seguridad
 
                 logic.funactualizaraplicaciones(Txt_idaplicacion.Text.ToString(), Txt_nombre.Text.ToString(), Txt_descripcion.Text.ToString(), estado.ToString());
                 MessageBox.Show("Modulo Modificado Correctamente");
+                mostraraplicaciones();
                 prolimpiar();
                 Btn_cancelar.Enabled = false;
                 Btn_bsucar.Enabled = true;
@@ -337,6 +368,7 @@ namespace Capa_Vista_Seguridad
                     Txt_idaplicacion.Enabled = false;
                     Txt_descripcion.Enabled = false;
                     Gpb_estado.Enabled = false;
+                    mostraraplicaciones();
                     prolimpiar();  // Limpiar campos
                 }
             }
@@ -433,6 +465,11 @@ namespace Capa_Vista_Seguridad
 
             // Retorna null si no se encontró el archivo
             return null;
+        }
+
+        private void Txt_idaplicacion_TextChanged(object sender, EventArgs e)
+        {
+
         }
         //************* Fin KATERYN DE LEON y Gabriela Suc ************************
 

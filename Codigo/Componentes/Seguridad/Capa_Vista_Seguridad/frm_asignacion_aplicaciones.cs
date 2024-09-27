@@ -31,7 +31,7 @@ namespace Capa_Vista_Seguridad
             Cbo_modulos.Enabled = false;
             Cbo_aplicaciones.Enabled = false;
             Dgv_asignaciones.Enabled = false;
-            Dgv_aplicaciones_asignados.Enabled = false;
+            Dgv_aplicaciones_asignados.Enabled = true;
             logic = new logica(idUsuario);
             ToolTip tnuevo = new ToolTip();
             tnuevo.SetToolTip(Btn_agregar, "Crear Asignación");
@@ -47,6 +47,7 @@ namespace Capa_Vista_Seguridad
             tayuda.SetToolTip(Btn_ayuda, "Ayuda");
             ToolTip teliminar = new ToolTip();
             teliminar.SetToolTip(Btn_eliminar, "Cancelar Asignación");
+            actualizardatagriew();
         }
         //####  FINALIZA ALYSON RODRIGUEZ 9959-21-829
 
@@ -363,7 +364,7 @@ namespace Capa_Vista_Seguridad
             Cbo_modulos.Enabled = false;
             Cbo_aplicaciones.Enabled = false;
             Dgv_asignaciones.Enabled = false;
-            Dgv_aplicaciones_asignados.Enabled = false;
+            Dgv_aplicaciones_asignados.Enabled = true;
             Btn_agregar.Enabled = true;
             Btn_buscar.Enabled = true;
 
@@ -464,6 +465,7 @@ namespace Capa_Vista_Seguridad
                 }
 
                 MessageBox.Show("Datos ingresados exitosamente");
+                actualizardatagriew();
                 Btn_guardar.Enabled = false;
                 Btn_eliminar.Enabled = false;
                 Btn_limpiar.Enabled = false;
@@ -471,7 +473,7 @@ namespace Capa_Vista_Seguridad
                 Cbo_modulos.Enabled = false;
                 Cbo_aplicaciones.Enabled = false;
                 Dgv_asignaciones.Enabled = false;
-                Dgv_aplicaciones_asignados.Enabled = false;
+                Dgv_aplicaciones_asignados.Enabled = true;
                 Btn_agregar.Enabled = true;
                 Btn_buscar.Enabled = true;
                 limpieza();

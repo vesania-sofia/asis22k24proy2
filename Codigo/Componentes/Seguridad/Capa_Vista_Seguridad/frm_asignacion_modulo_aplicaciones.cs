@@ -37,9 +37,33 @@ namespace Capa_Vista_Seguridad
             // Asocia el evento SelectedIndexChanged después de poblar el ComboBox
             Cmb_modulo.SelectedIndexChanged += new EventHandler(cmb_modulo_SelectedIndexChanged);
             Cmb_aplicacion.SelectedIndexChanged += new EventHandler(cmb_apli_SelectedIndexChanged2);
+            funmostrardatos();
         }
 
         public frm_asignacion_modulo_aplicaciones() { }
+
+        void funmostrardatos() {
+            try
+            {
+                // Llamar a la capa lógica para obtener los datos de la asignación (modulo-aplicación)
+                DataTable dtResultado = logica2.consultaLogicaAsigncacionModuloAplicaciones();
+
+                if (dtResultado != null && dtResultado.Rows.Count > 0)
+                {
+                    // Asignar el DataTable al DataGridView
+                    Dgv_asignaciones_modulo_aplicacion.DataSource = dtResultado;
+                }
+                else
+                {
+                    MessageBox.Show("No se encontraron datos.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al buscar los datos: {ex.Message}");
+            }
+
+        }
 
         private void frm_asignacion_modulo_aplicaciones_Load(object sender, EventArgs e) 
         {
@@ -229,7 +253,7 @@ namespace Capa_Vista_Seguridad
                         if (resultado)
                         {
                             MessageBox.Show("Asignación creada exitosamente.");
-                            
+                            funmostrardatos();
                         }
                         else
                         {
