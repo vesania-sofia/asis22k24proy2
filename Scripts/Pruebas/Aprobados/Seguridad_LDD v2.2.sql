@@ -1,6 +1,6 @@
-DROP DATABASE  IF EXISTS `Seguridad`;
-CREATE DATABASE IF NOT EXISTS `Seguridad`;
-USE `Seguridad`;
+DROP DATABASE  IF EXISTS `Colchoneria`;
+CREATE DATABASE IF NOT EXISTS `Colchoneria`;
+USE `Colchoneria`;
 
 DROP TABLE IF EXISTS `Tbl_modulos`;
 CREATE TABLE IF NOT EXISTS `Tbl_modulos` (
@@ -120,7 +120,7 @@ CREATE TABLE IF NOT EXISTS `Tbl_bitacora_de_eventos` (
   hora_bitacora TIME NOT NULL,
   host_bitacora VARCHAR(45) NOT NULL,
   ip_bitacora VARCHAR(100) NOT NULL,
-  accion_bitacora VARCHAR(50) NOT NULL,
+  accion_bitacora VARCHAR(200) NOT NULL,
   PRIMARY KEY (`Pk_id_bitacora`),
   FOREIGN KEY (`Fk_id_usuario`) REFERENCES `Tbl_usuarios` (`Pk_id_usuario`),
   FOREIGN KEY (`Fk_id_aplicacion`) REFERENCES `Tbl_aplicaciones` (`Pk_id_aplicacion`)
@@ -310,18 +310,12 @@ DELIMITER ;
 -- Modificaciones ---------------------------------------------------------------------------------------------
 ALTER TABLE tbl_bitacora_de_eventos RENAME TO tbl_bitacora;
 SHOW CREATE TABLE tbl_bitacora;
-ALTER TABLE tbl_bitacora DROP FOREIGN KEY tbl_bitacora_ibfk_2;
 
--- ALTER TABLE tbl_bitacora MODIFY Fk_id_usuario VARCHAR(20);
-ALTER TABLE tbl_bitacora DROP COLUMN Fk_id_aplicacion;
 
 -- Fernando García - 0901-21-581 - 60%
 ALTER TABLE `Tbl_bitacora`
 ADD COLUMN `tabla` VARCHAR(50) NOT NULL;
 
--- Brandon Boch - 0901-21-13093
-ALTER TABLE Tbl_bitacora
-ADD COLUMN aplicacion VARCHAR(10) NOT NULL;
 
 -- -----USUARIOS
 -- Agrega el primer usuario
@@ -333,7 +327,9 @@ INSERT INTO `Tbl_usuarios` VALUES
 -- Vamos a hashear admin para que puedea ingresar al programa
 -- Deshabilitar el modo seguro en
 -- edit->preferences->SQL Editor -> al final deshabilitar safe updates -> reconectar
+
 -- Debe salir de la conexion y reconectar, volver a seleccionar y correr
+
 UPDATE tbl_usuarios
 SET password_usuario = SHA2('HO0aGo4nM94=', 256)
 WHERE username_usuario = 'admin';
