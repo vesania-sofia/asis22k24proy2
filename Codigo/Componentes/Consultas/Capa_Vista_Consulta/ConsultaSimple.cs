@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Capa_Controlador_Consulta;
 using System.Data.Odbc;
+using System.IO;
 
 /*
 
@@ -32,6 +33,7 @@ namespace Capa_Vista_Consulta
             var tt = new ToolTip();
             tt.SetToolTip(btnCancelar2, "Cancelar");
             tt.SetToolTip(btnConsultar2, "Consultar");
+            tt.SetToolTip(btnAyudas, "Ayuda");
             llenarComboOperador(cboOperador);
             csControlador.obtenerColumbasPorTabla(cboCampo, Tabla);
         }
@@ -70,6 +72,26 @@ namespace Capa_Vista_Consulta
             txtValor.Clear();
             cboCampo.ResetText();
             cboOperador.SelectedIndex = 0;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string idayuda = "5";
+            string Ruta = csControlador.MRuta(idayuda);
+            string sRutaProyecto = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\..\..\..\..\"));
+            string AsRuta = Path.Combine(sRutaProyecto, "Ayuda", "ayudasConsultaSimple", Ruta);
+            string AsIndice = csControlador.MIndice(idayuda);
+
+            // Validar que la ruta y el índice no estén vacíos
+            if (!string.IsNullOrEmpty(AsRuta) && !string.IsNullOrEmpty(AsIndice))
+            {
+                // Mostrar la ayuda automáticamente cuando se llama a asignarAyuda
+                Help.ShowHelp(this, AsRuta, AsIndice);
+            }
+            else
+            {
+                MessageBox.Show("La Ruta o el índice de la ayuda están vacíos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
