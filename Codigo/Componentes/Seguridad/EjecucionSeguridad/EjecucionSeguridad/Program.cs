@@ -16,7 +16,7 @@ namespace EjecucionSeguridad
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new CapaDiseno.frm_login());
+            Application.Run(new Capa_Vista_Seguridad.frm_login());
         }
     }
 }

@@ -1,27 +1,8 @@
 --
 -- Volcado de datos para la tabla `ayuda`
 --
-
 INSERT INTO `ayuda` (`Id_ayuda`, `Ruta`, `indice`, `estado`) VALUES
 (1, 'C:/Users/bhern/source/repos/ejecucion/ejecucion/AyudaHTML/AyudaNavegador.chm', 'AyudaNav.html', 1);
-
---
--- Volcado de datos para la tabla `detallefactura`
---
-
-INSERT INTO `detallefactura` (`Pk_id_detalle_factura`, `fk_id_factura`, `descripcion_factura`, `cantidad`, `monto_factura`, `estado`) VALUES
-(1, 2, '2024-09-20', 100, 0.00, 1),
-(2, 3, '2024-09-20', 200, 0.00, 1),
-(3, 4, '2024-09-20', 1000, 0.00, 1),
-(4, 5, '2024-09-20', 233, 0.00, 1),
-(5, 6, '2024-09-20', 222, 1515.00, 1),
-(6, 7, '2024-09-20', 999, 0.00, 1),
-(7, 8, '2024-09-20', 300, 1313.00, 1),
-(8, 9, '2024-09-20', 500, 0.00, 1),
-(9, 9, '2024-09-20', 500, 0.00, 1),
-(10, 10, '2024-09-21', 900, 0.00, 1),
-(11, 10, '2024-09-21', 900, 0.00, 1);
-
 
 --
 -- Volcado de datos para la tabla `empleados`
@@ -162,6 +143,24 @@ INSERT INTO `factura` (`Pk_id_factura`, `fecha_factura`, `monto_factura`, `estad
 (8, '2024-09-20', 1313.00, 1),
 (9, '2021-07-15', 555.00, 1),
 (10, '2024-09-21', 900.00, 1);
+
+
+--
+-- Volcado de datos para la tabla `detallefactura`
+--
+
+INSERT INTO `detallefactura` (`Pk_id_detalle_factura`, `fk_id_factura`, `descripcion_factura`, `cantidad`, `monto_factura`, `estado`) VALUES
+(1, 2, '2024-09-20', 100, 0.00, 1),
+(2, 3, '2024-09-20', 200, 0.00, 1),
+(3, 4, '2024-09-20', 1000, 0.00, 1),
+(4, 5, '2024-09-20', 233, 0.00, 1),
+(5, 6, '2024-09-20', 222, 1515.00, 1),
+(6, 7, '2024-09-20', 999, 0.00, 1),
+(7, 8, '2024-09-20', 300, 1313.00, 1),
+(8, 9, '2024-09-20', 500, 0.00, 1),
+(9, 9, '2024-09-20', 500, 0.00, 1),
+(10, 10, '2024-09-21', 900, 0.00, 1),
+(11, 10, '2024-09-21', 900, 0.00, 1);
 
 --
 -- Volcado de datos para la tabla `pagos`
