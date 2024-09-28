@@ -11,7 +11,7 @@ using Capa_Controlador_Navegador;
 using Capa_Controlador_Reporteria;
 using Capa_Vista_Reporteria;
 using Capa_Vista_Consulta;
-using CapaDatos;
+using Capa_Controlador_Seguridad;
 using System.IO;
 
 namespace Capa_Vista_Navegador
@@ -54,7 +54,7 @@ namespace Capa_Vista_Navegador
         Color cColorFuente = Color.White; // Color de la fuente
         Color cNuevoColorFondo = Color.White; // Nuevo color de fondo
         bool bPresionado = false; // Verifica si se ha presionado un botón
-        sentencia sn = new sentencia(); // Objeto para obtener métodos de bitácora
+        logica lg = new logica(); // Objeto para obtener métodos de bitácora
         string sIdUsuario = ""; // ID del usuario
         string sIdAplicacion = ""; // ID de la aplicación
         string sUsuarioActivo = ""; // Usuario activo
@@ -1336,7 +1336,7 @@ namespace Capa_Vista_Navegador
         {
             try
             {
-                sn.insertarBitacora(sIdUsuario, "Se presionó el botón cancelar en " + sTablaPrincipal, sTablaPrincipal, sIdAplicacion); 
+                lg.funinsertarabitacora(sIdUsuario, "Se presionó el botón cancelar en " + sTablaPrincipal, sTablaPrincipal, sIdAplicacion); 
                                                                                                                                         
                 DialogResult drResult = MessageBox.Show(
                     "Está a punto de cancelar los cambios no guardados.\n\n" +
@@ -1432,74 +1432,85 @@ namespace Capa_Vista_Navegador
         {
             try
             {
-                if (!bPresionado) 
+                
+                // Mostrar un mensaje de confirmación antes de proceder con la eliminación
+                DialogResult drRespuestaEliminar = MessageBox.Show(
+                    "Está a punto de eliminar permanentemente este registro del sistema.\n\n" +
+                    "Esta operación no se puede deshacer. ¿Está seguro de que desea continuar?",
+                    "Confirmación de Eliminación - " + sNombreFormulario,
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning,
+                    MessageBoxDefaultButton.Button2 // Opción "No" predeterminada
+                );
+
+                if (drRespuestaEliminar == DialogResult.Yes)
                 {
-                    // Habilitar y deshabilitar botones según el estado de eliminación
+                    foreach (Control componente in Controls) // Itera sobre todos los controles en el formulario
+                    {
+                        if (componente is Button) // Verifica si el control es un botón
+                        {
+                            if (iEstadoFormulario == 1)
+                            {
+                                MessageBox.Show(
+                                   "Este registro ya ha sido eliminado anteriormente. No es necesario eliminarlo nuevamente.",
+                                   "Eliminación No Necesaria",
+                                   MessageBoxButtons.OK,
+                                   MessageBoxIcon.Information
+                               );
+                                    iEstadoFormulario = 0;
+                                return;
+                               
+                                
+                            }
+                            else // Si el estado no es 1 (es decir, es 0)
+                            {
+                                logic.NuevoQuery(CrearDelete());
+                                ActualizarDataGridView();
+
+                                // Mostrar un mensaje de éxito tras la eliminación
+                                MessageBox.Show(
+                                    "El registro ha sido eliminado correctamente.",
+                                    "Eliminación Exitosa",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Information
+                                );
+
+                                // Restablecer el estado de los botones
+                                Btn_Modificar.Enabled = true;
+                                Btn_Guardar.Enabled = false;
+                                Btn_Cancelar.Enabled = false;
+                                Btn_Eliminar.Enabled = true;
+                                Btn_Ingresar.Enabled = true;
+                                bPresionado = false; // Restablecer la bandera
+                                BotonesYPermisosSinMensaje();
+                                lg.funinsertarabitacora(sIdUsuario, "Se actualizó el estado en " + sTablaPrincipal, sTablaPrincipal, sIdAplicacion);
+                                iEstadoFormulario = 1;
+                               
+
+                            }
+                        }
+                    }
+                    // Proceder con la eliminación
+                    
+                }
+                else if (drRespuestaEliminar == DialogResult.No)
+                {
+                    // Si el usuario cancela la operación de eliminación
+                    MessageBox.Show(
+                        "La eliminación ha sido cancelada.",
+                        "Operación Cancelada",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information
+                    );
+
+                    // Mantener el estado de los botones
                     Btn_Guardar.Enabled = false;
                     Btn_Modificar.Enabled = false;
                     Btn_Eliminar.Enabled = true;
                     Btn_Cancelar.Enabled = true;
                     Btn_Ingresar.Enabled = false;
-                    bPresionado = true; 
+                    bPresionado = false; // Restablecer la bandera
                 }
-                else
-                {
-                    // Mostrar un mensaje de confirmación antes de proceder con la eliminación
-                    DialogResult drRespuestaEliminar = MessageBox.Show(
-                        "Está a punto de eliminar permanentemente este registro del sistema.\n\n" +
-                        "Esta operación no se puede deshacer. ¿Está seguro de que desea continuar?",
-                        "Confirmación de Eliminación - " + sNombreFormulario, // Cambiado sNombreFormulario a sNombreFormulario
-                        MessageBoxButtons.YesNo,
-                        MessageBoxIcon.Warning,
-                        MessageBoxDefaultButton.Button2 // Opción "No" predeterminada
-                    );
-
-                    if (drRespuestaEliminar == DialogResult.Yes)
-                    {
-                        // Proceder con la eliminación
-                        logic.NuevoQuery(CrearDelete());
-                        ActualizarDataGridView();
-
-                        // Mostrar un mensaje de éxito tras la eliminación
-                        MessageBox.Show(
-                            "El registro ha sido eliminado correctamente.",
-                            "Eliminación Exitosa",
-                            MessageBoxButtons.OK,
-                            MessageBoxIcon.Information
-                        );
-
-                        // Restablecer el estado de los botones
-                        Btn_Modificar.Enabled = true;
-                        Btn_Guardar.Enabled = false;
-                        Btn_Cancelar.Enabled = false;
-                        Btn_Eliminar.Enabled = true;
-                        Btn_Ingresar.Enabled = true;
-                        bPresionado = false;
-                    }
-                    else if (drRespuestaEliminar == DialogResult.No)
-                    {
-                        // Si el usuario cancela la operación de eliminación
-                        MessageBox.Show(
-                            "La eliminación ha sido cancelada.",
-                            "Operación Cancelada",
-                            MessageBoxButtons.OK,
-                            MessageBoxIcon.Information
-                        );
-
-                        // Mantener el estado de los botones
-                        Btn_Guardar.Enabled = false;
-                        Btn_Modificar.Enabled = false;
-                        Btn_Eliminar.Enabled = true;
-                        Btn_Cancelar.Enabled = true;
-                        Btn_Ingresar.Enabled = false;
-                        bPresionado = true; 
-                    }
-                }
-
-                // Habilitar/deshabilitar botones según los permisos del usuario
-                BotonesYPermisosSinMensaje();
-                bPresionado = true;
-                sn.insertarBitacora(sIdUsuario, "Se actualizó el estado en " + sTablaPrincipal, sTablaPrincipal, sIdAplicacion); 
             }
             catch (Exception ex)
             {
@@ -1514,6 +1525,7 @@ namespace Capa_Vista_Navegador
                 );
             }
         }
+
         //******************************************** CODIGO HECHO POR VICTOR CASTELLANOS***************************** 
 
 
@@ -1858,9 +1870,9 @@ namespace Capa_Vista_Navegador
                 {
                     // Consulta el ID del usuario actual.
                     string sIdUsuario1 = logic.ObtenerIdUsuario(sIdUsuario);
-                    sentencia sen = new sentencia();
+                    
                     // Verifica si el usuario tiene permiso para la acción correspondiente.
-                    bool bTienePermiso = sn.consultarPermisos(sIdUsuario1, sIdAplicacion, iIndex + 1);
+                    bool bTienePermiso = lg.ConsultarPermisos(sIdUsuario1, sIdAplicacion, iIndex + 1);
 
                     // Si el botón existe (no es nulo), se habilita o deshabilita según los permisos del usuario.
                     if (arrBotones[iIndex] != null)
@@ -1899,9 +1911,9 @@ namespace Capa_Vista_Navegador
                 {
                     // Obtiene el ID del usuario actual.
                     string sIdUsuario1 = logic.ObtenerIdUsuario(sIdUsuario);
-                    sentencia sen = new sentencia();
+                    
                     // Consulta si el usuario tiene el permiso correspondiente.
-                    bool bTienePermiso = sn.consultarPermisos(sIdUsuario1, sIdAplicacion, iIndex + 1);
+                    bool bTienePermiso = lg.ConsultarPermisos(sIdUsuario1, sIdAplicacion, iIndex + 1);
 
                     if (arrBotones[iIndex] != null)
                     {
@@ -2036,10 +2048,10 @@ namespace Capa_Vista_Navegador
 
                             // Ejecuta las consultas para actualizar datos en múltiples tablas.
                             logic.InsertarDatosEnMultiplesTablas(lstQueries);
-                            MessageBox.Show("El registro ha sido actualizado correctamente en todas las tablas.", "Actualización Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("El registro ha sido actualizado correctamente .", "Actualización Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                             // Inserta en la bitácora
-                            sn.insertarBitacora(sIdUsuario, "Actualizó registros en múltiples tablas", sTablaPrincipal, sIdAplicacion);
+                            lg.funinsertarabitacora(sIdUsuario, "Actualizó registro", sTablaPrincipal, sIdAplicacion);
                         }
                         catch (Exception ex)
                         {
@@ -2050,7 +2062,7 @@ namespace Capa_Vista_Navegador
                     case 2: // Insertar
                         string sQueryPrimeraTabla = CrearInsert(sTablaPrincipal);
                         logic.NuevoQuery(sQueryPrimeraTabla); // Inserta el nuevo registro en la tabla principal.
-                        sn.insertarBitacora(sIdUsuario, "Se insertó en " + sTablaPrincipal, sTablaPrincipal, sIdAplicacion);
+                        lg.funinsertarabitacora(sIdUsuario, "Se insertó en " + sTablaPrincipal, sTablaPrincipal, sIdAplicacion);
 
                         string sUltimoIdPrimeraTabla = logic.UltimoID(sTablaPrincipal); // Obtiene el último ID insertado en la tabla principal.
 
@@ -2251,6 +2263,7 @@ namespace Capa_Vista_Navegador
             {
                 Capa_Vista_Reporteria.visualizar visualizar = new Capa_Vista_Reporteria.visualizar(sRuta);
                 visualizar.ShowDialog(); // Muestra el reporte en un diálogo modal.
+                lg.funinsertarabitacora(sIdUsuario, "Vio un reporte", sTablaPrincipal, sIdAplicacion);
             }
         }
 
@@ -2267,11 +2280,10 @@ namespace Capa_Vista_Navegador
             // Se obtiene el ID del usuario.
             string sIdUsuario1 = logic.ObtenerIdUsuario(sIdUsuario);
 
-            sentencia sen = new sentencia();
-            // DLL DE CONSULTAS
+           
             ConsultaSimple nueva = new ConsultaSimple(sTablaPrincipal);
             nueva.Show();
-
+            lg.funinsertarabitacora(sIdUsuario, "Entro a consultas", "consultas", sIdAplicacion);
             BotonesYPermisosSinMensaje();
         }
 
@@ -2290,6 +2302,7 @@ namespace Capa_Vista_Navegador
 
             // Muestra el formulario del menú de reportería.
             reportes.Show();
+            lg.funinsertarabitacora(sIdUsuario, "Abrio un reporte", sTablaPrincipal, sIdAplicacion);
         }
 
         // Este método maneja el evento de clic en el botón de ayuda (button1).
@@ -2301,6 +2314,7 @@ namespace Capa_Vista_Navegador
 
             // Muestra el formulario de ayudas.
             ayudas.Show();
+            lg.funinsertarabitacora(sIdUsuario, "Entro a los registros de ayuda", sTablaPrincipal, sIdAplicacion);
         }
 
         private void Btn_Salir_Click(object sender, EventArgs e)
@@ -2329,6 +2343,7 @@ namespace Capa_Vista_Navegador
                                 {
                                     GuardadoForsozo();
                                     frmCerrar.Visible = false;
+                                    lg.funinsertarabitacora(sIdUsuario, "Salio del Navegador", sTablaPrincipal, sIdAplicacion);
                                 }
                                 // Si el usuario elige "No", se cierra el formulario sin guardar.
                                 else if (drRespuestaGuardar == DialogResult.No)
@@ -2465,6 +2480,7 @@ namespace Capa_Vista_Navegador
                 {
                     // Mostrar la ayuda utilizando la ruta completa y el índice
                     Help.ShowHelp(this, sAyudaPath, sIndiceAyuda);
+                    lg.funinsertarabitacora(sIdUsuario, "Vio un documento de ayuda", sTablaPrincipal, sIdAplicacion);
                 }
                 else
                 {

@@ -58,7 +58,7 @@
             this.tableLayoutPanel1.Controls.Add(this.txt_titulo, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(5);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
@@ -75,7 +75,7 @@
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel3, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(53, 106);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(5);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -93,7 +93,7 @@
             this.Dgv_ayudas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Dgv_ayudas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Dgv_ayudas.Location = new System.Drawing.Point(5, 153);
-            this.Dgv_ayudas.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Dgv_ayudas.Margin = new System.Windows.Forms.Padding(5);
             this.Dgv_ayudas.MultiSelect = false;
             this.Dgv_ayudas.Name = "Dgv_ayudas";
             this.Dgv_ayudas.ReadOnly = true;
@@ -116,7 +116,7 @@
             this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel4, 0, 2);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(5, 5);
-            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(5);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 3;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
@@ -132,7 +132,7 @@
             this.Btn_modificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_modificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_modificar.Location = new System.Drawing.Point(605, 97);
-            this.Btn_modificar.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Btn_modificar.Margin = new System.Windows.Forms.Padding(5);
             this.Btn_modificar.Name = "Btn_modificar";
             this.Btn_modificar.Size = new System.Drawing.Size(248, 36);
             this.Btn_modificar.TabIndex = 6;
@@ -148,7 +148,7 @@
             this.Btn_indice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_indice.ForeColor = System.Drawing.Color.White;
             this.Btn_indice.Location = new System.Drawing.Point(605, 51);
-            this.Btn_indice.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Btn_indice.Margin = new System.Windows.Forms.Padding(5);
             this.Btn_indice.Name = "Btn_indice";
             this.Btn_indice.Size = new System.Drawing.Size(248, 36);
             this.Btn_indice.TabIndex = 4;
@@ -188,7 +188,7 @@
             this.Btn_Ruta.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_Ruta.ForeColor = System.Drawing.Color.White;
             this.Btn_Ruta.Location = new System.Drawing.Point(605, 5);
-            this.Btn_Ruta.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Btn_Ruta.Margin = new System.Windows.Forms.Padding(5);
             this.Btn_Ruta.Name = "Btn_Ruta";
             this.Btn_Ruta.Size = new System.Drawing.Size(248, 36);
             this.Btn_Ruta.TabIndex = 3;
@@ -205,12 +205,12 @@
             this.tableLayoutPanel4.Controls.Add(this.Btn_eliminar, 1, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(5, 97);
-            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(5);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 38F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 38F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36F));
             this.tableLayoutPanel4.Size = new System.Drawing.Size(590, 36);
             this.tableLayoutPanel4.TabIndex = 5;
             // 
@@ -221,7 +221,7 @@
             this.Btn_guardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_guardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_guardar.Location = new System.Drawing.Point(5, 5);
-            this.Btn_guardar.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Btn_guardar.Margin = new System.Windows.Forms.Padding(5);
             this.Btn_guardar.Name = "Btn_guardar";
             this.Btn_guardar.Size = new System.Drawing.Size(285, 26);
             this.Btn_guardar.TabIndex = 0;
@@ -236,7 +236,7 @@
             this.Btn_eliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_eliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_eliminar.Location = new System.Drawing.Point(300, 5);
-            this.Btn_eliminar.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Btn_eliminar.Margin = new System.Windows.Forms.Padding(5);
             this.Btn_eliminar.Name = "Btn_eliminar";
             this.Btn_eliminar.Size = new System.Drawing.Size(285, 26);
             this.Btn_eliminar.TabIndex = 1;
@@ -265,7 +265,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(976, 407);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(994, 454);
             this.MinimizeBox = false;

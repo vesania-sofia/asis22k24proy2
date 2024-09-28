@@ -33,11 +33,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CapaDiseno">
-      <HintPath>..\..\..\Seguridad\CapaDiseno\bin\Debug\CapaDiseno.dll</HintPath>
-    </Reference>
     <Reference Include="Capa_Vista_Navegador">
       <HintPath>..\..\Capa_Vista_Navegador\bin\Debug\Capa_Vista_Navegador.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_Seguridad">
+      <HintPath>..\..\..\Seguridad\Capa_Vista_Seguridad\bin\Debug\Capa_Vista_Seguridad.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
