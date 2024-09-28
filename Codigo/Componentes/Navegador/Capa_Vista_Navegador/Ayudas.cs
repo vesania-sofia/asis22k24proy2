@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.Odbc;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,172 +18,189 @@ namespace Capa_Vista_Navegador
     {
         logicaNav logic = new logicaNav();  // Instancia de la lógica del navegador
         OdbcConnection conn = new OdbcConnection("Dsn=colchoneria");  // Conexión a la base de datos usando ODBC
-        string[] aliasC = new string[40];  // Arreglo para almacenar alias de campos
+        string[] arrAliasC = new string[40];  // Arreglo para almacenar alias de campos
+
+        Boolean bConfirmRuta = true;
 
         public Ayudas()
         {
             InitializeComponent();
-            llenartabla();  // Llenar la tabla al iniciar el formulario
+            LlenarTabla();  // Llenar la tabla al iniciar el formulario
         }
 
         //******************************************** CODIGO HECHO POR VICTOR CASTELLANOS ***************************** 
-        private void Button1_Click(object sender, EventArgs e)
+        private void Btn_Ruta_Click(object sender, EventArgs e)
         {
-            OpenFileDialog rutaFile = new OpenFileDialog();
-            rutaFile.InitialDirectory = "c:\\";
-            rutaFile.Filter = "chm files (*.chm)|*.chm";  // Filtro para seleccionar archivos .chm
-            if (rutaFile.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+
+            OpenFileDialog Ofd_Reporte = new OpenFileDialog();
+            Ofd_Reporte.Filter = "All files (*.*)|*.*";
+            if (Ofd_Reporte.ShowDialog() == DialogResult.OK)
             {
-                txtruta.Text = rutaFile.FileName;  // Asignar la ruta seleccionada al campo de texto
-            }
-        }
+                // Obtén solo el nombre del archivo
+                txt_ruta.Text = System.IO.Path.GetFileName(Ofd_Reporte.FileName);
 
-        private void Button2_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog rutaFile = new OpenFileDialog();
-            rutaFile.InitialDirectory = "c:\\";
-            rutaFile.Filter = "chm files (*.html)|*.html";  // Filtro para seleccionar archivos .html
-            if (rutaFile.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                // Ahora txtruta.Text solo contiene "AyudaNavegador.chm" o el nombre del archivo seleccionado
+                bConfirmRuta = false;
+            }
+         }
+
+            private void Button2_Click(object sender, EventArgs e)
             {
-                txtindice.Text = rutaFile.FileName;  // Asignar la ruta seleccionada al campo de texto
+                OpenFileDialog rutaFile = new OpenFileDialog();
+                rutaFile.InitialDirectory = "c:\\";
+                rutaFile.Filter = "chm files (*.html)|*.html";  // Filtro para seleccionar archivos .html
+                if (rutaFile.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    txt_indice.Text = rutaFile.FileName;  // Asignar la ruta seleccionada al campo de texto
+                }
             }
-        }
 
-        // Método para llenar la tabla con los registros de la tabla 'ayuda'
-        void llenartabla()
-        {
-            OdbcCommand codigo = new OdbcCommand();
-            codigo.Connection = conn;
-            codigo.CommandText = ("SELECT Id_ayuda, Ruta, indice FROM ayuda WHERE estado =1");
-            try
+            // Método para llenar la tabla con los registros de la tabla 'ayuda'
+            void LlenarTabla()
             {
-                OdbcDataAdapter ejecutar = new OdbcDataAdapter();
-                ejecutar.SelectCommand = codigo;
-                DataTable datostabla = new DataTable();
-                ejecutar.Fill(datostabla);
-                dataGridView1.DataSource = datostabla;  // Llenar el DataGrid con los datos obtenidos
-                ejecutar.Update(datostabla);
-                conn.Close();
+                OdbcCommand codigo = new OdbcCommand();
+                codigo.Connection = conn;
+                codigo.CommandText = ("SELECT Id_ayuda, Ruta, indice FROM ayuda WHERE estado =1");
+                try
+                {
+                    OdbcDataAdapter ejecutar = new OdbcDataAdapter();
+                    ejecutar.SelectCommand = codigo;
+                    DataTable datostabla = new DataTable();
+                    ejecutar.Fill(datostabla);
+                    Dgv_ayudas.DataSource = datostabla;  // Llenar el DataGrid con los datos obtenidos
+                    ejecutar.Update(datostabla);
+                    conn.Close();
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("ERROR: " + e.ToString());  // Mostrar error en caso de que la consulta falle
+                    conn.Close();
+                }
             }
-            catch (Exception e)
+
+            //******************************************** CODIGO HECHO POR VICTOR CASTELLANOS ***************************** 
+
+            //******************************************** CODIGO HECHO POR BRAYAN HERNANDEZ ***************************** 
+
+            // Método para crear el query de INSERT para agregar un nuevo registro en 'ayuda'
+            string CrearInsert()
             {
-                MessageBox.Show("ERROR: " + e.ToString());  // Mostrar error en caso de que la consulta falle
-                conn.Close();
+                string sQuery = "INSERT INTO ayuda (Ruta, indice, estado) VALUES  ('" + txt_ruta.Text.Replace("\\", "/") + "', '" + txt_indice.Text + "', '1')";
+                return sQuery;
             }
-        }
 
-        //******************************************** CODIGO HECHO POR VICTOR CASTELLANOS ***************************** 
-
-        //******************************************** CODIGO HECHO POR BRAYAN HERNANDEZ ***************************** 
-
-        // Método para crear el query de INSERT para agregar un nuevo registro en 'ayuda'
-        string crearInsert()
-        {
-            string query = "INSERT INTO ayuda (Ruta, indice, estado) VALUES  ('" + txtruta.Text.Replace("\\", "/") + "', '" + txtindice.Text + "', '1')";
-            return query;
-        }
-
-        // Método para crear el query de DELETE, que marca como eliminada una ayuda cambiando su estado
-        string crearDelete()
-        {
-            string query = "UPDATE ayuda SET estado = 0 WHERE Id_ayuda = " + dataGridView1.CurrentRow.Cells[0].Value.ToString();
-            return query;
-        }
-
-        // Método para crear el query de UPDATE, para modificar la ruta y el índice de una ayuda
-        string crearUpdate()
-        {
-            string query = "UPDATE ayuda SET Ruta = '" + txtruta.Text.Replace("\\", "/") + "', indice = '" + txtindice.Text + "' WHERE Id_ayuda = " + dataGridView1.CurrentRow.Cells[0].Value.ToString();
-            return query;
-        }
-
-        // Evento del botón para agregar una nueva ayuda
-        private void Button3_Click(object sender, EventArgs e)
-        {
-            if (txtruta.Text == "" || txtindice.Text == "")
+            // Método para crear el query de DELETE, que marca como eliminada una ayuda cambiando su estado
+            string CrearDelete()
             {
-                MessageBox.Show("Por favor, llene los campos de ruta e índice");
+                string sQuery = "UPDATE ayuda SET estado = 0 WHERE Id_ayuda = " + Dgv_ayudas.CurrentRow.Cells[0].Value.ToString();
+                return sQuery;
             }
-            else
-            {
-                logic.nuevoQuery(crearInsert());
-                txtindice.Clear();
-                txtruta.Clear();
-                MessageBox.Show("Ayuda agregada Correctamente!");
-                llenartabla();  // Actualizar la tabla
-            }
-        }
 
-        // Evento al hacer clic en una celda del DataGrid para seleccionar una ayuda y mostrarla en los campos de texto
-        private void DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (dataGridView1.SelectedRows.Count == 1)
+            // Método para crear el query de UPDATE, para modificar la ruta y el índice de una ayuda
+            string CrearUpdate()
             {
-                txtruta.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
-                txtindice.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+                string sQuery = "UPDATE ayuda SET Ruta = '" + txt_ruta.Text.Replace("\\", "/") + "', indice = '" + txt_indice.Text + "' WHERE Id_ayuda = " + Dgv_ayudas.CurrentRow.Cells[0].Value.ToString();
+                return sQuery;
             }
-            else
-            {
-                MessageBox.Show("Por favor, seleccione un registro de la tabla");
-            }
-        }
 
-        // Evento del botón para modificar una ayuda seleccionada
-        private void Button5_Click(object sender, EventArgs e)
-        {
-            if (txtruta.Text == "" || txtindice.Text == "")
+            // Evento del botón para agregar una nueva ayuda
+            private void Btn_guardar_Click(object sender, EventArgs e)
             {
-                MessageBox.Show("Por favor, llene ambos campos para continuar...");
+                if (txt_ruta.Text == "" || txt_indice.Text == "")
+                {
+                    MessageBox.Show("Por favor, llene los campos de ruta e índice");
+                }
+                else
+                {
+                    logic.NuevoQuery(CrearInsert());
+                    txt_indice.Clear();
+                    txt_ruta.Clear();
+                    MessageBox.Show("Ayuda agregada Correctamente!");
+                    LlenarTabla();  // Actualizar la tabla
+                }
             }
-            else
+
+            // Evento al hacer clic en una celda del DataGrid para seleccionar una ayuda y mostrarla en los campos de texto
+            private void Dgv_ayudas_CellClick(object sender, DataGridViewCellEventArgs e)
             {
-                logic.nuevoQuery(crearUpdate());
-                txtindice.Clear();
-                txtruta.Clear();
-                MessageBox.Show("Ayuda modificada correctamente");
-                llenartabla();  // Actualizar la tabla
+                if (Dgv_ayudas.SelectedRows.Count == 1)
+                {
+                    txt_ruta.Text = Dgv_ayudas.CurrentRow.Cells[1].Value.ToString();
+                    txt_indice.Text = Dgv_ayudas.CurrentRow.Cells[2].Value.ToString();
+                }
+                else
+                {
+                    MessageBox.Show("Por favor, seleccione un registro de la tabla");
+                }
             }
-        }
 
-        // Evento del botón para eliminar una ayuda seleccionada (cambia su estado)
-        private void Button4_Click(object sender, EventArgs e)
-        {
-            if (txtruta.Text == "" || txtindice.Text == "")
+            // Evento del botón para modificar una ayuda seleccionada
+            private void Btn_modificar_Click(object sender, EventArgs e)
             {
-                MessageBox.Show("Hola");
+                if (txt_ruta.Text == "" || txt_indice.Text == "")
+                {
+                    MessageBox.Show("Por favor, llene ambos campos para continuar...");
+                }
+                else
+                {
+                    logic.NuevoQuery(CrearUpdate());
+                    txt_indice.Clear();
+                    txt_ruta.Clear();
+                    MessageBox.Show("Ayuda modificada correctamente");
+                    LlenarTabla();  // Actualizar la tabla
+                }
             }
-            else
+
+            // Evento del botón para eliminar una ayuda seleccionada (cambia su estado)
+            private void Btn_eliminar_Click(object sender, EventArgs e)
             {
-                logic.nuevoQuery(crearDelete());
-                txtindice.Clear();
-                txtruta.Clear();
-                MessageBox.Show("Ayuda eliminada Correctamente");
-                llenartabla();  // Actualizar la tabla
+                if (txt_ruta.Text == "" || txt_indice.Text == "")
+                {
+                    MessageBox.Show("Hola");
+                }
+                else
+                {
+                    logic.NuevoQuery(CrearDelete());
+                    txt_indice.Clear();
+                    txt_ruta.Clear();
+                    MessageBox.Show("Ayuda eliminada Correctamente");
+                    LlenarTabla();  // Actualizar la tabla
+                }
             }
-        }
 
-        private void Ayudas_Load(object sender, EventArgs e)
-        {
-            // Evento que ocurre cuando se carga el formulario, sin implementación
-        }
-
-        private void Label1_Click(object sender, EventArgs e)
-        {
-            // Evento que ocurre cuando se hace clic en el label, sin implementación
-        }
-
-        // Método que permite seleccionar un archivo HTML desde un diálogo
-        private void Button2_Click_1(object sender, EventArgs e)
-        {
-            OpenFileDialog rutaFile = new OpenFileDialog();
-            rutaFile.InitialDirectory = "c:\\";
-            rutaFile.Filter = "chm files (*.html)|*.html";
-            if (rutaFile.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            private void Ayudas_Load(object sender, EventArgs e)
             {
-                txtindice.Text = rutaFile.SafeFileName;  // Guardar solo el nombre del archivo sin la ruta completa
+                // Evento que ocurre cuando se carga el formulario, sin implementación
             }
-        }
 
-        //******************************************** CODIGO HECHO POR BRAYAN HERNANDEZ ***************************** 
+            private void Label1_Click(object sender, EventArgs e)
+            {
+                // Evento que ocurre cuando se hace clic en el label, sin implementación
+            }
+
+            // Método que permite seleccionar un archivo HTML desde un diálogo
+            private void Btn_indice_Click_1(object sender, EventArgs e)
+            {
+                // Obtener el directorio base de la aplicación
+                string sBasePath = AppDomain.CurrentDomain.BaseDirectory;
+
+                // Combinar la ruta base con la carpeta "HTML"
+                string sHtmlDirectory = Path.Combine(sBasePath, @"..\..\..\HTML");
+
+                OpenFileDialog rutaFile = new OpenFileDialog();
+                rutaFile.InitialDirectory = Path.GetFullPath(sHtmlDirectory);  // Establecer el directorio inicial como la carpeta "HTML"
+                rutaFile.Filter = "HTML files (*.html)|*.html";  // Filtro para solo mostrar archivos .html
+                if (rutaFile.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    // Obtener solo el nombre del archivo (sin la ruta completa)
+                    string sFileName = Path.GetFileName(rutaFile.FileName);
+
+                    // Asignar el nombre del archivo al campo de texto
+                    txt_indice.Text = sFileName;
+                }
+            }
+
+            //******************************************** CODIGO HECHO POR BRAYAN HERNANDEZ ***************************** 
+        
     }
 }

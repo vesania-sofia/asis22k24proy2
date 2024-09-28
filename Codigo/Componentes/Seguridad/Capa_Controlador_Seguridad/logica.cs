@@ -37,7 +37,8 @@ namespace Capa_Controlador_Seguridad
 
         }
 
-        public DataTable Funmostraraplicaciones() {
+        public DataTable Funmostraraplicaciones()
+        {
             try
             {
                 OdbcDataAdapter dtaplicaciones = sn.funmostraraplicaciones();
@@ -93,6 +94,17 @@ namespace Capa_Controlador_Seguridad
         }
         /**********************************************/
 
+        /***************Ismar Cortez************/
+        // Método que controla la lógica de consultar permisos
+        public bool ConsultarPermisos(string idUsuario, string idAplicacion, int tipoPermiso)
+        {
+            sentencia sn = new sentencia();
+            // Llamar a la función de la capa de datos y retornar el resultado
+            bool tienePermiso = sn.funConsultarPermisos(idUsuario, idAplicacion, tipoPermiso);
+            return tienePermiso;
+        }
+
+        /**********************************************/
 
 
 
@@ -704,7 +716,7 @@ namespace Capa_Controlador_Seguridad
         {
 
 
-  
+
             var dt1 = sn.obtener2(tabla, campo1, campo2);
 
             return dt1;
@@ -870,7 +882,7 @@ namespace Capa_Controlador_Seguridad
             try
             {
                 sentencia sn = new sentencia();
-                sn.funInsertarBitacora(idUsuario,sAccion,sTabla,sIdAplicacion);
+                sn.funInsertarBitacora(idUsuario, sAccion, sTabla, sIdAplicacion);
                 return true;
             }
             catch (Exception ex)
