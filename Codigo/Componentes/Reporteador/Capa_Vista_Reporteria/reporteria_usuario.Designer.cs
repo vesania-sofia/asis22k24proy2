@@ -29,6 +29,7 @@ namespace Capa_Vista_Reporteria
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(reporteria_usuario));
             this.Nombre = new System.Windows.Forms.Label();
             this.Txt_nombre = new System.Windows.Forms.TextBox();
             this.Btn_Buscar = new System.Windows.Forms.Button();
@@ -41,37 +42,48 @@ namespace Capa_Vista_Reporteria
             // Nombre
             // 
             this.Nombre.AutoSize = true;
-            this.Nombre.Location = new System.Drawing.Point(38, 6);
+            this.Nombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Nombre.Location = new System.Drawing.Point(61, 14);
+            this.Nombre.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Nombre.Name = "Nombre";
-            this.Nombre.Size = new System.Drawing.Size(44, 13);
+            this.Nombre.Size = new System.Drawing.Size(81, 25);
             this.Nombre.TabIndex = 0;
             this.Nombre.Text = "Nombre";
             // 
             // Txt_nombre
             // 
-            this.Txt_nombre.Location = new System.Drawing.Point(86, 6);
+            this.Txt_nombre.Location = new System.Drawing.Point(150, 18);
+            this.Txt_nombre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Txt_nombre.Name = "Txt_nombre";
-            this.Txt_nombre.Size = new System.Drawing.Size(180, 20);
+            this.Txt_nombre.Size = new System.Drawing.Size(239, 22);
             this.Txt_nombre.TabIndex = 1;
             // 
             // Btn_Buscar
             // 
-            this.Btn_Buscar.Location = new System.Drawing.Point(270, 5);
+            this.Btn_Buscar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Btn_Buscar.FlatAppearance.BorderSize = 0;
+            this.Btn_Buscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_Buscar.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Buscar.Image")));
+            this.Btn_Buscar.Location = new System.Drawing.Point(397, 10);
+            this.Btn_Buscar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Btn_Buscar.Name = "Btn_Buscar";
-            this.Btn_Buscar.Size = new System.Drawing.Size(75, 23);
+            this.Btn_Buscar.Size = new System.Drawing.Size(37, 40);
             this.Btn_Buscar.TabIndex = 2;
-            this.Btn_Buscar.Text = "Buscar";
             this.Btn_Buscar.UseVisualStyleBackColor = true;
             this.Btn_Buscar.Click += new System.EventHandler(this.Btn_Buscar_Click);
             // 
             // Btn_VerReporte
             // 
+            this.Btn_VerReporte.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Btn_VerReporte.Enabled = false;
-            this.Btn_VerReporte.Location = new System.Drawing.Point(488, 6);
+            this.Btn_VerReporte.FlatAppearance.BorderSize = 0;
+            this.Btn_VerReporte.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_VerReporte.Image = ((System.Drawing.Image)(resources.GetObject("Btn_VerReporte.Image")));
+            this.Btn_VerReporte.Location = new System.Drawing.Point(653, 9);
+            this.Btn_VerReporte.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Btn_VerReporte.Name = "Btn_VerReporte";
-            this.Btn_VerReporte.Size = new System.Drawing.Size(75, 23);
+            this.Btn_VerReporte.Size = new System.Drawing.Size(38, 40);
             this.Btn_VerReporte.TabIndex = 3;
-            this.Btn_VerReporte.Text = "Ver reporte";
             this.Btn_VerReporte.UseVisualStyleBackColor = true;
             this.Btn_VerReporte.Click += new System.EventHandler(this.Btn_VerReporte_Click);
             // 
@@ -81,34 +93,36 @@ namespace Capa_Vista_Reporteria
             this.Dgv_Regreporteria.AllowUserToDeleteRows = false;
             this.Dgv_Regreporteria.AllowUserToOrderColumns = true;
             this.Dgv_Regreporteria.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Dgv_Regreporteria.Location = new System.Drawing.Point(40, 34);
+            this.Dgv_Regreporteria.Location = new System.Drawing.Point(54, 61);
+            this.Dgv_Regreporteria.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Dgv_Regreporteria.Name = "Dgv_Regreporteria";
             this.Dgv_Regreporteria.ReadOnly = true;
             this.Dgv_Regreporteria.RowHeadersWidth = 62;
-            this.Dgv_Regreporteria.Size = new System.Drawing.Size(592, 340);
+            this.Dgv_Regreporteria.Size = new System.Drawing.Size(789, 418);
             this.Dgv_Regreporteria.TabIndex = 8;
             this.Dgv_Regreporteria.DoubleClick += new System.EventHandler(this.tabla_registro_DoubleClick);
             // 
             // Txt_ruta
             // 
-            this.Txt_ruta.Location = new System.Drawing.Point(350, 8);
-            this.Txt_ruta.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Txt_ruta.Location = new System.Drawing.Point(467, 18);
+            this.Txt_ruta.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Txt_ruta.Name = "Txt_ruta";
-            this.Txt_ruta.Size = new System.Drawing.Size(135, 20);
+            this.Txt_ruta.Size = new System.Drawing.Size(179, 22);
             this.Txt_ruta.TabIndex = 9;
             // 
             // reporteria_usuario
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(247)))), ((int)(((byte)(253)))));
-            this.ClientSize = new System.Drawing.Size(682, 400);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(177)))), ((int)(((byte)(252)))));
+            this.ClientSize = new System.Drawing.Size(909, 492);
             this.Controls.Add(this.Txt_ruta);
             this.Controls.Add(this.Dgv_Regreporteria);
             this.Controls.Add(this.Btn_VerReporte);
             this.Controls.Add(this.Btn_Buscar);
             this.Controls.Add(this.Txt_nombre);
             this.Controls.Add(this.Nombre);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "reporteria_usuario";
             this.Text = "reporteria_usuario";
             this.Load += new System.EventHandler(this.reporteria_usuario_Load);
