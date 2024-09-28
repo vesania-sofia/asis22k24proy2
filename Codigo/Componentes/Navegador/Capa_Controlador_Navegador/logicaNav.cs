@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data;
 using System.Data.Odbc;
-using Capa_Datos_Navegador;
+using Capa_Modelo_Navegador;
 
 namespace Capa_Controlador_Navegador
 {
@@ -16,149 +13,150 @@ namespace Capa_Controlador_Navegador
         sentencias sn = new sentencias();
 
         // Obtiene el último ID insertado en la tabla especificada
-        public string lastID(string tabla)
+        public string UltimoID(string sTabla)
         {
-            string lastId = sn.obtenerId(tabla);
-            Console.WriteLine(lastId);
-            return lastId;
+            string sUltimoID = sn.ObtenerId(sTabla);
+            Console.WriteLine(sUltimoID);
+            return sUltimoID;
         }
 
         // Realiza una consulta lógica sobre la tabla y la tabla relacionada, devolviendo un DataTable con los resultados
-        public DataTable consultaLogica(string tabla, string tablaRelacionada, string campodesc, string columnaForanea, string columnaprimararelacionada)
+        public DataTable ConsultaLogica(string sTabla, string sTablaRelacionada, string sCampodesc, string sColumnaForanea, string sColumnaPrimaraRelacionada)
         {
-            OdbcDataAdapter dt = sn.llenaTbl(tabla, tablaRelacionada, campodesc, columnaForanea, columnaprimararelacionada);
-            DataTable table = new DataTable();
-            dt.Fill(table);
-            return table;
+            OdbcDataAdapter dt = sn.LlenaTbl(sTabla, sTablaRelacionada, sCampodesc, sColumnaForanea, sColumnaPrimaraRelacionada);
+            DataTable dtTabla = new DataTable();
+            dt.Fill(dtTabla);
+            return dtTabla;
         }
 
         // Modifica el índice proporcionado a través de la lógica interna
-        public string MIndice(string Indice1)
+        public string ModIndice(string sIndice1)
+
         {
-            string indice = sn.modIndice(Indice1);
-            return indice;
+            string sIndice = sn.ModIndice(sIndice1);
+            return sIndice;
         }
 
         // Modifica la ruta proporcionada a través de la lógica interna
-        public string MRuta(string Ruta1)
+        public string ModRuta(string sRuta1)
         {
-            string ruta = sn.modRuta(Ruta1);
-            return ruta;
+            string sRuta = sn.ModRuta(sRuta1);
+            return sRuta;
         }
 
         // Prueba si la tabla existe en la base de datos
-        public string TestTabla(string tabla)
+        public string TestTabla(string sTabla)
         {
-            return sn.ProbarTabla(tabla);
+            return sn.ProbarTabla(sTabla);
         }
 
         // Obtiene una lista de columnas y sus propiedades (si son autoincrementales, claves foráneas, etc.) para la tabla dada
-        public List<(string nombreColumna, bool esAutoIncremental, bool esClaveForanea, bool esTinyInt)> obtenerColumnasYPropiedadesLogica(string nombreTabla)
+        public List<(string nombreColumna, bool esAutoIncremental, bool esClaveForanea, bool esTinyInt)> ObtenerColumnasYPropiedadesLogica(string sNombreTabla)
         {
-            return sn.obtenerColumnasYPropiedades(nombreTabla);
+            return sn.ObtenerColumnasYPropiedades(sNombreTabla);
         }
 
         // Prueba el estado de la tabla en la base de datos
-        public string TestEstado(string tabla)
+        public string TestEstado(string sTabla)
         {
-            return sn.ProbarEstado(tabla);
+            return sn.ProbarEstado(sTabla);
         }
 
         // Devuelve el número de registros en la tabla
-        public int TestRegistros(string tabla)
+        public int TestRegistros(string sTabla)
         {
-            return sn.ProbarRegistros(tabla);
+            return sn.ProbarRegistros(sTabla);
         }
 
         // Cuenta los campos (columnas) en la tabla especificada
-        public int contarCampos(string tabla)
+        public int ContarCampos(string sTabla)
         {
-            return sn.contarAlias(tabla);
+            return sn.ContarAlias(sTabla);
         }
 
         // Cuenta los registros de ayuda en la tabla especificada
-        public int contarRegAyuda(string tabla)
+        public int ContarRegAyuda(string sTabla)
         {
-            return sn.contarReg(tabla);
+            return sn.ContarReg(sTabla);
         }
 
         // Devuelve un array con los nombres de los campos de la tabla especificada
-        public string[] campos(string tabla)
+        public string[] Campos(string sTabla)
         {
-            string[] Campos = sn.obtenerCampos(tabla);
-            return Campos;
+            string[] sCampos = sn.ObtenerCampos(sTabla);
+            return sCampos;
         }
 
         // Devuelve un array con los tipos de datos de los campos de la tabla especificada
-        public string[] tipos(string tabla)
+        public string[] Tipos(string sTabla)
         {
-            string[] Tipos = sn.ObtenerTipo(tabla);
-            return Tipos;
+            string[] sTipos = sn.ObtenerTipo(sTabla);
+            return sTipos;
         }
 
         // Devuelve un array con las llaves primarias de la tabla especificada
-        public string[] llaves(string tabla)
+        public string[] Llaves(string sTabla)
         {
-            string[] LLaves = sn.obtenerLLave(tabla);
-            return LLaves;
+            string[] sLlaves = sn.ObtenerLLave(sTabla);
+            return sLlaves;
         }
 
         // Obtiene los elementos para un ComboBox basado en la tabla y campos especificados
-        public Dictionary<string, string> items(string tabla, string campoClave, string campoDisplay)
+        public Dictionary<string, string> Items(string sTabla, string sCampoClave, string sCampoDisplay)
         {
-            return sn.obtenerItems(tabla, campoClave, campoDisplay);
+            return sn.ObtenerItems(sTabla, sCampoClave, sCampoDisplay);
         }
 
         // Devuelve la clave primaria correspondiente a un valor específico en un campo específico de la tabla
-        public string llaveCampolo(string tabla, string campo, string valor)
+        public string LlaveCampolo(string sTabla, string sCampo, string sValor)
         {
-            string llave = sn.llaveCampo(tabla, campo, valor);
-            return llave;
+            string sLlave = sn.LlaveCampo(sTabla, sCampo, sValor);
+            return sLlave;
         }
 
         // Devuelve la clave primaria en reverso para un valor específico en un campo específico de la tabla
-        public string llaveCampoRev(string tabla, string campo, string valor)
+        public string LlaveCampoRev(string sTabla, string sCampo, string sValor)
         {
-            string llave = sn.llaveCampoReverso(tabla, campo, valor);
-            return llave;
+            string sLlave = sn.LlaveCampoReverso(sTabla, sCampo, sValor);
+            return sLlave;
         }
 
         // Obtiene el ID de un reporte basado en su nombre
-        public string ObtenerIdReporte(string id)
+        public string ObtenerIdReporte(string sId)
         {
-            string llave = sn.rutaReporte(id);
-            return llave;
+            string sLlave = sn.RutaReporte(sId);
+            return sLlave;
         }
 
         // Ejecuta una nueva consulta en la base de datos
-        public void nuevoQuery(string query)
+        public void NuevoQuery(string sQuery)
         {
-            sn.ejecutarQuery(query);
+            sn.EjecutarQuery(sQuery);
         }
 
         // Obtiene el ID de un usuario basado en su nombre de usuario
-        public string ObtenerIdUsuario(string username)
+        public string ObtenerIdUsuario(string sUsername)
         {
-            return sn.ObtenerIdUsuarioPorUsername(username);
+            return sn.ObtenerIdUsuarioPorUsername(sUsername);
         }
 
         // Inserta datos en múltiples tablas en una transacción
-        public void insertarDatosEnMultiplesTablas(List<string> queries)
+        public void InsertarDatosEnMultiplesTablas(List<string> lsQueries)
         {
             sentencias sn = new sentencias();
-            sn.ejecutarQueryConTransaccion(queries);
+            sn.EjecutarQueryConTransaccion(lsQueries);
         }
 
         // Obtiene la clave primaria de una tabla específica
-        public string ObtenerClavePrimaria(string nombreTabla)
+        public string ObtenerClavePrimaria(string sNombreTabla)
         {
-            return sn.obtenerClavePrimaria(nombreTabla);
+            return sn.ObtenerClavePrimaria(sNombreTabla);
         }
 
         // Obtiene la clave foránea de una tabla referenciada
-        public string ObtenerClaveForanea(string nombreTabla, string tablaReferenciada)
+        public string ObtenerClaveForanea(string sNombreTabla, string sTablaReferencia)
         {
-            return sn.ObtenerClaveForanea(nombreTabla, tablaReferenciada);
+            return sn.ObtenerClaveForanea(sNombreTabla, sTablaReferencia);
         }
     }
 }

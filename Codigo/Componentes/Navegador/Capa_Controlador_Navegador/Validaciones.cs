@@ -10,14 +10,14 @@ namespace Capa_Controlador_Navegador
     public class Validaciones
     {
         // Caracteres especiales utilizados en las validaciones
-        char coma = (char)44;
-        char guion = (char)45;
-        char guionb = (char)95;
-        char punto = (char)46;
-        char bs = (char)8;
-        char dosp = (char)58;
-        int contador;
-        int contadordp = 0;
+        char cComa = (char)44;
+        char cGuion = (char)45;
+        char cGuionB = (char)95;
+        char cPunto = (char)46;
+        char cBs = (char)8;
+        char cDosp = (char)58;
+        int iContador;
+        int iContadordp = 0;
 
         //******************************************** CODIGO HECHO POR JOEL LOPEZ *****************************
         /// <summary>
@@ -180,7 +180,7 @@ namespace Capa_Controlador_Navegador
                 {
                     e.Handled = false;
                 }
-                else if (e.KeyChar == guionb || e.KeyChar == guion || e.KeyChar == punto || e.KeyChar == coma) // Permite ciertos caracteres especiales
+                else if (e.KeyChar == cGuionB || e.KeyChar == cGuion || e.KeyChar == cPunto || e.KeyChar == cComa) // Permite ciertos caracteres especiales
                 {
                     e.Handled = false;
                 }
@@ -244,20 +244,20 @@ namespace Capa_Controlador_Navegador
                 {
                     e.Handled = false;
                 }
-                else if (e.KeyChar == punto) // Permite un solo punto decimal
+                else if (e.KeyChar == cPunto) // Permite un solo punto decimal
                 {
-                    contador++;
+                    iContador++;
                     e.Handled = false;
 
-                    if (contador >= 2) // Si ya hay un punto decimal, no permite otro
+                    if (iContador >= 2) // Si ya hay un punto decimal, no permite otro
                     {
                         e.Handled = true;
-                        contador = 2; // Se asegura de que el contador no supere 2
+                        iContador = 2; // Se asegura de que el contador no supere 2
                     }
                 }
-                else if (e.KeyChar == bs) // Maneja el backspace para ajustar el contador
+                else if (e.KeyChar == cBs) // Maneja el backspace para ajustar el contador
                 {
-                    contador = 0; // Resetea el contador al borrar
+                    iContador = 0; // Resetea el contador al borrar
                     e.Handled = false;
                 }
                 else if (char.IsControl(e.KeyChar)) // Permite teclas de control
@@ -294,19 +294,19 @@ namespace Capa_Controlador_Navegador
                 {
                     e.Handled = false;
                 }
-                else if (e.KeyChar == dosp) // Permite un solo carácter de dos puntos (:)
+                else if (e.KeyChar == cDosp) // Permite un solo carácter de dos puntos (:)
                 {
-                    contadordp++;
+                    iContadordp++;
                     e.Handled = false;
 
-                    if (contadordp >= 2) // Si ya hay un carácter de dos puntos, no permite otro
+                    if (iContadordp >= 2) // Si ya hay un carácter de dos puntos, no permite otro
                     {
                         e.Handled = true;
                     }
                 }
-                else if (e.KeyChar == bs) // Maneja el backspace para ajustar el contador
+                else if (e.KeyChar == cBs) // Maneja el backspace para ajustar el contador
                 {
-                    contadordp = 0; // Resetea el contador al borrar
+                    iContadordp = 0; // Resetea el contador al borrar
                     e.Handled = false;
                 }
                 else if (char.IsControl(e.KeyChar)) // Permite teclas de control
