@@ -1,4 +1,4 @@
-DROP DATABASE colchoneria;
+DROP DATABASE IF exists colchoneria;
 CREATE DATABASE colchoneria;
 use colchoneria;
 -- phpMyAdmin SQL Dump
@@ -209,12 +209,14 @@ CREATE TABLE `registro_empleados` (
 -- Estructura de tabla para la tabla `tbl_aplicaciones`
 --
 
-CREATE TABLE `tbl_aplicaciones` (
-  `Pk_id_aplicacion` int(11) NOT NULL,
-  `nombre_aplicacion` varchar(50) NOT NULL,
-  `descripcion_aplicacion` varchar(150) NOT NULL,
-  `estado_aplicacion` tinyint(4) DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+DROP TABLE IF EXISTS `Tbl_aplicaciones`;
+CREATE TABLE IF NOT EXISTS `Tbl_aplicaciones` (
+	Pk_id_aplicacion INT NOT NULL,
+    nombre_aplicacion VARCHAR(50) NOT NULL,
+    descripcion_aplicacion VARCHAR(150) NOT NULL,
+    estado_aplicacion TINYINT DEFAULT 0,
+    primary key (`Pk_id_aplicacion`)
+);
 
 
 -- --------------------------------------------------------
@@ -241,6 +243,23 @@ CREATE TABLE `tbl_asignacion_modulo_aplicacion` (
   `Fk_id_aplicacion` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
+-- Estructura de tabla para la tabla `tbl_usuarios`
+--
+
+DROP TABLE IF EXISTS `Tbl_usuarios`;
+CREATE TABLE IF NOT EXISTS `Tbl_usuarios` (
+  Pk_id_usuario INT AUTO_INCREMENT NOT NULL,
+  nombre_usuario VARCHAR(50) NOT NULL,
+  apellido_usuario VARCHAR(50) NOT NULL,
+  username_usuario VARCHAR(20) NOT NULL,
+  password_usuario VARCHAR(100) NOT NULL,
+  email_usuario VARCHAR(50) NOT NULL,
+  ultima_conexion_usuario DATETIME NULL DEFAULT NULL,
+  estado_usuario TINYINT DEFAULT 0 NOT NULL,
+  pregunta varchar(50) not null,
+  respuesta varchar(50) not null,
+  PRIMARY KEY (`Pk_id_usuario`)
+);
 
 -- --------------------------------------------------------
 
@@ -248,16 +267,20 @@ CREATE TABLE `tbl_asignacion_modulo_aplicacion` (
 -- Estructura de tabla para la tabla `tbl_bitacora`
 --
 
-CREATE TABLE `tbl_bitacora` (
-  `Pk_id_bitacora` int(11) NOT NULL,
-  `Fk_id_usuario` int(11) NOT NULL,
-  `fecha_bitacora` date NOT NULL,
-  `hora_bitacora` time NOT NULL,
-  `host_bitacora` varchar(45) NOT NULL,
-  `ip_bitacora` varchar(100) NOT NULL,
-  `accion_bitacora` varchar(50) NOT NULL,
-  `tabla` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+DROP TABLE IF EXISTS Tbl_bitacora;
+CREATE TABLE IF NOT EXISTS Tbl_bitacora (
+  Pk_id_bitacora INT AUTO_INCREMENT NOT NULL,
+  Fk_id_usuario INT NOT NULL,
+  Fk_id_aplicacion INT NOT NULL,
+  fecha_bitacora DATE NOT NULL,
+  hora_bitacora TIME NOT NULL,
+  host_bitacora VARCHAR(45) NOT NULL,
+  ip_bitacora VARCHAR(100) NOT NULL,
+  accion_bitacora VARCHAR(200) NOT NULL,
+  PRIMARY KEY (`Pk_id_bitacora`),
+  FOREIGN KEY (`Fk_id_usuario`) REFERENCES `Tbl_usuarios` (`Pk_id_usuario`),
+  FOREIGN KEY (`Fk_id_aplicacion`) REFERENCES `Tbl_aplicaciones` (`Pk_id_aplicacion`)
+)ENGINE = InnoDB DEFAULT CHARACTER SET = utf8;
 
 
 -- --------------------------------------------------------
@@ -358,21 +381,7 @@ CREATE TABLE `tbl_regreporteria` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tbl_usuarios`
---
 
-CREATE TABLE `tbl_usuarios` (
-  `Pk_id_usuario` int(11) NOT NULL,
-  `nombre_usuario` varchar(50) NOT NULL,
-  `apellido_usuario` varchar(50) NOT NULL,
-  `username_usuario` varchar(20) NOT NULL,
-  `password_usuario` varchar(100) NOT NULL,
-  `email_usuario` varchar(50) NOT NULL,
-  `ultima_conexion_usuario` datetime DEFAULT NULL,
-  `estado_usuario` tinyint(4) NOT NULL DEFAULT 0,
-  `pregunta` varchar(50) NOT NULL,
-  `respuesta` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 -- --------------------------------------------------------
@@ -533,10 +542,6 @@ ALTER TABLE `registro_empleados`
 
 
 --
--- Indices de la tabla `tbl_aplicaciones`
---
-ALTER TABLE `tbl_aplicaciones`
-  ADD PRIMARY KEY (`Pk_id_aplicacion`);
 
 --
 -- Indices de la tabla `tbl_asignaciones_perfils_usuario`
@@ -554,15 +559,9 @@ ALTER TABLE `tbl_asignacion_modulo_aplicacion`
   ADD KEY `Fk_id_aplicacion` (`Fk_id_aplicacion`);
 
 --
--- Indices de la tabla `tbl_bitacora`
---
-ALTER TABLE `tbl_bitacora`
-  ADD PRIMARY KEY (`Pk_id_bitacora`),
-  ADD KEY `Fk_id_usuario` (`Fk_id_usuario`);
 
 
-ALTER TABLE Tbl_bitacora
-ADD COLUMN aplicacion VARCHAR(10) NOT NULL;
+
 --
 -- Indices de la tabla `tbl_consultainteligente`
 --
@@ -606,10 +605,7 @@ ALTER TABLE `tbl_regreporteria`
   ADD KEY `Fk_id_aplicacion` (`Fk_id_aplicacion`);
 
 --
--- Indices de la tabla `tbl_usuarios`
---
-ALTER TABLE `tbl_usuarios`
-  ADD PRIMARY KEY (`Pk_id_usuario`);
+
 
 --
 -- Indices de la tabla `venta`
@@ -748,10 +744,7 @@ ALTER TABLE `tbl_asignacion_modulo_aplicacion`
   ADD CONSTRAINT `tbl_asignacion_modulo_aplicacion_ibfk_2` FOREIGN KEY (`Fk_id_aplicacion`) REFERENCES `tbl_aplicaciones` (`Pk_id_aplicacion`);
 
 --
--- Filtros para la tabla `tbl_bitacora`
---
-ALTER TABLE `tbl_bitacora`
-  ADD CONSTRAINT `tbl_bitacora_ibfk_1` FOREIGN KEY (`Fk_id_usuario`) REFERENCES `tbl_usuarios` (`Pk_id_usuario`);
+
 
 --
 -- Filtros para la tabla `tbl_permisos_aplicaciones_usuario`
@@ -778,3 +771,6 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+ALTER TABLE `Tbl_bitacora`
+ADD COLUMN `tabla` VARCHAR(50) NOT NULL;

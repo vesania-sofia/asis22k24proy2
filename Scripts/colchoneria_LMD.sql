@@ -1,8 +1,42 @@
 --
 -- Volcado de datos para la tabla `ayuda`
 --
+
 INSERT INTO `ayuda` (`Id_ayuda`, `Ruta`, `indice`, `estado`) VALUES
-(1, 'C:/Users/bhern/source/repos/ejecucion/ejecucion/AyudaHTML/AyudaNavegador.chm', 'AyudaNav.html', 1);
+(1, 'AyudaNavegador.chm', 'AyudaNav.html', 1),
+(2, 'AyudaReportes.chm', 'AyudaRep.html', 1);
+--
+-- Volcado de datos para la tabla `factura`
+--
+
+INSERT INTO `factura` (`Pk_id_factura`, `fecha_factura`, `monto_factura`, `estado`) VALUES
+(2, '2024-09-20', 100.00, NULL),
+(3, '2024-09-20', 200.00, NULL),
+(4, '2024-09-20', 1000.00, NULL),
+(5, '2024-09-20', 233.00, 1),
+(6, '2024-09-20', 1515.00, 1),
+(7, '2025-03-20', 999.00, 1),
+(8, '2024-09-20', 1313.00, 1),
+(9, '2021-07-15', 555.00, 1),
+(10, '2024-09-21', 900.00, 1);
+
+--
+-- Volcado de datos para la tabla `detallefactura`
+--
+
+INSERT INTO `detallefactura` (`Pk_id_detalle_factura`, `fk_id_factura`, `descripcion_factura`, `cantidad`, `monto_factura`, `estado`) VALUES
+(1, 2, '2024-09-20', 100, 0.00, 1),
+(2, 3, '2024-09-20', 200, 0.00, 1),
+(3, 4, '2024-09-20', 1000, 0.00, 1),
+(4, 5, '2024-09-20', 233, 0.00, 1),
+(5, 6, '2024-09-20', 222, 1515.00, 1),
+(6, 7, '2024-09-20', 999, 0.00, 1),
+(7, 8, '2024-09-20', 300, 1313.00, 1),
+(8, 9, '2024-09-20', 500, 0.00, 1),
+(9, 9, '2024-09-20', 500, 0.00, 1),
+(10, 10, '2024-09-21', 900, 0.00, 1),
+(11, 10, '2024-09-21', 900, 0.00, 1);
+
 
 --
 -- Volcado de datos para la tabla `empleados`
@@ -129,38 +163,6 @@ INSERT INTO `empleados` (`codigo_empleado`, `nombre_completo`, `puesto`, `depart
 (121, 'asda', 'asd', 'asd', 1),
 (122, 'asda', 'asda', 'asd', 1);
 
---
--- Volcado de datos para la tabla `factura`
---
-
-INSERT INTO `factura` (`Pk_id_factura`, `fecha_factura`, `monto_factura`, `estado`) VALUES
-(2, '2024-09-20', 100.00, NULL),
-(3, '2024-09-20', 200.00, NULL),
-(4, '2024-09-20', 1000.00, NULL),
-(5, '2024-09-20', 233.00, 1),
-(6, '2024-09-20', 1515.00, 1),
-(7, '2025-03-20', 999.00, 1),
-(8, '2024-09-20', 1313.00, 1),
-(9, '2021-07-15', 555.00, 1),
-(10, '2024-09-21', 900.00, 1);
-
-
---
--- Volcado de datos para la tabla `detallefactura`
---
-
-INSERT INTO `detallefactura` (`Pk_id_detalle_factura`, `fk_id_factura`, `descripcion_factura`, `cantidad`, `monto_factura`, `estado`) VALUES
-(1, 2, '2024-09-20', 100, 0.00, 1),
-(2, 3, '2024-09-20', 200, 0.00, 1),
-(3, 4, '2024-09-20', 1000, 0.00, 1),
-(4, 5, '2024-09-20', 233, 0.00, 1),
-(5, 6, '2024-09-20', 222, 1515.00, 1),
-(6, 7, '2024-09-20', 999, 0.00, 1),
-(7, 8, '2024-09-20', 300, 1313.00, 1),
-(8, 9, '2024-09-20', 500, 0.00, 1),
-(9, 9, '2024-09-20', 500, 0.00, 1),
-(10, 10, '2024-09-21', 900, 0.00, 1),
-(11, 10, '2024-09-21', 900, 0.00, 1);
 
 --
 -- Volcado de datos para la tabla `pagos`
@@ -304,256 +306,6 @@ INSERT INTO `tbl_aplicaciones` (`Pk_id_aplicacion`, `nombre_aplicacion`, `descri
 (8000, 'MDI CONTRABILIDAD', 'PARA CONTRABILIDAD', 1);
 
 --
--- Volcado de datos para la tabla `tbl_asignaciones_perfils_usuario`
---
-
-INSERT INTO `tbl_asignaciones_perfils_usuario` (`PK_id_Perfil_Usuario`, `Fk_id_usuario`, `Fk_id_perfil`) VALUES
-(1, 1, 1);
-
---
--- Volcado de datos para la tabla `tbl_asignacion_modulo_aplicacion`
---
-
-INSERT INTO `tbl_asignacion_modulo_aplicacion` (`Fk_id_modulos`, `Fk_id_aplicacion`) VALUES
-(1000, 1000),
-(1000, 1001),
-(1000, 1002),
-(1000, 1003),
-(1000, 1004),
-(1000, 1102),
-(1000, 1103),
-(1000, 1201),
-(1000, 1301),
-(2000, 2000),
-(3000, 3000),
-(5000, 5000),
-(6000, 6000),
-(6000, 6001),
-(6000, 6002),
-(6000, 6003),
-(6000, 6004),
-(6000, 6005),
-(6000, 6006),
-(6000, 6007),
-(6000, 6101),
-(6000, 6102),
-(6000, 6103),
-(6000, 6104),
-(6000, 6105),
-(6000, 6106),
-(6000, 6201),
-(6000, 6202),
-(6000, 6203),
-(6000, 6301),
-(7000, 7000),
-(8000, 8000);
-
---
--- Volcado de datos para la tabla `tbl_bitacora`
---
-
-INSERT INTO `tbl_bitacora` (`Pk_id_bitacora`, `Fk_id_usuario`, `fecha_bitacora`, `hora_bitacora`, `host_bitacora`, `ip_bitacora`, `accion_bitacora`, `tabla`) VALUES
-(1, 1, '2024-09-17', '15:40:35', 'BeaglePC', '192.168.56.1', 'Se logeo al sistema', 'Login'),
-(2, 1, '2024-09-17', '15:40:39', 'BeaglePC', '192.168.56.1', 'Realizo una consulta a usuarios', 'tbl_usuarios'),
-(3, 1, '2024-09-17', '15:40:39', 'BeaglePC', '192.168.56.1', 'Realizo una consulta a modulos', 'Tbl_modulos'),
-(4, 1, '2024-09-17', '15:40:50', 'BeaglePC', '192.168.56.1', 'Realizo una consulta a perfiles', 'Tbl_perfiles'),
-(5, 1, '2024-09-17', '15:40:51', 'BeaglePC', '192.168.56.1', 'Realizo una consulta a modulos', 'Tbl_modulos'),
-(6, 1, '2024-09-17', '15:55:51', 'BeaglePC', '192.168.56.1', 'Se logeo al sistema', 'Login'),
-(7, 1, '2024-09-17', '15:56:06', 'BeaglePC', '192.168.56.1', 'Realizo una consulta a usuarios', 'tbl_usuarios'),
-(8, 1, '2024-09-17', '15:56:06', 'BeaglePC', '192.168.56.1', 'Realizo una consulta a modulos', 'Tbl_modulos'),
-(9, 1, '2024-09-17', '15:56:49', 'BeaglePC', '192.168.56.1', 'Realizó una consulta a aplicaciones', 'tbl_aplicacion'),
-(10, 1, '2024-09-17', '15:56:49', 'BeaglePC', '192.168.56.1', 'Realizó una consulta a aplicaciones', 'tbl_aplicacion'),
-(11, 1, '2024-09-17', '16:00:49', 'BeaglePC', '192.168.56.1', 'Realizo una consulta a perfiles', 'Tbl_perfiles'),
-(12, 1, '2024-09-17', '16:00:49', 'BeaglePC', '192.168.56.1', 'Realizo una consulta a modulos', 'Tbl_modulos'),
-(13, 1, '2024-09-17', '16:00:53', 'BeaglePC', '192.168.56.1', 'Realizó una consulta a aplicaciones', 'tbl_aplicacion'),
-(14, 1, '2024-09-17', '16:00:53', 'BeaglePC', '192.168.56.1', 'Realizó una consulta a aplicaciones', 'tbl_aplicacion'),
-(15, 1, '2024-09-17', '16:54:50', 'BeaglePC', '192.168.56.1', 'Realizo una consulta a usuarios', 'tbl_usuarios'),
-(16, 1, '2024-09-17', '16:54:51', 'BeaglePC', '192.168.56.1', 'Realizo una consulta a modulos', 'Tbl_modulos'),
-(17, 1, '2024-09-17', '16:54:58', 'BeaglePC', '192.168.56.1', 'Realizó una consulta a aplicaciones', 'tbl_aplicacion'),
-(18, 1, '2024-09-17', '16:54:58', 'BeaglePC', '192.168.56.1', 'Realizó una consulta a aplicaciones', 'tbl_aplicacion'),
-(19, 1, '2024-09-17', '16:55:18', 'BeaglePC', '192.168.56.1', 'Asignó aplicación: MDI LOGISTICA a usuario: admin', 'Tbl_permisos_aplicaciones_usuario'),
-(20, 1, '2024-09-17', '16:55:29', 'BeaglePC', '192.168.56.1', 'Realizo una consulta a perfiles', 'Tbl_perfiles'),
-(21, 1, '2024-09-17', '16:55:29', 'BeaglePC', '192.168.56.1', 'Realizo una consulta a modulos', 'Tbl_modulos'),
-(22, 1, '2024-09-17', '16:55:52', 'BeaglePC', '192.168.56.1', 'Realizo una consulta a usuarios', 'tbl_usuarios'),
-(23, 1, '2024-09-17', '16:55:52', 'BeaglePC', '192.168.56.1', 'Realizo una consulta a modulos', 'Tbl_modulos'),
-(24, 1, '2024-09-17', '16:56:22', 'BeaglePC', '192.168.56.1', 'Realizo una consulta a perfiles', 'Tbl_perfiles'),
-(25, 1, '2024-09-17', '16:56:22', 'BeaglePC', '192.168.56.1', 'Realizo una consulta a modulos', 'Tbl_modulos'),
-(26, 1, '2024-09-17', '16:59:19', 'BeaglePC', '192.168.56.1', 'Se logeo al sistema', 'Login'),
-(27, 1, '2024-09-17', '16:59:21', 'BeaglePC', '192.168.56.1', 'Realizo una consulta a usuarios', 'tbl_usuarios'),
-(28, 1, '2024-09-17', '16:59:21', 'BeaglePC', '192.168.56.1', 'Realizo una consulta a modulos', 'Tbl_modulos'),
-(29, 1, '2024-09-17', '17:00:19', 'BeaglePC', '192.168.56.1', 'Realizó una consulta a aplicaciones', 'tbl_aplicacion'),
-(30, 1, '2024-09-17', '17:00:19', 'BeaglePC', '192.168.56.1', 'Realizó una consulta a aplicaciones', 'tbl_aplicacion'),
-(31, 1, '2024-09-17', '17:00:34', 'BeaglePC', '192.168.56.1', 'Asignó aplicación: MDI SEGURIDAD a usuario: admin', 'Tbl_permisos_aplicaciones_usuario'),
-(32, 1, '2024-09-17', '17:02:10', 'BeaglePC', '192.168.56.1', 'Realizó una consulta a aplicaciones', 'tbl_aplicacion'),
-(33, 1, '2024-09-17', '17:02:10', 'BeaglePC', '192.168.56.1', 'Realizó una consulta a aplicaciones', 'tbl_aplicacion'),
-(34, 1, '2024-09-17', '17:04:53', 'BeaglePC', '192.168.56.1', 'Realizo una consulta a perfiles', 'Tbl_perfiles'),
-(35, 1, '2024-09-17', '17:04:54', 'BeaglePC', '192.168.56.1', 'Realizo una consulta a modulos', 'Tbl_modulos'),
-(36, 1, '2024-09-17', '17:07:12', 'BeaglePC', '192.168.56.1', 'Realizo una consulta a perfiles', 'Tbl_perfiles'),
-(37, 1, '2024-09-17', '17:07:12', 'BeaglePC', '192.168.56.1', 'Realizo una consulta a modulos', 'Tbl_modulos'),
-(38, 1, '2024-09-17', '17:08:22', 'BeaglePC', '192.168.56.1', 'Realizo una consulta a perfiles', 'Tbl_perfiles'),
-(39, 1, '2024-09-17', '17:08:22', 'BeaglePC', '192.168.56.1', 'Realizo una consulta a modulos', 'Tbl_modulos'),
-(40, 1, '2024-09-17', '17:13:24', 'BeaglePC', '192.168.56.1', 'Se logeo al sistema', 'Login'),
-(41, 1, '2024-09-17', '17:22:05', 'BeaglePC', '192.168.56.1', 'Se logeo al sistema', 'Login'),
-(42, 1, '2024-09-17', '17:22:13', 'BeaglePC', '192.168.56.1', 'Realizo una consulta a usuarios', 'tbl_usuarios'),
-(43, 1, '2024-09-17', '17:22:13', 'BeaglePC', '192.168.56.1', 'Realizo una consulta a modulos', 'Tbl_modulos'),
-(44, 1, '2024-09-17', '17:31:31', 'BeaglePC', '192.168.56.1', 'Se logeo al sistema', 'Login'),
-(45, 1, '2024-09-17', '17:32:03', 'BeaglePC', '192.168.56.1', 'Se inserto el usuario con nombre: Ismar', 'tbl_usuarios'),
-(46, 1, '2024-09-17', '17:33:46', 'BeaglePC', '192.168.56.1', 'Se logeo al sistema', 'Login'),
-(47, 1, '2024-09-17', '17:47:14', 'BeaglePC', '192.168.56.1', 'Se logeo al sistema', 'Login'),
-(48, 1, '2024-09-17', '17:47:45', 'BeaglePC', '192.168.56.1', 'Se logeo al sistema', 'Login'),
-(49, 1, '2024-09-17', '17:48:32', 'BeaglePC', '192.168.56.1', 'Se logeo al sistema', 'Login'),
-(50, 1, '2024-09-17', '18:30:27', 'BeaglePC', '192.168.56.1', 'Se logeo al sistema', 'Login'),
-(51, 1, '2024-09-17', '18:31:26', 'BeaglePC', '192.168.56.1', 'Se logeo al sistema', 'Login'),
-(52, 1, '2024-09-17', '18:33:06', 'BeaglePC', '192.168.56.1', 'Se logeo al sistema', 'Login'),
-(53, 1, '2024-09-18', '07:01:15', 'Brayan', '192.168.237.22', 'Se logeo al sistema', 'Login'),
-(54, 1, '2024-09-18', '07:02:41', 'Brayan', '192.168.237.22', 'Se logeo al sistema', 'Login'),
-(55, 1, '2024-09-18', '07:03:20', 'Brayan', '192.168.237.22', 'Se logeo al sistema', 'Login'),
-(56, 1, '2024-09-18', '07:49:34', 'Brayan', '192.168.237.22', 'Se logeo al sistema', 'Login'),
-(57, 1, '2024-09-18', '08:26:02', 'Brayan', '192.168.237.22', 'Se logeo al sistema', 'Login'),
-(58, 1, '2024-09-18', '08:28:44', 'Brayan', '192.168.237.22', 'Se logeo al sistema', 'Login'),
-(59, 1, '2024-09-18', '08:30:18', 'Brayan', '192.168.237.22', 'Se logeo al sistema', 'Login'),
-(60, 1, '2024-09-18', '08:31:57', 'Brayan', '192.168.237.22', 'Se logeo al sistema', 'Login'),
-(61, 1, '2024-09-18', '18:05:14', 'Brayan', '192.168.0.2', 'Se logeo al sistema', 'Login'),
-(62, 1, '2024-09-18', '18:06:30', 'Brayan', '192.168.0.2', 'Se logeo al sistema', 'Login'),
-(63, 1, '2024-09-18', '18:08:54', 'Brayan', '192.168.0.2', 'Se logeo al sistema', 'Login'),
-(64, 1, '2024-09-18', '18:09:18', 'Brayan', '192.168.0.2', 'Se logeo al sistema', 'Login'),
-(65, 1, '2024-09-18', '18:12:56', 'Brayan', '192.168.0.2', 'Se logeo al sistema', 'Login'),
-(66, 1, '2024-09-18', '18:13:26', 'Brayan', '192.168.0.2', 'Se logeo al sistema', 'Login'),
-(67, 1, '2024-09-18', '18:30:34', 'Brayan', '192.168.0.2', 'Se logeo al sistema', 'Login'),
-(68, 1, '2024-09-18', '18:32:36', 'Brayan', '192.168.0.2', 'Se logeo al sistema', 'Login'),
-(69, 1, '2024-09-18', '19:54:28', 'Brayan', '192.168.0.2', 'Se logeo al sistema', 'Login'),
-(70, 1, '2024-09-18', '19:57:39', 'Brayan', '192.168.0.2', 'Se logeo al sistema', 'Login'),
-(71, 1, '2024-09-18', '19:57:56', 'Brayan', '192.168.0.2', 'Se inserto en venta', 'venta'),
-(72, 1, '2024-09-18', '19:57:56', 'Brayan', '192.168.0.2', 'Se inserto en factura', 'factura'),
-(73, 1, '2024-09-18', '20:00:45', 'Brayan', '192.168.0.2', 'Se logeo al sistema', 'Login'),
-(74, 1, '2024-09-18', '22:09:14', 'Brayan', '192.168.0.2', 'Se logeo al sistema', 'Login'),
-(75, 1, '2024-09-18', '22:10:22', 'Brayan', '192.168.0.2', 'Se logeo al sistema', 'Login'),
-(76, 1, '2024-09-18', '22:11:32', 'Brayan', '192.168.0.2', 'Se logeo al sistema', 'Login'),
-(77, 1, '2024-09-18', '22:15:44', 'Brayan', '192.168.0.2', 'Se logeo al sistema', 'Login'),
-(78, 1, '2024-09-18', '22:17:19', 'Brayan', '192.168.0.2', 'Se logeo al sistema', 'Login'),
-(79, 1, '2024-09-18', '22:19:53', 'Brayan', '192.168.0.2', 'Se logeo al sistema', 'Login'),
-(80, 1, '2024-09-18', '22:24:35', 'Brayan', '192.168.0.2', 'Se logeo al sistema', 'Login'),
-(81, 1, '2024-09-19', '20:01:23', 'Brayan', '192.168.0.2', 'Se logeo al sistema', 'Login'),
-(82, 1, '2024-09-19', '20:01:43', 'Brayan', '192.168.0.2', 'Se insertó en factura', 'factura'),
-(83, 1, '2024-09-19', '20:01:43', 'Brayan', '192.168.0.2', 'Se insertó en detallefactura', 'detallefactura'),
-(84, 1, '2024-09-19', '20:04:40', 'Brayan', '192.168.0.2', 'Se logeo al sistema', 'Login'),
-(85, 1, '2024-09-19', '20:11:54', 'Brayan', '192.168.0.2', 'Se logeo al sistema', 'Login'),
-(86, 1, '2024-09-19', '20:12:48', 'Brayan', '192.168.0.2', 'Se logeo al sistema', 'Login'),
-(87, 1, '2024-09-19', '20:14:21', 'Brayan', '192.168.0.2', 'Se logeo al sistema', 'Login'),
-(88, 1, '2024-09-19', '20:16:11', 'Brayan', '192.168.0.2', 'Se logeo al sistema', 'Login'),
-(89, 1, '2024-09-19', '20:18:14', 'Brayan', '192.168.0.2', 'Se logeo al sistema', 'Login'),
-(90, 1, '2024-09-19', '20:23:25', 'Brayan', '192.168.0.2', 'Se logeo al sistema', 'Login'),
-(91, 1, '2024-09-19', '20:24:41', 'Brayan', '192.168.0.2', 'Se logeo al sistema', 'Login'),
-(92, 1, '2024-09-19', '20:26:45', 'Brayan', '192.168.0.2', 'Se logeo al sistema', 'Login'),
-(93, 1, '2024-09-19', '20:29:37', 'Brayan', '192.168.0.2', 'Se logeo al sistema', 'Login'),
-(94, 1, '2024-09-19', '20:31:02', 'Brayan', '192.168.0.2', 'Se logeo al sistema', 'Login'),
-(95, 1, '2024-09-19', '20:33:23', 'Brayan', '192.168.0.2', 'Se logeo al sistema', 'Login'),
-(96, 1, '2024-09-19', '20:35:36', 'Brayan', '192.168.0.2', 'Se logeo al sistema', 'Login'),
-(97, 1, '2024-09-19', '20:37:01', 'Brayan', '192.168.0.2', 'Se logeo al sistema', 'Login'),
-(98, 1, '2024-09-19', '20:37:39', 'Brayan', '192.168.0.2', 'Se logeo al sistema', 'Login'),
-(99, 1, '2024-09-19', '20:41:01', 'Brayan', '192.168.0.2', 'Se logeo al sistema', 'Login'),
-(100, 1, '2024-09-19', '20:43:40', 'Brayan', '192.168.0.2', 'Se logeo al sistema', 'Login'),
-(101, 1, '2024-09-19', '20:46:08', 'Brayan', '192.168.0.2', 'Se logeo al sistema', 'Login'),
-(102, 1, '2024-09-19', '20:47:54', 'Brayan', '192.168.0.2', 'Se insertó en factura', 'factura'),
-(103, 1, '2024-09-19', '20:47:54', 'Brayan', '192.168.0.2', 'Se insertó en detallefactura', 'detallefactura'),
-(104, 1, '2024-09-19', '20:49:05', 'Brayan', '192.168.0.2', 'Se logeo al sistema', 'Login'),
-(105, 1, '2024-09-19', '20:49:18', 'Brayan', '192.168.0.2', 'Se insertó en factura', 'factura'),
-(106, 1, '2024-09-19', '20:49:18', 'Brayan', '192.168.0.2', 'Se insertó en detallefactura', 'detallefactura'),
-(107, 1, '2024-09-19', '20:49:19', 'Brayan', '192.168.0.2', 'Se insertó en pago', 'pago'),
-(108, 1, '2024-09-20', '22:13:28', 'Brayan', '192.168.0.2', 'Se logeo al sistema', 'Login'),
-(109, 1, '2024-09-20', '22:15:03', 'Brayan', '192.168.0.2', 'Se logeo al sistema', 'Login'),
-(110, 1, '2024-09-20', '22:16:03', 'Brayan', '192.168.0.2', 'Se logeo al sistema', 'Login'),
-(111, 1, '2024-09-20', '22:17:43', 'Brayan', '192.168.0.2', 'Se logeo al sistema', 'Login'),
-(112, 1, '2024-09-20', '22:18:06', 'Brayan', '192.168.0.2', 'Se insertó en factura', 'factura'),
-(113, 1, '2024-09-20', '22:18:06', 'Brayan', '192.168.0.2', 'Se insertó en detallefactura', 'detallefactura'),
-(114, 1, '2024-09-20', '22:18:07', 'Brayan', '192.168.0.2', 'Se insertó en pago', 'pago'),
-(115, 1, '2024-09-20', '22:18:57', 'Brayan', '192.168.0.2', 'Actualizó registros en múltiples tablas', 'factura'),
-(116, 1, '2024-09-20', '22:18:58', 'Brayan', '192.168.0.2', 'Actualizo un registro en factura', 'factura'),
-(117, 1, '2024-09-20', '22:19:34', 'Brayan', '192.168.0.2', 'Actualizó registros en múltiples tablas', 'factura'),
-(118, 1, '2024-09-20', '22:19:36', 'Brayan', '192.168.0.2', 'Actualizo un registro en factura', 'factura'),
-(119, 1, '2024-09-20', '22:21:44', 'Brayan', '192.168.0.2', 'Se logeo al sistema', 'Login'),
-(120, 1, '2024-09-20', '22:26:16', 'Brayan', '192.168.0.2', 'Se logeo al sistema', 'Login'),
-(121, 1, '2024-09-20', '22:26:40', 'Brayan', '192.168.0.2', 'Actualizó registros en múltiples tablas', 'factura'),
-(122, 1, '2024-09-20', '22:26:41', 'Brayan', '192.168.0.2', 'Actualizo un registro en factura', 'factura'),
-(123, 1, '2024-09-20', '22:27:28', 'Brayan', '192.168.0.2', 'Actualizó registros en múltiples tablas', 'factura'),
-(124, 1, '2024-09-20', '22:27:29', 'Brayan', '192.168.0.2', 'Actualizo un registro en factura', 'factura'),
-(125, 1, '2024-09-20', '22:28:19', 'Brayan', '192.168.0.2', 'Actualizó registros en múltiples tablas', 'factura'),
-(126, 1, '2024-09-20', '22:28:20', 'Brayan', '192.168.0.2', 'Actualizo un registro en factura', 'factura'),
-(127, 1, '2024-09-20', '22:30:33', 'Brayan', '192.168.0.2', 'Se logeo al sistema', 'Login'),
-(128, 1, '2024-09-20', '22:31:46', 'Brayan', '192.168.0.2', 'Se logeo al sistema', 'Login'),
-(129, 1, '2024-09-20', '22:32:05', 'Brayan', '192.168.0.2', 'Se insertó en factura', 'factura'),
-(130, 1, '2024-09-20', '22:32:05', 'Brayan', '192.168.0.2', 'Se insertó en detallefactura', 'detallefactura'),
-(131, 1, '2024-09-20', '22:32:05', 'Brayan', '192.168.0.2', 'Se insertó en pagos', 'pagos'),
-(132, 1, '2024-09-20', '22:32:52', 'Brayan', '192.168.0.2', 'Se logeo al sistema', 'Login'),
-(133, 1, '2024-09-20', '22:38:23', 'Brayan', '192.168.0.2', 'Se logeo al sistema', 'Login'),
-(134, 1, '2024-09-20', '22:38:36', 'Brayan', '192.168.0.2', 'Se insertó en factura', 'factura'),
-(135, 1, '2024-09-20', '22:38:36', 'Brayan', '192.168.0.2', 'Se insertó en detallefactura', 'detallefactura'),
-(136, 1, '2024-09-20', '22:38:36', 'Brayan', '192.168.0.2', 'Se insertó en pagos', 'pagos'),
-(137, 1, '2024-09-20', '22:43:58', 'Brayan', '192.168.0.2', 'Se insertó en factura', 'factura'),
-(138, 1, '2024-09-20', '22:43:58', 'Brayan', '192.168.0.2', 'Se insertó en detallefactura', 'detallefactura'),
-(139, 1, '2024-09-20', '22:43:58', 'Brayan', '192.168.0.2', 'Se insertó en pagos', 'pagos'),
-(140, 1, '2024-09-20', '22:48:15', 'Brayan', '192.168.0.2', 'Se logeo al sistema', 'Login'),
-(141, 1, '2024-09-20', '22:48:57', 'Brayan', '192.168.0.2', 'Se logeo al sistema', 'Login'),
-(142, 1, '2024-09-20', '22:50:27', 'Brayan', '192.168.0.2', 'Se logeo al sistema', 'Login'),
-(143, 1, '2024-09-20', '22:51:45', 'Brayan', '192.168.0.2', 'Se logeo al sistema', 'Login'),
-(144, 1, '2024-09-20', '22:52:51', 'Brayan', '192.168.0.2', 'Se insertó en factura', 'factura'),
-(145, 1, '2024-09-20', '22:52:51', 'Brayan', '192.168.0.2', 'Se insertó en detallefactura', 'detallefactura'),
-(146, 1, '2024-09-20', '22:52:51', 'Brayan', '192.168.0.2', 'Se insertó en pagos', 'pagos'),
-(147, 1, '2024-09-20', '22:53:28', 'Brayan', '192.168.0.2', 'Actualizó registros en múltiples tablas', 'factura'),
-(148, 1, '2024-09-20', '22:53:58', 'Brayan', '192.168.0.2', 'Actualizó registros en múltiples tablas', 'factura'),
-(149, 1, '2024-09-20', '22:55:55', 'Brayan', '192.168.0.2', 'Actualizó registros en múltiples tablas', 'factura'),
-(150, 1, '2024-09-20', '22:56:08', 'Brayan', '192.168.0.2', 'Actualizó registros en múltiples tablas', 'factura'),
-(151, 1, '2024-09-20', '23:01:53', 'Brayan', '192.168.0.2', 'Actualizó registros en múltiples tablas', 'factura'),
-(152, 1, '2024-09-20', '23:08:07', 'Brayan', '192.168.0.2', 'Se insertó en factura', 'factura'),
-(153, 1, '2024-09-20', '23:08:07', 'Brayan', '192.168.0.2', 'Se insertó en detallefactura', 'detallefactura'),
-(154, 1, '2024-09-20', '23:08:07', 'Brayan', '192.168.0.2', 'Se insertó en pagos', 'pagos'),
-(155, 1, '2024-09-20', '23:08:25', 'Brayan', '192.168.0.2', 'Actualizó registros en múltiples tablas', 'factura'),
-(156, 1, '2024-09-20', '23:10:40', 'Brayan', '192.168.0.2', 'Actualizó registros en múltiples tablas', 'factura'),
-(157, 1, '2024-09-20', '23:14:07', 'Brayan', '192.168.0.2', 'Actualizó registros en múltiples tablas', 'factura'),
-(158, 1, '2024-09-20', '23:21:00', 'Brayan', '192.168.0.2', 'Se insertó en factura', 'factura'),
-(159, 1, '2024-09-20', '23:21:00', 'Brayan', '192.168.0.2', 'Se insertó en detallefactura', 'detallefactura'),
-(160, 1, '2024-09-20', '23:21:00', 'Brayan', '192.168.0.2', 'Se insertó en pagos', 'pagos'),
-(161, 1, '2024-09-20', '23:21:37', 'Brayan', '192.168.0.2', 'Actualizó registros en múltiples tablas', 'factura'),
-(162, 1, '2024-09-20', '23:26:50', 'Brayan', '192.168.0.2', 'Actualizó registros en múltiples tablas', 'factura'),
-(163, 1, '2024-09-20', '23:30:10', 'Brayan', '192.168.0.2', 'Se insertó en factura', 'factura'),
-(164, 1, '2024-09-20', '23:30:10', 'Brayan', '192.168.0.2', 'Se insertó en detallefactura', 'detallefactura'),
-(165, 1, '2024-09-20', '23:30:10', 'Brayan', '192.168.0.2', 'Se insertó en pagos', 'pagos'),
-(166, 1, '2024-09-20', '23:30:26', 'Brayan', '192.168.0.2', 'Actualizó registros en múltiples tablas', 'factura'),
-(167, 1, '2024-09-20', '23:35:24', 'Brayan', '192.168.0.2', 'Actualizó registros en múltiples tablas', 'factura'),
-(168, 1, '2024-09-20', '23:39:58', 'Brayan', '192.168.0.2', 'Actualizó registros en múltiples tablas', 'factura'),
-(169, 1, '2024-09-20', '23:41:24', 'Brayan', '192.168.0.2', 'Actualizó registros en múltiples tablas', 'factura'),
-(170, 1, '2024-09-20', '23:45:35', 'Brayan', '192.168.0.2', 'Actualizó registros en múltiples tablas', 'factura'),
-(171, 1, '2024-09-20', '23:46:28', 'Brayan', '192.168.0.2', 'Actualizó registros en múltiples tablas', 'factura'),
-(172, 1, '2024-09-20', '23:47:27', 'Brayan', '192.168.0.2', 'Actualizó registros en múltiples tablas', 'factura'),
-(173, 1, '2024-09-20', '23:50:38', 'Brayan', '192.168.0.2', 'Se insertó en factura', 'factura'),
-(174, 1, '2024-09-20', '23:50:38', 'Brayan', '192.168.0.2', 'Se insertó en detallefactura', 'detallefactura'),
-(175, 1, '2024-09-20', '23:50:38', 'Brayan', '192.168.0.2', 'Se insertó en pagos', 'pagos'),
-(176, 1, '2024-09-20', '23:50:59', 'Brayan', '192.168.0.2', 'Actualizó registros en múltiples tablas', 'factura'),
-(177, 1, '2024-09-20', '23:57:16', 'Brayan', '192.168.0.2', 'Se presiono el boton cancelar en factura', 'factura'),
-(178, 1, '2024-09-20', '23:57:32', 'Brayan', '192.168.0.2', 'Actualizó registros en múltiples tablas', 'factura'),
-(179, 1, '2024-09-21', '00:00:43', 'Brayan', '192.168.0.2', 'Se presiono el boton cancelar en factura', 'factura'),
-(180, 1, '2024-09-21', '00:01:04', 'Brayan', '192.168.0.2', 'Actualizó registros en múltiples tablas', 'factura'),
-(181, 1, '2024-09-21', '00:06:49', 'Brayan', '192.168.0.2', 'Se presiono el boton cancelar en factura', 'factura'),
-(182, 1, '2024-09-21', '00:07:10', 'Brayan', '192.168.0.2', 'Actualizó registros en múltiples tablas', 'factura'),
-(183, 1, '2024-09-21', '00:07:53', 'Brayan', '192.168.0.2', 'Actualizó registros en múltiples tablas', 'factura'),
-(184, 1, '2024-09-21', '00:11:11', 'Brayan', '192.168.0.2', 'Se presiono el boton cancelar en factura', 'factura'),
-(185, 1, '2024-09-21', '00:11:29', 'Brayan', '192.168.0.2', 'Actualizó registros en múltiples tablas', 'factura'),
-(186, 1, '2024-09-21', '00:13:56', 'Brayan', '192.168.0.2', 'Se presiono el boton cancelar en factura', 'factura'),
-(187, 1, '2024-09-21', '00:14:13', 'Brayan', '192.168.0.2', 'Actualizó registros en múltiples tablas', 'factura'),
-(188, 1, '2024-09-21', '00:14:46', 'Brayan', '192.168.0.2', 'Actualizó registros en múltiples tablas', 'factura'),
-(189, 1, '2024-09-21', '00:15:57', 'Brayan', '192.168.0.2', 'Se presiono el boton cancelar en factura', 'factura'),
-(190, 1, '2024-09-21', '00:16:21', 'Brayan', '192.168.0.2', 'Actualizó registros en múltiples tablas', 'factura'),
-(191, 1, '2024-09-21', '00:18:05', 'Brayan', '192.168.0.2', 'Se presiono el boton cancelar en factura', 'factura'),
-(192, 1, '2024-09-21', '00:18:21', 'Brayan', '192.168.0.2', 'Actualizó registros en múltiples tablas', 'factura'),
-(193, 1, '2024-09-21', '00:19:46', 'Brayan', '192.168.0.2', 'Se presiono el boton cancelar en factura', 'factura'),
-(194, 1, '2024-09-21', '00:20:15', 'Brayan', '192.168.0.2', 'Actualizó registros en múltiples tablas', 'factura'),
-(195, 1, '2024-09-21', '00:24:14', 'Brayan', '192.168.0.2', 'Actualizó registros en múltiples tablas', 'factura'),
-(196, 1, '2024-09-21', '00:55:40', 'Brayan', '192.168.0.2', 'Se logeo al sistema', 'Login'),
-(197, 1, '2024-09-21', '00:58:47', 'Brayan', '192.168.0.2', 'Se insertó en factura', 'factura'),
-(198, 1, '2024-09-21', '00:58:47', 'Brayan', '192.168.0.2', 'Se insertó en detallefactura', 'detallefactura'),
-(199, 1, '2024-09-21', '00:58:48', 'Brayan', '192.168.0.2', 'Se insertó en pagos', 'pagos');
-
---
 -- Volcado de datos para la tabla `tbl_consultainteligente`
 --
 
@@ -604,17 +356,6 @@ INSERT INTO `tbl_perfiles` (`Pk_id_perfil`, `nombre_perfil`, `descripcion_perfil
 (12, 'GESTOR DE PROYECTOS', 'Permite gestionar proyectos y coordinar actividades sin acceso completo a la administración', 1),
 (13, 'GESTOR DE DATOS', 'Permite gestionar y supervisar datos en distintos módulos sin acceso completo a la administración', 1);
 
---
--- Volcado de datos para la tabla `tbl_permisos_aplicaciones_usuario`
---
-
-INSERT INTO `tbl_permisos_aplicaciones_usuario` (`PK_id_Aplicacion_Usuario`, `Fk_id_usuario`, `Fk_id_aplicacion`, `guardar_permiso`, `buscar_permiso`, `modificar_permiso`, `eliminar_permiso`, `imprimir_permiso`) VALUES
-(1, 1, 1002, 1, 1, 1, 1, 0),
-(2, 1, 2000, 0, 0, 0, 0, 0),
-(3, 1, 1000, 1, 1, 1, 1, 1),
-(4, 1, 8000, 0, 0, 0, 0, 0),
-(6, 1, 1000, 1, 1, 1, 1, 1),
-(7, 2, 1000, 0, 0, 0, 0, 1);
 
 --
 -- Volcado de datos para la tabla `tbl_permisos_aplicacion_perfil`
@@ -851,6 +592,64 @@ INSERT INTO `tbl_permisos_aplicacion_perfil` (`PK_id_Aplicacion_Perfil`, `Fk_id_
 INSERT INTO `tbl_usuarios` (`Pk_id_usuario`, `nombre_usuario`, `apellido_usuario`, `username_usuario`, `password_usuario`, `email_usuario`, `ultima_conexion_usuario`, `estado_usuario`, `pregunta`, `respuesta`) VALUES
 (1, 'admin', 'admin', 'admin', '52c88f064ed5ed9161d01f634f5e3bfcf5c77fec94fb398b6690e1b41178eb6c', 'esduardo@gmail.com', '2024-09-21 00:55:40', 1, 'COLOR FAVORITO', 'ROJO'),
 (2, 'Ismar', 'Cortez', 'Ismar', 'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f', 'icortezs@miumg.edu.gt', '2024-09-17 17:32:03', 1, 'Nombre de familiar', 'Eunice');
+
+--
+-- Volcado de datos para la tabla `tbl_asignaciones_perfils_usuario`
+--
+
+INSERT INTO `tbl_asignaciones_perfils_usuario` (`PK_id_Perfil_Usuario`, `Fk_id_usuario`, `Fk_id_perfil`) VALUES
+(1, 1, 1);
+
+--
+-- Volcado de datos para la tabla `tbl_asignacion_modulo_aplicacion`
+--
+
+INSERT INTO `tbl_asignacion_modulo_aplicacion` (`Fk_id_modulos`, `Fk_id_aplicacion`) VALUES
+(1000, 1000),
+(1000, 1001),
+(1000, 1002),
+(1000, 1003),
+(1000, 1004),
+(1000, 1102),
+(1000, 1103),
+(1000, 1201),
+(1000, 1301),
+(2000, 2000),
+(3000, 3000),
+(5000, 5000),
+(6000, 6000),
+(6000, 6001),
+(6000, 6002),
+(6000, 6003),
+(6000, 6004),
+(6000, 6005),
+(6000, 6006),
+(6000, 6007),
+(6000, 6101),
+(6000, 6102),
+(6000, 6103),
+(6000, 6104),
+(6000, 6105),
+(6000, 6106),
+(6000, 6201),
+(6000, 6202),
+(6000, 6203),
+(6000, 6301),
+(7000, 7000),
+(8000, 8000);
+
+--
+-- Volcado de datos para la tabla `tbl_permisos_aplicaciones_usuario`
+--
+
+INSERT INTO `tbl_permisos_aplicaciones_usuario` (`PK_id_Aplicacion_Usuario`, `Fk_id_usuario`, `Fk_id_aplicacion`, `guardar_permiso`, `buscar_permiso`, `modificar_permiso`, `eliminar_permiso`, `imprimir_permiso`) VALUES
+(1, 1, 1002, 1, 1, 1, 1, 0),
+(2, 1, 2000, 0, 0, 0, 0, 0),
+(3, 1, 1000, 1, 1, 1, 1, 1),
+(4, 1, 8000, 0, 0, 0, 0, 0),
+(6, 1, 1000, 1, 1, 1, 1, 1),
+(7, 1, 1000, 0, 0, 0, 0, 1);
+
 
 -- Se actualiza la contraseña de admin, ya que no debe ingresarse hasheado manualmente
 UPDATE `tbl_usuarios` SET `password_usuario` = 'HO0aGo4nM94=' WHERE `Pk_id_usuario` = 1;
