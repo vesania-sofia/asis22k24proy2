@@ -612,18 +612,18 @@ namespace Capa_Vista_Seguridad
 
                         // Asegúrate de pasar todos los parámetros necesarios
                         DataTable dtusuario = logica1.usuarios(nombre, apellido, id, claveHasheada, correo, fecha, estadousuario, pregunta, respuesta);
-                        string mensaje = //$"ID: {idd}\n" +//id del guardar
-                       $"Nombre: {nombre}\n" +
-                       $"Apellido: {apellido}\n" +
-                       $"UserName: {id}\n" +
-                       $"Clave Hasheada: {claveHasheada}\n" +
-                       $"Correo: {correo}\n" +
-                       $"Estado Usuario: {estadousuario}\n" +
-                       $"Pregunta: {pregunta}\n" +
-                       $"Respuesta: {respuesta}";
+                       // string mensaje = //$"ID: {idd}\n" +//id del guardar
+                       //$"Nombre: {nombre}\n" +
+                       //$"Apellido: {apellido}\n" +
+                       //$"UserName: {id}\n" +
+                       //$"Clave Hasheada: {claveHasheada}\n" +
+                       //$"Correo: {correo}\n" +
+                       //$"Estado Usuario: {estadousuario}\n" +
+                       //$"Pregunta: {pregunta}\n" +
+                       //$"Respuesta: {respuesta}";
 
-                        // Mostrar el mensaje en un MessageBox
-                        MessageBox.Show(mensaje, "Detalles del Usuario", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                       // // Mostrar el mensaje en un MessageBox
+                       // MessageBox.Show(mensaje, "Detalles del Usuario", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         MessageBox.Show("Usuario creado correctamente", "Nuevo Usuario", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (Exception ex)
