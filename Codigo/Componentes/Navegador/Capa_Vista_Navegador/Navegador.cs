@@ -146,9 +146,6 @@ namespace Capa_Vista_Navegador
                                 Txt_Tabla.ForeColor = cColorFuente; // Asigna el color de la fuente al label de la sTablaPrincipal
                                 Deshabilitarcampos_y_botones(); // Deshabilita los campos y botones inicialmente
 
-                                Btn_Modificar.Enabled = true;
-                                Btn_Eliminar.Enabled = true;
-
                                 // Verifica si hay registros en la sTablaPrincipal y habilita/deshabilita controles según corresponda
                                 if (logic.TestRegistros(sTablaPrincipal) > 0)
                                 {
