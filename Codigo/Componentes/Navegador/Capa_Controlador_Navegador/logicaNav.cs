@@ -200,5 +200,15 @@ namespace Capa_Controlador_Navegador
         {
             return sn.ObtenerClaveForanea(sNombreTabla, sTablaReferencia);
         }
+
+
+
+        public DataTable LlenarTblAyuda(string tabla)
+        {
+            OdbcDataAdapter dt = sn.llenarTblAyuda(tabla);
+            DataTable table = new DataTable();
+            dt.Fill(table);
+            return table;
+        }
     }
 }

@@ -10,17 +10,21 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Capa_Controlador_Navegador;
-//using CapaDatos;
 
 namespace Capa_Vista_Navegador
 {
     public partial class Ayudas : Form
     {
+
+        String tbl = "ayuda";
         logicaNav logic = new logicaNav();  // Instancia de la lógica del navegador
-        OdbcConnection conn = new OdbcConnection("Dsn=colchoneria");  // Conexión a la base de datos usando ODBC
+        //OdbcConnection conn = new OdbcConnection("Dsn=colchoneria");  // Conexión a la base de datos usando ODBC
+
+
+        
         string[] arrAliasC = new string[40];  // Arreglo para almacenar alias de campos
 
-        Boolean bConfirmRuta = true;
+        //Boolean bConfirmRuta = true;
 
         public Ayudas()
         {
@@ -40,7 +44,7 @@ namespace Capa_Vista_Navegador
                 txt_ruta.Text = System.IO.Path.GetFileName(Ofd_Reporte.FileName);
 
                 // Ahora txtruta.Text solo contiene "AyudaNavegador.chm" o el nombre del archivo seleccionado
-                bConfirmRuta = false;
+                //bConfirmRuta = false;
             }
          }
 
@@ -58,24 +62,8 @@ namespace Capa_Vista_Navegador
             // Método para llenar la tabla con los registros de la tabla 'ayuda'
             void LlenarTabla()
             {
-                OdbcCommand codigo = new OdbcCommand();
-                codigo.Connection = conn;
-                codigo.CommandText = ("SELECT Id_ayuda, Ruta, indice FROM ayuda WHERE estado =1");
-                try
-                {
-                    OdbcDataAdapter ejecutar = new OdbcDataAdapter();
-                    ejecutar.SelectCommand = codigo;
-                    DataTable datostabla = new DataTable();
-                    ejecutar.Fill(datostabla);
-                    Dgv_ayudas.DataSource = datostabla;  // Llenar el DataGrid con los datos obtenidos
-                    ejecutar.Update(datostabla);
-                    conn.Close();
-                }
-                catch (Exception e)
-                {
-                    MessageBox.Show("ERROR: " + e.ToString());  // Mostrar error en caso de que la consulta falle
-                    conn.Close();
-                }
+                DataTable dt = logic.LlenarTblAyuda(tbl);
+                Dgv_ayudas.DataSource = dt;
             }
 
             //******************************************** CODIGO HECHO POR VICTOR CASTELLANOS ***************************** 
