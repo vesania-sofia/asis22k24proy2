@@ -112,8 +112,5 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Analyzer Include="..\..\Seguridad\CapaDiseno\bin\Debug\CapaDatos.dll" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
