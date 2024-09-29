@@ -42,10 +42,10 @@ namespace Capa_Vista_Navegador
         string[] arrListaItems = new string[30]; // Lista de items
         string[] arrCampoDisplayCombo = new string[30]; // Campos display del combo
 
-        string sTablaRelacionada = ""; // Tabla relacionada
-        string sCampoDescriptivo = ""; // Campo descriptivo
-        string sColumnaPrimariaRelacionada = ""; // Columna primaria relacionada
-        string sColumnaForanea = ""; // Columna foránea
+        //string sTablaRelacionada = ""; // Tabla relacionada
+        //string sCampoDescriptivo = ""; // Campo descriptivo
+        //string sColumnaPrimariaRelacionada = ""; // Columna primaria relacionada
+        //string sColumnaForanea = ""; // Columna foránea
 
         int iPosicionCombo = 10; // Posición del combo
         int iNumeroCombos = 0; // Número de combos
@@ -53,7 +53,7 @@ namespace Capa_Vista_Navegador
         int iEstadoFormulario = 1; // Estado del formulario (1. Activado, 0. Desactivado)
         Color cColorFuente = Color.White; // Color de la fuente
         Color cNuevoColorFondo = Color.White; // Nuevo color de fondo
-        bool bPresionado = false; // Verifica si se ha presionado un botón
+        //bool bPresionado = false; // Verifica si se ha presionado un botón
         logica lg = new logica(); // Objeto para obtener métodos de bitácora
         string sIdUsuario = ""; // ID del usuario
         string sIdAplicacion = ""; // ID de la aplicación
@@ -869,9 +869,9 @@ namespace Capa_Vista_Navegador
                     componente.Enabled = false; // De esta manera bloqueamos todos los TextBox, DateTimePicker y ComboBox
                 }
             }
-            Btn_Modificar.Enabled = false;
-            Btn_Eliminar.Enabled = false;
-            Btn_Guardar.Enabled = false;
+            //Btn_Modificar.Enabled = false;
+            //Btn_Eliminar.Enabled = false;
+            //Btn_Guardar.Enabled = false;
             Btn_Cancelar.Enabled = false;
         }
 
@@ -1543,7 +1543,7 @@ namespace Capa_Vista_Navegador
                                 Btn_Cancelar.Enabled = false;
                                 Btn_Eliminar.Enabled = true;
                                 Btn_Ingresar.Enabled = true;
-                                bPresionado = false; // Restablecer la bandera
+                                //bPresionado = false; // Restablecer la bandera
                                 BotonesYPermisosSinMensaje();
                                 lg.funinsertarabitacora(sIdUsuario, "Se actualizó el estado en " + sTablaPrincipal, sTablaPrincipal, sIdAplicacion);
                                 
