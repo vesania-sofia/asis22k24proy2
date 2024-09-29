@@ -25,7 +25,7 @@ namespace Capa_Vista_Navegador
         string sTablaPrincipal = "def"; // Nombre de la sTablaPrincipal principal
                                         // Nombre de una sTablaPrincipal secundaria
         List<string> lstTablasAdicionales = new List<string>(); // Lista de tablas adicionales
-
+        Dictionary<string, string> dicItems;
         string sNombreFormulario; // Nombre del formulario
         int iPosicionInicial = 8; // Posición inicial de componentes
         string sIdReporte = ""; // ID del reporte
@@ -65,6 +65,8 @@ namespace Capa_Vista_Navegador
         string sEstadoAyuda = ""; // Estado de la ayuda
         Font fFuenteLabels = new Font("Century Gothic", 13.0f, FontStyle.Regular, GraphicsUnit.Pixel); // Fuente para labels
         ToolTip tpAyuda = new ToolTip(); // ToolTip para mostrar ayudas en la interfaz
+        private List<Tuple<string, string, string, string>> relacionesForaneas = new List<Tuple<string, string, string, string>>();
+        List<Tuple<string, string, string>> comboData = new List<Tuple<string, string, string>>();
 
 
         public Navegador()
@@ -126,7 +128,7 @@ namespace Capa_Vista_Navegador
                             if (NumeroAlias() == logic.ContarCampos(sTablaPrincipal)) // Verifica si el número de alias coincide con el número de campos de la sTablaPrincipal
                             {
                                 int iIndex = 0;
-                                DataTable dt = logic.ConsultaLogica(sTablaPrincipal, sTablaRelacionada, sCampoDescriptivo, sColumnaForanea, sColumnaPrimariaRelacionada); // Realiza la consulta lógica de la sTablaPrincipal
+                                DataTable dt = logic.ConsultaLogica(sTablaPrincipal, relacionesForaneas); // Realiza la consulta lógica de la sTablaPrincipal
                                 Dgv_Informacion.DataSource = dt; // Asigna el resultado de la consulta al DataGridView
 
                                 // Asigna los alias como encabezados de las columnas
@@ -143,9 +145,6 @@ namespace Capa_Vista_Navegador
                                 ColorTitulo(); // Cambia el color del título
                                 Txt_Tabla.ForeColor = cColorFuente; // Asigna el color de la fuente al label de la sTablaPrincipal
                                 Deshabilitarcampos_y_botones(); // Deshabilita los campos y botones inicialmente
-
-                                Btn_Modificar.Enabled = true;
-                                Btn_Eliminar.Enabled = true;
 
                                 // Verifica si hay registros en la sTablaPrincipal y habilita/deshabilita controles según corresponda
                                 if (logic.TestRegistros(sTablaPrincipal) > 0)
@@ -276,14 +275,17 @@ namespace Capa_Vista_Navegador
             this.sIdUsuario = sIdUsuario; // Asigna el ID del usuario
         }
 
-        public void AsignarForaneas(string sTabla, string sTablarela, string sCampoDescri, string sColumnaFora, string sColumnaPrimaria)
+        // Lista para almacenar múltiples relaciones foráneas como tuplas
+
+        // Lista para almacenar múltiples relaciones foráneas
+        
+        public void AsignarForaneas(string sTablaRela, string sCampoDescri, string sColumnaFora, string sColumnaPrimariaRelaciona)
         {
-            sTablaPrincipal = sTabla;
-            sTablaRelacionada = sTablarela;
-            sCampoDescriptivo = sCampoDescri;
-            sColumnaForanea = sColumnaFora;
-            sColumnaPrimariaRelacionada = sColumnaPrimaria; // Asigna las claves foráneas y relacionadas entre tablas
+            // Añadir la relación foránea a la lista
+            relacionesForaneas.Add(new Tuple<string, string, string, string>(sTablaRela, sCampoDescri, sColumnaFora, sColumnaPrimariaRelaciona));
         }
+
+
         //******************************************** CODIGO HECHO POR DIEGO MARROQUIN ***************************** 
 
         //******************************************** CODIGO HECHO POR BRAYAN HERNANDEZ ***************************** 
@@ -426,7 +428,7 @@ namespace Capa_Vista_Navegador
 
         //******************************************** CODIGO HECHO POR JOSUE CACAO ***************************** 
 
-        public void AsignarComboConTabla(string sTablaPrincipal, string sCampoClave, string sCampoDisplay, int iModo)
+       public void AsignarComboConTabla(string sTablaPrincipal, string sCampoClave, string sCampoDisplay, int iModo)
         {
             // Verifica si la sTablaPrincipal existe
             string sTablaOK = logic.TestTabla(sTablaPrincipal);
@@ -436,8 +438,10 @@ namespace Capa_Vista_Navegador
                 arrModoCampoCombo[iNumeroCombos] = iModo; 
                 arrTablaCombo[iNumeroCombos] = sTablaPrincipal;
                 arrCampoCombo[iNumeroCombos] = sCampoClave;
-                arrCampoDisplayCombo[iNumeroCombos] = sCampoDisplay; 
-                iNumeroCombos++; 
+                arrCampoDisplayCombo[iNumeroCombos] = sCampoDisplay;
+                comboData.Add(new Tuple<string, string, string>(sTablaPrincipal, sCampoClave, sCampoDisplay));
+                iNumeroCombos++;
+               
             }
             else
             {
@@ -449,6 +453,7 @@ namespace Capa_Vista_Navegador
                 }
             }
         }
+
 
         //******************************************** CODIGO HECHO POR ANIKA ESCOTO ***************************** 
 
@@ -502,28 +507,28 @@ namespace Capa_Vista_Navegador
         void CreaComponentes()
         {
             // Obtiene los campos, tipos de datos y llaves de la sTablaPrincipal
-            string[] sCampos = logic.Campos(sTablaPrincipal); 
-            string[] sTipos = logic.Tipos(sTablaPrincipal); 
-            string[] sLlaves = logic.Llaves(sTablaPrincipal); 
+            string[] sCampos = logic.Campos(sTablaPrincipal);
+            string[] sTipos = logic.Tipos(sTablaPrincipal);
+            string[] sLlaves = logic.Llaves(sTablaPrincipal);
             int iIndex = 0;
             int iFin = sCampos.Length;
             while (iIndex < iFin)
             {
                 // Ajusta la posición y el desplazamiento de los componentes según el número de campos
                 if (iNumeroCampos == 6 || iNumeroCampos == 11 || iNumeroCampos == 16 || iNumeroCampos == 21) { iPosicionInicial = 8; }
-                if (iNumeroCampos >= 6 && iNumeroCampos < 10) { iPosicionX = 300; } 
-                if (iNumeroCampos >= 11 && iNumeroCampos < 15) { iPosicionX = 600; } 
-                if (iNumeroCampos >= 16 && iNumeroCampos < 20) { iPosicionX = 900; } 
-                if (iNumeroCampos >= 21 && iNumeroCampos < 25) { iPosicionX = 900; } 
+                if (iNumeroCampos >= 6 && iNumeroCampos < 10) { iPosicionX = 300; }
+                if (iNumeroCampos >= 11 && iNumeroCampos < 15) { iPosicionX = 600; }
+                if (iNumeroCampos >= 16 && iNumeroCampos < 20) { iPosicionX = 900; }
+                if (iNumeroCampos >= 21 && iNumeroCampos < 25) { iPosicionX = 900; }
 
                 // Crea un Label para cada campo
                 Label lb = new Label();
-                lb.Text = arrAliasCampos[iIndex]; 
-                Point p = new Point(iPosicionX + iPosicionInicial, iPosicionY * iPosicionInicial); 
+                lb.Text = arrAliasCampos[iIndex];
+                Point p = new Point(iPosicionX + iPosicionInicial, iPosicionY * iPosicionInicial);
                 lb.Location = p;
                 lb.Name = "lb_" + sCampos[iIndex];
-                lb.Font = new Font(fFuenteLabels.FontFamily, fFuenteLabels.Size * 1.3f, FontStyle.Bold | fFuenteLabels.Style); 
-                lb.ForeColor = cColorFuente; 
+                lb.Font = new Font(fFuenteLabels.FontFamily, fFuenteLabels.Size * 1.3f, FontStyle.Bold | fFuenteLabels.Style);
+                lb.ForeColor = cColorFuente;
 
                 // Opcional: Ajustar el tamaño del Label si es necesario
                 lb.AutoSize = true;
@@ -539,26 +544,40 @@ namespace Capa_Vista_Navegador
                 switch (sTipos[iIndex])
                 {
                     case "int":
-                        arrTipoCampos[iNumeroCampos - 1] = "Num"; 
+                        arrTipoCampos[iNumeroCampos - 1] = "Num";
                         if (sLlaves[iIndex] != "MUL")
                         {
                             CrearTextBoxNumerico(sCampos[iIndex]); // Crea un TextBox numérico
                         }
                         else
                         {
-                            CrearComboBox(sCampos[iIndex]); // Crea un ComboBox si es una clave foránea
+                            // Detecta la tabla relacionada y los campos clave y de display de manera automática
+                            string tablaRelacionada = logic.DetectarTablaRelacionada(sTablaPrincipal, sCampos[iIndex]);
+                            string campoClave = logic.DetectarClaveRelacionada(sTablaPrincipal, sCampos[iIndex]);
+
+                            // Utiliza siempre el campoClave como display
+                            dicItems = logic.Items(tablaRelacionada, campoClave, campoClave);
+
+                            CrearComboBox(sCampos[iIndex]); // Crea el ComboBox con los items obtenidos
                         }
                         break;
 
                     case "varchar":
-                        arrTipoCampos[iNumeroCampos - 1] = "Text"; 
+                        arrTipoCampos[iNumeroCampos - 1] = "Text";
                         if (sLlaves[iIndex] != "MUL")
                         {
                             CrearTextBoxVarchar(sCampos[iIndex]); // Crea un TextBox para texto
                         }
                         else
                         {
-                            CrearComboBox(sCampos[iIndex]); // Crea un ComboBox si es una clave foránea
+                            // Detecta la tabla relacionada y los campos clave y de display de manera automática
+                            string tablaRelacionada = logic.DetectarTablaRelacionada(sTablaPrincipal, sCampos[iIndex]);
+                            string campoClave = logic.DetectarClaveRelacionada(sTablaPrincipal, sCampos[iIndex]);
+
+                            // Utiliza siempre el campoClave como display
+                            dicItems = logic.Items(tablaRelacionada, campoClave, campoClave);
+
+                            CrearComboBox(sCampos[iIndex]); // Crea el ComboBox con los items obtenidos
                         }
                         break;
 
@@ -571,7 +590,14 @@ namespace Capa_Vista_Navegador
                         }
                         else
                         {
-                            CrearComboBox(sCampos[iIndex]); // Crea un ComboBox si es una clave foránea
+                            // Detecta la tabla relacionada y los campos clave y de display de manera automática
+                            string tablaRelacionada = logic.DetectarTablaRelacionada(sTablaPrincipal, sCampos[iIndex]);
+                            string campoClave = logic.DetectarClaveRelacionada(sTablaPrincipal, sCampos[iIndex]);
+
+                            // Utiliza siempre el campoClave como display
+                            dicItems = logic.Items(tablaRelacionada, campoClave, campoClave);
+
+                            CrearComboBox(sCampos[iIndex]); // Crea el ComboBox con los items obtenidos
                         }
                         break;
 
@@ -583,7 +609,14 @@ namespace Capa_Vista_Navegador
                         }
                         else
                         {
-                            CrearComboBox(sCampos[iIndex]); // Crea un ComboBox si es una clave foránea
+                            // Detecta la tabla relacionada y los campos clave y de display de manera automática
+                            string tablaRelacionada = logic.DetectarTablaRelacionada(sTablaPrincipal, sCampos[iIndex]);
+                            string campoClave = logic.DetectarClaveRelacionada(sTablaPrincipal, sCampos[iIndex]);
+
+                            // Utiliza siempre el campoClave como display
+                            dicItems = logic.Items(tablaRelacionada, campoClave, campoClave);
+
+                            CrearComboBox(sCampos[iIndex]); // Crea el ComboBox con los items obtenidos
                         }
                         break;
 
@@ -610,7 +643,7 @@ namespace Capa_Vista_Navegador
                     default:
                         if (sTipos[iIndex] != null && sTipos[iIndex] != "")
                         {
-                            DialogResult validacion = MessageBox.Show("La sTablaPrincipal " + sTablaPrincipal + " posee un campo " + sTipos[iIndex] + ", este tipo de dato no es reconocido por el navegador\n Solucione este problema...", "Verificación de requisitos", MessageBoxButtons.OK); 
+                            DialogResult validacion = MessageBox.Show("La sTablaPrincipal " + sTablaPrincipal + " posee un campo " + sTipos[iIndex] + ", este tipo de dato no es reconocido por el navegador\n Solucione este problema...", "Verificación de requisitos", MessageBoxButtons.OK);
                             if (validacion == DialogResult.OK)
                             {
                                 Application.Exit(); // Termina la aplicación si se encuentra un tipo de dato no reconocido
@@ -618,10 +651,11 @@ namespace Capa_Vista_Navegador
                         }
                         break;
                 }
-                iNumeroCampos++; 
+                iNumeroCampos++;
                 iIndex++;
             }
         }
+
         //******************************************** CODIGO HECHO POR JORGE AVILA***************************** 
 
         //******************************************** CODIGO HECHO POR DIEGO MARROQUIN*****************************
@@ -778,20 +812,12 @@ namespace Capa_Vista_Navegador
         void CrearComboBox(String sNom)
         {
             // Se obtienen los elementos para el ComboBox, que son una lista de pares clave-valor.
-            Dictionary<string, string> dicItems;
-
             // Si hay una sTablaPrincipal y campo específicos para el ComboBox, se utilizan.
-            if (arrTablaCombo[iNumeroCombosAux] != null) 
+            if (arrTablaCombo[iNumeroCombosAux] != null)
             {
-                dicItems = logic.Items(arrTablaCombo[iNumeroCombosAux], arrCampoCombo[iNumeroCombosAux], arrCampoDisplayCombo[iNumeroCombosAux]); 
-                if (iNumeroCombos > iNumeroCombosAux) { iNumeroCombosAux++; } 
+                dicItems = logic.Items(arrTablaCombo[iNumeroCombosAux], arrCampoCombo[iNumeroCombosAux], arrCampoDisplayCombo[iNumeroCombosAux]);
             }
-            else
-            {
-                // Si no, se utiliza una sTablaPrincipal y campo por defecto (en este caso, películas).
-                dicItems = logic.Items("Peliculas", "idPelicula", "nombrePelicula");
-                if (iNumeroCombos > iNumeroCombosAux) { iNumeroCombosAux++; } 
-            }
+            if (iNumeroCombos > iNumeroCombosAux) { iNumeroCombosAux++; }
 
             // Se crea un nuevo ComboBox.
             ComboBox cb = new ComboBox();
@@ -866,12 +892,15 @@ namespace Capa_Vista_Navegador
 
         public void ActualizarDataGridView()
         {
-            DataTable dt = logic.ConsultaLogica(sTablaPrincipal, sTablaRelacionada, sCampoDescriptivo, sColumnaForanea, sColumnaPrimariaRelacionada); 
+            // Pasar todas las relaciones foráneas a la capa lógica
+            DataTable dt = logic.ConsultaLogica(sTablaPrincipal, relacionesForaneas);
             Dgv_Informacion.DataSource = dt;
+
+            // Asignar los alias como encabezados de las columnas
             int iHead = 0;
-            while (iHead < logic.ContarCampos(sTablaPrincipal)) 
+            while (iHead < logic.ContarCampos(sTablaPrincipal))
             {
-                Dgv_Informacion.Columns[iHead].HeaderText = arrAliasCampos[iHead]; 
+                Dgv_Informacion.Columns[iHead].HeaderText = arrAliasCampos[iHead];
                 iHead++;
             }
         }
@@ -1043,6 +1072,7 @@ namespace Capa_Vista_Navegador
             string sQuery = "UPDATE " + sTablaPrincipal + " SET ";
             string sWhereQuery = " WHERE ";
             string sCampos = "";
+            int valor = 0;
 
             // Recorre todos los controles, incluyendo los anidados
             foreach (Control componente in GetAllControls(this))
@@ -1073,6 +1103,22 @@ namespace Capa_Vista_Navegador
                                     sValorCampo = "0";  // Inactivo
                                 }
                                 Console.WriteLine($"Botón {sNombreCampo} con valor {sValorCampo} procesado como Activado/Desactivado.");
+                            } else if (componente is ComboBox)
+                            {
+                                
+                                string valorDescriptivo = componente.Text;
+
+                                // Asegúrate de obtener la tupla correspondiente desde la lista comboData
+                                var comboInfo = comboData[valor]; // Acceder a los datos guardados en la lista de tuplas
+
+                                string sTabla = comboInfo.Item1; // Tabla relacionada
+                                string sCampoClave = comboInfo.Item2; // Campo clave
+                                string sCampoDisplay = comboInfo.Item3; // Campo display
+                                //MessageBox.Show(sTabla+sCampoClave+sCampoDisplay+valorDescriptivo);
+                                // Utiliza la tabla y campo clave obtenidos para realizar la consulta y obtener el valor clave
+                                sValorCampo = logic.ObtenerValorClaveDesdeLogica(sTabla, sCampoClave, sCampoDisplay, valorDescriptivo);
+
+                                valor++;
                             }
                             else
                             {
@@ -1121,6 +1167,7 @@ namespace Capa_Vista_Navegador
 
             return sQuery;
         }
+
 
 
         //******************************************** CODIGO HECHO POR BRAYAN HERNANDEZ***************************** 
@@ -1248,10 +1295,10 @@ namespace Capa_Vista_Navegador
                 // Habilita campos para edición
                 HabilitarCampos_y_Botones();
                 iActivar = 1; // Define que se realizará una modificación
-                int iIndice = 0; 
+                int iIndice = 0;
 
-                string[] arrTipos = logic.Tipos(sTablaPrincipal); 
-                int iNumCombo = 0; 
+                string[] arrTipos = logic.Tipos(sTablaPrincipal);
+                int iNumCombo = 0;
 
                 // Recorre los controles para habilitar la edición
                 foreach (Control componente in Controls)
@@ -1265,45 +1312,59 @@ namespace Capa_Vista_Navegador
                         }
                         else
                         {
-                            if (componente is ComboBox)
+                            if (componente is ComboBox comboBox)
                             {
-                                if (arrModoCampoCombo[iNumCombo] == 1) 
+                                if (arrModoCampoCombo[iNumCombo] == 1)
                                 {
-                                    componente.Text = logic.LlaveCampoRev(arrTablaCombo[iNumCombo], arrCampoCombo[iNumCombo], Dgv_Informacion.CurrentRow.Cells[iIndice].Value.ToString());
+                                    string valorLlave = logic.LlaveCampoRev(arrTablaCombo[iNumCombo], arrCampoCombo[iNumCombo], Dgv_Informacion.CurrentRow.Cells[iIndice].Value.ToString());
+
+                                    // Verifica que el valor asignado no sea vacío o nulo
+                                    if (!string.IsNullOrEmpty(valorLlave))
+                                    {
+                                        comboBox.Text = valorLlave;
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine($"Valor vacío o nulo en la celda {iIndice} para el ComboBox.");
+                                    }
                                 }
                                 else
                                 {
-                                    componente.Text = Dgv_Informacion.CurrentRow.Cells[iIndice].Value.ToString(); 
+                                    // Asigna el valor directamente si no requiere revisión con `LlaveCampoRev`
+                                    comboBox.Text = Dgv_Informacion.CurrentRow.Cells[iIndice].Value.ToString();
                                 }
-                                iNumCombo++; 
+
+                                iNumCombo++; // Incrementa el contador de ComboBox
                             }
                             else
                             {
+                                // Asigna el texto para los demás controles (TextBox, DateTimePicker, etc.)
                                 componente.Text = Dgv_Informacion.CurrentRow.Cells[iIndice].Value.ToString();
                             }
                         }
 
-                        iIndice++;
+                        iIndice++; // Incrementa el índice para recorrer las celdas del DataGridView
                     }
 
                     if (componente is Button)
                     {
                         componente.Enabled = true;
-                        string sEstadoRegistro = Dgv_Informacion.CurrentRow.Cells[iIndice].Value.ToString(); 
+                        string sEstadoRegistro = Dgv_Informacion.CurrentRow.Cells[iIndice].Value.ToString();
 
-                        if (sEstadoRegistro == "0") 
+                        if (sEstadoRegistro == "0")
                         {
                             componente.Text = "Desactivado";
                             componente.BackColor = Color.Red;
-                            iEstadoFormulario = 0; 
+                            iEstadoFormulario = 0;
                         }
-                        else if (sEstadoRegistro == "1") 
+                        else if (sEstadoRegistro == "1")
                         {
                             componente.Text = "Activado";
                             componente.BackColor = Color.Green;
-                            iEstadoFormulario = 1; 
+                            iEstadoFormulario = 1;
                         }
-                        componente.Enabled = true;
+
+                        componente.Enabled = true; // Asegura que el botón esté habilitado para la edición
                     }
                 }
 
@@ -1323,10 +1384,11 @@ namespace Capa_Vista_Navegador
                     "Por favor, intente nuevamente o contacte al administrador del sistema.",
                     "Error en la Modificación",
                     MessageBoxButtons.OK,
-                    MessageBoxIcon.Error 
+                    MessageBoxIcon.Error
                 );
             }
         }
+
 
         //******************************************** CODIGO HECHO POR BRAYAN HERNANDEZ*****************************
 
@@ -1449,7 +1511,7 @@ namespace Capa_Vista_Navegador
                     {
                         if (componente is Button) // Verifica si el control es un botón
                         {
-                            if (iEstadoFormulario == 1)
+                            if (componente.Text == "Desactivado")
                             {
                                 MessageBox.Show(
                                    "Este registro ya ha sido eliminado anteriormente. No es necesario eliminarlo nuevamente.",
@@ -1457,7 +1519,7 @@ namespace Capa_Vista_Navegador
                                    MessageBoxButtons.OK,
                                    MessageBoxIcon.Information
                                );
-                                    iEstadoFormulario = 0;
+                                   
                                 return;
                                
                                 
@@ -1484,7 +1546,7 @@ namespace Capa_Vista_Navegador
                                 bPresionado = false; // Restablecer la bandera
                                 BotonesYPermisosSinMensaje();
                                 lg.funinsertarabitacora(sIdUsuario, "Se actualizó el estado en " + sTablaPrincipal, sTablaPrincipal, sIdAplicacion);
-                                iEstadoFormulario = 1;
+                                
                                
 
                             }
@@ -1504,12 +1566,7 @@ namespace Capa_Vista_Navegador
                     );
 
                     // Mantener el estado de los botones
-                    Btn_Guardar.Enabled = false;
-                    Btn_Modificar.Enabled = false;
-                    Btn_Eliminar.Enabled = true;
-                    Btn_Cancelar.Enabled = true;
-                    Btn_Ingresar.Enabled = false;
-                    bPresionado = false; // Restablecer la bandera
+                    BotonesYPermisosSinMensaje();
                 }
             }
             catch (Exception ex)

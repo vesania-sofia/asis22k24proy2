@@ -16,7 +16,7 @@ namespace EjecucionNav
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Capa_Vista_Seguridad.Form1("admin"));
+            Application.Run(new Capa_Vista_Seguridad.MDI_Seguridad("admin"));
         }
     }
 }
