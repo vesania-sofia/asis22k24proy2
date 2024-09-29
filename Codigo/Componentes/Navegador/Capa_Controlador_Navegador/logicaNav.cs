@@ -21,16 +21,32 @@ namespace Capa_Controlador_Navegador
         }
 
         // Realiza una consulta lógica sobre la tabla y la tabla relacionada, devolviendo un DataTable con los resultados
-        public DataTable ConsultaLogica(string sTabla, string sTablaRelacionada, string sCampodesc, string sColumnaForanea, string sColumnaPrimaraRelacionada)
+        public DataTable ConsultaLogica(string sTabla, List<Tuple<string, string, string, string>> relacionesForaneas)
         {
-            OdbcDataAdapter dt = sn.LlenaTbl(sTabla, sTablaRelacionada, sCampodesc, sColumnaForanea, sColumnaPrimaraRelacionada);
+            // Asegurarse de que la lista no sea nula
+            if (relacionesForaneas == null)
+            {
+                relacionesForaneas = new List<Tuple<string, string, string, string>>();
+            }
+
+            // Asegurarse de que 'sn' esté inicializado
+            if (sn == null)
+            {
+                throw new InvalidOperationException("El objeto 'sn' no ha sido inicializado.");
+            }
+
+            OdbcDataAdapter dt = sn.LlenaTbl(sTabla, relacionesForaneas);  // Pasar la lista de relaciones a la capa de datos
+
             DataTable dtTabla = new DataTable();
             dt.Fill(dtTabla);
             return dtTabla;
         }
 
-        // Modifica el índice proporcionado a través de la lógica interna
-        public string ModIndice(string sIndice1)
+    
+
+
+    // Modifica el índice proporcionado a través de la lógica interna
+    public string ModIndice(string sIndice1)
 
         {
             string sIndice = sn.ModIndice(sIndice1);
@@ -146,6 +162,32 @@ namespace Capa_Controlador_Navegador
             sentencias sn = new sentencias();
             sn.EjecutarQueryConTransaccion(lsQueries);
         }
+        public string ObtenerValorClaveDesdeLogica(string sTabla, string sCampoClave, string sCampoDescriptivo, string valorDescriptivo)
+        {
+            return sn.ObtenerValorClave(sTabla, sCampoClave, sCampoDescriptivo, valorDescriptivo);
+        }
+
+        public string DetectarTablaRelacionada(string tabla, string campo)
+        {
+            var relaciones = sn.ObtenerRelacionesForaneas(tabla, campo);
+            return relaciones.tablaRelacionada;
+        }
+
+        // Método para detectar el campo clave relacionado
+        public string DetectarClaveRelacionada(string tabla, string campo)
+        {
+            var relaciones = sn.ObtenerRelacionesForaneas(tabla, campo);
+            return relaciones.campoClave;
+        }
+
+        // Método para detectar el campo a mostrar relacionado (por ejemplo, nombre o descripción)
+        public string DetectarCampoDisplayRelacionada(string tabla, string campo)
+        {
+            var relaciones = sn.ObtenerRelacionesForaneas(tabla, campo);
+            return relaciones.campoDisplay;
+        }
+
+
 
         // Obtiene la clave primaria de una tabla específica
         public string ObtenerClavePrimaria(string sNombreTabla)
