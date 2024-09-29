@@ -14,14 +14,32 @@ namespace Capa_Modelo_Navegador
 
         //******************************************** CODIGO HECHO POR BRAYAN HERNANDEZ ***************************** 
         // Método que llena una tabla con datos relacionados a otra tabla si es necesario.
-        public OdbcDataAdapter LlenaTbl(string sTabla, string sTablaRelacionada, string sCampoDescriptivo, string sColumnaForanea, string sColumnaPrimariaRelacionada)
+        public OdbcDataAdapter LlenaTbl(string sTabla, List<Tuple<string, string, string, string>> relacionesForaneas)
         {
             OdbcConnection conn = cn.ProbarConexion();
 
             try
             {
-                // Obtener los campos de la tabla principal
+                // Verifica que las relaciones no sean nulas
+                if (relacionesForaneas == null)
+                {
+                    relacionesForaneas = new List<Tuple<string, string, string, string>>();
+                }
+
+                // Verificar que la conexión esté activa
+                if (conn == null)
+                {
+                    throw new InvalidOperationException("La conexión a la base de datos no está disponible.");
+                }
+
+                // Obtener los campos de la tabla principal de forma dinámica
                 string[] sCamposDesc = ObtenerCampos(sTabla);
+                if (sCamposDesc == null || sCamposDesc.Length == 0)
+                {
+                    throw new InvalidOperationException("No se pudieron obtener los campos de la tabla principal.");
+                }
+
+                // Inicia con el primer campo de la tabla
                 string sCamposSelect = sTabla + "." + sCamposDesc[0];
 
                 // Diccionario para evitar duplicados de columnas
@@ -30,20 +48,44 @@ namespace Capa_Modelo_Navegador
 
                 // Obtener las propiedades de las columnas de la tabla principal
                 var vColumnasPropiedades = ObtenerColumnasYPropiedades(sTabla);
+                if (vColumnasPropiedades == null)
+                {
+                    throw new InvalidOperationException("No se pudieron obtener las propiedades de las columnas de la tabla.");
+                }
 
+                // Recorrer los campos de la tabla principal
                 foreach (var (sNombreColumna, bEsAutoIncremental, bEsClaveForanea, bEsTinyInt) in vColumnasPropiedades)
                 {
                     // Evitar agregar la columna principal dos veces
                     if (sNombreColumna == sCamposDesc[0])
                         continue;
 
-                    // Si es una clave foránea, hacer join con la tabla relacionada
-                    if (bEsClaveForanea && sTablaRelacionada != null && sCampoDescriptivo != null && sColumnaForanea != null && sColumnaPrimariaRelacionada != null)
+                    // Si es una clave foránea, buscar si hay una relación foránea que la reemplace
+                    bool columnaReemplazada = false;
+
+                    foreach (var relacion in relacionesForaneas)
                     {
-                        sCamposSelect += ", " + sTablaRelacionada + "." + sCampoDescriptivo + " AS " + sCampoDescriptivo;
-                        dicColumnasRegistradas[sCampoDescriptivo] = 1;
+                        if (string.IsNullOrEmpty(relacion.Item1) || string.IsNullOrEmpty(relacion.Item2) || string.IsNullOrEmpty(relacion.Item3) || string.IsNullOrEmpty(relacion.Item4))
+                        {
+                            throw new ArgumentException("Uno de los valores en las relaciones foráneas es nulo o vacío.");
+                        }
+
+                        string sTablaRelacionada = relacion.Item1;
+                        string sCampoDescriptivo = relacion.Item2;
+                        string sColumnaForanea = relacion.Item3;
+
+                        // Si la columna actual es una clave foránea, la reemplazamos por su campo descriptivo
+                        if (sNombreColumna == sColumnaForanea)
+                        {
+                            sCamposSelect += ", " + sTablaRelacionada + "." + sCampoDescriptivo + " AS " + sCampoDescriptivo;
+                            dicColumnasRegistradas[sCampoDescriptivo] = 1;
+                            columnaReemplazada = true;
+                            break;
+                        }
                     }
-                    else
+
+                    // Si no fue reemplazada como clave foránea, agregarla como está
+                    if (!columnaReemplazada)
                     {
                         sCamposSelect += ", " + sTabla + "." + sNombreColumna;
                         dicColumnasRegistradas[sNombreColumna] = 1;
@@ -53,9 +95,14 @@ namespace Capa_Modelo_Navegador
                 // Crear el comando SQL para seleccionar los campos
                 string sSql = "SELECT " + sCamposSelect + " FROM " + sTabla;
 
-                // Agregar el LEFT JOIN si hay una tabla relacionada
-                if (!string.IsNullOrEmpty(sTablaRelacionada) && !string.IsNullOrEmpty(sColumnaForanea) && !string.IsNullOrEmpty(sColumnaPrimariaRelacionada))
+                // Agregar los LEFT JOIN para cada relación foránea
+                foreach (var relacion in relacionesForaneas)
                 {
+                    string sTablaRelacionada = relacion.Item1;
+                    string sColumnaForanea = relacion.Item3;
+                    string sColumnaPrimariaRelacionada = relacion.Item4;
+
+                    // Añadir el LEFT JOIN con la tabla relacionada
                     sSql += " LEFT JOIN " + sTablaRelacionada + " ON " + sTabla + "." + sColumnaForanea + " = " + sTablaRelacionada + "." + sColumnaPrimariaRelacionada;
                 }
 
@@ -65,7 +112,7 @@ namespace Capa_Modelo_Navegador
                 // Ordenar por la columna principal en orden descendente
                 sSql += " ORDER BY " + sCamposDesc[0] + " DESC;";
 
-                Console.WriteLine(sSql);
+                Console.WriteLine(sSql); // Imprimir la consulta SQL generada para debugging
 
                 // Crear un adaptador de datos para ejecutar la consulta
                 OdbcDataAdapter dataTable = new OdbcDataAdapter(sSql, conn);
@@ -82,6 +129,20 @@ namespace Capa_Modelo_Navegador
                 }
             }
         }
+
+        public string ObtenerValorClave(string sTabla, string sCampoClave, string sCampoDescriptivo, string valorDescriptivo)
+        {
+            string sQuery = $"SELECT {sCampoClave} FROM {sTabla} WHERE {sCampoDescriptivo} = '{valorDescriptivo}'";
+            OdbcCommand command = new OdbcCommand(sQuery, cn.ProbarConexion());
+            string resultado = command.ExecuteScalar()?.ToString();
+            Console.WriteLine(sQuery);
+            return resultado;
+        }
+
+
+
+
+
         //******************************************** CODIGO HECHO POR BRAYAN HERNANDEZ ***************************** 
 
 
@@ -723,6 +784,56 @@ namespace Capa_Modelo_Navegador
 
             return sClaveForanea;
         }
+      
+            // Asumiendo que tienes una clase para la conexión
+
+            // Método para obtener las relaciones de claves foráneas desde la base de datos
+            public (string tablaRelacionada, string campoClave, string campoDisplay) ObtenerRelacionesForaneas(string sTablaOrigen, string sCampo)
+            {
+                string tablaRelacionada = null;
+                string campoClave = null;
+
+                try
+                {
+                    string sQuery = $@"
+                SELECT REFERENCED_TABLE_NAME, REFERENCED_COLUMN_NAME 
+                FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE 
+                WHERE TABLE_SCHEMA = DATABASE()
+                AND TABLE_NAME = '{sTablaOrigen}' 
+                AND COLUMN_NAME = '{sCampo}';";
+
+                    OdbcCommand command = new OdbcCommand(sQuery, cn.ProbarConexion());
+                    OdbcDataReader reader = command.ExecuteReader();
+
+                    if (reader.Read())
+                    {
+                        tablaRelacionada = reader.GetString(0);  // Obtiene la tabla relacionada
+                        campoClave = reader.GetString(1);        // Obtiene la clave relacionada (ID)
+
+                        Console.WriteLine($"Clave foránea de {sTablaOrigen} que referencia a {tablaRelacionada}: {campoClave}");
+
+                        // El campo display ahora es siempre el campo clave (ID)
+                        string campoDisplay = campoClave;
+
+                        return (tablaRelacionada, campoClave, campoDisplay);
+                    }
+                    else
+                    {
+                        Console.WriteLine($"No se encontró clave foránea en {sTablaOrigen} para el campo {sCampo}");
+                    }
+
+                    reader.Close();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error al obtener clave foránea: " + ex.Message);
+                }
+
+                return (tablaRelacionada, campoClave, campoClave); // Ambos campoClave y campoDisplay serán el ID
+            }
+        
+
+
         //******************************************** CODIGO HECHO POR VICTOR CASTELLANOS ***************************** 
     }
 }

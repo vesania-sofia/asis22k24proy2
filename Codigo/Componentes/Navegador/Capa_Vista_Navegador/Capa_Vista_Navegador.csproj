@@ -95,6 +95,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="RelacionForanea.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Ayudas.resx">
