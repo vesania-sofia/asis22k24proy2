@@ -67,6 +67,12 @@
     <Compile Include="Transporte.Designer.cs">
       <DependentUpon>Transporte.cs</DependentUpon>
     </Compile>
+    <Compile Include="TrasladoDProductos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TrasladoDProductos.Designer.cs">
+      <DependentUpon>TrasladoDProductos.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Chofer.resx">
@@ -81,6 +87,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Transporte.resx">
       <DependentUpon>Transporte.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TrasladoDProductos.resx">
+      <DependentUpon>TrasladoDProductos.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

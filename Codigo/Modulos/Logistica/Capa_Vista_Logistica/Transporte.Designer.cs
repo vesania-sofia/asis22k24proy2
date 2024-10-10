@@ -31,31 +31,31 @@ namespace Capa_Vista_Logistica
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Transporte));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.Lbl_DATOS = new System.Windows.Forms.Label();
-            this.ID = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.Txt_ID = new System.Windows.Forms.TextBox();
-            this.Txt_Placa = new System.Windows.Forms.TextBox();
-            this.Txt_Marca = new System.Windows.Forms.TextBox();
-            this.Txt_Color = new System.Windows.Forms.TextBox();
-            this.Txt_Desc = new System.Windows.Forms.TextBox();
-            this.Txt_Bultos = new System.Windows.Forms.TextBox();
-            this.Txt_Total = new System.Windows.Forms.TextBox();
-            this.Txt_HLL = new System.Windows.Forms.TextBox();
             this.Txt_HS = new System.Windows.Forms.TextBox();
+            this.Txt_HLL = new System.Windows.Forms.TextBox();
+            this.Txt_Total = new System.Windows.Forms.TextBox();
+            this.Txt_Bultos = new System.Windows.Forms.TextBox();
+            this.Txt_Desc = new System.Windows.Forms.TextBox();
+            this.Txt_Color = new System.Windows.Forms.TextBox();
+            this.Txt_Marca = new System.Windows.Forms.TextBox();
+            this.Txt_Placa = new System.Windows.Forms.TextBox();
+            this.Txt_ID = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.ID = new System.Windows.Forms.Label();
+            this.Lbl_DATOS = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Dgv_Vehiculo = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.Txt_Pla = new System.Windows.Forms.TextBox();
             this.Btn_Buscar = new System.Windows.Forms.Button();
+            this.Txt_Pla = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.Btn_Reporte = new System.Windows.Forms.Button();
             this.Btn_Guardar = new System.Windows.Forms.Button();
@@ -99,97 +99,68 @@ namespace Capa_Vista_Logistica
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos Vehiculo";
             // 
-            // Lbl_DATOS
+            // Txt_HS
             // 
-            this.Lbl_DATOS.AutoSize = true;
-            this.Lbl_DATOS.Font = new System.Drawing.Font("Rockwell Condensed", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_DATOS.Location = new System.Drawing.Point(555, 31);
-            this.Lbl_DATOS.Name = "Lbl_DATOS";
-            this.Lbl_DATOS.Size = new System.Drawing.Size(246, 29);
-            this.Lbl_DATOS.TabIndex = 1;
-            this.Lbl_DATOS.Text = "DATOS DE TRANSPORTE";
+            this.Txt_HS.Location = new System.Drawing.Point(564, 183);
+            this.Txt_HS.Name = "Txt_HS";
+            this.Txt_HS.Size = new System.Drawing.Size(138, 22);
+            this.Txt_HS.TabIndex = 19;
             // 
-            // ID
+            // Txt_HLL
             // 
-            this.ID.AutoSize = true;
-            this.ID.Location = new System.Drawing.Point(77, 69);
-            this.ID.Name = "ID";
-            this.ID.Size = new System.Drawing.Size(25, 17);
-            this.ID.TabIndex = 0;
-            this.ID.Text = "ID:";
+            this.Txt_HLL.Location = new System.Drawing.Point(564, 131);
+            this.Txt_HLL.Name = "Txt_HLL";
+            this.Txt_HLL.Size = new System.Drawing.Size(138, 22);
+            this.Txt_HLL.TabIndex = 18;
             // 
-            // label2
+            // Txt_Total
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(27, 110);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(75, 17);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Nª PLACA:";
+            this.Txt_Total.Location = new System.Drawing.Point(441, 317);
+            this.Txt_Total.Name = "Txt_Total";
+            this.Txt_Total.Size = new System.Drawing.Size(197, 22);
+            this.Txt_Total.TabIndex = 17;
             // 
-            // label3
+            // Txt_Bultos
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(42, 159);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(60, 17);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "MARCA:";
+            this.Txt_Bultos.Location = new System.Drawing.Point(166, 319);
+            this.Txt_Bultos.Name = "Txt_Bultos";
+            this.Txt_Bultos.Size = new System.Drawing.Size(131, 22);
+            this.Txt_Bultos.TabIndex = 16;
             // 
-            // label4
+            // Txt_Desc
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(35, 208);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(61, 17);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "COLOR:";
+            this.Txt_Desc.Location = new System.Drawing.Point(133, 253);
+            this.Txt_Desc.Name = "Txt_Desc";
+            this.Txt_Desc.Size = new System.Drawing.Size(240, 22);
+            this.Txt_Desc.TabIndex = 14;
             // 
-            // label5
+            // Txt_Color
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 256);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(104, 17);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "DESCRIPCION:";
+            this.Txt_Color.Location = new System.Drawing.Point(133, 203);
+            this.Txt_Color.Name = "Txt_Color";
+            this.Txt_Color.Size = new System.Drawing.Size(240, 22);
+            this.Txt_Color.TabIndex = 13;
             // 
-            // pictureBox1
+            // Txt_Marca
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(934, 64);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(462, 343);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
+            this.Txt_Marca.Location = new System.Drawing.Point(133, 156);
+            this.Txt_Marca.Name = "Txt_Marca";
+            this.Txt_Marca.Size = new System.Drawing.Size(240, 22);
+            this.Txt_Marca.TabIndex = 12;
             // 
-            // label1
+            // Txt_Placa
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(438, 136);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(120, 17);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "HORA LLEGADA:";
+            this.Txt_Placa.Location = new System.Drawing.Point(133, 110);
+            this.Txt_Placa.Name = "Txt_Placa";
+            this.Txt_Placa.Size = new System.Drawing.Size(240, 22);
+            this.Txt_Placa.TabIndex = 11;
             // 
-            // label6
+            // Txt_ID
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(318, 320);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(100, 17);
-            this.label6.TabIndex = 6;
-            this.label6.Text = "PESO TOTAL:";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(42, 322);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(118, 17);
-            this.label7.TabIndex = 7;
-            this.label7.Text = "TOTAL BULTOS:";
+            this.Txt_ID.Location = new System.Drawing.Point(133, 66);
+            this.Txt_ID.Name = "Txt_ID";
+            this.Txt_ID.Size = new System.Drawing.Size(48, 22);
+            this.Txt_ID.TabIndex = 9;
             // 
             // label8
             // 
@@ -200,68 +171,97 @@ namespace Capa_Vista_Logistica
             this.label8.TabIndex = 8;
             this.label8.Text = "HORA SALIDA:";
             // 
-            // Txt_ID
+            // label7
             // 
-            this.Txt_ID.Location = new System.Drawing.Point(133, 66);
-            this.Txt_ID.Name = "Txt_ID";
-            this.Txt_ID.Size = new System.Drawing.Size(48, 22);
-            this.Txt_ID.TabIndex = 9;
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(42, 322);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(118, 17);
+            this.label7.TabIndex = 7;
+            this.label7.Text = "TOTAL BULTOS:";
             // 
-            // Txt_Placa
+            // label6
             // 
-            this.Txt_Placa.Location = new System.Drawing.Point(133, 110);
-            this.Txt_Placa.Name = "Txt_Placa";
-            this.Txt_Placa.Size = new System.Drawing.Size(240, 22);
-            this.Txt_Placa.TabIndex = 11;
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(318, 320);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(100, 17);
+            this.label6.TabIndex = 6;
+            this.label6.Text = "PESO TOTAL:";
             // 
-            // Txt_Marca
+            // label1
             // 
-            this.Txt_Marca.Location = new System.Drawing.Point(133, 156);
-            this.Txt_Marca.Name = "Txt_Marca";
-            this.Txt_Marca.Size = new System.Drawing.Size(240, 22);
-            this.Txt_Marca.TabIndex = 12;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(438, 136);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(120, 17);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "HORA LLEGADA:";
             // 
-            // Txt_Color
+            // label5
             // 
-            this.Txt_Color.Location = new System.Drawing.Point(133, 203);
-            this.Txt_Color.Name = "Txt_Color";
-            this.Txt_Color.Size = new System.Drawing.Size(240, 22);
-            this.Txt_Color.TabIndex = 13;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 256);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(104, 17);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "DESCRIPCION:";
             // 
-            // Txt_Desc
+            // label4
             // 
-            this.Txt_Desc.Location = new System.Drawing.Point(133, 253);
-            this.Txt_Desc.Name = "Txt_Desc";
-            this.Txt_Desc.Size = new System.Drawing.Size(240, 22);
-            this.Txt_Desc.TabIndex = 14;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(35, 208);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(61, 17);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "COLOR:";
             // 
-            // Txt_Bultos
+            // label3
             // 
-            this.Txt_Bultos.Location = new System.Drawing.Point(166, 319);
-            this.Txt_Bultos.Name = "Txt_Bultos";
-            this.Txt_Bultos.Size = new System.Drawing.Size(131, 22);
-            this.Txt_Bultos.TabIndex = 16;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(42, 159);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(60, 17);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "MARCA:";
             // 
-            // Txt_Total
+            // label2
             // 
-            this.Txt_Total.Location = new System.Drawing.Point(441, 317);
-            this.Txt_Total.Name = "Txt_Total";
-            this.Txt_Total.Size = new System.Drawing.Size(197, 22);
-            this.Txt_Total.TabIndex = 17;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(27, 110);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(75, 17);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Nª PLACA:";
             // 
-            // Txt_HLL
+            // ID
             // 
-            this.Txt_HLL.Location = new System.Drawing.Point(564, 131);
-            this.Txt_HLL.Name = "Txt_HLL";
-            this.Txt_HLL.Size = new System.Drawing.Size(138, 22);
-            this.Txt_HLL.TabIndex = 18;
+            this.ID.AutoSize = true;
+            this.ID.Location = new System.Drawing.Point(77, 69);
+            this.ID.Name = "ID";
+            this.ID.Size = new System.Drawing.Size(25, 17);
+            this.ID.TabIndex = 0;
+            this.ID.Text = "ID:";
             // 
-            // Txt_HS
+            // Lbl_DATOS
             // 
-            this.Txt_HS.Location = new System.Drawing.Point(564, 183);
-            this.Txt_HS.Name = "Txt_HS";
-            this.Txt_HS.Size = new System.Drawing.Size(138, 22);
-            this.Txt_HS.TabIndex = 19;
+            this.Lbl_DATOS.AutoSize = true;
+            this.Lbl_DATOS.Font = new System.Drawing.Font("Rockwell Condensed", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_DATOS.Location = new System.Drawing.Point(555, 31);
+            this.Lbl_DATOS.Name = "Lbl_DATOS";
+            this.Lbl_DATOS.Size = new System.Drawing.Size(246, 29);
+            this.Lbl_DATOS.TabIndex = 1;
+            this.Lbl_DATOS.Text = "DATOS DE TRANSPORTE";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(827, 68);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(462, 343);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
             // 
             // Dgv_Vehiculo
             // 
@@ -285,22 +285,6 @@ namespace Capa_Vista_Logistica
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "BUSCAR";
             // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(42, 65);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(75, 17);
-            this.label9.TabIndex = 20;
-            this.label9.Text = "Nª PLACA:";
-            // 
-            // Txt_Pla
-            // 
-            this.Txt_Pla.Location = new System.Drawing.Point(133, 65);
-            this.Txt_Pla.Name = "Txt_Pla";
-            this.Txt_Pla.Size = new System.Drawing.Size(240, 22);
-            this.Txt_Pla.TabIndex = 20;
-            // 
             // Btn_Buscar
             // 
             this.Btn_Buscar.Location = new System.Drawing.Point(441, 41);
@@ -309,6 +293,22 @@ namespace Capa_Vista_Logistica
             this.Btn_Buscar.TabIndex = 6;
             this.Btn_Buscar.Text = "BUSCAR";
             this.Btn_Buscar.UseVisualStyleBackColor = true;
+            // 
+            // Txt_Pla
+            // 
+            this.Txt_Pla.Location = new System.Drawing.Point(133, 65);
+            this.Txt_Pla.Name = "Txt_Pla";
+            this.Txt_Pla.Size = new System.Drawing.Size(240, 22);
+            this.Txt_Pla.TabIndex = 20;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(42, 65);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(75, 17);
+            this.label9.TabIndex = 20;
+            this.label9.Text = "Nª PLACA:";
             // 
             // groupBox3
             // 
@@ -393,7 +393,7 @@ namespace Capa_Vista_Logistica
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1296, 882);
+            this.ClientSize = new System.Drawing.Size(1313, 882);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
