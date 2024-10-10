@@ -43,6 +43,11 @@ namespace Capa_Vista_Logistica
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.Txt_Correo = new System.Windows.Forms.TextBox();
+            this.Txt_Telefono = new System.Windows.Forms.TextBox();
+            this.Txt_Iden = new System.Windows.Forms.TextBox();
+            this.Txt_Nombre = new System.Windows.Forms.TextBox();
+            this.Txt_ID_1 = new System.Windows.Forms.TextBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label18 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -51,14 +56,9 @@ namespace Capa_Vista_Logistica
             this.Txt_Guia = new System.Windows.Forms.TextBox();
             this.Txt_LLegada = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.Txt_ID_1 = new System.Windows.Forms.TextBox();
-            this.Txt_Nombre = new System.Windows.Forms.TextBox();
-            this.Txt_Iden = new System.Windows.Forms.TextBox();
-            this.Txt_Telefono = new System.Windows.Forms.TextBox();
-            this.Txt_Correo = new System.Windows.Forms.TextBox();
             this.Txt_Destino = new System.Windows.Forms.TextBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.Txt_Correo_Ele = new System.Windows.Forms.TextBox();
@@ -72,14 +72,14 @@ namespace Capa_Vista_Logistica
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.Btn_Ingresar = new System.Windows.Forms.Button();
-            this.Btn_Eliminar = new System.Windows.Forms.Button();
-            this.Btn_Modificar = new System.Windows.Forms.Button();
-            this.Btn_Guardar = new System.Windows.Forms.Button();
             this.Btn_Reporte = new System.Windows.Forms.Button();
+            this.Btn_Guardar = new System.Windows.Forms.Button();
+            this.Btn_Buscar = new System.Windows.Forms.Button();
+            this.Btn_Modificar = new System.Windows.Forms.Button();
+            this.Btn_Eliminar = new System.Windows.Forms.Button();
+            this.Btn_Ingresar = new System.Windows.Forms.Button();
             this.Btn_Actualizar = new System.Windows.Forms.Button();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.Btn_Buscar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox3.SuspendLayout();
@@ -226,6 +226,41 @@ namespace Capa_Vista_Logistica
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "REMITENTE";
             // 
+            // Txt_Correo
+            // 
+            this.Txt_Correo.Location = new System.Drawing.Point(186, 190);
+            this.Txt_Correo.Name = "Txt_Correo";
+            this.Txt_Correo.Size = new System.Drawing.Size(246, 22);
+            this.Txt_Correo.TabIndex = 31;
+            // 
+            // Txt_Telefono
+            // 
+            this.Txt_Telefono.Location = new System.Drawing.Point(186, 150);
+            this.Txt_Telefono.Name = "Txt_Telefono";
+            this.Txt_Telefono.Size = new System.Drawing.Size(246, 22);
+            this.Txt_Telefono.TabIndex = 30;
+            // 
+            // Txt_Iden
+            // 
+            this.Txt_Iden.Location = new System.Drawing.Point(186, 109);
+            this.Txt_Iden.Name = "Txt_Iden";
+            this.Txt_Iden.Size = new System.Drawing.Size(246, 22);
+            this.Txt_Iden.TabIndex = 29;
+            // 
+            // Txt_Nombre
+            // 
+            this.Txt_Nombre.Location = new System.Drawing.Point(186, 81);
+            this.Txt_Nombre.Name = "Txt_Nombre";
+            this.Txt_Nombre.Size = new System.Drawing.Size(246, 22);
+            this.Txt_Nombre.TabIndex = 28;
+            // 
+            // Txt_ID_1
+            // 
+            this.Txt_ID_1.Location = new System.Drawing.Point(186, 37);
+            this.Txt_ID_1.Name = "Txt_ID_1";
+            this.Txt_ID_1.Size = new System.Drawing.Size(76, 22);
+            this.Txt_ID_1.TabIndex = 27;
+            // 
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
@@ -302,19 +337,19 @@ namespace Capa_Vista_Logistica
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "DATOS PEDIDO";
             // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(201, 39);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(246, 22);
-            this.dateTimePicker1.TabIndex = 25;
-            // 
             // dateTimePicker2
             // 
             this.dateTimePicker2.Location = new System.Drawing.Point(694, 34);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(246, 22);
             this.dateTimePicker2.TabIndex = 26;
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(201, 39);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(246, 22);
+            this.dateTimePicker1.TabIndex = 25;
             // 
             // groupBox4
             // 
@@ -327,41 +362,6 @@ namespace Capa_Vista_Logistica
             this.groupBox4.Size = new System.Drawing.Size(991, 63);
             this.groupBox4.TabIndex = 25;
             this.groupBox4.TabStop = false;
-            // 
-            // Txt_ID_1
-            // 
-            this.Txt_ID_1.Location = new System.Drawing.Point(186, 37);
-            this.Txt_ID_1.Name = "Txt_ID_1";
-            this.Txt_ID_1.Size = new System.Drawing.Size(76, 22);
-            this.Txt_ID_1.TabIndex = 27;
-            // 
-            // Txt_Nombre
-            // 
-            this.Txt_Nombre.Location = new System.Drawing.Point(186, 81);
-            this.Txt_Nombre.Name = "Txt_Nombre";
-            this.Txt_Nombre.Size = new System.Drawing.Size(246, 22);
-            this.Txt_Nombre.TabIndex = 28;
-            // 
-            // Txt_Iden
-            // 
-            this.Txt_Iden.Location = new System.Drawing.Point(186, 109);
-            this.Txt_Iden.Name = "Txt_Iden";
-            this.Txt_Iden.Size = new System.Drawing.Size(246, 22);
-            this.Txt_Iden.TabIndex = 29;
-            // 
-            // Txt_Telefono
-            // 
-            this.Txt_Telefono.Location = new System.Drawing.Point(186, 150);
-            this.Txt_Telefono.Name = "Txt_Telefono";
-            this.Txt_Telefono.Size = new System.Drawing.Size(246, 22);
-            this.Txt_Telefono.TabIndex = 30;
-            // 
-            // Txt_Correo
-            // 
-            this.Txt_Correo.Location = new System.Drawing.Point(186, 190);
-            this.Txt_Correo.Name = "Txt_Correo";
-            this.Txt_Correo.Size = new System.Drawing.Size(246, 22);
-            this.Txt_Correo.TabIndex = 31;
             // 
             // Txt_Destino
             // 
@@ -484,32 +484,14 @@ namespace Capa_Vista_Logistica
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "MANTENIMIENTO";
             // 
-            // Btn_Ingresar
+            // Btn_Reporte
             // 
-            this.Btn_Ingresar.Location = new System.Drawing.Point(41, 44);
-            this.Btn_Ingresar.Name = "Btn_Ingresar";
-            this.Btn_Ingresar.Size = new System.Drawing.Size(126, 61);
-            this.Btn_Ingresar.TabIndex = 0;
-            this.Btn_Ingresar.Text = "INGRESAR";
-            this.Btn_Ingresar.UseVisualStyleBackColor = true;
-            // 
-            // Btn_Eliminar
-            // 
-            this.Btn_Eliminar.Location = new System.Drawing.Point(186, 46);
-            this.Btn_Eliminar.Name = "Btn_Eliminar";
-            this.Btn_Eliminar.Size = new System.Drawing.Size(126, 56);
-            this.Btn_Eliminar.TabIndex = 1;
-            this.Btn_Eliminar.Text = "ELIMINAR";
-            this.Btn_Eliminar.UseVisualStyleBackColor = true;
-            // 
-            // Btn_Modificar
-            // 
-            this.Btn_Modificar.Location = new System.Drawing.Point(41, 120);
-            this.Btn_Modificar.Name = "Btn_Modificar";
-            this.Btn_Modificar.Size = new System.Drawing.Size(126, 63);
-            this.Btn_Modificar.TabIndex = 2;
-            this.Btn_Modificar.Text = "MODIFICAR";
-            this.Btn_Modificar.UseVisualStyleBackColor = true;
+            this.Btn_Reporte.Location = new System.Drawing.Point(41, 195);
+            this.Btn_Reporte.Name = "Btn_Reporte";
+            this.Btn_Reporte.Size = new System.Drawing.Size(126, 63);
+            this.Btn_Reporte.TabIndex = 4;
+            this.Btn_Reporte.Text = "VER REPORTE";
+            this.Btn_Reporte.UseVisualStyleBackColor = true;
             // 
             // Btn_Guardar
             // 
@@ -520,14 +502,41 @@ namespace Capa_Vista_Logistica
             this.Btn_Guardar.Text = "GUARDAR";
             this.Btn_Guardar.UseVisualStyleBackColor = true;
             // 
-            // Btn_Reporte
+            // Btn_Buscar
             // 
-            this.Btn_Reporte.Location = new System.Drawing.Point(41, 195);
-            this.Btn_Reporte.Name = "Btn_Reporte";
-            this.Btn_Reporte.Size = new System.Drawing.Size(126, 63);
-            this.Btn_Reporte.TabIndex = 4;
-            this.Btn_Reporte.Text = "VER REPORTE";
-            this.Btn_Reporte.UseVisualStyleBackColor = true;
+            this.Btn_Buscar.Location = new System.Drawing.Point(186, 195);
+            this.Btn_Buscar.Name = "Btn_Buscar";
+            this.Btn_Buscar.Size = new System.Drawing.Size(126, 63);
+            this.Btn_Buscar.TabIndex = 5;
+            this.Btn_Buscar.Text = "BUSCAR";
+            this.Btn_Buscar.UseVisualStyleBackColor = true;
+            // 
+            // Btn_Modificar
+            // 
+            this.Btn_Modificar.Location = new System.Drawing.Point(41, 120);
+            this.Btn_Modificar.Name = "Btn_Modificar";
+            this.Btn_Modificar.Size = new System.Drawing.Size(126, 63);
+            this.Btn_Modificar.TabIndex = 2;
+            this.Btn_Modificar.Text = "MODIFICAR";
+            this.Btn_Modificar.UseVisualStyleBackColor = true;
+            // 
+            // Btn_Eliminar
+            // 
+            this.Btn_Eliminar.Location = new System.Drawing.Point(186, 46);
+            this.Btn_Eliminar.Name = "Btn_Eliminar";
+            this.Btn_Eliminar.Size = new System.Drawing.Size(126, 56);
+            this.Btn_Eliminar.TabIndex = 1;
+            this.Btn_Eliminar.Text = "ELIMINAR";
+            this.Btn_Eliminar.UseVisualStyleBackColor = true;
+            // 
+            // Btn_Ingresar
+            // 
+            this.Btn_Ingresar.Location = new System.Drawing.Point(41, 44);
+            this.Btn_Ingresar.Name = "Btn_Ingresar";
+            this.Btn_Ingresar.Size = new System.Drawing.Size(126, 61);
+            this.Btn_Ingresar.TabIndex = 0;
+            this.Btn_Ingresar.Text = "INGRESAR";
+            this.Btn_Ingresar.UseVisualStyleBackColor = true;
             // 
             // Btn_Actualizar
             // 
@@ -549,20 +558,11 @@ namespace Capa_Vista_Logistica
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Vista Cliente";
             // 
-            // Btn_Buscar
-            // 
-            this.Btn_Buscar.Location = new System.Drawing.Point(186, 195);
-            this.Btn_Buscar.Name = "Btn_Buscar";
-            this.Btn_Buscar.Size = new System.Drawing.Size(126, 63);
-            this.Btn_Buscar.TabIndex = 5;
-            this.Btn_Buscar.Text = "BUSCAR";
-            this.Btn_Buscar.UseVisualStyleBackColor = true;
-            // 
             // Transporte_Vehiculos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1384, 885);
+            this.ClientSize = new System.Drawing.Size(1451, 885);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox5);
