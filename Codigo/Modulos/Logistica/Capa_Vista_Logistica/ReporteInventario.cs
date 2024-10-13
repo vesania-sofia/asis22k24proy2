@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace Capa_Vista_Logistica
 {
-    public partial class Mantenimiento : Form
+    public partial class ReporteInventario : Form
     {
-        public Mantenimiento()
+        public ReporteInventario()
         {
             InitializeComponent();
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

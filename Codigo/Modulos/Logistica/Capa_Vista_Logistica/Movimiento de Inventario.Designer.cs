@@ -1,5 +1,5 @@
 ﻿
-namespace CapaVista
+namespace Capa_Vista_Logistica
 {
     partial class Movimiento_de_Inventario
     {
