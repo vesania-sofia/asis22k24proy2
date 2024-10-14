@@ -19,7 +19,7 @@ namespace Capa_Vista_Cuentas_Corrientes
 
         private void Btn_Mov_Clientes_Click(object sender, EventArgs e)
         {
-            Movimientos_Clientes MovC = new Movimientos_Clientes();
+            From1 MovC = new From1();
             MovC.MdiParent = this;
             MovC.Show();
         }
