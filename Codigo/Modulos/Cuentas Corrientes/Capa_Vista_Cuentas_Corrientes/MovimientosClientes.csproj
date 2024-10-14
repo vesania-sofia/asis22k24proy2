@@ -4,16 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7B909065-517E-4EB0-8521-277C6AE57912}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Capa_Vista_Cuentas_Corrientes</RootNamespace>
-    <AssemblyName>Capa_Vista_Cuentas_Corrientes</AssemblyName>
+    <ProjectGuid>{AD8B4D6E-56E6-46CE-8ABE-AC087BCEC21A}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>MovimientosClientes</RootNamespace>
+    <AssemblyName>MovimientosClientes</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,6 +24,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -31,24 +33,22 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Capa_Vista_Navegador">
+      <HintPath>..\..\..\..\OneDrive\Escritorio\Actualizacion29_9\asis22k24proy2\Codigo\Componentes\Navegador\Capa_Vista_Navegador\bin\Debug\Capa_Vista_Navegador.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Caja.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Caja.Designer.cs">
-      <DependentUpon>Caja.cs</DependentUpon>
-    </Compile>
     <Compile Include="ClienteNuevo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -61,23 +61,17 @@
     <Compile Include="CreditoCliente.Designer.cs">
       <DependentUpon>CreditoCliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormaPago.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormaPago.Designer.cs">
       <DependentUpon>FormaPago.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Mantenimiento.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Mantenimiento.Designer.cs">
-      <DependentUpon>Mantenimiento.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Menu.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Menu.Designer.cs">
-      <DependentUpon>Menu.cs</DependentUpon>
     </Compile>
     <Compile Include="MovimientoMensual.cs">
       <SubType>Form</SubType>
@@ -85,78 +79,53 @@
     <Compile Include="MovimientoMensual.Designer.cs">
       <DependentUpon>MovimientoMensual.cs</DependentUpon>
     </Compile>
-    <Compile Include="Movimientos_Clientes.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Movimientos_Clientes.Designer.cs">
-      <DependentUpon>Movimientos_Clientes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Movimientos_Proveedor.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Movimientos_Proveedor.Designer.cs">
-      <DependentUpon>Movimientos_Proveedor.cs</DependentUpon>
-    </Compile>
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Reportes_Clientes.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Reportes_Clientes.Designer.cs">
-      <DependentUpon>Reportes_Clientes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Reportes_Proveedor.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Reportes_Proveedor.Designer.cs">
-      <DependentUpon>Reportes_Proveedor.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Reporte_Mantenimiento.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Reporte_Mantenimiento.Designer.cs">
-      <DependentUpon>Reporte_Mantenimiento.cs</DependentUpon>
-    </Compile>
     <Compile Include="SaldoCliente.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="SaldoCliente.Designer.cs">
       <DependentUpon>SaldoCliente.cs</DependentUpon>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="ClienteNuevo.resx">
       <DependentUpon>ClienteNuevo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CreditoCliente.resx">
       <DependentUpon>CreditoCliente.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormaPago.resx">
       <DependentUpon>FormaPago.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Menu.resx">
-      <DependentUpon>Menu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MovimientoMensual.resx">
       <DependentUpon>MovimientoMensual.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Movimientos_Proveedor.resx">
-      <DependentUpon>Movimientos_Proveedor.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="SaldoCliente.resx">
       <DependentUpon>SaldoCliente.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\WhatsApp Image 2024-10-13 at 5.24.35 PM.jpeg" />
+    <None Include="App.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

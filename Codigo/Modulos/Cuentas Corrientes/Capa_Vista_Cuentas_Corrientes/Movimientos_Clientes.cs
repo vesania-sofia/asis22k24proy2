@@ -10,11 +10,41 @@ using System.Windows.Forms;
 
 namespace Capa_Vista_Cuentas_Corrientes
 {
-    public partial class Movimientos_Clientes : Form
+    public partial class From1 : Form
     {
-        public Movimientos_Clientes()
+        public From1()
         {
             InitializeComponent();
+        }
+
+        private void creacionClientesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chequesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //FormaPago.Show();
+        }
+
+        private void nuevosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+           // ClienteNuevo.Show(); ESTO ME DA ERROR AL MOMENTO DE LLAMAR EL FORMULARIO
+        }
+
+        private void mensualesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //MovimientoMensual.Show();
+        }
+
+        private void mensualToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+           // SaldoCliente.Show();
+        }
+
+        private void mensualToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            //CreditoCliente.Show();
         }
     }
 }
