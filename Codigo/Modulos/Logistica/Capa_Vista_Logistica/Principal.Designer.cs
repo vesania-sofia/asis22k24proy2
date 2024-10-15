@@ -30,8 +30,6 @@ namespace Capa_Vista_Logistica
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Principal));
-            this.Pic_Foto = new System.Windows.Forms.PictureBox();
-            this.Pic_2 = new System.Windows.Forms.PictureBox();
             this.Btn_Transporte = new System.Windows.Forms.Button();
             this.Btn_Chofer = new System.Windows.Forms.Button();
             this.Btn_Ayuda = new System.Windows.Forms.Button();
@@ -40,31 +38,14 @@ namespace Capa_Vista_Logistica
             this.Btn_TrasladoDProd = new System.Windows.Forms.Button();
             this.Btn_Mantenimiento = new System.Windows.Forms.Button();
             this.Btn_Inventario = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.Pic_Foto)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pic_2)).BeginInit();
+            this.Btn_AdminLotes = new System.Windows.Forms.Button();
+            this.Btn_MonitoreoAlm = new System.Windows.Forms.Button();
+            this.Pic_2 = new System.Windows.Forms.PictureBox();
+            this.Pic_Foto = new System.Windows.Forms.PictureBox();
             this.flowLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Pic_2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pic_Foto)).BeginInit();
             this.SuspendLayout();
-            // 
-            // Pic_Foto
-            // 
-            this.Pic_Foto.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.Pic_Foto.Location = new System.Drawing.Point(3, 551);
-            this.Pic_Foto.Name = "Pic_Foto";
-            this.Pic_Foto.Size = new System.Drawing.Size(182, 141);
-            this.Pic_Foto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.Pic_Foto.TabIndex = 4;
-            this.Pic_Foto.TabStop = false;
-            // 
-            // Pic_2
-            // 
-            this.Pic_2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.Pic_2.Image = ((System.Drawing.Image)(resources.GetObject("Pic_2.Image")));
-            this.Pic_2.Location = new System.Drawing.Point(3, 435);
-            this.Pic_2.Name = "Pic_2";
-            this.Pic_2.Size = new System.Drawing.Size(182, 110);
-            this.Pic_2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Pic_2.TabIndex = 3;
-            this.Pic_2.TabStop = false;
             // 
             // Btn_Transporte
             // 
@@ -120,12 +101,14 @@ namespace Capa_Vista_Logistica
             this.flowLayoutPanel1.Controls.Add(this.Btn_TrasladoDProd);
             this.flowLayoutPanel1.Controls.Add(this.Btn_Mantenimiento);
             this.flowLayoutPanel1.Controls.Add(this.Btn_Inventario);
+            this.flowLayoutPanel1.Controls.Add(this.Btn_AdminLotes);
+            this.flowLayoutPanel1.Controls.Add(this.Btn_MonitoreoAlm);
             this.flowLayoutPanel1.Controls.Add(this.Pic_2);
             this.flowLayoutPanel1.Controls.Add(this.Pic_Foto);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(185, 705);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(185, 826);
             this.flowLayoutPanel1.TabIndex = 2;
             // 
             // Btn_TransporteVeh
@@ -188,27 +171,75 @@ namespace Capa_Vista_Logistica
             this.Btn_Inventario.UseVisualStyleBackColor = true;
             this.Btn_Inventario.Click += new System.EventHandler(this.Btn_Inventario_Click);
             // 
+            // Btn_AdminLotes
+            // 
+            this.Btn_AdminLotes.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.Btn_AdminLotes.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Btn_AdminLotes.FlatAppearance.BorderSize = 2;
+            this.Btn_AdminLotes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_AdminLotes.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
+            this.Btn_AdminLotes.Location = new System.Drawing.Point(3, 435);
+            this.Btn_AdminLotes.Name = "Btn_AdminLotes";
+            this.Btn_AdminLotes.Size = new System.Drawing.Size(180, 58);
+            this.Btn_AdminLotes.TabIndex = 9;
+            this.Btn_AdminLotes.Text = "Administración de Lotes";
+            this.Btn_AdminLotes.UseVisualStyleBackColor = true;
+            this.Btn_AdminLotes.Click += new System.EventHandler(this.Btn_AdminLotes_Click);
+            // 
+            // Btn_MonitoreoAlm
+            // 
+            this.Btn_MonitoreoAlm.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Btn_MonitoreoAlm.Dock = System.Windows.Forms.DockStyle.Top;
+            this.Btn_MonitoreoAlm.FlatAppearance.BorderSize = 2;
+            this.Btn_MonitoreoAlm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_MonitoreoAlm.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
+            this.Btn_MonitoreoAlm.Location = new System.Drawing.Point(3, 499);
+            this.Btn_MonitoreoAlm.Name = "Btn_MonitoreoAlm";
+            this.Btn_MonitoreoAlm.Size = new System.Drawing.Size(180, 58);
+            this.Btn_MonitoreoAlm.TabIndex = 10;
+            this.Btn_MonitoreoAlm.Text = "Monitoreo de almacén";
+            this.Btn_MonitoreoAlm.UseVisualStyleBackColor = true;
+            this.Btn_MonitoreoAlm.Click += new System.EventHandler(this.Btn_MonitoreoAlm_Click);
+            // 
+            // Pic_2
+            // 
+            this.Pic_2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.Pic_2.Image = ((System.Drawing.Image)(resources.GetObject("Pic_2.Image")));
+            this.Pic_2.Location = new System.Drawing.Point(3, 563);
+            this.Pic_2.Name = "Pic_2";
+            this.Pic_2.Size = new System.Drawing.Size(182, 110);
+            this.Pic_2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Pic_2.TabIndex = 11;
+            this.Pic_2.TabStop = false;
+            // 
+            // Pic_Foto
+            // 
+            this.Pic_Foto.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.Pic_Foto.Location = new System.Drawing.Point(3, 679);
+            this.Pic_Foto.Name = "Pic_Foto";
+            this.Pic_Foto.Size = new System.Drawing.Size(182, 141);
+            this.Pic_Foto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.Pic_Foto.TabIndex = 12;
+            this.Pic_Foto.TabStop = false;
+            // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(945, 705);
+            this.ClientSize = new System.Drawing.Size(945, 826);
             this.Controls.Add(this.flowLayoutPanel1);
             this.IsMdiContainer = true;
             this.Name = "Principal";
             this.Text = "Principal";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            ((System.ComponentModel.ISupportInitialize)(this.Pic_Foto)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pic_2)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.Pic_2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pic_Foto)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.PictureBox Pic_Foto;
-        private System.Windows.Forms.PictureBox Pic_2;
         private System.Windows.Forms.Button Btn_Transporte;
         private System.Windows.Forms.Button Btn_Chofer;
         private System.Windows.Forms.Button Btn_Ayuda;
@@ -217,5 +248,9 @@ namespace Capa_Vista_Logistica
         private System.Windows.Forms.Button Btn_TrasladoDProd;
         private System.Windows.Forms.Button Btn_Mantenimiento;
         private System.Windows.Forms.Button Btn_Inventario;
+        private System.Windows.Forms.Button Btn_AdminLotes;
+        private System.Windows.Forms.Button Btn_MonitoreoAlm;
+        private System.Windows.Forms.PictureBox Pic_2;
+        private System.Windows.Forms.PictureBox Pic_Foto;
     }
 }

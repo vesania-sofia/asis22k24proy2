@@ -50,17 +50,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Administración de Lotes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administración de Lotes.Designer.cs">
+      <DependentUpon>Administración de Lotes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Chofer.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Chofer.Designer.cs">
       <DependentUpon>Chofer.cs</DependentUpon>
     </Compile>
+    <Compile Include="EnlaceContabilidad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EnlaceContabilidad.Designer.cs">
+      <DependentUpon>EnlaceContabilidad.cs</DependentUpon>
+    </Compile>
     <Compile Include="Mantenimiento.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Mantenimiento.Designer.cs">
       <DependentUpon>Mantenimiento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MonitoreoAlmacen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MonitoreoAlmacen.Designer.cs">
+      <DependentUpon>MonitoreoAlmacen.cs</DependentUpon>
     </Compile>
     <Compile Include="Movimiento de Inventario.cs">
       <SubType>Form</SubType>
@@ -112,8 +130,17 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Administración de Lotes.resx">
+      <DependentUpon>Administración de Lotes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Chofer.resx">
       <DependentUpon>Chofer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EnlaceContabilidad.resx">
+      <DependentUpon>EnlaceContabilidad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MonitoreoAlmacen.resx">
+      <DependentUpon>MonitoreoAlmacen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Principal.resx">
       <DependentUpon>Principal.cs</DependentUpon>

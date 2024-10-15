@@ -58,5 +58,19 @@ namespace Capa_Vista_Logistica
             movimientoinv.MdiParent = this;
             movimientoinv.Show();
         }
+
+        private void Btn_AdminLotes_Click(object sender, EventArgs e)
+        {
+            Administración_de_Lotes adminlote = new Administración_de_Lotes();
+            adminlote.MdiParent = this;
+            adminlote.Show();
+        }
+
+        private void Btn_MonitoreoAlm_Click(object sender, EventArgs e)
+        {
+            MonitoreoAlmacen monitoralm = new MonitoreoAlmacen();
+            monitoralm.MdiParent = this;
+            monitoralm.Show();
+        }
     }
 }
