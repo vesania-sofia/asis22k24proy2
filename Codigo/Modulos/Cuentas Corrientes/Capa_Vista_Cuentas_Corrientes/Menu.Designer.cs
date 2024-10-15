@@ -38,6 +38,7 @@ namespace Capa_Vista_Cuentas_Corrientes
             this.Btn_ReporteM = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.Btn_Enlaces = new System.Windows.Forms.Button();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -114,6 +115,7 @@ namespace Capa_Vista_Cuentas_Corrientes
             // 
             // flowLayoutPanel1
             // 
+            this.flowLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.flowLayoutPanel1.Controls.Add(this.Btn_Mov_Clientes);
             this.flowLayoutPanel1.Controls.Add(this.Btn_Mov_Prov);
             this.flowLayoutPanel1.Controls.Add(this.Btn_Caja);
@@ -121,29 +123,40 @@ namespace Capa_Vista_Cuentas_Corrientes
             this.flowLayoutPanel1.Controls.Add(this.Btn_ReportesP);
             this.flowLayoutPanel1.Controls.Add(this.Btn_ReporteM);
             this.flowLayoutPanel1.Controls.Add(this.Btn_Mantenimiento);
+            this.flowLayoutPanel1.Controls.Add(this.Btn_Enlaces);
             this.flowLayoutPanel1.Controls.Add(this.pictureBox1);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(211, 686);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(211, 758);
             this.flowLayoutPanel1.TabIndex = 8;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Capa_Vista_Cuentas_Corrientes.Properties.Resources.WhatsApp_Image_2024_10_13_at_5_24_35_PM;
-            this.pictureBox1.Location = new System.Drawing.Point(3, 465);
+            this.pictureBox1.Location = new System.Drawing.Point(3, 531);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(207, 166);
+            this.pictureBox1.Size = new System.Drawing.Size(182, 142);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 7;
             this.pictureBox1.TabStop = false;
+            // 
+            // Btn_Enlaces
+            // 
+            this.Btn_Enlaces.Location = new System.Drawing.Point(3, 465);
+            this.Btn_Enlaces.Name = "Btn_Enlaces";
+            this.Btn_Enlaces.Size = new System.Drawing.Size(142, 60);
+            this.Btn_Enlaces.TabIndex = 8;
+            this.Btn_Enlaces.Text = "ENLACES";
+            this.Btn_Enlaces.UseVisualStyleBackColor = true;
+            this.Btn_Enlaces.Click += new System.EventHandler(this.Btn_Enlaces_Click);
             // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.ClientSize = new System.Drawing.Size(1392, 686);
+            this.ClientSize = new System.Drawing.Size(1392, 758);
             this.Controls.Add(this.flowLayoutPanel1);
             this.IsMdiContainer = true;
             this.Name = "Menu";
@@ -166,5 +179,6 @@ namespace Capa_Vista_Cuentas_Corrientes
         private System.Windows.Forms.Button Btn_ReporteM;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button Btn_Enlaces;
     }
 }

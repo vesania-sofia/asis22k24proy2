@@ -68,6 +68,12 @@
     <Compile Include="CreditoCliente.Designer.cs">
       <DependentUpon>CreditoCliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="Enlaces.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Enlaces.Designer.cs">
+      <DependentUpon>Enlaces.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormaPago.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -141,6 +147,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CreditoCliente.resx">
       <DependentUpon>CreditoCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Enlaces.resx">
+      <DependentUpon>Enlaces.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormaPago.resx">
       <DependentUpon>FormaPago.cs</DependentUpon>

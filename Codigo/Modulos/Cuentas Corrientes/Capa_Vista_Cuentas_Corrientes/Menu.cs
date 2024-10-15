@@ -65,5 +65,12 @@ namespace Capa_Vista_Cuentas_Corrientes
             Mant.MdiParent = this;
             Mant.Show();
         }
+
+        private void Btn_Enlaces_Click(object sender, EventArgs e)
+        {
+            Enlaces enl = new Enlaces();
+            enl.MdiParent = this;
+            enl.Show();
+        }
     }
 }
