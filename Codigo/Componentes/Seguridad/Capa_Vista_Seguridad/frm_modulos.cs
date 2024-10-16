@@ -431,7 +431,7 @@ namespace Capa_Vista_Seguridad
 
             // Retroceder a la carpeta del proyecto
             string projectPath = Path.GetFullPath(Path.Combine(executablePath, @"..\..\"));
-            MessageBox.Show("1" + projectPath);
+            
 
             // Combinar con la ruta fija de "asis22k24proy2\Codigo\Componentes\Seguridad"
             //string basePath = Path.Combine(projectPath, @"asis22k24proy2\Codigo\Componentes\Seguridad");
@@ -449,7 +449,7 @@ namespace Capa_Vista_Seguridad
             // Verifica si el archivo existe antes de intentar abrirlo
             if (!string.IsNullOrEmpty(pathAyuda))
             {
-                MessageBox.Show("El archivo sí está.");
+               
                 // Abre el archivo de ayuda .chm en la sección especificada
                 Help.ShowHelp(null, pathAyuda, "ayudaModulos_2024.html");
             }

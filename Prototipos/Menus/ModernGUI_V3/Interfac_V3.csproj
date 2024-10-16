@@ -49,8 +49,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CapaDiseno">
-      <HintPath>..\..\..\Codigo\Componentes\Seguridad\CapaDiseno\bin\Debug\CapaDiseno.dll</HintPath>
+    <Reference Include="Capa_Vista_Seguridad">
+      <HintPath>..\..\..\Codigo\Componentes\Seguridad\Capa_Vista_Seguridad\bin\Debug\Capa_Vista_Seguridad.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

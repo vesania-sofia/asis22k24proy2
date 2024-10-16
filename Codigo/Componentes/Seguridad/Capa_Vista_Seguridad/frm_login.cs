@@ -11,7 +11,8 @@ using System.Windows.Forms;
 using Capa_Controlador_Seguridad;
 using System.Security.Cryptography;
 using System.IO;
-using Interfac_V3; // Necesario para Directory, File, Path y SearchOption
+//Using Interfac_V3; // Necesario para Directory, File, Path y SearchOption
+//Editado el 29 sep 2024 para evitar el acoplamiento circular
 
 namespace Capa_Vista_Seguridad
 {
@@ -76,13 +77,13 @@ namespace Capa_Vista_Seguridad
                             logica l = new logica();
                             l.funinsertarabitacora(Txt_usuario.Text.Trim(), "Se logeo al sistema", "Login", "1000");
 
-                            FormModulos formulario = new FormModulos(Txt_usuario.Text); // Asegúrate de que este es el nombre correcto de la clase
-                            formulario.Show();
+                            //FormModulos formulario = new FormModulos(Txt_usuario.Text); // Asegúrate de que este es el nombre correcto de la clase
+                            //formulario.Show();
 
 
-                            // Pasa el nombre de usuario al constructor de MDI_Seguridad
-                           //MDI_Seguridad formMDI = new MDI_Seguridad(Txt_usuario.Text);
-                            //formMDI.Show();
+                            //Pasa el nombre de usuario al constructor de MDI_Seguridad
+                           MDI_Seguridad formMDI = new MDI_Seguridad(Txt_usuario.Text);
+                           formMDI.Show();
                         }
                         else
                         {
@@ -138,7 +139,7 @@ namespace Capa_Vista_Seguridad
 
             // Retroceder a la carpeta del proyecto
             string projectPath = Path.GetFullPath(Path.Combine(executablePath, @"..\..\"));
-            MessageBox.Show("1" + projectPath);
+            
 
             // Combinar con la ruta fija de "asis22k24proy2\Codigo\Componentes\Seguridad"
             //string basePath = Path.Combine(projectPath, @"asis22k24proy2\Codigo\Componentes\Seguridad");
@@ -156,7 +157,7 @@ namespace Capa_Vista_Seguridad
             // Verifica si el archivo existe antes de intentar abrirlo
             if (!string.IsNullOrEmpty(pathAyuda))
             {
-                MessageBox.Show("El archivo sí está.");
+                
                 // Abre el archivo de ayuda .chm en la sección especificada
                 Help.ShowHelp(null, pathAyuda, "ayudaLogin_2024.html");
             }

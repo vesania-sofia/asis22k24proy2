@@ -33,7 +33,7 @@ namespace Capa_Modelo_Seguridad
             cn.conectar();
             string sUsuarios = "SELECT Pk_id_usuario as Usuario, nombre_usuario as Nombre, apellido_usuario as Apellido, username_usuario as Username, password_usuario as Password, email_usuario as Email, ultima_conexion_usuario as Ultima_Conexion, estado_usuario as Estado, pregunta as Pregunta, respuesta as Respuesta FROM tbl_usuarios";
             OdbcDataAdapter dataUsuarios = new OdbcDataAdapter(sUsuarios, cn.conectar());
-            funInsertarBitacora(idUsuario, "Realizo una consulta a usuarios", "tbl_usuarios", "1001");
+            funInsertarBitacora(idUsuario, "Realizo una consulta a usuarios", "tbl_usuarios", "1000");
             return dataUsuarios;
         }
 
@@ -44,7 +44,7 @@ namespace Capa_Modelo_Seguridad
             cn.conectar();
             string smodulos = "SELECT Pk_id_modulos as ID_Modulos, nombre_modulo as Modulo, descripcion_modulo as Descripcion, estado_modulo as Estado FROM Tbl_modulos";
             OdbcDataAdapter datamodulos = new OdbcDataAdapter(smodulos, cn.conectar());
-            funInsertarBitacora(idUsuario, "Realizo una consulta a modulos", "tbl_modulos", "1001");
+            funInsertarBitacora(idUsuario, "Realizo una consulta a modulos", "tbl_modulos", "1000");
             return datamodulos;
         }
         /**************************************************/
@@ -57,7 +57,7 @@ namespace Capa_Modelo_Seguridad
             cn.conectar();
             string sperfiles = "SELECT Pk_id_perfil as ID_Perfiles, nombre_perfil as Perfil, descripcion_perfil as Descripcion, estado_perfil as Estado FROM Tbl_perfiles";
             OdbcDataAdapter dataperfiles = new OdbcDataAdapter(sperfiles, cn.conectar());
-            funInsertarBitacora(idUsuario, "Realizo una consulta a perfiles", "tbl_perfiles", "1001");
+            funInsertarBitacora(idUsuario, "Realizo una consulta a perfiles", "tbl_perfiles", "1000");
             return dataperfiles;
         }
         /*********************************************/
@@ -73,7 +73,7 @@ namespace Capa_Modelo_Seguridad
             cn.conectar();
             string sqlModulos = "SELECT nombre_modulo FROM Tbl_modulos WHERE estado_modulo = 1";
             OdbcDataAdapter dataModulos = new OdbcDataAdapter(sqlModulos, cn.conectar());
-            funInsertarBitacora(idUsuario, "Realizo una consulta a modulos", "Tbl_modulos", "1001");
+            funInsertarBitacora(idUsuario, "Realizo una consulta a modulos", "Tbl_modulos", "1000");
             return dataModulos;
         }
         //****************************************FIN Kevin López***************************************************
@@ -84,7 +84,7 @@ namespace Capa_Modelo_Seguridad
             cn.conectar();
             string sqlPerfiles = "SELECT nombre_perfil FROM Tbl_perfiles WHERE estado_perfil = 1";
             OdbcDataAdapter dataPerfiles = new OdbcDataAdapter(sqlPerfiles, cn.conectar());
-            funInsertarBitacora(idUsuario, "Realizo una consulta a perfiles", "Tbl_perfiles", "1001");
+            funInsertarBitacora(idUsuario, "Realizo una consulta a perfiles", "Tbl_perfiles", "1000");
             return dataPerfiles;
         }
         //****************************************Kevin López***************************************************
@@ -107,7 +107,7 @@ namespace Capa_Modelo_Seguridad
                 dataAplicaciones.SelectCommand.Parameters.AddWithValue("?", nombreModulo);
 
                 // Registro de la bitacora
-                funInsertarBitacora(idUsuario, "Realizó una consulta a aplicaciones", "tbl_aplicacion", "1001");
+                funInsertarBitacora(idUsuario, "Realizó una consulta a aplicaciones", "tbl_aplicacion", "1000");
 
                 return dataAplicaciones;
             }
@@ -151,11 +151,11 @@ namespace Capa_Modelo_Seguridad
                 //MessageBox.Show(sCodigoUsuario);
                 // Inserta los permisos usando el código de la aplicación y el código del usuario
                 string sqlInsertarPermisosUA = "INSERT INTO Tbl_permisos_aplicaciones_usuario(Fk_id_usuario, Fk_id_aplicacion, guardar_permiso, buscar_permiso, modificar_permiso, eliminar_permiso, imprimir_permiso) VALUES ('" + sCodigoUsuario + "','" + sCodigoAplicacion + "', '" + sIngresar + "', '" + sConsulta + "', '" + sModificar + "', '" + sEliminar + "', '" + sImprimir + "');";
-               // MessageBox.Show(sqlInsertarPermisosUA);
+                // MessageBox.Show(sqlInsertarPermisosUA);
                 // Ejecuta el comando de inserción
                 OdbcDataAdapter dataPermisosUA = new OdbcDataAdapter(sqlInsertarPermisosUA, cn.conectar());
                 // Inserta en la bitácora
-                funInsertarBitacora(idUsuario, "Asignó aplicación: " + sNombreAplicacion + " a usuario: " + sCodigoUsuario, "Tbl_permisos_aplicaciones_usuario", "1001");
+                funInsertarBitacora(idUsuario, "Asignó aplicación: " + sNombreAplicacion + " a usuario: " + sCodigoUsuario, "Tbl_permisos_aplicaciones_usuario", "1000");
 
 
                 almacena.Close();
@@ -216,7 +216,7 @@ namespace Capa_Modelo_Seguridad
             cn.conectar();
             string sqlPerfilUsuario = " SELECT  a.Fk_id_usuario AS UsuarioID,   m.nombre_usuario AS NombreUsuario, a.Fk_id_perfil AS PerfilID,  ap.nombre_perfil AS NombrePerfil  FROM Tbl_asignaciones_perfils_usuario a  JOIN Tbl_usuarios m ON a.Fk_id_usuario = m.Pk_id_usuario JOIN Tbl_perfiles ap ON a.Fk_id_perfil = ap.Pk_id_perfil";
             OdbcDataAdapter dataPerfilUsuario = new OdbcDataAdapter(sqlPerfilUsuario, cn.conectar());
-            funInsertarBitacora(idUsuario, "Realizo una consulta  a Asignacion de perfil a un usuario", "Tbl_asignaciones_perfils_usuario", "1001");
+            funInsertarBitacora(idUsuario, "Realizo una consulta  a Asignacion de perfil a un usuario", "Tbl_asignaciones_perfils_usuario", "1000");
             return dataPerfilUsuario;
         }
 
@@ -236,7 +236,7 @@ namespace Capa_Modelo_Seguridad
 
                     if (rowsAffected > 0)
                     {
-                        funInsertarBitacora(idUsuario, "Eliminó un perfil: " + sId_Perfil_Usuario, "Tbl_asignaciones_perfils_usuario", "1001");
+                        funInsertarBitacora(idUsuario, "Eliminó un perfil: " + sId_Perfil_Usuario, "Tbl_asignaciones_perfils_usuario", "1000");
                         return true;
                     }
                     else
@@ -277,7 +277,7 @@ namespace Capa_Modelo_Seguridad
                         //MessageBox.Show(cmd.ToString());
                         // Ejecutar el comando
                         cmd.ExecuteNonQuery();
-                        funInsertarBitacora(idUsuario, "Inserto un nuevo modulo: " + scodigoUsuario + " - " + scodigoPerfil, "Tbl_asignaciones_perfils_usuario", "1001");
+                        funInsertarBitacora(idUsuario, "Inserto un nuevo modulo: " + scodigoUsuario + " - " + scodigoPerfil, "Tbl_asignaciones_perfils_usuario", "1000");
                     }
 
                 }
@@ -296,8 +296,8 @@ namespace Capa_Modelo_Seguridad
 
                 string sqlIDAplicacion = "SELECT MAX(Pk_id_aplicacion)+1 FROM tbl_aplicaciones";
                 OdbcDataAdapter dataIDAplicacion = new OdbcDataAdapter(sqlIDAplicacion, cn.conectar());
-                funInsertarBitacora(idUsuario, "Se selecciono una aplicación", "tbl_aplicaciones", "1001");
-                return dataIDAplicacion;           
+                funInsertarBitacora(idUsuario, "Se selecciono una aplicación", "tbl_aplicaciones", "1000");
+                return dataIDAplicacion;
             }
             catch (Exception ex)
             {
@@ -309,7 +309,7 @@ namespace Capa_Modelo_Seguridad
         {
             cn.conectar();
             string ssqlAplicaciones = "SELECT * FROM tbl_aplicaciones WHERE Pk_id_aplicacion = " + saplicacion;
-            funInsertarBitacora(idUsuario, "Realizo una consulta a aplicaciones", "tbl_aplicaciones", "1001");
+            funInsertarBitacora(idUsuario, "Realizo una consulta a aplicaciones", "tbl_aplicaciones", "1000");
             OdbcDataAdapter dataTable = new OdbcDataAdapter(ssqlAplicaciones, cn.conectar());
             return dataTable;
         }
@@ -319,7 +319,7 @@ namespace Capa_Modelo_Seguridad
             cn.conectar();
             string saplicaciones = "SELECT Pk_id_aplicacion as ID_Aplicacion, nombre_aplicacion as Aplicacion, descripcion_aplicacion as Descripcion, estado_aplicacion as Estado FROM Tbl_aplicaciones";
             OdbcDataAdapter dataaplicaciones = new OdbcDataAdapter(saplicaciones, cn.conectar());
-            funInsertarBitacora(idUsuario, "Realizo una consulta a aplicaciones", "tbl_aplicaciones", "1001");
+            funInsertarBitacora(idUsuario, "Realizo una consulta a aplicaciones", "tbl_aplicaciones", "1000");
             return dataaplicaciones;
         }
         /***********************************************************************/
@@ -348,7 +348,7 @@ namespace Capa_Modelo_Seguridad
                         // Ejecutar el comando
                         cmd.ExecuteNonQuery();
 
-                        funInsertarBitacora(idUsuario, "Inserto un nuevo modulo: " + scodigo + " - " + snombre, "tbl_aplicaciones", "1001");
+                        funInsertarBitacora(idUsuario, "Inserto un nuevo modulo: " + scodigo + " - " + snombre, "tbl_aplicaciones", "1000");
                     }
                 }
             }
@@ -362,7 +362,7 @@ namespace Capa_Modelo_Seguridad
         {
             cn.conectar();
             string ssqlAplicaciones = "SELECT * FROM Tbl_aplicaciones WHERE Pk_id_aplicacion = " + saplicacion;
-            funInsertarBitacora(idUsuario, "Realizo una consulta a aplicaciones", "Tbl_aplicaciones", "1001");
+            funInsertarBitacora(idUsuario, "Realizo una consulta a aplicaciones", "Tbl_aplicaciones", "1000");
             OdbcDataAdapter dataTable = new OdbcDataAdapter(ssqlAplicaciones, cn.conectar());
             return dataTable;
         }
@@ -389,7 +389,7 @@ namespace Capa_Modelo_Seguridad
 
                     if (rowsAffected > 0)
                     {
-                        funInsertarBitacora(idUsuario, "Eliminó una aplicacion: " + scodigo, "tbl_aplicaciones", "1001");
+                        funInsertarBitacora(idUsuario, "Eliminó una aplicacion: " + scodigo, "tbl_aplicaciones", "1000");
                         return true;
                     }
                     else
@@ -464,7 +464,7 @@ namespace Capa_Modelo_Seguridad
                     {
                         command.Parameters.Add(param);
                     }
-                    funInsertarBitacora(idUsuario, "Se modificó el usuario: " + sId_Usuario, "Tbl_usuarios", "1001");
+                    funInsertarBitacora(idUsuario, "Se modificó el usuario: " + sId_Usuario, "Tbl_usuarios", "1000");
 
                     // Ejecutar la consulta
                     int result = command.ExecuteNonQuery();
@@ -476,7 +476,7 @@ namespace Capa_Modelo_Seguridad
             catch (Exception ex)
             {
                 System.Windows.Forms.MessageBox.Show("Error al intentar modificar el registro: " + ex.Message);
-                funInsertarBitacora(idUsuario, "Ocurrio un error al modificar el usuario: " + sId_Usuario, "Tbl_usuarios", "1001");
+                funInsertarBitacora(idUsuario, "Ocurrio un error al modificar el usuario: " + sId_Usuario, "Tbl_usuarios", "1000");
                 return false;
             }
         }
@@ -508,7 +508,7 @@ namespace Capa_Modelo_Seguridad
                     // Insertar en bitácora si la eliminación fue exitosa
                     if (rowsAffected > 0)
                     {
-                        funInsertarBitacora(idUsuario, "Eliminó un perfil: " + sID_perfil, "tbl_perfil", "1001");
+                        funInsertarBitacora(idUsuario, "Eliminó un perfil: " + sID_perfil, "tbl_perfil", "1000");
                         return true; // Indica que la eliminación fue exitosa
                     }
                     else
@@ -604,9 +604,9 @@ namespace Capa_Modelo_Seguridad
                     command.Parameters.AddWithValue("estado_usuario", sNuevoEstado);
                     command.Parameters.AddWithValue("id_usuario", sLlaveUsuario);
 
-                    funInsertarBitacora(idUsuario, "Se desactivo el usuario: " + sLlaveUsuario, "tbl_usuarios", "1001");
+                    funInsertarBitacora(idUsuario, "Se desactivo el usuario: " + sLlaveUsuario, "tbl_usuarios", "1000");
                     int iResult = command.ExecuteNonQuery();
-     
+
                     // Verifica si se actualizó algún registro
                     return iResult > 0;
                 }
@@ -614,7 +614,7 @@ namespace Capa_Modelo_Seguridad
             catch (Exception ex)
             {
                 MessageBox.Show("Error al cambiar el estado del usuario: " + ex.Message);
-                funInsertarBitacora(idUsuario, "Ocurrio un error al desactivar el usuario: " + sLlaveUsuario, "tbl_usuarios", "1001");
+                funInsertarBitacora(idUsuario, "Ocurrio un error al desactivar el usuario: " + sLlaveUsuario, "tbl_usuarios", "1000");
                 return false;
             }
         }
@@ -631,7 +631,7 @@ namespace Capa_Modelo_Seguridad
                 cn.conectar();
                 string ssqlactualizaraplicacion = "UPDATE tbl_aplicaciones SET nombre_aplicacion = '" + snombre + "', descripcion_aplicacion = '" + sdescripcion + "', estado_aplicacion = '" + sestado + "' WHERE Pk_id_aplicacion ='" + scodigo + "'";
                 OdbcDataAdapter dataTable = new OdbcDataAdapter(ssqlactualizaraplicacion, cn.conectar());
-                funInsertarBitacora(idUsuario, "Actualizo una aplicacion: " + scodigo + " - " + snombre, "tbl_aplicaciones", "1001");
+                funInsertarBitacora(idUsuario, "Actualizo una aplicacion: " + scodigo + " - " + snombre, "tbl_aplicaciones", "1000");
                 return dataTable;
             }
             catch (Exception ex)
@@ -658,7 +658,7 @@ namespace Capa_Modelo_Seguridad
             {
                 // Ejecutar la consulta de inserción
                 command.ExecuteNonQuery();
-                funInsertarBitacora(idUsuario, "Se buscaron los datos del usuario con id: " + sId, "tbl_usuarios", "1001");
+                funInsertarBitacora(idUsuario, "Se buscaron los datos del usuario con id: " + sId, "tbl_usuarios", "1000");
             }
             catch (Exception ex)
             {
@@ -706,7 +706,7 @@ namespace Capa_Modelo_Seguridad
 
                 string sqlIDmodulo = "SELECT MAX(Pk_id_modulo)+1 FROM tbl_modulos";
                 OdbcDataAdapter dataIDmodulo = new OdbcDataAdapter(sqlIDmodulo, cn.conectar());
-                funInsertarBitacora(idUsuario, "Se mostraron los modulos", "tbl_modulos", "1001");
+                funInsertarBitacora(idUsuario, "Se mostraron los modulos", "tbl_modulos", "1000");
                 return dataIDmodulo;
             }
             catch (Exception ex)
@@ -743,7 +743,7 @@ namespace Capa_Modelo_Seguridad
             {
                 string sqlPerfil = "INSERT INTO Tbl_perfiles (Pk_id_Perfil, nombre_perfil, descripcion_perfil, estado_perfil) VALUES ('" + scodigo + "','" + snombre + "', '" + sdescripcion + "', " + sestado + ");";
                 OdbcDataAdapter datainsertarperfil = new OdbcDataAdapter(sqlPerfil, cn.conectar());
-                funInsertarBitacora(idUsuario, "Inserto un nuevo perfil: " + scodigo + " - " + snombre, "Tbl_perfiles", "1001");
+                funInsertarBitacora(idUsuario, "Inserto un nuevo perfil: " + scodigo + " - " + snombre, "Tbl_perfiles", "1000");
                 return datainsertarperfil;
             }
             catch (Exception ex)
@@ -760,7 +760,7 @@ namespace Capa_Modelo_Seguridad
             cn.conectar();
             string sqlPerfil = "SELECT * FROM Tbl_perfiles WHERE Pk_id_perfil = " + sperfil;
             OdbcDataAdapter dataTable = new OdbcDataAdapter(sqlPerfil, cn.conectar());
-            funInsertarBitacora(idUsuario, "Realizo una consulta a perfiles ", "Tbl_perfiles", "1001");
+            funInsertarBitacora(idUsuario, "Realizo una consulta a perfiles ", "Tbl_perfiles", "1000");
 
             return dataTable;
         }
@@ -772,7 +772,7 @@ namespace Capa_Modelo_Seguridad
                 cn.conectar();
                 string sqlactualizarperfil = "UPDATE Tbl_perfiles SET nombre_perfil = '" + snombre + "', descripcion_perfil = '" + sdescripcion + "', estado_perfil = '" + sestado + "' WHERE Pk_id_perfil ='" + sID_perfil + "'";
                 OdbcDataAdapter dataTable = new OdbcDataAdapter(sqlactualizarperfil, cn.conectar());
-                funInsertarBitacora(idUsuario, "Actualizo un perfil: " + sID_perfil + " - " + snombre, "Tbl_perfiles", "1001");
+                funInsertarBitacora(idUsuario, "Actualizo un perfil: " + sID_perfil + " - " + snombre, "Tbl_perfiles", "1000");
 
                 return dataTable;
             }
@@ -811,7 +811,7 @@ namespace Capa_Modelo_Seguridad
                         // Ejecutar el comando
                         cmd.ExecuteNonQuery();
 
-                        funInsertarBitacora(idUsuario, "Inserto un nuevo modulo: " + sCodigo + " - " + sNombre, "tbl_modulos", "1001");
+                        funInsertarBitacora(idUsuario, "Inserto un nuevo modulo: " + sCodigo + " - " + sNombre, "tbl_modulos", "1000");
                     }
                 }
             }
@@ -849,7 +849,7 @@ namespace Capa_Modelo_Seguridad
 
                 string sqlInsertarPermisosPerfilApp = "INSERT INTO Tbl_permisos_aplicacion_perfil(Fk_id_perfil, Fk_id_aplicacion, guardar_permiso, modificar_permiso, eliminar_permiso, buscar_permiso, imprimir_permiso) VALUES ('" + sCodigoPerfil + "', '" + sCodigoAplicacion + "', '" + singresar + "', '" + smodificar + "', '" + seliminar + "', '" + sconsulta + "', '" + simprimir + "');";
                 OdbcDataAdapter dataPermisosPerfilAplicacion = new OdbcDataAdapter(sqlInsertarPermisosPerfilApp, cn.conectar());
-                funInsertarBitacora(idUsuario, "Asigno permiso: " + snombreaplicacion + " a perfil: " + scodigoperfil, "Tbl_permisos_aplicacion_perfil", "1001");
+                funInsertarBitacora(idUsuario, "Asigno permiso: " + snombreaplicacion + " a perfil: " + scodigoperfil, "Tbl_permisos_aplicacion_perfil", "1000");
 
 
                 almacena.Close();
@@ -907,7 +907,7 @@ namespace Capa_Modelo_Seguridad
         {
             cn.conectar();
             string sqlModulos = "SELECT * FROM tbl_modulos WHERE Pk_id_modulos = " + sModulo;
-            funInsertarBitacora(idUsuario, "Realizo una consulta a modulos", "tbl_modulos", "1001");
+            funInsertarBitacora(idUsuario, "Realizo una consulta a modulos", "tbl_modulos", "1000");
             OdbcDataAdapter dataTable = new OdbcDataAdapter(sqlModulos, cn.conectar());
             return dataTable;
         } //termina
@@ -921,7 +921,7 @@ namespace Capa_Modelo_Seguridad
                 cn.conectar();
                 string sqlactualizarmodulo = "UPDATE tbl_modulos SET nombre_modulo = '" + sNombre + "', descripcion_modulo = '" + sDescripcion + "', estado_modulo = '" + sEstado + "' WHERE PK_id_modulos ='" + sIdModulo + "'";
                 OdbcDataAdapter dataTable = new OdbcDataAdapter(sqlactualizarmodulo, cn.conectar());
-                funInsertarBitacora(idUsuario, "Actualizo un modulo: " + sIdModulo + " - " + sNombre, "tbl_modulos", "1001");
+                funInsertarBitacora(idUsuario, "Actualizo un modulo: " + sIdModulo + " - " + sNombre, "tbl_modulos", "1000");
                 return dataTable;
             }
             catch (Exception ex)
@@ -1019,7 +1019,7 @@ namespace Capa_Modelo_Seguridad
                             cmd.Parameters.AddWithValue("?", sipLocal);
                             cmd.Parameters.AddWithValue("?", sAccion);
                             cmd.Parameters.AddWithValue("?", sTabla);
-         
+
 
                             cmd.ExecuteNonQuery();
                         }
@@ -1056,7 +1056,7 @@ namespace Capa_Modelo_Seguridad
                 switch (iTipoPermiso)
                 {
                     case 1:
-                        OdbcCommand sql = new OdbcCommand("Select guardar_permiso from Tbl_permisos_aplicaciones_usuario WHERE Fk_id_usuario= '" + idUsuario + "' AND Fk_id_aplicacion ='" + sIdAplicacion + "'", cn.conectar());
+                        OdbcCommand sql = new OdbcCommand("Select guardar_permiso from Tbl_permisos_aplicaciones_usuario WHERE Fk_id_usuario= '" + sidUsuario + "' AND Fk_id_aplicacion ='" + sIdAplicacion + "'", cn.conectar());
                         OdbcDataReader almacena = sql.ExecuteReader();
 
                         if (almacena.Read() == true)
@@ -1105,7 +1105,7 @@ namespace Capa_Modelo_Seguridad
 
                         sql = new OdbcCommand("Select Tbl_permisos_aplicacion_perfil.buscar_permiso from Tbl_permisos_aplicacion_perfil " +
                             "INNER JOIN Tbl_asignaciones_perfils_usuario ON Tbl_permisos_aplicacion_perfil.Fk_id_perfil = Tbl_asignaciones_perfils_usuario.Fk_id_perfil" +
-                            " WHERE Tbl_asignaciones_perfils_usuario.Fk_id_usuario= '" + sidUsuario + "' AND Tbl_permisos_aplicacion_perfil.Fk_id_aplicacion ='" +  sIdAplicacion + "'", cn.conectar());
+                            " WHERE Tbl_asignaciones_perfils_usuario.Fk_id_usuario= '" + sidUsuario + "' AND Tbl_permisos_aplicacion_perfil.Fk_id_aplicacion ='" + sIdAplicacion + "'", cn.conectar());
                         almacena = sql.ExecuteReader();
 
                         if (almacena.Read() == true)
@@ -1258,7 +1258,7 @@ namespace Capa_Modelo_Seguridad
                         adapter.UpdateCommand.ExecuteNonQuery();
 
                         // Registrar la acción en la bitácora
-                        funInsertarBitacora(idUsuario, "Eliminó un módulo: " + sIdModulo + " - " + sNombre, "tbl_modulos", "1001");
+                        funInsertarBitacora(idUsuario, "Eliminó un módulo: " + sIdModulo + " - " + sNombre, "tbl_modulos", "1000");
 
                         return adapter; // Aunque no se usa típicamente así, se retorna el adaptador
                     }
@@ -1676,7 +1676,7 @@ namespace Capa_Modelo_Seguridad
                 dataAplicaciones.SelectCommand.Parameters.AddWithValue("?", snombreModulo);
 
                 // Registro de la bitacora
-                funInsertarBitacora(idUsuario, "Realizó una consulta a aplicaciones", "tbl_aplicacion", "1001");
+                funInsertarBitacora(idUsuario, "Realizó una consulta a aplicaciones", "tbl_aplicacion", "1000");
 
                 return dataAplicaciones;
             }
