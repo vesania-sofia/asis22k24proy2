@@ -66,5 +66,16 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="frm_Cotizacion.resx">
+      <DependentUpon>frm_Cotizacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_Factura.resx">
+      <DependentUpon>frm_Factura.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_Pedido.resx">
+      <DependentUpon>frm_Pedido.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
