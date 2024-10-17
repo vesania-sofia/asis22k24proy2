@@ -26,5 +26,10 @@ namespace Capa_Vista_Logistica
         {
 
         }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

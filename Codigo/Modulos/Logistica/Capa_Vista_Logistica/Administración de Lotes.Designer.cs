@@ -32,21 +32,25 @@ namespace Capa_Vista_Logistica
             this.label1 = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtCantidad = new System.Windows.Forms.TextBox();
+            this.dataGridViewLotes = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnEliminarLote = new System.Windows.Forms.Button();
+            this.btnModificarLote = new System.Windows.Forms.Button();
+            this.btnAgregarLote = new System.Windows.Forms.Button();
+            this.cmbProducto = new System.Windows.Forms.ComboBox();
+            this.dtpFechaEntrada = new System.Windows.Forms.DateTimePicker();
+            this.LBL_INGRESO = new System.Windows.Forms.Label();
+            this.cmbEstado = new System.Windows.Forms.ComboBox();
+            this.cmbBodega = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.LBL_SALIDA = new System.Windows.Forms.Label();
+            this.dtpFechaSalida = new System.Windows.Forms.DateTimePicker();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLotes)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,146 +58,216 @@ namespace Capa_Vista_Logistica
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Rockwell Condensed", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(276, 49);
+            this.label1.Location = new System.Drawing.Point(414, 75);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(235, 29);
+            this.label1.Size = new System.Drawing.Size(349, 42);
             this.label1.TabIndex = 0;
             this.label1.Text = "ADMINISTRACIÓN DE LOTES";
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.dtpFechaSalida);
+            this.groupBox1.Controls.Add(this.LBL_SALIDA);
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.cmbBodega);
+            this.groupBox1.Controls.Add(this.cmbEstado);
+            this.groupBox1.Controls.Add(this.LBL_INGRESO);
+            this.groupBox1.Controls.Add(this.dtpFechaEntrada);
+            this.groupBox1.Controls.Add(this.cmbProducto);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.textBox3);
-            this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Location = new System.Drawing.Point(48, 98);
+            this.groupBox1.Controls.Add(this.txtCantidad);
+            this.groupBox1.Location = new System.Drawing.Point(72, 151);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(705, 100);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.groupBox1.Size = new System.Drawing.Size(1212, 154);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "DATOS DE LOTES";
             // 
-            // textBox1
+            // label4
             // 
-            this.textBox1.Location = new System.Drawing.Point(57, 51);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(132, 20);
-            this.textBox1.TabIndex = 0;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(272, 51);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(132, 20);
-            this.textBox2.TabIndex = 1;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(489, 51);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(132, 20);
-            this.textBox3.TabIndex = 2;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(104, 35);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(41, 13);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "LOTE: ";
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(23, 41);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(107, 20);
+            this.label4.TabIndex = 5;
+            this.label4.Text = "PRODUCTO: ";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(304, 35);
+            this.label3.Location = new System.Drawing.Point(23, 87);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(68, 13);
+            this.label3.Size = new System.Drawing.Size(99, 20);
             this.label3.TabIndex = 4;
             this.label3.Text = "CANTIDAD: ";
             // 
-            // label4
+            // label2
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(525, 35);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(74, 13);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "PRODUCTO: ";
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(377, 41);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(79, 20);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "ESTADO:";
             // 
-            // dataGridView1
+            // txtCantidad
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(48, 239);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(262, 286);
-            this.dataGridView1.TabIndex = 2;
+            this.txtCantidad.Location = new System.Drawing.Point(137, 84);
+            this.txtCantidad.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtCantidad.Name = "txtCantidad";
+            this.txtCantidad.Size = new System.Drawing.Size(204, 26);
+            this.txtCantidad.TabIndex = 1;
             // 
-            // dataGridView2
+            // dataGridViewLotes
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(491, 239);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(262, 286);
-            this.dataGridView2.TabIndex = 3;
+            this.dataGridViewLotes.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dataGridViewLotes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewLotes.Location = new System.Drawing.Point(345, 333);
+            this.dataGridViewLotes.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dataGridViewLotes.Name = "dataGridViewLotes";
+            this.dataGridViewLotes.RowHeadersWidth = 62;
+            this.dataGridViewLotes.Size = new System.Drawing.Size(925, 440);
+            this.dataGridViewLotes.TabIndex = 2;
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.button3);
-            this.groupBox2.Controls.Add(this.button2);
-            this.groupBox2.Controls.Add(this.button1);
-            this.groupBox2.Location = new System.Drawing.Point(320, 239);
+            this.groupBox2.Controls.Add(this.btnEliminarLote);
+            this.groupBox2.Controls.Add(this.btnModificarLote);
+            this.groupBox2.Controls.Add(this.btnAgregarLote);
+            this.groupBox2.Location = new System.Drawing.Point(72, 333);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(165, 286);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.groupBox2.Size = new System.Drawing.Size(248, 440);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "AUDITORIA";
             // 
-            // button1
+            // btnEliminarLote
             // 
-            this.button1.Location = new System.Drawing.Point(35, 34);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(78, 68);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "INSERTAR";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnEliminarLote.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(143)))), ((int)(((byte)(137)))));
+            this.btnEliminarLote.Location = new System.Drawing.Point(52, 280);
+            this.btnEliminarLote.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnEliminarLote.Name = "btnEliminarLote";
+            this.btnEliminarLote.Size = new System.Drawing.Size(117, 105);
+            this.btnEliminarLote.TabIndex = 2;
+            this.btnEliminarLote.Text = "ELIMINAR";
+            this.btnEliminarLote.UseVisualStyleBackColor = false;
             // 
-            // button2
+            // btnModificarLote
             // 
-            this.button2.Location = new System.Drawing.Point(35, 108);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(78, 68);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "VISUALIZAR";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnModificarLote.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(143)))), ((int)(((byte)(137)))));
+            this.btnModificarLote.Location = new System.Drawing.Point(52, 166);
+            this.btnModificarLote.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnModificarLote.Name = "btnModificarLote";
+            this.btnModificarLote.Size = new System.Drawing.Size(117, 105);
+            this.btnModificarLote.TabIndex = 1;
+            this.btnModificarLote.Text = "MODIFICAR";
+            this.btnModificarLote.UseVisualStyleBackColor = false;
             // 
-            // button3
+            // btnAgregarLote
             // 
-            this.button3.Location = new System.Drawing.Point(35, 182);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(78, 68);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "ELIMINAR";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnAgregarLote.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(143)))), ((int)(((byte)(137)))));
+            this.btnAgregarLote.Location = new System.Drawing.Point(52, 52);
+            this.btnAgregarLote.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnAgregarLote.Name = "btnAgregarLote";
+            this.btnAgregarLote.Size = new System.Drawing.Size(117, 105);
+            this.btnAgregarLote.TabIndex = 0;
+            this.btnAgregarLote.Text = "AGREGAR";
+            this.btnAgregarLote.UseVisualStyleBackColor = false;
+            // 
+            // cmbProducto
+            // 
+            this.cmbProducto.FormattingEnabled = true;
+            this.cmbProducto.Location = new System.Drawing.Point(137, 38);
+            this.cmbProducto.Name = "cmbProducto";
+            this.cmbProducto.Size = new System.Drawing.Size(204, 28);
+            this.cmbProducto.TabIndex = 6;
+            // 
+            // dtpFechaEntrada
+            // 
+            this.dtpFechaEntrada.Location = new System.Drawing.Point(888, 35);
+            this.dtpFechaEntrada.Name = "dtpFechaEntrada";
+            this.dtpFechaEntrada.Size = new System.Drawing.Size(200, 26);
+            this.dtpFechaEntrada.TabIndex = 7;
+            // 
+            // LBL_INGRESO
+            // 
+            this.LBL_INGRESO.AutoSize = true;
+            this.LBL_INGRESO.Location = new System.Drawing.Point(707, 41);
+            this.LBL_INGRESO.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LBL_INGRESO.Name = "LBL_INGRESO";
+            this.LBL_INGRESO.Size = new System.Drawing.Size(174, 20);
+            this.LBL_INGRESO.TabIndex = 8;
+            this.LBL_INGRESO.Text = "FECHA DE INGRESO:";
+            // 
+            // cmbEstado
+            // 
+            this.cmbEstado.FormattingEnabled = true;
+            this.cmbEstado.Location = new System.Drawing.Point(463, 38);
+            this.cmbEstado.Name = "cmbEstado";
+            this.cmbEstado.Size = new System.Drawing.Size(204, 28);
+            this.cmbEstado.TabIndex = 9;
+            // 
+            // cmbBodega
+            // 
+            this.cmbBodega.FormattingEnabled = true;
+            this.cmbBodega.Location = new System.Drawing.Point(463, 81);
+            this.cmbBodega.Name = "cmbBodega";
+            this.cmbBodega.Size = new System.Drawing.Size(204, 28);
+            this.cmbBodega.TabIndex = 10;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(373, 81);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(83, 20);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "BODEGA:";
+            // 
+            // LBL_SALIDA
+            // 
+            this.LBL_SALIDA.AutoSize = true;
+            this.LBL_SALIDA.Location = new System.Drawing.Point(707, 84);
+            this.LBL_SALIDA.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LBL_SALIDA.Name = "LBL_SALIDA";
+            this.LBL_SALIDA.Size = new System.Drawing.Size(158, 20);
+            this.LBL_SALIDA.TabIndex = 12;
+            this.LBL_SALIDA.Text = "FECHA DE SALIDA:";
+            // 
+            // dtpFechaSalida
+            // 
+            this.dtpFechaSalida.Location = new System.Drawing.Point(888, 82);
+            this.dtpFechaSalida.Name = "dtpFechaSalida";
+            this.dtpFechaSalida.Size = new System.Drawing.Size(200, 26);
+            this.dtpFechaSalida.TabIndex = 13;
             // 
             // Administración_de_Lotes
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 553);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(223)))), ((int)(((byte)(200)))));
+            this.ClientSize = new System.Drawing.Size(1300, 851);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.dataGridView2);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dataGridViewLotes);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Administración_de_Lotes";
             this.Text = "Administración_de_Lotes";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLotes)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -205,17 +279,22 @@ namespace Capa_Vista_Logistica
         private System.Windows.Forms.Label label1;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtCantidad;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView dataGridViewLotes;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnAgregarLote;
+        private System.Windows.Forms.Button btnEliminarLote;
+        private System.Windows.Forms.Button btnModificarLote;
+        private System.Windows.Forms.ComboBox cmbProducto;
+        private System.Windows.Forms.DateTimePicker dtpFechaEntrada;
+        private System.Windows.Forms.Label LBL_INGRESO;
+        private System.Windows.Forms.ComboBox cmbEstado;
+        private System.Windows.Forms.Label LBL_SALIDA;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox cmbBodega;
+        private System.Windows.Forms.DateTimePicker dtpFechaSalida;
     }
 }
