@@ -16,5 +16,10 @@ namespace Capa_Vista_Logistica
         {
             InitializeComponent();
         }
+
+        private void cmbEstado_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
