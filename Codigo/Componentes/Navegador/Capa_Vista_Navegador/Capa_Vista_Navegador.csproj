@@ -38,6 +38,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Reporteador\Capa_Controlador_Reporteria\bin\Debug\Capa_Controlador_Reporteria.dll</HintPath>
     </Reference>
+    <Reference Include="Capa_Controlador_Seguridad">
+      <HintPath>..\..\Seguridad\Capa_Controlador_Seguridad\bin\Debug\Capa_Controlador_Seguridad.dll</HintPath>
+    </Reference>
     <Reference Include="Capa_Vista_Consulta">
       <HintPath>..\..\Consultas\Capa_Vista_Consulta\bin\Debug\Capa_Vista_Consulta.dll</HintPath>
     </Reference>
@@ -74,18 +77,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Clientes.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Clientes.Designer.cs">
-      <DependentUpon>Clientes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Reportes.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Reportes.Designer.cs">
-      <DependentUpon>Reportes.cs</DependentUpon>
-    </Compile>
     <Compile Include="Ayudas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,14 +95,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="RelacionForanea.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Clientes.resx">
-      <DependentUpon>Clientes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Reportes.resx">
-      <DependentUpon>Reportes.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Ayudas.resx">
       <DependentUpon>Ayudas.cs</DependentUpon>
     </EmbeddedResource>

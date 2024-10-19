@@ -80,7 +80,7 @@ namespace Capa_Modelo_Reporteria
 
         public OdbcDataAdapter queryReportes(string sQuery)
         {
-            string sql = "SELECT * FROM " + sTabla_reporteria + " WHERE ruta LIKE '%" + sQuery + "%' OR nombre_archivo LIKE '%" + sQuery + "%';";
+            string sql = "SELECT idregistro, ruta, nombre_archivo, aplicacion, estado, fk_id_modulos FROM " + sTabla_reporteria + " WHERE ruta LIKE '%" + sQuery + "%' OR nombre_archivo LIKE '%" + sQuery + "%';";
 
             OdbcDataAdapter dataTable = new OdbcDataAdapter(sql, conexion.conexion());
             return dataTable;

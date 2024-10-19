@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
-using CapaDiseno;
-//Comentado por George Mayén 25/02/2023
+using Capa_Vista_Seguridad;
+
 namespace Interfac_V3   
 {
     public partial class splash : Form
@@ -21,7 +21,7 @@ namespace Interfac_V3
             {
                 timer1.Stop();
                 this.Hide();
-                CapaDiseno.frm_login b = new CapaDiseno.frm_login();
+                Capa_Vista_Seguridad.frm_login b = new Capa_Vista_Seguridad.frm_login();
                 b.Show();
                 //FormModulos b = new FormModulos();
                 //b.Show();
