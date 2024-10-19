@@ -34,7 +34,8 @@
     <Reference Include="Capa_Controlador_Produccion">
       <HintPath>..\Capa_Controlador_Produccion\bin\Debug\Capa_Controlador_Produccion.dll</HintPath>
     </Reference>
-    <Reference Include="Capa_Vista_Navegador">
+    <Reference Include="Capa_Vista_Navegador, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\Componentes\Navegador\Capa_Vista_Navegador\bin\Debug\Capa_Vista_Navegador.dll</HintPath>
     </Reference>
     <Reference Include="System" />
@@ -138,6 +139,9 @@
     <EmbeddedResource Include="Frm_Cierre.resx">
       <DependentUpon>Frm_Cierre.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Conversiones.resx">
+      <DependentUpon>Frm_Conversiones.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Frm_Enlace_Contabilidad_Cierre.resx">
       <DependentUpon>Frm_Enlace_Contabilidad_Cierre.cs</DependentUpon>
     </EmbeddedResource>
@@ -149,6 +153,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_Mantenimiento_Produccion.resx">
       <DependentUpon>Frm_Mantenimiento_Produccion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Maquinaria.resx">
+      <DependentUpon>Frm_Maquinaria.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_Ordenes_De_Produccion.resx">
       <DependentUpon>Frm_Ordenes_De_Produccion.cs</DependentUpon>

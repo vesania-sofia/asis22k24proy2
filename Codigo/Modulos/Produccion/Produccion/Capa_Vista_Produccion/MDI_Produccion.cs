@@ -12,6 +12,10 @@ namespace Capa_Vista_Produccion
 {
     public partial class MDI_Produccion : Form
     {
+        // Variables para capturar la posición y el tamaño del formulario antes de maximizar
+        int lx, ly;
+        int sw, sh;
+
         public MDI_Produccion()
         {
             InitializeComponent();
@@ -37,7 +41,8 @@ namespace Capa_Vista_Produccion
                 subMenu.Visible = false;
         }
 
-        private void btnSalir_Click(object sender, EventArgs e)
+        // Función para cerrar el formulario
+        private void btnCerrar_Click_1(object sender, EventArgs e)
         {
             this.Close();
         }
@@ -60,7 +65,8 @@ namespace Capa_Vista_Produccion
         // Botón de maquinaria
         private void btnMaquinaria_Click(object sender, EventArgs e)
         {
-            // Puedes agregar funcionalidad aquí
+            Frm_Maquinaria maquinaria = new Frm_Maquinaria();
+            maquinaria.Show();
         }
 
         // Botón de empleados (enlace a RRHH)
@@ -124,6 +130,40 @@ namespace Capa_Vista_Produccion
         private void btnMenuProcesos_Click(object sender, EventArgs e)
         {
             muestraSubMenu(panelMenuProcesos);
+        }
+
+        // Minimizar el formulario
+        private void btnMinimizar_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        // Maximizar el formulario
+        private void btnMaximizar_Click(object sender, EventArgs e)
+        {
+            // Capturar la posición y el tamaño antes de maximizar
+            lx = this.Location.X;
+            ly = this.Location.Y;
+            sw = this.Size.Width;
+            sh = this.Size.Height;
+
+            this.WindowState = FormWindowState.Maximized;
+            btnMaximizar.Visible = false;
+            btnRestaurar.Visible = true;
+        }
+
+        private void btnRestaurar_Click_1(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Normal;
+            this.Size = new Size(sw, sh);
+            this.Location = new Point(lx, ly);
+            btnMaximizar.Visible = true;
+            btnRestaurar.Visible = false;
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

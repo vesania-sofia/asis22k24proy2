@@ -15,6 +15,25 @@ namespace Capa_Vista_Produccion
         public Frm_Conversiones()
         {
             InitializeComponent();
+            string[] alias = { "ID", "Unidad Origen", "Unidad Destino", "Factor de Conversión", "Tipo de conversión", "Descripción", "Estado" };
+            navegador1.AsignarAlias(alias);
+            navegador1.AsignarSalida(this);
+
+            // Instanciar colores personalizados
+            Color colorFondo = ColorTranslator.FromHtml("#AEA1D6"); // Color de fondo
+            Color colorFuente = ColorTranslator.FromHtml("#230050"); // Color de fuente
+            // Asignar colores al navegador
+            navegador1.AsignarColorFondo(colorFondo);
+            navegador1.AsignarColorFuente(colorFuente);
+
+            navegador1.ObtenerIdAplicacion("1000");
+            navegador1.AsignarAyuda("1");
+            navegador1.ObtenerIdUsuario("admin");
+            navegador1.AsignarTabla("tbl_conversiones");
+            navegador1.AsignarNombreForm("Conversiones");
+            // List<string> tablas = new List<string> { "otra_tabla_1", "otra_tabla_2" };
+            // navegador1.AsignarTablas(tablas);
+
         }
     }
 }
