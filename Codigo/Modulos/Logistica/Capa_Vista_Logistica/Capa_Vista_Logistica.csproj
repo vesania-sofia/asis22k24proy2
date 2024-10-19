@@ -32,6 +32,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AxShockwaveFlashObjects, Version=1.0.0.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="Capa_Vista_Navegador">
+      <HintPath>..\..\..\..\..\DANIEL\Octavo Semestre\AS II\asis22k24proy2\Codigo\Componentes\Navegador\Capa_Vista_Navegador\bin\Debug\Capa_Vista_Navegador.dll</HintPath>
+    </Reference>
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
     <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
@@ -56,6 +59,12 @@
     <Compile Include="Administración de Lotes.Designer.cs">
       <DependentUpon>Administración de Lotes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Almacenes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Almacenes.Designer.cs">
+      <DependentUpon>Almacenes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Chofer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -67,6 +76,12 @@
     </Compile>
     <Compile Include="EnlaceContabilidad.Designer.cs">
       <DependentUpon>EnlaceContabilidad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Locales.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Locales.Designer.cs">
+      <DependentUpon>Locales.cs</DependentUpon>
     </Compile>
     <Compile Include="Mantenimiento.cs">
       <SubType>Form</SubType>
@@ -133,11 +148,17 @@
     <EmbeddedResource Include="Administración de Lotes.resx">
       <DependentUpon>Administración de Lotes.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Almacenes.resx">
+      <DependentUpon>Almacenes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Chofer.resx">
       <DependentUpon>Chofer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EnlaceContabilidad.resx">
       <DependentUpon>EnlaceContabilidad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Locales.resx">
+      <DependentUpon>Locales.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MonitoreoAlmacen.resx">
       <DependentUpon>MonitoreoAlmacen.cs</DependentUpon>

@@ -61,14 +61,14 @@ namespace Capa_Vista_Logistica
 
         private void Btn_AdminLotes_Click(object sender, EventArgs e)
         {
-            Administración_de_Lotes adminlote = new Administración_de_Lotes();
+            Locales adminlote = new Locales("9004");
             adminlote.MdiParent = this;
             adminlote.Show();
         }
 
         private void Btn_MonitoreoAlm_Click(object sender, EventArgs e)
         {
-            MonitoreoAlmacen monitoralm = new MonitoreoAlmacen();
+            Almacenes monitoralm = new Almacenes("9003");
             monitoralm.MdiParent = this;
             monitoralm.Show();
         }

@@ -12,11 +12,25 @@ namespace Capa_Vista_Logistica
 {
     public partial class MonitoreoAlmacen : Form
     {
-        public MonitoreoAlmacen()
+        private string idBodega; // Campo para almacenar el ID de la bodega
+
+        // Constructor que recibe el ID de la bodega
+        public MonitoreoAlmacen(string idBodega)
         {
             InitializeComponent();
+            this.idBodega = idBodega;
+
+            // Aquí puedes implementar la lógica para cargar información relacionada con la bodega usando el ID
+            CargarInformacionBodega(idBodega);
         }
 
+        private void CargarInformacionBodega(string idBodega)
+        {
+            // Lógica para cargar información de la bodega según el ID
+            // Por ejemplo, puedes mostrarlo en un Label o en un TextBox
+            MessageBox.Show("ID de Bodega seleccionado: " + idBodega);
+            // O puedes realizar una consulta a la base de datos para obtener más información
+        }
         private void label1_Click(object sender, EventArgs e)
         {
 
