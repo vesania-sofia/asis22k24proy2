@@ -37,15 +37,15 @@ namespace Capa_Vista_Cuentas_Corrientes
             this.Btn_ReportesP = new System.Windows.Forms.Button();
             this.Btn_ReporteM = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Btn_Enlaces = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // Btn_Mantenimiento
             // 
-            this.Btn_Mantenimiento.Location = new System.Drawing.Point(3, 399);
+            this.Btn_Mantenimiento.Location = new System.Drawing.Point(791, 3);
             this.Btn_Mantenimiento.Name = "Btn_Mantenimiento";
             this.Btn_Mantenimiento.Size = new System.Drawing.Size(142, 60);
             this.Btn_Mantenimiento.TabIndex = 0;
@@ -55,7 +55,7 @@ namespace Capa_Vista_Cuentas_Corrientes
             // 
             // Btn_Caja
             // 
-            this.Btn_Caja.Location = new System.Drawing.Point(3, 135);
+            this.Btn_Caja.Location = new System.Drawing.Point(259, 3);
             this.Btn_Caja.Name = "Btn_Caja";
             this.Btn_Caja.Size = new System.Drawing.Size(122, 60);
             this.Btn_Caja.TabIndex = 1;
@@ -75,7 +75,7 @@ namespace Capa_Vista_Cuentas_Corrientes
             // 
             // Btn_Mov_Prov
             // 
-            this.Btn_Mov_Prov.Location = new System.Drawing.Point(3, 69);
+            this.Btn_Mov_Prov.Location = new System.Drawing.Point(131, 3);
             this.Btn_Mov_Prov.Name = "Btn_Mov_Prov";
             this.Btn_Mov_Prov.Size = new System.Drawing.Size(122, 60);
             this.Btn_Mov_Prov.TabIndex = 3;
@@ -85,7 +85,7 @@ namespace Capa_Vista_Cuentas_Corrientes
             // 
             // Btn_ReportC
             // 
-            this.Btn_ReportC.Location = new System.Drawing.Point(3, 201);
+            this.Btn_ReportC.Location = new System.Drawing.Point(387, 3);
             this.Btn_ReportC.Name = "Btn_ReportC";
             this.Btn_ReportC.Size = new System.Drawing.Size(122, 60);
             this.Btn_ReportC.TabIndex = 4;
@@ -95,7 +95,7 @@ namespace Capa_Vista_Cuentas_Corrientes
             // 
             // Btn_ReportesP
             // 
-            this.Btn_ReportesP.Location = new System.Drawing.Point(3, 267);
+            this.Btn_ReportesP.Location = new System.Drawing.Point(515, 3);
             this.Btn_ReportesP.Name = "Btn_ReportesP";
             this.Btn_ReportesP.Size = new System.Drawing.Size(122, 60);
             this.Btn_ReportesP.TabIndex = 5;
@@ -105,7 +105,7 @@ namespace Capa_Vista_Cuentas_Corrientes
             // 
             // Btn_ReporteM
             // 
-            this.Btn_ReporteM.Location = new System.Drawing.Point(3, 333);
+            this.Btn_ReporteM.Location = new System.Drawing.Point(643, 3);
             this.Btn_ReporteM.Name = "Btn_ReporteM";
             this.Btn_ReporteM.Size = new System.Drawing.Size(142, 60);
             this.Btn_ReporteM.TabIndex = 6;
@@ -125,31 +125,31 @@ namespace Capa_Vista_Cuentas_Corrientes
             this.flowLayoutPanel1.Controls.Add(this.Btn_Mantenimiento);
             this.flowLayoutPanel1.Controls.Add(this.Btn_Enlaces);
             this.flowLayoutPanel1.Controls.Add(this.pictureBox1);
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(211, 758);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1392, 758);
             this.flowLayoutPanel1.TabIndex = 8;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::Capa_Vista_Cuentas_Corrientes.Properties.Resources.WhatsApp_Image_2024_10_13_at_5_24_35_PM;
-            this.pictureBox1.Location = new System.Drawing.Point(3, 531);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(182, 142);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 7;
-            this.pictureBox1.TabStop = false;
             // 
             // Btn_Enlaces
             // 
-            this.Btn_Enlaces.Location = new System.Drawing.Point(3, 465);
+            this.Btn_Enlaces.Location = new System.Drawing.Point(939, 3);
             this.Btn_Enlaces.Name = "Btn_Enlaces";
             this.Btn_Enlaces.Size = new System.Drawing.Size(142, 60);
             this.Btn_Enlaces.TabIndex = 8;
             this.Btn_Enlaces.Text = "ENLACES";
             this.Btn_Enlaces.UseVisualStyleBackColor = true;
             this.Btn_Enlaces.Click += new System.EventHandler(this.Btn_Enlaces_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Capa_Vista_Cuentas_Corrientes.Properties.Resources.WhatsApp_Image_2024_10_13_at_5_24_35_PM;
+            this.pictureBox1.Location = new System.Drawing.Point(1087, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(182, 142);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 7;
+            this.pictureBox1.TabStop = false;
             // 
             // Menu
             // 

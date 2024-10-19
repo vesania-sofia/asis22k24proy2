@@ -40,7 +40,8 @@ namespace Capa_Vista_Cuentas_Corrientes
             this.crystalReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.crystalReportViewer1.Location = new System.Drawing.Point(0, 0);
             this.crystalReportViewer1.Name = "crystalReportViewer1";
-            this.crystalReportViewer1.ReportSource = "C:\\Users\\josea\\Downloads\\ReporteVentas.rpt";
+            this.crystalReportViewer1.ReportSource = "C:\\Users\\maris\\OneDrive\\Escritorio\\Proyecto Final\\asis22k24proy2\\Reportes\\Informe" +
+    "DeVentas.rpt";
             this.crystalReportViewer1.Size = new System.Drawing.Size(800, 450);
             this.crystalReportViewer1.TabIndex = 0;
             // 

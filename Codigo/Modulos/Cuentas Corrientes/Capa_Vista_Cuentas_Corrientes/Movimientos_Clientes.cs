@@ -29,7 +29,7 @@ namespace Capa_Vista_Cuentas_Corrientes
 
         private void nuevosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           // ClienteNuevo.Show(); ESTO ME DA ERROR AL MOMENTO DE LLAMAR EL FORMULARIO
+            //ClienteNuevo.Show();
         }
 
         private void mensualesToolStripMenuItem_Click(object sender, EventArgs e)

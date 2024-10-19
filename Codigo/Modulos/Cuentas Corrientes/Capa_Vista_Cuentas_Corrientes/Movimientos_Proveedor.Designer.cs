@@ -267,7 +267,7 @@ namespace Capa_Vista_Cuentas_Corrientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 543);
+            this.ClientSize = new System.Drawing.Size(817, 618);
             this.Controls.Add(this.Cbo_metodo);
             this.Controls.Add(this.Txt_metodo);
             this.Controls.Add(this.txt_monto_mov);
