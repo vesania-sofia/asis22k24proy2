@@ -74,6 +74,24 @@
     <Compile Include="EstadosFinancieros.Designer.cs">
       <DependentUpon>EstadosFinancieros.cs</DependentUpon>
     </Compile>
+    <Compile Include="Mantenimiento Tipo Poliza.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mantenimiento Tipo Poliza.Designer.cs">
+      <DependentUpon>Mantenimiento Tipo Poliza.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MantenimientoEncabezadoCuenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MantenimientoEncabezadoCuenta.Designer.cs">
+      <DependentUpon>MantenimientoEncabezadoCuenta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MantenimientoTipoCuenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MantenimientoTipoCuenta.Designer.cs">
+      <DependentUpon>MantenimientoTipoCuenta.cs</DependentUpon>
+    </Compile>
     <Compile Include="PartidaCierre.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,6 +125,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EstadosFinancieros.resx">
       <DependentUpon>EstadosFinancieros.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mantenimiento Tipo Poliza.resx">
+      <DependentUpon>Mantenimiento Tipo Poliza.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MantenimientoEncabezadoCuenta.resx">
+      <DependentUpon>MantenimientoEncabezadoCuenta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MantenimientoTipoCuenta.resx">
+      <DependentUpon>MantenimientoTipoCuenta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PartidaCierre.resx">
       <DependentUpon>PartidaCierre.cs</DependentUpon>

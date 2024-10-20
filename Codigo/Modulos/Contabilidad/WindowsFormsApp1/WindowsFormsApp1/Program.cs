@@ -18,7 +18,7 @@ namespace WindowsFormsApp1
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new MDI_Contabilidad());
-            Application.Run(new Poliza());
+            Application.Run(new MantenimientoEncabezadoCuenta()); //para ejecutar mantenimientos uno por uno
         }
     }
 }
