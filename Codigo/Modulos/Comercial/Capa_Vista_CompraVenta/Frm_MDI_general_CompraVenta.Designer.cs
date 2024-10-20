@@ -47,6 +47,7 @@ namespace Capa_Vista_CompraVenta
             this.btnMenuCatalogosOpcion2 = new System.Windows.Forms.Button();
             this.btnMenuCatalogosOpcion1 = new System.Windows.Forms.Button();
             this.btnMenuCatalogos = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panelBarraTitulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnRestaurar)).BeginInit();
@@ -152,7 +153,7 @@ namespace Capa_Vista_CompraVenta
             // panelMenu
             // 
             this.panelMenu.AutoScroll = true;
-            this.panelMenu.BackColor = System.Drawing.Color.LemonChiffon;
+            this.panelMenu.BackColor = System.Drawing.Color.Khaki;
             this.panelMenu.Controls.Add(this.btnSalir);
             this.panelMenu.Controls.Add(this.panelMenuProcesos);
             this.panelMenu.Controls.Add(this.btnMenuProcesos);
@@ -169,7 +170,7 @@ namespace Capa_Vista_CompraVenta
             // 
             // btnSalir
             // 
-            this.btnSalir.BackColor = System.Drawing.Color.Khaki;
+            this.btnSalir.BackColor = System.Drawing.Color.LemonChiffon;
             this.btnSalir.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnSalir.FlatAppearance.BorderSize = 0;
             this.btnSalir.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(50)))), ((int)(((byte)(70)))));
@@ -179,10 +180,10 @@ namespace Capa_Vista_CompraVenta
             this.btnSalir.ForeColor = System.Drawing.Color.Black;
             this.btnSalir.Image = ((System.Drawing.Image)(resources.GetObject("btnSalir.Image")));
             this.btnSalir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSalir.Location = new System.Drawing.Point(0, 233);
+            this.btnSalir.Location = new System.Drawing.Point(0, 264);
             this.btnSalir.Margin = new System.Windows.Forms.Padding(2);
             this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(145, 35);
+            this.btnSalir.Size = new System.Drawing.Size(145, 45);
             this.btnSalir.TabIndex = 7;
             this.btnSalir.Text = "Salir";
             this.btnSalir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -190,14 +191,15 @@ namespace Capa_Vista_CompraVenta
             // 
             // panelMenuProcesos
             // 
-            this.panelMenuProcesos.BackColor = System.Drawing.Color.LemonChiffon;
+            this.panelMenuProcesos.BackColor = System.Drawing.Color.Khaki;
+            this.panelMenuProcesos.Controls.Add(this.button2);
             this.panelMenuProcesos.Controls.Add(this.button1);
             this.panelMenuProcesos.Controls.Add(this.btnMenuProcesosOpcion1);
             this.panelMenuProcesos.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelMenuProcesos.Location = new System.Drawing.Point(0, 149);
+            this.panelMenuProcesos.Location = new System.Drawing.Point(0, 158);
             this.panelMenuProcesos.Margin = new System.Windows.Forms.Padding(2);
             this.panelMenuProcesos.Name = "panelMenuProcesos";
-            this.panelMenuProcesos.Size = new System.Drawing.Size(145, 84);
+            this.panelMenuProcesos.Size = new System.Drawing.Size(145, 106);
             this.panelMenuProcesos.TabIndex = 6;
             this.panelMenuProcesos.Visible = false;
             // 
@@ -213,9 +215,10 @@ namespace Capa_Vista_CompraVenta
             this.button1.Padding = new System.Windows.Forms.Padding(26, 0, 0, 0);
             this.button1.Size = new System.Drawing.Size(145, 31);
             this.button1.TabIndex = 1;
-            this.button1.Text = "Opcion4";
+            this.button1.Text = "Vendedores";
             this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnMenuProcesosOpcion1
             // 
@@ -229,13 +232,14 @@ namespace Capa_Vista_CompraVenta
             this.btnMenuProcesosOpcion1.Padding = new System.Windows.Forms.Padding(26, 0, 0, 0);
             this.btnMenuProcesosOpcion1.Size = new System.Drawing.Size(145, 30);
             this.btnMenuProcesosOpcion1.TabIndex = 0;
-            this.btnMenuProcesosOpcion1.Text = "Opcion3";
+            this.btnMenuProcesosOpcion1.Text = "Clientes";
             this.btnMenuProcesosOpcion1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnMenuProcesosOpcion1.UseVisualStyleBackColor = true;
+            this.btnMenuProcesosOpcion1.Click += new System.EventHandler(this.btnMenuProcesosOpcion1_Click);
             // 
             // btnMenuProcesos
             // 
-            this.btnMenuProcesos.BackColor = System.Drawing.Color.Khaki;
+            this.btnMenuProcesos.BackColor = System.Drawing.Color.LemonChiffon;
             this.btnMenuProcesos.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnMenuProcesos.FlatAppearance.BorderSize = 0;
             this.btnMenuProcesos.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(50)))), ((int)(((byte)(70)))));
@@ -245,12 +249,12 @@ namespace Capa_Vista_CompraVenta
             this.btnMenuProcesos.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnMenuProcesos.Image = ((System.Drawing.Image)(resources.GetObject("btnMenuProcesos.Image")));
             this.btnMenuProcesos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnMenuProcesos.Location = new System.Drawing.Point(0, 103);
+            this.btnMenuProcesos.Location = new System.Drawing.Point(0, 115);
             this.btnMenuProcesos.Margin = new System.Windows.Forms.Padding(2);
             this.btnMenuProcesos.Name = "btnMenuProcesos";
-            this.btnMenuProcesos.Size = new System.Drawing.Size(145, 46);
+            this.btnMenuProcesos.Size = new System.Drawing.Size(145, 43);
             this.btnMenuProcesos.TabIndex = 5;
-            this.btnMenuProcesos.Text = "Procesos";
+            this.btnMenuProcesos.Text = "Venta";
             this.btnMenuProcesos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnMenuProcesos.UseVisualStyleBackColor = false;
             // 
@@ -259,7 +263,7 @@ namespace Capa_Vista_CompraVenta
             this.panelMenuCatalogos.Controls.Add(this.btnMenuCatalogosOpcion2);
             this.panelMenuCatalogos.Controls.Add(this.btnMenuCatalogosOpcion1);
             this.panelMenuCatalogos.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelMenuCatalogos.Location = new System.Drawing.Point(0, 37);
+            this.panelMenuCatalogos.Location = new System.Drawing.Point(0, 49);
             this.panelMenuCatalogos.Margin = new System.Windows.Forms.Padding(2);
             this.panelMenuCatalogos.Name = "panelMenuCatalogos";
             this.panelMenuCatalogos.Size = new System.Drawing.Size(145, 66);
@@ -276,7 +280,7 @@ namespace Capa_Vista_CompraVenta
             this.btnMenuCatalogosOpcion2.Margin = new System.Windows.Forms.Padding(2);
             this.btnMenuCatalogosOpcion2.Name = "btnMenuCatalogosOpcion2";
             this.btnMenuCatalogosOpcion2.Padding = new System.Windows.Forms.Padding(26, 0, 0, 0);
-            this.btnMenuCatalogosOpcion2.Size = new System.Drawing.Size(145, 45);
+            this.btnMenuCatalogosOpcion2.Size = new System.Drawing.Size(145, 44);
             this.btnMenuCatalogosOpcion2.TabIndex = 1;
             this.btnMenuCatalogosOpcion2.Text = "Opcion2";
             this.btnMenuCatalogosOpcion2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -294,13 +298,14 @@ namespace Capa_Vista_CompraVenta
             this.btnMenuCatalogosOpcion1.Padding = new System.Windows.Forms.Padding(26, 0, 0, 0);
             this.btnMenuCatalogosOpcion1.Size = new System.Drawing.Size(145, 31);
             this.btnMenuCatalogosOpcion1.TabIndex = 0;
-            this.btnMenuCatalogosOpcion1.Text = "Opcion1";
+            this.btnMenuCatalogosOpcion1.Text = "Proveedores";
             this.btnMenuCatalogosOpcion1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnMenuCatalogosOpcion1.UseVisualStyleBackColor = true;
+            this.btnMenuCatalogosOpcion1.Click += new System.EventHandler(this.btnMenuCatalogosOpcion1_Click);
             // 
             // btnMenuCatalogos
             // 
-            this.btnMenuCatalogos.BackColor = System.Drawing.Color.Khaki;
+            this.btnMenuCatalogos.BackColor = System.Drawing.Color.LemonChiffon;
             this.btnMenuCatalogos.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnMenuCatalogos.FlatAppearance.BorderSize = 0;
             this.btnMenuCatalogos.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(50)))), ((int)(((byte)(70)))));
@@ -313,12 +318,28 @@ namespace Capa_Vista_CompraVenta
             this.btnMenuCatalogos.Location = new System.Drawing.Point(0, 0);
             this.btnMenuCatalogos.Margin = new System.Windows.Forms.Padding(2);
             this.btnMenuCatalogos.Name = "btnMenuCatalogos";
-            this.btnMenuCatalogos.Size = new System.Drawing.Size(145, 37);
+            this.btnMenuCatalogos.Size = new System.Drawing.Size(145, 49);
             this.btnMenuCatalogos.TabIndex = 2;
-            this.btnMenuCatalogos.Text = "Catalogos";
+            this.btnMenuCatalogos.Text = "Compra";
             this.btnMenuCatalogos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnMenuCatalogos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnMenuCatalogos.UseVisualStyleBackColor = false;
+            // 
+            // button2
+            // 
+            this.button2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.button2.Location = new System.Drawing.Point(0, 61);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
+            this.button2.Name = "button2";
+            this.button2.Padding = new System.Windows.Forms.Padding(26, 0, 0, 0);
+            this.button2.Size = new System.Drawing.Size(145, 31);
+            this.button2.TabIndex = 2;
+            this.button2.Text = "opcion 3";
+            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // Frm_MDI_general_CompraVenta
             // 
@@ -361,5 +382,6 @@ namespace Capa_Vista_CompraVenta
         private System.Windows.Forms.Button btnMenuCatalogosOpcion2;
         private System.Windows.Forms.Button btnMenuCatalogosOpcion1;
         private System.Windows.Forms.Button btnMenuCatalogos;
+        private System.Windows.Forms.Button button2;
     }
 }
