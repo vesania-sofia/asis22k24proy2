@@ -43,11 +43,7 @@ namespace Capa_Vista_Logistica
             this.txt_alInventarioDestino = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.cbm_BodegaOrigen = new System.Windows.Forms.ComboBox();
-            this.cbm_BodegaDestino = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.cbm_SucursalOrigen = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.cbm_SucursalDestino = new System.Windows.Forms.ComboBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -137,22 +133,22 @@ namespace Capa_Vista_Logistica
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(19, 126);
+            this.label3.Location = new System.Drawing.Point(12, 127);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(23, 13);
+            this.label3.Size = new System.Drawing.Size(65, 13);
             this.label3.TabIndex = 9;
-            this.label3.Text = "Del";
+            this.label3.Text = "Id_Producto";
             // 
             // txt_delInventarioOrigen
             // 
-            this.txt_delInventarioOrigen.Location = new System.Drawing.Point(48, 123);
+            this.txt_delInventarioOrigen.Location = new System.Drawing.Point(74, 123);
             this.txt_delInventarioOrigen.Name = "txt_delInventarioOrigen";
             this.txt_delInventarioOrigen.Size = new System.Drawing.Size(264, 20);
             this.txt_delInventarioOrigen.TabIndex = 10;
             // 
             // txt_alInventarioDestino
             // 
-            this.txt_alInventarioDestino.Location = new System.Drawing.Point(366, 127);
+            this.txt_alInventarioDestino.Location = new System.Drawing.Point(387, 127);
             this.txt_alInventarioDestino.Name = "txt_alInventarioDestino";
             this.txt_alInventarioDestino.Size = new System.Drawing.Size(258, 20);
             this.txt_alInventarioDestino.TabIndex = 11;
@@ -162,9 +158,9 @@ namespace Capa_Vista_Logistica
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(344, 130);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(16, 13);
+            this.label4.Size = new System.Drawing.Size(44, 13);
             this.label4.TabIndex = 12;
-            this.label4.Text = "Al";
+            this.label4.Text = "Nombre";
             // 
             // label5
             // 
@@ -175,15 +171,6 @@ namespace Capa_Vista_Logistica
             this.label5.TabIndex = 13;
             this.label5.Text = "Bodega (origen)";
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(339, 195);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(83, 13);
-            this.label6.TabIndex = 15;
-            this.label6.Text = "Bodega Destino";
-            // 
             // cbm_BodegaOrigen
             // 
             this.cbm_BodegaOrigen.FormattingEnabled = true;
@@ -192,35 +179,10 @@ namespace Capa_Vista_Logistica
             this.cbm_BodegaOrigen.Size = new System.Drawing.Size(208, 21);
             this.cbm_BodegaOrigen.TabIndex = 16;
             // 
-            // cbm_BodegaDestino
-            // 
-            this.cbm_BodegaDestino.FormattingEnabled = true;
-            this.cbm_BodegaDestino.Location = new System.Drawing.Point(428, 187);
-            this.cbm_BodegaDestino.Name = "cbm_BodegaDestino";
-            this.cbm_BodegaDestino.Size = new System.Drawing.Size(191, 21);
-            this.cbm_BodegaDestino.TabIndex = 17;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(16, 247);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(82, 13);
-            this.label7.TabIndex = 18;
-            this.label7.Text = "Sucursal Origen";
-            // 
-            // cbm_SucursalOrigen
-            // 
-            this.cbm_SucursalOrigen.FormattingEnabled = true;
-            this.cbm_SucursalOrigen.Location = new System.Drawing.Point(104, 244);
-            this.cbm_SucursalOrigen.Name = "cbm_SucursalOrigen";
-            this.cbm_SucursalOrigen.Size = new System.Drawing.Size(208, 21);
-            this.cbm_SucursalOrigen.TabIndex = 19;
-            // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(337, 244);
+            this.label8.Location = new System.Drawing.Point(337, 190);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(85, 13);
             this.label8.TabIndex = 20;
@@ -229,7 +191,7 @@ namespace Capa_Vista_Logistica
             // cbm_SucursalDestino
             // 
             this.cbm_SucursalDestino.FormattingEnabled = true;
-            this.cbm_SucursalDestino.Location = new System.Drawing.Point(428, 239);
+            this.cbm_SucursalDestino.Location = new System.Drawing.Point(428, 187);
             this.cbm_SucursalDestino.Name = "cbm_SucursalDestino";
             this.cbm_SucursalDestino.Size = new System.Drawing.Size(191, 21);
             this.cbm_SucursalDestino.TabIndex = 21;
@@ -244,7 +206,7 @@ namespace Capa_Vista_Logistica
             // 
             // btn_GenerarPDF
             // 
-            this.btn_GenerarPDF.Location = new System.Drawing.Point(630, 125);
+            this.btn_GenerarPDF.Location = new System.Drawing.Point(651, 123);
             this.btn_GenerarPDF.Name = "btn_GenerarPDF";
             this.btn_GenerarPDF.Size = new System.Drawing.Size(103, 23);
             this.btn_GenerarPDF.TabIndex = 23;
@@ -253,7 +215,7 @@ namespace Capa_Vista_Logistica
             // 
             // btn_Actualizar
             // 
-            this.btn_Actualizar.Location = new System.Drawing.Point(658, 239);
+            this.btn_Actualizar.Location = new System.Drawing.Point(22, 242);
             this.btn_Actualizar.Name = "btn_Actualizar";
             this.btn_Actualizar.Size = new System.Drawing.Size(75, 23);
             this.btn_Actualizar.TabIndex = 24;
@@ -270,11 +232,7 @@ namespace Capa_Vista_Logistica
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.cbm_SucursalDestino);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.cbm_SucursalOrigen);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.cbm_BodegaDestino);
             this.Controls.Add(this.cbm_BodegaOrigen);
-            this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txt_alInventarioDestino);
@@ -313,11 +271,7 @@ namespace Capa_Vista_Logistica
         private System.Windows.Forms.TextBox txt_alInventarioDestino;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox cbm_BodegaOrigen;
-        private System.Windows.Forms.ComboBox cbm_BodegaDestino;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ComboBox cbm_SucursalOrigen;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox cbm_SucursalDestino;
         private System.Windows.Forms.DataGridView dataGridView1;

@@ -47,14 +47,14 @@ namespace Capa_Vista_Logistica
 
         private void Btn_Mantenimiento_Click(object sender, EventArgs e)
         {
-            Mantenimiento mantenimiento = new Mantenimiento();
+            MantenimientoNav mantenimiento = new MantenimientoNav("9006");
             mantenimiento.MdiParent = this;
             mantenimiento.Show();
         }
 
         private void Btn_Inventario_Click(object sender, EventArgs e)
         {
-            Movimiento_de_Inventario movimientoinv = new Movimiento_de_Inventario();
+            Movimientos movimientoinv = new Movimientos("9005");
             movimientoinv.MdiParent = this;
             movimientoinv.Show();
         }
