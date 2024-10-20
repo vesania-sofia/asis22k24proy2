@@ -98,6 +98,7 @@ namespace Capa_Vista_CompraVenta
             this.groupBox2.Controls.Add(this.Txt_IVA);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.Txt_subtotaln);
+            this.groupBox2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(27, 156);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(735, 170);
@@ -107,10 +108,11 @@ namespace Capa_Vista_CompraVenta
             // 
             // comboBox5
             // 
+            this.comboBox5.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox5.FormattingEnabled = true;
             this.comboBox5.Location = new System.Drawing.Point(138, 111);
             this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(121, 21);
+            this.comboBox5.Size = new System.Drawing.Size(121, 23);
             this.comboBox5.TabIndex = 20;
             // 
             // Txt_idCotizacionfk
@@ -118,7 +120,7 @@ namespace Capa_Vista_CompraVenta
             this.Txt_idCotizacionfk.AutoSize = true;
             this.Txt_idCotizacionfk.Location = new System.Drawing.Point(43, 114);
             this.Txt_idCotizacionfk.Name = "Txt_idCotizacionfk";
-            this.Txt_idCotizacionfk.Size = new System.Drawing.Size(70, 13);
+            this.Txt_idCotizacionfk.Size = new System.Drawing.Size(93, 19);
             this.Txt_idCotizacionfk.TabIndex = 19;
             this.Txt_idCotizacionfk.Text = "ID Cotización";
             // 
@@ -127,22 +129,24 @@ namespace Capa_Vista_CompraVenta
             this.Txt_precioTn.AutoSize = true;
             this.Txt_precioTn.Location = new System.Drawing.Point(339, 107);
             this.Txt_precioTn.Name = "Txt_precioTn";
-            this.Txt_precioTn.Size = new System.Drawing.Size(64, 13);
+            this.Txt_precioTn.Size = new System.Drawing.Size(82, 19);
             this.Txt_precioTn.TabIndex = 21;
             this.Txt_precioTn.Text = "Precio Total";
             // 
             // Txt_precioTotal
             // 
+            this.Txt_precioTotal.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Txt_precioTotal.Location = new System.Drawing.Point(433, 107);
             this.Txt_precioTotal.Name = "Txt_precioTotal";
-            this.Txt_precioTotal.Size = new System.Drawing.Size(121, 20);
+            this.Txt_precioTotal.Size = new System.Drawing.Size(121, 22);
             this.Txt_precioTotal.TabIndex = 20;
             // 
             // Txt_subtotal
             // 
+            this.Txt_subtotal.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Txt_subtotal.Location = new System.Drawing.Point(433, 39);
             this.Txt_subtotal.Name = "Txt_subtotal";
-            this.Txt_subtotal.Size = new System.Drawing.Size(121, 20);
+            this.Txt_subtotal.Size = new System.Drawing.Size(121, 22);
             this.Txt_subtotal.TabIndex = 19;
             // 
             // Txt_IVAn
@@ -150,15 +154,16 @@ namespace Capa_Vista_CompraVenta
             this.Txt_IVAn.AutoSize = true;
             this.Txt_IVAn.Location = new System.Drawing.Point(338, 78);
             this.Txt_IVAn.Name = "Txt_IVAn";
-            this.Txt_IVAn.Size = new System.Drawing.Size(24, 13);
+            this.Txt_IVAn.Size = new System.Drawing.Size(34, 19);
             this.Txt_IVAn.TabIndex = 16;
             this.Txt_IVAn.Text = "IVA";
             // 
             // Txt_IVA
             // 
+            this.Txt_IVA.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Txt_IVA.Location = new System.Drawing.Point(433, 71);
             this.Txt_IVA.Name = "Txt_IVA";
-            this.Txt_IVA.Size = new System.Drawing.Size(121, 20);
+            this.Txt_IVA.Size = new System.Drawing.Size(121, 22);
             this.Txt_IVA.TabIndex = 10;
             // 
             // label6
@@ -166,7 +171,7 @@ namespace Capa_Vista_CompraVenta
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(29, 80);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(0, 13);
+            this.label6.Size = new System.Drawing.Size(0, 19);
             this.label6.TabIndex = 10;
             // 
             // Txt_subtotaln
@@ -174,7 +179,7 @@ namespace Capa_Vista_CompraVenta
             this.Txt_subtotaln.AutoSize = true;
             this.Txt_subtotaln.Location = new System.Drawing.Point(338, 46);
             this.Txt_subtotaln.Name = "Txt_subtotaln";
-            this.Txt_subtotaln.Size = new System.Drawing.Size(46, 13);
+            this.Txt_subtotaln.Size = new System.Drawing.Size(59, 19);
             this.Txt_subtotaln.TabIndex = 9;
             this.Txt_subtotaln.Text = "Subtotal";
             // 
@@ -190,6 +195,7 @@ namespace Capa_Vista_CompraVenta
             this.groupBox1.Controls.Add(this.Txt_Clienten);
             this.groupBox1.Controls.Add(this.Txt_Vendedorn);
             this.groupBox1.Controls.Add(this.Txt_idE);
+            this.groupBox1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(27, 32);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(735, 119);
@@ -199,9 +205,10 @@ namespace Capa_Vista_CompraVenta
             // 
             // Txt_idEncezado
             // 
+            this.Txt_idEncezado.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Txt_idEncezado.Location = new System.Drawing.Point(103, 31);
             this.Txt_idEncezado.Name = "Txt_idEncezado";
-            this.Txt_idEncezado.Size = new System.Drawing.Size(121, 20);
+            this.Txt_idEncezado.Size = new System.Drawing.Size(121, 22);
             this.Txt_idEncezado.TabIndex = 9;
             // 
             // Btn_cancelarE
@@ -224,25 +231,28 @@ namespace Capa_Vista_CompraVenta
             // 
             // Dtp_fecha
             // 
+            this.Dtp_fecha.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Dtp_fecha.Location = new System.Drawing.Point(335, 60);
             this.Dtp_fecha.Name = "Dtp_fecha";
-            this.Dtp_fecha.Size = new System.Drawing.Size(200, 20);
+            this.Dtp_fecha.Size = new System.Drawing.Size(200, 22);
             this.Dtp_fecha.TabIndex = 6;
             // 
             // Cbo_cliente
             // 
+            this.Cbo_cliente.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Cbo_cliente.FormattingEnabled = true;
             this.Cbo_cliente.Location = new System.Drawing.Point(103, 91);
             this.Cbo_cliente.Name = "Cbo_cliente";
-            this.Cbo_cliente.Size = new System.Drawing.Size(121, 21);
+            this.Cbo_cliente.Size = new System.Drawing.Size(121, 23);
             this.Cbo_cliente.TabIndex = 5;
             // 
             // Cbo_vendedor
             // 
+            this.Cbo_vendedor.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Cbo_vendedor.FormattingEnabled = true;
             this.Cbo_vendedor.Location = new System.Drawing.Point(103, 59);
             this.Cbo_vendedor.Name = "Cbo_vendedor";
-            this.Cbo_vendedor.Size = new System.Drawing.Size(121, 21);
+            this.Cbo_vendedor.Size = new System.Drawing.Size(121, 23);
             this.Cbo_vendedor.TabIndex = 4;
             // 
             // Txt_FechaVencimiento
@@ -250,7 +260,7 @@ namespace Capa_Vista_CompraVenta
             this.Txt_FechaVencimiento.AutoSize = true;
             this.Txt_FechaVencimiento.Location = new System.Drawing.Point(370, 31);
             this.Txt_FechaVencimiento.Name = "Txt_FechaVencimiento";
-            this.Txt_FechaVencimiento.Size = new System.Drawing.Size(98, 13);
+            this.Txt_FechaVencimiento.Size = new System.Drawing.Size(123, 19);
             this.Txt_FechaVencimiento.TabIndex = 3;
             this.Txt_FechaVencimiento.Text = "Fecha Vencimiento";
             // 
@@ -259,7 +269,7 @@ namespace Capa_Vista_CompraVenta
             this.Txt_Clienten.AutoSize = true;
             this.Txt_Clienten.Location = new System.Drawing.Point(29, 94);
             this.Txt_Clienten.Name = "Txt_Clienten";
-            this.Txt_Clienten.Size = new System.Drawing.Size(39, 13);
+            this.Txt_Clienten.Size = new System.Drawing.Size(51, 19);
             this.Txt_Clienten.TabIndex = 2;
             this.Txt_Clienten.Text = "Cliente";
             // 
@@ -268,7 +278,7 @@ namespace Capa_Vista_CompraVenta
             this.Txt_Vendedorn.AutoSize = true;
             this.Txt_Vendedorn.Location = new System.Drawing.Point(29, 59);
             this.Txt_Vendedorn.Name = "Txt_Vendedorn";
-            this.Txt_Vendedorn.Size = new System.Drawing.Size(53, 13);
+            this.Txt_Vendedorn.Size = new System.Drawing.Size(68, 19);
             this.Txt_Vendedorn.TabIndex = 1;
             this.Txt_Vendedorn.Text = "Vendedor";
             // 
@@ -277,16 +287,17 @@ namespace Capa_Vista_CompraVenta
             this.Txt_idE.AutoSize = true;
             this.Txt_idE.Location = new System.Drawing.Point(29, 31);
             this.Txt_idE.Name = "Txt_idE";
-            this.Txt_idE.Size = new System.Drawing.Size(18, 13);
+            this.Txt_idE.Size = new System.Drawing.Size(25, 19);
             this.Txt_idE.TabIndex = 0;
             this.Txt_idE.Text = "ID";
             // 
             // Cbo_encabezado
             // 
+            this.Cbo_encabezado.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Cbo_encabezado.FormattingEnabled = true;
             this.Cbo_encabezado.Location = new System.Drawing.Point(140, 78);
             this.Cbo_encabezado.Name = "Cbo_encabezado";
-            this.Cbo_encabezado.Size = new System.Drawing.Size(121, 21);
+            this.Cbo_encabezado.Size = new System.Drawing.Size(121, 23);
             this.Cbo_encabezado.TabIndex = 25;
             // 
             // Txt_idEfk
@@ -294,15 +305,16 @@ namespace Capa_Vista_CompraVenta
             this.Txt_idEfk.AutoSize = true;
             this.Txt_idEfk.Location = new System.Drawing.Point(43, 85);
             this.Txt_idEfk.Name = "Txt_idEfk";
-            this.Txt_idEfk.Size = new System.Drawing.Size(81, 13);
+            this.Txt_idEfk.Size = new System.Drawing.Size(103, 19);
             this.Txt_idEfk.TabIndex = 24;
             this.Txt_idEfk.Text = "ID Encabezado";
             // 
             // Txt_idDetalle
             // 
+            this.Txt_idDetalle.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Txt_idDetalle.Location = new System.Drawing.Point(140, 43);
             this.Txt_idDetalle.Name = "Txt_idDetalle";
-            this.Txt_idDetalle.Size = new System.Drawing.Size(121, 20);
+            this.Txt_idDetalle.Size = new System.Drawing.Size(121, 22);
             this.Txt_idDetalle.TabIndex = 23;
             // 
             // Txt_idD
@@ -310,7 +322,7 @@ namespace Capa_Vista_CompraVenta
             this.Txt_idD.AutoSize = true;
             this.Txt_idD.Location = new System.Drawing.Point(43, 42);
             this.Txt_idD.Name = "Txt_idD";
-            this.Txt_idD.Size = new System.Drawing.Size(18, 13);
+            this.Txt_idD.Size = new System.Drawing.Size(25, 19);
             this.Txt_idD.TabIndex = 22;
             this.Txt_idD.Text = "ID";
             // 
