@@ -40,7 +40,7 @@ namespace Capa_Vista_Logistica
 
         private void Btn_TrasladoDProd_Click(object sender, EventArgs e)
         {
-            TrasladoDProductos trasladodprod = new TrasladoDProductos();
+            TrasDProductos trasladodprod = new TrasDProductos("9006");
             trasladodprod.MdiParent = this;
             trasladodprod.Show();
         }
