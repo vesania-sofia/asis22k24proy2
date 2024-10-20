@@ -12,11 +12,17 @@ namespace Capa_Vista_Logistica
 {
     public partial class Movimiento_de_Inventario : Form
     {
-        public Movimiento_de_Inventario()
+        private string Pk_id_movimiento;
+        public Movimiento_de_Inventario(string Pk_id_movimiento)
         {
             InitializeComponent();
+            this.Pk_id_movimiento = Pk_id_movimiento;
+            CargarInformacionMovimiento(Pk_id_movimiento);
         }
-
+        private void CargarInformacionMovimiento(string Pk_id_movimiento)
+        {
+            MessageBox.Show("ID de movimiento seleccionado: " + Pk_id_movimiento);
+        }
         private void label2_Click(object sender, EventArgs e)
         {
 

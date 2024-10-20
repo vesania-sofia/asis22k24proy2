@@ -36,7 +36,7 @@
       <HintPath>..\Capa_Controlador_Logistica\bin\Debug\Capa_Controlador_Logistica.dll</HintPath>
     </Reference>
     <Reference Include="Capa_Vista_Navegador">
-      <HintPath>..\..\..\..\..\DANIEL\Octavo Semestre\AS II\asis22k24proy2\Codigo\Componentes\Navegador\Capa_Vista_Navegador\bin\Debug\Capa_Vista_Navegador.dll</HintPath>
+      <HintPath>..\..\..\Componentes\Navegador\Capa_Vista_Navegador\bin\Debug\Capa_Vista_Navegador.dll</HintPath>
     </Reference>
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
@@ -92,6 +92,12 @@
     <Compile Include="Mantenimiento.Designer.cs">
       <DependentUpon>Mantenimiento.cs</DependentUpon>
     </Compile>
+    <Compile Include="MantenimientoNav.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MantenimientoNav.Designer.cs">
+      <DependentUpon>MantenimientoNav.cs</DependentUpon>
+    </Compile>
     <Compile Include="MonitoreoAlmacen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -103,6 +109,12 @@
     </Compile>
     <Compile Include="Movimiento de Inventario.Designer.cs">
       <DependentUpon>Movimiento de Inventario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Movimientos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Movimientos.Designer.cs">
+      <DependentUpon>Movimientos.cs</DependentUpon>
     </Compile>
     <Compile Include="Principal.cs">
       <SubType>Form</SubType>
@@ -163,8 +175,17 @@
     <EmbeddedResource Include="Locales.resx">
       <DependentUpon>Locales.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MantenimientoNav.resx">
+      <DependentUpon>MantenimientoNav.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MonitoreoAlmacen.resx">
       <DependentUpon>MonitoreoAlmacen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Movimiento de Inventario.resx">
+      <DependentUpon>Movimiento de Inventario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Movimientos.resx">
+      <DependentUpon>Movimientos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Principal.resx">
       <DependentUpon>Principal.cs</DependentUpon>
