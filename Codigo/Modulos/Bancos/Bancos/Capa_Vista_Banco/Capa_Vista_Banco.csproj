@@ -46,12 +46,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="MovimientoBancario.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MovimientoBancario.Designer.cs">
       <DependentUpon>MovimientoBancario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="polizaDetalle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="polizaDetalle.Designer.cs">
+      <DependentUpon>polizaDetalle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="polizaEncabezado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="polizaEncabezado.Designer.cs">
+      <DependentUpon>polizaEncabezado.cs</DependentUpon>
     </Compile>
     <Compile Include="Principal.cs">
       <SubType>Form</SubType>
@@ -65,10 +76,22 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="tipoCambio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="tipoCambio.Designer.cs">
+      <DependentUpon>tipoCambio.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MovimientoBancario.resx">
       <DependentUpon>MovimientoBancario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="polizaDetalle.resx">
+      <DependentUpon>polizaDetalle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="polizaEncabezado.resx">
+      <DependentUpon>polizaEncabezado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Principal.resx">
       <DependentUpon>Principal.cs</DependentUpon>
@@ -76,6 +99,9 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="tipoCambio.resx">
+      <DependentUpon>tipoCambio.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
