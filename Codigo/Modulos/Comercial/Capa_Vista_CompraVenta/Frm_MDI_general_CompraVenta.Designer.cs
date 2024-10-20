@@ -72,7 +72,7 @@ namespace Capa_Vista_CompraVenta
             // 
             // panelIdentificacion
             // 
-            this.panelIdentificacion.BackColor = System.Drawing.Color.LemonChiffon;
+            this.panelIdentificacion.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.panelIdentificacion.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelIdentificacion.Location = new System.Drawing.Point(0, 426);
             this.panelIdentificacion.Margin = new System.Windows.Forms.Padding(2);
@@ -82,7 +82,7 @@ namespace Capa_Vista_CompraVenta
             // 
             // panelBarraTitulo
             // 
-            this.panelBarraTitulo.BackColor = System.Drawing.Color.Khaki;
+            this.panelBarraTitulo.BackColor = System.Drawing.Color.LightSlateGray;
             this.panelBarraTitulo.Controls.Add(this.btnRestaurar);
             this.panelBarraTitulo.Controls.Add(this.pictureBox2);
             this.panelBarraTitulo.Controls.Add(this.btnMinimizar);
@@ -152,7 +152,7 @@ namespace Capa_Vista_CompraVenta
             // panelMenu
             // 
             this.panelMenu.AutoScroll = true;
-            this.panelMenu.BackColor = System.Drawing.Color.Goldenrod;
+            this.panelMenu.BackColor = System.Drawing.Color.LemonChiffon;
             this.panelMenu.Controls.Add(this.btnSalir);
             this.panelMenu.Controls.Add(this.panelMenuProcesos);
             this.panelMenu.Controls.Add(this.btnMenuProcesos);
@@ -169,33 +169,35 @@ namespace Capa_Vista_CompraVenta
             // 
             // btnSalir
             // 
+            this.btnSalir.BackColor = System.Drawing.Color.Khaki;
             this.btnSalir.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnSalir.FlatAppearance.BorderSize = 0;
             this.btnSalir.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(50)))), ((int)(((byte)(70)))));
             this.btnSalir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(61)))), ((int)(((byte)(92)))));
             this.btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalir.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnSalir.ForeColor = System.Drawing.Color.Black;
             this.btnSalir.Image = ((System.Drawing.Image)(resources.GetObject("btnSalir.Image")));
             this.btnSalir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSalir.Location = new System.Drawing.Point(0, 274);
+            this.btnSalir.Location = new System.Drawing.Point(0, 233);
             this.btnSalir.Margin = new System.Windows.Forms.Padding(2);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(145, 35);
             this.btnSalir.TabIndex = 7;
             this.btnSalir.Text = "Salir";
             this.btnSalir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.UseVisualStyleBackColor = false;
             // 
             // panelMenuProcesos
             // 
+            this.panelMenuProcesos.BackColor = System.Drawing.Color.LemonChiffon;
             this.panelMenuProcesos.Controls.Add(this.button1);
             this.panelMenuProcesos.Controls.Add(this.btnMenuProcesosOpcion1);
             this.panelMenuProcesos.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelMenuProcesos.Location = new System.Drawing.Point(0, 149);
             this.panelMenuProcesos.Margin = new System.Windows.Forms.Padding(2);
             this.panelMenuProcesos.Name = "panelMenuProcesos";
-            this.panelMenuProcesos.Size = new System.Drawing.Size(145, 125);
+            this.panelMenuProcesos.Size = new System.Drawing.Size(145, 84);
             this.panelMenuProcesos.TabIndex = 6;
             this.panelMenuProcesos.Visible = false;
             // 
@@ -233,6 +235,7 @@ namespace Capa_Vista_CompraVenta
             // 
             // btnMenuProcesos
             // 
+            this.btnMenuProcesos.BackColor = System.Drawing.Color.Khaki;
             this.btnMenuProcesos.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnMenuProcesos.FlatAppearance.BorderSize = 0;
             this.btnMenuProcesos.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(50)))), ((int)(((byte)(70)))));
@@ -249,7 +252,7 @@ namespace Capa_Vista_CompraVenta
             this.btnMenuProcesos.TabIndex = 5;
             this.btnMenuProcesos.Text = "Procesos";
             this.btnMenuProcesos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnMenuProcesos.UseVisualStyleBackColor = true;
+            this.btnMenuProcesos.UseVisualStyleBackColor = false;
             // 
             // panelMenuCatalogos
             // 
@@ -297,6 +300,7 @@ namespace Capa_Vista_CompraVenta
             // 
             // btnMenuCatalogos
             // 
+            this.btnMenuCatalogos.BackColor = System.Drawing.Color.Khaki;
             this.btnMenuCatalogos.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnMenuCatalogos.FlatAppearance.BorderSize = 0;
             this.btnMenuCatalogos.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(50)))), ((int)(((byte)(70)))));
@@ -314,7 +318,7 @@ namespace Capa_Vista_CompraVenta
             this.btnMenuCatalogos.Text = "Catalogos";
             this.btnMenuCatalogos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnMenuCatalogos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnMenuCatalogos.UseVisualStyleBackColor = true;
+            this.btnMenuCatalogos.UseVisualStyleBackColor = false;
             // 
             // Frm_MDI_general_CompraVenta
             // 
