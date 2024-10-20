@@ -23,8 +23,8 @@ CREATE TABLE tbl_cuentabancaria (
     saldo DECIMAL(10,2) NOT NULL,
     tipocuenta VARCHAR(50) NOT NULL,
     cliente_id INT NOT NULL,
-    CONSTRAINT fk_banco FOREIGN KEY (banco_id) REFERENCES btl_banco(id),
-    CONSTRAINT fk_cliente FOREIGN KEY (cliente_id) REFERENCES btl_cliente(id)
+    CONSTRAINT fk_banco FOREIGN KEY (banco_id) REFERENCES tbl_banco(id),
+    CONSTRAINT fk_cliente FOREIGN KEY (cliente_id) REFERENCES tbl_cliente(id)
 );
 
 -- Tabla: btl_movimientobancario
@@ -37,7 +37,7 @@ CREATE TABLE tbl_movimientobancario (
     descripcion TEXT,
     metodo_pago VARCHAR(50),
     estado VARCHAR(50),
-    CONSTRAINT fk_cuenta FOREIGN KEY (no_cuenta) REFERENCES btl_cuentabancaria(id)
+    CONSTRAINT fk_cuenta FOREIGN KEY (no_cuenta) REFERENCES tbl_cuentabancaria(id)
 );
 
 -- Tabla: btl_transaccion
@@ -47,7 +47,7 @@ CREATE TABLE tbl_transaccion (
     fecha DATETIME NOT NULL,
     monto DECIMAL(10,2) NOT NULL,
     tipo_transaccion VARCHAR(50) NOT NULL,
-    CONSTRAINT fk_cuenta_transaccion FOREIGN KEY (cuenta_id) REFERENCES btl_cuentabancaria(id)
+    CONSTRAINT fk_cuenta_transaccion FOREIGN KEY (cuenta_id) REFERENCES tbl_cuentabancaria(id)
 );
 
 create table tbl_tipoCambio (
