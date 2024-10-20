@@ -64,11 +64,23 @@
     <Compile Include="frm_Factura.Designer.cs">
       <DependentUpon>frm_Factura.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_Mantenimientopoliza.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_Mantenimientopoliza.Designer.cs">
+      <DependentUpon>frm_Mantenimientopoliza.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_Pedido.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frm_Pedido.Designer.cs">
       <DependentUpon>frm_Pedido.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_traspasopoliza.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_traspasopoliza.Designer.cs">
+      <DependentUpon>Frm_traspasopoliza.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -82,8 +94,14 @@
     <EmbeddedResource Include="frm_Factura.resx">
       <DependentUpon>frm_Factura.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frm_Mantenimientopoliza.resx">
+      <DependentUpon>frm_Mantenimientopoliza.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frm_Pedido.resx">
       <DependentUpon>frm_Pedido.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_traspasopoliza.resx">
+      <DependentUpon>Frm_traspasopoliza.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
