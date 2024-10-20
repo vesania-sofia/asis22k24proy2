@@ -74,6 +74,12 @@
     <Compile Include="EstadosFinancieros.Designer.cs">
       <DependentUpon>EstadosFinancieros.cs</DependentUpon>
     </Compile>
+    <Compile Include="MantenimientoTipoCuenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MantenimientoTipoCuenta.Designer.cs">
+      <DependentUpon>MantenimientoTipoCuenta.cs</DependentUpon>
+    </Compile>
     <Compile Include="PartidaCierre.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,6 +113,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EstadosFinancieros.resx">
       <DependentUpon>EstadosFinancieros.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MantenimientoTipoCuenta.resx">
+      <DependentUpon>MantenimientoTipoCuenta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PartidaCierre.resx">
       <DependentUpon>PartidaCierre.cs</DependentUpon>
