@@ -82,6 +82,12 @@
     <Compile Include="Frm_traspasopoliza.Designer.cs">
       <DependentUpon>Frm_traspasopoliza.cs</DependentUpon>
     </Compile>
+    <Compile Include="Frm_MDI_general_CompraVenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_MDI_general_CompraVenta.Designer.cs">
+      <DependentUpon>Frm_MDI_general_CompraVenta.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
