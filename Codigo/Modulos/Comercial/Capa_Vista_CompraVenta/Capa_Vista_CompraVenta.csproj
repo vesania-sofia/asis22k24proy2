@@ -58,7 +58,7 @@
     <Compile Include="Frm_comisiones.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Frm_comisiones.designer.cs">
+    <Compile Include="Frm_comisiones.Designer.cs">
       <DependentUpon>Frm_comisiones.cs</DependentUpon>
     </Compile>
     <Compile Include="frm_Cotizacion.cs">
