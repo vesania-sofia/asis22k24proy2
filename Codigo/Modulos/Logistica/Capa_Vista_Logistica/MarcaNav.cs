@@ -12,9 +12,10 @@ namespace Capa_Vista_Logistica
 {
     public partial class MarcaNav : Form
     {
-        public MarcaNav(string idUsuario)
+        public MarcaNav()
         {
             InitializeComponent();
+            string idUsuario = "9008";
             string[] alias = { "ID Producto", "CódProducto", "NomProducto", "MedProducto", "PrecUnitario", "Clasificación", "Estado" };
             navegador1.AsignarAlias(alias);
             navegador1.AsignarSalida(this);

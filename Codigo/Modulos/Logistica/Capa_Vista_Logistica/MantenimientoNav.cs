@@ -12,9 +12,10 @@ namespace Capa_Vista_Logistica
 {
     public partial class MantenimientoNav : Form
     {
-        public MantenimientoNav(string idUsuario)
+        public MantenimientoNav()
         {
             InitializeComponent();
+            string idUsuario = "9007";
             string[] alias = { "id_vehiculo", "numeroPlaca", "marca", "color", "descripcion", "horaLlegada", "horaSalida", "totalBultos", "pesoTotal", "id_chofer", "Estado" };
             navegador1.AsignarAlias(alias);
             navegador1.AsignarSalida(this);
@@ -24,7 +25,7 @@ namespace Capa_Vista_Logistica
             navegador1.ObtenerIdAplicacion("1000");
             navegador1.ObtenerIdUsuario(idUsuario);
             navegador1.AsignarAyuda("1");
-            navegador1.AsignarNombreForm("Mantenimieto");
+            navegador1.AsignarNombreForm("Mantenimiento");
             navegador1.Dgv_Informacion.CellClick += DgvMantenimiento_CellClick;
 
         }

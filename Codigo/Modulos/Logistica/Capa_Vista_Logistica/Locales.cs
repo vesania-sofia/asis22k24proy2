@@ -12,9 +12,10 @@ namespace Capa_Vista_Logistica
 {
     public partial class Locales : Form
     {
-        public Locales(string idUsuario)
+        public Locales()
         {
             InitializeComponent();
+            string idUsuario = "9004";
             string[] alias = { "ID Local", "Nombre Local", "Ubicación", "Capacidad", "Estado", "Fecha Registro" };
             navegador1.AsignarAlias(alias);
             navegador1.AsignarSalida(this);

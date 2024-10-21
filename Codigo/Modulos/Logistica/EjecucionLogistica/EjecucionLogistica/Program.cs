@@ -16,7 +16,7 @@ namespace EjecucionLogistica
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Capa_Vista_Logistica.Principal());
+            Application.Run(new Capa_Vista_Logistica.FormPrincipal());
         }
     }
 }

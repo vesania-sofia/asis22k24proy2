@@ -12,9 +12,10 @@ namespace Capa_Vista_Logistica
 {
     public partial class LineaNav : Form
     {
-        public LineaNav(string idUsuario)
+        public LineaNav()
         {
             InitializeComponent();
+            string idUsuario = "9009";
             string[] alias = { "ID Producto", "CódProducto", "NomProducto", "MedProducto", "PrecUnitario", "Clasificación", "Estado" };
             navegador1.AsignarAlias(alias);
             navegador1.AsignarSalida(this);

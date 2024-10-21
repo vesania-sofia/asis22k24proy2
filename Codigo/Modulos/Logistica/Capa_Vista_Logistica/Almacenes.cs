@@ -14,9 +14,10 @@ namespace Capa_Vista_Logistica
 {
     public partial class Almacenes : Form
     {
-        public Almacenes(string idUsuario)
+        public Almacenes()
         {
             InitializeComponent();
+            string idUsuario = "9003";
             string[] alias = { "ID Bodega", "Nombre Bodega", "Ubicación", "Capacidad", "Fecha Registro", "Estado" };
             navegador1.AsignarAlias(alias);
             navegador1.AsignarSalida(this);

@@ -12,13 +12,11 @@ namespace Capa_Vista_Logistica
 {
     public partial class TrasDProductos : Form
     {
+
         public TrasDProductos()
         {
-        }
-
-        public TrasDProductos(string idUsuario)
-        {
             InitializeComponent();
+            string idUsuario = "9006";
             string[] alias = { "ID Producto", "CódProducto", "NomProducto", "MedProducto", "PrecUnitario", "Clasificación", "Estado" };
             navegador1.AsignarAlias(alias);
             navegador1.AsignarSalida(this);

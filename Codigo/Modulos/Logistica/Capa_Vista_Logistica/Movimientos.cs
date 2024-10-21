@@ -12,9 +12,10 @@ namespace Capa_Vista_Logistica
 {
     public partial class Movimientos : Form
     {
-        public Movimientos(string idUsuario)
+        public Movimientos()
         {
             InitializeComponent();
+            string idUsuario = "9005";
             string[] alias = { "id_movimiento", "estado", "id_producto", "id_stock", "bodega Destino", "sucursal Destino"};
             navegador1.AsignarAlias(alias);
             navegador1.AsignarSalida(this);
