@@ -27,7 +27,34 @@ namespace Capa_Vista_Nominas
         {
             InitializeComponent();
             /***************Fernando Jose Garcia <3*********************/
+            ///*****Con tabla que tenga comboboxs foraneas *****/
+            string[] alias = { "Clave", "nombre", "apellido", "fecha nacimiento", "no_identificacion",
 
+                "codigo postal","fecha alta","fecha baja","causa baja","estado_modulo"
+
+                ,"fk_id_departamento","fk_id_puestos","estado" };
+
+            navegador1.AsignarAlias(alias);
+            navegador1.AsignarSalida(this);
+            navegador1.AsignarColorFondo(Color.CadetBlue);
+            navegador1.AsignarColorFuente(Color.Black);
+            navegador1.ObtenerIdAplicacion("1000");
+            navegador1.AsignarAyuda("1");
+            navegador1.ObtenerIdUsuario(idUsuario);
+            navegador1.AsignarTabla("tbl_empleados");
+
+            ///***Valores foraneos en Combobox*********/
+
+            navegador1.AsignarComboConTabla("tbl_puestos_trabajo", "pk_id_puestos", "nombre_puesto", 1);
+            navegador1.AsignarComboConTabla("tbl_departamentos", "pk_id_departamento", "nombre_departamento", 1);
+            ///******************/
+
+            ///*****Se muestre en el dgv los nombres y no los numeros**/
+
+            navegador1.AsignarForaneas("tbl_puestos_trabajo", "nombre_puesto", "fk_id_puestos", "pk_id_puestos");
+            navegador1.AsignarForaneas("tbl_departamentos", "nombre_departamento", "fk_id_departamento", "pk_id_departamento");
+
+            ///*****************/
 
             /**************************************************************/
 
