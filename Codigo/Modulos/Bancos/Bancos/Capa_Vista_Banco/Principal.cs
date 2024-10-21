@@ -26,8 +26,13 @@ namespace Capa_Vista_Banco
         {
             MovimientoBancario form2 = new MovimientoBancario(); // Crea una instancia del segundo formulario
             form2.Show(); // Muestra el segundo formulario
-            this.Hide(); // Oculta el formulario actual (opcional)
+            //this.Hide(); // Oculta el formulario actual (opcional)
         }
 
+        private void tipo_Cambio_Click(object sender, EventArgs e)
+        {
+            tipoCambio frmTipoCambio = new tipoCambio();
+            frmTipoCambio.Show();
+        }
     }
 }

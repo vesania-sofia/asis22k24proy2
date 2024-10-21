@@ -31,14 +31,14 @@ namespace Capa_Vista_Banco
         {
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tipo_Cambio = new System.Windows.Forms.Button();
             this.mov_Bancario = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -66,17 +66,6 @@ namespace Capa_Vista_Banco
             this.panel1.Size = new System.Drawing.Size(261, 446);
             this.panel1.TabIndex = 3;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::Capa_Vista_Banco.Properties.Resources._40707911_f9d4_4dc7_a749_147547a6a776;
-            this.pictureBox1.Location = new System.Drawing.Point(45, 308);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(164, 124);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 3;
-            this.pictureBox1.TabStop = false;
-            // 
             // tipo_Cambio
             // 
             this.tipo_Cambio.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -87,6 +76,7 @@ namespace Capa_Vista_Banco
             this.tipo_Cambio.TabIndex = 1;
             this.tipo_Cambio.Text = "Tipo De Cambio";
             this.tipo_Cambio.UseVisualStyleBackColor = true;
+            this.tipo_Cambio.Click += new System.EventHandler(this.tipo_Cambio_Click);
             // 
             // mov_Bancario
             // 
@@ -119,6 +109,17 @@ namespace Capa_Vista_Banco
             this.label3.TabIndex = 1;
             this.label3.Text = "COLOCAR REFERENCIA A NAVEGADOR CUANDO ESTE SE ENCUENTRE DISPONIBLE";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Capa_Vista_Banco.Properties.Resources._40707911_f9d4_4dc7_a749_147547a6a776;
+            this.pictureBox1.Location = new System.Drawing.Point(45, 308);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(164, 124);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 3;
+            this.pictureBox1.TabStop = false;
+            // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -131,8 +132,8 @@ namespace Capa_Vista_Banco
             this.Text = "Principal";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
