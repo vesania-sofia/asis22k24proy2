@@ -4,13 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.Odbc;
+using System.Windows.Forms;
+using System.Data;
 
 
 namespace Capa_Modelo_Logistica
 {
     public class Sentencias
     {
-        private Conexion cn = new Conexion(); // Instancia de la clase de conexión
+        string sTabla_chofer = "Tbl_chofer";
+        Conexion cn = new Conexion();
 
         // Método para cargar las existencias de una bodega en particular (Realizado por Daniel Sierra 0901-21-12740)
         public OdbcDataReader ObtenerExistenciasBodega(string idBodega)
@@ -130,6 +133,143 @@ namespace Capa_Modelo_Logistica
             }
 
             return dr;
+        }
+        // Realizado  Metodo de ingreso de chofer por Ammy Patricia Catún López - 0901-21-4857
+        public void registrarChofer(string id_chofer, string nombreEmp, string numeroIdent, string nombre, string licencia, string telefono, string direccion)
+        {
+            //la variable campos es una variable plana donde se ponen los nombres de las columnas para guardar el reporte
+            try
+            {
+                int ingreso = 0;
+                string sCampos = "Pk_id_chofer, nombreEmpresa, numeroIdentificacion, nombre, licencia, telefono, direccion";
+                string sSql = "INSERT INTO " + sTabla_chofer + " (" + sCampos + ") VALUES ('" + id_chofer + "', '" + nombreEmp + "', '" + numeroIdent + "', '" + nombre + "', '" + licencia + "', '" + telefono + "', '" + direccion + "');";
+                OdbcCommand cmd = new OdbcCommand(sSql, cn.conexion());
+                ingreso = cmd.ExecuteNonQuery();
+                if (ingreso > 0)
+                {
+                    MessageBox.Show("Datos Ingresados Correctamente");
+                }
+                else
+                {
+                    MessageBox.Show("Datos No Ingresados Correctamente");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message.ToString() + " \nNo se pudo guardar el registro en la tabla " + sTabla_chofer);
+            }
+        }
+        public int getMaxIdChofer()
+        {
+            int iIdRegistro = 0;
+            string sSql = "SELECT max(Pk_id_chofer) FROM " + sTabla_chofer + ";";
+            try
+            {
+                OdbcCommand cmd = new OdbcCommand(sSql, cn.conexion());
+                iIdRegistro = (int)cmd.ExecuteScalar();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message.ToString() + " \nNo se pudo obtener el id del registro en la tabla " + sTabla_chofer);
+            }
+            return iIdRegistro;
+        }
+
+
+        // Boton eliminado de chofer realizado por Ammy Patricia Catún López - 0901-21-4857
+        public void eliminarChofer(string idChofer)
+        {
+            try
+            {
+                string sSql = "DELETE FROM " + sTabla_chofer + " WHERE Pk_id_chofer = '" + idChofer + "';";
+                OdbcCommand cmd = new OdbcCommand(sSql, cn.conexion());
+                int resultado = cmd.ExecuteNonQuery();
+                if (resultado > 0)
+                {
+                    MessageBox.Show("Chofer eliminado correctamente.");
+                }
+                else
+                {
+                    MessageBox.Show("No se encontró el chofer para eliminar.");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message.ToString() + " \nNo se pudo eliminar el registro en la tabla " + sTabla_chofer);
+            }
+        }
+        //Metodo de modificar chofer realizado por Ammy Patricia Catún López - 0901-21-4857
+        public void modificarChofer(string idChofer, string nombreEmp, string numeroIdent, string nombre, string licencia, string telefono, string direccion)
+        {
+            try
+            {
+                string sSql = "UPDATE " + sTabla_chofer + " SET nombreEmpresa = @nombreEmp, numeroIdentificacion = @numeroIdent, nombre = @nombre, licencia = @licencia, telefono = @telefono, direccion = @direccion WHERE Pk_id_chofer = @idChofer;";
+
+                using (OdbcCommand cmd = new OdbcCommand(sSql, cn.conexion()))
+                {
+                    cmd.Parameters.AddWithValue("@idChofer", idChofer);
+                    cmd.Parameters.AddWithValue("@nombreEmp", nombreEmp);
+                    cmd.Parameters.AddWithValue("@numeroIdent", numeroIdent);
+                    cmd.Parameters.AddWithValue("@nombre", nombre);
+                    cmd.Parameters.AddWithValue("@licencia", licencia);
+                    cmd.Parameters.AddWithValue("@telefono", telefono);
+                    cmd.Parameters.AddWithValue("@direccion", direccion);
+
+                    int resultado = cmd.ExecuteNonQuery();
+                    if (resultado > 0)
+                    {
+                        MessageBox.Show("Chofer modificado correctamente.");
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se encontró el chofer para modificar.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message + " \nNo se pudo modificar el registro en la tabla " + sTabla_chofer);
+            }
+        }
+
+
+        //Metodo de buscar chofer realizado por Ammy Patricia Catún López - 0901-21-4857
+        public DataTable buscarChofer(string idChofer)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                string sSql = "SELECT * FROM " + sTabla_chofer + " WHERE Pk_id_chofer = @idChofer;";
+                using (OdbcCommand cmd = new OdbcCommand(sSql, cn.conexion()))
+                {
+                    cmd.Parameters.AddWithValue("@idChofer", idChofer);
+                    OdbcDataAdapter adapter = new OdbcDataAdapter(cmd);
+                    adapter.Fill(dt);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message + " \nNo se pudo buscar el registro en la tabla " + sTabla_chofer);
+            }
+            return dt;
+        }
+        public DataTable cargarChoferes()
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                string sSql = "SELECT * FROM " + sTabla_chofer + ";";
+                using (OdbcCommand cmd = new OdbcCommand(sSql, cn.conexion()))
+                {
+                    OdbcDataAdapter adapter = new OdbcDataAdapter(cmd);
+                    adapter.Fill(dt);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message + " \nNo se pudo cargar los choferes desde la tabla " + sTabla_chofer);
+            }
+            return dt;
         }
     }
 }

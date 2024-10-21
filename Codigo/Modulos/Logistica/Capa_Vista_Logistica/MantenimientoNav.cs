@@ -12,6 +12,7 @@ namespace Capa_Vista_Logistica
 {
     public partial class MantenimientoNav : Form
     {
+        //Metodo realizado Ammy Patricia Catun Lopez 0901-21-4857
         public MantenimientoNav()
         {
             InitializeComponent();
@@ -25,7 +26,7 @@ namespace Capa_Vista_Logistica
             navegador1.ObtenerIdAplicacion("1000");
             navegador1.ObtenerIdUsuario(idUsuario);
             navegador1.AsignarAyuda("1");
-            navegador1.AsignarNombreForm("Mantenimiento");
+            navegador1.AsignarNombreForm("Mantenimiento de Vehiculos");
             navegador1.Dgv_Informacion.CellClick += DgvMantenimiento_CellClick;
 
         }
