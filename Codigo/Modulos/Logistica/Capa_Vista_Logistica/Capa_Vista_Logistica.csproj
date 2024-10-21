@@ -80,6 +80,12 @@
     <Compile Include="EnlaceContabilidad.Designer.cs">
       <DependentUpon>EnlaceContabilidad.cs</DependentUpon>
     </Compile>
+    <Compile Include="Linea.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Linea.Designer.cs">
+      <DependentUpon>Linea.cs</DependentUpon>
+    </Compile>
     <Compile Include="Locales.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -92,11 +98,29 @@
     <Compile Include="Mantenimiento.Designer.cs">
       <DependentUpon>Mantenimiento.cs</DependentUpon>
     </Compile>
+    <Compile Include="LineaNav.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LineaNav.Designer.cs">
+      <DependentUpon>LineaNav.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MarcaNav.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MarcaNav.Designer.cs">
+      <DependentUpon>MarcaNav.cs</DependentUpon>
+    </Compile>
     <Compile Include="MantenimientoNav.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MantenimientoNav.Designer.cs">
       <DependentUpon>MantenimientoNav.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Marca.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Marca.Designer.cs">
+      <DependentUpon>Marca.cs</DependentUpon>
     </Compile>
     <Compile Include="MonitoreoAlmacen.cs">
       <SubType>Form</SubType>
@@ -178,11 +202,26 @@
     <EmbeddedResource Include="EnlaceContabilidad.resx">
       <DependentUpon>EnlaceContabilidad.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Linea.resx">
+      <DependentUpon>Linea.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Locales.resx">
       <DependentUpon>Locales.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Mantenimiento.resx">
+      <DependentUpon>Mantenimiento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LineaNav.resx">
+      <DependentUpon>LineaNav.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MarcaNav.resx">
+      <DependentUpon>MarcaNav.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MantenimientoNav.resx">
       <DependentUpon>MantenimientoNav.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Marca.resx">
+      <DependentUpon>Marca.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MonitoreoAlmacen.resx">
       <DependentUpon>MonitoreoAlmacen.cs</DependentUpon>

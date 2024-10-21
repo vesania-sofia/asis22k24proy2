@@ -15,12 +15,12 @@ namespace Capa_Vista_Logistica
         public MantenimientoNav(string idUsuario)
         {
             InitializeComponent();
-            string[] alias = { "id_Mantenimiento", "nombre_Solicitante", "tipo_de_Mantenimiento", "componente_Afectado", "fecha", "responsable_Asignado", "codigo_Error_Problema", "estado_del_Mantenimiento", "tiempo_Estimado", "id_movimiento" };
+            string[] alias = { "id_vehiculo", "numeroPlaca", "marca", "color", "descripcion", "horaLlegada", "horaSalida", "totalBultos", "pesoTotal", "id_chofer", "Estado" };
             navegador1.AsignarAlias(alias);
             navegador1.AsignarSalida(this);
             navegador1.AsignarColorFondo(Color.CadetBlue);
             navegador1.AsignarColorFuente(Color.Black);
-            navegador1.AsignarTabla("Tbl_mantenimiento");
+            navegador1.AsignarTabla("tbl_vehiculos");
             navegador1.ObtenerIdAplicacion("1000");
             navegador1.ObtenerIdUsuario(idUsuario);
             navegador1.AsignarAyuda("1");
@@ -34,9 +34,9 @@ namespace Capa_Vista_Logistica
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = navegador1.Dgv_Informacion.Rows[e.RowIndex];
-                string Pk_id_Mantenimiento = row.Cells["Pk_id_Mantenimiento"].Value.ToString();  // Asegúrate de que el nombre del campo sea correcto
+                string Pk_id_Mantenimiento = row.Cells["Pk_id_vehiculo"].Value.ToString();  // Asegúrate de que el nombre del campo sea correcto
 
-                Mantenimiento movInventario = new Mantenimiento(Pk_id_Mantenimiento);
+                MantenimientoVehiculos movInventario = new MantenimientoVehiculos(Pk_id_Mantenimiento);
                 movInventario.Show();
             }
         }

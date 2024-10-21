@@ -41,6 +41,10 @@ namespace Capa_Controlador_Logistica
         {
             return sentencias.ObtenerProductosPorBodega(idBodega);
         }
+        public void RealizarSolicitudMantenimiento(int idMantenimiento, string nombreSolicitante, string tipoMantenimiento, string componenteAfectado, string fecha, string responsableAsignado, string codigo_error_Problema, string estadoMantenimiento, string tiempoEstimado, int id_Movimiento)
+        {
+            sentencias.InsertarSolicitudMantenimiento(idMantenimiento, nombreSolicitante, tipoMantenimiento, componenteAfectado, fecha, responsableAsignado, codigo_error_Problema, estadoMantenimiento, tiempoEstimado, id_Movimiento);
+        }
 
     }
 }
