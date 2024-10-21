@@ -141,9 +141,9 @@ namespace Capa_Vista_CompraVenta
 
         private void Btn_compra_Click(object sender, EventArgs e)
         {
-            /*Frm_vendedores Com = new Frm_vendedores();
+            frm_ordenCompras Com = new frm_ordenCompras();
             Com.MdiParent = this;
-            Com.Show();*/
+            Com.Show();
         }
 
         private void Btn_poliza_Click(object sender, EventArgs e)

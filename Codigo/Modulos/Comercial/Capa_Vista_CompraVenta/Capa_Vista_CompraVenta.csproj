@@ -73,12 +73,6 @@
     <Compile Include="frm_Factura.Designer.cs">
       <DependentUpon>frm_Factura.cs</DependentUpon>
     </Compile>
-    <Compile Include="frm_generarOrdenCompra.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frm_generarOrdenCompra.Designer.cs">
-      <DependentUpon>frm_generarOrdenCompra.cs</DependentUpon>
-    </Compile>
     <Compile Include="frm_generarOrdenParaCompra.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -158,9 +152,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frm_Factura.resx">
       <DependentUpon>frm_Factura.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frm_generarOrdenCompra.resx">
-      <DependentUpon>frm_generarOrdenCompra.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_generarOrdenParaCompra.resx">
       <DependentUpon>frm_generarOrdenParaCompra.cs</DependentUpon>
