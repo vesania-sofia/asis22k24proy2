@@ -32,6 +32,15 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AxShockwaveFlashObjects, Version=1.0.0.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="Capa_Controlador_Cuentas_Corrientes">
+      <HintPath>..\Capa_Controlador_Cuentas_Corrientes\bin\Debug\Capa_Controlador_Cuentas_Corrientes.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Modelo_Cuentas_Corrientes">
+      <HintPath>..\Capa_Modelo_Cuentas_Corrientes\bin\Debug\Capa_Modelo_Cuentas_Corrientes.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_Navegador">
+      <HintPath>..\..\..\Componentes\Navegador\Capa_Vista_Navegador\bin\Debug\Capa_Vista_Navegador.dll</HintPath>
+    </Reference>
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
     <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
@@ -68,12 +77,6 @@
     <Compile Include="Cobrador_Clts.designer.cs">
       <DependentUpon>Cobrador_Clts.cs</DependentUpon>
     </Compile>
-    <Compile Include="CreditoCliente.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CreditoCliente.Designer.cs">
-      <DependentUpon>CreditoCliente.cs</DependentUpon>
-    </Compile>
     <Compile Include="Deuda_Clts.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -92,17 +95,11 @@
     <Compile Include="FormaPago.Designer.cs">
       <DependentUpon>FormaPago.cs</DependentUpon>
     </Compile>
-    <Compile Include="Mantenimiento.cs">
+    <Compile Include="FormPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Mantenimiento.Designer.cs">
-      <DependentUpon>Mantenimiento.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Menu.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Menu.Designer.cs">
-      <DependentUpon>Menu.cs</DependentUpon>
+    <Compile Include="FormPrincipal.Designer.cs">
+      <DependentUpon>FormPrincipal.cs</DependentUpon>
     </Compile>
     <Compile Include="MovimientoMensual.cs">
       <SubType>Form</SubType>
@@ -110,17 +107,17 @@
     <Compile Include="MovimientoMensual.Designer.cs">
       <DependentUpon>MovimientoMensual.cs</DependentUpon>
     </Compile>
-    <Compile Include="Movimientos_Clientes.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Movimientos_Clientes.Designer.cs">
-      <DependentUpon>Movimientos_Clientes.cs</DependentUpon>
-    </Compile>
     <Compile Include="Movimientos_Proveedor.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Movimientos_Proveedor.Designer.cs">
       <DependentUpon>Movimientos_Proveedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Nav_Transaccion_clientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Nav_Transaccion_clientes.Designer.cs">
+      <DependentUpon>Nav_Transaccion_clientes.cs</DependentUpon>
     </Compile>
     <Compile Include="Pais Cliente.cs">
       <SubType>Form</SubType>
@@ -158,11 +155,11 @@
     <Compile Include="Reporte_Mantenimiento.Designer.cs">
       <DependentUpon>Reporte_Mantenimiento.cs</DependentUpon>
     </Compile>
-    <Compile Include="SaldoCliente.cs">
+    <Compile Include="Transaccion_Clientes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SaldoCliente.Designer.cs">
-      <DependentUpon>SaldoCliente.cs</DependentUpon>
+    <Compile Include="Transaccion_Clientes.Designer.cs">
+      <DependentUpon>Transaccion_Clientes.cs</DependentUpon>
     </Compile>
     <Compile Include="Vendedores_Clts.cs">
       <SubType>Form</SubType>
@@ -178,9 +175,6 @@
     <EmbeddedResource Include="Cobrador_Clts.resx">
       <DependentUpon>Cobrador_Clts.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CreditoCliente.resx">
-      <DependentUpon>CreditoCliente.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Deuda_Clts.resx">
       <DependentUpon>Deuda_Clts.cs</DependentUpon>
     </EmbeddedResource>
@@ -190,20 +184,17 @@
     <EmbeddedResource Include="FormaPago.resx">
       <DependentUpon>FormaPago.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Mantenimiento.resx">
-      <DependentUpon>Mantenimiento.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Menu.resx">
-      <DependentUpon>Menu.cs</DependentUpon>
+    <EmbeddedResource Include="FormPrincipal.resx">
+      <DependentUpon>FormPrincipal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MovimientoMensual.resx">
       <DependentUpon>MovimientoMensual.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Movimientos_Clientes.resx">
-      <DependentUpon>Movimientos_Clientes.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Movimientos_Proveedor.resx">
       <DependentUpon>Movimientos_Proveedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Nav_Transaccion_clientes.resx">
+      <DependentUpon>Nav_Transaccion_clientes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pais Cliente.resx">
       <DependentUpon>Pais Cliente.cs</DependentUpon>
@@ -224,8 +215,8 @@
     <EmbeddedResource Include="Reporte_Mantenimiento.resx">
       <DependentUpon>Reporte_Mantenimiento.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SaldoCliente.resx">
-      <DependentUpon>SaldoCliente.cs</DependentUpon>
+    <EmbeddedResource Include="Transaccion_Clientes.resx">
+      <DependentUpon>Transaccion_Clientes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vendedores_Clts.resx">
       <DependentUpon>Vendedores_Clts.cs</DependentUpon>
