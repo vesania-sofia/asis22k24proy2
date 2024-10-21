@@ -31,5 +31,15 @@ namespace Capa_Vista_Cuentas_Corrientes
         {
 
         }
+
+        private void ClienteNuevo_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Dgv_cliente_nuevo_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

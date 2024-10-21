@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Capa_Modelo_Cuentas_Corrientes;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Odbc;
@@ -72,5 +73,25 @@ namespace Capa_Controlador_Cuentas_Corrientes
                 return 1;
             }
         }
+        public void GuardarProveedor(string idProveedor, string fechaRegistro, string nombre, string direccion,
+                             string telefono, string email, decimal saldoCuenta, string estadoProveedor)
+        {
+            try
+            {
+                sentencias.InsertarProveedor(idProveedor, fechaRegistro, nombre, direccion, telefono, email, saldoCuenta, estadoProveedor);
+                MessageBox.Show("Proveedor guardado exitosamente.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al guardar el proveedor: " + ex.Message);
+            }
+        }
+
+        public void EliminarProveedor(string idProveedor)
+        {
+            Sentencias sentencias = new Sentencias();
+            sentencias.EliminarProveedor(idProveedor);
+        }
+
     }
 }

@@ -77,6 +77,11 @@
     <Compile Include="Cobrador_Clts.designer.cs">
       <DependentUpon>Cobrador_Clts.cs</DependentUpon>
     </Compile>
+    <Compile Include="DataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Deuda_Clts.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -136,6 +141,17 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="ProveedorNuevo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProveedorNuevo.Designer.cs">
+      <DependentUpon>ProveedorNuevo.cs</DependentUpon>
     </Compile>
     <Compile Include="Reportes_Clientes.cs">
       <SubType>Form</SubType>
@@ -206,6 +222,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="ProveedorNuevo.resx">
+      <DependentUpon>ProveedorNuevo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reportes_Clientes.resx">
       <DependentUpon>Reportes_Clientes.cs</DependentUpon>
     </EmbeddedResource>
@@ -223,6 +242,22 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
+    <None Include="DataSet1.xsc">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DataSet1.xss">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
     <None Include="Resources\WhatsApp Image 2024-10-13 at 5.24.35 PM.jpeg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

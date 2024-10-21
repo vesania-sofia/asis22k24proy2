@@ -178,7 +178,70 @@ namespace Capa_Modelo_Cuentas_Corrientes
                 Console.WriteLine(ex.Message.ToString() + " \nNo se pudo guardar el registro en la tabla " + sTabla_transaccion);
             }
         }
-        
-        
+        public void InsertarProveedor(string idProveedor, string fechaRegistro, string nombre, string direccion,
+                              string telefono, string email, decimal saldoCuenta, string estadoProveedor)
+        {
+            try
+            {
+                string sSql = "INSERT INTO tbl_proveedores (Pk_id_proveedor, fecha_registro, nombre_proveedor, direccion, telefono, email, saldo_cuenta, estado_proveedor) " +
+                              "VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
+
+                using (OdbcConnection con = conexion.conexion())
+                {
+                    con.Open();  // Asegúrate de abrir la conexión
+                    using (OdbcCommand cmd = new OdbcCommand(sSql, con))
+                    {
+                        // Asignar valores a los parámetros
+                        cmd.Parameters.AddWithValue("@Pk_id_proveedor", idProveedor);
+                        cmd.Parameters.AddWithValue("@fecha_registro", fechaRegistro);
+                        cmd.Parameters.AddWithValue("@nombre_proveedor", nombre);
+                        cmd.Parameters.AddWithValue("@direccion", direccion);
+                        cmd.Parameters.AddWithValue("@telefono", telefono);
+                        cmd.Parameters.AddWithValue("@email", email);
+                        cmd.Parameters.AddWithValue("@saldo_cuenta", saldoCuenta);
+                        cmd.Parameters.AddWithValue("@estado_proveedor", estadoProveedor);
+
+                        // Ejecutar la consulta
+                        cmd.ExecuteNonQuery();
+
+                        // Forzar commit manual
+                        OdbcCommand commitCmd = new OdbcCommand("COMMIT;", con);
+                        commitCmd.ExecuteNonQuery();
+
+                        Console.WriteLine("Proveedor registrado correctamente.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al insertar proveedor: " + ex.Message);
+            }
+        }
+
+        public void EliminarProveedor(string idProveedor)
+        {
+            try
+            {
+                string sSql = "DELETE FROM tbl_proveedores WHERE Pk_id_proveedor = ?;";
+
+                using (OdbcConnection con = conexion.conexion())
+                {
+                    con.Open();
+                    using (OdbcCommand cmd = new OdbcCommand(sSql, con))
+                    {
+                        cmd.Parameters.AddWithValue("@Pk_id_proveedor", idProveedor);
+                        cmd.ExecuteNonQuery();
+
+                        // Confirmación en consola
+                        Console.WriteLine("Proveedor con ID " + idProveedor + " eliminado correctamente.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al eliminar el proveedor: " + ex.Message);
+            }
+        }
+
     }
 }
