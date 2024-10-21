@@ -59,5 +59,15 @@ namespace Capa_Vista_Contabilidad.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pago_en_linea {
+            get {
+                object obj = ResourceManager.GetObject("pago-en-linea", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }
