@@ -82,18 +82,19 @@
             this.panelContenedor.Controls.Add(this.panelBarraTitulo);
             this.panelContenedor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelContenedor.Location = new System.Drawing.Point(0, 0);
-            this.panelContenedor.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panelContenedor.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelContenedor.Name = "panelContenedor";
-            this.panelContenedor.Size = new System.Drawing.Size(1363, 661);
+            this.panelContenedor.Size = new System.Drawing.Size(1022, 537);
             this.panelContenedor.TabIndex = 0;
             // 
             // panelIdentificacion
             // 
             this.panelIdentificacion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(152)))), ((int)(((byte)(151)))));
             this.panelIdentificacion.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelIdentificacion.Location = new System.Drawing.Point(223, 631);
+            this.panelIdentificacion.Location = new System.Drawing.Point(167, 513);
+            this.panelIdentificacion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelIdentificacion.Name = "panelIdentificacion";
-            this.panelIdentificacion.Size = new System.Drawing.Size(1140, 30);
+            this.panelIdentificacion.Size = new System.Drawing.Size(855, 24);
             this.panelIdentificacion.TabIndex = 3;
             // 
             // panelformularios
@@ -102,10 +103,10 @@
             this.panelformularios.Controls.Add(this.pictureBox1);
             this.panelformularios.Cursor = System.Windows.Forms.Cursors.Hand;
             this.panelformularios.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelformularios.Location = new System.Drawing.Point(223, 39);
-            this.panelformularios.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panelformularios.Location = new System.Drawing.Point(167, 32);
+            this.panelformularios.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelformularios.Name = "panelformularios";
-            this.panelformularios.Size = new System.Drawing.Size(1140, 622);
+            this.panelformularios.Size = new System.Drawing.Size(855, 505);
             this.panelformularios.TabIndex = 2;
             this.panelformularios.Paint += new System.Windows.Forms.PaintEventHandler(this.panelformularios_Paint);
             // 
@@ -114,8 +115,8 @@
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBox1.BackColor = System.Drawing.SystemColors.ControlLight;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(451, 219);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox1.Location = new System.Drawing.Point(338, 178);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(225, 225);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -134,10 +135,10 @@
             this.panelMenu.Controls.Add(this.panelMenuProc);
             this.panelMenu.Controls.Add(this.btnMenuContable);
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelMenu.Location = new System.Drawing.Point(0, 39);
-            this.panelMenu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panelMenu.Location = new System.Drawing.Point(0, 32);
+            this.panelMenu.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelMenu.Name = "panelMenu";
-            this.panelMenu.Size = new System.Drawing.Size(223, 622);
+            this.panelMenu.Size = new System.Drawing.Size(167, 505);
             this.panelMenu.TabIndex = 1;
             // 
             // btnSalir
@@ -151,10 +152,10 @@
             this.btnSalir.ForeColor = System.Drawing.Color.Gainsboro;
             this.btnSalir.Image = ((System.Drawing.Image)(resources.GetObject("btnSalir.Image")));
             this.btnSalir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSalir.Location = new System.Drawing.Point(0, 620);
-            this.btnSalir.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnSalir.Location = new System.Drawing.Point(0, 503);
+            this.btnSalir.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(202, 43);
+            this.btnSalir.Size = new System.Drawing.Size(150, 35);
             this.btnSalir.TabIndex = 10;
             this.btnSalir.Text = "Salir";
             this.btnSalir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -166,9 +167,10 @@
             this.panelMenuPolizasLocales.Controls.Add(this.button3);
             this.panelMenuPolizasLocales.Controls.Add(this.button4);
             this.panelMenuPolizasLocales.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelMenuPolizasLocales.Location = new System.Drawing.Point(0, 528);
+            this.panelMenuPolizasLocales.Location = new System.Drawing.Point(0, 428);
+            this.panelMenuPolizasLocales.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelMenuPolizasLocales.Name = "panelMenuPolizasLocales";
-            this.panelMenuPolizasLocales.Size = new System.Drawing.Size(202, 92);
+            this.panelMenuPolizasLocales.Size = new System.Drawing.Size(150, 75);
             this.panelMenuPolizasLocales.TabIndex = 9;
             this.panelMenuPolizasLocales.Visible = false;
             // 
@@ -178,10 +180,11 @@
             this.button3.FlatAppearance.BorderSize = 0;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.ForeColor = System.Drawing.Color.Silver;
-            this.button3.Location = new System.Drawing.Point(0, 37);
+            this.button3.Location = new System.Drawing.Point(0, 30);
+            this.button3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button3.Name = "button3";
-            this.button3.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.button3.Size = new System.Drawing.Size(202, 38);
+            this.button3.Padding = new System.Windows.Forms.Padding(26, 0, 0, 0);
+            this.button3.Size = new System.Drawing.Size(150, 31);
             this.button3.TabIndex = 1;
             this.button3.Text = "Opcion2";
             this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -194,9 +197,10 @@
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.ForeColor = System.Drawing.Color.Silver;
             this.button4.Location = new System.Drawing.Point(0, 0);
+            this.button4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button4.Name = "button4";
-            this.button4.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.button4.Size = new System.Drawing.Size(202, 37);
+            this.button4.Padding = new System.Windows.Forms.Padding(26, 0, 0, 0);
+            this.button4.Size = new System.Drawing.Size(150, 30);
             this.button4.TabIndex = 0;
             this.button4.Text = "Opcion1";
             this.button4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -213,10 +217,10 @@
             this.btnPolizasLocales.ForeColor = System.Drawing.Color.Gainsboro;
             this.btnPolizasLocales.Image = ((System.Drawing.Image)(resources.GetObject("btnPolizasLocales.Image")));
             this.btnPolizasLocales.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPolizasLocales.Location = new System.Drawing.Point(0, 482);
-            this.btnPolizasLocales.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnPolizasLocales.Location = new System.Drawing.Point(0, 391);
+            this.btnPolizasLocales.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnPolizasLocales.Name = "btnPolizasLocales";
-            this.btnPolizasLocales.Size = new System.Drawing.Size(202, 46);
+            this.btnPolizasLocales.Size = new System.Drawing.Size(150, 37);
             this.btnPolizasLocales.TabIndex = 8;
             this.btnPolizasLocales.Text = "Polizas locales";
             this.btnPolizasLocales.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -232,9 +236,10 @@
             this.panelMenuMant.Controls.Add(this.btnmTipoCuenta);
             this.panelMenuMant.Controls.Add(this.btnmAreaCuenta);
             this.panelMenuMant.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelMenuMant.Location = new System.Drawing.Point(0, 275);
+            this.panelMenuMant.Location = new System.Drawing.Point(0, 223);
+            this.panelMenuMant.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelMenuMant.Name = "panelMenuMant";
-            this.panelMenuMant.Size = new System.Drawing.Size(202, 207);
+            this.panelMenuMant.Size = new System.Drawing.Size(150, 168);
             this.panelMenuMant.TabIndex = 6;
             this.panelMenuMant.Visible = false;
             // 
@@ -244,14 +249,16 @@
             this.btnmActivosFijos.FlatAppearance.BorderSize = 0;
             this.btnmActivosFijos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnmActivosFijos.ForeColor = System.Drawing.Color.Silver;
-            this.btnmActivosFijos.Location = new System.Drawing.Point(0, 149);
+            this.btnmActivosFijos.Location = new System.Drawing.Point(0, 121);
+            this.btnmActivosFijos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnmActivosFijos.Name = "btnmActivosFijos";
-            this.btnmActivosFijos.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.btnmActivosFijos.Size = new System.Drawing.Size(202, 37);
+            this.btnmActivosFijos.Padding = new System.Windows.Forms.Padding(26, 0, 0, 0);
+            this.btnmActivosFijos.Size = new System.Drawing.Size(150, 30);
             this.btnmActivosFijos.TabIndex = 4;
             this.btnmActivosFijos.Text = "Activos fijos";
             this.btnmActivosFijos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnmActivosFijos.UseVisualStyleBackColor = true;
+            this.btnmActivosFijos.Click += new System.EventHandler(this.btnmActivosFijos_Click);
             // 
             // btnmTipoPoliza
             // 
@@ -259,10 +266,11 @@
             this.btnmTipoPoliza.FlatAppearance.BorderSize = 0;
             this.btnmTipoPoliza.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnmTipoPoliza.ForeColor = System.Drawing.Color.Silver;
-            this.btnmTipoPoliza.Location = new System.Drawing.Point(0, 112);
+            this.btnmTipoPoliza.Location = new System.Drawing.Point(0, 91);
+            this.btnmTipoPoliza.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnmTipoPoliza.Name = "btnmTipoPoliza";
-            this.btnmTipoPoliza.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.btnmTipoPoliza.Size = new System.Drawing.Size(202, 37);
+            this.btnmTipoPoliza.Padding = new System.Windows.Forms.Padding(26, 0, 0, 0);
+            this.btnmTipoPoliza.Size = new System.Drawing.Size(150, 30);
             this.btnmTipoPoliza.TabIndex = 3;
             this.btnmTipoPoliza.Text = "Tipo poliza";
             this.btnmTipoPoliza.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -275,10 +283,11 @@
             this.btnmCuenta.FlatAppearance.BorderSize = 0;
             this.btnmCuenta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnmCuenta.ForeColor = System.Drawing.Color.Silver;
-            this.btnmCuenta.Location = new System.Drawing.Point(0, 75);
+            this.btnmCuenta.Location = new System.Drawing.Point(0, 61);
+            this.btnmCuenta.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnmCuenta.Name = "btnmCuenta";
-            this.btnmCuenta.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.btnmCuenta.Size = new System.Drawing.Size(202, 37);
+            this.btnmCuenta.Padding = new System.Windows.Forms.Padding(26, 0, 0, 0);
+            this.btnmCuenta.Size = new System.Drawing.Size(150, 30);
             this.btnmCuenta.TabIndex = 2;
             this.btnmCuenta.Text = "Cuenta";
             this.btnmCuenta.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -291,10 +300,11 @@
             this.btnmTipoCuenta.FlatAppearance.BorderSize = 0;
             this.btnmTipoCuenta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnmTipoCuenta.ForeColor = System.Drawing.Color.Silver;
-            this.btnmTipoCuenta.Location = new System.Drawing.Point(0, 37);
+            this.btnmTipoCuenta.Location = new System.Drawing.Point(0, 30);
+            this.btnmTipoCuenta.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnmTipoCuenta.Name = "btnmTipoCuenta";
-            this.btnmTipoCuenta.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.btnmTipoCuenta.Size = new System.Drawing.Size(202, 38);
+            this.btnmTipoCuenta.Padding = new System.Windows.Forms.Padding(26, 0, 0, 0);
+            this.btnmTipoCuenta.Size = new System.Drawing.Size(150, 31);
             this.btnmTipoCuenta.TabIndex = 1;
             this.btnmTipoCuenta.Text = "Tipo cuenta";
             this.btnmTipoCuenta.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -308,9 +318,10 @@
             this.btnmAreaCuenta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnmAreaCuenta.ForeColor = System.Drawing.Color.Silver;
             this.btnmAreaCuenta.Location = new System.Drawing.Point(0, 0);
+            this.btnmAreaCuenta.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnmAreaCuenta.Name = "btnmAreaCuenta";
-            this.btnmAreaCuenta.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.btnmAreaCuenta.Size = new System.Drawing.Size(202, 37);
+            this.btnmAreaCuenta.Padding = new System.Windows.Forms.Padding(26, 0, 0, 0);
+            this.btnmAreaCuenta.Size = new System.Drawing.Size(150, 30);
             this.btnmAreaCuenta.TabIndex = 0;
             this.btnmAreaCuenta.Text = "Grupo cuenta";
             this.btnmAreaCuenta.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -328,10 +339,10 @@
             this.btnMenuProcesos.ForeColor = System.Drawing.Color.Gainsboro;
             this.btnMenuProcesos.Image = ((System.Drawing.Image)(resources.GetObject("btnMenuProcesos.Image")));
             this.btnMenuProcesos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnMenuProcesos.Location = new System.Drawing.Point(0, 224);
-            this.btnMenuProcesos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnMenuProcesos.Location = new System.Drawing.Point(0, 182);
+            this.btnMenuProcesos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnMenuProcesos.Name = "btnMenuProcesos";
-            this.btnMenuProcesos.Size = new System.Drawing.Size(202, 51);
+            this.btnMenuProcesos.Size = new System.Drawing.Size(150, 41);
             this.btnMenuProcesos.TabIndex = 5;
             this.btnMenuProcesos.Text = "Mantenimientos";
             this.btnMenuProcesos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -345,9 +356,10 @@
             this.panelMenuProc.Controls.Add(this.BtnCierreCuentas);
             this.panelMenuProc.Controls.Add(this.btnPresupuestos);
             this.panelMenuProc.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelMenuProc.Location = new System.Drawing.Point(0, 45);
+            this.panelMenuProc.Location = new System.Drawing.Point(0, 37);
+            this.panelMenuProc.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelMenuProc.Name = "panelMenuProc";
-            this.panelMenuProc.Size = new System.Drawing.Size(202, 179);
+            this.panelMenuProc.Size = new System.Drawing.Size(150, 145);
             this.panelMenuProc.TabIndex = 4;
             this.panelMenuProc.Visible = false;
             // 
@@ -357,10 +369,11 @@
             this.btnEstadosFin.FlatAppearance.BorderSize = 0;
             this.btnEstadosFin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEstadosFin.ForeColor = System.Drawing.Color.Silver;
-            this.btnEstadosFin.Location = new System.Drawing.Point(0, 119);
+            this.btnEstadosFin.Location = new System.Drawing.Point(0, 97);
+            this.btnEstadosFin.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnEstadosFin.Name = "btnEstadosFin";
-            this.btnEstadosFin.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.btnEstadosFin.Size = new System.Drawing.Size(202, 45);
+            this.btnEstadosFin.Padding = new System.Windows.Forms.Padding(26, 0, 0, 0);
+            this.btnEstadosFin.Size = new System.Drawing.Size(150, 37);
             this.btnEstadosFin.TabIndex = 3;
             this.btnEstadosFin.Text = "Estados financieros";
             this.btnEstadosFin.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -373,10 +386,11 @@
             this.btnCierreGeneral.FlatAppearance.BorderSize = 0;
             this.btnCierreGeneral.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCierreGeneral.ForeColor = System.Drawing.Color.Silver;
-            this.btnCierreGeneral.Location = new System.Drawing.Point(0, 80);
+            this.btnCierreGeneral.Location = new System.Drawing.Point(0, 65);
+            this.btnCierreGeneral.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnCierreGeneral.Name = "btnCierreGeneral";
-            this.btnCierreGeneral.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.btnCierreGeneral.Size = new System.Drawing.Size(202, 39);
+            this.btnCierreGeneral.Padding = new System.Windows.Forms.Padding(26, 0, 0, 0);
+            this.btnCierreGeneral.Size = new System.Drawing.Size(150, 32);
             this.btnCierreGeneral.TabIndex = 2;
             this.btnCierreGeneral.Text = "Cierre general";
             this.btnCierreGeneral.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -389,10 +403,11 @@
             this.BtnCierreCuentas.FlatAppearance.BorderSize = 0;
             this.BtnCierreCuentas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnCierreCuentas.ForeColor = System.Drawing.Color.Silver;
-            this.BtnCierreCuentas.Location = new System.Drawing.Point(0, 38);
+            this.BtnCierreCuentas.Location = new System.Drawing.Point(0, 31);
+            this.BtnCierreCuentas.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.BtnCierreCuentas.Name = "BtnCierreCuentas";
-            this.BtnCierreCuentas.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.BtnCierreCuentas.Size = new System.Drawing.Size(202, 42);
+            this.BtnCierreCuentas.Padding = new System.Windows.Forms.Padding(26, 0, 0, 0);
+            this.BtnCierreCuentas.Size = new System.Drawing.Size(150, 34);
             this.BtnCierreCuentas.TabIndex = 1;
             this.BtnCierreCuentas.Text = "Cierre por cuentas";
             this.BtnCierreCuentas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -406,9 +421,10 @@
             this.btnPresupuestos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPresupuestos.ForeColor = System.Drawing.Color.Silver;
             this.btnPresupuestos.Location = new System.Drawing.Point(0, 0);
+            this.btnPresupuestos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnPresupuestos.Name = "btnPresupuestos";
-            this.btnPresupuestos.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.btnPresupuestos.Size = new System.Drawing.Size(202, 38);
+            this.btnPresupuestos.Padding = new System.Windows.Forms.Padding(26, 0, 0, 0);
+            this.btnPresupuestos.Size = new System.Drawing.Size(150, 31);
             this.btnPresupuestos.TabIndex = 0;
             this.btnPresupuestos.Text = "Presupuestos";
             this.btnPresupuestos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -427,9 +443,9 @@
             this.btnMenuContable.Image = ((System.Drawing.Image)(resources.GetObject("btnMenuContable.Image")));
             this.btnMenuContable.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnMenuContable.Location = new System.Drawing.Point(0, 0);
-            this.btnMenuContable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnMenuContable.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnMenuContable.Name = "btnMenuContable";
-            this.btnMenuContable.Size = new System.Drawing.Size(202, 45);
+            this.btnMenuContable.Size = new System.Drawing.Size(150, 37);
             this.btnMenuContable.TabIndex = 2;
             this.btnMenuContable.Text = "Procesos contables";
             this.btnMenuContable.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -447,9 +463,9 @@
             this.panelBarraTitulo.Controls.Add(this.btnCerrar);
             this.panelBarraTitulo.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelBarraTitulo.Location = new System.Drawing.Point(0, 0);
-            this.panelBarraTitulo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panelBarraTitulo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelBarraTitulo.Name = "panelBarraTitulo";
-            this.panelBarraTitulo.Size = new System.Drawing.Size(1363, 39);
+            this.panelBarraTitulo.Size = new System.Drawing.Size(1022, 32);
             this.panelBarraTitulo.TabIndex = 0;
             this.panelBarraTitulo.Paint += new System.Windows.Forms.PaintEventHandler(this.panelBarraTitulo_Paint);
             this.panelBarraTitulo.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelBarraTitulo_MouseMove);
@@ -457,9 +473,10 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox2.Location = new System.Drawing.Point(2, 2);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(39, 32);
+            this.pictureBox2.Size = new System.Drawing.Size(29, 26);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 4;
             this.pictureBox2.TabStop = false;
@@ -469,10 +486,10 @@
             this.btnRestaurar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnRestaurar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRestaurar.Image = ((System.Drawing.Image)(resources.GetObject("btnRestaurar.Image")));
-            this.btnRestaurar.Location = new System.Drawing.Point(1311, 11);
-            this.btnRestaurar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnRestaurar.Location = new System.Drawing.Point(983, 9);
+            this.btnRestaurar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnRestaurar.Name = "btnRestaurar";
-            this.btnRestaurar.Size = new System.Drawing.Size(16, 16);
+            this.btnRestaurar.Size = new System.Drawing.Size(12, 13);
             this.btnRestaurar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnRestaurar.TabIndex = 3;
             this.btnRestaurar.TabStop = false;
@@ -484,10 +501,10 @@
             this.btnMinimizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnMinimizar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnMinimizar.Image = ((System.Drawing.Image)(resources.GetObject("btnMinimizar.Image")));
-            this.btnMinimizar.Location = new System.Drawing.Point(1289, 11);
-            this.btnMinimizar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnMinimizar.Location = new System.Drawing.Point(967, 9);
+            this.btnMinimizar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnMinimizar.Name = "btnMinimizar";
-            this.btnMinimizar.Size = new System.Drawing.Size(16, 16);
+            this.btnMinimizar.Size = new System.Drawing.Size(12, 13);
             this.btnMinimizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnMinimizar.TabIndex = 2;
             this.btnMinimizar.TabStop = false;
@@ -498,10 +515,10 @@
             this.btnMaximizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnMaximizar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnMaximizar.Image = ((System.Drawing.Image)(resources.GetObject("btnMaximizar.Image")));
-            this.btnMaximizar.Location = new System.Drawing.Point(1312, 11);
-            this.btnMaximizar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnMaximizar.Location = new System.Drawing.Point(984, 9);
+            this.btnMaximizar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnMaximizar.Name = "btnMaximizar";
-            this.btnMaximizar.Size = new System.Drawing.Size(16, 16);
+            this.btnMaximizar.Size = new System.Drawing.Size(12, 13);
             this.btnMaximizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnMaximizar.TabIndex = 1;
             this.btnMaximizar.TabStop = false;
@@ -512,10 +529,10 @@
             this.btnCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCerrar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCerrar.Image = ((System.Drawing.Image)(resources.GetObject("btnCerrar.Image")));
-            this.btnCerrar.Location = new System.Drawing.Point(1333, 11);
-            this.btnCerrar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnCerrar.Location = new System.Drawing.Point(1000, 9);
+            this.btnCerrar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnCerrar.Name = "btnCerrar";
-            this.btnCerrar.Size = new System.Drawing.Size(16, 16);
+            this.btnCerrar.Size = new System.Drawing.Size(12, 13);
             this.btnCerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnCerrar.TabIndex = 0;
             this.btnCerrar.TabStop = false;
@@ -523,13 +540,13 @@
             // 
             // Contabilidad_MDI
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1363, 661);
+            this.ClientSize = new System.Drawing.Size(1022, 537);
             this.Controls.Add(this.panelContenedor);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.MinimumSize = new System.Drawing.Size(651, 400);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MinimumSize = new System.Drawing.Size(488, 325);
             this.Name = "Contabilidad_MDI";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";

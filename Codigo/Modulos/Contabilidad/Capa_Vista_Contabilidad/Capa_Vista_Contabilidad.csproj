@@ -49,6 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActivoFijo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ActivoFijo.Designer.cs">
+      <DependentUpon>ActivoFijo.cs</DependentUpon>
+    </Compile>
     <Compile Include="AtivosFijos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,6 +91,12 @@
     </Compile>
     <Compile Include="Mantenimiento Tipo Poliza.Designer.cs">
       <DependentUpon>Mantenimiento Tipo Poliza.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mantenimientoactivofijo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mantenimientoactivofijo.Designer.cs">
+      <DependentUpon>Mantenimientoactivofijo.cs</DependentUpon>
     </Compile>
     <Compile Include="MantenimientoEncabezadoCuenta.cs">
       <SubType>Form</SubType>
@@ -131,6 +143,9 @@
   </ItemGroup>
   <ItemGroup>
     <!-- Incluyendo ambos recursos -->
+    <EmbeddedResource Include="ActivoFijo.resx">
+      <DependentUpon>ActivoFijo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AtivosFijos.resx">
       <DependentUpon>AtivosFijos.cs</DependentUpon>
     </EmbeddedResource>
@@ -148,6 +163,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Mantenimiento Tipo Poliza.resx">
       <DependentUpon>Mantenimiento Tipo Poliza.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mantenimientoactivofijo.resx">
+      <DependentUpon>Mantenimientoactivofijo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MantenimientoEncabezadoCuenta.resx">
       <DependentUpon>MantenimientoEncabezadoCuenta.cs</DependentUpon>
