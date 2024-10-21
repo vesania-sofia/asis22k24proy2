@@ -73,6 +73,18 @@
     <Compile Include="frm_Factura.Designer.cs">
       <DependentUpon>frm_Factura.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_generarOrdenCompra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_generarOrdenCompra.Designer.cs">
+      <DependentUpon>frm_generarOrdenCompra.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_generarOrdenParaCompra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_generarOrdenParaCompra.Designer.cs">
+      <DependentUpon>frm_generarOrdenParaCompra.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_ListadoDetalle.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,6 +102,12 @@
     </Compile>
     <Compile Include="frm_Mantenimientopoliza.Designer.cs">
       <DependentUpon>frm_Mantenimientopoliza.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_ordenCompras.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_ordenCompras.Designer.cs">
+      <DependentUpon>frm_ordenCompras.cs</DependentUpon>
     </Compile>
     <Compile Include="frm_Pedido.cs">
       <SubType>Form</SubType>
@@ -141,6 +159,12 @@
     <EmbeddedResource Include="frm_Factura.resx">
       <DependentUpon>frm_Factura.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frm_generarOrdenCompra.resx">
+      <DependentUpon>frm_generarOrdenCompra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_generarOrdenParaCompra.resx">
+      <DependentUpon>frm_generarOrdenParaCompra.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frm_ListadoDetalle.resx">
       <DependentUpon>frm_ListadoDetalle.cs</DependentUpon>
     </EmbeddedResource>
@@ -152,6 +176,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_MDI_general_CompraVenta.resx">
       <DependentUpon>Frm_MDI_general_CompraVenta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_ordenCompras.resx">
+      <DependentUpon>frm_ordenCompras.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_Pedido.resx">
       <DependentUpon>frm_Pedido.cs</DependentUpon>
