@@ -15,7 +15,7 @@ namespace Capa_Vista_Logistica
         public Movimientos(string idUsuario)
         {
             InitializeComponent();
-            string[] alias = { "id_movimiento", "estado", "id_producto", "id_stock", "bodega Origen", "bodega Destino", "sucursal Origen", "sucursal Destino"};
+            string[] alias = { "id_movimiento", "estado", "id_producto", "id_stock", "bodega Destino", "sucursal Destino"};
             navegador1.AsignarAlias(alias);
             navegador1.AsignarSalida(this);
             navegador1.AsignarColorFondo(Color.CadetBlue);

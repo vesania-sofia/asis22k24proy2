@@ -1,7 +1,7 @@
 ﻿
 namespace Capa_Vista_Logistica
 {
-    partial class Mantenimiento
+    partial class MantenimientoVehiculos
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,6 @@ namespace Capa_Vista_Logistica
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.cmb_NombreSolicitante = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.txtID_mantenimiento = new System.Windows.Forms.TextBox();
@@ -54,6 +53,9 @@ namespace Capa_Vista_Logistica
             this.btn_Eliminar = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btn_generarPDF = new System.Windows.Forms.Button();
+            this.txt_NombreSolicitante = new System.Windows.Forms.TextBox();
+            this.txt_fk_id_movimiento = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -65,14 +67,6 @@ namespace Capa_Vista_Logistica
             this.label1.Size = new System.Drawing.Size(111, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Nombre de Solicitante";
-            // 
-            // cmb_NombreSolicitante
-            // 
-            this.cmb_NombreSolicitante.FormattingEnabled = true;
-            this.cmb_NombreSolicitante.Location = new System.Drawing.Point(129, 76);
-            this.cmb_NombreSolicitante.Name = "cmb_NombreSolicitante";
-            this.cmb_NombreSolicitante.Size = new System.Drawing.Size(254, 21);
-            this.cmb_NombreSolicitante.TabIndex = 1;
             // 
             // label2
             // 
@@ -94,9 +88,9 @@ namespace Capa_Vista_Logistica
             // 
             // txtID_mantenimiento
             // 
-            this.txtID_mantenimiento.Location = new System.Drawing.Point(129, 47);
+            this.txtID_mantenimiento.Location = new System.Drawing.Point(129, 44);
             this.txtID_mantenimiento.Name = "txtID_mantenimiento";
-            this.txtID_mantenimiento.Size = new System.Drawing.Size(226, 20);
+            this.txtID_mantenimiento.Size = new System.Drawing.Size(254, 20);
             this.txtID_mantenimiento.TabIndex = 4;
             // 
             // label4
@@ -110,7 +104,11 @@ namespace Capa_Vista_Logistica
             // 
             // cmb_TipoMantenimiento
             // 
+            this.cmb_TipoMantenimiento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb_TipoMantenimiento.FormattingEnabled = true;
+            this.cmb_TipoMantenimiento.Items.AddRange(new object[] {
+            "Mantenimiento Preventivo",
+            "Mantenimiento Correctivo"});
             this.cmb_TipoMantenimiento.Location = new System.Drawing.Point(129, 117);
             this.cmb_TipoMantenimiento.Name = "cmb_TipoMantenimiento";
             this.cmb_TipoMantenimiento.Size = new System.Drawing.Size(254, 21);
@@ -128,7 +126,13 @@ namespace Capa_Vista_Logistica
             // 
             // cmb_ComponenteAfectado
             // 
+            this.cmb_ComponenteAfectado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb_ComponenteAfectado.FormattingEnabled = true;
+            this.cmb_ComponenteAfectado.Items.AddRange(new object[] {
+            "Motor",
+            "Llantas",
+            "Frenos",
+            "Aceite/Agua"});
             this.cmb_ComponenteAfectado.Location = new System.Drawing.Point(129, 164);
             this.cmb_ComponenteAfectado.Name = "cmb_ComponenteAfectado";
             this.cmb_ComponenteAfectado.Size = new System.Drawing.Size(254, 21);
@@ -171,15 +175,15 @@ namespace Capa_Vista_Logistica
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(12, 293);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(135, 13);
+            this.label8.Size = new System.Drawing.Size(51, 13);
             this.label8.TabIndex = 13;
-            this.label8.Text = "Codigo de error o Problema";
+            this.label8.Text = "Problema";
             // 
             // txt_CodigoError
             // 
-            this.txt_CodigoError.Location = new System.Drawing.Point(153, 290);
+            this.txt_CodigoError.Location = new System.Drawing.Point(69, 290);
             this.txt_CodigoError.Name = "txt_CodigoError";
-            this.txt_CodigoError.Size = new System.Drawing.Size(250, 20);
+            this.txt_CodigoError.Size = new System.Drawing.Size(314, 20);
             this.txt_CodigoError.TabIndex = 14;
             // 
             // label9
@@ -193,7 +197,11 @@ namespace Capa_Vista_Logistica
             // 
             // cmb_Estado
             // 
+            this.cmb_Estado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb_Estado.FormattingEnabled = true;
+            this.cmb_Estado.Items.AddRange(new object[] {
+            "Activo",
+            "No Activo"});
             this.cmb_Estado.Location = new System.Drawing.Point(153, 322);
             this.cmb_Estado.Name = "cmb_Estado";
             this.cmb_Estado.Size = new System.Drawing.Size(230, 21);
@@ -217,16 +225,17 @@ namespace Capa_Vista_Logistica
             // 
             // btn_Enviar
             // 
-            this.btn_Enviar.Location = new System.Drawing.Point(12, 402);
+            this.btn_Enviar.Location = new System.Drawing.Point(12, 472);
             this.btn_Enviar.Name = "btn_Enviar";
             this.btn_Enviar.Size = new System.Drawing.Size(75, 23);
             this.btn_Enviar.TabIndex = 19;
             this.btn_Enviar.Text = "Enviar";
             this.btn_Enviar.UseVisualStyleBackColor = true;
+            this.btn_Enviar.Click += new System.EventHandler(this.btn_Enviar_Click);
             // 
             // btn_Editar
             // 
-            this.btn_Editar.Location = new System.Drawing.Point(129, 402);
+            this.btn_Editar.Location = new System.Drawing.Point(129, 472);
             this.btn_Editar.Name = "btn_Editar";
             this.btn_Editar.Size = new System.Drawing.Size(75, 23);
             this.btn_Editar.TabIndex = 20;
@@ -235,7 +244,7 @@ namespace Capa_Vista_Logistica
             // 
             // btn_Actualizar
             // 
-            this.btn_Actualizar.Location = new System.Drawing.Point(252, 402);
+            this.btn_Actualizar.Location = new System.Drawing.Point(252, 472);
             this.btn_Actualizar.Name = "btn_Actualizar";
             this.btn_Actualizar.Size = new System.Drawing.Size(75, 23);
             this.btn_Actualizar.TabIndex = 21;
@@ -244,7 +253,7 @@ namespace Capa_Vista_Logistica
             // 
             // btn_Eliminar
             // 
-            this.btn_Eliminar.Location = new System.Drawing.Point(377, 402);
+            this.btn_Eliminar.Location = new System.Drawing.Point(377, 472);
             this.btn_Eliminar.Name = "btn_Eliminar";
             this.btn_Eliminar.Size = new System.Drawing.Size(75, 23);
             this.btn_Eliminar.TabIndex = 22;
@@ -254,25 +263,51 @@ namespace Capa_Vista_Logistica
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(15, 441);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 510);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(483, 174);
             this.dataGridView1.TabIndex = 23;
             // 
             // btn_generarPDF
             // 
-            this.btn_generarPDF.Location = new System.Drawing.Point(377, 15);
+            this.btn_generarPDF.Location = new System.Drawing.Point(409, 364);
             this.btn_generarPDF.Name = "btn_generarPDF";
-            this.btn_generarPDF.Size = new System.Drawing.Size(121, 23);
+            this.btn_generarPDF.Size = new System.Drawing.Size(89, 23);
             this.btn_generarPDF.TabIndex = 24;
             this.btn_generarPDF.Text = "Generar PDF";
             this.btn_generarPDF.UseVisualStyleBackColor = true;
             // 
-            // Mantenimiento
+            // txt_NombreSolicitante
+            // 
+            this.txt_NombreSolicitante.Location = new System.Drawing.Point(129, 84);
+            this.txt_NombreSolicitante.Name = "txt_NombreSolicitante";
+            this.txt_NombreSolicitante.Size = new System.Drawing.Size(254, 20);
+            this.txt_NombreSolicitante.TabIndex = 25;
+            // 
+            // txt_fk_id_movimiento
+            // 
+            this.txt_fk_id_movimiento.Location = new System.Drawing.Point(153, 415);
+            this.txt_fk_id_movimiento.Name = "txt_fk_id_movimiento";
+            this.txt_fk_id_movimiento.Size = new System.Drawing.Size(250, 20);
+            this.txt_fk_id_movimiento.TabIndex = 26;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(12, 422);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(88, 13);
+            this.label11.TabIndex = 27;
+            this.label11.Text = "Id de Movimiento";
+            // 
+            // MantenimientoVehiculos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(510, 627);
+            this.ClientSize = new System.Drawing.Size(525, 696);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.txt_fk_id_movimiento);
+            this.Controls.Add(this.txt_NombreSolicitante);
             this.Controls.Add(this.btn_generarPDF);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btn_Eliminar);
@@ -296,10 +331,9 @@ namespace Capa_Vista_Logistica
             this.Controls.Add(this.txtID_mantenimiento);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.cmb_NombreSolicitante);
             this.Controls.Add(this.label1);
-            this.Name = "Mantenimiento";
-            this.Text = "Mantenimiento";
+            this.Name = "MantenimientoVehiculos";
+            this.Text = "Mantenimiento de vehiculos";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -309,7 +343,6 @@ namespace Capa_Vista_Logistica
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox cmb_NombreSolicitante;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtID_mantenimiento;
@@ -333,5 +366,8 @@ namespace Capa_Vista_Logistica
         private System.Windows.Forms.Button btn_Eliminar;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button btn_generarPDF;
+        private System.Windows.Forms.TextBox txt_NombreSolicitante;
+        private System.Windows.Forms.TextBox txt_fk_id_movimiento;
+        private System.Windows.Forms.Label label11;
     }
 }

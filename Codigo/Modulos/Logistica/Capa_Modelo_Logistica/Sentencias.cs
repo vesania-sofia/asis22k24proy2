@@ -70,6 +70,38 @@ namespace Capa_Modelo_Logistica
                 }
             }
         }
+        public void InsertarSolicitudMantenimiento(int idMantenimiento, string nombreSolicitante, string tipoMantenimiento, string componenteAfectado, string fecha, string responsableAsignado, string codigo_error_Problema, string estadoMantenimiento, string tiempoEstimado, int id_Movimiento)
+        {
+            OdbcConnection conn = cn.conexion();
+            try
+            {
+                string query = "INSERT INTO tbl_mantenimiento VALUES (Pk_id_Mantenimiento, nombre_Solicitante, tipo_de_Mantenimiento, componente_Afectado, fecha, responsable_Asignado, codigo_Error_Problema, Estado, tiempo_Estimado, Fk_id_movimiento)";
+                OdbcCommand cmd = new OdbcCommand(query, conn);
+                cmd.Parameters.AddWithValue("@Pk_id_Mantenimiento", idMantenimiento);
+                cmd.Parameters.AddWithValue("@nombre_Solicitante", nombreSolicitante);
+                cmd.Parameters.AddWithValue("@tipo_de_mantenimiento", tipoMantenimiento);
+                cmd.Parameters.AddWithValue("@componente_Afectado", componenteAfectado);
+                cmd.Parameters.AddWithValue("@fecha", fecha);
+                cmd.Parameters.AddWithValue("@responsable_Asignado", responsableAsignado);
+                cmd.Parameters.AddWithValue("@codigo_Error_Problema", codigo_error_Problema);
+                cmd.Parameters.AddWithValue("@Estado", estadoMantenimiento);
+                cmd.Parameters.AddWithValue("@tiempo_Estimado", tiempoEstimado);
+                cmd.Parameters.AddWithValue("@Fk_id_movimiento", id_Movimiento);
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al insertar solicitud de mantenimiento: " + ex.Message);
+
+            }
+            finally
+            {
+                if (conn != null && conn.State == System.Data.ConnectionState.Open)
+                {
+                    conn.Close(); // Asegurarse de cerrar la conexión
+                }
+            }
+        }
 
         public OdbcDataReader ObtenerProductosPorBodega(string idBodega) //realizado por José Daniel Sierra
         {

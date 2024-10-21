@@ -181,6 +181,9 @@
     <EmbeddedResource Include="Locales.resx">
       <DependentUpon>Locales.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Mantenimiento.resx">
+      <DependentUpon>Mantenimiento.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MantenimientoNav.resx">
       <DependentUpon>MantenimientoNav.cs</DependentUpon>
     </EmbeddedResource>
