@@ -39,6 +39,7 @@ namespace Capa_Vista_Produccion
             this.panelMenu = new System.Windows.Forms.Panel();
             this.btnSalir = new System.Windows.Forms.Button();
             this.panelMenuProcesos = new System.Windows.Forms.Panel();
+            this.Btn_Recetas = new System.Windows.Forms.Button();
             this.btnLotes = new System.Windows.Forms.Button();
             this.btnSeries = new System.Windows.Forms.Button();
             this.btnConversiones = new System.Windows.Forms.Button();
@@ -52,7 +53,6 @@ namespace Capa_Vista_Produccion
             this.btnMantenimiento = new System.Windows.Forms.Button();
             this.btnMenuProcesos = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.Btn_Recetas = new System.Windows.Forms.Button();
             this.panelBarraTitulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnRestaurar)).BeginInit();
@@ -66,7 +66,7 @@ namespace Capa_Vista_Produccion
             // 
             // panelBarraTitulo
             // 
-            this.panelBarraTitulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(56)))), ((int)(((byte)(182)))));
+            this.panelBarraTitulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(131)))), ((int)(((byte)(204)))));
             this.panelBarraTitulo.Controls.Add(this.pictureBox2);
             this.panelBarraTitulo.Controls.Add(this.btnRestaurar);
             this.panelBarraTitulo.Controls.Add(this.btnMinimizar);
@@ -150,7 +150,7 @@ namespace Capa_Vista_Produccion
             // panelMenu
             // 
             this.panelMenu.AutoScroll = true;
-            this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(0)))), ((int)(((byte)(80)))));
+            this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(43)))), ((int)(((byte)(77)))));
             this.panelMenu.Controls.Add(this.btnSalir);
             this.panelMenu.Controls.Add(this.panelMenuProcesos);
             this.panelMenu.Controls.Add(this.btnMenuProcesos);
@@ -203,6 +203,23 @@ namespace Capa_Vista_Produccion
             this.panelMenuProcesos.Size = new System.Drawing.Size(181, 520);
             this.panelMenuProcesos.TabIndex = 6;
             this.panelMenuProcesos.Visible = false;
+            // 
+            // Btn_Recetas
+            // 
+            this.Btn_Recetas.Dock = System.Windows.Forms.DockStyle.Top;
+            this.Btn_Recetas.FlatAppearance.BorderSize = 0;
+            this.Btn_Recetas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_Recetas.ForeColor = System.Drawing.Color.Silver;
+            this.Btn_Recetas.Location = new System.Drawing.Point(0, 481);
+            this.Btn_Recetas.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Btn_Recetas.Name = "Btn_Recetas";
+            this.Btn_Recetas.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.Btn_Recetas.Size = new System.Drawing.Size(181, 35);
+            this.Btn_Recetas.TabIndex = 12;
+            this.Btn_Recetas.Text = "Recetas";
+            this.Btn_Recetas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Btn_Recetas.UseVisualStyleBackColor = true;
+            this.Btn_Recetas.Click += new System.EventHandler(this.Btn_Recetas_Click);
             // 
             // btnLotes
             // 
@@ -425,23 +442,6 @@ namespace Capa_Vista_Produccion
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             // 
-            // Btn_Recetas
-            // 
-            this.Btn_Recetas.Dock = System.Windows.Forms.DockStyle.Top;
-            this.Btn_Recetas.FlatAppearance.BorderSize = 0;
-            this.Btn_Recetas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_Recetas.ForeColor = System.Drawing.Color.Silver;
-            this.Btn_Recetas.Location = new System.Drawing.Point(0, 481);
-            this.Btn_Recetas.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Btn_Recetas.Name = "Btn_Recetas";
-            this.Btn_Recetas.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.Btn_Recetas.Size = new System.Drawing.Size(181, 35);
-            this.Btn_Recetas.TabIndex = 12;
-            this.Btn_Recetas.Text = "Recetas";
-            this.Btn_Recetas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Btn_Recetas.UseVisualStyleBackColor = true;
-            this.Btn_Recetas.Click += new System.EventHandler(this.Btn_Recetas_Click);
-            // 
             // MDI_Produccion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -451,7 +451,7 @@ namespace Capa_Vista_Produccion
             this.Controls.Add(this.panelMenu);
             this.Controls.Add(this.panelBarraTitulo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MDI_Produccion";
             this.Text = "MDI_Produccion";
             this.panelBarraTitulo.ResumeLayout(false);
