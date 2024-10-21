@@ -152,6 +152,12 @@ namespace Capa_Vista_Produccion
             btnRestaurar.Visible = true;
         }
 
+        private void Btn_Recetas_Click(object sender, EventArgs e)
+        {
+            Frm_Receta receta = new Frm_Receta();
+            receta.Show();
+        }
+
         private void btnRestaurar_Click_1(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Normal;

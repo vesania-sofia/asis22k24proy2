@@ -15,11 +15,13 @@ namespace Capa_Vista_Produccion
         public Frm_Receta()
         {
             InitializeComponent();
-            string[] alias = { "ID", "Tipo de Colchón", "Producto", "Descripción", "Cantidad", "Stock", "Estado" };
+            string[] alias = { "ID", "Producto","Descripción", "Cantidad", "Costo", "Campo", "Tipo", "Estado" };
             navegador1.AsignarAlias(alias);
             navegador1.AsignarSalida(this);
-            navegador1.AsignarColorFondo(Color.LightBlue);
-            navegador1.AsignarColorFuente(Color.BlueViolet);
+            Color colorFondo = ColorTranslator.FromHtml("#AEA1D6"); // Color de fondo
+            Color colorFuente = ColorTranslator.FromHtml("#230050"); // Color de fuente
+            navegador1.AsignarColorFondo(colorFondo);
+            navegador1.AsignarColorFuente(colorFuente);
             navegador1.ObtenerIdAplicacion("1000");
             navegador1.AsignarAyuda("1");
             navegador1.ObtenerIdUsuario("admin");
