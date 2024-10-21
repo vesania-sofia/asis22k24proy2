@@ -13,56 +13,102 @@ namespace Capa_Vista_Produccion
         {
             InitializeComponent();
             control = new Control_Implosion_Explosion_Materiales();
-            MostrarCalculos();
+            CargarProductos(); // Llamamos al método que carga los productos en los ComboBox
         }
 
-        // Lógica para la implosión de materiales
-        private void Btn_implosion_material_Click_1(object sender, EventArgs e)
+        // Método para cargar los productos en los ComboBox según la serie
+        private void CargarProductos()
         {
-            try
-            {
-                int cantidad_productos = int.Parse(Txt_cantidad_material.Text);
-                int material_por_producto = int.Parse(Txt_cantidad_material_por_producto.Text);
+            // Llenar ComboBox de implosión con productos que tengan la serie "B"
+            DataTable productosImplosion = control.ObtenerProductosPorSerie("B");
+            cmb_implosion.DataSource = productosImplosion;
+            cmb_implosion.DisplayMember = "Nombre";  // Mostrar el nombre del producto
+            cmb_implosion.ValueMember = "id_producto";  // Valor interno del producto (pero no se mostrará)
 
-                // Calcular y registrar implosión
-                int total_materiales_necesarios = control.Calcular_Implosion(cantidad_productos, material_por_producto);
-
-                // Mostrar el resultado
-                MessageBox.Show($"Materiales necesarios: {total_materiales_necesarios}");
-                MostrarCalculos();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error en el cálculo: " + ex.Message);
-            }
+            // Llenar ComboBox de explosión con productos que tengan la serie "A"
+            DataTable productosExplosion = control.ObtenerProductosPorSerie("A");
+            cmb_explosion.DataSource = productosExplosion;
+            cmb_explosion.DisplayMember = "Nombre";  // Mostrar el nombre del producto
+            cmb_explosion.ValueMember = "id_producto";  // Valor interno del producto (pero no se mostrará)
         }
 
-        // Lógica para la explosión de materiales
-        private void Btn_explosion_material_Click_1(object sender, EventArgs e)
+        // Lógica del botón Explosión
+        private void Btn_Explosion_Click(object sender, EventArgs e)
         {
-            try
-            {
-                int stock_material = int.Parse(Txt_stock_material.Text);
-                int material_por_producto = int.Parse(Txt_cantidad_material_por_producto.Text);
+            // Obtener el producto seleccionado en el ComboBox de explosión
+            string productoSeleccionado = cmb_explosion.Text;
 
-                // Calcular y registrar explosión
-                int productos_disponibles = control.Calcular_Explosion(stock_material, material_por_producto);
-
-                // Mostrar el resultado
-                MessageBox.Show($"Productos que se pueden producir: {productos_disponibles}");
-                MostrarCalculos();
-            }
-            catch (Exception ex)
+            // Obtener la cantidad ingresada en el TextBox de explosión
+            if (!int.TryParse(txt_cantidad_ex.Text, out int cantidad))
             {
-                MessageBox.Show("Error en el cálculo: " + ex.Message);
+                MessageBox.Show("Por favor, ingrese una cantidad válida.");
+                return;
             }
+
+            // Definir las recetas predefinidas según el producto seleccionado
+            string mensaje = "";
+            switch (productoSeleccionado)
+            {
+                case "Cama King":
+                    mensaje = $"Explosión para {cantidad} {productoSeleccionado}:\n" +
+                              $"Necesita {cantidad * 20} unidades de 50 Esponja.\n" +
+                              $"Necesita {cantidad * 10} unidades de Tela para colchón.";
+                    break;
+
+                case "Cama Queen":
+                    mensaje = $"Explosión para {cantidad} {productoSeleccionado}:\n" +
+                              $"Necesita {cantidad * 15} unidades de 50 Esponja.\n" +
+                              $"Necesita {cantidad * 12} unidades de Tela para colchón.";
+                    break;
+
+                case "Cama Doble":
+                    mensaje = $"Explosión para {cantidad} {productoSeleccionado}:\n" +
+                              $"Necesita {cantidad * 30} unidades de 50 Esponja.\n" +
+                              $"Necesita {cantidad * 20} unidades de Tela para colchón.";
+                    break;
+
+                default:
+                    mensaje = "No hay una receta definida para este producto.";
+                    break;
+            }
+
+            // Mostrar el resultado en un cuadro de mensaje
+            MessageBox.Show(mensaje, "Resultado de la explosión", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        // Método para visualizar los cálculos en el DataGridView
-        private void MostrarCalculos()
+        // Lógica del botón Implosión
+        private void Btn_Implosion_Click(object sender, EventArgs e)
         {
-            DataTable tabla = control.Mostrar_Calculos();
-            Dgv_Calculos.DataSource = tabla; // Asignar la tabla al DataGridView
+            // Obtener el producto seleccionado en el ComboBox de implosión
+            string productoSeleccionado = cmb_implosion.Text;
+
+            // Definir las recetas predefinidas (momentáneas) para la implosión
+            string mensaje = "";
+            switch (productoSeleccionado)
+            {
+                case "50 Esponja":
+                    mensaje = $"Implosión para {productoSeleccionado}:\n" +
+                              $"Con 50 unidades de esponja puedes producir:\n" +
+                              $"- {50 / 20} camas King\n" +
+                              $"- {50 / 15} camas Queen\n" +
+                              $"- {50 / 30} camas Doble.";
+                    break;
+
+                case "Tela para colchón":
+                    mensaje = $"Implosión para {productoSeleccionado}:\n" +
+                              $"Con 100 unidades de tela puedes producir:\n" +
+                              $"- {100 / 10} camas King\n" +
+                              $"- {100 / 12} camas Queen\n" +
+                              $"- {100 / 20} camas Doble.";
+                    break;
+
+                default:
+                    mensaje = "No hay una receta definida para este material.";
+                    break;
+            }
+
+            // Mostrar el resultado en un cuadro de mensaje
+            MessageBox.Show(mensaje, "Resultado de la implosión", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }
