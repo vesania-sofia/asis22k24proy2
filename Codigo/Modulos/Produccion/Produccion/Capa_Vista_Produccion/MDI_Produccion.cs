@@ -16,7 +16,7 @@ namespace Capa_Vista_Produccion
         int lx, ly;
         int sw, sh;
 
-        public MDI_Produccion()
+        public MDI_Produccion(string idUsuario)
         {
             InitializeComponent();
             ocultaSubMenu();

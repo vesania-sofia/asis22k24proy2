@@ -16,7 +16,7 @@ namespace Ejecucion_Produccion
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Capa_Vista_Produccion.MDI_Produccion());
+            Application.Run(new Capa_Vista_Produccion.MDI_Produccion("admin"));
         }
     }
 }
