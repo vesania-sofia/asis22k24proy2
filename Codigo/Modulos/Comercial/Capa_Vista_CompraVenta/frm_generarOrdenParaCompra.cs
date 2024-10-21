@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Capa_Vista_CompraVenta
 {
-    public partial class frm_ordencompra : Form
+    public partial class frm_generarOrdenParaCompra : Form
     {
-        public frm_ordencompra()
+        public frm_generarOrdenParaCompra()
         {
             InitializeComponent();
         }
