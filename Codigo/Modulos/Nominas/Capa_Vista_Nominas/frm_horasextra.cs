@@ -10,13 +10,15 @@ using System.Windows.Forms;
 
 namespace Capa_Vista_Nominas
 {
-    public partial class frm_puesto : Form
+    public partial class frm_horasextra : Form
     {
-        public frm_puesto()
+
+        String idUsuario;
+        public frm_horasextra(String idUsuario)
         {
             InitializeComponent();
 
-            string idUsuario = Interfac_V3.UsuarioSesion.GetIdUsuario();
+
             /*********Prueba con la tabla inicial*********/
             string[] alias = { "pk_id_puestos", "nombre_puesto", "descripcion", "estado" };
             navegador1.AsignarAlias(alias);
@@ -32,10 +34,9 @@ namespace Capa_Vista_Nominas
 
 
         }
-
-        private void navegador1_Load(object sender, EventArgs e)
+        public frm_horasextra()
         {
-
+            InitializeComponent();
         }
     }
 }
