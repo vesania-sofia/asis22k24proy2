@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Interfac_V3           
+namespace Ejecucion_Cuentas_Corrientes
 {
     static class Program
     {
@@ -16,16 +16,7 @@ namespace Interfac_V3
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-<<<<<<< HEAD
-            //Application.Run(new FormPrincipal());
-            Application.Run(new FormPrincipal());
-           //Application.Run(new splash());
-=======
-            Application.Run(new splash());
-            //Application.Run(new FormModulos());
-            //Application.Run(new Capa_Vista_Seguridad.frm_login());
-
->>>>>>> 850a0fbc55317fb0ca47c0d8199f06901bf79472
+            Application.Run(new Capa_Vista_Cuentas_Corrientes.FormPrincipal());
         }
     }
 }
