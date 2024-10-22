@@ -14,11 +14,9 @@ namespace Capa_Vista_Logistica
     public partial class FormPrincipal : Form
     {
         // Realizado por: Pedro Alejandro Citalán Herrera - 0901-20-16151
-        string idUsuario;
-        public FormPrincipal(string idUsuario)
+        public FormPrincipal()
         {
             InitializeComponent();
-            this.idUsuario = idUsuario;
             ocultaSubMenu();
         }
         private void ocultaSubMenu() 
