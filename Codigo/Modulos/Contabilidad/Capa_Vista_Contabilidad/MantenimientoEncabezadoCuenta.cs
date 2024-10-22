@@ -15,6 +15,10 @@ namespace Capa_Vista_Contabilidad
         public MantenimientoEncabezadoCuenta()
         {
             InitializeComponent();
+
+            string idusuario = Interfac_V3.UsuarioSesion.GetIdUsuario();
+
+            // --------------- TABLA MANTENIMIENTO ------------------------
             string[] alias = { "codigo", "nombre", "estado" };
             navegador1.AsignarAlias(alias);
             navegador1.AsignarSalida(this);
@@ -22,7 +26,7 @@ namespace Capa_Vista_Contabilidad
             navegador1.AsignarColorFuente(Color.BlueViolet);
             navegador1.ObtenerIdAplicacion("1000");
             navegador1.AsignarAyuda("1");
-            navegador1.ObtenerIdUsuario("admin");
+            navegador1.ObtenerIdUsuario(idusuario);
             navegador1.AsignarTabla("tbl_encabezadoclasecuenta");
             // navegador1.AsignarComboConTabla("marcas_vehiculos", "codigo_marca", "nombre_marca", 1); ; // ComboBox para marcas de vehículos
             // navegador1.AsignarComboConTabla("tipos_vehiculos", "codigo_tipo", "nombre_tipo", 1); // ComboBox para tipos de vehículos
@@ -30,7 +34,7 @@ namespace Capa_Vista_Contabilidad
             // navegador1.AsignarForaneas("marcas_vehiculos", "nombre_marca", "codigo_marca", "codigo_marca");
             // navegador1.AsignarForaneas("tipos_vehiculos", "nombre_tipo", "codigo_tipo", "codigo_tipo");
 
-            navegador1.AsignarNombreForm("ENCABEZADO CUENTA");
+            navegador1.AsignarNombreForm("CLASE CUENTA");
             // Configuración de los alias para las tablas adicionales
 
             // List<string> tablas = new List<string> { "inventario_vehiculos" };
