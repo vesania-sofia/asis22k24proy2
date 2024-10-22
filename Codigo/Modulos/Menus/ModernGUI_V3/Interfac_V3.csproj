@@ -52,6 +52,9 @@
     <Reference Include="Capa_Modelo_Seguridad">
       <HintPath>..\..\..\Componentes\Seguridad\Capa_Modelo_Seguridad\bin\Debug\Capa_Modelo_Seguridad.dll</HintPath>
     </Reference>
+    <Reference Include="Capa_Vista_Banco">
+      <HintPath>..\..\Bancos\Bancos\Capa_Vista_Banco\bin\Debug\Capa_Vista_Banco.dll</HintPath>
+    </Reference>
     <Reference Include="Capa_Vista_Nominas">
       <HintPath>..\..\Nominas\Capa_Vista_Nominas\bin\Debug\Capa_Vista_Nominas.dll</HintPath>
     </Reference>
