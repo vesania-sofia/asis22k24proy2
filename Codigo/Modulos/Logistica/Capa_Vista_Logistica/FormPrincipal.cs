@@ -246,7 +246,7 @@ namespace Capa_Vista_Logistica
 
         private void Btn_MenuProcesosOpcion8_Click(object sender, EventArgs e)
         {
-            MonitoreoAlmacen almacen = new MonitoreoAlmacen();
+            AbrirFormulario<MonitoreoAlmacen>();
             ocultaSubMenu();
         }
 
