@@ -18,10 +18,9 @@ namespace Capa_Vista_Logistica
         Controlador controlador = new Controlador(); // Instancia del controlador
 
         // Constructor que recibe el ID de la bodega
-        public MonitoreoAlmacen(string idBodega)
+        public MonitoreoAlmacen()
         {
             InitializeComponent();
-            this.idBodega = idBodega;
 
             // Cargar información de la bodega
             CargarInformacionBodega(idBodega);

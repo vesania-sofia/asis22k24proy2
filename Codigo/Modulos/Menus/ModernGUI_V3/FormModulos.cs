@@ -81,10 +81,11 @@ namespace Interfac_V3
 
         private void Btn_Logistica_Click(object sender, EventArgs e)
         {
-           /*
-            Aqui debe de agregarse la referencia a logistica
-            */
-
+            /*
+             Aqui debe de agregarse la referencia a logistica
+             */
+            Capa_Vista_Logistica.FormPrincipal logistica = new Capa_Vista_Logistica.FormPrincipal(idUsuario);
+            logistica.Show();
 
         }
 
