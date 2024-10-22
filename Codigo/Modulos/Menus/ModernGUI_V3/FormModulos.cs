@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Capa_Vista_Nominas;
+using Capa_Vista_Banco;
 
 namespace Interfac_V3
 {
@@ -105,9 +106,9 @@ namespace Interfac_V3
 
         private void Btn_Bancos_Click(object sender, EventArgs e)
         {
-            /*
-            Aqui debe de agregarse la referencia a Bancos
-            */
+            frm_principal_bancos banco = new frm_principal_bancos(UsuarioSesion.GetIdUsuario());
+            banco.Show();
+
         }
 
         private void Btn_Produccion_Click(object sender, EventArgs e)
