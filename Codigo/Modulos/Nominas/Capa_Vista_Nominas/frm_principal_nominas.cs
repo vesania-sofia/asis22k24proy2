@@ -40,6 +40,8 @@ namespace Capa_Vista_Nominas
         {
             if (Pnl_mantenimientos.Visible == true)
                 Pnl_mantenimientos.Visible = false;
+            if (Pnl_generacion.Visible == true)
+                Pnl_generacion.Visible = false;
         }
 
         private void muestraSubMenu(Panel subMenu)
@@ -168,7 +170,6 @@ namespace Capa_Vista_Nominas
             {
                 form.Close();
             }
-            // Opcional: puedes agregar cualquier otra lógica para restablecer el formulario principal a su estado inicial.
             ocultaSubMenu(); // Cerrar los submenús
         }
 
@@ -205,9 +206,77 @@ namespace Capa_Vista_Nominas
             ocultaSubMenu();
         }
 
+
+        private void Pic_logoformularios_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Btn_generacion_Click(object sender, EventArgs e)
+        {
+            muestraSubMenu(Pnl_generacion);
+        }
+
+        private void Btn_horasextra_Click(object sender, EventArgs e)
+        {
+            AbrirFormulario<frm_horasextra>(idUsuario); // Pasa el idUsuario
+            Btn_puesto.BackColor = Color.FromArgb(12, 61, 92);
+            ocultaSubMenu();
+        }
+
+
+        private void Btn_contrato_Click(object sender, EventArgs e)
+        {
+            AbrirFormulario<frm_gencontrato>(idUsuario); // Pasa el idUsuario
+            Btn_puesto.BackColor = Color.FromArgb(12, 61, 92);
+            ocultaSubMenu();
+        }
+
+        private void Btn_planilla_Click(object sender, EventArgs e)
+        {
+            AbrirFormulario<frm_genplanilla>(idUsuario); // Pasa el idUsuario
+            Btn_puesto.BackColor = Color.FromArgb(12, 61, 92);
+            ocultaSubMenu();
+        }
+
+        private void Btn_anticipo_Click(object sender, EventArgs e)
+        {
+            AbrirFormulario<frm_genanticipo>(idUsuario); // Pasa el idUsuario
+            Btn_puesto.BackColor = Color.FromArgb(12, 61, 92);
+            ocultaSubMenu();
+        }
+
+        private void Btn_faltas_Click(object sender, EventArgs e)
+        {
+            AbrirFormulario<frm_genfaltas>(idUsuario); // Pasa el idUsuario
+            Btn_puesto.BackColor = Color.FromArgb(12, 61, 92);
+            ocultaSubMenu();
+        }
+
+        private void Btn_generacionpercep_Click(object sender, EventArgs e)
+        {
+            AbrirFormulario<frm_genpercepciones>(idUsuario); // Pasa el idUsuario
+            Btn_puesto.BackColor = Color.FromArgb(12, 61, 92);
+            ocultaSubMenu();
+        }
+
+        private void Btn_generaciondeduc_Click(object sender, EventArgs e)
+        {
+            AbrirFormulario<frm_gendeducciones>(idUsuario); // Pasa el idUsuario
+            Btn_puesto.BackColor = Color.FromArgb(12, 61, 92);
+            ocultaSubMenu();
+        }
+
         private void Btn_salir_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void Btn_reportes_Click(object sender, EventArgs e)
+        {
+            AbrirFormulario<frm_reportes>(idUsuario); // Pasa el idUsuario
+            Btn_puesto.BackColor = Color.FromArgb(12, 61, 92);
+            ocultaSubMenu();
         }
 
         #endregion
