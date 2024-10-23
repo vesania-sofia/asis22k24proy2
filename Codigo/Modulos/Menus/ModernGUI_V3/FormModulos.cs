@@ -11,6 +11,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Capa_Vista_Nominas;
 using Capa_Vista_Banco;
+using Capa_Vista_Contabilidad;
+using Capa_Vista_Produccion;
 
 namespace Interfac_V3
 {
@@ -83,18 +85,14 @@ namespace Interfac_V3
 
         private void Btn_Logistica_Click(object sender, EventArgs e)
         {
-            /*
-             Aqui debe de agregarse la referencia a logistica
-             */
-
-
+            Capa_Vista_Logistica.FormPrincipal logistica = new Capa_Vista_Logistica.FormPrincipal(UsuarioSesion.GetIdUsuario());
+            logistica.Show();
         }
 
         private void Btn_Contabilidad_Click(object sender, EventArgs e)
         {
-            /*
-            Aqui debe de agregarse la referencia a Contabilidad
-            */
+            Contabilidad_MDI conta = new Contabilidad_MDI(UsuarioSesion.GetIdUsuario());
+            conta.Show();
         }
 
         private void Btn_Compras_Click(object sender, EventArgs e)
@@ -113,9 +111,8 @@ namespace Interfac_V3
 
         private void Btn_Produccion_Click(object sender, EventArgs e)
         {
-            /*
-            Aqui debe de agregarse la referencia a produccion
-            */
+            MDI_Produccion produccion = new MDI_Produccion(UsuarioSesion.GetIdUsuario());
+            produccion.Show();
         }
 
         private void Btn_CuentasCorrientes_Click(object sender, EventArgs e)
