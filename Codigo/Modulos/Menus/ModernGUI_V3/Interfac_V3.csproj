@@ -55,6 +55,7 @@
     <Reference Include="Capa_Vista_Banco">
       <HintPath>..\..\Bancos\Bancos\Capa_Vista_Banco\bin\Debug\Capa_Vista_Banco.dll</HintPath>
     <Reference Include="Capa_Vista_Contabilidad, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+		</Reference>
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Contabilidad\Capa_Vista_Contabilidad\bin\Debug\Capa_Vista_Contabilidad.dll</HintPath>
     </Reference>
