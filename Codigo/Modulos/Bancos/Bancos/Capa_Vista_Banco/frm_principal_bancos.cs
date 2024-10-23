@@ -171,9 +171,9 @@ namespace Capa_Vista_Banco
 
         private void btnMenuCatalogosOpcion2_Click_1(object sender, EventArgs e)
         {
-           /* AbrirFormulario<Form2>();
-            btnMenuCatalogosOpcion2.BackColor = Color.FromArgb(12, 61, 92);
-            ocultaSubMenu();*/
+            AbrirFormulario<frm_nav_movimientosBancarios>();
+            btnMenuCatalogosOpcion1.BackColor = Color.FromArgb(12, 61, 92);
+            ocultaSubMenu();
         }
 
         private void btnMenuProcesosOpcion1_Click(object sender, EventArgs e)
@@ -186,6 +186,11 @@ namespace Capa_Vista_Banco
         private void btnSalir_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+
         }
         #endregion
         //Metodo para abrir formularios dentro de panel contenedor

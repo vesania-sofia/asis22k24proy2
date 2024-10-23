@@ -1,7 +1,7 @@
 ﻿
 namespace Capa_Vista_Banco
 {
-    partial class frm_nav_tipo_cambio
+    partial class frm_nav_movimientosBancarios
     {
         /// <summary>
         /// Required designer variable.
@@ -37,22 +37,21 @@ namespace Capa_Vista_Banco
             this.navegador1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(246)))), ((int)(((byte)(155)))));
             this.navegador1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.navegador1.Location = new System.Drawing.Point(0, 0);
-            this.navegador1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.navegador1.Margin = new System.Windows.Forms.Padding(4);
             this.navegador1.Name = "navegador1";
-            this.navegador1.Size = new System.Drawing.Size(1097, 554);
+            this.navegador1.Size = new System.Drawing.Size(1152, 905);
             this.navegador1.TabIndex = 0;
-            this.navegador1.Load += new System.EventHandler(this.navegador1_Load);
             // 
-            // frm_nav_tipo_cambio
+            // frm_nav_movimientosBancarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1097, 554);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(246)))), ((int)(((byte)(155)))));
+            this.ClientSize = new System.Drawing.Size(1152, 905);
             this.Controls.Add(this.navegador1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.Name = "frm_nav_tipo_cambio";
-            this.Text = "frm_nav_tipo_cambio";
-            this.Load += new System.EventHandler(this.frm_nav_tipo_cambio_Load);
+            this.Name = "frm_nav_movimientosBancarios";
+            this.Text = "frm_nav_movimientosBancarios";
+            this.Load += new System.EventHandler(this.frm_nav_movimientosBancarios_Load);
             this.ResumeLayout(false);
 
         }
