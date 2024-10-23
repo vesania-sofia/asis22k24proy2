@@ -52,6 +52,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frm_nav_movimientosBancarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_nav_movimientosBancarios.Designer.cs">
+      <DependentUpon>frm_nav_movimientosBancarios.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_principal_bancos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,6 +102,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="frm_nav_movimientosBancarios.resx">
+      <DependentUpon>frm_nav_movimientosBancarios.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frm_nav_tipo_cambio.resx">
       <DependentUpon>frm_nav_tipo_cambio.cs</DependentUpon>
     </EmbeddedResource>
