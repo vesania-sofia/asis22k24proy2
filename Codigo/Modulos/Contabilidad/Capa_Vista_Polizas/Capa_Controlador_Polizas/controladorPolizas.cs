@@ -54,5 +54,30 @@ namespace Capa_Controlador_Polizas
             return dt1;
         }
 
+        // ---------------------------------- Funcion para actualizar la tabla cuentas ----------------------------------
+
+        public void ActualizarTblCuentas(int idCuenta, string tipoOperacion, decimal valor)
+        {
+            modelpoliza sn = new modelpoliza();
+
+            sn.ActulizarCuentas(idCuenta, tipoOperacion, valor);
+            return;
+        }
+
+        // ---------------------------------- Insertar en polizas ----------------------------------
+        public void LlenarEncabezado(string fechaSeleccionada, string concepto, int tipoPoli)
+        {
+            modelpoliza sn = new modelpoliza();
+            sn.LlenarEncabezado(fechaSeleccionada, concepto, tipoPoli);
+            return;
+        }
+
+        public void LlenarDetalle(string fechaSeleccionada, string concepto, List<object[]> detalles)
+        {
+            modelpoliza sn = new modelpoliza();
+            sn.LlenarDetalle(fechaSeleccionada,concepto, detalles);
+            return;
+        }
+
     }
 }

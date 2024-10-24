@@ -48,10 +48,6 @@ namespace Capa_Vista_Polizas
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnQuitar = new System.Windows.Forms.Button();
             this.dgvPolizas = new System.Windows.Forms.DataGridView();
-            this.Código = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cuenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cargo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Abono = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btn_nueva_poliza = new System.Windows.Forms.Button();
             this.btn_registar_poliza = new System.Windows.Forms.Button();
             this.lbl_cargo = new System.Windows.Forms.Label();
@@ -59,11 +55,19 @@ namespace Capa_Vista_Polizas
             this.btnCancelar = new System.Windows.Forms.Button();
             this.lblCargo = new System.Windows.Forms.Label();
             this.lblAbono = new System.Windows.Forms.Label();
+            this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cuenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cargo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Abono = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPolizas)).BeginInit();
             this.SuspendLayout();
+            // 
+            // colorDialog1
+            // 
+            this.colorDialog1.Color = System.Drawing.Color.DarkGray;
             // 
             // groupBox1
             // 
@@ -233,7 +237,7 @@ namespace Capa_Vista_Polizas
             // 
             this.dgvPolizas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPolizas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Código,
+            this.Codigo,
             this.Cuenta,
             this.Cargo,
             this.Abono});
@@ -245,34 +249,6 @@ namespace Capa_Vista_Polizas
             this.dgvPolizas.Size = new System.Drawing.Size(895, 327);
             this.dgvPolizas.TabIndex = 0;
             this.dgvPolizas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPolizas_CellContentClick);
-            // 
-            // Código
-            // 
-            this.Código.HeaderText = "Código";
-            this.Código.MinimumWidth = 6;
-            this.Código.Name = "Código";
-            this.Código.Width = 150;
-            // 
-            // Cuenta
-            // 
-            this.Cuenta.HeaderText = "Cuenta";
-            this.Cuenta.MinimumWidth = 6;
-            this.Cuenta.Name = "Cuenta";
-            this.Cuenta.Width = 150;
-            // 
-            // Cargo
-            // 
-            this.Cargo.HeaderText = "Cargo";
-            this.Cargo.MinimumWidth = 6;
-            this.Cargo.Name = "Cargo";
-            this.Cargo.Width = 150;
-            // 
-            // Abono
-            // 
-            this.Abono.HeaderText = "Abono";
-            this.Abono.MinimumWidth = 6;
-            this.Abono.Name = "Abono";
-            this.Abono.Width = 150;
             // 
             // btn_nueva_poliza
             // 
@@ -292,6 +268,7 @@ namespace Capa_Vista_Polizas
             this.btn_registar_poliza.TabIndex = 4;
             this.btn_registar_poliza.Text = "Registrar poliza";
             this.btn_registar_poliza.UseVisualStyleBackColor = true;
+            this.btn_registar_poliza.Click += new System.EventHandler(this.btn_registar_poliza_Click);
             // 
             // lbl_cargo
             // 
@@ -338,6 +315,34 @@ namespace Capa_Vista_Polizas
             this.lblAbono.Size = new System.Drawing.Size(44, 17);
             this.lblAbono.TabIndex = 11;
             this.lblAbono.Text = "00.00";
+            // 
+            // Codigo
+            // 
+            this.Codigo.HeaderText = "Codigo";
+            this.Codigo.MinimumWidth = 6;
+            this.Codigo.Name = "Codigo";
+            this.Codigo.Width = 150;
+            // 
+            // Cuenta
+            // 
+            this.Cuenta.HeaderText = "Cuenta";
+            this.Cuenta.MinimumWidth = 6;
+            this.Cuenta.Name = "Cuenta";
+            this.Cuenta.Width = 150;
+            // 
+            // Cargo
+            // 
+            this.Cargo.HeaderText = "Cargo";
+            this.Cargo.MinimumWidth = 6;
+            this.Cargo.Name = "Cargo";
+            this.Cargo.Width = 150;
+            // 
+            // Abono
+            // 
+            this.Abono.HeaderText = "Abono";
+            this.Abono.MinimumWidth = 6;
+            this.Abono.Name = "Abono";
+            this.Abono.Width = 150;
             // 
             // Polizas
             // 
@@ -390,14 +395,14 @@ namespace Capa_Vista_Polizas
         private System.Windows.Forms.DataGridView dgvPolizas;
         private System.Windows.Forms.Button btn_nueva_poliza;
         private System.Windows.Forms.Button btn_registar_poliza;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Código;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cuenta;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cargo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Abono;
         private System.Windows.Forms.Label lbl_cargo;
         private System.Windows.Forms.Label lbl_abono;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Label lblCargo;
         private System.Windows.Forms.Label lblAbono;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cuenta;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cargo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Abono;
     }
 }
