@@ -63,8 +63,8 @@ namespace Capa_Vista_Nominas
             this.Btn_minimizar = new System.Windows.Forms.PictureBox();
             this.Btn_maximizar = new System.Windows.Forms.PictureBox();
             this.Btn_cerrar = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.Btn_liquidacion = new System.Windows.Forms.Button();
+            this.Btn_vacaciones = new System.Windows.Forms.Button();
             this.Pnl_contenedor.SuspendLayout();
             this.panelIdentificacion.SuspendLayout();
             this.Pnl_formularios.SuspendLayout();
@@ -235,8 +235,8 @@ namespace Capa_Vista_Nominas
             // 
             // Pnl_generacion
             // 
-            this.Pnl_generacion.Controls.Add(this.button2);
-            this.Pnl_generacion.Controls.Add(this.button1);
+            this.Pnl_generacion.Controls.Add(this.Btn_vacaciones);
+            this.Pnl_generacion.Controls.Add(this.Btn_liquidacion);
             this.Pnl_generacion.Controls.Add(this.Btn_generaciondeduc);
             this.Pnl_generacion.Controls.Add(this.Btn_generacionpercep);
             this.Pnl_generacion.Controls.Add(this.Btn_faltas);
@@ -587,35 +587,37 @@ namespace Capa_Vista_Nominas
             this.Btn_cerrar.TabStop = false;
             this.Btn_cerrar.Click += new System.EventHandler(this.btnCerrar_Click_1);
             // 
-            // button1
+            // Btn_liquidacion
             // 
-            this.button1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ForeColor = System.Drawing.Color.Silver;
-            this.button1.Location = new System.Drawing.Point(0, 292);
-            this.button1.Name = "button1";
-            this.button1.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.button1.Size = new System.Drawing.Size(185, 43);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "Liquidación de Empleados";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.UseVisualStyleBackColor = true;
+            this.Btn_liquidacion.Dock = System.Windows.Forms.DockStyle.Top;
+            this.Btn_liquidacion.FlatAppearance.BorderSize = 0;
+            this.Btn_liquidacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_liquidacion.ForeColor = System.Drawing.Color.Silver;
+            this.Btn_liquidacion.Location = new System.Drawing.Point(0, 292);
+            this.Btn_liquidacion.Name = "Btn_liquidacion";
+            this.Btn_liquidacion.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.Btn_liquidacion.Size = new System.Drawing.Size(185, 43);
+            this.Btn_liquidacion.TabIndex = 10;
+            this.Btn_liquidacion.Text = "Liquidación de Empleados";
+            this.Btn_liquidacion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Btn_liquidacion.UseVisualStyleBackColor = true;
+            this.Btn_liquidacion.Click += new System.EventHandler(this.button1_Click_1);
             // 
-            // button2
+            // Btn_vacaciones
             // 
-            this.button2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.ForeColor = System.Drawing.Color.Silver;
-            this.button2.Location = new System.Drawing.Point(0, 335);
-            this.button2.Name = "button2";
-            this.button2.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.button2.Size = new System.Drawing.Size(185, 43);
-            this.button2.TabIndex = 11;
-            this.button2.Text = "Vacaciones de Empleados";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.UseVisualStyleBackColor = true;
+            this.Btn_vacaciones.Dock = System.Windows.Forms.DockStyle.Top;
+            this.Btn_vacaciones.FlatAppearance.BorderSize = 0;
+            this.Btn_vacaciones.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_vacaciones.ForeColor = System.Drawing.Color.Silver;
+            this.Btn_vacaciones.Location = new System.Drawing.Point(0, 335);
+            this.Btn_vacaciones.Name = "Btn_vacaciones";
+            this.Btn_vacaciones.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.Btn_vacaciones.Size = new System.Drawing.Size(185, 43);
+            this.Btn_vacaciones.TabIndex = 11;
+            this.Btn_vacaciones.Text = "Vacaciones de Empleados";
+            this.Btn_vacaciones.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Btn_vacaciones.UseVisualStyleBackColor = true;
+            this.Btn_vacaciones.Click += new System.EventHandler(this.Btn_vacaciones_Click);
             // 
             // frm_principal_nominas
             // 
@@ -681,7 +683,7 @@ namespace Capa_Vista_Nominas
         private System.Windows.Forms.Button Btn_generacion;
         private System.Windows.Forms.Button Btn_salir;
         private System.Windows.Forms.Button Btn_reportes;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button Btn_vacaciones;
+        private System.Windows.Forms.Button Btn_liquidacion;
     }
 }
