@@ -11,14 +11,14 @@ using Capa_Controlador_Polizas;
 
 namespace Capa_Vista_Polizas
 {
-    public partial class Polizas : Form
+    public partial class frmPolizas : Form
     {
         private string idcuenta;
         private string idoperacion;
         private string idtp;
         List<object[]> detalles = new List<object[]>();
 
-        public Polizas()
+        public frmPolizas()
         {
             InitializeComponent();
             llenarseCuentas("tbl_cuentas", "Pk_id_cuenta", "nombre_cuenta");
@@ -392,92 +392,131 @@ namespace Capa_Vista_Polizas
             // Inicializar el controlador
             controladorPolizas ctr = new controladorPolizas();
 
-            // Obtener fecha
             string fechaSeleccionada = dtpfecha.Text;
             string concepto = txtConcepto.Text;
 
-            // Confirmar la acción
-            DialogResult result = MessageBox.Show("¿Seguro que desea crear la poliza?", "Confirmación", MessageBoxButtons.YesNo);
+            errorProvider1.SetError(txtConcepto, "");
 
-            if (result == DialogResult.Yes)
+            // Verificar si el TextBox está vacío
+            if (string.IsNullOrWhiteSpace(txtConcepto.Text))
             {
-                // Verificar que los ComboBox tengan valores seleccionados
-                if (cbtipopoliza.SelectedValue == null || cboperacion.SelectedValue == null || cbCuenta.SelectedValue == null)
-                {
-                    MessageBox.Show("Por favor, seleccione todos los campos requeridos.");
-                    return; // Salir si no se selecciona algo
-                }
-
-
-                // Obtener el ID de la cuenta seleccionada directamente como número
-
-                int idTipoPoliza = int.Parse(idtp);
-                MessageBox.Show($"ID Tipo Póliza: {idTipoPoliza}",
-                    "Detalles de Selección",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
-
-                // Limpiar la lista antes de agregar detalles
-                detalles.Clear();
-
-                // Recorrer filas del DGV
-                foreach (DataGridViewRow row in dgvPolizas.Rows)
-                {
-                    int idop = 0;
-
-                    if (row.IsNewRow) continue; // Ignorar la última fila (nueva)
-
-                    // ID de la cuenta (columna 'Codigo')
-                    int idCuenta = Convert.ToInt32(row.Cells["Codigo"].Value);
-
-                    // Determinar si es Cargo o Abono
-                    string tipoOperacion = "";
-                    decimal valor = 0;
-
-                    if (row.Cells[2].Value != DBNull.Value && row.Cells[2].Value.ToString() != "")
-                    {
-                        tipoOperacion = "Cargo";
-                        idop = 1;
-                        valor = Convert.ToDecimal(row.Cells[2].Value);
-                    }
-                    else if (row.Cells[3].Value != DBNull.Value && row.Cells[3].Value.ToString() != "")
-                    {
-                        tipoOperacion = "Abono";
-                        idop = 2;
-                        valor = Convert.ToDecimal(row.Cells[3].Value);
-                    }
-
-                    // Crea un arreglo con los valores de la fila
-                    object[] detalle = new object[3];
-                    detalle[0] = idCuenta; // ID de cuenta seleccionada
-                    detalle[1] = idop; // ID de operación
-                    detalle[2] = valor; // Valor correspondiente a Cargo o Abono
-
-                    // Agrega el arreglo a la lista
-                    detalles.Add(detalle);
-
-                    // Función que cambia la tabla cuentas
-                    ctr.ActualizarTblCuentas(idCuenta, tipoOperacion, valor);
-
-                    MessageBox.Show($"ID Tipo Póliza: {idTipoPoliza}\nID Operación: {idop}\nID Cuenta Seleccionada: {idCuenta}\nID Valor: {valor}",
-                    "Detalles de Selección",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
-                }
-
-                // Funciones para insertar en las tablas de encabezado póliza y detalle póliza
-                ctr.LlenarEncabezado(fechaSeleccionada, concepto, idTipoPoliza);
-                ctr.LlenarDetalle(fechaSeleccionada, concepto, detalles);
-
-                // Mensaje de confirmación
-                LimpiarCamposDetelle();
-                LimpiarCamposEnc();
-                dgvPolizas.Rows.Clear();
-                MessageBox.Show("Se registró correctamente");
+                errorProvider1.SetError(txtConcepto, "Este campo es obligatorio."); // Mostrar mensaje de error
+                txtConcepto.Focus(); // Enfocar el TextBox
             }
+            else
+            {
+                DialogResult result = MessageBox.Show("¿Seguro que desea crear la póliza?", "Confirmación", MessageBoxButtons.YesNo);
+
+                // No hacer nada en caso de que el usuario seleccione "Sí" o "No"
+                if (result == DialogResult.Yes)
+                {
+                    if (result == DialogResult.Yes)
+                    {
+                        // Verificar que los ComboBox tengan valores seleccionados
+                        if (cbtipopoliza.SelectedValue == null || cboperacion.SelectedValue == null || cbCuenta.SelectedValue == null)
+                        {
+                            MessageBox.Show("Por favor, seleccione todos los campos requeridos.");
+                            return; // Salir si no se selecciona algo
+                        }
 
 
+                        // Obtener el ID de la cuenta seleccionada directamente como número
 
+                        int idTipoPoliza = int.Parse(idtp);
+                        MessageBox.Show($"ID Tipo Póliza: {idTipoPoliza}",
+                            "Detalles de Selección",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information);
+
+                        // Limpiar la lista antes de agregar detalles
+                        detalles.Clear();
+
+                        // Recorrer filas del DGV
+                        foreach (DataGridViewRow row in dgvPolizas.Rows)
+                        {
+                            int idop = 0;
+
+                            if (row.IsNewRow) continue; // Ignorar la última fila (nueva)
+
+                            // ID de la cuenta (columna 'Codigo')
+                            int idCuenta = Convert.ToInt32(row.Cells["Codigo"].Value);
+
+                            // Determinar si es Cargo o Abono
+                            string tipoOperacion = "";
+                            decimal valor = 0;
+
+                            if (row.Cells[2].Value != DBNull.Value && row.Cells[2].Value.ToString() != "")
+                            {
+                                tipoOperacion = "Cargo";
+                                idop = 1;
+                                valor = Convert.ToDecimal(row.Cells[2].Value);
+                            }
+                            else if (row.Cells[3].Value != DBNull.Value && row.Cells[3].Value.ToString() != "")
+                            {
+                                tipoOperacion = "Abono";
+                                idop = 2;
+                                valor = Convert.ToDecimal(row.Cells[3].Value);
+                            }
+
+                            // Crea un arreglo con los valores de la fila
+                            object[] detalle = new object[3];
+                            detalle[0] = idCuenta; // ID de cuenta seleccionada
+                            detalle[1] = idop; // ID de operación
+                            detalle[2] = valor; // Valor correspondiente a Cargo o Abono
+
+                            // Agrega el arreglo a la lista
+                            detalles.Add(detalle);
+
+                            // Función que cambia la tabla cuentas
+                            ctr.ActualizarTblCuentas(idCuenta, tipoOperacion, valor);
+
+                            MessageBox.Show($"ID Tipo Póliza: {idTipoPoliza}\nID Operación: {idop}\nID Cuenta Seleccionada: {idCuenta}\nID Valor: {valor}",
+                            "Detalles de Selección",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information);
+                        }
+
+                        // Funciones para insertar en las tablas de encabezado póliza y detalle póliza
+                        ctr.LlenarEncabezado(fechaSeleccionada, concepto, idTipoPoliza);
+                        ctr.LlenarDetalle(fechaSeleccionada, concepto, detalles);
+
+                        // Mensaje de confirmación
+                        LimpiarCamposDetelle();
+                        LimpiarCamposEnc();
+                        dgvPolizas.Rows.Clear();
+                        MessageBox.Show("Se registró correctamente");
+                    }
+                }
+                else if (result == DialogResult.No)
+                {
+                    MessageBox.Show("Se canceló el proceso", "Cancelado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
+        private void Polizas_Load(object sender, EventArgs e)
+        {
+            this.BackColor = Color.FromArgb(248, 140, 140);
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void txtValor_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.')
+            {
+                e.Handled = true; 
+            }
+        }
+
+        private void dtpfecha_ValueChanged(object sender, EventArgs e)
+        {
+            if (dtpfecha.Value.Date != DateTime.Today)
+            {
+                dtpfecha.Value = DateTime.Today;
+            }
         }
     }
 }

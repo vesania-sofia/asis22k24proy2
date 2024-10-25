@@ -1,7 +1,7 @@
 ﻿
 namespace Capa_Vista_Polizas
 {
-    partial class Polizas
+    partial class frmPolizas
     {
         /// <summary>
         /// Required designer variable.
@@ -29,6 +29,7 @@ namespace Capa_Vista_Polizas
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtConcepto = new System.Windows.Forms.TextBox();
@@ -38,36 +39,39 @@ namespace Capa_Vista_Polizas
             this.lbl_fecha = new System.Windows.Forms.Label();
             this.cbtipopoliza = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btn_aceptar = new System.Windows.Forms.Button();
             this.txtValor = new System.Windows.Forms.TextBox();
             this.cboperacion = new System.Windows.Forms.ComboBox();
             this.cbCuenta = new System.Windows.Forms.ComboBox();
-            this.lbl_valor = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.lbl_Cuenta = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.btnQuitar = new System.Windows.Forms.Button();
             this.dgvPolizas = new System.Windows.Forms.DataGridView();
-            this.btn_nueva_poliza = new System.Windows.Forms.Button();
-            this.btn_registar_poliza = new System.Windows.Forms.Button();
-            this.lbl_cargo = new System.Windows.Forms.Label();
-            this.lbl_abono = new System.Windows.Forms.Label();
-            this.btnCancelar = new System.Windows.Forms.Button();
-            this.lblCargo = new System.Windows.Forms.Label();
-            this.lblAbono = new System.Windows.Forms.Label();
             this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cuenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cargo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Abono = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lbl_cargo = new System.Windows.Forms.Label();
+            this.lbl_abono = new System.Windows.Forms.Label();
+            this.lblCargo = new System.Windows.Forms.Label();
+            this.lblAbono = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnSalir = new System.Windows.Forms.Button();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.btn_registar_poliza = new System.Windows.Forms.Button();
+            this.btn_nueva_poliza = new System.Windows.Forms.Button();
+            this.btnQuitar = new System.Windows.Forms.Button();
+            this.btn_aceptar = new System.Windows.Forms.Button();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPolizas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // colorDialog1
             // 
-            this.colorDialog1.Color = System.Drawing.Color.DarkGray;
+            this.colorDialog1.Color = System.Drawing.Color.Maroon;
             // 
             // groupBox1
             // 
@@ -115,6 +119,7 @@ namespace Capa_Vista_Polizas
             this.dtpfecha.Name = "dtpfecha";
             this.dtpfecha.Size = new System.Drawing.Size(272, 22);
             this.dtpfecha.TabIndex = 2;
+            this.dtpfecha.ValueChanged += new System.EventHandler(this.dtpfecha_ValueChanged);
             // 
             // lbl_fecha
             // 
@@ -136,12 +141,12 @@ namespace Capa_Vista_Polizas
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.btn_aceptar);
             this.groupBox2.Controls.Add(this.txtValor);
             this.groupBox2.Controls.Add(this.cboperacion);
             this.groupBox2.Controls.Add(this.cbCuenta);
-            this.groupBox2.Controls.Add(this.lbl_valor);
-            this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.lbl_Cuenta);
             this.groupBox2.Location = new System.Drawing.Point(13, 248);
             this.groupBox2.Name = "groupBox2";
@@ -150,27 +155,18 @@ namespace Capa_Vista_Polizas
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Detalle";
             // 
-            // btn_aceptar
-            // 
-            this.btn_aceptar.Location = new System.Drawing.Point(889, 21);
-            this.btn_aceptar.Name = "btn_aceptar";
-            this.btn_aceptar.Size = new System.Drawing.Size(127, 76);
-            this.btn_aceptar.TabIndex = 6;
-            this.btn_aceptar.Text = "Enviar";
-            this.btn_aceptar.UseVisualStyleBackColor = true;
-            this.btn_aceptar.Click += new System.EventHandler(this.btn_aceptar_Click);
-            // 
             // txtValor
             // 
-            this.txtValor.Location = new System.Drawing.Point(688, 55);
+            this.txtValor.Location = new System.Drawing.Point(688, 58);
             this.txtValor.Name = "txtValor";
             this.txtValor.Size = new System.Drawing.Size(144, 22);
             this.txtValor.TabIndex = 5;
+            this.txtValor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtValor_KeyPress);
             // 
             // cboperacion
             // 
             this.cboperacion.FormattingEnabled = true;
-            this.cboperacion.Location = new System.Drawing.Point(455, 55);
+            this.cboperacion.Location = new System.Drawing.Point(455, 56);
             this.cboperacion.Name = "cboperacion";
             this.cboperacion.Size = new System.Drawing.Size(176, 24);
             this.cboperacion.TabIndex = 4;
@@ -179,38 +175,24 @@ namespace Capa_Vista_Polizas
             // cbCuenta
             // 
             this.cbCuenta.FormattingEnabled = true;
-            this.cbCuenta.Location = new System.Drawing.Point(121, 57);
+            this.cbCuenta.Location = new System.Drawing.Point(122, 58);
             this.cbCuenta.Name = "cbCuenta";
-            this.cbCuenta.Size = new System.Drawing.Size(289, 24);
+            this.cbCuenta.Size = new System.Drawing.Size(288, 24);
             this.cbCuenta.TabIndex = 3;
             this.cbCuenta.SelectedIndexChanged += new System.EventHandler(this.cbCuenta_SelectedIndexChanged);
-            // 
-            // lbl_valor
-            // 
-            this.lbl_valor.AutoSize = true;
-            this.lbl_valor.Location = new System.Drawing.Point(685, 26);
-            this.lbl_valor.Name = "lbl_valor";
-            this.lbl_valor.Size = new System.Drawing.Size(41, 17);
-            this.lbl_valor.TabIndex = 2;
-            this.lbl_valor.Text = "Valor";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(455, 26);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(99, 17);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Cargo / Abono";
             // 
             // lbl_Cuenta
             // 
             this.lbl_Cuenta.AutoSize = true;
-            this.lbl_Cuenta.Location = new System.Drawing.Point(118, 26);
+            this.lbl_Cuenta.BackColor = System.Drawing.Color.Beige;
+            this.lbl_Cuenta.Location = new System.Drawing.Point(120, 28);
+            this.lbl_Cuenta.Margin = new System.Windows.Forms.Padding(10);
             this.lbl_Cuenta.Name = "lbl_Cuenta";
-            this.lbl_Cuenta.Size = new System.Drawing.Size(53, 17);
+            this.lbl_Cuenta.Padding = new System.Windows.Forms.Padding(0, 0, 120, 0);
+            this.lbl_Cuenta.Size = new System.Drawing.Size(289, 17);
             this.lbl_Cuenta.TabIndex = 0;
-            this.lbl_Cuenta.Text = "Cuenta";
+            this.lbl_Cuenta.Text = "                             Cuenta\r\n";
+            this.lbl_Cuenta.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // groupBox3
             // 
@@ -222,16 +204,6 @@ namespace Capa_Vista_Polizas
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Detalle de movimiento";
-            // 
-            // btnQuitar
-            // 
-            this.btnQuitar.Location = new System.Drawing.Point(908, 31);
-            this.btnQuitar.Name = "btnQuitar";
-            this.btnQuitar.Size = new System.Drawing.Size(136, 74);
-            this.btnQuitar.TabIndex = 1;
-            this.btnQuitar.Text = "Quitar";
-            this.btnQuitar.UseVisualStyleBackColor = true;
-            this.btnQuitar.Click += new System.EventHandler(this.btnQuitar_Click);
             // 
             // dgvPolizas
             // 
@@ -249,72 +221,6 @@ namespace Capa_Vista_Polizas
             this.dgvPolizas.Size = new System.Drawing.Size(895, 327);
             this.dgvPolizas.TabIndex = 0;
             this.dgvPolizas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPolizas_CellContentClick);
-            // 
-            // btn_nueva_poliza
-            // 
-            this.btn_nueva_poliza.Location = new System.Drawing.Point(20, 26);
-            this.btn_nueva_poliza.Name = "btn_nueva_poliza";
-            this.btn_nueva_poliza.Size = new System.Drawing.Size(243, 52);
-            this.btn_nueva_poliza.TabIndex = 3;
-            this.btn_nueva_poliza.Text = "Nueva poliza";
-            this.btn_nueva_poliza.UseVisualStyleBackColor = true;
-            this.btn_nueva_poliza.Click += new System.EventHandler(this.btn_nueva_poliza_Click);
-            // 
-            // btn_registar_poliza
-            // 
-            this.btn_registar_poliza.Location = new System.Drawing.Point(518, 26);
-            this.btn_registar_poliza.Name = "btn_registar_poliza";
-            this.btn_registar_poliza.Size = new System.Drawing.Size(243, 52);
-            this.btn_registar_poliza.TabIndex = 4;
-            this.btn_registar_poliza.Text = "Registrar poliza";
-            this.btn_registar_poliza.UseVisualStyleBackColor = true;
-            this.btn_registar_poliza.Click += new System.EventHandler(this.btn_registar_poliza_Click);
-            // 
-            // lbl_cargo
-            // 
-            this.lbl_cargo.AutoSize = true;
-            this.lbl_cargo.Location = new System.Drawing.Point(387, 783);
-            this.lbl_cargo.Name = "lbl_cargo";
-            this.lbl_cargo.Size = new System.Drawing.Size(108, 17);
-            this.lbl_cargo.TabIndex = 7;
-            this.lbl_cargo.Text = "TOTAL CARGO";
-            // 
-            // lbl_abono
-            // 
-            this.lbl_abono.AutoSize = true;
-            this.lbl_abono.Location = new System.Drawing.Point(658, 783);
-            this.lbl_abono.Name = "lbl_abono";
-            this.lbl_abono.Size = new System.Drawing.Size(108, 17);
-            this.lbl_abono.TabIndex = 8;
-            this.lbl_abono.Text = "TOTAL ABONO";
-            // 
-            // btnCancelar
-            // 
-            this.btnCancelar.Location = new System.Drawing.Point(269, 26);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(243, 52);
-            this.btnCancelar.TabIndex = 9;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = true;
-            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
-            // 
-            // lblCargo
-            // 
-            this.lblCargo.AutoSize = true;
-            this.lblCargo.Location = new System.Drawing.Point(521, 783);
-            this.lblCargo.Name = "lblCargo";
-            this.lblCargo.Size = new System.Drawing.Size(44, 17);
-            this.lblCargo.TabIndex = 10;
-            this.lblCargo.Text = "00.00";
-            // 
-            // lblAbono
-            // 
-            this.lblAbono.AutoSize = true;
-            this.lblAbono.Location = new System.Drawing.Point(786, 783);
-            this.lblAbono.Name = "lblAbono";
-            this.lblAbono.Size = new System.Drawing.Size(44, 17);
-            this.lblAbono.TabIndex = 11;
-            this.lblAbono.Text = "00.00";
             // 
             // Codigo
             // 
@@ -344,11 +250,141 @@ namespace Capa_Vista_Polizas
             this.Abono.Name = "Abono";
             this.Abono.Width = 150;
             // 
-            // Polizas
+            // lbl_cargo
+            // 
+            this.lbl_cargo.AutoSize = true;
+            this.lbl_cargo.Location = new System.Drawing.Point(536, 783);
+            this.lbl_cargo.Name = "lbl_cargo";
+            this.lbl_cargo.Size = new System.Drawing.Size(108, 17);
+            this.lbl_cargo.TabIndex = 7;
+            this.lbl_cargo.Text = "TOTAL CARGO";
+            // 
+            // lbl_abono
+            // 
+            this.lbl_abono.AutoSize = true;
+            this.lbl_abono.Location = new System.Drawing.Point(737, 783);
+            this.lbl_abono.Name = "lbl_abono";
+            this.lbl_abono.Size = new System.Drawing.Size(108, 17);
+            this.lbl_abono.TabIndex = 8;
+            this.lbl_abono.Text = "TOTAL ABONO";
+            // 
+            // lblCargo
+            // 
+            this.lblCargo.AutoSize = true;
+            this.lblCargo.Location = new System.Drawing.Point(653, 783);
+            this.lblCargo.Name = "lblCargo";
+            this.lblCargo.Size = new System.Drawing.Size(44, 17);
+            this.lblCargo.TabIndex = 10;
+            this.lblCargo.Text = "00.00";
+            // 
+            // lblAbono
+            // 
+            this.lblAbono.AutoSize = true;
+            this.lblAbono.Location = new System.Drawing.Point(855, 783);
+            this.lblAbono.Name = "lblAbono";
+            this.lblAbono.Size = new System.Drawing.Size(44, 17);
+            this.lblAbono.TabIndex = 11;
+            this.lblAbono.Text = "00.00";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Beige;
+            this.label1.Location = new System.Drawing.Point(455, 28);
+            this.label1.Margin = new System.Windows.Forms.Padding(10);
+            this.label1.Name = "label1";
+            this.label1.Padding = new System.Windows.Forms.Padding(0, 0, 45, 0);
+            this.label1.Size = new System.Drawing.Size(176, 17);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "          Cargo/Abono";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Beige;
+            this.label2.Location = new System.Drawing.Point(685, 28);
+            this.label2.Margin = new System.Windows.Forms.Padding(10);
+            this.label2.Name = "label2";
+            this.label2.Padding = new System.Windows.Forms.Padding(0, 0, 55, 0);
+            this.label2.Size = new System.Drawing.Size(148, 17);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "             Valor";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // btnSalir
+            // 
+            this.btnSalir.Image = global::Capa_Vista_Polizas.Properties.Resources.cerrar_sesion;
+            this.btnSalir.Location = new System.Drawing.Point(993, 12);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(70, 62);
+            this.btnSalir.TabIndex = 12;
+            this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.Image = global::Capa_Vista_Polizas.Properties.Resources.error;
+            this.btnCancelar.Location = new System.Drawing.Point(215, 14);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(70, 62);
+            this.btnCancelar.TabIndex = 9;
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
+            // btn_registar_poliza
+            // 
+            this.btn_registar_poliza.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(237)))), ((int)(((byte)(235)))));
+            this.btn_registar_poliza.Image = global::Capa_Vista_Polizas.Properties.Resources.disco_flexible__1_;
+            this.btn_registar_poliza.Location = new System.Drawing.Point(125, 12);
+            this.btn_registar_poliza.Name = "btn_registar_poliza";
+            this.btn_registar_poliza.Size = new System.Drawing.Size(70, 64);
+            this.btn_registar_poliza.TabIndex = 4;
+            this.btn_registar_poliza.UseVisualStyleBackColor = false;
+            this.btn_registar_poliza.Click += new System.EventHandler(this.btn_registar_poliza_Click);
+            // 
+            // btn_nueva_poliza
+            // 
+            this.btn_nueva_poliza.Image = global::Capa_Vista_Polizas.Properties.Resources.agregar_archivo;
+            this.btn_nueva_poliza.Location = new System.Drawing.Point(38, 12);
+            this.btn_nueva_poliza.Name = "btn_nueva_poliza";
+            this.btn_nueva_poliza.Size = new System.Drawing.Size(70, 64);
+            this.btn_nueva_poliza.TabIndex = 3;
+            this.btn_nueva_poliza.UseVisualStyleBackColor = true;
+            this.btn_nueva_poliza.Click += new System.EventHandler(this.btn_nueva_poliza_Click);
+            // 
+            // btnQuitar
+            // 
+            this.btnQuitar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(237)))), ((int)(((byte)(235)))));
+            this.btnQuitar.Image = global::Capa_Vista_Polizas.Properties.Resources.boton_menos3;
+            this.btnQuitar.Location = new System.Drawing.Point(926, 31);
+            this.btnQuitar.Name = "btnQuitar";
+            this.btnQuitar.Size = new System.Drawing.Size(107, 97);
+            this.btnQuitar.TabIndex = 1;
+            this.btnQuitar.UseVisualStyleBackColor = false;
+            this.btnQuitar.Click += new System.EventHandler(this.btnQuitar_Click);
+            // 
+            // btn_aceptar
+            // 
+            this.btn_aceptar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(237)))), ((int)(((byte)(235)))));
+            this.btn_aceptar.Image = global::Capa_Vista_Polizas.Properties.Resources.lista_de_verificacion;
+            this.btn_aceptar.Location = new System.Drawing.Point(865, 15);
+            this.btn_aceptar.Name = "btn_aceptar";
+            this.btn_aceptar.Size = new System.Drawing.Size(109, 93);
+            this.btn_aceptar.TabIndex = 6;
+            this.btn_aceptar.UseVisualStyleBackColor = false;
+            this.btn_aceptar.Click += new System.EventHandler(this.btn_aceptar_Click);
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
+            // frmPolizas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1088, 834);
+            this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.lblAbono);
             this.Controls.Add(this.lblCargo);
             this.Controls.Add(this.btnCancelar);
@@ -359,14 +395,16 @@ namespace Capa_Vista_Polizas
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Name = "Polizas";
+            this.Name = "frmPolizas";
             this.Text = "Polizas";
+            this.Load += new System.EventHandler(this.Polizas_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPolizas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -387,8 +425,6 @@ namespace Capa_Vista_Polizas
         private System.Windows.Forms.TextBox txtValor;
         private System.Windows.Forms.ComboBox cboperacion;
         private System.Windows.Forms.ComboBox cbCuenta;
-        private System.Windows.Forms.Label lbl_valor;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lbl_Cuenta;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button btnQuitar;
@@ -404,5 +440,9 @@ namespace Capa_Vista_Polizas
         private System.Windows.Forms.DataGridViewTextBoxColumn Cuenta;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cargo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Abono;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnSalir;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }
