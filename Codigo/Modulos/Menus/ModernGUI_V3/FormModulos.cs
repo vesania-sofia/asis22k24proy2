@@ -53,6 +53,7 @@ namespace Interfac_V3
 
             MDI_Seguridad formMDI = new MDI_Seguridad(idUsuario);
             formMDI.Show();
+            this.Hide();
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
