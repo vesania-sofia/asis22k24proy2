@@ -39,11 +39,15 @@ namespace Capa_Vista_Polizas
             this.lbl_fecha = new System.Windows.Forms.Label();
             this.cbtipopoliza = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btn_aceptar = new System.Windows.Forms.Button();
             this.txtValor = new System.Windows.Forms.TextBox();
             this.cboperacion = new System.Windows.Forms.ComboBox();
             this.cbCuenta = new System.Windows.Forms.ComboBox();
             this.lbl_Cuenta = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnQuitar = new System.Windows.Forms.Button();
             this.dgvPolizas = new System.Windows.Forms.DataGridView();
             this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cuenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -53,14 +57,10 @@ namespace Capa_Vista_Polizas
             this.lbl_abono = new System.Windows.Forms.Label();
             this.lblCargo = new System.Windows.Forms.Label();
             this.lblAbono = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.btnSalir = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btn_registar_poliza = new System.Windows.Forms.Button();
             this.btn_nueva_poliza = new System.Windows.Forms.Button();
-            this.btnQuitar = new System.Windows.Forms.Button();
-            this.btn_aceptar = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -155,6 +155,43 @@ namespace Capa_Vista_Polizas
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Detalle";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Beige;
+            this.label2.Location = new System.Drawing.Point(685, 28);
+            this.label2.Margin = new System.Windows.Forms.Padding(10);
+            this.label2.Name = "label2";
+            this.label2.Padding = new System.Windows.Forms.Padding(0, 0, 55, 0);
+            this.label2.Size = new System.Drawing.Size(148, 17);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "             Valor";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Beige;
+            this.label1.Location = new System.Drawing.Point(455, 28);
+            this.label1.Margin = new System.Windows.Forms.Padding(10);
+            this.label1.Name = "label1";
+            this.label1.Padding = new System.Windows.Forms.Padding(0, 0, 45, 0);
+            this.label1.Size = new System.Drawing.Size(176, 17);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "          Cargo/Abono";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // btn_aceptar
+            // 
+            this.btn_aceptar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(237)))), ((int)(((byte)(235)))));
+            this.btn_aceptar.Image = global::Capa_Vista_Polizas.Properties.Resources.lista_de_verificacion;
+            this.btn_aceptar.Location = new System.Drawing.Point(865, 15);
+            this.btn_aceptar.Name = "btn_aceptar";
+            this.btn_aceptar.Size = new System.Drawing.Size(109, 93);
+            this.btn_aceptar.TabIndex = 6;
+            this.btn_aceptar.UseVisualStyleBackColor = false;
+            this.btn_aceptar.Click += new System.EventHandler(this.btn_aceptar_Click);
+            // 
             // txtValor
             // 
             this.txtValor.Location = new System.Drawing.Point(688, 58);
@@ -204,6 +241,17 @@ namespace Capa_Vista_Polizas
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Detalle de movimiento";
+            // 
+            // btnQuitar
+            // 
+            this.btnQuitar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(237)))), ((int)(((byte)(235)))));
+            this.btnQuitar.Image = global::Capa_Vista_Polizas.Properties.Resources.boton_menos3;
+            this.btnQuitar.Location = new System.Drawing.Point(926, 31);
+            this.btnQuitar.Name = "btnQuitar";
+            this.btnQuitar.Size = new System.Drawing.Size(107, 97);
+            this.btnQuitar.TabIndex = 1;
+            this.btnQuitar.UseVisualStyleBackColor = false;
+            this.btnQuitar.Click += new System.EventHandler(this.btnQuitar_Click);
             // 
             // dgvPolizas
             // 
@@ -286,32 +334,6 @@ namespace Capa_Vista_Polizas
             this.lblAbono.TabIndex = 11;
             this.lblAbono.Text = "00.00";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Beige;
-            this.label1.Location = new System.Drawing.Point(455, 28);
-            this.label1.Margin = new System.Windows.Forms.Padding(10);
-            this.label1.Name = "label1";
-            this.label1.Padding = new System.Windows.Forms.Padding(0, 0, 45, 0);
-            this.label1.Size = new System.Drawing.Size(176, 17);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "          Cargo/Abono";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Beige;
-            this.label2.Location = new System.Drawing.Point(685, 28);
-            this.label2.Margin = new System.Windows.Forms.Padding(10);
-            this.label2.Name = "label2";
-            this.label2.Padding = new System.Windows.Forms.Padding(0, 0, 55, 0);
-            this.label2.Size = new System.Drawing.Size(148, 17);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "             Valor";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
             // btnSalir
             // 
             this.btnSalir.Image = global::Capa_Vista_Polizas.Properties.Resources.cerrar_sesion;
@@ -352,28 +374,6 @@ namespace Capa_Vista_Polizas
             this.btn_nueva_poliza.TabIndex = 3;
             this.btn_nueva_poliza.UseVisualStyleBackColor = true;
             this.btn_nueva_poliza.Click += new System.EventHandler(this.btn_nueva_poliza_Click);
-            // 
-            // btnQuitar
-            // 
-            this.btnQuitar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(237)))), ((int)(((byte)(235)))));
-            this.btnQuitar.Image = global::Capa_Vista_Polizas.Properties.Resources.boton_menos3;
-            this.btnQuitar.Location = new System.Drawing.Point(926, 31);
-            this.btnQuitar.Name = "btnQuitar";
-            this.btnQuitar.Size = new System.Drawing.Size(107, 97);
-            this.btnQuitar.TabIndex = 1;
-            this.btnQuitar.UseVisualStyleBackColor = false;
-            this.btnQuitar.Click += new System.EventHandler(this.btnQuitar_Click);
-            // 
-            // btn_aceptar
-            // 
-            this.btn_aceptar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(237)))), ((int)(((byte)(235)))));
-            this.btn_aceptar.Image = global::Capa_Vista_Polizas.Properties.Resources.lista_de_verificacion;
-            this.btn_aceptar.Location = new System.Drawing.Point(865, 15);
-            this.btn_aceptar.Name = "btn_aceptar";
-            this.btn_aceptar.Size = new System.Drawing.Size(109, 93);
-            this.btn_aceptar.TabIndex = 6;
-            this.btn_aceptar.UseVisualStyleBackColor = false;
-            this.btn_aceptar.Click += new System.EventHandler(this.btn_aceptar_Click);
             // 
             // errorProvider1
             // 
