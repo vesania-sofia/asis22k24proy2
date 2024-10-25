@@ -17,7 +17,7 @@ namespace PreubaPoliza
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Capa_Vista_Polizas.Polizas());
+            Application.Run(new Capa_Vista_Polizas.frmPolizas());
         }
     }
 }

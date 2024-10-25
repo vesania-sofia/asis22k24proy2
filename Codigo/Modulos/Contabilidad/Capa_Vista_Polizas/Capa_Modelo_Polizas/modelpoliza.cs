@@ -41,14 +41,39 @@ namespace Capa_Modelo_Polizas
 
         public DataTable obtenerCuentas(string tabla, string campo1, string campo2)
         {
+            try
+            {
+                using (OdbcConnection conexion = con.conectar())
+                {
+                    if (conexion.State == ConnectionState.Closed)
+                    {
+                        conexion.Open(); // Asegúrate de abrir la conexión
+                    }
 
-            string sql = "SELECT " + campo1 + "," + campo2 + " FROM " + tabla + " where estado = 1  ;";
+                    string sql = "SELECT " + campo1 + "," + campo2 + " FROM " + tabla + " where estado = 1  ;";
+                    OdbcCommand command = new OdbcCommand(sql, conexion);
+                    OdbcDataAdapter adaptador = new OdbcDataAdapter(command);
+                    DataTable dt = new DataTable();
+                    adaptador.Fill(dt);
 
-            OdbcCommand command = new OdbcCommand(sql, con.conectar());
-            OdbcDataAdapter adaptador = new OdbcDataAdapter(command);
-            DataTable dt = new DataTable();
-            adaptador.Fill(dt);
-            return dt;
+                    // Verificar si la tabla tiene datos
+                    if (dt.Rows.Count > 0)
+                    {
+                        return dt;
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se encontraron datos.");
+                        return null;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Si hay un error, muestra el mensaje de error
+                MessageBox.Show("Error al conectarse a la base de datos: " + ex.Message);
+                return null;
+            }
         }
 
         // ---------------------------------- COMBO BOX TIPO POLIZA ----------------------------------
@@ -78,14 +103,39 @@ namespace Capa_Modelo_Polizas
 
         public DataTable obtenerTP(string tabla, string campo1, string campo2)
         {
+            try
+            {
+                using (OdbcConnection conexion = con.conectar())
+                {
+                    if (conexion.State == ConnectionState.Closed)
+                    {
+                        conexion.Open(); // Asegúrate de abrir la conexión
+                    }
 
-            string sql = "SELECT " + campo1 + "," + campo2 + " FROM " + tabla + " where estado = 1  ;";
+                    string sql = "SELECT " + campo1 + "," + campo2 + " FROM " + tabla + " where estado = 1  ;";
+                    OdbcCommand command = new OdbcCommand(sql, conexion);
+                    OdbcDataAdapter adaptador = new OdbcDataAdapter(command);
+                    DataTable dt = new DataTable();
+                    adaptador.Fill(dt);
 
-            OdbcCommand command = new OdbcCommand(sql, con.conectar());
-            OdbcDataAdapter adaptador = new OdbcDataAdapter(command);
-            DataTable dt = new DataTable();
-            adaptador.Fill(dt);
-            return dt;
+                    // Verificar si la tabla tiene datos
+                    if (dt.Rows.Count > 0)
+                    {
+                        return dt;
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se encontraron datos.");
+                        return null;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Si hay un error, muestra el mensaje de error
+                MessageBox.Show("Error al conectarse a la base de datos: " + ex.Message);
+                return null;
+            }
         }
 
         // ---------------------------------- COMBO BOX OPERACION ----------------------------------
@@ -115,14 +165,39 @@ namespace Capa_Modelo_Polizas
 
         public DataTable obtenerOP(string tabla, string campo1, string campo2)
         {
+            try
+            {
+                using (OdbcConnection conexion = con.conectar())
+                {
+                    if (conexion.State == ConnectionState.Closed)
+                    {
+                        conexion.Open(); // Asegúrate de abrir la conexión
+                    }
 
-            string sql = "SELECT " + campo1 + "," + campo2 + " FROM " + tabla + " where estado = 1  ;";
+                    string sql = "SELECT " + campo1 + "," + campo2 + " FROM " + tabla + " where estado = 1  ;";
+                    OdbcCommand command = new OdbcCommand(sql, conexion);
+                    OdbcDataAdapter adaptador = new OdbcDataAdapter(command);
+                    DataTable dt = new DataTable();
+                    adaptador.Fill(dt);
 
-            OdbcCommand command = new OdbcCommand(sql, con.conectar());
-            OdbcDataAdapter adaptador = new OdbcDataAdapter(command);
-            DataTable dt = new DataTable();
-            adaptador.Fill(dt);
-            return dt;
+                    // Verificar si la tabla tiene datos
+                    if (dt.Rows.Count > 0)
+                    {
+                        return dt;
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se encontraron datos.");
+                        return null;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Si hay un error, muestra el mensaje de error
+                MessageBox.Show("Error al conectarse a la base de datos: " + ex.Message);
+                return null;
+            }
         }
 
         public void ActulizarCuentas(int idCuenta, string tipoOperacion, decimal valor)
