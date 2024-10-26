@@ -1483,7 +1483,7 @@ CREATE TABLE IF NOT EXISTS Tbl_factura (
     PRIMARY KEY (Pk_id_factura)
 );
 
---Tabla Comisiones Encabezado
+-- Tabla Comisiones Encabezado
 CREATE TABLE IF NOT EXISTS Tbl_comisiones_encabezado (
     Pk_id_comisionEnc INT(11) NOT NULL,
     Fk_id_vendedor INT NOT NULL,
@@ -1508,4 +1508,194 @@ CREATE TABLE IF NOT EXISTS Tbl_detalle_comisiones (
 );
 
 -- modulo comercial final
+
+-- modulo bancos inicio
+-- Tabla: tbl_banco
+CREATE TABLE tbl_banco (
+    pk_banco_id INT AUTO_INCREMENT PRIMARY KEY,
+    banco_nombre VARCHAR(100) NOT NULL
+);
+
+-- Tabla: tbl_cuentabancaria
+CREATE TABLE tbl_cuentabancaria (
+    pk_cuenta_id INT AUTO_INCREMENT PRIMARY KEY,
+    fk_banco_id INT NOT NULL,
+    cuenta_numero VARCHAR(20) UNIQUE NOT NULL,
+    cuenta_saldo DECIMAL(10,2) NOT NULL,
+    cuenta_tipo VARCHAR(50) NOT NULL,
+    CONSTRAINT fk_banco FOREIGN KEY (fk_banco_id) REFERENCES tbl_banco(pk_banco_id)
+);
+
+-- Tabla: tbl_movimientobancario
+CREATE TABLE tbl_movimientobancario (
+    pk_movimientobancario_id INT AUTO_INCREMENT PRIMARY KEY,
+    fk_cuenta_id INT NOT NULL,
+    movimientobancario_fecha DATE NOT NULL,
+    movimientobancario_tipo VARCHAR(50) NOT NULL,
+    movimientobancario_monto DECIMAL(10,2) NOT NULL,
+    movimientobancario_descripcion TEXT,
+    movimientobancario_metodo_pago VARCHAR(50),
+    movimientobancario_estado TINYINT(1),
+    CONSTRAINT fk_cuenta FOREIGN KEY (fk_cuenta_id) REFERENCES tbl_cuentabancaria(pk_cuenta_id)
+);
+
+-- Tabla: tbl_transaccion
+CREATE TABLE tbl_transaccion (
+    pk_transaccion_id INT AUTO_INCREMENT PRIMARY KEY,
+    fk_cuenta_id INT NOT NULL,
+    transaccion_fecha DATETIME NOT NULL,
+    transaccion_monto DECIMAL(10,2) NOT NULL,
+    transaccion_estado TINYINT(1) NOT NULL,
+    CONSTRAINT fk_cuenta_id FOREIGN KEY (fk_cuenta_id) REFERENCES tbl_cuentabancaria(pk_cuenta_id)
+);
+
+create table tbl_tipoCambio (
+	pk_id_tipoCambio INT AUTO_INCREMENT PRIMARY KEY,
+    tipoCambio_nombre_moneda VARCHAR (50) NOT NULL,
+    tipoCambio_valor_moneda decimal (5,3) NOT NULL,
+    tipoCambio_valorCambio_moneda decimal (5,3) NOT NULL,
+    tipoCambio_estatus TINYINT (1) DEFAULT 1
+);
+-- finaliza modulo bancos
+
+-- inica modulo de cuentas corrientes
+-- TBL_cobrador
+CREATE TABLE IF NOT EXISTS `Tbl_cobrador` (
+	Pk_id_cobrador INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    Fk_id_empleado INT NOT NULL,
+    cobrador_nombre VARCHAR(150) NOT NULL,
+    cobrador_direccion VARCHAR(150) NOT NULL,
+    cobrador_telefono INT NOT NULL,
+    cobrador_depto VARCHAR(150) NOT NULL,
+    cobrador_estado TINYINT DEFAULT 0 NOT NULL,    
+    FOREIGN KEY (`Fk_id_empleado`) REFERENCES tbl_empleados (pk_clave) -- Referencia a tablas de Nominas
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci; 
+
+-- TBL_paises
+CREATE TABLE IF NOT EXISTS `Tbl_paises` (
+	Pk_id_pais INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    pais_nombre VARCHAR(150) NOT NULL,
+    pais_region VARCHAR(150) NOT NULL,
+    pais_estado TINYINT DEFAULT 1 NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- TBL_Formadepago
+CREATE TABLE IF NOT EXISTS `Tbl_Formadepago` (
+	Pk_id_pago INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    pago_nombre VARCHAR(150) NOT NULL,
+    pago_tipo_moneda VARCHAR(15) NOT NULL,
+    pado_estado TINYINT DEFAULT 1 NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci; 
+
+-- TBL_Deudas_Clientes
+CREATE TABLE IF NOT EXISTS `Tbl_Deudas_Clientes` (
+    Pk_id_deuda INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    Fk_id_cliente INT NOT NULL,
+    Fk_id_cobrador INT NOT NULL,
+    Fk_id_pago INT NOT NULL,
+    deuda_monto DECIMAL(10, 2) NOT NULL,
+    deuda_fecha_inicio_deuda VARCHAR(255) NOT NULL,
+    deuda_fecha_vencimiento_deuda VARCHAR(255) NOT NULL,
+    deuda_descripcion_deuda VARCHAR(255),
+    deuda_estado TINYINT DEFAULT 1 NOT NULL,
+    FOREIGN KEY (`Fk_id_cliente`) REFERENCES `Tbl_clientes` (Pk_id_cliente),
+    FOREIGN KEY (`Fk_id_cobrador`) REFERENCES `Tbl_cobrador` (`Pk_id_cobrador`),
+    FOREIGN KEY (`Fk_id_pago`) REFERENCES `Tbl_Formadepago` (`Pk_id_pago`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- TBL_Transaccion_clientes
+CREATE TABLE IF NOT EXISTS `Tbl_Transaccion_cliente` (
+	Pk_id_transaccion INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    Fk_id_cliente INT NOT NULL,
+    Fk_id_pais INT NOT NULL,
+    transaccion_fecha VARCHAR(150) NOT NULL,
+    tansaccion_cuenta VARCHAR(150) NOT NULL,
+    transaccion_cuotas VARCHAR(2) NOT NULL,
+    transaccion_monto Decimal(10,2),
+    Fk_id_pago INT NOT NULL,
+    transaccion_tipo_moneda VARCHAR(100) NOT NULL,
+    transaccionserie VARCHAR(100) NOT NULL,
+    transaccion_estado TINYINT DEFAULT 1 NOT NULL,
+    FOREIGN KEY (`Fk_id_cliente`) REFERENCES `Tbl_clienteS` (`Pk_id_cliente`),
+    FOREIGN KEY (`Fk_id_pago`) REFERENCES `Tbl_Formadepago` (`Pk_id_pago`),
+    FOREIGN KEY (`Fk_id_pais`) REFERENCES `Tbl_paises` (`Pk_id_pais`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- TBL_mora_clientes
+CREATE TABLE IF NOT EXISTS Tbl_mora_clientes (
+    Pk_id_mora INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    Fk_id_cliente INT NOT NULL,
+    Fk_id_transaccion INT NOT NULL,
+    morafecha DATE NOT NULL,
+    mora_monto DECIMAL(10, 2) NOT NULL,
+    mora_dias INT NOT NULL,
+    mora_estado TINYINT DEFAULT 1 NOT NULL,
+    FOREIGN KEY (Fk_id_cliente) REFERENCES Tbl_clientes (Pk_id_cliente),
+    FOREIGN KEY (Fk_id_transaccion) REFERENCES Tbl_Transaccion_cliente (Pk_id_transaccion)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- TBL_caja_clientes
+CREATE TABLE IF NOT EXISTS Tbl_caja_cliente (
+    Pk_id_caja_cliente INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    Fk_id_cliente INT NOT NULL,
+    caja_cliente_nombre VARCHAR(150) NOT NULL,
+    Fk_id_deuda INT NOT NULL,
+    caja_deuda_monto DECIMAL(10, 2) NOT NULL,
+    caja_mora_monto DECIMAL(10, 2) NOT NULL,
+    caja_transaccion_monto DECIMAL(10, 2) NOT NULL,
+    caja_saldo_restante DECIMAL(10, 2) NOT NULL DEFAULT 0,
+    caja_estado TINYINT DEFAULT 1 NOT NULL, -- 0 = cancelado, 1 = pendiente
+    caja_fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (Fk_id_cliente) REFERENCES Tbl_clientes (Pk_id_cliente),
+    FOREIGN KEY (Fk_id_deuda) REFERENCES Tbl_Deudas_Clientes (Pk_id_deuda)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- TBL_Deuda_Proveedores
+    CREATE TABLE IF NOT EXISTS Tbl_Deudas_Proveedores (
+    Pk_id_deuda INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    Fk_id_proveedor INT NOT NULL,
+    Fk_id_pago INT NOT NULL,
+    deuda_monto DECIMAL(10, 2) NOT NULL,
+    deuda_fecha_inicio DATE NOT NULL,
+    deuda_fecha_vencimiento DATE NOT NULL,
+    deuda_descripcion VARCHAR(255),
+    deuda_estado TINYINT DEFAULT 1 NOT NULL,
+    FOREIGN KEY (Fk_id_proveedor) REFERENCES Tbl_proveedores (Pk_prov_id),
+    FOREIGN KEY (Fk_id_pago) REFERENCES Tbl_Formadepago (Pk_id_pago)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- TBL_Transaccion_proveedor
+CREATE TABLE IF NOT EXISTS `Tbl_Transaccion_proveedor` (
+	Pk_id_transaccion INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    Fk_id_proveedor INT NOT NULL,
+    Fk_id_pais INT NOT NULL,
+    fecha_transaccion VARCHAR(150) NOT NULL,
+    tansaccion_cuenta VARCHAR(150) NOT NULL,
+    tansaccion_cuotas VARCHAR(2) NOT NULL,
+    transaccion_monto Decimal(10,2),
+    Fk_id_pago INT NOT NULL,
+    transaccion_tipo_moneda VARCHAR(100) NOT NULL,
+    transaccion_serie VARCHAR(100) NOT NULL,
+    transaccion_estado TINYINT DEFAULT 1 NOT NULL,
+    FOREIGN KEY (`Fk_id_proveedor`) REFERENCES `Tbl_proveedores` (`Pk_prov_id`),
+    FOREIGN KEY (`Fk_id_pago`) REFERENCES `Tbl_Formadepago` (`Pk_id_pago`),
+    FOREIGN KEY (`Fk_id_pais`) REFERENCES `Tbl_paises` (`Pk_id_pais`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- TBL_caja_proveedor
+CREATE TABLE IF NOT EXISTS Tbl_caja_proveedor (
+    Pk_id_caja_proveedor INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    Fk_id_proveedor INT NOT NULL,
+    caja_proveedor_nombre VARCHAR(150) NOT NULL,
+    Fk_id_deuda INT NOT NULL,
+    caja_deuda_monto DECIMAL(10, 2) NOT NULL,
+    caja_transaccion_monto DECIMAL(10, 2) NOT NULL,
+    caja_saldo_restante DECIMAL(10, 2) NOT NULL DEFAULT 0,
+    caja_estado TINYINT DEFAULT 1 NOT NULL, -- 0 = cancelado, 1 = pendiente
+    caja_fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (Fk_id_proveedor) REFERENCES Tbl_proveedores (Pk_prov_id),
+    FOREIGN KEY (Fk_id_deuda) REFERENCES Tbl_Deudas_Proveedores (Pk_id_deuda)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- FIN TABLAS MAESTRAS CUENTAS CORRIENTES
  
