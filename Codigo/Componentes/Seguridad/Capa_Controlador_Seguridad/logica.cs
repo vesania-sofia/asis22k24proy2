@@ -947,5 +947,26 @@ namespace Capa_Controlador_Seguridad
                 return false;
             }
         }
+
+        //********************************KEVIN LOPEZ*************************************************
+        public DataTable funconsultaLogPerfiles()
+        {
+            try
+            {
+                OdbcDataAdapter dtPerfiles = sn.proconsultarPerfiles();
+                DataTable tablePerfiles = new DataTable();
+                dtPerfiles.Fill(tablePerfiles);
+                return tablePerfiles;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return null;
+            }
+
+        }
+
+        //********************************FIN KEVIN LOPEZ*************************************************
+
     }
 }
