@@ -665,6 +665,46 @@ namespace Capa_Controlador_Seguridad
         }
         // termina
 
+        //María José Véliz Ochoa, 9959-21-5909
+        //ACTUALIZAR PERMISOS USUARIOS
+        public DataTable funactualizarpermisos(string sCodigoUsuario, string sNombreAplicacion, string sIngresar, string sConsulta, string sModificar, string sEliminar, string sImprimir)
+        {
+            try
+            {
+                OdbcDataAdapter dtPermisosUA = sn.proactualizarpermisosUA(sCodigoUsuario, sNombreAplicacion, sIngresar, sConsulta, sModificar, sEliminar, sImprimir);
+                DataTable tablePermisosUA = new DataTable();
+                dtPermisosUA.Fill(tablePermisosUA);
+                return tablePermisosUA;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return null;
+            }
+        }
+
+
+        //María José Véliz Ochoa, 9959-21-5909
+
+        public DataTable funEliminarRegistroUA(string sCodigoUsuario, string sNombreAplicacion)
+        {
+            try
+            {
+                OdbcDataAdapter dtPermisosUA = sn.proEliminarRegistroUA(sCodigoUsuario, sNombreAplicacion);
+                DataTable tablePermisosUA = new DataTable();
+                dtPermisosUA.Fill(tablePermisosUA);
+                return tablePermisosUA;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return null;
+            }
+        }//termina
+
+
+
+
 
         // Alyson Rodríguez 9959-21-829
         public DataTable funactualizarmodulo(string sIdModulo, string sNombre, string sDescripcion, string sEstado)
