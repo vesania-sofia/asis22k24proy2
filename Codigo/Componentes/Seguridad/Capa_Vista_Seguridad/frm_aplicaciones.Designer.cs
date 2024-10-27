@@ -30,11 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_aplicaciones));
             this.Gpb_buscar = new System.Windows.Forms.GroupBox();
-            this.Cbo_buscar = new System.Windows.Forms.ComboBox();
+            this.Txt_buscar = new System.Windows.Forms.TextBox();
             this.Txt_buscar_id = new System.Windows.Forms.Label();
             this.Btn_bsucar = new System.Windows.Forms.Button();
             this.Gpb_datos = new System.Windows.Forms.GroupBox();
-            this.Dgv_aplicaciones = new System.Windows.Forms.DataGridView();
             this.Gpb_estado = new System.Windows.Forms.GroupBox();
             this.Rdb_inhabilitado = new System.Windows.Forms.RadioButton();
             this.Rdb_habilitado = new System.Windows.Forms.RadioButton();
@@ -54,10 +53,11 @@
             this.Btn_ingresar = new System.Windows.Forms.Button();
             this.Btn_ayuda = new System.Windows.Forms.Button();
             this.Btn_salir = new System.Windows.Forms.Button();
+            this.Dgv_aplicaciones = new System.Windows.Forms.DataGridView();
             this.Gpb_buscar.SuspendLayout();
             this.Gpb_datos.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Dgv_aplicaciones)).BeginInit();
             this.Gpb_estado.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Dgv_aplicaciones)).BeginInit();
             this.SuspendLayout();
             // 
             // Gpb_buscar
@@ -65,7 +65,7 @@
             this.Gpb_buscar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Gpb_buscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.Gpb_buscar.Controls.Add(this.Cbo_buscar);
+            this.Gpb_buscar.Controls.Add(this.Txt_buscar);
             this.Gpb_buscar.Controls.Add(this.Txt_buscar_id);
             this.Gpb_buscar.Controls.Add(this.Btn_bsucar);
             this.Gpb_buscar.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -78,13 +78,15 @@
             this.Gpb_buscar.TabStop = false;
             this.Gpb_buscar.Text = "Buscar";
             // 
-            // Cbo_buscar
+            // Txt_buscar
             // 
-            this.Cbo_buscar.FormattingEnabled = true;
-            this.Cbo_buscar.Location = new System.Drawing.Point(249, 26);
-            this.Cbo_buscar.Name = "Cbo_buscar";
-            this.Cbo_buscar.Size = new System.Drawing.Size(283, 31);
-            this.Cbo_buscar.TabIndex = 297;
+            this.Txt_buscar.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_buscar.Location = new System.Drawing.Point(286, 28);
+            this.Txt_buscar.Margin = new System.Windows.Forms.Padding(4);
+            this.Txt_buscar.Name = "Txt_buscar";
+            this.Txt_buscar.Size = new System.Drawing.Size(283, 30);
+            this.Txt_buscar.TabIndex = 240;
+            this.Txt_buscar.Tag = "9";
             // 
             // Txt_buscar_id
             // 
@@ -104,7 +106,7 @@
             this.Btn_bsucar.FlatAppearance.BorderSize = 0;
             this.Btn_bsucar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_bsucar.Image = global::Capa_Vista_Seguridad.Properties.Resources.buscar11;
-            this.Btn_bsucar.Location = new System.Drawing.Point(565, 16);
+            this.Btn_bsucar.Location = new System.Drawing.Point(586, 17);
             this.Btn_bsucar.Margin = new System.Windows.Forms.Padding(0);
             this.Btn_bsucar.Name = "Btn_bsucar";
             this.Btn_bsucar.Size = new System.Drawing.Size(61, 49);
@@ -136,20 +138,6 @@
             this.Gpb_datos.TabIndex = 254;
             this.Gpb_datos.TabStop = false;
             this.Gpb_datos.Text = "Datos Aplicacion";
-            // 
-            // Dgv_aplicaciones
-            // 
-            this.Dgv_aplicaciones.AllowUserToAddRows = false;
-            this.Dgv_aplicaciones.AllowUserToDeleteRows = false;
-            this.Dgv_aplicaciones.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.Dgv_aplicaciones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Dgv_aplicaciones.Location = new System.Drawing.Point(9, 196);
-            this.Dgv_aplicaciones.Name = "Dgv_aplicaciones";
-            this.Dgv_aplicaciones.ReadOnly = true;
-            this.Dgv_aplicaciones.RowHeadersWidth = 72;
-            this.Dgv_aplicaciones.RowTemplate.Height = 31;
-            this.Dgv_aplicaciones.Size = new System.Drawing.Size(769, 255);
-            this.Dgv_aplicaciones.TabIndex = 259;
             // 
             // Gpb_estado
             // 
@@ -410,6 +398,20 @@
             this.Btn_salir.UseVisualStyleBackColor = false;
             this.Btn_salir.Click += new System.EventHandler(this.Btn_salir_Click);
             // 
+            // Dgv_aplicaciones
+            // 
+            this.Dgv_aplicaciones.AllowUserToAddRows = false;
+            this.Dgv_aplicaciones.AllowUserToDeleteRows = false;
+            this.Dgv_aplicaciones.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.Dgv_aplicaciones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Dgv_aplicaciones.Location = new System.Drawing.Point(9, 196);
+            this.Dgv_aplicaciones.Name = "Dgv_aplicaciones";
+            this.Dgv_aplicaciones.ReadOnly = true;
+            this.Dgv_aplicaciones.RowHeadersWidth = 72;
+            this.Dgv_aplicaciones.RowTemplate.Height = 31;
+            this.Dgv_aplicaciones.Size = new System.Drawing.Size(769, 255);
+            this.Dgv_aplicaciones.TabIndex = 259;
+            // 
             // frm_aplicaciones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -438,9 +440,9 @@
             this.Gpb_buscar.PerformLayout();
             this.Gpb_datos.ResumeLayout(false);
             this.Gpb_datos.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Dgv_aplicaciones)).EndInit();
             this.Gpb_estado.ResumeLayout(false);
             this.Gpb_estado.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Dgv_aplicaciones)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -448,6 +450,7 @@
 
         #endregion
         private System.Windows.Forms.GroupBox Gpb_buscar;
+        private System.Windows.Forms.TextBox Txt_buscar;
         private System.Windows.Forms.Label Txt_buscar_id;
         private System.Windows.Forms.GroupBox Gpb_datos;
         private System.Windows.Forms.Label label3;
@@ -471,6 +474,5 @@
         private System.Windows.Forms.RadioButton Rdb_inhabilitado;
         private System.Windows.Forms.RadioButton Rdb_habilitado;
         private System.Windows.Forms.DataGridView Dgv_aplicaciones;
-        private System.Windows.Forms.ComboBox Cbo_buscar;
     }
 }
