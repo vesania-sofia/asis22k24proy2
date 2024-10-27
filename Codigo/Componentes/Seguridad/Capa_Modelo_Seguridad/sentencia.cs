@@ -334,7 +334,7 @@ namespace Capa_Modelo_Seguridad
         public OdbcDataAdapter proconsultaraplicaciones(string saplicacion)
         {
             cn.conectar();
-            string ssqlAplicaciones = "SELECT * FROM tbl_aplicaciones WHERE Pk_id_aplicacion = " + saplicacion;
+            string ssqlAplicaciones = "SELECT * FROM tbl_aplicaciones WHERE nombre_aplicacion = '" + saplicacion + "'"; ;
             funInsertarBitacora(idUsuario, "Realizo una consulta a aplicaciones", "tbl_aplicaciones", "1000");
             OdbcDataAdapter dataTable = new OdbcDataAdapter(ssqlAplicaciones, cn.conectar());
             return dataTable;
@@ -1805,6 +1805,16 @@ namespace Capa_Modelo_Seguridad
                 Console.WriteLine(ex);
                 return null;
             }
+        }
+
+        public OdbcDataAdapter proconsultaraplic()
+        {
+            cn.conectar();
+            string sqlAplicaciones = "SELECT nombre_aplicacion FROM Tbl_aplicaciones";
+            OdbcDataAdapter dataTable = new OdbcDataAdapter(sqlAplicaciones, cn.conectar());
+            funInsertarBitacora(idUsuario, "Realizo una consulta a aplicaciones", "Tbl_aplicaciones", "1000");
+
+            return dataTable;
         }
 
         //*********************************FIN KEVIN LOPEZ*********************************************
