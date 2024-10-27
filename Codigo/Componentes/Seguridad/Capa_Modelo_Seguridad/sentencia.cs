@@ -780,16 +780,17 @@ namespace Capa_Modelo_Seguridad
         }
         //*****************ACA TERMINA LA PRIMERA PARTE ACTUALIZADA POR JOSUÉ DAVID PAZ GÓMEZ*************************
 
-
+        //*****************KEVIN LOPEZ*************************
         public OdbcDataAdapter proconsultar(string sperfil)
         {
             cn.conectar();
-            string sqlPerfil = "SELECT * FROM Tbl_perfiles WHERE Pk_id_perfil = " + sperfil;
+            string sqlPerfil = "SELECT * FROM Tbl_perfiles WHERE nombre_perfil = '" + sperfil + "'"; ;
             OdbcDataAdapter dataTable = new OdbcDataAdapter(sqlPerfil, cn.conectar());
             funInsertarBitacora(idUsuario, "Realizo una consulta a perfiles ", "Tbl_perfiles", "1000");
 
             return dataTable;
         }
+        //*****************FIN KEVIN LOPEZ*************************
 
         public OdbcDataAdapter funactualizarperfil(string sID_perfil, string snombre, string sdescripcion, string sestado)
         {
@@ -1805,6 +1806,15 @@ namespace Capa_Modelo_Seguridad
                 Console.WriteLine(ex);
                 return null;
             }
+        }
+
+        public OdbcDataAdapter proconsultarPerfiles()
+        {
+            cn.conectar();
+            string sqlPerfiles = "SELECT nombre_perfil FROM Tbl_perfiles";
+            funInsertarBitacora(idUsuario, "Realizo una consulta a perfiles", "Tbl_perfiles", "1000");
+            OdbcDataAdapter dataTable = new OdbcDataAdapter(sqlPerfiles, cn.conectar());
+            return dataTable;
         }
 
         //*********************************FIN KEVIN LOPEZ*********************************************
