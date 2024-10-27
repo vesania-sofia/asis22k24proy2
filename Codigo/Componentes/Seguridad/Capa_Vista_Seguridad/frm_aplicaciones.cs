@@ -28,9 +28,9 @@ namespace Capa_Vista_Seguridad
             Btn_modificar.Enabled = false;
             Btn_eliminar.Enabled = false;
             logic = new logica(idUsuario);
-            Txt_idaplicacion.Enabled = false;
-            Txt_nombre.Enabled = false;
-            Txt_descripcion.Enabled = false;
+            //Txt_idaplicacion.Enabled = false;
+            //Txt_nombre.Enabled = false;
+            //Txt_descripcion.Enabled = false;
             Gpb_estado.Enabled = false;
             Rdb_habilitado.Checked = false;
             Rdb_inhabilitado.Checked = false;
@@ -66,7 +66,7 @@ namespace Capa_Vista_Seguridad
             Txt_idaplicacion.Text = "";
             Txt_nombre.Text = "";
             Txt_descripcion.Text = "";
-            Txt_buscar.Text = "";
+            Cbo_buscar.Text = "";
             Rdb_habilitado.Checked = false;
             Rdb_inhabilitado.Checked = false;
             Txt_idaplicacion.Focus();
@@ -104,7 +104,7 @@ namespace Capa_Vista_Seguridad
 
         private void Frm_aplicaciones_Load(object sender, EventArgs e)
         {
-
+            Fun_cargar_busqueda();
         }
 
 
@@ -122,7 +122,7 @@ namespace Capa_Vista_Seguridad
 
         private void Btn_bsucar_Click(object sender, EventArgs e)
         {
-            string aplicacion = Txt_buscar.Text;
+            string aplicacion = Cbo_buscar.Text;
 
             if (string.IsNullOrWhiteSpace(aplicacion))
             {
@@ -164,10 +164,10 @@ namespace Capa_Vista_Seguridad
                 Btn_modificar.Enabled = true;
                 Btn_cancelar.Enabled = true;
                 Btn_ingresar.Enabled = false;
-                Txt_idaplicacion.Enabled = false;
+                //Txt_idaplicacion.Enabled = false;
                 Btn_nuevo.Enabled = false;
-                Txt_nombre.Enabled = false;
-                Txt_descripcion.Enabled = false;
+                //Txt_nombre.Enabled = false;
+                //Txt_descripcion.Enabled = false;
                 Rdb_habilitado.Enabled = false;
                 Rdb_inhabilitado.Enabled = false;
                 Btn_eliminar.Enabled = true;
@@ -229,23 +229,23 @@ namespace Capa_Vista_Seguridad
 
         private void Btn_ingresar_Click(object sender, EventArgs e)
         {
-            Txt_nombre.Enabled = false;
-            Txt_descripcion.Enabled = false;
+            //Txt_nombre.Enabled = false;
+            //Txt_descripcion.Enabled = false;
 
             if (Txt_nombre.Text == "")
             {
 
                 MessageBox.Show("Falta Nombre de Aplicacion");
                 Btn_nuevo.Enabled = true;
-                Txt_nombre.Enabled = false;
-                Txt_descripcion.Enabled = false;
+                //Txt_nombre.Enabled = false;
+                //Txt_descripcion.Enabled = false;
             }
             else if (Txt_descripcion.Text == "")
             {
                 MessageBox.Show("Falta Descripcion de Aplicacion");
                 Btn_nuevo.Enabled = true;
-                Txt_nombre.Enabled = false;
-                Txt_descripcion.Enabled = false;
+                //Txt_nombre.Enabled = false;
+                //Txt_descripcion.Enabled = false;
             }
 
             else
@@ -271,7 +271,7 @@ namespace Capa_Vista_Seguridad
                 Gpb_buscar.Enabled = true;
                 Btn_ingresar.Enabled = false;
                 Btn_nuevo.Enabled = true;
-                Txt_idaplicacion.Enabled = false;
+                //Txt_idaplicacion.Enabled = false;
                 mostraraplicaciones();
             }
         }
@@ -287,7 +287,7 @@ namespace Capa_Vista_Seguridad
             Btn_modificar.Enabled = false;
             Btn_ingresar.Enabled = false;
             Btn_cancelar.Enabled = true;
-            Txt_idaplicacion.Enabled = false;
+            //Txt_idaplicacion.Enabled = false;
             Txt_nombre.Enabled = true;
             Txt_descripcion.Enabled = true;
         }
@@ -299,15 +299,15 @@ namespace Capa_Vista_Seguridad
 
                 MessageBox.Show("Falta Nombre de Aplicacion");
                 Btn_nuevo.Enabled = true;
-                Txt_nombre.Enabled = false;
-                Txt_descripcion.Enabled = false;
+                //Txt_nombre.Enabled = false;
+                //Txt_descripcion.Enabled = false;
             }
             else if (Txt_descripcion.Text == "")
             {
                 MessageBox.Show("Falta Descripcion de Aplicacion");
                 Btn_nuevo.Enabled = true;
-                Txt_nombre.Enabled = false;
-                Txt_descripcion.Enabled = false;
+                //Txt_nombre.Enabled = false;
+                //Txt_descripcion.Enabled = false;
             }
 
             else
@@ -338,9 +338,9 @@ namespace Capa_Vista_Seguridad
                 Btn_actualizar.Enabled = false;
                 Btn_modificar.Enabled = false;
                 Btn_eliminar.Enabled = false;
-                Txt_idaplicacion.Enabled = false;
-                Txt_nombre.Enabled = false;
-                Txt_descripcion.Enabled = false;
+                //Txt_idaplicacion.Enabled = false;
+                //Txt_nombre.Enabled = false;
+                //Txt_descripcion.Enabled = false;
                 Gpb_estado.Enabled = true;
                 Gpb_buscar.Enabled = true;
             }
@@ -361,12 +361,12 @@ namespace Capa_Vista_Seguridad
                     logic.funeliminaraplicaciones(Txt_idaplicacion.Text);
 
                     // Opcionalmente, puedes desactivar botones o limpiar campos después de la eliminación
-                    Txt_buscar.Enabled = true;
+                    
                     Btn_bsucar.Enabled = false;
                     Btn_modificar.Enabled = false;
                     Btn_nuevo.Enabled = true;
-                    Txt_idaplicacion.Enabled = false;
-                    Txt_descripcion.Enabled = false;
+                    //Txt_idaplicacion.Enabled = false;
+                    //Txt_descripcion.Enabled = false;
                     Gpb_estado.Enabled = false;
                     mostraraplicaciones();
                     prolimpiar();  // Limpiar campos
@@ -388,9 +388,9 @@ namespace Capa_Vista_Seguridad
             Btn_ingresar.Enabled = false;
             Btn_actualizar.Enabled = false;
             Btn_modificar.Enabled = false;
-            Txt_idaplicacion.Enabled = false;
-            Txt_nombre.Enabled = false;
-            Txt_descripcion.Enabled = false;
+            //Txt_idaplicacion.Enabled = false;
+            //Txt_nombre.Enabled = false;
+            //Txt_descripcion.Enabled = false;
             Gpb_estado.Enabled = false;
             Rdb_habilitado.Enabled = true;
             Rdb_inhabilitado.Enabled = true;
@@ -472,6 +472,28 @@ namespace Capa_Vista_Seguridad
 
         }
         //************* Fin KATERYN DE LEON y Gabriela Suc ************************
+
+        //**************************KEVIN LOPEZ***********************************
+
+        private void Fun_cargar_busqueda()
+        {
+            try
+            {
+
+                DataTable dtAplicacion = logic.funconsultaLogAplic();
+                Cbo_buscar.Items.Clear();
+                foreach (DataRow row in dtAplicacion.Rows)
+                {
+                    Cbo_buscar.Items.Add(row[0].ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al cargar busqueda: " + ex.Message);
+            }
+        }
+
+        //**************************FIN KEVIN LOPEZ***********************************
 
 
     }
