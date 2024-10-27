@@ -101,7 +101,7 @@ namespace Capa_Vista_Produccion
         // Botón de enlace a contabilidad y cierre (Pólizas)
         private void btnPolizas_Click(object sender, EventArgs e)
         {
-            Frm_Enlace_Contabilidad_Cierre Polizas = new Frm_Enlace_Contabilidad_Cierre();
+            Frm_Polizas_Prod Polizas = new Frm_Polizas_Prod();
             Polizas.Show();
         }
 

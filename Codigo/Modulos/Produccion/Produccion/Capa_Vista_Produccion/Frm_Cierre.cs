@@ -7,11 +7,32 @@ namespace Capa_Vista_Produccion
     public partial class Frm_Cierre : Form
     {
         private Capa_Controlador_Produccion.Control_Cierre controlCierre = new Capa_Controlador_Produccion.Control_Cierre();
+        private ToolTip toolTip;
 
         public Frm_Cierre()
         {
             InitializeComponent();
+            toolTip = new ToolTip(); // Inicializamos el ToolTip
+            ConfigurarToolTips(); // Configuramos los ToolTips
             CargarHistorialCierres(); // Cargar el historial de cierres al abrir el formulario
+        }
+
+        // Método para configurar ToolTips en los componentes
+        private void ConfigurarToolTips()
+        {
+            toolTip.SetToolTip(btn_Nuevo, "Prepara los campos para ingresar un nuevo cierre.");
+            toolTip.SetToolTip(btn_calcular, "Calcula el saldo actual y acumulados con los datos ingresados.");
+            toolTip.SetToolTip(btn_guardar, "Guarda el cierre contable ingresado.");
+            toolTip.SetToolTip(btn_limpiar, "Limpia todos los campos de entrada.");
+            toolTip.SetToolTip(btn_cerrar, "Cerrar el formulario.");
+            toolTip.SetToolTip(dtp_fecha_cierre, "Seleccione la fecha del cierre contable.");
+            toolTip.SetToolTip(txt_saldo_anterior, "Saldo del cierre anterior.");
+            toolTip.SetToolTip(txt_cargos_mes, "Total de cargos realizados en el mes.");
+            toolTip.SetToolTip(txt_abonos_mes, "Total de abonos realizados en el mes.");
+            toolTip.SetToolTip(txt_saldo_actual, "Saldo actual calculado.");
+            toolTip.SetToolTip(txt_cargos_acumulados, "Cargos acumulados para el año en curso.");
+            toolTip.SetToolTip(txt_abonos_acumulados, "Abonos acumulados para el año en curso.");
+            toolTip.SetToolTip(dgv_historico_cierres, "Historial de cierres contables.");
         }
 
         // Método para cargar el historial de cierres en el DataGridView
@@ -51,7 +72,6 @@ namespace Capa_Vista_Produccion
 
         private void btn_calcular_Click(object sender, EventArgs e)
         {
-            // Verificar que el usuario haya ingresado datos en los campos necesarios
             try
             {
                 if (string.IsNullOrWhiteSpace(txt_saldo_anterior.Text) ||
