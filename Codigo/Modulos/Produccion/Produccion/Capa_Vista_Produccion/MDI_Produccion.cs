@@ -21,7 +21,7 @@ namespace Capa_Vista_Produccion
             InitializeComponent();
             ocultaSubMenu(); // Solo oculta los menús al inicio
         }
-
+        string idUsuario = Interfac_V3.UsuarioSesion.GetIdUsuario();
         // Ocultar submenús al iniciar (sin cerrar al abrir otro)
         private void ocultaSubMenu()
         {
