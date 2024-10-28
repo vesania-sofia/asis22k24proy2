@@ -165,7 +165,7 @@ namespace Capa_Vista_Produccion
                 decimal totalDias = decimal.Parse(txt_Total_Dias.Text);
                 decimal totalHoras = decimal.Parse(txt_Total_Horas.Text);
                 int horasExtras = int.Parse(txt_horas_extras.Text);
-                decimal totalHorasExtras = decimal.Parse(txt_Total_Horas.Text);
+                decimal totalHorasExtras = decimal.Parse(txt_Total_Horas_Extras.Text); // Corrección aquí
                 decimal totalManoObra = decimal.Parse(txt_Total_Mano_de_Obra.Text);
 
                 controlador.ModificarRegistro(idRRHH, empleadoID, salario, dias, totalDias, horas, totalHoras, horasExtras, totalHorasExtras, totalManoObra);
@@ -197,7 +197,7 @@ namespace Capa_Vista_Produccion
             CargarDatos();
         }
 
-        private void dgv_empleados_SelectionChanged(object sender, EventArgs e)
+      /*  private void dgv_empleados_SelectionChanged(object sender, EventArgs e)
         {
             if (dgv_empleados.SelectedRows.Count > 0)
             {
@@ -215,6 +215,6 @@ namespace Capa_Vista_Produccion
                 btn_Modificar.Enabled = true;
                 btn_Eliminar.Enabled = true;
             }
-        }
+        }*/
     }
 }

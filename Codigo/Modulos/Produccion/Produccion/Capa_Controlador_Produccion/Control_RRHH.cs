@@ -36,7 +36,6 @@ namespace Capa_Controlador_Produccion
         {
             sentencia.ModificarRegistroRRHH(idRRHH, empleadoID, salario, dias, totalDias, horas, totalHoras, horasExtra, totalHorasExtras, totalManoObra);
         }
-
         public void EliminarRegistro(int idRRHH)
         {
             sentencia.EliminarRegistroRRHH(idRRHH);

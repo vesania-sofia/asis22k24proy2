@@ -183,5 +183,17 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ingresar.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\guardar.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\eliminar.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\calcular.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
