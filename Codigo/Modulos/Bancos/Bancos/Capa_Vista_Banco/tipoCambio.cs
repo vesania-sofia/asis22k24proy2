@@ -67,5 +67,10 @@ namespace Capa_Vista_Banco
             llenarCombo();
             dgvTipoCambio.ClearSelection();
         }
+
+        private void dgvTipoCambio_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
