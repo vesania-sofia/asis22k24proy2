@@ -16,7 +16,7 @@ namespace Capa_Vista_Produccion
         {
             string idUsuario = Interfac_V3.UsuarioSesion.GetIdUsuario();
             InitializeComponent();
-            string[] alias = { "ID", "Producto","Descripción", "Cantidad", "Costo", "Campo", "Tipo", "Estado" };
+            string[] alias = { "ID", "ID Producto","Descripción", "Cantidad", "Area", "Cama", "Estado" };
             navegador1.AsignarAlias(alias);
             navegador1.AsignarSalida(this);
             Color colorFondo = ColorTranslator.FromHtml("#B1CFE6"); // Color de fondo

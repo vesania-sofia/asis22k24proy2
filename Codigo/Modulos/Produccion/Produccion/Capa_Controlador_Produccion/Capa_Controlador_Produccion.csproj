@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="Control_Implosion_Explosion_Materiales.cs" />
     <Compile Include="Control_Receta.cs" />
+    <Compile Include="Control_RRHH.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
