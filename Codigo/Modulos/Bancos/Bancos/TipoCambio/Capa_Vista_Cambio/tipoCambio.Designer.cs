@@ -32,10 +32,10 @@ namespace Capa_Vista_Cambio
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(tipoCambio));
             this.cboMonedas = new System.Windows.Forms.ComboBox();
             this.dgvTipoCambio = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
+            this.txt_seleccionar = new System.Windows.Forms.Label();
             this.btnActualizar = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
+            this.txt_titulo = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTipoCambio)).BeginInit();
             this.SuspendLayout();
             // 
@@ -57,14 +57,14 @@ namespace Capa_Vista_Cambio
             this.dgvTipoCambio.Size = new System.Drawing.Size(278, 288);
             this.dgvTipoCambio.TabIndex = 9;
             // 
-            // label1
+            // txt_seleccionar
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(331, 147);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(144, 16);
-            this.label1.TabIndex = 8;
-            this.label1.Text = "Seleecionar una moneda";
+            this.txt_seleccionar.AutoSize = true;
+            this.txt_seleccionar.Location = new System.Drawing.Point(331, 147);
+            this.txt_seleccionar.Name = "txt_seleccionar";
+            this.txt_seleccionar.Size = new System.Drawing.Size(144, 16);
+            this.txt_seleccionar.TabIndex = 8;
+            this.txt_seleccionar.Text = "Seleecionar una moneda";
             // 
             // btnActualizar
             // 
@@ -77,6 +77,7 @@ namespace Capa_Vista_Cambio
             this.btnActualizar.Size = new System.Drawing.Size(40, 40);
             this.btnActualizar.TabIndex = 7;
             this.btnActualizar.UseVisualStyleBackColor = false;
+            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
             // 
             // btnBuscar
             // 
@@ -84,7 +85,7 @@ namespace Capa_Vista_Cambio
             this.btnBuscar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnBuscar.BackgroundImage")));
             this.btnBuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnBuscar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnBuscar.Location = new System.Drawing.Point(333, 218);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(40, 42);
@@ -92,15 +93,15 @@ namespace Capa_Vista_Cambio
             this.btnBuscar.UseVisualStyleBackColor = false;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
-            // label2
+            // txt_titulo
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(330, 59);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(142, 23);
-            this.label2.TabIndex = 11;
-            this.label2.Text = "Tipo de Cambio";
+            this.txt_titulo.AutoSize = true;
+            this.txt_titulo.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_titulo.Location = new System.Drawing.Point(330, 59);
+            this.txt_titulo.Name = "txt_titulo";
+            this.txt_titulo.Size = new System.Drawing.Size(142, 23);
+            this.txt_titulo.TabIndex = 11;
+            this.txt_titulo.Text = "Tipo de Cambio";
             // 
             // tipoCambio
             // 
@@ -108,10 +109,10 @@ namespace Capa_Vista_Cambio
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(113)))), ((int)(((byte)(180)))), ((int)(((byte)(2)))));
             this.ClientSize = new System.Drawing.Size(507, 328);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.txt_titulo);
             this.Controls.Add(this.cboMonedas);
             this.Controls.Add(this.dgvTipoCambio);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.txt_seleccionar);
             this.Controls.Add(this.btnActualizar);
             this.Controls.Add(this.btnBuscar);
             this.Font = new System.Drawing.Font("Times New Roman", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -128,9 +129,9 @@ namespace Capa_Vista_Cambio
 
         private System.Windows.Forms.ComboBox cboMonedas;
         private System.Windows.Forms.DataGridView dgvTipoCambio;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label txt_seleccionar;
         private System.Windows.Forms.Button btnActualizar;
         private System.Windows.Forms.Button btnBuscar;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label txt_titulo;
     }
 }
