@@ -968,5 +968,58 @@ namespace Capa_Controlador_Seguridad
 
         //********************************FIN KEVIN LOPEZ*************************************************
 
+        //-----------------------Emerzon Garcia --------------------------------------------------
+        public string obtenerNombrePerfil(string idPerfil)
+        {
+            try
+            {
+                return sn.obtenerNombrePerfil(idPerfil); // Llamada al método en la capa de sentencias
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return null;
+            }
+        }
+
+        public DataTable funModificarPermisosPerfil(string scodigoPerfil, string snombreAplicacion, string singresar, string smodificar, string seliminar, string sconsulta, string simprimir)
+        {
+            try
+            {
+                OdbcDataAdapter dtPermisosPerfilM = sn.proModificarPermisosPerfil(scodigoPerfil, snombreAplicacion, singresar, smodificar, seliminar, sconsulta, simprimir);
+                DataTable tablePermisosPerfilM = new DataTable();
+                dtPermisosPerfilM.Fill(tablePermisosPerfilM);
+                return tablePermisosPerfilM;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return null;
+            }
+        }
+
+        public bool funEliminarPermisosPerfil(string sIdPerfil, string snombreAplicacion)
+        {
+            try
+            {
+                bool result = sn.proEliminarPermisosPerfil(sIdPerfil, snombreAplicacion);
+                if (result)
+                {
+                    MessageBox.Show("Registro(s) eliminado(s) correctamente.");
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo eliminar el registro.");
+                }
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return false;
+            }
+        }
+
+
     }
 }

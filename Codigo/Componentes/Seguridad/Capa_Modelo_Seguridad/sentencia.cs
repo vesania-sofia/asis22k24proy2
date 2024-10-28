@@ -1818,6 +1818,122 @@ namespace Capa_Modelo_Seguridad
         }
 
         //*********************************FIN KEVIN LOPEZ*********************************************
+        //---------------------------------Emerzon Garcia --------------------------------------------------
+        public string obtenerNombrePerfil(string idPerfil)
+        {
+            try
+            {
+                string nombrePerfil = "";
+                string consulta = "SELECT nombre_perfil FROM Tbl_perfiles WHERE Pk_id_perfil = '" + idPerfil + "'";
+                OdbcCommand comando = new OdbcCommand(consulta, cn.conectar());
+                OdbcDataReader reader = comando.ExecuteReader();
 
+                if (reader.Read())
+                {
+                    nombrePerfil = reader.GetString(0);
+                }
+
+                reader.Close();
+                comando.Connection.Close();
+
+                return nombrePerfil;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return null;
+            }
+        }
+
+        public OdbcDataAdapter proModificarPermisosPerfil(string scodigoperfil, string snombreaplicacion, string singresar, string smodificar, string seliminar, string sconsulta, string simprimir)
+        {
+            string sCodigoAplicacion = " ";
+            string sCodigoPerfil = "";
+            try
+            {
+                OdbcCommand sqlCodigoModulo = new OdbcCommand("SELECT Pk_id_aplicacion FROM Tbl_aplicaciones WHERE nombre_aplicacion = '" + snombreaplicacion + "' ", cn.conectar());
+                OdbcDataReader almacena = sqlCodigoModulo.ExecuteReader();
+
+                if (almacena.Read())
+                {
+                    sCodigoAplicacion = almacena.GetString(0);
+                }
+
+                OdbcCommand sqlCodigoPerfil = new OdbcCommand("SELECT Pk_id_perfil FROM Tbl_perfiles WHERE nombre_perfil = '" + scodigoperfil + "' ", cn.conectar());
+                OdbcDataReader almacenaPerfil = sqlCodigoPerfil.ExecuteReader();
+                // Para Pk_id_perfil
+                if (almacenaPerfil.Read())
+                {
+                    sCodigoPerfil = almacenaPerfil.GetString(0);
+                }
+
+                string sqlModificarPermisosPerfilApp = "UPDATE Tbl_permisos_aplicacion_perfil SET guardar_permiso = '" + singresar + "', modificar_permiso = '" + smodificar +
+                                                   "', eliminar_permiso = '" + seliminar + "', buscar_permiso = '" + sconsulta + "', imprimir_permiso = '" +
+                                                   simprimir + "' WHERE Fk_id_perfil = '" + sCodigoPerfil + "' AND Fk_id_aplicacion = '" + sCodigoAplicacion + "';";
+
+                OdbcDataAdapter dataPermisosPerfilAplicacion = new OdbcDataAdapter(sqlModificarPermisosPerfilApp, cn.conectar());
+
+                funInsertarBitacora(idUsuario, "Modificó permiso: " + snombreaplicacion + " para perfil: " + scodigoperfil, "Tbl_permisos_aplicacion_perfil", "1000");
+
+                almacena.Close();
+                sqlCodigoModulo.Connection.Close();
+
+                return dataPermisosPerfilAplicacion;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return null;
+            }
+        }
+
+        public bool proEliminarPermisosPerfil(string sIdPerfil, string snombreaplicacion)
+        {
+            string sCodigoAplicacion = "";
+            try
+            {
+                // Obtener ID de la aplicación basado en el nombre de la aplicación
+                string sqlObtenerIdAplicacion = "SELECT Pk_id_aplicacion FROM Tbl_aplicaciones WHERE nombre_aplicacion = ?";
+                using (OdbcCommand command = new OdbcCommand(sqlObtenerIdAplicacion, cn.conectar()))
+                {
+                    command.Parameters.AddWithValue("?", snombreaplicacion);
+                    object idAplicacion = command.ExecuteScalar();
+                    if (idAplicacion == null)
+                    {
+                        MessageBox.Show("No se encontró la aplicación con el nombre: " + snombreaplicacion);
+                        return false;
+                    }
+
+                    // Generar la consulta SQL para eliminar registro en la base de datos
+                    string sqlEliminarPermisos = "DELETE FROM Tbl_permisos_aplicacion_perfil WHERE Fk_id_perfil = ? AND Fk_id_aplicacion = ?";
+                    using (OdbcCommand deleteCommand = new OdbcCommand(sqlEliminarPermisos, cn.conectar()))
+                    {
+                        deleteCommand.Parameters.AddWithValue("?", sIdPerfil);
+                        deleteCommand.Parameters.AddWithValue("?", idAplicacion);
+
+                        // Ejecutar el comando
+                        int rowsAffected = deleteCommand.ExecuteNonQuery();
+                        // Si se eliminó al menos un registro, registrar en la bitácora
+                        if (rowsAffected > 0)
+                        {
+                            funInsertarBitacora(idUsuario, $"Eliminó el registro para perfil: {sIdPerfil} en aplicación: {snombreaplicacion}", "Tbl_permisos_aplicacion_perfil", "1000");
+                            return true; // Indica que la eliminación fue exitosa
+                        }
+                        else
+                        {
+                            MessageBox.Show("No se encontraron registros para eliminar.");
+                            return false; // No se afectó ninguna fila
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al eliminar permisos: {ex.Message}");
+                return false;
+            }
+        }
+
+        //---------------------------------Emerzon Garcia Termina------------------------------------------------------------------------------------------
     }
 }
