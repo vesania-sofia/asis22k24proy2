@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.Odbc;
 
-namespace Capa_Modelo_Banco
+namespace Capa_Modelo_Cambio
 {
     public class Conexion
     {
