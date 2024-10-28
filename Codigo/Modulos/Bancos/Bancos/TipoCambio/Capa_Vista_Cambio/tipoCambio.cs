@@ -16,11 +16,15 @@ namespace Capa_Vista_Cambio
 
         public DataTable tiposDeCambio;
         private Controlador capaControlador = new Controlador();
+        private ToolTip toolTip;
 
         public tipoCambio()
         {
             InitializeComponent();
             llenarCombo();
+            toolTip = new ToolTip();
+            toolTip.SetToolTip(btnBuscar, "Buscar Moneda");
+            toolTip.SetToolTip(btnActualizar, "Actualizar Vista");
         }
 
         private void llenarCombo()
@@ -40,12 +44,32 @@ namespace Capa_Vista_Cambio
 
         private void tipoCambio_Load(object sender, EventArgs e)
         {
-
+            tiposDeCambio = capaControlador.ObtenerTipoCambio();
+            dgvTipoCambio.DataSource = tiposDeCambio;
+            dgvTipoCambio.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
+            string nombreMonedaSeleccionada = cboMonedas.SelectedItem.ToString();
+            int filaEncontrada = capaControlador.BuscarMoneda(tiposDeCambio, nombreMonedaSeleccionada);
 
+            if (filaEncontrada != -1)
+            {
+                dgvTipoCambio.ClearSelection();
+                dgvTipoCambio.Rows[filaEncontrada].Selected = true;
+                dgvTipoCambio.FirstDisplayedScrollingRowIndex = filaEncontrada;
+            }
+            else
+            {
+                MessageBox.Show("Moneda no encontrada.");
+            }
+        }
+
+        private void btnActualizar_Click(object sender, EventArgs e)
+        {
+            llenarCombo();
+            dgvTipoCambio.ClearSelection();
         }
     }
 }
