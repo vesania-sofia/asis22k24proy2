@@ -62,7 +62,7 @@ namespace Capa_Vista_Banco
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(358, 48);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(144, 16);
+            this.label1.Size = new System.Drawing.Size(117, 14);
             this.label1.TabIndex = 2;
             this.label1.Text = "Seleecionar una moneda";
             // 
@@ -75,18 +75,19 @@ namespace Capa_Vista_Banco
             this.dgvTipoCambio.RowTemplate.Height = 24;
             this.dgvTipoCambio.Size = new System.Drawing.Size(318, 307);
             this.dgvTipoCambio.TabIndex = 3;
+            this.dgvTipoCambio.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTipoCambio_CellContentClick);
             // 
             // cboMonedas
             // 
             this.cboMonedas.FormattingEnabled = true;
             this.cboMonedas.Location = new System.Drawing.Point(361, 76);
             this.cboMonedas.Name = "cboMonedas";
-            this.cboMonedas.Size = new System.Drawing.Size(141, 23);
+            this.cboMonedas.Size = new System.Drawing.Size(141, 20);
             this.cboMonedas.TabIndex = 5;
             // 
             // tipoCambio
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(113)))), ((int)(((byte)(180)))), ((int)(((byte)(2)))));
             this.ClientSize = new System.Drawing.Size(647, 332);
