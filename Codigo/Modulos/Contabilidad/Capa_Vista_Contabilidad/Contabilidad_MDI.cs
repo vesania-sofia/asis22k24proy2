@@ -193,9 +193,7 @@ namespace Capa_Vista_Contabilidad
 
         private void btnMenuProcesosOpcion1_Click(object sender, EventArgs e)
         {
-            AbrirFormulario<MantenimientoEncabezadoCuenta>();
-            btnmAreaCuenta.BackColor = Color.FromArgb(12, 61, 92);
-            ocultaSubMenu();
+            
         }
 
         /*private void btnSalir_Click(object sender, EventArgs e)
@@ -281,6 +279,91 @@ namespace Capa_Vista_Contabilidad
             ocultaSubMenu();
           
         }
+
+        private void btnmAreaCuenta_Click(object sender, EventArgs e)
+        {
+            AbrirFormulario<MantenimientoEncabezadoCuenta>();
+            btnmAreaCuenta.BackColor = Color.FromArgb(255, 51, 51);
+            ocultaSubMenu();
+        }
+
+        private void btnmTipoCuenta_Click_1(object sender, EventArgs e)
+        {
+            AbrirFormulario<MantenimientoTipoCuenta>();
+            btnmTipoCuenta.BackColor = Color.FromArgb(255, 51, 51);
+            ocultaSubMenu();
+        }
+
+        private void btnmCuenta_Click_1(object sender, EventArgs e)
+        {
+            AbrirFormulario<Mantenimiento_Cuentas>();
+            btnmCuenta.BackColor = Color.FromArgb(255, 51, 51);
+            ocultaSubMenu();
+        }
+
+        private void btnmTipoPoliza_Click_1(object sender, EventArgs e)
+        {
+            AbrirFormulario<Mantenimiento_Tipo_Poliza>();
+            btnmTipoPoliza.BackColor = Color.FromArgb(255, 51, 51);
+            ocultaSubMenu();
+        }
+
+        private void btnmActivosFijos_Click_1(object sender, EventArgs e)
+        {
+            AbrirFormulario<Mantenimientoactivofijo>();
+            btnmAreaCuenta.BackColor = Color.FromArgb(255, 51, 51);
+            ocultaSubMenu();
+        }
+
+        private void btnmActivoFijo_Click(object sender, EventArgs e)
+        {
+            AbrirFormulario<Mantenimientotipoactivo>();
+            btnmAreaCuenta.BackColor = Color.FromArgb(255, 51, 51);
+            ocultaSubMenu();
+        }
+
+        private void btnmMarca_Click(object sender, EventArgs e)
+        {
+            AbrirFormulario<mantenimientomarca>();
+            btnmMarca.BackColor = Color.FromArgb(255, 51, 51);
+            ocultaSubMenu();
+        }
+
+        private void btnPresupuestos_Click(object sender, EventArgs e)
+        {
+            /*AbrirFormulario<Capa_Vista_presupuesto.config>();
+            btnPresupuestos.BackColor = Color.FromArgb(255, 51, 51);
+            ocultaSubMenu();*/
+        }
+
+        private void BtnCierreCuentas_Click(object sender, EventArgs e)
+        {
+            /*AbrirFormulario<Capa_Vista_cierrecontable.cierre>();
+           BtnCierreCuentas.BackColor = Color.FromArgb(255, 51, 51);
+           ocultaSubMenu();*/
+        }
+
+        private void btnActivosFijos_Click(object sender, EventArgs e)
+        {
+            /*AbrirFormulario<Capa_Vista_activosfijos.activos>();
+           btnActivosFijos.BackColor = Color.FromArgb(255, 51, 51);
+           ocultaSubMenu();*/
+        }
+
+        private void btnEstadosFin_Click_1(object sender, EventArgs e)
+        {
+            /*AbrirFormulario<Capa_Vista_estadosfinancieros.estadosfin>();
+           btnEstadosFin.BackColor = Color.FromArgb(255, 51, 51);
+           ocultaSubMenu();*/
+        }
+
+        private void btnPolizas_Click(object sender, EventArgs e)
+        {
+            /*AbrirFormulario<Capa_Vista_Polizas.estadosfin>();
+           btnPolizas.BackColor = Color.FromArgb(255, 51, 51);
+           ocultaSubMenu();*/
+        }
+
         #endregion
         //Metodo para abrir formularios dentro de panel contenedor
         private void AbrirFormulario<MiForm>() where MiForm : Form, new() {

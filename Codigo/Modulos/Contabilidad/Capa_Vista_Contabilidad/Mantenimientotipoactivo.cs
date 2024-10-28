@@ -24,7 +24,7 @@ namespace Capa_Vista_Contabilidad
             navegador1.ObtenerIdAplicacion("1000");
             navegador1.AsignarAyuda("1");
             navegador1.ObtenerIdUsuario(idusuario);
-            navegador1.AsignarTabla("tbl_tipoactivo");
+            navegador1.AsignarTabla("tbl_tipoactivofijo");
             navegador1.AsignarNombreForm("tipo activo");
         }
     }

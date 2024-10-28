@@ -214,5 +214,20 @@
   <ItemGroup>
     <None Include="Properties\pago-en-linea.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Mant.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Mant1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ProcCOnta.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\marca-de-verificacion.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SalirMDI.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
