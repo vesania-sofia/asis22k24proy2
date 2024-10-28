@@ -267,6 +267,12 @@ namespace Capa_Vista_Logistica
             ocultaSubMenu();
         }
 
+        private void Btn_MenuProcesosOpcion9_Click(object sender, EventArgs e)
+        {
+            AbrirFormulario<frmPolizas>();
+            ocultaSubMenu();
+        }
+
         #endregion
         //Metodo para abrir formularios dentro de panel contenedor
         private void AbrirFormulario<MiForm>() where MiForm : Form, new() {

@@ -13,7 +13,7 @@ namespace Capa_Controlador_Logistica
     public class Controlador
     {
         //Metodo de ingreso de datos de chofer realizado por Ammy Catun 0901-21-4857
-        private Capa_Modelo_Logistica.Sentencias sentencias = new Capa_Modelo_Logistica.Sentencias();
+        Sentencias sn = new Sentencias();
         public int guardarChofer(TextBox idChofer, string sNombreEmp, string sNumeroIdent, string sNombre, string sLicencia, string sTelefono, string sDireccion)
         {
             //se valida que el textbox no este vacío o con espacios en blanco
@@ -25,18 +25,18 @@ namespace Capa_Controlador_Logistica
             }
             else
             {
-                sentencias.registrarChofer(idChofer.Text, sNombreEmp, sNumeroIdent, sNombre, sLicencia, sTelefono, sDireccion);
+                sn.registrarChofer(idChofer.Text, sNombreEmp, sNumeroIdent, sNombre, sLicencia, sTelefono, sDireccion);
                 return 1;
             }
         }
         public DataTable cargarChoferes()
         {
-            return sentencias.cargarChoferes();
+            return sn.cargarChoferes();
         }
 
         public string getNextId()
         {
-            int nextId = sentencias.getMaxIdChofer();
+            int nextId = sn.getMaxIdChofer();
             nextId = nextId + 1;
             return nextId.ToString();
         }
@@ -51,29 +51,29 @@ namespace Capa_Controlador_Logistica
             }
             else
             {
-                sentencias.eliminarChofer(idChofer);
+                sn.eliminarChofer(idChofer);
             }
         }
 
         //metodo de modificar chofer Ammy Patricia Catun Lopez 0901-21-4857
         public void modificarChofer(string idChofer, string nombreEmp, string numeroIdent, string nombre, string licencia, string telefono, string direccion)
         {
-            sentencias.modificarChofer(idChofer, nombreEmp, numeroIdent, nombre, licencia, telefono, direccion);
+            sn.modificarChofer(idChofer, nombreEmp, numeroIdent, nombre, licencia, telefono, direccion);
         }
         //metodo de buscar chofer Ammy Patricia Catun Lopez 0901-21-4857
         public DataTable buscarChofer(string idChofer)
         {
-            return sentencias.buscarChofer(idChofer);
+            return sn.buscarChofer(idChofer);
         }
         public void RealizarSolicitudMantenimiento(int idMantenimiento, string nombreSolicitante, string tipoMantenimiento, string componenteAfectado, string fecha, string responsableAsignado, string codigo_error_Problema, string estadoMantenimiento, string tiempoEstimado, int id_Movimiento)
         {
-            sentencias.InsertarSolicitudMantenimiento(idMantenimiento, nombreSolicitante, tipoMantenimiento, componenteAfectado, fecha, responsableAsignado, codigo_error_Problema, estadoMantenimiento, tiempoEstimado, id_Movimiento);
+            sn.InsertarSolicitudMantenimiento(idMantenimiento, nombreSolicitante, tipoMantenimiento, componenteAfectado, fecha, responsableAsignado, codigo_error_Problema, estadoMantenimiento, tiempoEstimado, id_Movimiento);
         }
 
         // Método para obtener existencias de una bodega (Realizado por Daniel Sierra 0901-21-12740)
         public OdbcDataReader ObtenerExistenciasBodega(string idBodega)
         {
-            return sentencias.ObtenerExistenciasBodega(idBodega);
+            return sn.ObtenerExistenciasBodega(idBodega);
         }
 
         // Método para cargar existencias (puede agregar más lógica si es necesario) (Realizado por Daniel Sierra 0901-21-12740)
@@ -112,14 +112,14 @@ namespace Capa_Controlador_Logistica
         // Método para realizar auditoría (Realizado por Daniel Sierra 0901-21-12740)
         public void RealizarAuditoria(string idBodega, string idProducto, int cantidadFisica, int cantidadRegistrada, bool discrepancia)
         {
-            sentencias.InsertarAuditoria(idBodega, idProducto, cantidadFisica, cantidadRegistrada, discrepancia);
+            sn.InsertarAuditoria(idBodega, idProducto, cantidadFisica, cantidadRegistrada, discrepancia);
         }
 
         // Método para obtener las bodegas
 
         public List<KeyValuePair<int, string>> listadoBodegas()
         {
-            return sentencias.GetBodegas(); // Llama al método actualizado
+            return sn.GetBodegas(); // Llama al método actualizado
         }
 
 
@@ -128,19 +128,19 @@ namespace Capa_Controlador_Logistica
         // Método para obtener productos
         public List<KeyValuePair<int, string>> listadoProductos()
         {
-            return sentencias.GetProductos(); // Llama al método actualizado
+            return sn.GetProductos(); // Llama al método actualizado
         }
 
         // Método para registrar una auditoría
         public void RealizarAuditoria(int idBodega, int idProducto, DateTime fechaAuditoria, string observaciones, int cantidadRegistrada, int cantidadFisica, bool discrepancia)
         {
-            sentencias.InsertarAuditoria(idBodega, idProducto, fechaAuditoria, observaciones, cantidadRegistrada, cantidadFisica, discrepancia);
+            sn.InsertarAuditoria(idBodega, idProducto, fechaAuditoria, observaciones, cantidadRegistrada, cantidadFisica, discrepancia);
         }
 
         // Método para cargar las auditorías en el DataGridView
         public DataTable CargarAuditorias()
         {
-            return sentencias.ObtenerAuditorias();
+            return sn.ObtenerAuditorias();
         }
 
         public void RealizarAuditoria(
@@ -156,7 +156,7 @@ namespace Capa_Controlador_Logistica
             try
             {
                 // Llamar al método para insertar auditoría
-                string resultado = sentencias.InsertarAuditoria(idBodega, idProducto, fechaAuditoria, observaciones, cantidadRegistrada, cantidadFisica, discrepancia);
+                string resultado = sn.InsertarAuditoria(idBodega, idProducto, fechaAuditoria, observaciones, cantidadRegistrada, cantidadFisica, discrepancia);
 
                 // Comprobar el resultado de la inserción
                 if (resultado == "Auditoría realizada con éxito")
@@ -180,7 +180,7 @@ namespace Capa_Controlador_Logistica
         {
             try
             {
-                DataTable dtAuditorias = sentencias.ObtenerAuditorias();
+                DataTable dtAuditorias = sn.ObtenerAuditorias();
                 dgvAuditorias.DataSource = dtAuditorias;
 
                 // Configura las columnas según sea necesario
@@ -200,6 +200,72 @@ namespace Capa_Controlador_Logistica
             {
                 MessageBox.Show("Error al cargar auditorías: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        // ---------------------------------- COMBO BOX CUENTAS ----------------------------------
+        public string[] itemsCuenta(string tabla, string campo1, string campo2)
+        {
+            string[] Items = sn.llenarCmbCuentas(tabla, campo1, campo2);
+            return Items;
+        }
+
+        public DataTable enviarCuentas(string tabla, string campo1, string campo2)
+        {
+            var dt1 = sn.obtenerCuentas(tabla, campo1, campo2);
+            return dt1;
+        }
+
+        // ---------------------------------- COMBO BOX TIPO POLIZA ----------------------------------
+
+        public string[] itemsTP(string tabla, string campo1, string campo2)
+        {
+            string[] Items = sn.llenarCmbTP(tabla, campo1, campo2);
+            return Items;
+        }
+
+        public DataTable enviarTP(string tabla, string campo1, string campo2)
+        {
+            var dt1 = sn.obtenerTP(tabla, campo1, campo2);
+            return dt1;
+        }
+
+        // ---------------------------------- COMBO BOX OPERACION ----------------------------------
+
+        public string[] itemsOP(string tabla, string campo1, string campo2)
+        {
+            string[] Items = sn.llenarCmbTP(tabla, campo1, campo2);
+            return Items;
+        }
+
+        public DataTable enviarOP(string tabla, string campo1, string campo2)
+        {
+            var dt1 = sn.obtenerTP(tabla, campo1, campo2);
+            return dt1;
+        }
+
+        // ---------------------------------- Funcion para actualizar la tabla cuentas ----------------------------------
+
+        public void ActualizarTblCuentas(int idCuenta, string tipoOperacion, decimal valor)
+        {
+            Sentencias sn = new Sentencias();
+
+            sn.ActulizarCuentas(idCuenta, tipoOperacion, valor);
+            return;
+        }
+
+        // ---------------------------------- Insertar en polizas ----------------------------------
+        public void LlenarEncabezado(string fechaSeleccionada, string concepto, int tipoPoli)
+        {
+            Sentencias sn = new Sentencias();
+            sn.LlenarEncabezado(fechaSeleccionada, concepto, tipoPoli);
+            return;
+        }
+
+        public void LlenarDetalle(string fechaSeleccionada, string concepto, List<object[]> detalles)
+        {
+            Sentencias sn = new Sentencias();
+            sn.LlenarDetalle(fechaSeleccionada, concepto, detalles);
+            return;
         }
 
     }
