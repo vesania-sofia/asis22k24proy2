@@ -9,6 +9,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+//using Capa_Vista_CierreContable;
 
 namespace Capa_Vista_Contabilidad   
 {
@@ -222,9 +223,7 @@ namespace Capa_Vista_Contabilidad
 
         private void btnCierreGeneral_Click(object sender, EventArgs e)
         {
-            AbrirFormulario<CierreContable>();
-            BtnCierreCuentas.BackColor = Color.FromArgb(12, 61, 92);
-            ocultaSubMenu();
+
         }
 
         private void btnEstadosFin_Click(object sender, EventArgs e)
@@ -338,9 +337,9 @@ namespace Capa_Vista_Contabilidad
 
         private void BtnCierreCuentas_Click(object sender, EventArgs e)
         {
-            /*AbrirFormulario<Capa_Vista_cierrecontable.cierre>();
-           BtnCierreCuentas.BackColor = Color.FromArgb(255, 51, 51);
-           ocultaSubMenu();*/
+           // AbrirFormulario<FormCierre>();
+           //BtnCierreCuentas.BackColor = Color.FromArgb(255, 51, 51);
+           //ocultaSubMenu();
         }
 
         private void btnActivosFijos_Click(object sender, EventArgs e)
