@@ -37,6 +37,9 @@
     <Reference Include="Capa_Vista_CierreContable">
       <HintPath>..\CierreContable\Capa_Vista_CierreContable\bin\Debug\Capa_Vista_CierreContable.dll</HintPath>
     </Reference>
+    <Reference Include="Capa_Vista_EstadosFinancieros">
+      <HintPath>..\EstadosFinancieros\Capa_Vista_EstadosFinancieros\bin\Debug\Capa_Vista_EstadosFinancieros.dll</HintPath>
+    </Reference>
     <Reference Include="Capa_Vista_Navegador">
       <HintPath>..\..\..\Componentes\Navegador\Capa_Vista_Navegador\bin\Debug\Capa_Vista_Navegador.dll</HintPath>
     </Reference>
