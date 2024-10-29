@@ -12,6 +12,7 @@ using System.Windows.Forms;
 //using Capa_Vista_EstadosFinancieros;
 //using Capa_Vista_CierreContable;
 //using Capa_Vista_Presupuesto;
+//using Capa_Vista_Polizas;
 
 namespace Capa_Vista_Contabilidad   
 {
@@ -360,7 +361,7 @@ namespace Capa_Vista_Contabilidad
 
         private void btnPolizas_Click(object sender, EventArgs e)
         {
-            /*AbrirFormulario<Capa_Vista_Polizas.estadosfin>();
+           /*AbrirFormulario<Capa_Vista_Polizas.frmPolizas>();
            btnPolizas.BackColor = Color.FromArgb(255, 51, 51);
            ocultaSubMenu();*/
         }
