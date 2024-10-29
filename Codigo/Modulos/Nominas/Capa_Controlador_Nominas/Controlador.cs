@@ -9,7 +9,6 @@ using Capa_Modelo_Nominas;
 using static System.Net.Mime.MediaTypeNames;
 using System.IO;
 using System.Reflection;
-using System.Windows.Forms;
 
 namespace Capa_Controlador_Nominas
 {
@@ -39,6 +38,77 @@ namespace Capa_Controlador_Nominas
 
 
         /********0901-21-581 - Fernando José García de León***********************/
+        public DataTable funcConsultaLogicaDeduPerp()
+        {
+            try
+            {
+                OdbcDataAdapter dt = sn.funcConsultaDeduPerp();
+                DataTable table = new DataTable();
+                dt.Fill(table);
+                return table;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error en funcConsultaLogicaDeduPerp: " + ex.Message);
+                return null;
+            }
+        }
+
+        public bool funcInsertarLogicaDeduPerp(string clase, string concepto, string tipo, string aplicacion, int excepcion, float monto)
+        {
+            try
+            {
+                // Validaciones básicas antes de insertar
+                if (string.IsNullOrEmpty(clase) || string.IsNullOrEmpty(concepto) || string.IsNullOrEmpty(tipo) || string.IsNullOrEmpty(aplicacion))
+                {
+                    throw new ArgumentException("Los campos clase, concepto, tipo y aplicación son obligatorios.");
+                }
+
+                if (monto < 0)
+                {
+                    throw new ArgumentException("El monto no puede ser negativo.");
+                }
+
+                // Intenta realizar la inserción
+                sn.funcInsertarDeduPerp(clase, concepto, tipo, aplicacion, excepcion, monto);
+                return true; // Si llegamos aquí, la inserción fue exitosa
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error en funcInsertarLogicaDeduPerp: {ex.Message}");
+                Console.WriteLine($"StackTrace: {ex.StackTrace}");
+
+                // Relanzar la excepción para que la capa de presentación pueda manejarla
+                throw new Exception($"Error al insertar el registro: {ex.Message}");
+
+                return false; // En caso de error
+            }
+        }
+
+        public void funcActualizarLogicaDeduPerp(int id, string clase, string concepto, string tipo, string aplicacion, int excepcion, float monto)
+        {
+            try
+            {
+                sn.funcActualizarDeduPerp(id, clase, concepto, tipo, aplicacion, excepcion, monto);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error en funcActualizarLogicaDeduPerp: " + ex.Message);
+            }
+        }
+
+        public void funcEliminarLogicaDeduPerp(int id)
+        {
+            try
+            {
+                sn.funcEliminarDeduPerp(id);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error en funcEliminarLogicaDeduPerp: " + ex.Message);
+            }
+        }
+
 
         /*************************************************************************/
 
@@ -58,131 +128,15 @@ namespace Capa_Controlador_Nominas
         //    }
         //    return null;
         //}
-
-        public List<int> ObtenerIdsEmpleados()
-        {
-            OdbcDataAdapter adapter = sn.ObtenerIdsEmpleados();
-            DataTable empleadosTable = new DataTable();
-            List<int> empleadosIds = new List<int>();
-
-            if (adapter != null)
-            {
-                adapter.Fill(empleadosTable); // Llenar el DataTable con el resultado del OdbcDataAdapter
-
-                // Extraer los IDs de empleados desde el DataTable
-                foreach (DataRow row in empleadosTable.Rows)
-                {
-                    empleadosIds.Add(Convert.ToInt32(row["pk_clave"]));
-                }
-            }
-
-            return empleadosIds;
-        }
-
-        public void CalcularDeduccionesPercepcionesPorEmpleado()
-        {
-            try
-            {
-                List<int> empleadosIds = ObtenerIdsEmpleados();
-                foreach (int empleadoId in empleadosIds)
-                {
-                    //sn.CalcularAnticipos(empleadoId); //Deduccion
-
-                }
-                //sn.CalcularDeduccionFaltas();//Deduccion
-               //sn.CalcularHorasExtras();//Percepcion
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Error al calcular las deducciones: " + ex.Message);
-                // Aquí puedes agregar código para registrar en un archivo de log
-            }
-        }
-
-        public DataTable ObtenerPercepciones()
-        {
-            OdbcDataAdapter adapter = sn.ObtenerPercepciones();
-            DataTable tablaDeducciones = new DataTable();
-
-            if (adapter != null)
-            {
-                adapter.Fill(tablaDeducciones); // Llenar el DataTable con el resultado del OdbcDataAdapter
-            }
-            return tablaDeducciones;
-        }
-
-        public DataTable ObtenerDeducciones()
-        {
-            OdbcDataAdapter adapter = sn.ObtenerDeducciones();
-            DataTable tablaDeducciones = new DataTable();
-
-            if (adapter != null)
-            {
-                adapter.Fill(tablaDeducciones); // Llenar el DataTable con el resultado del OdbcDataAdapter
-            }
-            return tablaDeducciones;
-        }
-
-
-
-        public void CalcularTotalDeduPer(String clave, String Empleado, String Encabezado)
-        {
-            {
-                try
-                {
-                    //sn.CalcularTotalDeduPer(clave, Empleado, Encabezado);//Percepcion
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("Error al calcular las deducciones: " + ex.Message);
-                    // Aquí puedes agregar código para registrar en un archivo de log
-                }
-            }
-        }
-
-        public DataTable ObtenerEncabezado()
-        {
-            OdbcDataAdapter adapter = sn.ObtenerEncabezado();
-            DataTable tablaDeducciones = new DataTable();
-
-            if (adapter != null)
-            {
-                adapter.Fill(tablaDeducciones); // Llenar el DataTable con el resultado del OdbcDataAdapter
-            }
-            return tablaDeducciones;
-        }
-
-
-        public DataTable ObtenerDetalle()
-        {
-            OdbcDataAdapter adapter = sn.ObtenerDetalle();
-            DataTable tablaDeducciones = new DataTable();
-
-            if (adapter != null)
-            {
-                adapter.Fill(tablaDeducciones); // Llenar el DataTable con el resultado del OdbcDataAdapter
-            }
-            return tablaDeducciones;
-        }
-
-        public void CalcularLiquidacion()
-        {
-            try
-            {
-
-
-                //sn.CalcularLiquidacion();//Liquidacion
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Error al calcular las deducciones: " + ex.Message);
-                // Aquí puedes agregar código para registrar en un archivo de log
-            }
-        }
-
-
-
         /*************************************************************************/
+
+
+
+
+
+
+
+
 
 
 
