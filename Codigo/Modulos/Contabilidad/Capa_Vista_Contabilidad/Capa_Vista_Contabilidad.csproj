@@ -43,6 +43,9 @@
     <Reference Include="Capa_Vista_Navegador">
       <HintPath>..\..\..\Componentes\Navegador\Capa_Vista_Navegador\bin\Debug\Capa_Vista_Navegador.dll</HintPath>
     </Reference>
+    <Reference Include="Capa_Vista_Presupuesto">
+      <HintPath>..\..\..\..\..\..\ProyectoAS2Individual\asis22k24proy2\Codigo\Modulos\Contabilidad\Presupuesto\Capa_Vista_Presupuesto\bin\Debug\Capa_Vista_Presupuesto.dll</HintPath>
+    </Reference>
     <Reference Include="Interfac_V3">
       <HintPath>..\..\Menus\ModernGUI_V3\bin\Debug\Interfac_V3.exe</HintPath>
     </Reference>
