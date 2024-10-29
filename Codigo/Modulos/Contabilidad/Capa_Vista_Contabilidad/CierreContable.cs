@@ -10,16 +10,19 @@ using System.Windows.Forms;
 
 namespace Capa_Vista_Contabilidad
 {
-    public partial class FormCierre : Form
+    public partial class CierreContable : Form
     {
-        public FormCierre()
+        public CierreContable()
         {
             InitializeComponent();
         }
 
-        private void cierre1_Load(object sender, EventArgs e)
+        private void button4_Click(object sender, EventArgs e)
         {
-
+            PartidaCierre partida = new PartidaCierre();
+            partida.MdiParent = this.MdiParent;
+            partida.StartPosition = FormStartPosition.CenterScreen;
+            partida.Show();
         }
     }
 }
