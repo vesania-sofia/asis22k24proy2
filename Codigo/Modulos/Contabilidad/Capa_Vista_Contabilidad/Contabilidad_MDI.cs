@@ -9,6 +9,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+//using Capa_Vista_EstadosFinancieros;
 //using Capa_Vista_CierreContable;
 
 namespace Capa_Vista_Contabilidad   
@@ -351,9 +352,9 @@ namespace Capa_Vista_Contabilidad
 
         private void btnEstadosFin_Click_1(object sender, EventArgs e)
         {
-            /*AbrirFormulario<Capa_Vista_estadosfinancieros.estadosfin>();
-           btnEstadosFin.BackColor = Color.FromArgb(255, 51, 51);
-           ocultaSubMenu();*/
+           //AbrirFormulario<Capa_Vista_EstadosFinancieros.EstadosFinancieros>();
+           //btnEstadosFin.BackColor = Color.FromArgb(255, 51, 51);
+           //ocultaSubMenu();
         }
 
         private void btnPolizas_Click(object sender, EventArgs e)
