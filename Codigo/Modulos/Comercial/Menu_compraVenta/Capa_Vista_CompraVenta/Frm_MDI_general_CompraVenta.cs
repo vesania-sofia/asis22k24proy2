@@ -8,7 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Capa_Controlador_CompraVenta;
-
+/*
+ * 
+ * 
+ * aqui van los using de todos
+ * 
+ * 
+ * 
+ * 
+ * */
 namespace Capa_Vista_CompraVenta
 {
     public partial class Frm_MDI_general_CompraVenta : Form
@@ -194,6 +202,74 @@ namespace Capa_Vista_CompraVenta
             Frm_vendedores Ven = new Frm_vendedores(idUsuario);
             Ven.MdiParent = this;
             Ven.Show();
+        }
+
+        private void Pnl_panelGeneral_Paint(object sender, PaintEventArgs e)
+        {
+           /* Frm_vendedores Ven = new Frm_vendedores(idUsuario);
+            Ven.MdiParent = this;
+            Ven.Show();
+           
+            */
+        }
+
+        private void Btn_compra_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Btn_poliza_Click_1(object sender, EventArgs e)
+        {
+            /* Frm_vendedores Ven = new Frm_vendedores(idUsuario);
+            Ven.MdiParent = this;
+            Ven.Show();
+           
+            */
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            /* Frm_vendedores Ven = new Frm_vendedores(idUsuario);
+            Ven.MdiParent = this;
+            Ven.Show();
+           
+            */
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            /* Frm_vendedores Ven = new Frm_vendedores(idUsuario);
+            Ven.MdiParent = this;
+            Ven.Show();
+           
+            */
+        }
+
+        private void button10_Click_1(object sender, EventArgs e)
+        {
+            /* Frm_vendedores Ven = new Frm_vendedores(idUsuario);
+            Ven.MdiParent = this;
+            Ven.Show();
+           
+            */
+        }
+
+        private void button9_Click_1(object sender, EventArgs e)
+        {
+            /* Frm_vendedores Ven = new Frm_vendedores(idUsuario);
+            Ven.MdiParent = this;
+            Ven.Show();
+           
+            */
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            /* Frm_vendedores Ven = new Frm_vendedores(idUsuario);
+            Ven.MdiParent = this;
+            Ven.Show();
+           
+            */
         }
 
         private void btnRestaurar_Click(object sender, EventArgs e)
