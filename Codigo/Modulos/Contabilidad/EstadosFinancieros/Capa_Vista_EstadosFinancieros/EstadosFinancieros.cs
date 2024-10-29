@@ -18,7 +18,8 @@ namespace Capa_Vista_EstadosFinancieros
 {
     public partial class EstadosFinancieros : Form
     {
-        string sRutaProyecto = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\..\"));
+        public string sRutaProyecto { get; private set; } = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\..\"));
+
 
         public EstadosFinancieros()
         {
