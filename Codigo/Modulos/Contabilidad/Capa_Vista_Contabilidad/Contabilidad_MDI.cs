@@ -29,6 +29,9 @@ namespace Capa_Vista_Contabilidad
             //Primera label
             lbl_usuario2.Text = idUsuario;
 
+            Capa_Vista_Polizas.frmPolizas formulario = new Capa_Vista_Polizas.frmPolizas();
+            formulario.SetParametro(idUsuario);
+
             //Segunda label
             DateTime fechaHoraActual = DateTime.Now;
             lbl_fecha2.Text = fechaHoraActual.ToString();

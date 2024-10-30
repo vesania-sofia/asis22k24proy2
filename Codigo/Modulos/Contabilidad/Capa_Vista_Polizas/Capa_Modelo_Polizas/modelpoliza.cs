@@ -50,7 +50,7 @@ namespace Capa_Modelo_Polizas
                         conexion.Open(); // Asegúrate de abrir la conexión
                     }
 
-                    string sql = "SELECT " + campo1 + "," + campo2 + " FROM " + tabla + " where estado = 1  ;";
+                    string sql = "SELECT " + campo1 + ", " + campo2 + " FROM " + tabla + " WHERE estado = 1 AND Pk_id_encabezadocuenta = 2;";
                     OdbcCommand command = new OdbcCommand(sql, conexion);
                     OdbcDataAdapter adaptador = new OdbcDataAdapter(command);
                     DataTable dt = new DataTable();

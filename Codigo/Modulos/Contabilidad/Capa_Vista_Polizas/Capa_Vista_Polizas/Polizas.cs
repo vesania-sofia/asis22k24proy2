@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Globalization;
-//using Capa_Controlador_Seguridad;
+using Capa_Controlador_Seguridad;
 using Capa_Controlador_Polizas;
 #pragma warning disable CS0414
 
@@ -21,24 +21,19 @@ namespace Capa_Vista_Polizas
         private string idoperacion;
         private string idtp;
         List<object[]> detalles = new List<object[]>();
-        //string RutaAyuda;
-        //string IndiceAyuda;
         int iCorrecto = 0;
 
-        //string sIdAyuda;
-
         //Seguridad y usuario
-        //string idUsuario;
+        private string idUsuario;
+
+        public void SetParametro(string valor)
+        {
+            idUsuario = valor;
+        }
 
         public frmPolizas()
         {
             InitializeComponent();
-
-            //Capa_controlador_Seguridad
-            //logica lg = new logica();
-
-            //this.idUsuario = idUsuario;
-            //this.Text = "Generación de polizas - " + idUsuario + " ";
 
             llenarseCuentas("tbl_cuentas", "Pk_id_cuenta", "nombre_cuenta");
             llenarseTP("tbl_tipopoliza", "Pk_id_tipopoliza", "tipo");
@@ -418,66 +413,59 @@ namespace Capa_Vista_Polizas
 
         private void btn_registar_poliza_Click(object sender, EventArgs e)
         {
-            if (dgvPolizas.Rows.Count == 0 || dgvPolizas.Rows.Cast<DataGridViewRow>().All(row => row.IsNewRow))
-            {
-                MessageBox.Show("El detalle de la póliza está vacío", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //Capa_controlador_Seguridad
+            logica lg = new logica();
 
+            //Variable usuario
+            string sIdUsuario = idUsuario;
+
+            if (lblCargo.Text != lblAbono.Text)
+            {
+                MessageBox.Show("Los totales del cargo y abono no son iguales.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return; 
             }
             else
             {
-                controladorPolizas ctr = new controladorPolizas();
-
-                string fechaSeleccionada = dtpfecha.Text;
-                string concepto = txtConcepto.Text;
-
-                errorProvider1.SetError(txtConcepto, "");
-
-                // Verificar si el TextBox está vacío
-                if (string.IsNullOrWhiteSpace(txtConcepto.Text))
+                if (dgvPolizas.Rows.Count == 0 || dgvPolizas.Rows.Cast<DataGridViewRow>().All(row => row.IsNewRow))
                 {
-                    errorProvider1.SetError(txtConcepto, "Este campo es obligatorio."); // Mostrar mensaje de error
-                    txtConcepto.Focus(); // Enfocar el TextBox
-                                         // Mostrar un error asociado al control usando ErrorProvider
-                    errorProvider1.SetError(this.txtConcepto, "Este campo es obligatorio");
-
-                    MessageBox.Show("El campo es obligatorio. Por favor, ingrese un valor.", "Campo Obligatorio", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("El detalle de la póliza está vacío", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
-                    DialogResult result = MessageBox.Show("¿Seguro que desea crear la póliza?", "Confirmación", MessageBoxButtons.YesNo);
+                    controladorPolizas ctr = new controladorPolizas();
+                    string fechaSeleccionada = dtpfecha.Text;
+                    string concepto = txtConcepto.Text;
 
-                    // No hacer nada en caso de que el usuario seleccione "Sí" o "No"
-                    if (result == DialogResult.Yes)
+                    errorProvider1.SetError(txtConcepto, "");
+
+                    // Verificar si el TextBox está vacío
+                    if (string.IsNullOrWhiteSpace(txtConcepto.Text))
                     {
+                        errorProvider1.SetError(txtConcepto, "Este campo es obligatorio.");
+                        txtConcepto.Focus();
+                        MessageBox.Show("El campo es obligatorio. Por favor, ingrese un valor.", "Campo Obligatorio", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else
+                    {
+                        DialogResult result = MessageBox.Show("¿Seguro que desea crear la póliza?", "Confirmación", MessageBoxButtons.YesNo);
+
                         if (result == DialogResult.Yes)
                         {
-                            // Verificar que los ComboBox tengan valores seleccionados
                             if (cbtipopoliza.SelectedValue == null || cboperacion.SelectedValue == null || cbCuenta.SelectedValue == null)
                             {
                                 MessageBox.Show("Por favor, seleccione todos los campos requeridos.");
-                                return; // Salir si no se selecciona algo
+                                return;
                             }
 
-
-                            // Obtener el ID de la cuenta seleccionada directamente como número
-
                             int idTipoPoliza = int.Parse(idtp);
-                            //MessageBox.Show($"ID Tipo Póliza: {idTipoPoliza}", "Detalles de Selección", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                            // Limpiar la lista antes de agregar detalles
                             detalles.Clear();
 
-                            // Recorrer filas del DGV
                             foreach (DataGridViewRow row in dgvPolizas.Rows)
                             {
                                 int idop = 0;
+                                if (row.IsNewRow) continue;
 
-                                if (row.IsNewRow) continue; // Ignorar la última fila (nueva)
-
-                                // ID de la cuenta (columna 'Codigo')
                                 int idCuenta = Convert.ToInt32(row.Cells["Codigo"].Value);
-
-                                // Determinar si es Cargo o Abono
                                 string tipoOperacion = "";
                                 decimal valor = 0;
 
@@ -494,46 +482,34 @@ namespace Capa_Vista_Polizas
                                     valor = Convert.ToDecimal(row.Cells[3].Value);
                                 }
 
-                                // Crea un arreglo con los valores de la fila
-                                object[] detalle = new object[3];
-                                detalle[0] = idCuenta; // ID de cuenta seleccionada
-                                detalle[1] = idop; // ID de operación
-                                detalle[2] = valor; // Valor correspondiente a Cargo o Abono
-
-                                // Agrega el arreglo a la lista
+                                object[] detalle = new object[3] { idCuenta, idop, valor };
                                 detalles.Add(detalle);
 
-                                // Función que cambia la tabla cuentas
                                 ctr.ActualizarTblCuentas(idCuenta, tipoOperacion, valor);
-
-                                /*MessageBox.Show($"ID Tipo Póliza: {idTipoPoliza}\nID Operación: {idop}\nID Cuenta Seleccionada: {idCuenta}\nID Valor: {valor}",
-                                "Detalles de Selección",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Information);*/
                             }
 
-                            // Funciones para insertar en las tablas de encabezado póliza y detalle póliza
                             ctr.LlenarEncabezado(fechaSeleccionada, concepto, idTipoPoliza);
                             ctr.LlenarDetalle(fechaSeleccionada, concepto, detalles);
 
-                            // Mensaje de confirmación
                             LimpiarCamposDetelle();
                             LimpiarCamposEnc();
                             dgvPolizas.Rows.Clear();
 
-                            //Guardado en bitacora
-                            //lg.funinsertarabitacora(sIdUsuario, "Actualizó registro", sTablaPrincipal, sIdAplicacion);
-
                             MessageBox.Show("Se registró correctamente");
                         }
-                    }
-                    else if (result == DialogResult.No)
-                    {
-                        MessageBox.Show("Se canceló el proceso", "Cancelado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        else
+                        {
+                            MessageBox.Show("Se canceló el proceso", "Cancelado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
                     }
                 }
-
             }
+
+            //Bitacora
+            lg.funinsertarabitacora(sIdUsuario, "Se creó una póliza", "tbl_polizaencabezado", "8000");
+            lg.funinsertarabitacora(sIdUsuario, "Se creó un detalle de póliza", "tbl_polizadetalle", "8000");
+            lg.funinsertarabitacora(sIdUsuario, "Se actualizaron cuentas", "tbl_cuentas", "8000");
+            lg.funinsertarabitacora(sIdUsuario, "Se actualizaron cuentas", "tbl_historico_cuentas", "8000");
         }
 
         private void Polizas_Load(object sender, EventArgs e)
@@ -723,7 +699,7 @@ namespace Capa_Vista_Polizas
                 // Verifica si el archivo existe antes de intentar abrirlo
                 if (!string.IsNullOrEmpty(pathAyuda))
                 {
-                    MessageBox.Show("El archivo sí está.");
+                    //MessageBox.Show("El archivo sí está.");
                     // Abre el archivo de ayuda .chm en la sección especificada
                     Help.ShowHelp(null, pathAyuda, "AyudaPolizas.html");
                 }
