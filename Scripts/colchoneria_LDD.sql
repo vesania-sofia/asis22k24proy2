@@ -1083,6 +1083,39 @@ CREATE TABLE IF NOT EXISTS tbl_historico_cuentas (
     PRIMARY KEY (Pk_id_cuenta, mes, anio),
     FOREIGN KEY (Pk_id_cuenta) REFERENCES tbl_cuentas(Pk_id_cuenta)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Tabla presupuesto
+CREATE TABLE tbl_presupuesto (
+Pk_id_presupuesto INT PRIMARY KEY AUTO_INCREMENT,
+nombre_presupuesto VARCHAR(100),
+ejercicio_presupuesto INT,
+fecha_creacion DATE,
+total_presupuesto DECIMAL(18, 2),
+estado TINYINT(1) NOT NULL DEFAULT 1
+);
+
+-- Tabla detalle presupuesto
+CREATE TABLE tbl_detalle_presupuesto (
+Pk_id_detalle INT PRIMARY KEY AUTO_INCREMENT,
+Fk_id_presupuesto INT,
+Fk_id_cuenta INT,
+mes_enero DECIMAL(18, 2),
+mes_febrero DECIMAL(18, 2),
+mes_marzo DECIMAL(18, 2),
+mes_abril DECIMAL(18, 2),
+mes_mayo DECIMAL(18, 2),
+mes_junio DECIMAL(18, 2),
+mes_julio DECIMAL(18, 2),
+mes_agosto DECIMAL(18, 2),
+mes_septiembre DECIMAL(18, 2),
+mes_octubre DECIMAL(18, 2),
+mes_noviembre DECIMAL(18, 2),
+mes_diciembre DECIMAL(18, 2),
+total_cuenta DECIMAL(18, 2),
+
+FOREIGN KEY (Fk_id_presupuesto) REFERENCES tbl_presupuesto(Pk_id_presupuesto),
+FOREIGN KEY (Fk_id_cuenta) REFERENCES tbl_cuentas(Pk_id_cuenta)
+);
 -- FIN MODULO CONTABILIDAD
 
 
@@ -1822,4 +1855,3 @@ CREATE TABLE IF NOT EXISTS `tbl_rrhh_produccion` (
   `estado` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 -- FIN DE CREACIÓN DE TABLA DE PRODUCCIÓN
- 
