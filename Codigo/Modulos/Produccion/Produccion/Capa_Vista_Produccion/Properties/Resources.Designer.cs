@@ -64,6 +64,7 @@ namespace Capa_Vista_Produccion.Properties {
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
 <<<<<<< HEAD
+<<<<<<< HEAD
         internal static System.Drawing.Bitmap calcular {
             get {
                 object obj = ResourceManager.GetObject("calcular", resourceCulture);
@@ -77,6 +78,11 @@ namespace Capa_Vista_Produccion.Properties {
         internal static System.Drawing.Bitmap eliminar {
             get {
                 object obj = ResourceManager.GetObject("eliminar", resourceCulture);
+=======
+        internal static System.Drawing.Bitmap CANCELAR_V4 {
+            get {
+                object obj = ResourceManager.GetObject("CANCELAR_V4", resourceCulture);
+>>>>>>> 4c98481d0c9bbba42ffdafdf4f3fdaa973500c16
 =======
         internal static System.Drawing.Bitmap CANCELAR_V4 {
             get {
@@ -100,10 +106,13 @@ namespace Capa_Vista_Produccion.Properties {
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
 <<<<<<< HEAD
+<<<<<<< HEAD
         internal static System.Drawing.Bitmap ingresar {
             get {
                 object obj = ResourceManager.GetObject("ingresar", resourceCulture);
 =======
+=======
+>>>>>>> 4c98481d0c9bbba42ffdafdf4f3fdaa973500c16
         internal static System.Drawing.Bitmap INGRESAR_V4 {
             get {
                 object obj = ResourceManager.GetObject("INGRESAR_V4", resourceCulture);
@@ -117,6 +126,9 @@ namespace Capa_Vista_Produccion.Properties {
         internal static System.Drawing.Bitmap SALIR_V4 {
             get {
                 object obj = ResourceManager.GetObject("SALIR_V4", resourceCulture);
+<<<<<<< HEAD
+>>>>>>> 4c98481d0c9bbba42ffdafdf4f3fdaa973500c16
+=======
 >>>>>>> 4c98481d0c9bbba42ffdafdf4f3fdaa973500c16
                 return ((System.Drawing.Bitmap)(obj));
             }

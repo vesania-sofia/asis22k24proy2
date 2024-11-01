@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+<<<<<<< HEAD
 <<<<<<<< HEAD:Codigo/Modulos/Produccion/Produccion/Componente RRHH/Componente RRHH/Capa_Vista_RRHH/Reporte.cs
 namespace Capa_Vista_RRHH
 {
@@ -15,12 +16,17 @@ namespace Capa_Vista_RRHH
     {
         public Reporte()
 ========
+=======
+>>>>>>> 4c98481d0c9bbba42ffdafdf4f3fdaa973500c16
 namespace Capa_Vista_Contabilidad
 {
     public partial class FormCierre : Form
     {
         public FormCierre()
+<<<<<<< HEAD
 >>>>>>>> 4c98481d0c9bbba42ffdafdf4f3fdaa973500c16:Codigo/Modulos/Contabilidad/Capa_Vista_Contabilidad/FormCierre.cs
+=======
+>>>>>>> 4c98481d0c9bbba42ffdafdf4f3fdaa973500c16
         {
             InitializeComponent();
         }

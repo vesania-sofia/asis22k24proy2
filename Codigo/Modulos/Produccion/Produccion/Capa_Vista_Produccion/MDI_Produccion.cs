@@ -93,11 +93,17 @@ namespace Capa_Vista_Produccion
         private void btnEmpleados_Click(object sender, EventArgs e)
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
             //Capa_Vista_RRHH RRHH = new Capa_Vista_RRHH();
             // RRHH.Show();
             Frm_Enlace_RRHH enlace = new Frm_Enlace_RRHH();
             enlace.Show();
            
+=======
+            /*
+              * Acá va la lógica para abrir el formulario de RRHH
+            */
+>>>>>>> 4c98481d0c9bbba42ffdafdf4f3fdaa973500c16
 =======
             /*
               * Acá va la lógica para abrir el formulario de RRHH
@@ -197,8 +203,14 @@ namespace Capa_Vista_Produccion
         private void Btn_Recetas_Click_1(object sender, EventArgs e)
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
             Frm_Recetas receta = new Frm_Recetas();
             receta.Show();
+=======
+            /*
+              * Acá va la lógica para abrir el formulario de Recetas
+            */
+>>>>>>> 4c98481d0c9bbba42ffdafdf4f3fdaa973500c16
 =======
             /*
               * Acá va la lógica para abrir el formulario de Recetas

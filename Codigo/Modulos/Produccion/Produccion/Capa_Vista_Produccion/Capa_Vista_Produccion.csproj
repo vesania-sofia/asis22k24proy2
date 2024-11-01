@@ -60,6 +60,7 @@
   </ItemGroup>
   <ItemGroup>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <Compile Include="Frm_Cierre.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -122,6 +123,8 @@
     </Compile>
 =======
 >>>>>>> 4c98481d0c9bbba42ffdafdf4f3fdaa973500c16
+=======
+>>>>>>> 4c98481d0c9bbba42ffdafdf4f3fdaa973500c16
     <Compile Include="MDI_Produccion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -136,6 +139,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
 <<<<<<< HEAD
     <EmbeddedResource Include="Frm_Cierre.resx">
       <DependentUpon>Frm_Cierre.cs</DependentUpon>
@@ -169,6 +173,8 @@
     </EmbeddedResource>
 =======
 >>>>>>> 4c98481d0c9bbba42ffdafdf4f3fdaa973500c16
+=======
+>>>>>>> 4c98481d0c9bbba42ffdafdf4f3fdaa973500c16
     <EmbeddedResource Include="MDI_Produccion.resx">
       <DependentUpon>MDI_Produccion.cs</DependentUpon>
     </EmbeddedResource>
@@ -178,6 +184,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
 <<<<<<< HEAD
     <None Include="Resources\ingresar.jpg" />
   </ItemGroup>
@@ -190,6 +197,8 @@
   <ItemGroup>
     <None Include="Resources\calcular.jpg" />
 =======
+=======
+>>>>>>> 4c98481d0c9bbba42ffdafdf4f3fdaa973500c16
     <None Include="Resources\INGRESAR_V4.png" />
   </ItemGroup>
   <ItemGroup>
@@ -200,6 +209,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\SALIR_V4.png" />
+<<<<<<< HEAD
+>>>>>>> 4c98481d0c9bbba42ffdafdf4f3fdaa973500c16
+=======
 >>>>>>> 4c98481d0c9bbba42ffdafdf4f3fdaa973500c16
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
