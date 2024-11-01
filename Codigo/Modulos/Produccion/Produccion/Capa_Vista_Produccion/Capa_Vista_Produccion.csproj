@@ -59,6 +59,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <Compile Include="Frm_Cierre.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,6 +120,8 @@
     <Compile Include="Frm_Sistema_Produccion.Designer.cs">
       <DependentUpon>Frm_Sistema_Produccion.cs</DependentUpon>
     </Compile>
+=======
+>>>>>>> 4c98481d0c9bbba42ffdafdf4f3fdaa973500c16
     <Compile Include="MDI_Produccion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -133,6 +136,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <EmbeddedResource Include="Frm_Cierre.resx">
       <DependentUpon>Frm_Cierre.cs</DependentUpon>
     </EmbeddedResource>
@@ -163,6 +167,8 @@
     <EmbeddedResource Include="Frm_Sistema_Produccion.resx">
       <DependentUpon>Frm_Sistema_Produccion.cs</DependentUpon>
     </EmbeddedResource>
+=======
+>>>>>>> 4c98481d0c9bbba42ffdafdf4f3fdaa973500c16
     <EmbeddedResource Include="MDI_Produccion.resx">
       <DependentUpon>MDI_Produccion.cs</DependentUpon>
     </EmbeddedResource>
@@ -172,6 +178,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <None Include="Resources\ingresar.jpg" />
   </ItemGroup>
   <ItemGroup>
@@ -182,6 +189,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\calcular.jpg" />
+=======
+    <None Include="Resources\INGRESAR_V4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\guardar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CANCELAR_V4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SALIR_V4.png" />
+>>>>>>> 4c98481d0c9bbba42ffdafdf4f3fdaa973500c16
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
