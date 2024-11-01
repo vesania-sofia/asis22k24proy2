@@ -18,7 +18,7 @@ namespace EjecucionPresupuesto
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             // Application.Run(new Form1());
-            Application.Run(new Capa_Vista_Presupuesto.Opciones());
+            Application.Run(new Capa_Vista_Presupuesto.Presupuesto());
             //Application.Run(new Capa_Vista_Presupuesto.Incremento());
         }
     }

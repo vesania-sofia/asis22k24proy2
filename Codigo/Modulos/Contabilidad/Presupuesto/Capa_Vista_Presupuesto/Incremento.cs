@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Capa_Controlador_Seguridad;
+using System.IO;//Para Ayudas
 
 namespace Capa_Vista_Presupuesto
 {
@@ -18,12 +20,36 @@ namespace Capa_Vista_Presupuesto
         public bool bMes;
         public string sMesSelec;
         public string sLlenado;
+        public string sIdUsuario { get; set; } //Para Bitacora-------------!!!
         ToolTip toolTip = new ToolTip();
-        public Incremento()
+        logica logicaSeg = new logica();
+        public string sRutaProyectoAyuda { get; private set; } = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\..\..\..\"));
+
+        public Incremento(string Llenado)//Cambios
         {
             InitializeComponent();
             toolTip.SetToolTip(Btn_Aceptar, "Haz clic para aceptar");
             toolTip.SetToolTip(Btn_cancelar, "Haz clic para cancelar");
+            toolTip.SetToolTip(Btn_ayuda, "Haz clic para ver ayuda");
+        }
+        private void Incremento_Load(object sender, EventArgs e)
+        {
+            switch (sLlenado)
+            {
+                case "Mensual":
+                    Chb_anual.Enabled = false;
+                    Chb_anual.Visible = false;
+                    break;
+                case "Anual":
+                    Chb_mes.Enabled = false;
+                    Chb_mes.Visible = false;
+                    Chb_todos.Enabled = false;
+                    Chb_todos.Visible = false;
+                    Cb_meses.Enabled = false;
+                    Cb_meses.Visible = false;
+                    break;
+            }
+            Cb_meses.Enabled = false;
         }
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
@@ -37,11 +63,13 @@ namespace Capa_Vista_Presupuesto
         private void button2_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
+            logicaSeg.funinsertarabitacora(sIdUsuario, $"Se cancelo operacion", "Incremento", "8000");
             this.Close();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+
             if (string.IsNullOrWhiteSpace(Txtbx_incremento.Text))
             {
                 MessageBox.Show("Por favor, ingresa un valor.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -66,8 +94,9 @@ namespace Capa_Vista_Presupuesto
             }
 
             // Establecemos el resultado como Aceptado
+            logicaSeg.funinsertarabitacora(sIdUsuario, $"Se acepto operacion", "Incremento", "8000");
             this.DialogResult = DialogResult.OK;
-            this.Close();
+            this.Close(); //Revisar
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -100,24 +129,28 @@ namespace Capa_Vista_Presupuesto
             }
         }
 
-        private void Incremento_Load(object sender, EventArgs e)
+        
+
+        private void Btn_ayuda_Click(object sender, EventArgs e)
         {
-            switch (sLlenado)
+            try
             {
-                case "Mensual":
-                    Chb_anual.Enabled = false;
-                    Chb_anual.Visible = false;
-                    break;
-                case "Anual":
-                    Chb_mes.Enabled = false;
-                    Chb_mes.Visible = false;
-                    Chb_todos.Enabled = false;
-                    Chb_todos.Visible = false;
-                    Cb_meses.Enabled = false;
-                    Cb_meses.Visible = false;
-                    break;
+                //Ruta para que se ejecute desde la ejecucion de Interfac3
+                string sAyudaPath = Path.Combine(sRutaProyectoAyuda, "Ayuda", "Modulos", "Contabilidad", "AyudaPresupuesto", "AyudaModPresupuesto.chm");
+                //string sIndiceAyuda = Path.Combine(sRutaProyecto, "EstadosFinancieros", "ReportesEstados", "Htmlayuda.hmtl");
+                //MessageBox.Show("Ruta del reporte: " + sAyudaPath, "Ruta Generada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                Help.ShowHelp(this, sAyudaPath, "AyudaIncremento.html");
+
+                //Bitacora--------------!!!
+                logicaSeg.funinsertarabitacora(sIdUsuario, $"Se presiono Ayuda", "Incremento", "8000");
             }
-            Cb_meses.Enabled = false;
+            catch (Exception ex)
+            {
+                // Mostrar un mensaje de error en caso de una excepción
+                MessageBox.Show("Ocurrió un error al abrir la ayuda: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("Error al abrir la ayuda: " + ex.ToString());
+            }
         }
     }
 }
