@@ -7,30 +7,44 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;//Para Ayudas
 using Capa_Controlador_Presupuesto;
+using CrystalDecisions.CrystalReports.Engine;
+using CrystalDecisions.Shared;
+using CrystalDecisions.Windows.Forms;
+
+//Seguridad-->Bitacora---------------------!!!
+using Capa_Controlador_Seguridad;
 
 namespace Capa_Vista_Presupuesto
 {
     public partial class Presupuesto : Form
     {
         Controlador control = new Controlador();
-        Incremento frmIncremento = new Incremento();
-        private string sOperacion;
-        private int iIdPresupuesto;
-        private string sNombre;
-        private string sLlenado;
-        public int idPrepLlenado;
-        ToolTip toolTip = new ToolTip();
+        Incremento frmIncremento = new Incremento(null); //Cambio
+        public string sOperacionP;
+        public int iIdPresupuestoP;
+        public string sNombreP;
+        public string sLlenadoP;
+        public int iIdPrepLlenadoP;
+        public int iEjercicio;
 
-        public Presupuesto(string sOperacion, int iIdPresupuesto, string sNombre, string sLlenado)
+        public string sIdUsuario { get; set; } //Para Bitacora-------------!!!
+        ToolTip toolTip = new ToolTip();
+        logica logicaSeg = new logica();
+
+        //Ruta para que se ejecute desde la ejecucion de Interfac3
+        public string sRutaProyectoReportes { get; private set; } = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\..\..\..\"));
+
+        //Ruta para que se ejecute desde la ejecucion de Interfac3
+        public string sRutaProyectoAyuda { get; private set; } = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\..\..\..\"));
+
+        public Presupuesto()
         {
             InitializeComponent();
             ConfigurarColumnas();
-            this.sOperacion = sOperacion;
-            this.iIdPresupuesto = iIdPresupuesto;
-            this.sNombre = sNombre;
-            this.sLlenado = sLlenado;
             toolTip.SetToolTip(Btn_modificar, "Haz click para guardar el presupuesto");
+            toolTip.SetToolTip(Btn_opciones, "Haz click para configurar");
             toolTip.SetToolTip(Btn_eliminar, "Haz click para eliminar el presupuesto");
             toolTip.SetToolTip(Btn_Informe, "Haz click para ver el informe de presupuesto: PENDIENTE");
             toolTip.SetToolTip(Btn_incremento, "Haz click para incrementar");
@@ -41,73 +55,128 @@ namespace Capa_Vista_Presupuesto
         }
         private void Presupuesto_Load(object sender, EventArgs e)
         {
-            txt_NombrePresupuesto.Text = sNombre; //Cambiar
-            MessageBox.Show(Convert.ToString(iIdPresupuesto)); //Bandera
+            BloquearTextBox();
+            BloquearBotones();
+            Txtbx_anual.Enabled = false;
+            Btn_ayuda.Enabled = true;
+            control.ActualizarEstadosPresupuesto();
+        }
+
+        //Se ejecuta al presionar el boton de opciones
+        private void CargarDatos()
+        {
+            Txt_NombrePresupuesto.Text = sNombreP; //Cambiar
+            //MessageBox.Show(Convert.ToString(iIdPresupuestoP)); //Bandera
             //Operacion
-            switch (sOperacion)
+            switch (sOperacionP)
             {
                 case "crear":
                     CargarCuentasNuevas();
-                    control.GuardarPresupuesto(iIdPresupuesto, Dgv_presupuesto);
-                    control.ActualizarTblPresupuesto(iIdPresupuesto);
-                    MessageBox.Show("Crear");
+                    control.GuardarPresupuesto(iIdPresupuestoP, Dgv_presupuesto);
+                    control.ActualizarTblPresupuesto(iIdPresupuestoP);
+                    //MessageBox.Show("Crear");//Bandera
+                    Btn_modificar.Enabled = true;
+                    Btn_eliminar.Enabled = true;
+                    Btn_Informe.Enabled = true;
+                    Btn_incremento.Enabled = true;
+                    Btn_ayuda.Enabled = true;
                     break;
+
                 case "modificar":
-                    CargarDetalles(iIdPresupuesto);
-                    MessageBox.Show("Modificar");
+                    CargarDetalles(iIdPresupuestoP);
+                    Btn_modificar.Enabled = true;
+                    Btn_eliminar.Enabled = true;
+                    Btn_Informe.Enabled = true;
+                    Btn_incremento.Enabled = true;
+                    Btn_ayuda.Enabled = true;
+                    //MessageBox.Show("Modificar");//Bandera
                     break;
+
                 case "ver":
-                    CargarDetalles(iIdPresupuesto);
+                    CargarDetalles(iIdPresupuestoP);
                     BloquearTextBox();
                     BloquearBotones();
                     Txtbx_anual.Enabled = false;
-
+                    Btn_Informe.Enabled = true;
                     break;
+
                 case "crearPlantilla":
-                    CargarDetalles(idPrepLlenado);
-                    control.GuardarPresupuesto(iIdPresupuesto, Dgv_presupuesto);
-                    control.ActualizarTblPresupuesto(iIdPresupuesto);
+                    CargarDetalles(iIdPrepLlenadoP);
+                    control.GuardarPresupuesto(iIdPresupuestoP, Dgv_presupuesto);
+                    control.ActualizarTblPresupuesto(iIdPresupuestoP);
+                    Btn_modificar.Enabled = true;
+                    Btn_eliminar.Enabled = true;
+                    Btn_incremento.Enabled = true;
+                    Btn_incremento.Enabled = true;
+                    Btn_Informe.Enabled = true;
+                    Btn_ayuda.Enabled = true;
                     break;
             }
             //Llenado
-            switch (sLlenado)
+            switch (sLlenadoP)
             {
                 case "Mensual":
+                    LiberarTextBox();
                     Txtbx_anual.Enabled = false;
-                    frmIncremento.sLlenado = this.sLlenado;
+                    frmIncremento.sLlenado = this.sLlenadoP;
+                    Btn_ajustar.Enabled = false;
                     break;
                 case "Anual":
                     BloquearTextBox();
-                    frmIncremento.sLlenado = this.sLlenado;
+                    frmIncremento.sLlenado = this.sLlenadoP;
                     Btn_ajustar.Visible = true; //Cambiar O nome
+                    Btn_ajustar.Enabled = true;
+                    Txtbx_anual.Enabled = true;
                     break;
             }
 
             //Todo
             try
             {
-                SumarColumna("Column3", txt_totalEnero);
-                SumarColumna("Column4", txt_totalFebrero);
-                SumarColumna("Column5", txt_totalMarzo);
-                SumarColumna("Column6", txt_totalAbril);
-                SumarColumna("Column7", txt_totalMayo);
-                SumarColumna("Column8", txt_totalJunio);
-                SumarColumna("Column9", txt_totalJulio);
-                SumarColumna("Column10", txt_totalAgosto);
-                SumarColumna("Column11", txt_totalSeptiembre);
-                SumarColumna("Column12", txt_totalOctubre);
-                SumarColumna("Column13", txt_totalNoviembre);
-                SumarColumna("Column14", txt_totalDiciembre);
-                SumarColumna("Column15", txt_totalAnual);// Reemplaza con la columna y label 
+                // Reemplaza con la columna y label 
+                SumarColumna("Column3", Txt_totalEnero);
+                SumarColumna("Column4", Txt_totalFebrero);
+                SumarColumna("Column5", Txt_totalMarzo);
+                SumarColumna("Column6", Txt_totalAbril);
+                SumarColumna("Column7", Txt_totalMayo);
+                SumarColumna("Column8", Txt_totalJunio);
+                SumarColumna("Column9", Txt_totalJulio);
+                SumarColumna("Column10", Txt_totalAgosto);
+                SumarColumna("Column11", Txt_totalSeptiembre);
+                SumarColumna("Column12", Txt_totalOctubre);
+                SumarColumna("Column13", Txt_totalNoviembre);
+                SumarColumna("Column14", Txt_totalDiciembre);
+                SumarColumna("Column15", Txt_totalAnual);
             }
-            catch { }
-
-            if (Dgv_presupuesto.Rows.Count > 0)
-            {
-                CargarFila(0);
+            catch (Exception ex) { MessageBox.Show("Ocurrió un error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            try {
+                if (Dgv_presupuesto.Rows.Count > 0)
+                {
+                    CargarFila(0);
+                }
             }
+            catch (Exception ex) { MessageBox.Show("Ocurrió un error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
 
+            Txt_EjercicioPres.Text = Convert.ToString(iEjercicio);
         }
+
+
+        private void LiberarTextBox()
+        {
+            Txtbx_enero.Enabled = true;
+            Txtbx_febrero.Enabled = true;
+            Txtbx_marzo.Enabled = true;
+            Txtbx_abril.Enabled = true;
+            Txtbx_mayo.Enabled = true;
+            Txtbx_junio.Enabled = true;
+            Txtbx_julio.Enabled = true;
+            Txtbx_agosto.Enabled = true;
+            Txtbx_septiembre.Enabled = true;
+            Txtbx_octubre.Enabled = true;
+            Txtbx_noviembre.Enabled = true;
+            Txtbx_diciembre.Enabled = true;
+        }
+
         private void BloquearBotones()
         {
             Btn_ajustar.Enabled = false;
@@ -116,6 +185,7 @@ namespace Capa_Vista_Presupuesto
             Btn_Informe.Enabled = false;
             Btn_modificar.Enabled = false;
         }
+
         private void BloquearTextBox()
         {
             Txtbx_enero.Enabled = false;
@@ -131,6 +201,7 @@ namespace Capa_Vista_Presupuesto
             Txtbx_noviembre.Enabled = false;
             Txtbx_diciembre.Enabled = false;
         }
+
         private void CargarDetalles(int iIdPresupuesto)
         {
             foreach (DataRow drFila in control.CargarDetallesPresupuesto(iIdPresupuesto).Rows)
@@ -154,7 +225,6 @@ namespace Capa_Vista_Presupuesto
                     );
             }
         }
-
         private void CargarCuentasNuevas()
         {
             // Agregar cada dato a la columna 'Column1'
@@ -166,7 +236,6 @@ namespace Capa_Vista_Presupuesto
                 oNuevaFila[0] = drFila["Pk_id_cuenta"]; // Columna 1: ID
                 oNuevaFila[1] = drFila["nombre_cuenta"]; // Columna 2: Nombre
 
-                // Llenamos las 13 columnas restantes con 0.00
                 for (int i = 2; i < oNuevaFila.Length; i++)
                 {
                     oNuevaFila[i] = 0.00m; // Valor para las columnas restantes
@@ -175,6 +244,7 @@ namespace Capa_Vista_Presupuesto
                 Dgv_presupuesto.Rows.Add(oNuevaFila);
             }
         }
+
         private void ConfigurarColumnas()
         {
             Dgv_presupuesto.Columns["Column1"].ReadOnly = true;
@@ -197,7 +267,6 @@ namespace Capa_Vista_Presupuesto
             {
                 Dgv_presupuesto.Columns[i].DefaultCellStyle.Format = "F2"; // Formato a dos decimales
             }
-
             Dgv_presupuesto.Columns["Column15"].DefaultCellStyle.BackColor = Color.LightBlue;
         }
 
@@ -205,29 +274,35 @@ namespace Capa_Vista_Presupuesto
         {
             try
             {
+                if (Dgv_presupuesto.CurrentRow == null)
+                {
+                    //MessageBox.Show("No hay ninguna fila seleccionada.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 DataGridViewRow DgvrFilaSeleccionada = Dgv_presupuesto.CurrentRow;
-                Txtbx_Cuenta.Text = Convert.ToString(DgvrFilaSeleccionada.Cells["Column1"].Value);
-                Txtbx_Descripcion.Text = Convert.ToString(DgvrFilaSeleccionada.Cells["Column2"].Value);
-                Txtbx_enero.Text = Convert.ToString(DgvrFilaSeleccionada.Cells["Column3"].Value);
-                Txtbx_febrero.Text = Convert.ToString(DgvrFilaSeleccionada.Cells["Column4"].Value);
-                Txtbx_marzo.Text = Convert.ToString(DgvrFilaSeleccionada.Cells["Column5"].Value);
-                Txtbx_abril.Text = Convert.ToString(DgvrFilaSeleccionada.Cells["Column6"].Value);
-                Txtbx_mayo.Text = Convert.ToString(DgvrFilaSeleccionada.Cells["Column7"].Value);
-                Txtbx_junio.Text = Convert.ToString(DgvrFilaSeleccionada.Cells["Column8"].Value);
-                Txtbx_julio.Text = Convert.ToString(DgvrFilaSeleccionada.Cells["Column9"].Value);
-                Txtbx_agosto.Text = Convert.ToString(DgvrFilaSeleccionada.Cells["Column10"].Value);
-                Txtbx_septiembre.Text = Convert.ToString(DgvrFilaSeleccionada.Cells["Column11"].Value);
-                Txtbx_octubre.Text = Convert.ToString(DgvrFilaSeleccionada.Cells["Column12"].Value);
-                Txtbx_noviembre.Text = Convert.ToString(DgvrFilaSeleccionada.Cells["Column13"].Value);
-                Txtbx_diciembre.Text = Convert.ToString(DgvrFilaSeleccionada.Cells["Column14"].Value);
-                Txtbx_anual.Text = Convert.ToString(DgvrFilaSeleccionada.Cells["Column15"].Value);
+
+                // Asignación de valores a los TextBox
+                Txtbx_Cuenta.Text = Convert.ToString(DgvrFilaSeleccionada.Cells["Column1"].Value ?? string.Empty);
+                Txtbx_Descripcion.Text = Convert.ToString(DgvrFilaSeleccionada.Cells["Column2"].Value ?? string.Empty);
+                Txtbx_enero.Text = Convert.ToString(DgvrFilaSeleccionada.Cells["Column3"].Value ?? "0.00");
+                Txtbx_febrero.Text = Convert.ToString(DgvrFilaSeleccionada.Cells["Column4"].Value ?? "0.00");
+                Txtbx_marzo.Text = Convert.ToString(DgvrFilaSeleccionada.Cells["Column5"].Value ?? "0.00");
+                Txtbx_abril.Text = Convert.ToString(DgvrFilaSeleccionada.Cells["Column6"].Value ?? "0.00");
+                Txtbx_mayo.Text = Convert.ToString(DgvrFilaSeleccionada.Cells["Column7"].Value ?? "0.00");
+                Txtbx_junio.Text = Convert.ToString(DgvrFilaSeleccionada.Cells["Column8"].Value ?? "0.00");
+                Txtbx_julio.Text = Convert.ToString(DgvrFilaSeleccionada.Cells["Column9"].Value ?? "0.00");
+                Txtbx_agosto.Text = Convert.ToString(DgvrFilaSeleccionada.Cells["Column10"].Value ?? "0.00");
+                Txtbx_septiembre.Text = Convert.ToString(DgvrFilaSeleccionada.Cells["Column11"].Value ?? "0.00");
+                Txtbx_octubre.Text = Convert.ToString(DgvrFilaSeleccionada.Cells["Column12"].Value ?? "0.00");
+                Txtbx_noviembre.Text = Convert.ToString(DgvrFilaSeleccionada.Cells["Column13"].Value ?? "0.00");
+                Txtbx_diciembre.Text = Convert.ToString(DgvrFilaSeleccionada.Cells["Column14"].Value ?? "0.00");
+                Txtbx_anual.Text = Convert.ToString(DgvrFilaSeleccionada.Cells["Column15"].Value ?? "0.00");
             }
-            catch { }//Agregar
-        }
-
-        private void Dgv_presupuesto_SelectionChanged(object sender, EventArgs e)
-        {
-
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrió un error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void SumaDeValores()
@@ -255,7 +330,7 @@ namespace Capa_Vista_Presupuesto
             }
             catch (FormatException)
             {
-                //MessageBox.Show("Asegúrate de ingresar solo valores numéricos.", "Error de Formato");
+                //MessageBox.Show("Asegúrate de ingresar solo valores numéricos.", "Error de Formato"); //Revisar
             }
 
         }
@@ -264,15 +339,15 @@ namespace Capa_Vista_Presupuesto
             try
             {
                 DataGridViewRow DgvrFilaSeleccionada = Dgv_presupuesto.CurrentRow;
-                //filaSeleccionada.Cells[sColumna].Value = tbTextxbox.Text; // Actualiza la celda correspondiente
+
                 try
                 {
                     DgvrFilaSeleccionada.Cells[sColumna].Value = Math.Round(Convert.ToDecimal(tbTextxbox.Text), 2);
                 }
                 catch (FormatException) { }
             }
-            catch { }
-        }
+            catch (Exception ex) { MessageBox.Show("Ocurrió un error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            }
 
         private void Txtbx_enero_TextChanged(object sender, EventArgs e)
         {
@@ -363,14 +438,17 @@ namespace Capa_Vista_Presupuesto
 
         private void Btn_modificar_Click(object sender, EventArgs e)
         {
-            control.ActualizarPresupuesto(iIdPresupuesto, Dgv_presupuesto);
+            control.ActualizarPresupuesto(iIdPresupuestoP, Dgv_presupuesto);
             MessageBox.Show("Datos guardados exitosamente.", "Éxito");
+            control.ActualizarTblPresupuesto(iIdPresupuestoP);
+            MessageBox.Show("Datos actualizados exitosamente.", "Éxito");
 
-            control.ActualizarTblPresupuesto(iIdPresupuesto);
-            MessageBox.Show("Datos Actualizados exitosamente.", "Éxito");
+            //Guardar Bitacora--Seguridad------------!!!
+            logicaSeg.funinsertarabitacora(sIdUsuario,$"Se guardo/Actualizo IdPres:{iIdPresupuestoP}","tbl_detalle_presupuesto","8000");
+
         }
 
-        private void SumarColumna(string sNombreColumna, Label txtResultado)
+        private void SumarColumna(string sNombreColumna, Label lbResultado)
         {
             decimal deSuma = 0;
 
@@ -382,7 +460,7 @@ namespace Capa_Vista_Presupuesto
                     deSuma += deValor;
                 }
             }
-            txtResultado.Text = $"{deSuma}";
+            lbResultado.Text = $"{deSuma}";
         }
 
         private void Dgv_presupuesto_CellValueChanged(object sender, DataGridViewCellEventArgs e)
@@ -390,19 +468,19 @@ namespace Capa_Vista_Presupuesto
             if (e.RowIndex >= 0)
             {
                 // Reemplaza con la columna y label 
-                SumarColumna("Column3", txt_totalEnero);
-                SumarColumna("Column4", txt_totalFebrero);
-                SumarColumna("Column5", txt_totalMarzo);
-                SumarColumna("Column6", txt_totalAbril);
-                SumarColumna("Column7", txt_totalMayo);
-                SumarColumna("Column8", txt_totalJunio);
-                SumarColumna("Column9", txt_totalJulio);
-                SumarColumna("Column10", txt_totalAgosto);
-                SumarColumna("Column11", txt_totalSeptiembre);
-                SumarColumna("Column12", txt_totalOctubre);
-                SumarColumna("Column13", txt_totalNoviembre);
-                SumarColumna("Column14", txt_totalDiciembre);
-                SumarColumna("Column15", txt_totalAnual);
+                SumarColumna("Column3", Txt_totalEnero);
+                SumarColumna("Column4", Txt_totalFebrero);
+                SumarColumna("Column5", Txt_totalMarzo);
+                SumarColumna("Column6", Txt_totalAbril);
+                SumarColumna("Column7", Txt_totalMayo);
+                SumarColumna("Column8", Txt_totalJunio);
+                SumarColumna("Column9", Txt_totalJulio);
+                SumarColumna("Column10", Txt_totalAgosto);
+                SumarColumna("Column11", Txt_totalSeptiembre);
+                SumarColumna("Column12", Txt_totalOctubre);
+                SumarColumna("Column13", Txt_totalNoviembre);
+                SumarColumna("Column14", Txt_totalDiciembre);
+                SumarColumna("Column15", Txt_totalAnual);
             }
         }
 
@@ -429,6 +507,9 @@ namespace Capa_Vista_Presupuesto
                 Txtbx_octubre.Text = deMontoMensual.ToString("F2");
                 Txtbx_noviembre.Text = deMontoMensual.ToString("F2");
                 Txtbx_diciembre.Text = deMontoMensual.ToString("F2");
+
+                //Bitacora-------------!!!
+                logicaSeg.funinsertarabitacora(sIdUsuario, $"Se ajusto el IdPres: {iIdPresupuestoP}", "Presupuesto", "8000");
             }
             else
             {
@@ -438,10 +519,22 @@ namespace Capa_Vista_Presupuesto
 
         private void Btn_incremento_Click(object sender, EventArgs e)
         {
+            //Incremento vResultado = new Incremento();
+            //
+            ////var vResultado = frmIncremento.ShowDialog();
+            //if (vResultado.ShowDialog() == DialogResult.OK)
+            //frmIncremento.sLlenado = sLlenadoP;
+            //var vResultado = frmIncremento.ShowDialog();
+            //if (vResultado == DialogResult.OK)
+            Incremento frmIncremento = new Incremento(sLlenadoP); // asume que Incremento tiene un constructor que recibe sLlenadoP
+            frmIncremento.sLlenado = sLlenadoP;
+
             var vResultado = frmIncremento.ShowDialog();
             if (vResultado == DialogResult.OK)
             {
                 decimal dePorcentaje = Convert.ToDecimal(frmIncremento.iDato);
+                //Bitacora -----------------!!!
+                logicaSeg.funinsertarabitacora(sIdUsuario, $"Se abrio form incremento", "Incremento", "8000");
 
                 if (frmIncremento.bIncrementar)
                 {
@@ -472,7 +565,9 @@ namespace Capa_Vista_Presupuesto
             Txtbx_anual.Text = (deValorAnual + deIncremento).ToString("F2");
             MessageBox.Show("Porfavor , ajustar el valor anual de la cuenta. ","Consejo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
-        private void IncrementarTodosLosMeses(decimal dePorcentaje)
+
+        //Incremento de todos los meses
+        public void IncrementarTodosLosMeses(decimal dePorcentaje)
         {
             foreach (var vMes in ObtenerTextBoxesDeMeses())
             {
@@ -482,6 +577,7 @@ namespace Capa_Vista_Presupuesto
             }
         }
 
+        //Incremento un mes especifico de una cuenta seleccionada.
         private void IncrementarMesEspecifico(decimal dePorcentaje, string sNombreMes)
         {
             TextBox txtMesSeleccionado = ObtenerTextBoxPorNombre(sNombreMes);
@@ -515,65 +611,50 @@ namespace Capa_Vista_Presupuesto
             // Verificar la respuesta del usuario
             if (diaResultado == DialogResult.Yes)
             {
+                //Bitacora--------------------!!!
+                logicaSeg.funinsertarabitacora(sIdUsuario, $"Se elimino el IdPres:{iIdPresupuestoP}", "tbl_detalle_presupuesto", "8000");
+
                 // Llama al método del controlador para eliminar el presupuesto
-
-                control.EliminarPresupuesto(iIdPresupuesto);
-
-
+                control.EliminarPresupuesto(iIdPresupuestoP);
                 // Notificar al usuario que la eliminación fue exitosa
                 MessageBox.Show("Presupuesto eliminado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                //this.Hide();
-                //Opciones opciones = new Opciones();
-                //opciones.Show();
-
-                Opciones opciones = new Opciones();
-                opciones.Show();
+                //Cerramos
                 this.Close();
-
-                // Actualiza la interfaz
-                // ActualizaDataGridView();
             }
             else
             {
-                // El usuario decidió no eliminar, puedes mostrar un mensaje opcional
+                // El usuario decidió no eliminar
                 MessageBox.Show("Operación cancelada.", "Cancelado", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
-        private void txt_totalEnero_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void CargarFila(int iFila)
         {
-            try { 
                 if (iFila >= 0 && iFila < Dgv_presupuesto.Rows.Count)
                     {
-                Txtbx_Cuenta.Text = Dgv_presupuesto.Rows[iFila].Cells["Column1"].Value.ToString();
-                Txtbx_Descripcion.Text = Dgv_presupuesto.Rows[iFila].Cells["Column2"].Value.ToString();
-                Txtbx_enero.Text = Dgv_presupuesto.Rows[iFila].Cells["Column3"].Value.ToString();
-                Txtbx_febrero.Text = Dgv_presupuesto.Rows[iFila].Cells["Column4"].Value.ToString();
-                Txtbx_marzo.Text = Dgv_presupuesto.Rows[iFila].Cells["Column5"].Value.ToString();
-                Txtbx_abril.Text = Dgv_presupuesto.Rows[iFila].Cells["Column6"].Value.ToString();
-                Txtbx_mayo.Text = Dgv_presupuesto.Rows[iFila].Cells["Column7"].Value.ToString();
-                Txtbx_junio.Text = Dgv_presupuesto.Rows[iFila].Cells["Column8"].Value.ToString();
-                Txtbx_julio.Text = Dgv_presupuesto.Rows[iFila].Cells["Column9"].Value.ToString();
-                Txtbx_agosto.Text = Dgv_presupuesto.Rows[iFila].Cells["Column10"].Value.ToString();
-                Txtbx_septiembre.Text = Dgv_presupuesto.Rows[iFila].Cells["Column11"].Value.ToString();
-                Txtbx_octubre.Text = Dgv_presupuesto.Rows[iFila].Cells["Column12"].Value.ToString();
-                Txtbx_noviembre.Text = Dgv_presupuesto.Rows[iFila].Cells["Column13"].Value.ToString();
-                Txtbx_diciembre.Text = Dgv_presupuesto.Rows[iFila].Cells["Column14"].Value.ToString();
-                Txtbx_anual.Text = Dgv_presupuesto.Rows[iFila].Cells["Column15"].Value.ToString();
+                        Txtbx_Cuenta.Text = Dgv_presupuesto.Rows[iFila].Cells["Column1"].Value.ToString();
+                        Txtbx_Descripcion.Text = Dgv_presupuesto.Rows[iFila].Cells["Column2"].Value.ToString();
+                        Txtbx_enero.Text = Dgv_presupuesto.Rows[iFila].Cells["Column3"].Value.ToString();
+                        Txtbx_febrero.Text = Dgv_presupuesto.Rows[iFila].Cells["Column4"].Value.ToString();
+                        Txtbx_marzo.Text = Dgv_presupuesto.Rows[iFila].Cells["Column5"].Value.ToString();
+                        Txtbx_abril.Text = Dgv_presupuesto.Rows[iFila].Cells["Column6"].Value.ToString();
+                        Txtbx_mayo.Text = Dgv_presupuesto.Rows[iFila].Cells["Column7"].Value.ToString();
+                        Txtbx_junio.Text = Dgv_presupuesto.Rows[iFila].Cells["Column8"].Value.ToString();
+                        Txtbx_julio.Text = Dgv_presupuesto.Rows[iFila].Cells["Column9"].Value.ToString();
+                        Txtbx_agosto.Text = Dgv_presupuesto.Rows[iFila].Cells["Column10"].Value.ToString();
+                        Txtbx_septiembre.Text = Dgv_presupuesto.Rows[iFila].Cells["Column11"].Value.ToString();
+                        Txtbx_octubre.Text = Dgv_presupuesto.Rows[iFila].Cells["Column12"].Value.ToString();
+                        Txtbx_noviembre.Text = Dgv_presupuesto.Rows[iFila].Cells["Column13"].Value.ToString();
+                        Txtbx_diciembre.Text = Dgv_presupuesto.Rows[iFila].Cells["Column14"].Value.ToString();
+                        Txtbx_anual.Text = Dgv_presupuesto.Rows[iFila].Cells["Column15"].Value.ToString();
                     }
-            }catch{}
     }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Opciones opciones = new Opciones();
-            opciones.Show();
+            //this.Hide();
+            logicaSeg.funinsertarabitacora(sIdUsuario, $"Se cerro presupuesto", "Presupuesto", "8000");
             this.Close();
         }
 
@@ -587,7 +668,6 @@ namespace Capa_Vista_Presupuesto
             {
                 e.Handled = true; // Cancelar si ya hay un punto
             }
-
         }
 
         private void VerificacionVacio(TextBox tbTexto)
@@ -597,7 +677,9 @@ namespace Capa_Vista_Presupuesto
                 tbTexto.Text = "0.00"; // Asignar 0 si está vacío
                 tbTexto.SelectionStart = 0;
                 tbTexto.SelectionLength = tbTexto.Text.Length;// Coloca el cursor al final
+
             }
+
         }
 
         private void Txtbx_enero_KeyPress(object sender, KeyPressEventArgs e)
@@ -663,6 +745,106 @@ namespace Capa_Vista_Presupuesto
         private void Txtbx_anual_KeyPress(object sender, KeyPressEventArgs e)
         {
             VerificacionText(e, Txtbx_anual);
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            Opciones OpcionesForm = new Opciones();
+
+            // Muestra el formulario Opciones
+            if (OpcionesForm.ShowDialog() == DialogResult.OK)
+            {
+                // Cuando se cierra Opciones con OK, se pasan los valores
+                sOperacionP = OpcionesForm.sOperacion;
+                iIdPresupuestoP = OpcionesForm.iIdPresupuesto;
+                sNombreP = OpcionesForm.sNombre;
+                sLlenadoP = OpcionesForm.sLlenado;
+                iIdPrepLlenadoP = OpcionesForm.sPrellenado;
+                iEjercicio = OpcionesForm.iEjercicio;
+
+                //Bitacora--------------------!!!
+                logicaSeg.funinsertarabitacora(sIdUsuario, $"Se abrio Opciones", "Presupuesto", "8000");
+
+                // Limpiamos el DataGrid
+                LimpiarGrid();
+                // Llama a la función para cargar datos
+                CargarDatos();
+            }
+        }
+        private void LimpiarGrid()
+        {
+            Dgv_presupuesto.Rows.Clear();
+        }
+
+        private void Btn_Informe_Click(object sender, EventArgs e)
+        {
+            {
+                // Crear una instancia del reporte
+                ReportDocument reporte = new ReportDocument();
+
+                // Retroceder varios niveles desde el directorio base de la aplicación
+                //string sRutaProyecto = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\..\"));
+
+                //string sRutaReporte = Path.Combine(sRutaProyecto, "Capa_Vista_Presupuesto", "CrystalReport2.rpt");
+
+                //Ruta para que se ejecute desde la ejecucion de Interfac3
+                string sRutaReporte = Path.Combine(sRutaProyectoReportes,"Reportes","Modulos","Contabilidad", "ReportePresupuesto", "ReportePresupuesto.rpt");
+
+                try
+                {
+                    // Mostrar la ruta en un MessageBox para verificar
+                    //MessageBox.Show("Ruta del reporte: " + sRutaReporte, "Ruta Generada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // Cargar el reporte desde la ruta especificada
+                    reporte.Load(sRutaReporte);
+                    reporte.Refresh();
+
+                    // Mostrar el reporte en un formulario de Crystal Report Viewer
+                    Form viewerForm = new Form();
+                    CrystalReportViewer viewer = new CrystalReportViewer();
+                    viewer.Dock = DockStyle.Fill;
+                    viewer.ReportSource = reporte;
+                    
+                    viewerForm.Controls.Add(viewer);
+                    viewerForm.WindowState = FormWindowState.Maximized;
+                    viewerForm.ShowDialog();
+
+                    //Bitacora------------------------!!!
+                    logicaSeg.funinsertarabitacora(sIdUsuario, $"Se abrio reporte", "Presupuesto", "8000");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al abrir el reporte: " + ex.Message);
+                }
+                finally
+                {
+                    // Libera los recursos del reporte
+                    reporte.Close();
+                    reporte.Dispose();
+                }
+            }
+        }
+
+        private void Btn_ayuda_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //Ruta para que se ejecute desde la ejecucion de Interfac3
+                string sAyudaPath = Path.Combine(sRutaProyectoAyuda, "Ayuda", "Modulos", "Contabilidad", "AyudaPresupuesto", "AyudaModPresupuesto.chm");
+                //string sIndiceAyuda = Path.Combine(sRutaProyecto, "EstadosFinancieros", "ReportesEstados", "Htmlayuda.hmtl");
+                //MessageBox.Show("Ruta del reporte: " + sAyudaPath, "Ruta Generada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                Help.ShowHelp(this, sAyudaPath, "AyudaPresupuesto.html");
+
+                //Bitacora--------------!!!
+                logicaSeg.funinsertarabitacora(sIdUsuario, $"Se presiono Ayuda", "Presupuesto", "8000");
+            }
+            catch (Exception ex)
+            {
+                // Mostrar un mensaje de error en caso de una excepción
+                MessageBox.Show("Ocurrió un error al abrir la ayuda: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("Error al abrir la ayuda: " + ex.ToString());
+            }
         }
     }
 }

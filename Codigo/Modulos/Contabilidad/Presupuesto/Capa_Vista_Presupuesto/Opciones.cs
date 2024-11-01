@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Capa_Controlador_Presupuesto;
+using Capa_Controlador_Seguridad;
+using System.IO;//Para Ayudas
 
 namespace Capa_Vista_Presupuesto
 {
@@ -15,13 +17,33 @@ namespace Capa_Vista_Presupuesto
     {
         Controlador control = new Controlador();
         ToolTip toolTip = new ToolTip();
+        logica logicaSeg = new logica();
+        public string sRutaProyectoAyuda { get; private set; } = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\..\..\..\"));
+
+        public string sIdUsuario { get; set; } //Para Bitacora-------------!!!
+        public string sOperacion;
+        public int iIdPresupuesto;
+        public string sNombre;
+        public string sLlenado;
+        public int sPrellenado;
+        public int iEjercicio;
+
         public Opciones()
         {
             InitializeComponent();
             toolTip.SetToolTip(Btn_crear, "Haz clic para crear un presupuesto");
             toolTip.SetToolTip(Btn_Modificar, "Haz clic para modificar un presupuesto");
             toolTip.SetToolTip(Btn_ver, "Haz clic para ver un presupuesto");
+            toolTip.SetToolTip(Btn_ayuda, "Haz clic para ver ayuda");
+        }
 
+        private void Opciones_Load(object sender, EventArgs e)
+        {
+            Cb_Base.Enabled = false;
+            control.CargarPresupuestosActivos(Cb_modificar);
+            control.CargarPresupuestosGeneral(Cb_Ver);
+            control.CargarPresupuestosGeneral(Cb_Base);
+            LlenarComboBoxAnios(Cb_ejercicio);
         }
 
         private void Btn_crear_Click(object sender, EventArgs e)
@@ -32,7 +54,7 @@ namespace Capa_Vista_Presupuesto
                 return; // Detenemos la ejecución si el campo está vacío
             }
 
-            if (cb_ejercicio.SelectedIndex == -1)
+            if (Cb_ejercicio.SelectedIndex == -1)
             {
                 MessageBox.Show("Por favor, selecciona un ejercicio.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -51,52 +73,56 @@ namespace Capa_Vista_Presupuesto
                     return; 
                 }
             }
-            //int iIdPresupuesto;
-            //string sOperacion;
+            if (!control.PuedeCrearPresupuesto())
+            {
+                MessageBox.Show("No puedes crear un presupuesto porque no hay cuentas disponibles.", "Advertencia",MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             try
             {
-                int iIdPresupuesto;
-                string sOperacion;
                 if (Chb_plantilla.Checked)
                 {
-                    iIdPresupuesto = control.CrearPresupuesto(Txtbx_nombre.Text, Convert.ToInt32(cb_ejercicio.Text));
-                    MessageBox.Show("Id Creado: " + Convert.ToString(iIdPresupuesto));
+                    iIdPresupuesto = control.CrearPresupuesto(Txtbx_nombre.Text, Convert.ToInt32(Cb_ejercicio.Text));
+                    //MessageBox.Show("Id Creado: " + Convert.ToString(iIdPresupuesto));----Bandera
                     sOperacion = "crearPlantilla";
                     AbrirFormularioPresupuestoLlenado(sOperacion,iIdPresupuesto,PresupuestoLlenado(Cb_Base));
                 }
                 else
                 {
-                    iIdPresupuesto = control.CrearPresupuesto(Txtbx_nombre.Text, Convert.ToInt32(cb_ejercicio.Text));
-                    MessageBox.Show("Id Creado: " + Convert.ToString(iIdPresupuesto));
+                    iIdPresupuesto = control.CrearPresupuesto(Txtbx_nombre.Text, Convert.ToInt32(Cb_ejercicio.Text));
+                    //MessageBox.Show("Id Creado: " + Convert.ToString(iIdPresupuesto));---Bandera
                     sOperacion = "crear";
                     AbrirFormularioPresupuestoCREAR(sOperacion, iIdPresupuesto);
+                    
                 }
+                logicaSeg.funinsertarabitacora(sIdUsuario, $"Se creo presupuesto {iIdPresupuesto}", "Opciones", "8000");
             }
             catch(Exception ex)
             {
                 MessageBox.Show("Ocurrió un error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private void AbrirFormularioPresupuestoCREAR(string sOperacion, int iIdPresupuesto)
+        private void AbrirFormularioPresupuestoCREAR(string sOperacionF, int iIdPresupuestoF)
         {
+            sOperacion = sOperacionF;
+            iIdPresupuesto = iIdPresupuestoF;
+            sNombre = Txtbx_nombre.Text;
+            sLlenado = Cb_LlenadoCrear.Text;
+            iEjercicio = control.ObtenerEjercicioPresupuesto(iIdPresupuestoF);
+            this.DialogResult = DialogResult.OK;
             this.Hide();
-            Presupuesto formularioPresupuesto = new Presupuesto(sOperacion, iIdPresupuesto, Txtbx_nombre.Text, Cb_LlenadoCrear.Text);
-            formularioPresupuesto.Show();
-        }
-        private void AbrirFormularioPresupuesto(string sOperacion, int iIdPresupuesto)
-        {
-            this.Hide();
-            Presupuesto formularioPresupuesto = new Presupuesto(sOperacion, iIdPresupuesto, Txtbx_nombre.Text, Cb_LlenadoMod.Text);
-            formularioPresupuesto.Show();
         }
 
-        private void AbrirFormularioPresupuestoLlenado(string sOperacion, int iIdPresupuesto,int iIdPrepLlenado)
+        private void AbrirFormularioPresupuestoLlenado(string sOperacionF, int iIdPresupuestoF,int iIdPrepLlenado)
         {
+            sOperacion = sOperacionF;
+            iIdPresupuesto = iIdPresupuestoF;
+            sNombre = Txtbx_nombre.Text;
+            sLlenado = Cb_LlenadoCrear.Text;
+            sPrellenado = iIdPrepLlenado;
+            iEjercicio = control.ObtenerEjercicioPresupuesto(iIdPresupuestoF);
+            this.DialogResult = DialogResult.OK;
             this.Hide();
-            Presupuesto formularioPresupuesto = new Presupuesto(sOperacion, iIdPresupuesto, Txtbx_nombre.Text, Cb_LlenadoCrear.Text);
-
-            formularioPresupuesto.idPrepLlenado = iIdPrepLlenado;
-            formularioPresupuesto.Show();
         }
 
         private int PresupuestoLlenado(ComboBox cbCombo)
@@ -126,12 +152,16 @@ namespace Capa_Vista_Presupuesto
                 var vItemSeleccionado = (KeyValuePair<string, string>)cbCombo.SelectedItem;
                 string sNombrePresupuesto = vItemSeleccionado.Value;
                 string sIdPresupuesto = vItemSeleccionado.Key;
-                MessageBox.Show("Codigo: " + sIdPresupuesto+" "+sAccion); //Bandera
-                // Abrir el siguiente formulario y enviar el ID
-                Presupuesto formDestino = new Presupuesto(sAccion, int.Parse(sIdPresupuesto),sNombrePresupuesto, Cb_LlenadoMod.Text);
-                formDestino.Show();
-                this.Hide();
-            }
+
+                sNombre = sNombrePresupuesto;
+                iIdPresupuesto = int.Parse(sIdPresupuesto);
+                sOperacion = sAccion;
+                sLlenado = Cb_LlenadoMod.Text;
+                iEjercicio = control.ObtenerEjercicioPresupuesto(int.Parse(sIdPresupuesto)); //Se Agrego
+                //MessageBox.Show("Codigo: " + sIdPresupuesto + " " + sAccion); //Bandera
+                this.DialogResult = DialogResult.OK;
+                logicaSeg.funinsertarabitacora(sIdUsuario, $"Se Modificara/Vera presupuesto {iIdPresupuesto}", "Opciones", "8000");//Bitacora ====!!!
+                this.Hide();            }
             else
             {
                 MessageBox.Show("Por favor, selecciona un presupuesto.");
@@ -153,6 +183,7 @@ namespace Capa_Vista_Presupuesto
             try
             {
                 PasoForm(Cb_modificar, "modificar");
+
             }
             catch (Exception ex)
             {
@@ -161,13 +192,7 @@ namespace Capa_Vista_Presupuesto
 
         }
 
-        private void Opciones_Load(object sender, EventArgs e)
-        {
-            Cb_Base.Enabled = false;
-            control.CargarPresupuestos(Cb_modificar);
-            control.CargarPresupuestos(Cb_Ver);
-            control.CargarPresupuestos(Cb_Base);
-        }
+        
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -197,9 +222,72 @@ namespace Capa_Vista_Presupuesto
             }
         }
 
-        private void label3_Click(object sender, EventArgs e)
+        private void LlenarComboBoxAnios(ComboBox cbCombo)
+        {
+            // Limpiar el ComboBox antes de llenarlo
+            cbCombo.Items.Clear();
+
+            // Obtener el año actual
+            int iAnioActual = DateTime.Now.Year;
+
+            // Llenar el ComboBox con años desde el año actual hasta +5 años
+            for (int i = 0; i <= 5; i++)
+            {
+                cbCombo.Items.Add(iAnioActual + i);
+            }
+
+            // Opcional: seleccionar el primer elemento
+            if (cbCombo.Items.Count > 0)
+            {
+                cbCombo.SelectedIndex = 0;
+            }
+        }
+
+        private void Txt_ejercicio_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void Cb_ejercicio_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Txt_trabajar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Cb_LlenadoCrear_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Txt_verPresupuesto_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Btn_ayuda_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //Ruta para que se ejecute desde la ejecucion de Interfac3
+                string sAyudaPath = Path.Combine(sRutaProyectoAyuda, "Ayuda", "Modulos", "Contabilidad", "AyudaPresupuesto", "AyudaModPresupuesto.chm");
+                //string sIndiceAyuda = Path.Combine(sRutaProyecto, "EstadosFinancieros", "ReportesEstados", "Htmlayuda.hmtl");
+                //MessageBox.Show("Ruta del reporte: " + sAyudaPath, "Ruta Generada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                Help.ShowHelp(this, sAyudaPath, "AyudaOpciones.html");
+
+                //Bitacora--------------!!!
+                logicaSeg.funinsertarabitacora(sIdUsuario, $"Se presiono Ayuda", "Opciones", "8000");
+            }
+            catch (Exception ex)
+            {
+                // Mostrar un mensaje de error en caso de una excepción
+                MessageBox.Show("Ocurrió un error al abrir la ayuda: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("Error al abrir la ayuda: " + ex.ToString());
+            }
         }
     }
 }

@@ -53,9 +53,23 @@ namespace Capa_Controlador_Presupuesto
             sn.UpdateTblPresupuesto(iPkPresupuesto);
         }
 
-        public void CargarPresupuestos(ComboBox CbComboBox)
+        public void CargarPresupuestosActivos(ComboBox CbComboBox)
         {
-            var vPresupuestos = sn.ObtenerPresupuestos();
+            var vPresupuestos = sn.ObtenerPresupuestosActivos();
+
+            foreach (var vPresupuesto in vPresupuestos)
+            {
+                // presupuesto[0] = ID, presupuesto[1] = Nombre
+                CbComboBox.Items.Add(new KeyValuePair<string, string>(vPresupuesto[0], vPresupuesto[1]));
+            }
+
+            CbComboBox.DisplayMember = "Value";  // Mostrar el nombre del presupuesto
+            CbComboBox.ValueMember = "Key";
+        }
+
+        public void CargarPresupuestosGeneral(ComboBox CbComboBox)
+        {
+            var vPresupuestos = sn.ObtenerPresupuestosGeneral();
 
             foreach (var vPresupuesto in vPresupuestos)
             {
@@ -78,17 +92,17 @@ namespace Capa_Controlador_Presupuesto
             {
                 if (!Dgvr_fila.IsNewRow) // Ignorar la fila vacía
                 {
-                    int fkCuenta = Convert.ToInt32(Dgvr_fila.Cells["Column1"].Value); // ID de la cuenta
+                    int iFkCuenta = Convert.ToInt32(Dgvr_fila.Cells["Column1"].Value); // ID de la cuenta
 
-                    decimal[] meses = new decimal[12];
+                    decimal[] deMeses = new decimal[12];
                     for (int i = 0; i < 12; i++)
                     {
-                        meses[i] = Convert.ToDecimal(Dgvr_fila.Cells[i + 2].Value); // Columnas de enero a diciembre
+                        deMeses[i] = Convert.ToDecimal(Dgvr_fila.Cells[i + 2].Value); // Columnas de enero a diciembre
                     }
 
-                    decimal totalCuenta = Convert.ToDecimal(Dgvr_fila.Cells["Column15"].Value); // Total de la cuenta
+                    decimal deTotalCuenta = Convert.ToDecimal(Dgvr_fila.Cells["Column15"].Value); // Total de la cuenta
 
-                    sn.ActualizarDetalle(iFkPresupuesto, fkCuenta, meses, totalCuenta);
+                    sn.ActualizarDetalle(iFkPresupuesto, iFkCuenta, deMeses, deTotalCuenta);
                 }
             }
         }
@@ -99,6 +113,20 @@ namespace Capa_Controlador_Presupuesto
             sn.EliminarDetallePresupuesto(iIdPresupuesto);
             // Luego eliminar el presupuesto
             sn.EliminarPresupuesto(iIdPresupuesto);
+        }
+
+        public bool PuedeCrearPresupuesto()
+        {
+            return sn.VerificarCuentas();
+        }
+        public void ActualizarEstadosPresupuesto()
+        {
+            sn.ActualizarEstadosPresupuestos();
+        }
+
+        public int ObtenerEjercicioPresupuesto(int iIdPresupuesto)
+        {
+            return sn.ObtenerEjercicioPresupuesto(iIdPresupuesto);
         }
     }
 }

@@ -7,6 +7,7 @@ using System.Data.Odbc;
 using System.Data;
 using System.Windows.Forms;
 
+
 namespace Capa_Modelo_Presupuesto
 {
     public class Sentencia
@@ -68,7 +69,35 @@ namespace Capa_Modelo_Presupuesto
             }
         }
 
-        public List<string[]> ObtenerPresupuestos()
+        public List<string[]> ObtenerPresupuestosActivos()
+        {
+            List<string[]> liPresupuestos = new List<string[]>();
+
+            try
+            {
+                string sSql = "SELECT Pk_id_presupuesto, nombre_presupuesto FROM tbl_presupuesto WHERE estado= 1 ";
+
+                using (var vCmd = new OdbcCommand(sSql, con.NuevaConexion()))
+                {
+                    using (var vLector = vCmd.ExecuteReader())
+                    {
+                        while (vLector.Read())
+                        {
+                            string sId = vLector["Pk_id_presupuesto"].ToString();
+                            string sNombre = vLector["nombre_presupuesto"].ToString();
+                            liPresupuestos.Add(new string[] { sId, sNombre });
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al obtener presupuestos: {ex.Message}");
+            }
+            return liPresupuestos;
+        }
+
+        public List<string[]> ObtenerPresupuestosGeneral()
         {
             List<string[]> liPresupuestos = new List<string[]>();
 
@@ -118,10 +147,10 @@ namespace Capa_Modelo_Presupuesto
                 INNER JOIN tbl_cuentas c ON d.Fk_id_cuenta = c.Pk_id_cuenta
                 WHERE d.Fk_id_presupuesto = ?";
 
-            using (OdbcCommand cmd = new OdbcCommand(sSql, con.NuevaConexion()))
+            using (OdbcCommand comando = new OdbcCommand(sSql, con.NuevaConexion()))
             {
-                cmd.Parameters.AddWithValue("?", iIdPresupuesto);
-                using (OdbcDataAdapter da = new OdbcDataAdapter(cmd))
+                comando.Parameters.AddWithValue("?", iIdPresupuesto);
+                using (OdbcDataAdapter da = new OdbcDataAdapter(comando))
                 {
                     da.Fill(dt); // Aquí llenamos el DataTable
                 }
@@ -181,6 +210,81 @@ namespace Capa_Modelo_Presupuesto
                 comando.Parameters.AddWithValue("?", iIdPresupuesto);
                 comando.ExecuteNonQuery();
             }
+        }
+
+        public bool VerificarCuentas()
+        {
+            string sSql = "SELECT COUNT(*) FROM tbl_cuentas";
+            using (OdbcCommand comando = new OdbcCommand(sSql, con.NuevaConexion()))
+            {
+                int count = Convert.ToInt32(comando.ExecuteScalar());
+                return count > 0; // Devuelve true si hay al menos una cuenta
+            }
+        }
+
+        public void ActualizarEstadosPresupuestos()
+        {
+            try
+            {
+                string sSql = @"UPDATE tbl_presupuesto SET estado = 0 WHERE ejercicio_presupuesto < YEAR(CURDATE()) AND estado = 1";
+
+                using (OdbcCommand comando = new OdbcCommand(sSql, con.NuevaConexion()))
+                {
+                    comando.ExecuteNonQuery(); // Ejecuta la actualización
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al actualizar estados: " + ex.Message);
+            }
+        }
+
+        public int ObtenerEjercicioPresupuesto(int idPresupuesto)
+        {
+                string sSql = "SELECT ejercicio_presupuesto FROM tbl_presupuesto WHERE Pk_id_presupuesto = ?";
+
+                using (OdbcCommand comando = new OdbcCommand(sSql, con.NuevaConexion()))
+                {
+                    comando.Parameters.AddWithValue("?", idPresupuesto);
+
+                    var vResultado = comando.ExecuteScalar();
+                    if (vResultado != null)
+                    {
+                        int iEjercicioPresupuesto = Convert.ToInt32(vResultado);
+                        return iEjercicioPresupuesto;
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se encontró el presupuesto seleccionado.");
+                        return 0;
+                    }
+                }
+            
+        }
+
+        //Simulacion
+        public void EliminarPresupuestoSimulado(int iIdPresupuesto, out bool presupuestoEliminado)
+        {
+            // Simulamos la eliminación de un presupuesto
+            presupuestoEliminado = iIdPresupuesto > 0; // Solo simula eliminación si el ID es positivo
+            Console.WriteLine($"Presupuesto con ID {iIdPresupuesto} eliminado: {presupuestoEliminado}");
+        }
+
+        public bool VerificarCuentasSimulado()
+        {
+            // Simulamos la verificación de cuentas, retornando `true` como si hubiera cuentas en la base de datos
+            bool hayCuentas = true; // Simula que hay al menos una cuenta
+            Console.WriteLine("Verificación simulada de cuentas: " + hayCuentas);
+            return hayCuentas;
+        }
+
+        public bool ActualizarEstadosPresupuestosSimulado(out int registrosActualizados)
+        {
+            // Simula la actualización de estados en presupuestos
+            registrosActualizados = 5; // Simula que cinco registros fueron actualizados
+            bool actualizacionExitosa = registrosActualizados > 0;
+            Console.WriteLine($"Actualización simulada de estados: {actualizacionExitosa}, registros actualizados: {registrosActualizados}");
+            return actualizacionExitosa;
         }
     }
 }
