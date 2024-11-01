@@ -1,3 +1,10 @@
+
+
+-- ALTERS DEL MODULO DE CONTABILIDAD 28-10-2024
+ALTER TABLE tbl_cuentas
+ADD COLUMN es_efectivo TINYINT DEFAULT 0 AFTER Pk_id_cuenta_enlace;
+-- FIN DE ALTER 28-10-2024
+    
 -- Alteraciones para asegurar integridad y consistencia con el script principal
 
 -- **1. Añadir claves primarias y auto-incrementos a las tablas referenciadas**
@@ -97,7 +104,7 @@ ALTER TABLE `tbl_cuentas`
 ALTER TABLE `Tbl_Productos`
     ADD COLUMN `Fk_id_receta` INT(11),
     ADD INDEX `idx_fk_receta_producto` (`Fk_id_receta`),
-    ADD CONSTRAINT `fk_receta_producto` FOREIGN KEY (`Fk_id_receta`) REFERENCES `tbl_recetas` (`Pk_id_receta`);
+    ADD CONSTRAINT `fk_receta_producto` FOREIGN KEY (`Fk_id_receta`) REFERENCES `tbl_recetas` (`Pk_id_receta`);    
     
  -- Aprobado por Brandon Boch
  -- Alters de componente de producción
