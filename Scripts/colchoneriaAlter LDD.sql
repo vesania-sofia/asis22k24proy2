@@ -169,3 +169,12 @@ ALTER TABLE Tbl_Marca
 ADD COLUMN comision DOUBLE NOT NULL;
 ALTER TABLE Tbl_Linea
 ADD COLUMN comision DOUBLE NOT NULL;
+
+-- ALTERS DEL MODULO DE CUENTAS CORRIENTES 31-10-2024
+
+ALTER TABLE Tbl_caja_cliente
+DROP COLUMN caja_deuda_monto,
+DROP COLUMN caja_mora_monto,
+DROP COLUMN caja_transaccion_monto;
+ALTER TABLE Tbl_caja_cliente
+ADD COLUMN Fk_id_factura INT NOT NULL;
