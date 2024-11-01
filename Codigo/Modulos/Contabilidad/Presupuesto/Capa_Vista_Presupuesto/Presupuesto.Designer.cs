@@ -111,7 +111,7 @@ namespace Capa_Vista_Presupuesto
             // 
             this.Txtbx_diciembre.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Txtbx_diciembre.Location = new System.Drawing.Point(12, 710);
-            this.Txtbx_diciembre.MaxLength = 30;
+            this.Txtbx_diciembre.MaxLength = 19;
             this.Txtbx_diciembre.Name = "Txtbx_diciembre";
             this.Txtbx_diciembre.Size = new System.Drawing.Size(109, 26);
             this.Txtbx_diciembre.TabIndex = 14;
@@ -133,7 +133,7 @@ namespace Capa_Vista_Presupuesto
             // 
             this.Txtbx_noviembre.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Txtbx_noviembre.Location = new System.Drawing.Point(12, 664);
-            this.Txtbx_noviembre.MaxLength = 30;
+            this.Txtbx_noviembre.MaxLength = 19;
             this.Txtbx_noviembre.Name = "Txtbx_noviembre";
             this.Txtbx_noviembre.Size = new System.Drawing.Size(109, 26);
             this.Txtbx_noviembre.TabIndex = 13;
@@ -155,7 +155,7 @@ namespace Capa_Vista_Presupuesto
             // 
             this.Txtbx_octubre.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Txtbx_octubre.Location = new System.Drawing.Point(12, 617);
-            this.Txtbx_octubre.MaxLength = 30;
+            this.Txtbx_octubre.MaxLength = 19;
             this.Txtbx_octubre.Name = "Txtbx_octubre";
             this.Txtbx_octubre.Size = new System.Drawing.Size(109, 26);
             this.Txtbx_octubre.TabIndex = 12;
@@ -177,7 +177,7 @@ namespace Capa_Vista_Presupuesto
             // 
             this.Txtbx_septiembre.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Txtbx_septiembre.Location = new System.Drawing.Point(12, 573);
-            this.Txtbx_septiembre.MaxLength = 30;
+            this.Txtbx_septiembre.MaxLength = 19;
             this.Txtbx_septiembre.Name = "Txtbx_septiembre";
             this.Txtbx_septiembre.Size = new System.Drawing.Size(109, 26);
             this.Txtbx_septiembre.TabIndex = 11;
@@ -200,7 +200,7 @@ namespace Capa_Vista_Presupuesto
             this.Txtbx_anual.BackColor = System.Drawing.Color.LightBlue;
             this.Txtbx_anual.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Txtbx_anual.Location = new System.Drawing.Point(12, 761);
-            this.Txtbx_anual.MaxLength = 30;
+            this.Txtbx_anual.MaxLength = 19;
             this.Txtbx_anual.Name = "Txtbx_anual";
             this.Txtbx_anual.Size = new System.Drawing.Size(109, 26);
             this.Txtbx_anual.TabIndex = 15;
@@ -211,7 +211,7 @@ namespace Capa_Vista_Presupuesto
             // 
             this.Txtbx_julio.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Txtbx_julio.Location = new System.Drawing.Point(12, 485);
-            this.Txtbx_julio.MaxLength = 30;
+            this.Txtbx_julio.MaxLength = 19;
             this.Txtbx_julio.Name = "Txtbx_julio";
             this.Txtbx_julio.Size = new System.Drawing.Size(109, 26);
             this.Txtbx_julio.TabIndex = 9;
@@ -233,7 +233,7 @@ namespace Capa_Vista_Presupuesto
             // 
             this.Txtbx_junio.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Txtbx_junio.Location = new System.Drawing.Point(12, 436);
-            this.Txtbx_junio.MaxLength = 30;
+            this.Txtbx_junio.MaxLength = 19;
             this.Txtbx_junio.Name = "Txtbx_junio";
             this.Txtbx_junio.Size = new System.Drawing.Size(109, 26);
             this.Txtbx_junio.TabIndex = 8;
@@ -255,7 +255,7 @@ namespace Capa_Vista_Presupuesto
             // 
             this.Txtbx_mayo.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Txtbx_mayo.Location = new System.Drawing.Point(12, 391);
-            this.Txtbx_mayo.MaxLength = 30;
+            this.Txtbx_mayo.MaxLength = 19;
             this.Txtbx_mayo.Name = "Txtbx_mayo";
             this.Txtbx_mayo.Size = new System.Drawing.Size(109, 26);
             this.Txtbx_mayo.TabIndex = 7;
@@ -277,7 +277,7 @@ namespace Capa_Vista_Presupuesto
             // 
             this.Txtbx_abril.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Txtbx_abril.Location = new System.Drawing.Point(12, 346);
-            this.Txtbx_abril.MaxLength = 30;
+            this.Txtbx_abril.MaxLength = 19;
             this.Txtbx_abril.Name = "Txtbx_abril";
             this.Txtbx_abril.Size = new System.Drawing.Size(109, 26);
             this.Txtbx_abril.TabIndex = 6;
@@ -310,7 +310,7 @@ namespace Capa_Vista_Presupuesto
             // 
             this.Txtbx_febrero.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Txtbx_febrero.Location = new System.Drawing.Point(12, 253);
-            this.Txtbx_febrero.MaxLength = 30;
+            this.Txtbx_febrero.MaxLength = 19;
             this.Txtbx_febrero.Name = "Txtbx_febrero";
             this.Txtbx_febrero.Size = new System.Drawing.Size(109, 26);
             this.Txtbx_febrero.TabIndex = 4;
@@ -332,7 +332,7 @@ namespace Capa_Vista_Presupuesto
             // 
             this.Txtbx_enero.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Txtbx_enero.Location = new System.Drawing.Point(12, 206);
-            this.Txtbx_enero.MaxLength = 30;
+            this.Txtbx_enero.MaxLength = 19;
             this.Txtbx_enero.Name = "Txtbx_enero";
             this.Txtbx_enero.Size = new System.Drawing.Size(107, 26);
             this.Txtbx_enero.TabIndex = 3;
@@ -365,7 +365,7 @@ namespace Capa_Vista_Presupuesto
             // 
             this.Txtbx_Descripcion.Enabled = false;
             this.Txtbx_Descripcion.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txtbx_Descripcion.Location = new System.Drawing.Point(12, 159);
+            this.Txtbx_Descripcion.Location = new System.Drawing.Point(12, 158);
             this.Txtbx_Descripcion.Name = "Txtbx_Descripcion";
             this.Txtbx_Descripcion.Size = new System.Drawing.Size(107, 26);
             this.Txtbx_Descripcion.TabIndex = 2;
@@ -517,7 +517,7 @@ namespace Capa_Vista_Presupuesto
             // 
             this.Txtbx_agosto.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Txtbx_agosto.Location = new System.Drawing.Point(12, 529);
-            this.Txtbx_agosto.MaxLength = 30;
+            this.Txtbx_agosto.MaxLength = 19;
             this.Txtbx_agosto.Name = "Txtbx_agosto";
             this.Txtbx_agosto.Size = new System.Drawing.Size(109, 26);
             this.Txtbx_agosto.TabIndex = 10;
@@ -540,7 +540,7 @@ namespace Capa_Vista_Presupuesto
             this.Txt_cuenta.AutoSize = true;
             this.Txt_cuenta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(152)))), ((int)(((byte)(151)))));
             this.Txt_cuenta.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txt_cuenta.Location = new System.Drawing.Point(10, 97);
+            this.Txt_cuenta.Location = new System.Drawing.Point(9, 94);
             this.Txt_cuenta.Name = "Txt_cuenta";
             this.Txt_cuenta.Size = new System.Drawing.Size(57, 19);
             this.Txt_cuenta.TabIndex = 93;
@@ -550,7 +550,7 @@ namespace Capa_Vista_Presupuesto
             // 
             this.Txtbx_Cuenta.Enabled = false;
             this.Txtbx_Cuenta.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txtbx_Cuenta.Location = new System.Drawing.Point(12, 115);
+            this.Txtbx_Cuenta.Location = new System.Drawing.Point(12, 112);
             this.Txtbx_Cuenta.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Txtbx_Cuenta.Name = "Txtbx_Cuenta";
             this.Txtbx_Cuenta.Size = new System.Drawing.Size(109, 26);
@@ -560,7 +560,7 @@ namespace Capa_Vista_Presupuesto
             // 
             this.Txtbx_marzo.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Txtbx_marzo.Location = new System.Drawing.Point(12, 298);
-            this.Txtbx_marzo.MaxLength = 30;
+            this.Txtbx_marzo.MaxLength = 19;
             this.Txtbx_marzo.Name = "Txtbx_marzo";
             this.Txtbx_marzo.Size = new System.Drawing.Size(109, 26);
             this.Txtbx_marzo.TabIndex = 5;
@@ -574,7 +574,7 @@ namespace Capa_Vista_Presupuesto
             this.Btn_eliminar.Location = new System.Drawing.Point(249, 48);
             this.Btn_eliminar.Name = "Btn_eliminar";
             this.Btn_eliminar.Size = new System.Drawing.Size(40, 40);
-            this.Btn_eliminar.TabIndex = 17;
+            this.Btn_eliminar.TabIndex = 18;
             this.Btn_eliminar.UseVisualStyleBackColor = true;
             this.Btn_eliminar.Click += new System.EventHandler(this.Btn_eliminar_Click);
             // 
@@ -585,7 +585,7 @@ namespace Capa_Vista_Presupuesto
             this.Btn_modificar.Location = new System.Drawing.Point(204, 48);
             this.Btn_modificar.Name = "Btn_modificar";
             this.Btn_modificar.Size = new System.Drawing.Size(40, 40);
-            this.Btn_modificar.TabIndex = 16;
+            this.Btn_modificar.TabIndex = 17;
             this.Btn_modificar.UseVisualStyleBackColor = true;
             this.Btn_modificar.Click += new System.EventHandler(this.Btn_modificar_Click);
             // 
@@ -597,7 +597,7 @@ namespace Capa_Vista_Presupuesto
             this.Btn_Informe.Location = new System.Drawing.Point(294, 48);
             this.Btn_Informe.Name = "Btn_Informe";
             this.Btn_Informe.Size = new System.Drawing.Size(40, 40);
-            this.Btn_Informe.TabIndex = 18;
+            this.Btn_Informe.TabIndex = 19;
             this.Btn_Informe.UseVisualStyleBackColor = true;
             this.Btn_Informe.Click += new System.EventHandler(this.Btn_Informe_Click);
             // 
@@ -608,7 +608,7 @@ namespace Capa_Vista_Presupuesto
             this.Btn_incremento.Location = new System.Drawing.Point(339, 48);
             this.Btn_incremento.Name = "Btn_incremento";
             this.Btn_incremento.Size = new System.Drawing.Size(40, 40);
-            this.Btn_incremento.TabIndex = 19;
+            this.Btn_incremento.TabIndex = 20;
             this.Btn_incremento.UseVisualStyleBackColor = true;
             this.Btn_incremento.Click += new System.EventHandler(this.Btn_incremento_Click);
             // 
@@ -630,7 +630,7 @@ namespace Capa_Vista_Presupuesto
             this.Btn_Salir.Location = new System.Drawing.Point(1257, 50);
             this.Btn_Salir.Name = "Btn_Salir";
             this.Btn_Salir.Size = new System.Drawing.Size(40, 40);
-            this.Btn_Salir.TabIndex = 22;
+            this.Btn_Salir.TabIndex = 23;
             this.Btn_Salir.UseVisualStyleBackColor = false;
             this.Btn_Salir.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -642,7 +642,7 @@ namespace Capa_Vista_Presupuesto
             this.Btn_ayuda.Location = new System.Drawing.Point(1212, 50);
             this.Btn_ayuda.Name = "Btn_ayuda";
             this.Btn_ayuda.Size = new System.Drawing.Size(40, 40);
-            this.Btn_ayuda.TabIndex = 21;
+            this.Btn_ayuda.TabIndex = 22;
             this.Btn_ayuda.UseVisualStyleBackColor = false;
             this.Btn_ayuda.Click += new System.EventHandler(this.Btn_ayuda_Click);
             // 
@@ -652,7 +652,7 @@ namespace Capa_Vista_Presupuesto
             this.Btn_opciones.Location = new System.Drawing.Point(146, 48);
             this.Btn_opciones.Name = "Btn_opciones";
             this.Btn_opciones.Size = new System.Drawing.Size(40, 40);
-            this.Btn_opciones.TabIndex = 96;
+            this.Btn_opciones.TabIndex = 16;
             this.Btn_opciones.UseVisualStyleBackColor = true;
             this.Btn_opciones.Click += new System.EventHandler(this.button1_Click_1);
             // 
@@ -664,7 +664,7 @@ namespace Capa_Vista_Presupuesto
             this.Btn_ajustar.Location = new System.Drawing.Point(384, 48);
             this.Btn_ajustar.Name = "Btn_ajustar";
             this.Btn_ajustar.Size = new System.Drawing.Size(40, 40);
-            this.Btn_ajustar.TabIndex = 20;
+            this.Btn_ajustar.TabIndex = 21;
             this.Btn_ajustar.UseVisualStyleBackColor = true;
             this.Btn_ajustar.Click += new System.EventHandler(this.button2_Click);
             // 

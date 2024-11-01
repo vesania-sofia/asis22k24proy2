@@ -165,7 +165,7 @@ namespace Capa_Vista_Presupuesto
             // Chb_plantilla
             // 
             this.Chb_plantilla.AutoSize = true;
-            this.Chb_plantilla.Location = new System.Drawing.Point(220, 54);
+            this.Chb_plantilla.Location = new System.Drawing.Point(220, 50);
             this.Chb_plantilla.Name = "Chb_plantilla";
             this.Chb_plantilla.Size = new System.Drawing.Size(92, 23);
             this.Chb_plantilla.TabIndex = 3;
@@ -278,7 +278,7 @@ namespace Capa_Vista_Presupuesto
             this.Btn_ayuda.Location = new System.Drawing.Point(378, 4);
             this.Btn_ayuda.Name = "Btn_ayuda";
             this.Btn_ayuda.Size = new System.Drawing.Size(39, 36);
-            this.Btn_ayuda.TabIndex = 22;
+            this.Btn_ayuda.TabIndex = 12;
             this.Btn_ayuda.UseVisualStyleBackColor = false;
             this.Btn_ayuda.Click += new System.EventHandler(this.Btn_ayuda_Click);
             // 

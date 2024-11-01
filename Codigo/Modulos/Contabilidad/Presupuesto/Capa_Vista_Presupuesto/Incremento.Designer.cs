@@ -47,7 +47,7 @@ namespace Capa_Vista_Presupuesto
             this.Btn_Aceptar.Location = new System.Drawing.Point(41, 253);
             this.Btn_Aceptar.Name = "Btn_Aceptar";
             this.Btn_Aceptar.Size = new System.Drawing.Size(82, 28);
-            this.Btn_Aceptar.TabIndex = 0;
+            this.Btn_Aceptar.TabIndex = 6;
             this.Btn_Aceptar.Text = "Aceptar";
             this.Btn_Aceptar.UseVisualStyleBackColor = true;
             this.Btn_Aceptar.Click += new System.EventHandler(this.button1_Click);
@@ -58,7 +58,7 @@ namespace Capa_Vista_Presupuesto
             this.Btn_cancelar.Location = new System.Drawing.Point(163, 253);
             this.Btn_cancelar.Name = "Btn_cancelar";
             this.Btn_cancelar.Size = new System.Drawing.Size(82, 28);
-            this.Btn_cancelar.TabIndex = 1;
+            this.Btn_cancelar.TabIndex = 7;
             this.Btn_cancelar.Text = "Cancelar";
             this.Btn_cancelar.UseVisualStyleBackColor = true;
             this.Btn_cancelar.Click += new System.EventHandler(this.button2_Click);
@@ -70,7 +70,7 @@ namespace Capa_Vista_Presupuesto
             this.Txtbx_incremento.MaxLength = 3;
             this.Txtbx_incremento.Name = "Txtbx_incremento";
             this.Txtbx_incremento.Size = new System.Drawing.Size(131, 26);
-            this.Txtbx_incremento.TabIndex = 2;
+            this.Txtbx_incremento.TabIndex = 1;
             this.Txtbx_incremento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             // 
             // Txt_texto
@@ -90,7 +90,7 @@ namespace Capa_Vista_Presupuesto
             this.Chb_todos.Location = new System.Drawing.Point(90, 132);
             this.Chb_todos.Name = "Chb_todos";
             this.Chb_todos.Size = new System.Drawing.Size(131, 23);
-            this.Chb_todos.TabIndex = 4;
+            this.Chb_todos.TabIndex = 3;
             this.Chb_todos.Text = "Todos los Meses";
             this.Chb_todos.UseVisualStyleBackColor = true;
             this.Chb_todos.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
@@ -126,7 +126,7 @@ namespace Capa_Vista_Presupuesto
             this.Chb_anual.Location = new System.Drawing.Point(90, 109);
             this.Chb_anual.Name = "Chb_anual";
             this.Chb_anual.Size = new System.Drawing.Size(63, 23);
-            this.Chb_anual.TabIndex = 6;
+            this.Chb_anual.TabIndex = 2;
             this.Chb_anual.Text = "Anual";
             this.Chb_anual.UseVisualStyleBackColor = true;
             this.Chb_anual.CheckedChanged += new System.EventHandler(this.Chb_anual_CheckedChanged);
@@ -138,7 +138,7 @@ namespace Capa_Vista_Presupuesto
             this.Chb_mes.Location = new System.Drawing.Point(90, 156);
             this.Chb_mes.Name = "Chb_mes";
             this.Chb_mes.Size = new System.Drawing.Size(55, 23);
-            this.Chb_mes.TabIndex = 7;
+            this.Chb_mes.TabIndex = 4;
             this.Chb_mes.Text = "Mes";
             this.Chb_mes.UseVisualStyleBackColor = true;
             this.Chb_mes.CheckedChanged += new System.EventHandler(this.Chb_mes_CheckedChanged);
@@ -150,7 +150,7 @@ namespace Capa_Vista_Presupuesto
             this.Btn_ayuda.Location = new System.Drawing.Point(287, 12);
             this.Btn_ayuda.Name = "Btn_ayuda";
             this.Btn_ayuda.Size = new System.Drawing.Size(39, 36);
-            this.Btn_ayuda.TabIndex = 22;
+            this.Btn_ayuda.TabIndex = 8;
             this.Btn_ayuda.UseVisualStyleBackColor = false;
             this.Btn_ayuda.Click += new System.EventHandler(this.Btn_ayuda_Click);
             // 
