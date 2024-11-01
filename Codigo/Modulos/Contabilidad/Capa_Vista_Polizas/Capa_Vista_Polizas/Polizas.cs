@@ -94,7 +94,7 @@ namespace Capa_Vista_Polizas
             cbCuenta.AutoCompleteSource = AutoCompleteSource.CustomSource;
         }
 
-        // ---------------------------------- COMBO BOX TIPO CUENTA ----------------------------------
+        // ---------------------------------- COMBO BOX TIPO POLIZA ----------------------------------
 
         public void llenarseTP(string tabla, string campo1, string campo2)
         {
