@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Capa_Vista_RRHH;
+using Capa_Vista_Receta;
 
 namespace Capa_Vista_Produccion
 {
@@ -73,8 +75,11 @@ namespace Capa_Vista_Produccion
         // Botón de empleados (enlace a RRHH)
         private void btnEmpleados_Click(object sender, EventArgs e)
         {
-            Frm_Enlace_RRHH RRHH = new Frm_Enlace_RRHH();
-            RRHH.Show();
+            //Capa_Vista_RRHH RRHH = new Capa_Vista_RRHH();
+            // RRHH.Show();
+            Frm_Enlace_RRHH enlace = new Frm_Enlace_RRHH();
+            enlace.Show();
+           
         }
 
         // Botón de cierre
@@ -161,7 +166,7 @@ namespace Capa_Vista_Produccion
 
         private void Btn_Recetas_Click_1(object sender, EventArgs e)
         {
-            Frm_Receta receta = new Frm_Receta();
+            Frm_Recetas receta = new Frm_Recetas();
             receta.Show();
         }
 

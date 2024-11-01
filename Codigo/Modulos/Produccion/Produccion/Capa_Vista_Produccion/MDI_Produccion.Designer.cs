@@ -421,7 +421,7 @@ namespace Capa_Vista_Produccion
             this.btnEmpleados.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
             this.btnEmpleados.Size = new System.Drawing.Size(181, 34);
             this.btnEmpleados.TabIndex = 3;
-            this.btnEmpleados.Text = "Empleados";
+            this.btnEmpleados.Text = "Mano de Obra";
             this.btnEmpleados.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnEmpleados.UseVisualStyleBackColor = true;
             this.btnEmpleados.Click += new System.EventHandler(this.btnEmpleados_Click);

@@ -38,6 +38,12 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\Componentes\Navegador\Capa_Vista_Navegador\bin\Debug\Capa_Vista_Navegador.dll</HintPath>
     </Reference>
+    <Reference Include="Capa_Vista_Receta">
+      <HintPath>..\Componente Receta\Componente Receta\Capa_Vista_Receta\bin\Debug\Capa_Vista_Receta.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_RRHH">
+      <HintPath>..\Componente RRHH\Componente RRHH\Capa_Vista_RRHH\bin\Debug\Capa_Vista_RRHH.dll</HintPath>
+    </Reference>
     <Reference Include="Interfac_V3">
       <HintPath>..\..\..\Menus\ModernGUI_V3\bin\Debug\Interfac_V3.exe</HintPath>
     </Reference>
@@ -71,12 +77,6 @@
     <Compile Include="Frm_Enlace_Contabilidad_Cierre.Designer.cs">
       <DependentUpon>Frm_Enlace_Contabilidad_Cierre.cs</DependentUpon>
     </Compile>
-    <Compile Include="Frm_Enlace_RRHH.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Frm_Enlace_RRHH.Designer.cs">
-      <DependentUpon>Frm_Enlace_RRHH.cs</DependentUpon>
-    </Compile>
     <Compile Include="Frm_Implosion_Explosion_Materiales.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -106,12 +106,6 @@
     </Compile>
     <Compile Include="Frm_Ordenes_De_Produccion.Designer.cs">
       <DependentUpon>Frm_Ordenes_De_Produccion.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Frm_Receta.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Frm_Receta.Designer.cs">
-      <DependentUpon>Frm_Receta.cs</DependentUpon>
     </Compile>
     <Compile Include="Frm_Series.cs">
       <SubType>Form</SubType>
@@ -148,9 +142,6 @@
     <EmbeddedResource Include="Frm_Enlace_Contabilidad_Cierre.resx">
       <DependentUpon>Frm_Enlace_Contabilidad_Cierre.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Frm_Enlace_RRHH.resx">
-      <DependentUpon>Frm_Enlace_RRHH.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Frm_Implosion_Explosion_Materiales.resx">
       <DependentUpon>Frm_Implosion_Explosion_Materiales.cs</DependentUpon>
     </EmbeddedResource>
@@ -165,9 +156,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_Ordenes_De_Produccion.resx">
       <DependentUpon>Frm_Ordenes_De_Produccion.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Frm_Receta.resx">
-      <DependentUpon>Frm_Receta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_Series.resx">
       <DependentUpon>Frm_Series.cs</DependentUpon>

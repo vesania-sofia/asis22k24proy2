@@ -17,15 +17,15 @@ namespace Capa_Controlador_Produccion
             return sentencia.ObtenerEmpleadosActivos();
         }
 
-       /* public decimal ObtenerSalario(int empleadoID)
+        public List<decimal> ObtenerSalarios()
         {
-            return sentencia.ObtenerSalarioEmpleado(empleadoID);
-        }*/
+            return sentencia.ObtenerSalarios();
+        }
 
-        /*public int ObtenerHorasExtras(int empleadoID)
+        public List<decimal> ObtenerHorasExtras()
         {
-            return sentencia.ObtenerHorasExtrasEmpleado(empleadoID);
-        }*/
+            return sentencia.ObtenerHorasExtras();
+        }
 
         public void GuardarRegistro(int empleadoID, decimal salario, int dias, decimal totalDias, decimal horas, decimal totalHoras, int horasExtra, decimal totalHorasExtras, decimal totalManoObra)
         {
