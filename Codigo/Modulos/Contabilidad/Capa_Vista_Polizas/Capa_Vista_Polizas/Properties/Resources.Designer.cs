@@ -263,6 +263,26 @@ namespace Capa_Vista_Polizas.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap lista_de_verificacion1 {
+            get {
+                object obj = ResourceManager.GetObject("lista-de-verificacion1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap lista_de_verificacion2 {
+            get {
+                object obj = ResourceManager.GetObject("lista-de-verificacion2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap preguntas__1_ {
             get {
                 object obj = ResourceManager.GetObject("preguntas (1)", resourceCulture);

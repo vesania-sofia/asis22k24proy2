@@ -31,6 +31,7 @@ namespace Capa_Vista_Polizas
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label Lbl_Cuenta;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPolizas));
             this.cd_form = new System.Windows.Forms.ColorDialog();
             this.gp_encabezado = new System.Windows.Forms.GroupBox();
             this.Txt_concepto = new System.Windows.Forms.TextBox();
@@ -208,10 +209,10 @@ namespace Capa_Vista_Polizas
             // Btn_aceptar
             // 
             this.Btn_aceptar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(237)))), ((int)(((byte)(235)))));
-            this.Btn_aceptar.Image = global::Capa_Vista_Polizas.Properties.Resources.lista_de_verificacion;
-            this.Btn_aceptar.Location = new System.Drawing.Point(865, 15);
+            this.Btn_aceptar.Image = ((System.Drawing.Image)(resources.GetObject("Btn_aceptar.Image")));
+            this.Btn_aceptar.Location = new System.Drawing.Point(880, 17);
             this.Btn_aceptar.Name = "Btn_aceptar";
-            this.Btn_aceptar.Size = new System.Drawing.Size(109, 93);
+            this.Btn_aceptar.Size = new System.Drawing.Size(94, 91);
             this.Btn_aceptar.TabIndex = 12;
             this.Btn_aceptar.UseVisualStyleBackColor = false;
             this.Btn_aceptar.Click += new System.EventHandler(this.btn_aceptar_Click);
@@ -258,8 +259,8 @@ namespace Capa_Vista_Polizas
             // Btn_quitar
             // 
             this.Btn_quitar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(237)))), ((int)(((byte)(235)))));
-            this.Btn_quitar.Image = global::Capa_Vista_Polizas.Properties.Resources.boton_menos3;
-            this.Btn_quitar.Location = new System.Drawing.Point(926, 31);
+            this.Btn_quitar.Image = ((System.Drawing.Image)(resources.GetObject("Btn_quitar.Image")));
+            this.Btn_quitar.Location = new System.Drawing.Point(923, 29);
             this.Btn_quitar.Name = "Btn_quitar";
             this.Btn_quitar.Size = new System.Drawing.Size(107, 97);
             this.Btn_quitar.TabIndex = 14;
@@ -356,7 +357,7 @@ namespace Capa_Vista_Polizas
             // 
             // Btn_ayuda
             // 
-            this.Btn_ayuda.Image = global::Capa_Vista_Polizas.Properties.Resources.preguntas__1_;
+            this.Btn_ayuda.Image = ((System.Drawing.Image)(resources.GetObject("Btn_ayuda.Image")));
             this.Btn_ayuda.Location = new System.Drawing.Point(917, 12);
             this.Btn_ayuda.Name = "Btn_ayuda";
             this.Btn_ayuda.Size = new System.Drawing.Size(70, 62);
@@ -366,7 +367,7 @@ namespace Capa_Vista_Polizas
             // 
             // Btn_salir
             // 
-            this.Btn_salir.Image = global::Capa_Vista_Polizas.Properties.Resources.cerrar_sesion2;
+            this.Btn_salir.Image = ((System.Drawing.Image)(resources.GetObject("Btn_salir.Image")));
             this.Btn_salir.Location = new System.Drawing.Point(993, 12);
             this.Btn_salir.Name = "Btn_salir";
             this.Btn_salir.Size = new System.Drawing.Size(70, 62);
@@ -376,7 +377,7 @@ namespace Capa_Vista_Polizas
             // 
             // Btn_Cancelar
             // 
-            this.Btn_Cancelar.Image = global::Capa_Vista_Polizas.Properties.Resources.cancelar1;
+            this.Btn_Cancelar.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Cancelar.Image")));
             this.Btn_Cancelar.Location = new System.Drawing.Point(215, 14);
             this.Btn_Cancelar.Name = "Btn_Cancelar";
             this.Btn_Cancelar.Size = new System.Drawing.Size(70, 62);
@@ -387,7 +388,7 @@ namespace Capa_Vista_Polizas
             // Btn_registar_poliza
             // 
             this.Btn_registar_poliza.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(237)))), ((int)(((byte)(235)))));
-            this.Btn_registar_poliza.Image = global::Capa_Vista_Polizas.Properties.Resources.ahorrar;
+            this.Btn_registar_poliza.Image = ((System.Drawing.Image)(resources.GetObject("Btn_registar_poliza.Image")));
             this.Btn_registar_poliza.Location = new System.Drawing.Point(125, 12);
             this.Btn_registar_poliza.Name = "Btn_registar_poliza";
             this.Btn_registar_poliza.Size = new System.Drawing.Size(70, 64);
@@ -397,7 +398,7 @@ namespace Capa_Vista_Polizas
             // 
             // Btn_nueva_poliza
             // 
-            this.Btn_nueva_poliza.Image = global::Capa_Vista_Polizas.Properties.Resources.agregar_archivo2;
+            this.Btn_nueva_poliza.Image = ((System.Drawing.Image)(resources.GetObject("Btn_nueva_poliza.Image")));
             this.Btn_nueva_poliza.Location = new System.Drawing.Point(38, 12);
             this.Btn_nueva_poliza.Name = "Btn_nueva_poliza";
             this.Btn_nueva_poliza.Size = new System.Drawing.Size(70, 64);

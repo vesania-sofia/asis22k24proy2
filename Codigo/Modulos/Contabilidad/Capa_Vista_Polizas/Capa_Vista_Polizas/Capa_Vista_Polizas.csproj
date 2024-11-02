@@ -147,5 +147,11 @@
   <ItemGroup>
     <None Include="Resources\cerrar-sesion2.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lista-de-verificacion1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lista-de-verificacion2.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
