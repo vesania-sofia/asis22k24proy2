@@ -46,7 +46,6 @@
     <Compile Include="Sentencia_Cierre.cs" />
     <Compile Include="Sentencia_Polizas_Prod.cs" />
     <Compile Include="Sentencia_Produccion.cs" />
-    <Compile Include="Sentencia_RRHH.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

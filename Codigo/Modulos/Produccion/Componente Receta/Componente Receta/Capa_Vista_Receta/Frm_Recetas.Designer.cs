@@ -29,14 +29,15 @@ namespace Capa_Vista_Receta
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_Recetas));
+            this.lbl_id_receta = new System.Windows.Forms.Label();
+            this.lbl_producto = new System.Windows.Forms.Label();
+            this.lbl_descripcion = new System.Windows.Forms.Label();
+            this.lbl_cantidad = new System.Windows.Forms.Label();
+            this.lbl_area = new System.Windows.Forms.Label();
+            this.lbl_cama = new System.Windows.Forms.Label();
+            this.lbl_dias = new System.Windows.Forms.Label();
+            this.lbl_horas = new System.Windows.Forms.Label();
             this.txt_id_recetas = new System.Windows.Forms.TextBox();
             this.txt_Descripcion = new System.Windows.Forms.TextBox();
             this.txt_Cantidad = new System.Windows.Forms.TextBox();
@@ -46,12 +47,12 @@ namespace Capa_Vista_Receta
             this.txt_Horas = new System.Windows.Forms.TextBox();
             this.dgv_Recetas = new System.Windows.Forms.DataGridView();
             this.cbo_Producto = new System.Windows.Forms.ComboBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
+            this.lbl_titulo_recetas = new System.Windows.Forms.Label();
+            this.lbl_id_detalle = new System.Windows.Forms.Label();
+            this.lbl_receta = new System.Windows.Forms.Label();
+            this.lbl_productos = new System.Windows.Forms.Label();
+            this.lbl_cantidades = new System.Windows.Forms.Label();
+            this.lbl_Detalles = new System.Windows.Forms.Label();
             this.txt_id_detalle = new System.Windows.Forms.TextBox();
             this.txt_Cantidad_Detalle = new System.Windows.Forms.TextBox();
             this.dgv_Recetas_Detalles = new System.Windows.Forms.DataGridView();
@@ -73,85 +74,85 @@ namespace Capa_Vista_Receta
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Recetas_Detalles)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
+            // lbl_id_receta
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(97, 174);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(89, 22);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "ID Receta";
+            this.lbl_id_receta.AutoSize = true;
+            this.lbl_id_receta.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_id_receta.Location = new System.Drawing.Point(97, 174);
+            this.lbl_id_receta.Name = "lbl_id_receta";
+            this.lbl_id_receta.Size = new System.Drawing.Size(89, 22);
+            this.lbl_id_receta.TabIndex = 0;
+            this.lbl_id_receta.Text = "ID Receta";
             // 
-            // label2
+            // lbl_producto
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(97, 218);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(81, 22);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Producto";
+            this.lbl_producto.AutoSize = true;
+            this.lbl_producto.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_producto.Location = new System.Drawing.Point(97, 218);
+            this.lbl_producto.Name = "lbl_producto";
+            this.lbl_producto.Size = new System.Drawing.Size(81, 22);
+            this.lbl_producto.TabIndex = 1;
+            this.lbl_producto.Text = "Producto";
             // 
-            // label3
+            // lbl_descripcion
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(97, 264);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(107, 22);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Descripcion";
+            this.lbl_descripcion.AutoSize = true;
+            this.lbl_descripcion.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_descripcion.Location = new System.Drawing.Point(97, 264);
+            this.lbl_descripcion.Name = "lbl_descripcion";
+            this.lbl_descripcion.Size = new System.Drawing.Size(107, 22);
+            this.lbl_descripcion.TabIndex = 2;
+            this.lbl_descripcion.Text = "Descripcion";
             // 
-            // label4
+            // lbl_cantidad
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(97, 315);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(81, 22);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Cantidad";
+            this.lbl_cantidad.AutoSize = true;
+            this.lbl_cantidad.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_cantidad.Location = new System.Drawing.Point(97, 315);
+            this.lbl_cantidad.Name = "lbl_cantidad";
+            this.lbl_cantidad.Size = new System.Drawing.Size(81, 22);
+            this.lbl_cantidad.TabIndex = 3;
+            this.lbl_cantidad.Text = "Cantidad";
             // 
-            // label5
+            // lbl_area
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(394, 171);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(49, 22);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "Area";
+            this.lbl_area.AutoSize = true;
+            this.lbl_area.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_area.Location = new System.Drawing.Point(394, 171);
+            this.lbl_area.Name = "lbl_area";
+            this.lbl_area.Size = new System.Drawing.Size(49, 22);
+            this.lbl_area.TabIndex = 4;
+            this.lbl_area.Text = "Area";
             // 
-            // label6
+            // lbl_cama
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(394, 216);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(55, 22);
-            this.label6.TabIndex = 5;
-            this.label6.Text = "Cama";
+            this.lbl_cama.AutoSize = true;
+            this.lbl_cama.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_cama.Location = new System.Drawing.Point(394, 216);
+            this.lbl_cama.Name = "lbl_cama";
+            this.lbl_cama.Size = new System.Drawing.Size(55, 22);
+            this.lbl_cama.TabIndex = 5;
+            this.lbl_cama.Text = "Cama";
             // 
-            // label7
+            // lbl_dias
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(394, 264);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(47, 22);
-            this.label7.TabIndex = 6;
-            this.label7.Text = "Dias";
+            this.lbl_dias.AutoSize = true;
+            this.lbl_dias.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_dias.Location = new System.Drawing.Point(394, 264);
+            this.lbl_dias.Name = "lbl_dias";
+            this.lbl_dias.Size = new System.Drawing.Size(47, 22);
+            this.lbl_dias.TabIndex = 6;
+            this.lbl_dias.Text = "Dias";
             // 
-            // label8
+            // lbl_horas
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(394, 316);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(58, 22);
-            this.label8.TabIndex = 7;
-            this.label8.Text = "Horas";
+            this.lbl_horas.AutoSize = true;
+            this.lbl_horas.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_horas.Location = new System.Drawing.Point(394, 316);
+            this.lbl_horas.Name = "lbl_horas";
+            this.lbl_horas.Size = new System.Drawing.Size(58, 22);
+            this.lbl_horas.TabIndex = 7;
+            this.lbl_horas.Text = "Horas";
             // 
             // txt_id_recetas
             // 
@@ -229,65 +230,65 @@ namespace Capa_Vista_Receta
             this.cbo_Producto.Size = new System.Drawing.Size(133, 30);
             this.cbo_Producto.TabIndex = 17;
             // 
-            // label9
+            // lbl_titulo_recetas
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(294, 16);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(78, 23);
-            this.label9.TabIndex = 18;
-            this.label9.Text = "Recetas";
+            this.lbl_titulo_recetas.AutoSize = true;
+            this.lbl_titulo_recetas.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_titulo_recetas.Location = new System.Drawing.Point(294, 16);
+            this.lbl_titulo_recetas.Name = "lbl_titulo_recetas";
+            this.lbl_titulo_recetas.Size = new System.Drawing.Size(78, 23);
+            this.lbl_titulo_recetas.TabIndex = 18;
+            this.lbl_titulo_recetas.Text = "Recetas";
             // 
-            // label10
+            // lbl_id_detalle
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(826, 209);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(93, 22);
-            this.label10.TabIndex = 24;
-            this.label10.Text = "ID Detalle";
+            this.lbl_id_detalle.AutoSize = true;
+            this.lbl_id_detalle.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_id_detalle.Location = new System.Drawing.Point(826, 209);
+            this.lbl_id_detalle.Name = "lbl_id_detalle";
+            this.lbl_id_detalle.Size = new System.Drawing.Size(93, 22);
+            this.lbl_id_detalle.TabIndex = 24;
+            this.lbl_id_detalle.Text = "ID Detalle";
             // 
-            // label11
+            // lbl_receta
             // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(1089, 207);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(64, 22);
-            this.label11.TabIndex = 25;
-            this.label11.Text = "Receta";
+            this.lbl_receta.AutoSize = true;
+            this.lbl_receta.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_receta.Location = new System.Drawing.Point(1089, 207);
+            this.lbl_receta.Name = "lbl_receta";
+            this.lbl_receta.Size = new System.Drawing.Size(64, 22);
+            this.lbl_receta.TabIndex = 25;
+            this.lbl_receta.Text = "Receta";
             // 
-            // label12
+            // lbl_productos
             // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(826, 263);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(81, 22);
-            this.label12.TabIndex = 26;
-            this.label12.Text = "Producto";
+            this.lbl_productos.AutoSize = true;
+            this.lbl_productos.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_productos.Location = new System.Drawing.Point(826, 263);
+            this.lbl_productos.Name = "lbl_productos";
+            this.lbl_productos.Size = new System.Drawing.Size(81, 22);
+            this.lbl_productos.TabIndex = 26;
+            this.lbl_productos.Text = "Producto";
             // 
-            // label13
+            // lbl_cantidades
             // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(1085, 262);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(81, 22);
-            this.label13.TabIndex = 27;
-            this.label13.Text = "Cantidad";
+            this.lbl_cantidades.AutoSize = true;
+            this.lbl_cantidades.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_cantidades.Location = new System.Drawing.Point(1085, 262);
+            this.lbl_cantidades.Name = "lbl_cantidades";
+            this.lbl_cantidades.Size = new System.Drawing.Size(81, 22);
+            this.lbl_cantidades.TabIndex = 27;
+            this.lbl_cantidades.Text = "Cantidad";
             // 
-            // label14
+            // lbl_Detalles
             // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(1009, 16);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(177, 23);
-            this.label14.TabIndex = 28;
-            this.label14.Text = "Detalles de Recetas";
+            this.lbl_Detalles.AutoSize = true;
+            this.lbl_Detalles.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Detalles.Location = new System.Drawing.Point(1009, 16);
+            this.lbl_Detalles.Name = "lbl_Detalles";
+            this.lbl_Detalles.Size = new System.Drawing.Size(177, 23);
+            this.lbl_Detalles.TabIndex = 28;
+            this.lbl_Detalles.Text = "Detalles de Recetas";
             // 
             // txt_id_detalle
             // 
@@ -497,17 +498,17 @@ namespace Capa_Vista_Receta
             this.Controls.Add(this.dgv_Recetas_Detalles);
             this.Controls.Add(this.txt_Cantidad_Detalle);
             this.Controls.Add(this.txt_id_detalle);
-            this.Controls.Add(this.label14);
-            this.Controls.Add(this.label13);
-            this.Controls.Add(this.label12);
-            this.Controls.Add(this.label11);
-            this.Controls.Add(this.label10);
+            this.Controls.Add(this.lbl_Detalles);
+            this.Controls.Add(this.lbl_cantidades);
+            this.Controls.Add(this.lbl_productos);
+            this.Controls.Add(this.lbl_receta);
+            this.Controls.Add(this.lbl_id_detalle);
             this.Controls.Add(this.btn_Eliminar);
             this.Controls.Add(this.btn_Actualizar);
             this.Controls.Add(this.btn_Modificar);
             this.Controls.Add(this.btn_Guardar);
             this.Controls.Add(this.btn_Nuevo);
-            this.Controls.Add(this.label9);
+            this.Controls.Add(this.lbl_titulo_recetas);
             this.Controls.Add(this.cbo_Producto);
             this.Controls.Add(this.dgv_Recetas);
             this.Controls.Add(this.txt_Horas);
@@ -517,16 +518,17 @@ namespace Capa_Vista_Receta
             this.Controls.Add(this.txt_Cantidad);
             this.Controls.Add(this.txt_Descripcion);
             this.Controls.Add(this.txt_id_recetas);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lbl_horas);
+            this.Controls.Add(this.lbl_dias);
+            this.Controls.Add(this.lbl_cama);
+            this.Controls.Add(this.lbl_area);
+            this.Controls.Add(this.lbl_cantidad);
+            this.Controls.Add(this.lbl_descripcion);
+            this.Controls.Add(this.lbl_producto);
+            this.Controls.Add(this.lbl_id_receta);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Frm_Recetas";
-            this.Text = "Frm_Recetas";
+            this.Text = "Recetas";
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Recetas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Recetas_Detalles)).EndInit();
             this.ResumeLayout(false);
@@ -536,14 +538,14 @@ namespace Capa_Vista_Receta
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label lbl_id_receta;
+        private System.Windows.Forms.Label lbl_producto;
+        private System.Windows.Forms.Label lbl_descripcion;
+        private System.Windows.Forms.Label lbl_cantidad;
+        private System.Windows.Forms.Label lbl_area;
+        private System.Windows.Forms.Label lbl_cama;
+        private System.Windows.Forms.Label lbl_dias;
+        private System.Windows.Forms.Label lbl_horas;
         private System.Windows.Forms.TextBox txt_id_recetas;
         private System.Windows.Forms.TextBox txt_Descripcion;
         private System.Windows.Forms.TextBox txt_Cantidad;
@@ -553,17 +555,17 @@ namespace Capa_Vista_Receta
         private System.Windows.Forms.TextBox txt_Horas;
         private System.Windows.Forms.DataGridView dgv_Recetas;
         private System.Windows.Forms.ComboBox cbo_Producto;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label lbl_titulo_recetas;
         private System.Windows.Forms.Button btn_Nuevo;
         private System.Windows.Forms.Button btn_Guardar;
         private System.Windows.Forms.Button btn_Modificar;
         private System.Windows.Forms.Button btn_Actualizar;
         private System.Windows.Forms.Button btn_Eliminar;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label lbl_id_detalle;
+        private System.Windows.Forms.Label lbl_receta;
+        private System.Windows.Forms.Label lbl_productos;
+        private System.Windows.Forms.Label lbl_cantidades;
+        private System.Windows.Forms.Label lbl_Detalles;
         private System.Windows.Forms.TextBox txt_id_detalle;
         private System.Windows.Forms.TextBox txt_Cantidad_Detalle;
         private System.Windows.Forms.DataGridView dgv_Recetas_Detalles;

@@ -41,6 +41,41 @@ namespace Capa_Vista_Receta
             cbo_Producto.KeyPress += txt_Numeros_KeyPress;
             cbo_Producto_Detalle.KeyPress += txt_Numeros_KeyPress;
             cbo_Receta_Detalle.KeyPress += txt_Numeros_KeyPress;
+
+            // Agregar tooltips a los botones y campos
+            ToolTip toolTip = new ToolTip();
+
+            // Botones
+            toolTip.SetToolTip(btn_Guardar, "Guarda la receta actual en la base de datos.");
+            toolTip.SetToolTip(btn_Actualizar, "Actualiza la información de la receta seleccionada.");
+            toolTip.SetToolTip(btn_Modificar, "Permite editar la receta seleccionada.");
+            toolTip.SetToolTip(btn_Eliminar, "Elimina o deshabilita la receta seleccionada.");
+            toolTip.SetToolTip(btn_Nuevo, "Crea una nueva receta.");
+            toolTip.SetToolTip(btn_Guardar_Detalle, "Guarda los detalles de la receta.");
+            toolTip.SetToolTip(btn_Actualizar_Detalle, "Actualiza los detalles de la receta seleccionada.");
+            toolTip.SetToolTip(btn_Modificar_Detalle, "Permite modificar los detalles de la receta.");
+            toolTip.SetToolTip(btn_Nuevo_Detalle, "Crea un nuevo detalle de receta.");
+            toolTip.SetToolTip(btn_Salir, "Cierra el formulario de recetas.");
+            toolTip.SetToolTip(btn_Reportes, "Muestra el reporte.");
+
+            // Campos de texto y combos
+            toolTip.SetToolTip(txt_id_recetas, "ID único de la receta. Generado automáticamente.");
+            toolTip.SetToolTip(txt_Descripcion, "Descripción detallada de la receta.");
+            toolTip.SetToolTip(txt_Cantidad, "Cantidad necesaria de producto para la receta.");
+            toolTip.SetToolTip(txt_Area, "Área de preparación de la receta.");
+            toolTip.SetToolTip(txt_Cama, "Cama o lugar de almacenamiento.");
+            toolTip.SetToolTip(txt_Dias, "Días necesarios para la preparación.");
+            toolTip.SetToolTip(txt_Horas, "Horas requeridas para la preparación.");
+            toolTip.SetToolTip(cbo_Producto, "Selecciona el producto principal para la receta.");
+
+            // Detalles de receta
+            toolTip.SetToolTip(txt_id_detalle, "ID único para el detalle de la receta.");
+            toolTip.SetToolTip(txt_Cantidad_Detalle, "Cantidad de producto en este detalle de la receta.");
+            toolTip.SetToolTip(cbo_Producto_Detalle, "Selecciona un producto para agregar al detalle de la receta.");
+            toolTip.SetToolTip(cbo_Receta_Detalle, "Selecciona la receta a la que pertenece el detalle.");
+
+            // Ayuda
+            toolTip.SetToolTip(btn_Ayuda, "Muestra la ayuda del módulo de recetas.");
         }
         private void txt_Numeros_KeyPress(object sender, KeyPressEventArgs e)
         {

@@ -33,6 +33,5 @@ namespace Capa_Modelo_Produccion
         }
 
         // Métodos para Agregar, Modificar y Eliminar recetas y cualquier otra operación
-
     }
 }

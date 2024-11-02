@@ -35,6 +35,35 @@ namespace Capa_Vista_RRHH
             cbo_Horas_Extras.KeyPress += txt_Numeros_KeyPress;
             cbo_Salario.KeyPress += txt_Numeros_KeyPress;
 
+            // Agregar tooltips a los botones y campos
+            ToolTip toolTip = new ToolTip();
+
+            // Botones
+            toolTip.SetToolTip(btn_Guardar, "Guarda los datos de Recursos Humanos.");
+            toolTip.SetToolTip(btn_Calcular, "Calcula el total de días, horas y mano de obra.");
+            toolTip.SetToolTip(btn_Nuevo, "Inicia un nuevo registro.");
+            toolTip.SetToolTip(btn_Consultar, "Consulta los datos del registro seleccionado.");
+            toolTip.SetToolTip(btn_Ayuda, "Abre la ayuda del módulo de Recursos Humanos.");
+            toolTip.SetToolTip(btn_Salir, "Cierra el formulario de Recursos Humanos.");
+            toolTip.SetToolTip(btn_reportes, "Abre el módulo de reportes.");
+
+            // Campos de texto y combos
+            toolTip.SetToolTip(Txt_id_RRHH_prod, "ID único para el registro de RRHH (generado automáticamente).");
+            toolTip.SetToolTip(txt_Total_Dias, "Días trabajados por el empleado.");
+            toolTip.SetToolTip(txt_Total_Horas, "Horas trabajadas por el empleado.");
+            toolTip.SetToolTip(txt_Total_Horas_Extras, "Horas extras trabajadas.");
+            toolTip.SetToolTip(txt_Total_Mano_de_Obra, "Costo total de la mano de obra.");
+            toolTip.SetToolTip(cbo_Empleado, "Selecciona el empleado para el registro.");
+            toolTip.SetToolTip(cbo_Dias, "Número de días trabajados.");
+            toolTip.SetToolTip(cbo_Horas, "Horas trabajadas en el día.");
+            toolTip.SetToolTip(cbo_Horas_Extras, "Cantidad de horas extras trabajadas.");
+            toolTip.SetToolTip(cbo_Salario, "Salario del empleado seleccionado.");
+
+            // Mensaje para mostrar que solo se permiten números en ciertos campos
+            txt_Total_Dias.KeyPress += txt_Numeros_KeyPress;
+            txt_Total_Horas.KeyPress += txt_Numeros_KeyPress;
+            txt_Total_Horas_Extras.KeyPress += txt_Numeros_KeyPress;
+            txt_Total_Mano_de_Obra.KeyPress += txt_Numeros_KeyPress;
         }
 
         private void txt_Numeros_KeyPress(object sender, KeyPressEventArgs e)

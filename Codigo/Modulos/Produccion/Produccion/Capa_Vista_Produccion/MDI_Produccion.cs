@@ -7,8 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Capa_Vista_RRHH;
 using Capa_Vista_Receta;
+using Capa_Vista_RRHH;
 
 namespace Capa_Vista_Produccion
 {
@@ -92,30 +92,15 @@ namespace Capa_Vista_Produccion
         // Botón de empleados (enlace a RRHH)
         private void btnEmpleados_Click(object sender, EventArgs e)
         {
-<<<<<<< HEAD
-<<<<<<< HEAD
-            //Capa_Vista_RRHH RRHH = new Capa_Vista_RRHH();
-            // RRHH.Show();
-            Frm_Enlace_RRHH enlace = new Frm_Enlace_RRHH();
-            enlace.Show();
-           
-=======
-            /*
-              * Acá va la lógica para abrir el formulario de RRHH
-            */
->>>>>>> 4c98481d0c9bbba42ffdafdf4f3fdaa973500c16
-=======
-            /*
-              * Acá va la lógica para abrir el formulario de RRHH
-            */
->>>>>>> 4c98481d0c9bbba42ffdafdf4f3fdaa973500c16
+            Frm_Enlace_RRHH rrhh = new Frm_Enlace_RRHH();
+            rrhh.Show();
         }
 
         // Botón de cierre
         private void btnCierre_Click(object sender, EventArgs e)
         {
             /*
-              * Acá va la lógica para abrir el formulario de RCierres
+              * Acá va la lógica para abrir el formulario de Cierre
             */
         }
 
@@ -139,7 +124,7 @@ namespace Capa_Vista_Produccion
         private void btnPolizas_Click(object sender, EventArgs e)
         {
             /*
-              * Acá va la lógica para abrir el formulario de Pólizas
+              * Acá va la lógica para abrir el formulario de Polizas
             */
         }
 
@@ -202,20 +187,8 @@ namespace Capa_Vista_Produccion
 
         private void Btn_Recetas_Click_1(object sender, EventArgs e)
         {
-<<<<<<< HEAD
-<<<<<<< HEAD
-            Frm_Recetas receta = new Frm_Recetas();
-            receta.Show();
-=======
-            /*
-              * Acá va la lógica para abrir el formulario de Recetas
-            */
->>>>>>> 4c98481d0c9bbba42ffdafdf4f3fdaa973500c16
-=======
-            /*
-              * Acá va la lógica para abrir el formulario de Recetas
-            */
->>>>>>> 4c98481d0c9bbba42ffdafdf4f3fdaa973500c16
+            Frm_Recetas recetas = new Frm_Recetas();
+            recetas.Show();
         }
 
         // Restaurar el tamaño original de la ventana
