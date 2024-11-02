@@ -45,6 +45,12 @@ namespace Capa_Vista_EstadosFinancieros
             this.label4 = new System.Windows.Forms.Label();
             this.btn_VerFlujo = new System.Windows.Forms.Button();
             this.btn_Ver_Ayuda = new System.Windows.Forms.Button();
+            this.cb_BalanceMes = new System.Windows.Forms.ComboBox();
+            this.cb_BalanceAnio = new System.Windows.Forms.ComboBox();
+            this.cb_EResultadosAnio = new System.Windows.Forms.ComboBox();
+            this.cb_EResultadosMes = new System.Windows.Forms.ComboBox();
+            this.cb_FEfectivoAnio = new System.Windows.Forms.ComboBox();
+            this.cb_FEfectivoMes = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -52,6 +58,8 @@ namespace Capa_Vista_EstadosFinancieros
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cb_BalanceAnio);
+            this.groupBox1.Controls.Add(this.cb_BalanceMes);
             this.groupBox1.Controls.Add(this.btn_Ver_BalanceHistorico);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.label2);
@@ -65,7 +73,7 @@ namespace Capa_Vista_EstadosFinancieros
             // 
             // btn_Ver_BalanceHistorico
             // 
-            this.btn_Ver_BalanceHistorico.Location = new System.Drawing.Point(196, 61);
+            this.btn_Ver_BalanceHistorico.Location = new System.Drawing.Point(196, 85);
             this.btn_Ver_BalanceHistorico.Name = "btn_Ver_BalanceHistorico";
             this.btn_Ver_BalanceHistorico.Size = new System.Drawing.Size(75, 28);
             this.btn_Ver_BalanceHistorico.TabIndex = 6;
@@ -103,6 +111,8 @@ namespace Capa_Vista_EstadosFinancieros
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.cb_EResultadosAnio);
+            this.groupBox2.Controls.Add(this.cb_EResultadosMes);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.btn_Ver_EResultadosHistorico);
             this.groupBox2.Controls.Add(this.label3);
@@ -117,7 +127,7 @@ namespace Capa_Vista_EstadosFinancieros
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(173, 55);
+            this.label5.Location = new System.Drawing.Point(173, 41);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(132, 13);
             this.label5.TabIndex = 9;
@@ -125,7 +135,7 @@ namespace Capa_Vista_EstadosFinancieros
             // 
             // btn_Ver_EResultadosHistorico
             // 
-            this.btn_Ver_EResultadosHistorico.Location = new System.Drawing.Point(196, 83);
+            this.btn_Ver_EResultadosHistorico.Location = new System.Drawing.Point(196, 95);
             this.btn_Ver_EResultadosHistorico.Name = "btn_Ver_EResultadosHistorico";
             this.btn_Ver_EResultadosHistorico.Size = new System.Drawing.Size(75, 28);
             this.btn_Ver_EResultadosHistorico.TabIndex = 8;
@@ -136,7 +146,7 @@ namespace Capa_Vista_EstadosFinancieros
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(17, 55);
+            this.label3.Location = new System.Drawing.Point(17, 41);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(121, 13);
             this.label3.TabIndex = 7;
@@ -144,7 +154,7 @@ namespace Capa_Vista_EstadosFinancieros
             // 
             // btn_VerEstadoResultados
             // 
-            this.btn_VerEstadoResultados.Location = new System.Drawing.Point(33, 83);
+            this.btn_VerEstadoResultados.Location = new System.Drawing.Point(33, 70);
             this.btn_VerEstadoResultados.Name = "btn_VerEstadoResultados";
             this.btn_VerEstadoResultados.Size = new System.Drawing.Size(75, 28);
             this.btn_VerEstadoResultados.TabIndex = 1;
@@ -154,6 +164,8 @@ namespace Capa_Vista_EstadosFinancieros
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.cb_FEfectivoAnio);
+            this.groupBox3.Controls.Add(this.cb_FEfectivoMes);
             this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.Controls.Add(this.btn_Ver_FEfectivoHistorico);
             this.groupBox3.Controls.Add(this.label4);
@@ -168,7 +180,7 @@ namespace Capa_Vista_EstadosFinancieros
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(183, 63);
+            this.label6.Location = new System.Drawing.Point(183, 39);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(117, 13);
             this.label6.TabIndex = 10;
@@ -187,7 +199,7 @@ namespace Capa_Vista_EstadosFinancieros
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(17, 63);
+            this.label4.Location = new System.Drawing.Point(17, 47);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(106, 13);
             this.label4.TabIndex = 8;
@@ -195,7 +207,7 @@ namespace Capa_Vista_EstadosFinancieros
             // 
             // btn_VerFlujo
             // 
-            this.btn_VerFlujo.Location = new System.Drawing.Point(33, 92);
+            this.btn_VerFlujo.Location = new System.Drawing.Point(33, 76);
             this.btn_VerFlujo.Name = "btn_VerFlujo";
             this.btn_VerFlujo.Size = new System.Drawing.Size(75, 28);
             this.btn_VerFlujo.TabIndex = 1;
@@ -213,12 +225,118 @@ namespace Capa_Vista_EstadosFinancieros
             this.btn_Ver_Ayuda.UseVisualStyleBackColor = true;
             this.btn_Ver_Ayuda.Click += new System.EventHandler(this.btn_Ver_Ayuda_Click);
             // 
+            // cb_BalanceMes
+            // 
+            this.cb_BalanceMes.FormattingEnabled = true;
+            this.cb_BalanceMes.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12"});
+            this.cb_BalanceMes.Location = new System.Drawing.Point(176, 53);
+            this.cb_BalanceMes.Name = "cb_BalanceMes";
+            this.cb_BalanceMes.Size = new System.Drawing.Size(50, 21);
+            this.cb_BalanceMes.TabIndex = 7;
+            this.cb_BalanceMes.Text = "Mes";
+            // 
+            // cb_BalanceAnio
+            // 
+            this.cb_BalanceAnio.FormattingEnabled = true;
+            this.cb_BalanceAnio.Items.AddRange(new object[] {
+            "2024",
+            "2023"});
+            this.cb_BalanceAnio.Location = new System.Drawing.Point(244, 53);
+            this.cb_BalanceAnio.Name = "cb_BalanceAnio";
+            this.cb_BalanceAnio.Size = new System.Drawing.Size(50, 21);
+            this.cb_BalanceAnio.TabIndex = 8;
+            this.cb_BalanceAnio.Text = "Año";
+            // 
+            // cb_EResultadosAnio
+            // 
+            this.cb_EResultadosAnio.FormattingEnabled = true;
+            this.cb_EResultadosAnio.Items.AddRange(new object[] {
+            "2024",
+            "2023"});
+            this.cb_EResultadosAnio.Location = new System.Drawing.Point(244, 63);
+            this.cb_EResultadosAnio.Name = "cb_EResultadosAnio";
+            this.cb_EResultadosAnio.Size = new System.Drawing.Size(50, 21);
+            this.cb_EResultadosAnio.TabIndex = 10;
+            this.cb_EResultadosAnio.Text = "Año";
+            this.cb_EResultadosAnio.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // cb_EResultadosMes
+            // 
+            this.cb_EResultadosMes.FormattingEnabled = true;
+            this.cb_EResultadosMes.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12"});
+            this.cb_EResultadosMes.Location = new System.Drawing.Point(176, 63);
+            this.cb_EResultadosMes.Name = "cb_EResultadosMes";
+            this.cb_EResultadosMes.Size = new System.Drawing.Size(50, 21);
+            this.cb_EResultadosMes.TabIndex = 9;
+            this.cb_EResultadosMes.Text = "Mes";
+            this.cb_EResultadosMes.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
+            // 
+            // cb_FEfectivoAnio
+            // 
+            this.cb_FEfectivoAnio.FormattingEnabled = true;
+            this.cb_FEfectivoAnio.Items.AddRange(new object[] {
+            "2024",
+            "2023"});
+            this.cb_FEfectivoAnio.Location = new System.Drawing.Point(249, 59);
+            this.cb_FEfectivoAnio.Name = "cb_FEfectivoAnio";
+            this.cb_FEfectivoAnio.Size = new System.Drawing.Size(50, 21);
+            this.cb_FEfectivoAnio.TabIndex = 12;
+            this.cb_FEfectivoAnio.Text = "Año";
+            this.cb_FEfectivoAnio.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
+            // 
+            // cb_FEfectivoMes
+            // 
+            this.cb_FEfectivoMes.FormattingEnabled = true;
+            this.cb_FEfectivoMes.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12"});
+            this.cb_FEfectivoMes.Location = new System.Drawing.Point(181, 59);
+            this.cb_FEfectivoMes.Name = "cb_FEfectivoMes";
+            this.cb_FEfectivoMes.Size = new System.Drawing.Size(50, 21);
+            this.cb_FEfectivoMes.TabIndex = 11;
+            this.cb_FEfectivoMes.Text = "Mes";
+            this.cb_FEfectivoMes.SelectedIndexChanged += new System.EventHandler(this.comboBox4_SelectedIndexChanged);
+            // 
             // EstadosFinancieros
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(140)))), ((int)(((byte)(140)))));
-            this.ClientSize = new System.Drawing.Size(464, 481);
+            this.ClientSize = new System.Drawing.Size(469, 481);
             this.Controls.Add(this.btn_Ver_Ayuda);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox3);
@@ -253,5 +371,11 @@ namespace Capa_Vista_EstadosFinancieros
         private System.Windows.Forms.Button btn_Ver_FEfectivoHistorico;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btn_Ver_Ayuda;
+        private System.Windows.Forms.ComboBox cb_BalanceAnio;
+        private System.Windows.Forms.ComboBox cb_BalanceMes;
+        private System.Windows.Forms.ComboBox cb_EResultadosAnio;
+        private System.Windows.Forms.ComboBox cb_EResultadosMes;
+        private System.Windows.Forms.ComboBox cb_FEfectivoAnio;
+        private System.Windows.Forms.ComboBox cb_FEfectivoMes;
     }
 }
