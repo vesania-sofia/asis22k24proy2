@@ -24,6 +24,12 @@ namespace Capa_Vista_PercepcionesDeducciones
             InitializeComponent();
             CargarDeducciones();
             Dgv_gendeducciones.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            //Crear un ToolTip
+            ToolTip toolTip = new ToolTip();
+
+            // Configuración de ToolTips para los botones
+            toolTip.SetToolTip(Btn_ayuda, "Ver ayuda");
+            toolTip.SetToolTip(Btn_reportes, "Generar reporte");
         }
 
         private void CargarDeducciones()
@@ -119,6 +125,15 @@ namespace Capa_Vista_PercepcionesDeducciones
             return null;
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            
+        }
 
+        private void Btn_reportes_Click(object sender, EventArgs e)
+        {
+            frm_reportededucciones frm_reportes = new frm_reportededucciones();
+            frm_reportes.Show();
+        }
     }
 }

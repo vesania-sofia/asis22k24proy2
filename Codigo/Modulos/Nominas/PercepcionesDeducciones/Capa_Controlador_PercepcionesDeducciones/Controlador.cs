@@ -36,5 +36,19 @@ namespace Capa_Controlador_PercepcionesDeducciones
             }
             return tablaDeducciones;
         }
+
+        public DataTable ObtenerDepartamentos()
+        {
+            OdbcDataAdapter adapter = sn.ObtenerDepartamentos();
+            DataTable tablaDepartamentos = new DataTable();
+            if (adapter != null)
+            {
+                adapter.Fill(tablaDepartamentos); // Llenar el DataTable con el resultado del OdbcDataAdapter
+            }
+            return tablaDepartamentos;
+        }
+
+
+
     }
 }

@@ -31,6 +31,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AxShockwaveFlashObjects, Version=1.0.0.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
     <Reference Include="Capa_Controlador_PercepcionesDeducciones">
       <HintPath>..\Capa_Controlador_PercepcionesDeducciones\bin\Debug\Capa_Controlador_PercepcionesDeducciones.dll</HintPath>
     </Reference>
@@ -41,9 +42,15 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\Componentes\Seguridad\Capa_Vista_Seguridad\bin\Debug\Capa_Modelo_Seguridad.dll</HintPath>
     </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -53,6 +60,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="deducciones.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>deducciones.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="frm_generaciondeducciones.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -65,6 +78,30 @@
     <Compile Include="frm_generacionpercepciones.Designer.cs">
       <DependentUpon>frm_generacionpercepciones.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_reportededucciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_reportededucciones.Designer.cs">
+      <DependentUpon>frm_reportededucciones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_reportepercepciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_reportepercepciones.Designer.cs">
+      <DependentUpon>frm_reportepercepciones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_visualizar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_visualizar.Designer.cs">
+      <DependentUpon>frm_visualizar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="percepciones.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>percepciones.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -73,11 +110,28 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="deducciones.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>deducciones.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="frm_generaciondeducciones.resx">
       <DependentUpon>frm_generaciondeducciones.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_generacionpercepciones.resx">
       <DependentUpon>frm_generacionpercepciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_reportededucciones.resx">
+      <DependentUpon>frm_reportededucciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_reportepercepciones.resx">
+      <DependentUpon>frm_reportepercepciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_visualizar.resx">
+      <DependentUpon>frm_visualizar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="percepciones.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>percepciones.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -89,6 +143,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\preguntas %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\reporte.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -32,6 +32,7 @@ namespace Capa_Vista_PercepcionesDeducciones
             this.Lbl_percepciones = new System.Windows.Forms.Label();
             this.Dgv_genpercepciones = new System.Windows.Forms.DataGridView();
             this.Btn_ayuda = new System.Windows.Forms.Button();
+            this.Btn_reportes = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_genpercepciones)).BeginInit();
             this.SuspendLayout();
             // 
@@ -70,12 +71,28 @@ namespace Capa_Vista_PercepcionesDeducciones
             this.Btn_ayuda.UseVisualStyleBackColor = false;
             this.Btn_ayuda.Click += new System.EventHandler(this.Btn_ayuda_Click);
             // 
+            // Btn_reportes
+            // 
+            this.Btn_reportes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(161)))), ((int)(((byte)(214)))));
+            this.Btn_reportes.BackgroundImage = global::Capa_Vista_PercepcionesDeducciones.Properties.Resources.reporte;
+            this.Btn_reportes.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Btn_reportes.FlatAppearance.BorderSize = 0;
+            this.Btn_reportes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_reportes.Location = new System.Drawing.Point(1010, 17);
+            this.Btn_reportes.Margin = new System.Windows.Forms.Padding(0);
+            this.Btn_reportes.Name = "Btn_reportes";
+            this.Btn_reportes.Size = new System.Drawing.Size(71, 65);
+            this.Btn_reportes.TabIndex = 287;
+            this.Btn_reportes.UseVisualStyleBackColor = false;
+            this.Btn_reportes.Click += new System.EventHandler(this.Btn_reportes_Click);
+            // 
             // frm_generacionpercepciones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(161)))), ((int)(((byte)(214)))));
             this.ClientSize = new System.Drawing.Size(1182, 541);
+            this.Controls.Add(this.Btn_reportes);
             this.Controls.Add(this.Btn_ayuda);
             this.Controls.Add(this.Dgv_genpercepciones);
             this.Controls.Add(this.Lbl_percepciones);
@@ -92,5 +109,6 @@ namespace Capa_Vista_PercepcionesDeducciones
         private System.Windows.Forms.Label Lbl_percepciones;
         private System.Windows.Forms.DataGridView Dgv_genpercepciones;
         private System.Windows.Forms.Button Btn_ayuda;
+        private System.Windows.Forms.Button Btn_reportes;
     }
 }
