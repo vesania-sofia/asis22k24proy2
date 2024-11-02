@@ -83,6 +83,26 @@ namespace Capa_Vista_Polizas.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap agregar_archivo2 {
+            get {
+                object obj = ResourceManager.GetObject("agregar-archivo2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ahorrar {
+            get {
+                object obj = ResourceManager.GetObject("ahorrar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Ayuda {
             get {
                 object obj = ResourceManager.GetObject("Ayuda", resourceCulture);
@@ -143,6 +163,16 @@ namespace Capa_Vista_Polizas.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap cancelar1 {
+            get {
+                object obj = ResourceManager.GetObject("cancelar1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap cerrar_sesion {
             get {
                 object obj = ResourceManager.GetObject("cerrar-sesion", resourceCulture);
@@ -156,6 +186,16 @@ namespace Capa_Vista_Polizas.Properties {
         internal static System.Drawing.Bitmap cerrar_sesion1 {
             get {
                 object obj = ResourceManager.GetObject("cerrar-sesion1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap cerrar_sesion2 {
+            get {
+                object obj = ResourceManager.GetObject("cerrar-sesion2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -216,6 +256,16 @@ namespace Capa_Vista_Polizas.Properties {
         internal static System.Drawing.Bitmap lista_de_verificacion {
             get {
                 object obj = ResourceManager.GetObject("lista-de-verificacion", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap preguntas__1_ {
+            get {
+                object obj = ResourceManager.GetObject("preguntas (1)", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

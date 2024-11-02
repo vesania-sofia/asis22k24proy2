@@ -17,18 +17,18 @@ namespace Capa_Vista_Polizas
 {
     public partial class frmPolizas : Form
     {
-        private string idcuenta;
-        private string idoperacion;
-        private string idtp;
-        List<object[]> detalles = new List<object[]>();
+        private string sidcuenta;
+        private string sidoperacion;
+        private string sidtp;
+        List<object[]> ldetalles = new List<object[]>();
         int iCorrecto = 0;
 
         //Seguridad y usuario
-        private string idUsuario;
+        private string sidUsuario;
 
-        public void SetParametro(string valor)
+        public void SetParametro(string svalor)
         {
-            idUsuario = valor;
+            sidUsuario = svalor;
         }
 
         public frmPolizas()
@@ -40,32 +40,32 @@ namespace Capa_Vista_Polizas
             llenarseOP("tbl_tipooperacion", "Pk_id_tipooperacion", "nombre");
 
             //Botones y demas 
-            cbCuenta.Enabled = false;
-            cboperacion.Enabled = false;
-            cbtipopoliza.Enabled = false;
-            txtConcepto.Enabled = false;
-            txtValor.Enabled = false;
-            dtpfecha.Enabled = false;
-            btnQuitar.Enabled = false;
-            btn_aceptar.Enabled = false;
-            btn_registar_poliza.Enabled = false;
-            btnCancelar.Enabled = false;
+            Cbo_Cuenta.Enabled = false;
+            Cbo_operacion.Enabled = false;
+            Cbo_tipopoliza.Enabled = false;
+            Txt_concepto.Enabled = false;
+            Txt_valor.Enabled = false;
+            Dpt_fecha.Enabled = false;
+            Btn_quitar.Enabled = false;
+            Btn_aceptar.Enabled = false;
+            Btn_registar_poliza.Enabled = false;
+            Btn_Cancelar.Enabled = false;
         }
 
         // ---------------------------------- COMBO BOX CUENTAS ----------------------------------
 
-        public void llenarseCuentas(string tabla, string campo1, string campo2)
+        public void llenarseCuentas(string stabla, string scampo1, string scampo2)
         {
             controladorPolizas ctr = new controladorPolizas(); // Instancia controlador
 
-            string tbl = tabla;
-            string cmp1 = campo1;
-            string cmp2 = campo2;
+            string stbl = stabla;
+            string scmp1 = scampo1;
+            string scmp2 = scampo2;
 
-            cbCuenta.ValueMember = cmp1;
-            cbCuenta.DisplayMember = cmp2;
+            Cbo_Cuenta.ValueMember = scmp1;
+            Cbo_Cuenta.DisplayMember = scmp2;
 
-            string[] items = ctr.itemsCuenta(tabla, campo1, campo2);
+            string[] items = ctr.itemsCuenta(stabla, scampo1, scampo2);
 
             for (int i = 0; i < items.Length; i++)
             {
@@ -73,41 +73,41 @@ namespace Capa_Vista_Polizas
                 {
                     if (items[i] != "")
                     {
-                        cbCuenta.Items.Add(items[i]);
+                        Cbo_Cuenta.Items.Add(items[i]);
                     }
                 }
             }
 
-            var dt2 = ctr.enviarCuentas(tabla, campo1, campo2);
+            var dt2 = ctr.enviarCuentas(stabla, scampo1, scampo2);
             AutoCompleteStringCollection coleccion = new AutoCompleteStringCollection();
             foreach (DataRow row in dt2.Rows)
             {
-                coleccion.Add(Convert.ToString(row[campo2]));
+                coleccion.Add(Convert.ToString(row[scampo2]));
             }
 
-            cbCuenta.DataSource = dt2;
-            cbCuenta.ValueMember = campo1;
-            cbCuenta.DisplayMember = campo2;
+            Cbo_Cuenta.DataSource = dt2;
+            Cbo_Cuenta.ValueMember = scampo1;
+            Cbo_Cuenta.DisplayMember = scampo2;
 
-            cbCuenta.AutoCompleteCustomSource = coleccion;
-            cbCuenta.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            cbCuenta.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            Cbo_Cuenta.AutoCompleteCustomSource = coleccion;
+            Cbo_Cuenta.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            Cbo_Cuenta.AutoCompleteSource = AutoCompleteSource.CustomSource;
         }
 
         // ---------------------------------- COMBO BOX TIPO POLIZA ----------------------------------
 
-        public void llenarseTP(string tabla, string campo1, string campo2)
+        public void llenarseTP(string stabla, string scampo1, string scampo2)
         {
             controladorPolizas ctr = new controladorPolizas(); // Instancia controlador
 
-            string tbl = tabla;
-            string cmp1 = campo1;
-            string cmp2 = campo2;
+            string tbl = stabla;
+            string cmp1 = scampo1;
+            string cmp2 = scampo2;
 
-            cbtipopoliza.ValueMember = campo1;
-            cbtipopoliza.DisplayMember = campo2;
+            Cbo_tipopoliza.ValueMember = scampo1;
+            Cbo_tipopoliza.DisplayMember = scampo2;
 
-            string[] items = ctr.itemsTP(tabla, campo1, campo2);
+            string[] items = ctr.itemsTP(stabla, scampo1, scampo2);
 
             for (int i = 0; i < items.Length; i++)
             {
@@ -115,42 +115,42 @@ namespace Capa_Vista_Polizas
                 {
                     if (items[i] != "")
                     {
-                        cbtipopoliza.Items.Add(items[i]);
+                        Cbo_tipopoliza.Items.Add(items[i]);
                     }
                 }
             }
 
-            var dt2 = ctr.enviarTP(tabla, campo1, campo2);
+            var dt2 = ctr.enviarTP(stabla, scampo1, scampo2);
             AutoCompleteStringCollection coleccion = new AutoCompleteStringCollection();
             foreach (DataRow row in dt2.Rows)
             {
-                coleccion.Add(Convert.ToString(row[campo1]) + "-" + Convert.ToString(row[campo2]));
-                coleccion.Add(Convert.ToString(row[campo2]) + "-" + Convert.ToString(row[campo1]));
+                coleccion.Add(Convert.ToString(row[scampo1]) + "-" + Convert.ToString(row[scampo2]));
+                coleccion.Add(Convert.ToString(row[scampo2]) + "-" + Convert.ToString(row[scampo1]));
             }
 
-            cbtipopoliza.DataSource = dt2;
-            cbtipopoliza.ValueMember = campo1;
-            cbtipopoliza.DisplayMember = campo2;
+            Cbo_tipopoliza.DataSource = dt2;
+            Cbo_tipopoliza.ValueMember = scampo1;
+            Cbo_tipopoliza.DisplayMember = scampo2;
 
-            cbtipopoliza.AutoCompleteCustomSource = coleccion;
-            cbtipopoliza.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            cbtipopoliza.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            Cbo_tipopoliza.AutoCompleteCustomSource = coleccion;
+            Cbo_tipopoliza.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            Cbo_tipopoliza.AutoCompleteSource = AutoCompleteSource.CustomSource;
         }
 
         // ---------------------------------- COMBO BOX OPERACION ----------------------------------
 
-        public void llenarseOP(string tabla, string campo1, string campo2)
+        public void llenarseOP(string stabla, string scampo1, string scampo2)
         {
             controladorPolizas ctr = new controladorPolizas(); // Instancia controlador
 
-            string tbl = tabla;
-            string cmp1 = campo1;
-            string cmp2 = campo2;
+            string tbl = stabla;
+            string cmp1 = scampo1;
+            string cmp2 = scampo2;
 
-            cboperacion.ValueMember = campo1;
-            cboperacion.DisplayMember = campo2;
+            Cbo_operacion.ValueMember = scampo1;
+            Cbo_operacion.DisplayMember = scampo2;
 
-            string[] items = ctr.itemsOP(tabla, campo1, campo2);
+            string[] items = ctr.itemsOP(stabla, scampo1, scampo2);
 
             for (int i = 0; i < items.Length; i++)
             {
@@ -158,53 +158,53 @@ namespace Capa_Vista_Polizas
                 {
                     if (items[i] != "")
                     {
-                        cboperacion.Items.Add(items[i]);
+                        Cbo_operacion.Items.Add(items[i]);
                     }
                 }
             }
 
-            var dt2 = ctr.enviarOP(tabla, campo1, campo2);
+            var dt2 = ctr.enviarOP(stabla, scampo1, scampo2);
             AutoCompleteStringCollection coleccion = new AutoCompleteStringCollection();
             foreach (DataRow row in dt2.Rows)
             {
-                coleccion.Add(Convert.ToString(row[campo2]));
+                coleccion.Add(Convert.ToString(row[scampo2]));
             }
 
-            cboperacion.DataSource = dt2;
-            cboperacion.ValueMember = campo1;
-            cboperacion.DisplayMember = campo2;
+            Cbo_operacion.DataSource = dt2;
+            Cbo_operacion.ValueMember = scampo1;
+            Cbo_operacion.DisplayMember = scampo2;
 
-            cboperacion.AutoCompleteCustomSource = coleccion;
-            cboperacion.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            cboperacion.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            Cbo_operacion.AutoCompleteCustomSource = coleccion;
+            Cbo_operacion.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            Cbo_operacion.AutoCompleteSource = AutoCompleteSource.CustomSource;
         }
 
         private void cbtipopoliza_SelectedIndexChanged(object sender, EventArgs e)
         {
-            idtp = cbtipopoliza.SelectedValue.ToString();
+            sidtp = Cbo_tipopoliza.SelectedValue.ToString();
         }
 
         private void cboperacion_SelectedIndexChanged(object sender, EventArgs e)
         {
-            idoperacion = cboperacion.SelectedValue.ToString();
+            sidoperacion = Cbo_operacion.SelectedValue.ToString();
         }
 
         private void cbCuenta_SelectedIndexChanged(object sender, EventArgs e)
         {
-            idcuenta = cbCuenta.SelectedValue.ToString();
+            sidcuenta = Cbo_Cuenta.SelectedValue.ToString();
         }
         private void btn_nueva_poliza_Click(object sender, EventArgs e)
         {
-            cbCuenta.Enabled = true;
-            cboperacion.Enabled = true;
-            cbtipopoliza.Enabled = true;
-            txtConcepto.Enabled = true;
-            txtValor.Enabled = true;
-            dtpfecha.Enabled = true;
-            btn_aceptar.Enabled = true;
-            btnQuitar.Enabled = true;
-            btn_registar_poliza.Enabled = true;
-            btnCancelar.Enabled = true;
+            Cbo_Cuenta.Enabled = true;
+            Cbo_operacion.Enabled = true;
+            Cbo_tipopoliza.Enabled = true;
+            Txt_concepto.Enabled = true;
+            Txt_valor.Enabled = true;
+            Dpt_fecha.Enabled = true;
+            Btn_aceptar.Enabled = true;
+            Btn_quitar.Enabled = true;
+            Btn_registar_poliza.Enabled = true;
+            Btn_Cancelar.Enabled = true;
 
             //Bandera de prueba
             MessageBox.Show("Empieza el ingreso de una poliza");
@@ -213,38 +213,38 @@ namespace Capa_Vista_Polizas
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             // Restablecer los ComboBox a su estado inicial (sin selección)
-            cbCuenta.SelectedIndex = 0;
-            cboperacion.SelectedIndex = 0;
-            cbtipopoliza.SelectedIndex = 0;
+            Cbo_Cuenta.SelectedIndex = 0;
+            Cbo_operacion.SelectedIndex = 0;
+            Cbo_tipopoliza.SelectedIndex = 0;
 
             // Limpiar los TextBox
-            txtConcepto.Clear();
-            txtValor.Clear();
+            Txt_concepto.Clear();
+            Txt_valor.Clear();
 
             // Restablecer la fecha en el DateTimePicker a la fecha actual (o a cualquier valor que desees)
-            dtpfecha.Value = DateTime.Now;
+            Dpt_fecha.Value = DateTime.Now;
 
             // Opcional: Desactivar los controles si es parte del proceso
-            cbCuenta.Enabled = false;
-            cboperacion.Enabled = false;
-            cbtipopoliza.Enabled = false;
-            txtConcepto.Enabled = false;
-            txtValor.Enabled = false;
-            dtpfecha.Enabled = false;
-            btn_aceptar.Enabled = false;
-            btnQuitar.Enabled = false;
-            btn_registar_poliza.Enabled = false;
-            btnCancelar.Enabled = false;
+            Cbo_Cuenta.Enabled = false;
+            Cbo_operacion.Enabled = false;
+            Cbo_tipopoliza.Enabled = false;
+            Txt_concepto.Enabled = false;
+            Txt_valor.Enabled = false;
+            Dpt_fecha.Enabled = false;
+            Btn_aceptar.Enabled = false;
+            Btn_quitar.Enabled = false;
+            Btn_registar_poliza.Enabled = false;
+            Btn_Cancelar.Enabled = false;
 
             //Vaciar labels
-            lblAbono.Text = "00.00";
-            lblCargo.Text = "00.00";
+            Lbl_AbonoTot.Text = "00.00";
+            Lbl_CargoTot.Text = "00.00";
 
             //Vaciar el DataGridView
-            dgvPolizas.Rows.Clear();
+            Dgv_Polizas.Rows.Clear();
 
             // Para eliminar el error asociado a un control, como textBox1
-            errorProvider1.SetError(txtConcepto, "");
+            errorProvider1.SetError(Txt_concepto, "");
 
 
             // Mostrar un mensaje de confirmación (opcional)
@@ -255,53 +255,53 @@ namespace Capa_Vista_Polizas
         private void btn_aceptar_Click(object sender, EventArgs e)
         {
             //Se obtiene los valores de los txtbox
-            string concepto = txtConcepto.Text;
-            string valor = txtValor.Text;
+            string sconcepto = Txt_concepto.Text;
+            string svalor = Txt_valor.Text;
 
-            if (string.IsNullOrEmpty(valor))
+            if (string.IsNullOrEmpty(svalor))
             {
                 MessageBox.Show("Por favor, ingrese un valor.");
                 return;
             }
 
             // Obtener el valor del DateTimePicker
-            DateTime fechaSeleccionada = dtpfecha.Value;
+            DateTime dtfechaSeleccionada = Dpt_fecha.Value;
 
             // Obtener el ID y nombre de la cuenta seleccionada
-            string cuentaSeleccionada = cbCuenta.Text;
-            string idcuenta = cbCuenta.SelectedValue?.ToString();
+            string scuentaSeleccionada = Cbo_Cuenta.Text;
+            string sidcuenta = Cbo_Cuenta.SelectedValue?.ToString();
 
             // Verificar si la cuenta es válida
-            if (string.IsNullOrEmpty(idcuenta))
+            if (string.IsNullOrEmpty(sidcuenta))
             {
                 MessageBox.Show("Por favor, seleccione una cuenta válida.");
                 return;
             }
 
             // Obtener el ID y nombre de la operación seleccionada
-            string operacionSeleccionada = cboperacion.Text;
-            string idoperacion = cboperacion.SelectedValue?.ToString();
+            string soperacionSeleccionada = Cbo_operacion.Text;
+            string sidoperacion = Cbo_operacion.SelectedValue?.ToString();
 
-            if (string.IsNullOrEmpty(idoperacion))
+            if (string.IsNullOrEmpty(sidoperacion))
             {
                 MessageBox.Show("Por favor, seleccione una operación válida.");
                 return;
             }
 
             // Verificar si es Cargo o Abono
-            string cargo = "";
-            string abono = "";
+            string scargo = "";
+            string sabono = "";
 
             //Ver si es cargo o abono
-            if (operacionSeleccionada.Equals("Cargo", StringComparison.OrdinalIgnoreCase))
+            if (soperacionSeleccionada.Equals("Cargo", StringComparison.OrdinalIgnoreCase))
             {
-                cargo = valor;
-                abono = "";
+                scargo = svalor;
+                sabono = "";
             }
-            else if (operacionSeleccionada.Equals("Abono", StringComparison.OrdinalIgnoreCase))
+            else if (soperacionSeleccionada.Equals("Abono", StringComparison.OrdinalIgnoreCase))
             {
-                abono = valor;
-                cargo = "";
+                sabono = svalor;
+                scargo = "";
             }
             else
             {
@@ -310,7 +310,7 @@ namespace Capa_Vista_Polizas
             }
 
             // Agregar una nueva fila al DataGridView con los valores correctos
-            dgvPolizas.Rows.Add(idcuenta, cuentaSeleccionada, cargo, abono);
+            Dgv_Polizas.Rows.Add(sidcuenta, scuentaSeleccionada, scargo, sabono);
 
             //Probando el jalar valores
             //MessageBox.Show($"Concepto: {concepto}\nFecha: {fechaSeleccionada.ToShortDateString()}\nValor: {valor}\nCuenta: {cuentaSeleccionada} (ID: {idcuenta})\nOperación: {operacionSeleccionada} (ID: {idoperacion})\nCargo: {cargo}\nAbono: {abono} \n Tipo: {idtp}");
@@ -322,17 +322,17 @@ namespace Capa_Vista_Polizas
 
         private void LimpiarCamposDetelle()
         {
-            txtValor.Clear();
-            cbCuenta.SelectedIndex = 0;
-            cboperacion.SelectedIndex = 0;
+            Txt_valor.Clear();
+            Cbo_Cuenta.SelectedIndex = 0;
+            Cbo_operacion.SelectedIndex = 0;
         }
 
         private void LimpiarCamposEnc()
         {
-            cbtipopoliza.SelectedIndex = 0;
-            txtConcepto.Text = "";
-            lblAbono.Text = "00.00";
-            lblCargo.Text = "00.00";
+            Cbo_tipopoliza.SelectedIndex = 0;
+            Txt_concepto.Text = "";
+            Lbl_AbonoTot.Text = "00.00";
+            Lbl_CargoTot.Text = "00.00";
         }
 
         private void dgvPolizas_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -340,21 +340,21 @@ namespace Capa_Vista_Polizas
             // Verificar si hay una fila seleccionada
             if (e.RowIndex >= 0)
             {
-                DataGridViewRow row = dgvPolizas.Rows[e.RowIndex];
+                DataGridViewRow row = Dgv_Polizas.Rows[e.RowIndex];
 
                 // Aquí puedes acceder a los valores de la fila seleccionada
-                string cuenta = row.Cells["Cuenta"].Value.ToString();
-                string cargo = row.Cells["Cargo"].Value.ToString();
+                string scuenta = row.Cells["Cuenta"].Value.ToString();
+                string scargo = row.Cells["Cargo"].Value.ToString();
 
                 // Mostrar información o hacer algo con los valores seleccionados
-                MessageBox.Show($"Cuenta: {cuenta}, Cargo: {cargo}");
+                MessageBox.Show($"Cuenta: {scuenta}, Cargo: {scargo}");
             }
         }
 
         private void btnQuitar_Click(object sender, EventArgs e)
         {
             // Verifica que haya al menos una fila seleccionada
-            if (dgvPolizas.SelectedRows.Count > 0)
+            if (Dgv_Polizas.SelectedRows.Count > 0)
             {
                 // Confirmar eliminación si quieres (opcional)
                 DialogResult result = MessageBox.Show("¿Estás seguro de que deseas quitar esta fila?", "Confirmación", MessageBoxButtons.YesNo);
@@ -362,9 +362,9 @@ namespace Capa_Vista_Polizas
                 if (result == DialogResult.Yes)
                 {
                     // Elimina la fila seleccionada
-                    foreach (DataGridViewRow row in dgvPolizas.SelectedRows)
+                    foreach (DataGridViewRow row in Dgv_Polizas.SelectedRows)
                     {
-                        dgvPolizas.Rows.RemoveAt(row.Index);
+                        Dgv_Polizas.Rows.RemoveAt(row.Index);
                         MessageBox.Show("Se quitó la cuenta", "Aviso");
                     }
                 }
@@ -381,34 +381,34 @@ namespace Capa_Vista_Polizas
         private void SumarColumnas()
         {
             // Variables para almacenar las sumas
-            decimal sumaCargo = 0;
-            decimal sumaAbono = 0;
+            decimal desumaCargo = 0;
+            decimal desumaAbono = 0;
 
             // Recorrer todas las filas del DataGridView
-            foreach (DataGridViewRow row in dgvPolizas.Rows)
+            foreach (DataGridViewRow row in Dgv_Polizas.Rows)
             {
                 // Asegurarse de que la fila no esté vacía
                 if (row.Cells["Cargo"].Value != null && row.Cells["Abono"].Value != null)
                 {
                     // Sumar la columna Cargo
-                    decimal cargo;
-                    if (decimal.TryParse(row.Cells["Cargo"].Value.ToString(), out cargo))
+                    decimal decargo;
+                    if (decimal.TryParse(row.Cells["Cargo"].Value.ToString(), out decargo))
                     {
-                        sumaCargo += cargo;
+                        desumaCargo += decargo;
                     }
 
                     // Sumar la columna Abono
-                    decimal abono;
-                    if (decimal.TryParse(row.Cells["Abono"].Value.ToString(), out abono))
+                    decimal deabono;
+                    if (decimal.TryParse(row.Cells["Abono"].Value.ToString(), out deabono))
                     {
-                        sumaAbono += abono;
+                        desumaAbono += deabono;
                     }
                 }
             }
 
             // Mostrar las sumas en los TextBox correspondientes
-            lblCargo.Text = sumaCargo.ToString("N2"); // Formato numérico con 2 decimales
-            lblAbono.Text = sumaAbono.ToString("N2"); // Formato numérico con 2 decimales
+            Lbl_CargoTot.Text = desumaCargo.ToString("N2"); // Formato numérico con 2 decimales
+            Lbl_AbonoTot.Text = desumaAbono.ToString("N2"); // Formato numérico con 2 decimales
         }
 
         private void btn_registar_poliza_Click(object sender, EventArgs e)
@@ -417,32 +417,32 @@ namespace Capa_Vista_Polizas
             logica lg = new logica();
 
             //Variable usuario
-            string sIdUsuario = idUsuario;
+            string sIdUsuario = sidUsuario;
 
-            if (lblCargo.Text != lblAbono.Text)
+            if (Lbl_CargoTot.Text != Lbl_AbonoTot.Text)
             {
                 MessageBox.Show("Los totales del cargo y abono no son iguales.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return; 
             }
             else
             {
-                if (dgvPolizas.Rows.Count == 0 || dgvPolizas.Rows.Cast<DataGridViewRow>().All(row => row.IsNewRow))
+                if (Dgv_Polizas.Rows.Count == 0 || Dgv_Polizas.Rows.Cast<DataGridViewRow>().All(row => row.IsNewRow))
                 {
                     MessageBox.Show("El detalle de la póliza está vacío", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
                     controladorPolizas ctr = new controladorPolizas();
-                    string fechaSeleccionada = dtpfecha.Text;
-                    string concepto = txtConcepto.Text;
+                    string sfechaSeleccionada = Dpt_fecha.Text;
+                    string sconcepto = Txt_concepto.Text;
 
-                    errorProvider1.SetError(txtConcepto, "");
+                    errorProvider1.SetError(Txt_concepto, "");
 
                     // Verificar si el TextBox está vacío
-                    if (string.IsNullOrWhiteSpace(txtConcepto.Text))
+                    if (string.IsNullOrWhiteSpace(Txt_concepto.Text))
                     {
-                        errorProvider1.SetError(txtConcepto, "Este campo es obligatorio.");
-                        txtConcepto.Focus();
+                        errorProvider1.SetError(Txt_concepto, "Este campo es obligatorio.");
+                        Txt_concepto.Focus();
                         MessageBox.Show("El campo es obligatorio. Por favor, ingrese un valor.", "Campo Obligatorio", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                     else
@@ -451,49 +451,49 @@ namespace Capa_Vista_Polizas
 
                         if (result == DialogResult.Yes)
                         {
-                            if (cbtipopoliza.SelectedValue == null || cboperacion.SelectedValue == null || cbCuenta.SelectedValue == null)
+                            if (Cbo_tipopoliza.SelectedValue == null || Cbo_operacion.SelectedValue == null || Cbo_Cuenta.SelectedValue == null)
                             {
                                 MessageBox.Show("Por favor, seleccione todos los campos requeridos.");
                                 return;
                             }
 
-                            int idTipoPoliza = int.Parse(idtp);
-                            detalles.Clear();
+                            int iidTipoPoliza = int.Parse(sidtp);
+                            ldetalles.Clear();
 
-                            foreach (DataGridViewRow row in dgvPolizas.Rows)
+                            foreach (DataGridViewRow row in Dgv_Polizas.Rows)
                             {
-                                int idop = 0;
+                                int iidop = 0;
                                 if (row.IsNewRow) continue;
 
-                                int idCuenta = Convert.ToInt32(row.Cells["Codigo"].Value);
-                                string tipoOperacion = "";
-                                decimal valor = 0;
+                                int iidCuenta = Convert.ToInt32(row.Cells["Codigo"].Value);
+                                string stipoOperacion = "";
+                                decimal devalor = 0;
 
                                 if (row.Cells[2].Value != DBNull.Value && row.Cells[2].Value.ToString() != "")
                                 {
-                                    tipoOperacion = "Cargo";
-                                    idop = 1;
-                                    valor = Convert.ToDecimal(row.Cells[2].Value);
+                                    stipoOperacion = "Cargo";
+                                    iidop = 1;
+                                    devalor = Convert.ToDecimal(row.Cells[2].Value);
                                 }
                                 else if (row.Cells[3].Value != DBNull.Value && row.Cells[3].Value.ToString() != "")
                                 {
-                                    tipoOperacion = "Abono";
-                                    idop = 2;
-                                    valor = Convert.ToDecimal(row.Cells[3].Value);
+                                    stipoOperacion = "Abono";
+                                    iidop = 2;
+                                    devalor = Convert.ToDecimal(row.Cells[3].Value);
                                 }
 
-                                object[] detalle = new object[3] { idCuenta, idop, valor };
-                                detalles.Add(detalle);
+                                object[] ldetalle = new object[3] { iidCuenta, iidop, devalor };
+                                ldetalles.Add(ldetalle);
 
-                                ctr.ActualizarTblCuentas(idCuenta, tipoOperacion, valor);
+                                ctr.ActualizarTblCuentas(iidCuenta, stipoOperacion, devalor);
                             }
 
-                            ctr.LlenarEncabezado(fechaSeleccionada, concepto, idTipoPoliza);
-                            ctr.LlenarDetalle(fechaSeleccionada, concepto, detalles);
+                            ctr.LlenarEncabezado(sfechaSeleccionada, sconcepto, iidTipoPoliza);
+                            ctr.LlenarDetalle(sfechaSeleccionada, sconcepto, ldetalles);
 
                             LimpiarCamposDetelle();
                             LimpiarCamposEnc();
-                            dgvPolizas.Rows.Clear();
+                            Dgv_Polizas.Rows.Clear();
 
                             MessageBox.Show("Se registró correctamente");
                         }
@@ -568,22 +568,22 @@ namespace Capa_Vista_Polizas
             ttAviso.ShowAlways = true;
 
             // Asignar el ToolTip a un control (ejemplo: botón)
-            ttCrear.SetToolTip(this.btn_nueva_poliza, "Crear nueva póliza");
-            ttGuardar.SetToolTip(this.btn_registar_poliza, "Registrar póliza");
-            ttCancelar.SetToolTip(this.btnCancelar, "Cancelar creación de póliza");
-            ttAyuda.SetToolTip(this.btnAyuda, "Mostrar ayuda");
-            ttSalir.SetToolTip(this.btnSalir, "Salir");
-            ttCheck.SetToolTip(this.btn_aceptar, "Enviar cuenta");
-            ttQuitar.SetToolTip(this.btnQuitar, "Quitar cuenta");
-            ttAviso.SetToolTip(this.txtConcepto, "Agregar concepto");
+            ttCrear.SetToolTip(this.Btn_nueva_poliza, "Crear nueva póliza");
+            ttGuardar.SetToolTip(this.Btn_registar_poliza, "Registrar póliza");
+            ttCancelar.SetToolTip(this.Btn_Cancelar, "Cancelar creación de póliza");
+            ttAyuda.SetToolTip(this.Btn_ayuda, "Mostrar ayuda");
+            ttSalir.SetToolTip(this.Btn_salir, "Salir");
+            ttCheck.SetToolTip(this.Btn_aceptar, "Aceptar cuenta");
+            ttQuitar.SetToolTip(this.Btn_quitar, "Quitar cuenta");
+            ttAviso.SetToolTip(this.Txt_concepto, "Agregar concepto");
 
-            if (dgvPolizas.Rows.Count == 1 && dgvPolizas.Rows[0].IsNewRow)
+            if (Dgv_Polizas.Rows.Count == 1 && Dgv_Polizas.Rows[0].IsNewRow)
             {
-                btnQuitar.Enabled = false; // Deshabilitar el botón si solo hay la fila en blanco
+                Btn_quitar.Enabled = false; // Deshabilitar el botón si solo hay la fila en blanco
             }
             else
             {
-                btnQuitar.Enabled = true; // Habilitar el botón si hay otras filas
+                Btn_quitar.Enabled = true; // Habilitar el botón si hay otras filas
             }
         }
 
@@ -594,7 +594,7 @@ namespace Capa_Vista_Polizas
 
         private void txtValor_KeyPress(object sender, KeyPressEventArgs e)
         {
-            var textBox = sender as TextBox;
+            var vtextBox = sender as TextBox;
 
             // Permitir solo dígitos, un punto decimal y la tecla de retroceso
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.')
@@ -604,17 +604,17 @@ namespace Capa_Vista_Polizas
             }
 
             // Permitir solo un punto decimal
-            if (e.KeyChar == '.' && textBox.Text.IndexOf('.') > -1)
+            if (e.KeyChar == '.' && vtextBox.Text.IndexOf('.') > -1)
             {
                 e.Handled = true; // Evitar la entrada
                 return;
             }
 
             // Limitar a dos decimales
-            if (textBox.Text.IndexOf('.') > -1)
+            if (vtextBox.Text.IndexOf('.') > -1)
             {
                 // Contar la cantidad de decimales actuales
-                int decimalPlaces = textBox.Text.Substring(textBox.Text.IndexOf('.') + 1).Length;
+                int decimalPlaces = vtextBox.Text.Substring(vtextBox.Text.IndexOf('.') + 1).Length;
                 if (decimalPlaces >= 2 && !char.IsControl(e.KeyChar))
                 {
                     e.Handled = true; // Evitar la entrada si ya hay 2 decimales
@@ -624,9 +624,9 @@ namespace Capa_Vista_Polizas
 
         private void dtpfecha_ValueChanged(object sender, EventArgs e)
         {
-            if (dtpfecha.Value.Date != DateTime.Today)
+            if (Dpt_fecha.Value.Date != DateTime.Today)
             {
-                dtpfecha.Value = DateTime.Today;
+                Dpt_fecha.Value = DateTime.Today;
             }
         }
 
@@ -677,31 +677,31 @@ namespace Capa_Vista_Polizas
             try
             {
                 // Obtener la ruta del directorio del ejecutable
-                string executablePath = AppDomain.CurrentDomain.BaseDirectory;
+                string sexecutablePath = AppDomain.CurrentDomain.BaseDirectory;
 
                 // Retroceder a la carpeta del proyecto
-                string projectPath = Path.GetFullPath(Path.Combine(executablePath, @"..\..\"));
+                string sprojectPath = Path.GetFullPath(Path.Combine(sexecutablePath, @"..\..\"));
                 //MessageBox.Show("1" + projectPath);
 
                 // Combinar con la ruta fija de "asis22k24proy2\Codigo\Componentes\Seguridad"
-                //string basePath = Path.Combine(projectPath, @"asis22k24proy2\Codigo\Componentes\Seguridad");
+                string sbasePath = Path.Combine(sprojectPath, @"asis22k24proy2\Codigo\Modulos\Menus\ModernGUI_V3\AyudaPolizas");
                 //MessageBox.Show("2" + basePath);
 
 
-                string ayudaFolderPath = Path.Combine(projectPath, "AyudaPolizas");
+                string sayudaFolderPath = Path.Combine(sprojectPath, "AyudaPolizas");
 
                 // Imprimir la ruta de ayuda para verificar
                 //MessageBox.Show("3: " + ayudaFolderPath);
 
                 // Busca el archivo .chm en la carpeta "Ayuda_Seguridad"
-                string pathAyuda = FindFileInDirectory(ayudaFolderPath, "AyuPolizas.chm");
+                string spathAyuda = FindFileInDirectory(sayudaFolderPath, "AyudaPolizas.chm");
 
                 // Verifica si el archivo existe antes de intentar abrirlo
-                if (!string.IsNullOrEmpty(pathAyuda))
+                if (!string.IsNullOrEmpty(spathAyuda))
                 {
                     //MessageBox.Show("El archivo sí está.");
                     // Abre el archivo de ayuda .chm en la sección especificada
-                    Help.ShowHelp(null, pathAyuda, "AyudaPolizas.html");
+                    Help.ShowHelp(null, spathAyuda, "ayudaPolizas.html");
                 }
                 else
                 {
@@ -719,17 +719,17 @@ namespace Capa_Vista_Polizas
 
         private void txtValor_Leave(object sender, EventArgs e)
         {
-            var textBox = sender as TextBox;
+            var vtextBox = sender as TextBox;
             // Intenta convertir el texto a decimal
-            if (decimal.TryParse(textBox.Text, NumberStyles.Any, CultureInfo.InvariantCulture, out decimal result))
+            if (decimal.TryParse(vtextBox.Text, NumberStyles.Any, CultureInfo.InvariantCulture, out decimal result))
             {
                 // Redondear a 2 decimales y convertir a string con 2 decimales
-                textBox.Text = Math.Round(result, 2).ToString("F2", CultureInfo.InvariantCulture);
+                vtextBox.Text = Math.Round(result, 2).ToString("F2", CultureInfo.InvariantCulture);
             }
             else
             {
                 MessageBox.Show("Ingrese un número válido con hasta dos decimales.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                textBox.Focus();
+                vtextBox.Focus();
             }
         }
 
@@ -741,10 +741,10 @@ namespace Capa_Vista_Polizas
                 if (Directory.Exists(directory))
                 {
                     // Buscamos el archivo .chm en la carpeta
-                    string[] files = Directory.GetFiles(directory, "*.chm", SearchOption.TopDirectoryOnly);
+                    string[] sfiles = Directory.GetFiles(directory, "*.chm", SearchOption.TopDirectoryOnly);
 
                     // Si encontramos el archivo, verificamos si coincide con el archivo que se busca y retornamos su ruta
-                    foreach (var file in files)
+                    foreach (var file in sfiles)
                     {
                         if (Path.GetFileName(file).Equals(fileName, StringComparison.OrdinalIgnoreCase))
                         {

@@ -30,254 +30,257 @@ namespace Capa_Vista_Polizas
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtConcepto = new System.Windows.Forms.TextBox();
+            System.Windows.Forms.Label Lbl_Cuenta;
+            this.cd_form = new System.Windows.Forms.ColorDialog();
+            this.gp_encabezado = new System.Windows.Forms.GroupBox();
+            this.Txt_concepto = new System.Windows.Forms.TextBox();
             this.lbl_concepto = new System.Windows.Forms.Label();
-            this.lbl_tipo_poliza = new System.Windows.Forms.Label();
-            this.dtpfecha = new System.Windows.Forms.DateTimePicker();
-            this.lbl_fecha = new System.Windows.Forms.Label();
-            this.cbtipopoliza = new System.Windows.Forms.ComboBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btn_aceptar = new System.Windows.Forms.Button();
-            this.txtValor = new System.Windows.Forms.TextBox();
-            this.cboperacion = new System.Windows.Forms.ComboBox();
-            this.cbCuenta = new System.Windows.Forms.ComboBox();
-            this.lbl_Cuenta = new System.Windows.Forms.Label();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.btnQuitar = new System.Windows.Forms.Button();
-            this.dgvPolizas = new System.Windows.Forms.DataGridView();
+            this.Lbl_tipo_poliza = new System.Windows.Forms.Label();
+            this.Dpt_fecha = new System.Windows.Forms.DateTimePicker();
+            this.Lbl_fecha = new System.Windows.Forms.Label();
+            this.Cbo_tipopoliza = new System.Windows.Forms.ComboBox();
+            this.gb_detalle = new System.Windows.Forms.GroupBox();
+            this.lbl_valor = new System.Windows.Forms.Label();
+            this.Lbl_operacion = new System.Windows.Forms.Label();
+            this.Btn_aceptar = new System.Windows.Forms.Button();
+            this.Txt_valor = new System.Windows.Forms.TextBox();
+            this.Cbo_operacion = new System.Windows.Forms.ComboBox();
+            this.Cbo_Cuenta = new System.Windows.Forms.ComboBox();
+            this.gb_detallemov = new System.Windows.Forms.GroupBox();
+            this.Btn_quitar = new System.Windows.Forms.Button();
+            this.Dgv_Polizas = new System.Windows.Forms.DataGridView();
             this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cuenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cargo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Abono = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lbl_cargo = new System.Windows.Forms.Label();
-            this.lbl_abono = new System.Windows.Forms.Label();
-            this.lblCargo = new System.Windows.Forms.Label();
-            this.lblAbono = new System.Windows.Forms.Label();
+            this.Lbl_cargo = new System.Windows.Forms.Label();
+            this.Lbl_abono = new System.Windows.Forms.Label();
+            this.Lbl_CargoTot = new System.Windows.Forms.Label();
+            this.Lbl_AbonoTot = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.btnAyuda = new System.Windows.Forms.Button();
-            this.btnSalir = new System.Windows.Forms.Button();
-            this.btnCancelar = new System.Windows.Forms.Button();
-            this.btn_registar_poliza = new System.Windows.Forms.Button();
-            this.btn_nueva_poliza = new System.Windows.Forms.Button();
-            this.ttCrear = new System.Windows.Forms.ToolTip(this.components);
-            this.ttGuardar = new System.Windows.Forms.ToolTip(this.components);
-            this.ttCancelar = new System.Windows.Forms.ToolTip(this.components);
-            this.ttAyuda = new System.Windows.Forms.ToolTip(this.components);
-            this.ttSalir = new System.Windows.Forms.ToolTip(this.components);
-            this.ttCheck = new System.Windows.Forms.ToolTip(this.components);
-            this.ttQuitar = new System.Windows.Forms.ToolTip(this.components);
-            this.ttAviso = new System.Windows.Forms.ToolTip(this.components);
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPolizas)).BeginInit();
+            this.Tt_Crear = new System.Windows.Forms.ToolTip(this.components);
+            this.Tt_Guardar = new System.Windows.Forms.ToolTip(this.components);
+            this.Tt_Cancelar = new System.Windows.Forms.ToolTip(this.components);
+            this.Tt_Ayuda = new System.Windows.Forms.ToolTip(this.components);
+            this.Tt_Salir = new System.Windows.Forms.ToolTip(this.components);
+            this.Tt_Check = new System.Windows.Forms.ToolTip(this.components);
+            this.Tt_Quitar = new System.Windows.Forms.ToolTip(this.components);
+            this.Tt_Aviso = new System.Windows.Forms.ToolTip(this.components);
+            this.Btn_ayuda = new System.Windows.Forms.Button();
+            this.Btn_salir = new System.Windows.Forms.Button();
+            this.Btn_Cancelar = new System.Windows.Forms.Button();
+            this.Btn_registar_poliza = new System.Windows.Forms.Button();
+            this.Btn_nueva_poliza = new System.Windows.Forms.Button();
+            Lbl_Cuenta = new System.Windows.Forms.Label();
+            this.gp_encabezado.SuspendLayout();
+            this.gb_detalle.SuspendLayout();
+            this.gb_detallemov.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Dgv_Polizas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
-            // colorDialog1
+            // Lbl_Cuenta
             // 
-            this.colorDialog1.Color = System.Drawing.Color.Maroon;
+            Lbl_Cuenta.BackColor = System.Drawing.Color.Beige;
+            Lbl_Cuenta.Location = new System.Drawing.Point(124, 28);
+            Lbl_Cuenta.Margin = new System.Windows.Forms.Padding(10);
+            Lbl_Cuenta.Name = "Lbl_Cuenta";
+            Lbl_Cuenta.Padding = new System.Windows.Forms.Padding(0, 0, 120, 0);
+            Lbl_Cuenta.Size = new System.Drawing.Size(286, 22);
+            Lbl_Cuenta.TabIndex = 0;
+            Lbl_Cuenta.Text = "                Cuenta\r\n";
+            Lbl_Cuenta.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // groupBox1
+            // cd_form
             // 
-            this.groupBox1.Controls.Add(this.txtConcepto);
-            this.groupBox1.Controls.Add(this.lbl_concepto);
-            this.groupBox1.Controls.Add(this.lbl_tipo_poliza);
-            this.groupBox1.Controls.Add(this.dtpfecha);
-            this.groupBox1.Controls.Add(this.lbl_fecha);
-            this.groupBox1.Controls.Add(this.cbtipopoliza);
-            this.groupBox1.Location = new System.Drawing.Point(12, 97);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1051, 145);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Encabezado poliza";
+            this.cd_form.Color = System.Drawing.Color.Maroon;
             // 
-            // txtConcepto
+            // gp_encabezado
             // 
-            this.txtConcepto.Location = new System.Drawing.Point(123, 97);
-            this.txtConcepto.Name = "txtConcepto";
-            this.txtConcepto.Size = new System.Drawing.Size(894, 22);
-            this.txtConcepto.TabIndex = 8;
+            this.gp_encabezado.Controls.Add(this.Txt_concepto);
+            this.gp_encabezado.Controls.Add(this.lbl_concepto);
+            this.gp_encabezado.Controls.Add(this.Lbl_tipo_poliza);
+            this.gp_encabezado.Controls.Add(this.Dpt_fecha);
+            this.gp_encabezado.Controls.Add(this.Lbl_fecha);
+            this.gp_encabezado.Controls.Add(this.Cbo_tipopoliza);
+            this.gp_encabezado.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gp_encabezado.Location = new System.Drawing.Point(12, 97);
+            this.gp_encabezado.Name = "gp_encabezado";
+            this.gp_encabezado.Size = new System.Drawing.Size(1051, 145);
+            this.gp_encabezado.TabIndex = 0;
+            this.gp_encabezado.TabStop = false;
+            this.gp_encabezado.Text = "Encabezado poliza";
+            // 
+            // Txt_concepto
+            // 
+            this.Txt_concepto.Location = new System.Drawing.Point(140, 97);
+            this.Txt_concepto.Name = "Txt_concepto";
+            this.Txt_concepto.Size = new System.Drawing.Size(877, 30);
+            this.Txt_concepto.TabIndex = 8;
             // 
             // lbl_concepto
             // 
             this.lbl_concepto.AutoSize = true;
             this.lbl_concepto.Location = new System.Drawing.Point(49, 97);
             this.lbl_concepto.Name = "lbl_concepto";
-            this.lbl_concepto.Size = new System.Drawing.Size(68, 17);
+            this.lbl_concepto.Size = new System.Drawing.Size(85, 22);
             this.lbl_concepto.TabIndex = 4;
             this.lbl_concepto.Text = "Concepto";
             // 
-            // lbl_tipo_poliza
+            // Lbl_tipo_poliza
             // 
-            this.lbl_tipo_poliza.AutoSize = true;
-            this.lbl_tipo_poliza.Location = new System.Drawing.Point(454, 49);
-            this.lbl_tipo_poliza.Name = "lbl_tipo_poliza";
-            this.lbl_tipo_poliza.Size = new System.Drawing.Size(97, 17);
-            this.lbl_tipo_poliza.TabIndex = 3;
-            this.lbl_tipo_poliza.Text = "Tipo de poliza";
+            this.Lbl_tipo_poliza.AutoSize = true;
+            this.Lbl_tipo_poliza.Location = new System.Drawing.Point(558, 49);
+            this.Lbl_tipo_poliza.Name = "Lbl_tipo_poliza";
+            this.Lbl_tipo_poliza.Size = new System.Drawing.Size(125, 22);
+            this.Lbl_tipo_poliza.TabIndex = 3;
+            this.Lbl_tipo_poliza.Text = "Tipo de poliza";
             // 
-            // dtpfecha
+            // Dpt_fecha
             // 
-            this.dtpfecha.Location = new System.Drawing.Point(123, 44);
-            this.dtpfecha.Name = "dtpfecha";
-            this.dtpfecha.Size = new System.Drawing.Size(272, 22);
-            this.dtpfecha.TabIndex = 6;
-            this.dtpfecha.ValueChanged += new System.EventHandler(this.dtpfecha_ValueChanged);
+            this.Dpt_fecha.Location = new System.Drawing.Point(113, 43);
+            this.Dpt_fecha.Name = "Dpt_fecha";
+            this.Dpt_fecha.Size = new System.Drawing.Size(325, 30);
+            this.Dpt_fecha.TabIndex = 6;
+            this.Dpt_fecha.ValueChanged += new System.EventHandler(this.dtpfecha_ValueChanged);
             // 
-            // lbl_fecha
+            // Lbl_fecha
             // 
-            this.lbl_fecha.AutoSize = true;
-            this.lbl_fecha.Location = new System.Drawing.Point(49, 44);
-            this.lbl_fecha.Name = "lbl_fecha";
-            this.lbl_fecha.Size = new System.Drawing.Size(47, 17);
-            this.lbl_fecha.TabIndex = 1;
-            this.lbl_fecha.Text = "Fecha";
+            this.Lbl_fecha.AutoSize = true;
+            this.Lbl_fecha.Location = new System.Drawing.Point(49, 44);
+            this.Lbl_fecha.Name = "Lbl_fecha";
+            this.Lbl_fecha.Size = new System.Drawing.Size(57, 22);
+            this.Lbl_fecha.TabIndex = 1;
+            this.Lbl_fecha.Text = "Fecha";
             // 
-            // cbtipopoliza
+            // Cbo_tipopoliza
             // 
-            this.cbtipopoliza.FormattingEnabled = true;
-            this.cbtipopoliza.Location = new System.Drawing.Point(557, 46);
-            this.cbtipopoliza.Name = "cbtipopoliza";
-            this.cbtipopoliza.Size = new System.Drawing.Size(251, 24);
-            this.cbtipopoliza.TabIndex = 7;
-            this.cbtipopoliza.SelectedIndexChanged += new System.EventHandler(this.cbtipopoliza_SelectedIndexChanged);
+            this.Cbo_tipopoliza.FormattingEnabled = true;
+            this.Cbo_tipopoliza.Location = new System.Drawing.Point(689, 46);
+            this.Cbo_tipopoliza.Name = "Cbo_tipopoliza";
+            this.Cbo_tipopoliza.Size = new System.Drawing.Size(251, 30);
+            this.Cbo_tipopoliza.TabIndex = 7;
+            this.Cbo_tipopoliza.SelectedIndexChanged += new System.EventHandler(this.cbtipopoliza_SelectedIndexChanged);
             // 
-            // groupBox2
+            // gb_detalle
             // 
-            this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Controls.Add(this.btn_aceptar);
-            this.groupBox2.Controls.Add(this.txtValor);
-            this.groupBox2.Controls.Add(this.cboperacion);
-            this.groupBox2.Controls.Add(this.cbCuenta);
-            this.groupBox2.Controls.Add(this.lbl_Cuenta);
-            this.groupBox2.Location = new System.Drawing.Point(13, 248);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1050, 114);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Detalle";
+            this.gb_detalle.Controls.Add(this.lbl_valor);
+            this.gb_detalle.Controls.Add(this.Lbl_operacion);
+            this.gb_detalle.Controls.Add(this.Btn_aceptar);
+            this.gb_detalle.Controls.Add(this.Txt_valor);
+            this.gb_detalle.Controls.Add(this.Cbo_operacion);
+            this.gb_detalle.Controls.Add(this.Cbo_Cuenta);
+            this.gb_detalle.Controls.Add(Lbl_Cuenta);
+            this.gb_detalle.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gb_detalle.Location = new System.Drawing.Point(13, 248);
+            this.gb_detalle.Name = "gb_detalle";
+            this.gb_detalle.Size = new System.Drawing.Size(1050, 114);
+            this.gb_detalle.TabIndex = 1;
+            this.gb_detalle.TabStop = false;
+            this.gb_detalle.Text = "Detalle";
             // 
-            // label2
+            // lbl_valor
             // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Beige;
-            this.label2.Location = new System.Drawing.Point(685, 28);
-            this.label2.Margin = new System.Windows.Forms.Padding(10);
-            this.label2.Name = "label2";
-            this.label2.Padding = new System.Windows.Forms.Padding(0, 0, 55, 0);
-            this.label2.Size = new System.Drawing.Size(148, 17);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "             Valor";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lbl_valor.AutoSize = true;
+            this.lbl_valor.BackColor = System.Drawing.Color.Beige;
+            this.lbl_valor.Location = new System.Drawing.Point(689, 28);
+            this.lbl_valor.Margin = new System.Windows.Forms.Padding(10);
+            this.lbl_valor.Name = "lbl_valor";
+            this.lbl_valor.Padding = new System.Windows.Forms.Padding(0, 0, 55, 0);
+            this.lbl_valor.Size = new System.Drawing.Size(143, 22);
+            this.lbl_valor.TabIndex = 8;
+            this.lbl_valor.Text = "       Valor";
+            this.lbl_valor.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // label1
+            // Lbl_operacion
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Beige;
-            this.label1.Location = new System.Drawing.Point(455, 28);
-            this.label1.Margin = new System.Windows.Forms.Padding(10);
-            this.label1.Name = "label1";
-            this.label1.Padding = new System.Windows.Forms.Padding(0, 0, 45, 0);
-            this.label1.Size = new System.Drawing.Size(176, 17);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "          Cargo/Abono";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.Lbl_operacion.AutoSize = true;
+            this.Lbl_operacion.BackColor = System.Drawing.Color.Beige;
+            this.Lbl_operacion.Location = new System.Drawing.Point(454, 28);
+            this.Lbl_operacion.Margin = new System.Windows.Forms.Padding(10);
+            this.Lbl_operacion.Name = "Lbl_operacion";
+            this.Lbl_operacion.Padding = new System.Windows.Forms.Padding(0, 0, 45, 0);
+            this.Lbl_operacion.Size = new System.Drawing.Size(177, 22);
+            this.Lbl_operacion.TabIndex = 7;
+            this.Lbl_operacion.Text = "   Cargo/Abono";
+            this.Lbl_operacion.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // btn_aceptar
+            // Btn_aceptar
             // 
-            this.btn_aceptar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(237)))), ((int)(((byte)(235)))));
-            this.btn_aceptar.Image = global::Capa_Vista_Polizas.Properties.Resources.lista_de_verificacion;
-            this.btn_aceptar.Location = new System.Drawing.Point(865, 15);
-            this.btn_aceptar.Name = "btn_aceptar";
-            this.btn_aceptar.Size = new System.Drawing.Size(109, 93);
-            this.btn_aceptar.TabIndex = 12;
-            this.btn_aceptar.UseVisualStyleBackColor = false;
-            this.btn_aceptar.Click += new System.EventHandler(this.btn_aceptar_Click);
+            this.Btn_aceptar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(237)))), ((int)(((byte)(235)))));
+            this.Btn_aceptar.Image = global::Capa_Vista_Polizas.Properties.Resources.lista_de_verificacion;
+            this.Btn_aceptar.Location = new System.Drawing.Point(865, 15);
+            this.Btn_aceptar.Name = "Btn_aceptar";
+            this.Btn_aceptar.Size = new System.Drawing.Size(109, 93);
+            this.Btn_aceptar.TabIndex = 12;
+            this.Btn_aceptar.UseVisualStyleBackColor = false;
+            this.Btn_aceptar.Click += new System.EventHandler(this.btn_aceptar_Click);
             // 
-            // txtValor
+            // Txt_valor
             // 
-            this.txtValor.Location = new System.Drawing.Point(688, 58);
-            this.txtValor.Name = "txtValor";
-            this.txtValor.Size = new System.Drawing.Size(144, 22);
-            this.txtValor.TabIndex = 11;
-            this.txtValor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtValor_KeyPress);
-            this.txtValor.Leave += new System.EventHandler(this.txtValor_Leave);
+            this.Txt_valor.Location = new System.Drawing.Point(688, 58);
+            this.Txt_valor.Name = "Txt_valor";
+            this.Txt_valor.Size = new System.Drawing.Size(144, 30);
+            this.Txt_valor.TabIndex = 11;
+            this.Txt_valor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtValor_KeyPress);
+            this.Txt_valor.Leave += new System.EventHandler(this.txtValor_Leave);
             // 
-            // cboperacion
+            // Cbo_operacion
             // 
-            this.cboperacion.FormattingEnabled = true;
-            this.cboperacion.Location = new System.Drawing.Point(455, 56);
-            this.cboperacion.Name = "cboperacion";
-            this.cboperacion.Size = new System.Drawing.Size(176, 24);
-            this.cboperacion.TabIndex = 10;
-            this.cboperacion.SelectedIndexChanged += new System.EventHandler(this.cboperacion_SelectedIndexChanged);
+            this.Cbo_operacion.FormattingEnabled = true;
+            this.Cbo_operacion.Location = new System.Drawing.Point(455, 56);
+            this.Cbo_operacion.Name = "Cbo_operacion";
+            this.Cbo_operacion.Size = new System.Drawing.Size(176, 30);
+            this.Cbo_operacion.TabIndex = 10;
+            this.Cbo_operacion.SelectedIndexChanged += new System.EventHandler(this.cboperacion_SelectedIndexChanged);
             // 
-            // cbCuenta
+            // Cbo_Cuenta
             // 
-            this.cbCuenta.FormattingEnabled = true;
-            this.cbCuenta.Location = new System.Drawing.Point(122, 58);
-            this.cbCuenta.Name = "cbCuenta";
-            this.cbCuenta.Size = new System.Drawing.Size(288, 24);
-            this.cbCuenta.TabIndex = 9;
-            this.cbCuenta.SelectedIndexChanged += new System.EventHandler(this.cbCuenta_SelectedIndexChanged);
+            this.Cbo_Cuenta.FormattingEnabled = true;
+            this.Cbo_Cuenta.Location = new System.Drawing.Point(122, 58);
+            this.Cbo_Cuenta.Name = "Cbo_Cuenta";
+            this.Cbo_Cuenta.Size = new System.Drawing.Size(288, 30);
+            this.Cbo_Cuenta.TabIndex = 9;
+            this.Cbo_Cuenta.SelectedIndexChanged += new System.EventHandler(this.cbCuenta_SelectedIndexChanged);
             // 
-            // lbl_Cuenta
+            // gb_detallemov
             // 
-            this.lbl_Cuenta.AutoSize = true;
-            this.lbl_Cuenta.BackColor = System.Drawing.Color.Beige;
-            this.lbl_Cuenta.Location = new System.Drawing.Point(120, 28);
-            this.lbl_Cuenta.Margin = new System.Windows.Forms.Padding(10);
-            this.lbl_Cuenta.Name = "lbl_Cuenta";
-            this.lbl_Cuenta.Padding = new System.Windows.Forms.Padding(0, 0, 120, 0);
-            this.lbl_Cuenta.Size = new System.Drawing.Size(289, 17);
-            this.lbl_Cuenta.TabIndex = 0;
-            this.lbl_Cuenta.Text = "                             Cuenta\r\n";
-            this.lbl_Cuenta.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.gb_detallemov.Controls.Add(this.Btn_quitar);
+            this.gb_detallemov.Controls.Add(this.Dgv_Polizas);
+            this.gb_detallemov.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gb_detallemov.Location = new System.Drawing.Point(13, 377);
+            this.gb_detallemov.Name = "gb_detallemov";
+            this.gb_detallemov.Size = new System.Drawing.Size(1050, 374);
+            this.gb_detallemov.TabIndex = 2;
+            this.gb_detallemov.TabStop = false;
+            this.gb_detallemov.Text = "Detalle de movimiento";
             // 
-            // groupBox3
+            // Btn_quitar
             // 
-            this.groupBox3.Controls.Add(this.btnQuitar);
-            this.groupBox3.Controls.Add(this.dgvPolizas);
-            this.groupBox3.Location = new System.Drawing.Point(13, 377);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(1050, 374);
-            this.groupBox3.TabIndex = 2;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Detalle de movimiento";
+            this.Btn_quitar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(237)))), ((int)(((byte)(235)))));
+            this.Btn_quitar.Image = global::Capa_Vista_Polizas.Properties.Resources.boton_menos3;
+            this.Btn_quitar.Location = new System.Drawing.Point(926, 31);
+            this.Btn_quitar.Name = "Btn_quitar";
+            this.Btn_quitar.Size = new System.Drawing.Size(107, 97);
+            this.Btn_quitar.TabIndex = 14;
+            this.Btn_quitar.UseVisualStyleBackColor = false;
+            this.Btn_quitar.Click += new System.EventHandler(this.btnQuitar_Click);
             // 
-            // btnQuitar
+            // Dgv_Polizas
             // 
-            this.btnQuitar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(237)))), ((int)(((byte)(235)))));
-            this.btnQuitar.Image = global::Capa_Vista_Polizas.Properties.Resources.boton_menos3;
-            this.btnQuitar.Location = new System.Drawing.Point(926, 31);
-            this.btnQuitar.Name = "btnQuitar";
-            this.btnQuitar.Size = new System.Drawing.Size(107, 97);
-            this.btnQuitar.TabIndex = 14;
-            this.btnQuitar.UseVisualStyleBackColor = false;
-            this.btnQuitar.Click += new System.EventHandler(this.btnQuitar_Click);
-            // 
-            // dgvPolizas
-            // 
-            this.dgvPolizas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPolizas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Dgv_Polizas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Dgv_Polizas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Codigo,
             this.Cuenta,
             this.Cargo,
             this.Abono});
-            this.dgvPolizas.Location = new System.Drawing.Point(7, 31);
-            this.dgvPolizas.Name = "dgvPolizas";
-            this.dgvPolizas.RowHeadersWidth = 51;
-            this.dgvPolizas.RowTemplate.Height = 24;
-            this.dgvPolizas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPolizas.Size = new System.Drawing.Size(895, 327);
-            this.dgvPolizas.TabIndex = 13;
+            this.Dgv_Polizas.Location = new System.Drawing.Point(7, 31);
+            this.Dgv_Polizas.Name = "Dgv_Polizas";
+            this.Dgv_Polizas.RowHeadersWidth = 51;
+            this.Dgv_Polizas.RowTemplate.Height = 24;
+            this.Dgv_Polizas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.Dgv_Polizas.Size = new System.Drawing.Size(895, 327);
+            this.Dgv_Polizas.TabIndex = 13;
             // 
             // Codigo
             // 
@@ -307,123 +310,127 @@ namespace Capa_Vista_Polizas
             this.Abono.Name = "Abono";
             this.Abono.Width = 150;
             // 
-            // lbl_cargo
+            // Lbl_cargo
             // 
-            this.lbl_cargo.AutoSize = true;
-            this.lbl_cargo.Location = new System.Drawing.Point(536, 783);
-            this.lbl_cargo.Name = "lbl_cargo";
-            this.lbl_cargo.Size = new System.Drawing.Size(108, 17);
-            this.lbl_cargo.TabIndex = 7;
-            this.lbl_cargo.Text = "TOTAL CARGO";
+            this.Lbl_cargo.AutoSize = true;
+            this.Lbl_cargo.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_cargo.Location = new System.Drawing.Point(467, 783);
+            this.Lbl_cargo.Name = "Lbl_cargo";
+            this.Lbl_cargo.Size = new System.Drawing.Size(143, 22);
+            this.Lbl_cargo.TabIndex = 7;
+            this.Lbl_cargo.Text = "TOTAL CARGO";
             // 
-            // lbl_abono
+            // Lbl_abono
             // 
-            this.lbl_abono.AutoSize = true;
-            this.lbl_abono.Location = new System.Drawing.Point(737, 783);
-            this.lbl_abono.Name = "lbl_abono";
-            this.lbl_abono.Size = new System.Drawing.Size(108, 17);
-            this.lbl_abono.TabIndex = 8;
-            this.lbl_abono.Text = "TOTAL ABONO";
+            this.Lbl_abono.AutoSize = true;
+            this.Lbl_abono.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_abono.Location = new System.Drawing.Point(716, 783);
+            this.Lbl_abono.Name = "Lbl_abono";
+            this.Lbl_abono.Size = new System.Drawing.Size(143, 22);
+            this.Lbl_abono.TabIndex = 8;
+            this.Lbl_abono.Text = "TOTAL ABONO";
             // 
-            // lblCargo
+            // Lbl_CargoTot
             // 
-            this.lblCargo.AutoSize = true;
-            this.lblCargo.Location = new System.Drawing.Point(653, 783);
-            this.lblCargo.Name = "lblCargo";
-            this.lblCargo.Size = new System.Drawing.Size(44, 17);
-            this.lblCargo.TabIndex = 10;
-            this.lblCargo.Text = "00.00";
+            this.Lbl_CargoTot.AutoSize = true;
+            this.Lbl_CargoTot.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_CargoTot.Location = new System.Drawing.Point(625, 783);
+            this.Lbl_CargoTot.Name = "Lbl_CargoTot";
+            this.Lbl_CargoTot.Size = new System.Drawing.Size(55, 22);
+            this.Lbl_CargoTot.TabIndex = 10;
+            this.Lbl_CargoTot.Text = "00.00";
             // 
-            // lblAbono
+            // Lbl_AbonoTot
             // 
-            this.lblAbono.AutoSize = true;
-            this.lblAbono.Location = new System.Drawing.Point(855, 783);
-            this.lblAbono.Name = "lblAbono";
-            this.lblAbono.Size = new System.Drawing.Size(44, 17);
-            this.lblAbono.TabIndex = 11;
-            this.lblAbono.Text = "00.00";
+            this.Lbl_AbonoTot.AutoSize = true;
+            this.Lbl_AbonoTot.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_AbonoTot.Location = new System.Drawing.Point(865, 783);
+            this.Lbl_AbonoTot.Name = "Lbl_AbonoTot";
+            this.Lbl_AbonoTot.Size = new System.Drawing.Size(55, 22);
+            this.Lbl_AbonoTot.TabIndex = 11;
+            this.Lbl_AbonoTot.Text = "00.00";
             // 
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // btnAyuda
+            // Btn_ayuda
             // 
-            this.btnAyuda.Image = global::Capa_Vista_Polizas.Properties.Resources.Ayuda;
-            this.btnAyuda.Location = new System.Drawing.Point(917, 12);
-            this.btnAyuda.Name = "btnAyuda";
-            this.btnAyuda.Size = new System.Drawing.Size(70, 62);
-            this.btnAyuda.TabIndex = 8;
-            this.btnAyuda.UseVisualStyleBackColor = true;
-            this.btnAyuda.Click += new System.EventHandler(this.btnAyuda_Click);
+            this.Btn_ayuda.Image = global::Capa_Vista_Polizas.Properties.Resources.preguntas__1_;
+            this.Btn_ayuda.Location = new System.Drawing.Point(917, 12);
+            this.Btn_ayuda.Name = "Btn_ayuda";
+            this.Btn_ayuda.Size = new System.Drawing.Size(70, 62);
+            this.Btn_ayuda.TabIndex = 8;
+            this.Btn_ayuda.UseVisualStyleBackColor = true;
+            this.Btn_ayuda.Click += new System.EventHandler(this.btnAyuda_Click);
             // 
-            // btnSalir
+            // Btn_salir
             // 
-            this.btnSalir.Image = global::Capa_Vista_Polizas.Properties.Resources.cerrar_sesion1;
-            this.btnSalir.Location = new System.Drawing.Point(993, 12);
-            this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(70, 62);
-            this.btnSalir.TabIndex = 9;
-            this.btnSalir.UseVisualStyleBackColor = true;
-            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
+            this.Btn_salir.Image = global::Capa_Vista_Polizas.Properties.Resources.cerrar_sesion2;
+            this.Btn_salir.Location = new System.Drawing.Point(993, 12);
+            this.Btn_salir.Name = "Btn_salir";
+            this.Btn_salir.Size = new System.Drawing.Size(70, 62);
+            this.Btn_salir.TabIndex = 9;
+            this.Btn_salir.UseVisualStyleBackColor = true;
+            this.Btn_salir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
-            // btnCancelar
+            // Btn_Cancelar
             // 
-            this.btnCancelar.Image = global::Capa_Vista_Polizas.Properties.Resources.cancelar;
-            this.btnCancelar.Location = new System.Drawing.Point(215, 14);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(70, 62);
-            this.btnCancelar.TabIndex = 7;
-            this.btnCancelar.UseVisualStyleBackColor = true;
-            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            this.Btn_Cancelar.Image = global::Capa_Vista_Polizas.Properties.Resources.cancelar1;
+            this.Btn_Cancelar.Location = new System.Drawing.Point(215, 14);
+            this.Btn_Cancelar.Name = "Btn_Cancelar";
+            this.Btn_Cancelar.Size = new System.Drawing.Size(70, 62);
+            this.Btn_Cancelar.TabIndex = 7;
+            this.Btn_Cancelar.UseVisualStyleBackColor = true;
+            this.Btn_Cancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
-            // btn_registar_poliza
+            // Btn_registar_poliza
             // 
-            this.btn_registar_poliza.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(237)))), ((int)(((byte)(235)))));
-            this.btn_registar_poliza.Image = global::Capa_Vista_Polizas.Properties.Resources.Guardar;
-            this.btn_registar_poliza.Location = new System.Drawing.Point(125, 12);
-            this.btn_registar_poliza.Name = "btn_registar_poliza";
-            this.btn_registar_poliza.Size = new System.Drawing.Size(70, 64);
-            this.btn_registar_poliza.TabIndex = 6;
-            this.btn_registar_poliza.UseVisualStyleBackColor = false;
-            this.btn_registar_poliza.Click += new System.EventHandler(this.btn_registar_poliza_Click);
+            this.Btn_registar_poliza.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(237)))), ((int)(((byte)(235)))));
+            this.Btn_registar_poliza.Image = global::Capa_Vista_Polizas.Properties.Resources.ahorrar;
+            this.Btn_registar_poliza.Location = new System.Drawing.Point(125, 12);
+            this.Btn_registar_poliza.Name = "Btn_registar_poliza";
+            this.Btn_registar_poliza.Size = new System.Drawing.Size(70, 64);
+            this.Btn_registar_poliza.TabIndex = 6;
+            this.Btn_registar_poliza.UseVisualStyleBackColor = false;
+            this.Btn_registar_poliza.Click += new System.EventHandler(this.btn_registar_poliza_Click);
             // 
-            // btn_nueva_poliza
+            // Btn_nueva_poliza
             // 
-            this.btn_nueva_poliza.Image = global::Capa_Vista_Polizas.Properties.Resources.agregar_archivo1;
-            this.btn_nueva_poliza.Location = new System.Drawing.Point(38, 12);
-            this.btn_nueva_poliza.Name = "btn_nueva_poliza";
-            this.btn_nueva_poliza.Size = new System.Drawing.Size(70, 64);
-            this.btn_nueva_poliza.TabIndex = 5;
-            this.btn_nueva_poliza.UseVisualStyleBackColor = true;
-            this.btn_nueva_poliza.Click += new System.EventHandler(this.btn_nueva_poliza_Click);
+            this.Btn_nueva_poliza.Image = global::Capa_Vista_Polizas.Properties.Resources.agregar_archivo2;
+            this.Btn_nueva_poliza.Location = new System.Drawing.Point(38, 12);
+            this.Btn_nueva_poliza.Name = "Btn_nueva_poliza";
+            this.Btn_nueva_poliza.Size = new System.Drawing.Size(70, 64);
+            this.Btn_nueva_poliza.TabIndex = 5;
+            this.Btn_nueva_poliza.UseVisualStyleBackColor = true;
+            this.Btn_nueva_poliza.Click += new System.EventHandler(this.btn_nueva_poliza_Click);
             // 
             // frmPolizas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1088, 834);
-            this.Controls.Add(this.btnAyuda);
-            this.Controls.Add(this.btnSalir);
-            this.Controls.Add(this.lblAbono);
-            this.Controls.Add(this.lblCargo);
-            this.Controls.Add(this.btnCancelar);
-            this.Controls.Add(this.lbl_abono);
-            this.Controls.Add(this.lbl_cargo);
-            this.Controls.Add(this.btn_registar_poliza);
-            this.Controls.Add(this.btn_nueva_poliza);
-            this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.Btn_ayuda);
+            this.Controls.Add(this.Btn_salir);
+            this.Controls.Add(this.Lbl_AbonoTot);
+            this.Controls.Add(this.Lbl_CargoTot);
+            this.Controls.Add(this.Btn_Cancelar);
+            this.Controls.Add(this.Lbl_abono);
+            this.Controls.Add(this.Lbl_cargo);
+            this.Controls.Add(this.Btn_registar_poliza);
+            this.Controls.Add(this.Btn_nueva_poliza);
+            this.Controls.Add(this.gb_detallemov);
+            this.Controls.Add(this.gb_detalle);
+            this.Controls.Add(this.gp_encabezado);
             this.Name = "frmPolizas";
             this.Text = "Polizas";
             this.Load += new System.EventHandler(this.Polizas_Load);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPolizas)).EndInit();
+            this.gp_encabezado.ResumeLayout(false);
+            this.gp_encabezado.PerformLayout();
+            this.gb_detalle.ResumeLayout(false);
+            this.gb_detalle.PerformLayout();
+            this.gb_detallemov.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.Dgv_Polizas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -432,46 +439,45 @@ namespace Capa_Vista_Polizas
 
         #endregion
 
-        private System.Windows.Forms.ColorDialog colorDialog1;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox txtConcepto;
+        private System.Windows.Forms.ColorDialog cd_form;
+        private System.Windows.Forms.GroupBox gp_encabezado;
+        private System.Windows.Forms.TextBox Txt_concepto;
         private System.Windows.Forms.Label lbl_concepto;
-        private System.Windows.Forms.Label lbl_tipo_poliza;
-        private System.Windows.Forms.DateTimePicker dtpfecha;
-        private System.Windows.Forms.Label lbl_fecha;
-        private System.Windows.Forms.ComboBox cbtipopoliza;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button btn_aceptar;
-        private System.Windows.Forms.TextBox txtValor;
-        private System.Windows.Forms.ComboBox cboperacion;
-        private System.Windows.Forms.ComboBox cbCuenta;
-        private System.Windows.Forms.Label lbl_Cuenta;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Button btnQuitar;
-        private System.Windows.Forms.DataGridView dgvPolizas;
-        private System.Windows.Forms.Button btn_nueva_poliza;
-        private System.Windows.Forms.Button btn_registar_poliza;
-        private System.Windows.Forms.Label lbl_cargo;
-        private System.Windows.Forms.Label lbl_abono;
-        private System.Windows.Forms.Button btnCancelar;
-        private System.Windows.Forms.Label lblCargo;
-        private System.Windows.Forms.Label lblAbono;
+        private System.Windows.Forms.Label Lbl_tipo_poliza;
+        private System.Windows.Forms.DateTimePicker Dpt_fecha;
+        private System.Windows.Forms.Label Lbl_fecha;
+        private System.Windows.Forms.ComboBox Cbo_tipopoliza;
+        private System.Windows.Forms.GroupBox gb_detalle;
+        private System.Windows.Forms.Button Btn_aceptar;
+        private System.Windows.Forms.TextBox Txt_valor;
+        private System.Windows.Forms.ComboBox Cbo_operacion;
+        private System.Windows.Forms.ComboBox Cbo_Cuenta;
+        private System.Windows.Forms.GroupBox gb_detallemov;
+        private System.Windows.Forms.Button Btn_quitar;
+        private System.Windows.Forms.DataGridView Dgv_Polizas;
+        private System.Windows.Forms.Button Btn_nueva_poliza;
+        private System.Windows.Forms.Button Btn_registar_poliza;
+        private System.Windows.Forms.Label Lbl_cargo;
+        private System.Windows.Forms.Label Lbl_abono;
+        private System.Windows.Forms.Button Btn_Cancelar;
+        private System.Windows.Forms.Label Lbl_CargoTot;
+        private System.Windows.Forms.Label Lbl_AbonoTot;
         private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cuenta;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cargo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Abono;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnSalir;
+        private System.Windows.Forms.Label lbl_valor;
+        private System.Windows.Forms.Label Lbl_operacion;
+        private System.Windows.Forms.Button Btn_salir;
         private System.Windows.Forms.ErrorProvider errorProvider1;
-        private System.Windows.Forms.Button btnAyuda;
-        private System.Windows.Forms.ToolTip ttCrear;
-        private System.Windows.Forms.ToolTip ttGuardar;
-        private System.Windows.Forms.ToolTip ttCancelar;
-        private System.Windows.Forms.ToolTip ttAyuda;
-        private System.Windows.Forms.ToolTip ttSalir;
-        private System.Windows.Forms.ToolTip ttCheck;
-        private System.Windows.Forms.ToolTip ttQuitar;
-        private System.Windows.Forms.ToolTip ttAviso;
+        private System.Windows.Forms.Button Btn_ayuda;
+        private System.Windows.Forms.ToolTip Tt_Crear;
+        private System.Windows.Forms.ToolTip Tt_Guardar;
+        private System.Windows.Forms.ToolTip Tt_Cancelar;
+        private System.Windows.Forms.ToolTip Tt_Ayuda;
+        private System.Windows.Forms.ToolTip Tt_Salir;
+        private System.Windows.Forms.ToolTip Tt_Check;
+        private System.Windows.Forms.ToolTip Tt_Quitar;
+        private System.Windows.Forms.ToolTip Tt_Aviso;
     }
 }

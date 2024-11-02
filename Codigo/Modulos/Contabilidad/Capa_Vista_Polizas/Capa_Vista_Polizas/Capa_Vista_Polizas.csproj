@@ -37,6 +37,10 @@
     <Reference Include="Capa_Controlador_Seguridad">
       <HintPath>..\..\..\..\Componentes\Seguridad\Capa_Vista_Seguridad\bin\Debug\Capa_Controlador_Seguridad.dll</HintPath>
     </Reference>
+    <Reference Include="Capa_Vista_Polizas, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\Capa_Vista_Polizas.dll</HintPath>
+    </Reference>
     <Reference Include="Capa_Vista_Seguridad">
       <HintPath>..\..\..\..\Componentes\Seguridad\Capa_Vista_Seguridad\bin\Debug\Capa_Vista_Seguridad.dll</HintPath>
     </Reference>
@@ -127,6 +131,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Ayuda.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\agregar-archivo2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ahorrar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancelar1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\preguntas %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cerrar-sesion2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
