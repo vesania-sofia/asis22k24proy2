@@ -29,206 +29,68 @@ namespace Capa_Vista_EstadosFinancieros
         /// </summary>
         private void InitializeComponent()
         {
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btn_Ver_BalanceHistorico = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.btn_Ver_Balance = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.btn_Ver_EResultadosHistorico = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.btn_VerEstadoResultados = new System.Windows.Forms.Button();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.btn_Ver_FEfectivoHistorico = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
-            this.btn_VerFlujo = new System.Windows.Forms.Button();
-            this.btn_Ver_Ayuda = new System.Windows.Forms.Button();
-            this.cb_BalanceMes = new System.Windows.Forms.ComboBox();
-            this.cb_BalanceAnio = new System.Windows.Forms.ComboBox();
-            this.cb_EResultadosAnio = new System.Windows.Forms.ComboBox();
-            this.cb_EResultadosMes = new System.Windows.Forms.ComboBox();
-            this.cb_FEfectivoAnio = new System.Windows.Forms.ComboBox();
-            this.cb_FEfectivoMes = new System.Windows.Forms.ComboBox();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EstadosFinancieros));
+            this.Gpb_Balance = new System.Windows.Forms.GroupBox();
+            this.Cbo_BalanceAnio = new System.Windows.Forms.ComboBox();
+            this.Cbo_BalanceMes = new System.Windows.Forms.ComboBox();
+            this.Btn_Ver_BalanceHistorico = new System.Windows.Forms.Button();
+            this.Txt_BalanceHistorico = new System.Windows.Forms.Label();
+            this.Txt_BalanceActual = new System.Windows.Forms.Label();
+            this.Btn_Ver_Balance = new System.Windows.Forms.Button();
+            this.Gbp_EstadoDeResultados = new System.Windows.Forms.GroupBox();
+            this.Cbo_EResultadosAnio = new System.Windows.Forms.ComboBox();
+            this.Cbo_EResultadosMes = new System.Windows.Forms.ComboBox();
+            this.Txt_EstadoDeResultadosHistorico = new System.Windows.Forms.Label();
+            this.Btn_Ver_EResultadosHistorico = new System.Windows.Forms.Button();
+            this.Txt_EstadoDeResultadosActual = new System.Windows.Forms.Label();
+            this.Btn_Ver_EstadoResultados = new System.Windows.Forms.Button();
+            this.Gbp_FlujoDeEfectivo = new System.Windows.Forms.GroupBox();
+            this.Cbo_FEfectivoAnio = new System.Windows.Forms.ComboBox();
+            this.Cbo_FEfectivoMes = new System.Windows.Forms.ComboBox();
+            this.Txt_FlujoDeEfectivoHistorico = new System.Windows.Forms.Label();
+            this.Btn_Ver_FEfectivoHistorico = new System.Windows.Forms.Button();
+            this.Txt_FlujoDeEfectivoActual = new System.Windows.Forms.Label();
+            this.Btn_Ver_Flujo = new System.Windows.Forms.Button();
+            this.Btn_Ver_Ayuda = new System.Windows.Forms.Button();
+            this.Gpb_Balance.SuspendLayout();
+            this.Gbp_EstadoDeResultados.SuspendLayout();
+            this.Gbp_FlujoDeEfectivo.SuspendLayout();
             this.SuspendLayout();
             // 
-            // groupBox1
+            // Gpb_Balance
             // 
-            this.groupBox1.Controls.Add(this.cb_BalanceAnio);
-            this.groupBox1.Controls.Add(this.cb_BalanceMes);
-            this.groupBox1.Controls.Add(this.btn_Ver_BalanceHistorico);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.btn_Ver_Balance);
-            this.groupBox1.Location = new System.Drawing.Point(41, 22);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(325, 145);
-            this.groupBox1.TabIndex = 3;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Balance General";
+            this.Gpb_Balance.Controls.Add(this.Cbo_BalanceAnio);
+            this.Gpb_Balance.Controls.Add(this.Cbo_BalanceMes);
+            this.Gpb_Balance.Controls.Add(this.Btn_Ver_BalanceHistorico);
+            this.Gpb_Balance.Controls.Add(this.Txt_BalanceHistorico);
+            this.Gpb_Balance.Controls.Add(this.Txt_BalanceActual);
+            this.Gpb_Balance.Controls.Add(this.Btn_Ver_Balance);
+            this.Gpb_Balance.Font = new System.Drawing.Font("Haettenschweiler", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Gpb_Balance.Location = new System.Drawing.Point(41, 22);
+            this.Gpb_Balance.Name = "Gpb_Balance";
+            this.Gpb_Balance.Size = new System.Drawing.Size(387, 145);
+            this.Gpb_Balance.TabIndex = 3;
+            this.Gpb_Balance.TabStop = false;
+            this.Gpb_Balance.Text = "Balance General";
             // 
-            // btn_Ver_BalanceHistorico
+            // Cbo_BalanceAnio
             // 
-            this.btn_Ver_BalanceHistorico.Location = new System.Drawing.Point(196, 85);
-            this.btn_Ver_BalanceHistorico.Name = "btn_Ver_BalanceHistorico";
-            this.btn_Ver_BalanceHistorico.Size = new System.Drawing.Size(75, 28);
-            this.btn_Ver_BalanceHistorico.TabIndex = 6;
-            this.btn_Ver_BalanceHistorico.Text = "Ver ";
-            this.btn_Ver_BalanceHistorico.UseVisualStyleBackColor = true;
-            this.btn_Ver_BalanceHistorico.Click += new System.EventHandler(this.btn_Ver_BalanceHistorico_Click);
+            this.Cbo_BalanceAnio.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Cbo_BalanceAnio.FormattingEnabled = true;
+            this.Cbo_BalanceAnio.Items.AddRange(new object[] {
+            "2024",
+            "2023"});
+            this.Cbo_BalanceAnio.Location = new System.Drawing.Point(272, 57);
+            this.Cbo_BalanceAnio.Name = "Cbo_BalanceAnio";
+            this.Cbo_BalanceAnio.Size = new System.Drawing.Size(63, 27);
+            this.Cbo_BalanceAnio.TabIndex = 8;
+            this.Cbo_BalanceAnio.Text = "Año";
             // 
-            // label1
+            // Cbo_BalanceMes
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(191, 32);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(90, 13);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Balance Historico";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(30, 32);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(79, 13);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Balance Actual";
-            // 
-            // btn_Ver_Balance
-            // 
-            this.btn_Ver_Balance.Location = new System.Drawing.Point(33, 61);
-            this.btn_Ver_Balance.Name = "btn_Ver_Balance";
-            this.btn_Ver_Balance.Size = new System.Drawing.Size(75, 28);
-            this.btn_Ver_Balance.TabIndex = 0;
-            this.btn_Ver_Balance.Text = "Ver ";
-            this.btn_Ver_Balance.UseVisualStyleBackColor = true;
-            this.btn_Ver_Balance.Click += new System.EventHandler(this.btn_Ver_Balance_Click);
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.cb_EResultadosAnio);
-            this.groupBox2.Controls.Add(this.cb_EResultadosMes);
-            this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.btn_Ver_EResultadosHistorico);
-            this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.btn_VerEstadoResultados);
-            this.groupBox2.Location = new System.Drawing.Point(41, 155);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(325, 145);
-            this.groupBox2.TabIndex = 4;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Estado de resultados";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(173, 41);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(132, 13);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "E. de Resultados Historico";
-            // 
-            // btn_Ver_EResultadosHistorico
-            // 
-            this.btn_Ver_EResultadosHistorico.Location = new System.Drawing.Point(196, 95);
-            this.btn_Ver_EResultadosHistorico.Name = "btn_Ver_EResultadosHistorico";
-            this.btn_Ver_EResultadosHistorico.Size = new System.Drawing.Size(75, 28);
-            this.btn_Ver_EResultadosHistorico.TabIndex = 8;
-            this.btn_Ver_EResultadosHistorico.Text = "Ver ";
-            this.btn_Ver_EResultadosHistorico.UseVisualStyleBackColor = true;
-            this.btn_Ver_EResultadosHistorico.Click += new System.EventHandler(this.btn_Ver_EResultadosHistorico_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(17, 41);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(121, 13);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "E. de Resultados Actual";
-            // 
-            // btn_VerEstadoResultados
-            // 
-            this.btn_VerEstadoResultados.Location = new System.Drawing.Point(33, 70);
-            this.btn_VerEstadoResultados.Name = "btn_VerEstadoResultados";
-            this.btn_VerEstadoResultados.Size = new System.Drawing.Size(75, 28);
-            this.btn_VerEstadoResultados.TabIndex = 1;
-            this.btn_VerEstadoResultados.Text = "Ver ";
-            this.btn_VerEstadoResultados.UseVisualStyleBackColor = true;
-            this.btn_VerEstadoResultados.Click += new System.EventHandler(this.btn_VerEstadoResultados_Click);
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.cb_FEfectivoAnio);
-            this.groupBox3.Controls.Add(this.cb_FEfectivoMes);
-            this.groupBox3.Controls.Add(this.label6);
-            this.groupBox3.Controls.Add(this.btn_Ver_FEfectivoHistorico);
-            this.groupBox3.Controls.Add(this.label4);
-            this.groupBox3.Controls.Add(this.btn_VerFlujo);
-            this.groupBox3.Location = new System.Drawing.Point(41, 304);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(325, 145);
-            this.groupBox3.TabIndex = 5;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Flujo de efectivo";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(183, 39);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(117, 13);
-            this.label6.TabIndex = 10;
-            this.label6.Text = "F. de Efectivo Historico";
-            // 
-            // btn_Ver_FEfectivoHistorico
-            // 
-            this.btn_Ver_FEfectivoHistorico.Location = new System.Drawing.Point(196, 92);
-            this.btn_Ver_FEfectivoHistorico.Name = "btn_Ver_FEfectivoHistorico";
-            this.btn_Ver_FEfectivoHistorico.Size = new System.Drawing.Size(75, 28);
-            this.btn_Ver_FEfectivoHistorico.TabIndex = 9;
-            this.btn_Ver_FEfectivoHistorico.Text = "Ver ";
-            this.btn_Ver_FEfectivoHistorico.UseVisualStyleBackColor = true;
-            this.btn_Ver_FEfectivoHistorico.Click += new System.EventHandler(this.btn_Ver_FEfectivoHistorico_Click);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(17, 47);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(106, 13);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "F. de Efectivo Actual";
-            // 
-            // btn_VerFlujo
-            // 
-            this.btn_VerFlujo.Location = new System.Drawing.Point(33, 76);
-            this.btn_VerFlujo.Name = "btn_VerFlujo";
-            this.btn_VerFlujo.Size = new System.Drawing.Size(75, 28);
-            this.btn_VerFlujo.TabIndex = 1;
-            this.btn_VerFlujo.Text = "Ver ";
-            this.btn_VerFlujo.UseVisualStyleBackColor = true;
-            this.btn_VerFlujo.Click += new System.EventHandler(this.btn_VerFlujo_Click);
-            // 
-            // btn_Ver_Ayuda
-            // 
-            this.btn_Ver_Ayuda.Image = global::Capa_Vista_EstadosFinancieros.Properties.Resources.AYUDA_V4;
-            this.btn_Ver_Ayuda.Location = new System.Drawing.Point(393, 12);
-            this.btn_Ver_Ayuda.Name = "btn_Ver_Ayuda";
-            this.btn_Ver_Ayuda.Size = new System.Drawing.Size(59, 55);
-            this.btn_Ver_Ayuda.TabIndex = 6;
-            this.btn_Ver_Ayuda.UseVisualStyleBackColor = true;
-            this.btn_Ver_Ayuda.Click += new System.EventHandler(this.btn_Ver_Ayuda_Click);
-            // 
-            // cb_BalanceMes
-            // 
-            this.cb_BalanceMes.FormattingEnabled = true;
-            this.cb_BalanceMes.Items.AddRange(new object[] {
+            this.Cbo_BalanceMes.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Cbo_BalanceMes.FormattingEnabled = true;
+            this.Cbo_BalanceMes.Items.AddRange(new object[] {
             "1",
             "2",
             "3",
@@ -241,41 +103,93 @@ namespace Capa_Vista_EstadosFinancieros
             "10",
             "11",
             "12"});
-            this.cb_BalanceMes.Location = new System.Drawing.Point(176, 53);
-            this.cb_BalanceMes.Name = "cb_BalanceMes";
-            this.cb_BalanceMes.Size = new System.Drawing.Size(50, 21);
-            this.cb_BalanceMes.TabIndex = 7;
-            this.cb_BalanceMes.Text = "Mes";
+            this.Cbo_BalanceMes.Location = new System.Drawing.Point(204, 57);
+            this.Cbo_BalanceMes.Name = "Cbo_BalanceMes";
+            this.Cbo_BalanceMes.Size = new System.Drawing.Size(62, 27);
+            this.Cbo_BalanceMes.TabIndex = 7;
+            this.Cbo_BalanceMes.Text = "Mes";
             // 
-            // cb_BalanceAnio
+            // Btn_Ver_BalanceHistorico
             // 
-            this.cb_BalanceAnio.FormattingEnabled = true;
-            this.cb_BalanceAnio.Items.AddRange(new object[] {
+            this.Btn_Ver_BalanceHistorico.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(55)))), ((int)(((byte)(62)))));
+            this.Btn_Ver_BalanceHistorico.BackgroundImage = global::Capa_Vista_EstadosFinancieros.Properties.Resources.BUCAR_V4;
+            this.Btn_Ver_BalanceHistorico.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Btn_Ver_BalanceHistorico.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Ver_BalanceHistorico.Location = new System.Drawing.Point(248, 90);
+            this.Btn_Ver_BalanceHistorico.Name = "Btn_Ver_BalanceHistorico";
+            this.Btn_Ver_BalanceHistorico.Size = new System.Drawing.Size(40, 40);
+            this.Btn_Ver_BalanceHistorico.TabIndex = 6;
+            this.Btn_Ver_BalanceHistorico.UseVisualStyleBackColor = false;
+            this.Btn_Ver_BalanceHistorico.Click += new System.EventHandler(this.btn_Ver_BalanceHistorico_Click);
+            // 
+            // Txt_BalanceHistorico
+            // 
+            this.Txt_BalanceHistorico.AutoSize = true;
+            this.Txt_BalanceHistorico.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_BalanceHistorico.Location = new System.Drawing.Point(207, 32);
+            this.Txt_BalanceHistorico.Name = "Txt_BalanceHistorico";
+            this.Txt_BalanceHistorico.Size = new System.Drawing.Size(128, 19);
+            this.Txt_BalanceHistorico.TabIndex = 5;
+            this.Txt_BalanceHistorico.Text = "Balance Historico";
+            // 
+            // Txt_BalanceActual
+            // 
+            this.Txt_BalanceActual.AutoSize = true;
+            this.Txt_BalanceActual.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_BalanceActual.Location = new System.Drawing.Point(35, 40);
+            this.Txt_BalanceActual.Name = "Txt_BalanceActual";
+            this.Txt_BalanceActual.Size = new System.Drawing.Size(109, 19);
+            this.Txt_BalanceActual.TabIndex = 4;
+            this.Txt_BalanceActual.Text = "Balance Actual";
+            // 
+            // Btn_Ver_Balance
+            // 
+            this.Btn_Ver_Balance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(55)))), ((int)(((byte)(62)))));
+            this.Btn_Ver_Balance.BackgroundImage = global::Capa_Vista_EstadosFinancieros.Properties.Resources.BUCAR_V4;
+            this.Btn_Ver_Balance.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Btn_Ver_Balance.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Ver_Balance.Location = new System.Drawing.Point(67, 62);
+            this.Btn_Ver_Balance.Name = "Btn_Ver_Balance";
+            this.Btn_Ver_Balance.Size = new System.Drawing.Size(40, 40);
+            this.Btn_Ver_Balance.TabIndex = 0;
+            this.Btn_Ver_Balance.UseVisualStyleBackColor = false;
+            this.Btn_Ver_Balance.Click += new System.EventHandler(this.btn_Ver_Balance_Click);
+            // 
+            // Gbp_EstadoDeResultados
+            // 
+            this.Gbp_EstadoDeResultados.Controls.Add(this.Cbo_EResultadosAnio);
+            this.Gbp_EstadoDeResultados.Controls.Add(this.Cbo_EResultadosMes);
+            this.Gbp_EstadoDeResultados.Controls.Add(this.Txt_EstadoDeResultadosHistorico);
+            this.Gbp_EstadoDeResultados.Controls.Add(this.Btn_Ver_EResultadosHistorico);
+            this.Gbp_EstadoDeResultados.Controls.Add(this.Txt_EstadoDeResultadosActual);
+            this.Gbp_EstadoDeResultados.Controls.Add(this.Btn_Ver_EstadoResultados);
+            this.Gbp_EstadoDeResultados.Font = new System.Drawing.Font("Haettenschweiler", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Gbp_EstadoDeResultados.Location = new System.Drawing.Point(41, 155);
+            this.Gbp_EstadoDeResultados.Name = "Gbp_EstadoDeResultados";
+            this.Gbp_EstadoDeResultados.Size = new System.Drawing.Size(387, 145);
+            this.Gbp_EstadoDeResultados.TabIndex = 4;
+            this.Gbp_EstadoDeResultados.TabStop = false;
+            this.Gbp_EstadoDeResultados.Text = "Estado de resultados";
+            // 
+            // Cbo_EResultadosAnio
+            // 
+            this.Cbo_EResultadosAnio.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Cbo_EResultadosAnio.FormattingEnabled = true;
+            this.Cbo_EResultadosAnio.Items.AddRange(new object[] {
             "2024",
             "2023"});
-            this.cb_BalanceAnio.Location = new System.Drawing.Point(244, 53);
-            this.cb_BalanceAnio.Name = "cb_BalanceAnio";
-            this.cb_BalanceAnio.Size = new System.Drawing.Size(50, 21);
-            this.cb_BalanceAnio.TabIndex = 8;
-            this.cb_BalanceAnio.Text = "Año";
+            this.Cbo_EResultadosAnio.Location = new System.Drawing.Point(272, 63);
+            this.Cbo_EResultadosAnio.Name = "Cbo_EResultadosAnio";
+            this.Cbo_EResultadosAnio.Size = new System.Drawing.Size(63, 27);
+            this.Cbo_EResultadosAnio.TabIndex = 10;
+            this.Cbo_EResultadosAnio.Text = "Año";
+            this.Cbo_EResultadosAnio.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
-            // cb_EResultadosAnio
+            // Cbo_EResultadosMes
             // 
-            this.cb_EResultadosAnio.FormattingEnabled = true;
-            this.cb_EResultadosAnio.Items.AddRange(new object[] {
-            "2024",
-            "2023"});
-            this.cb_EResultadosAnio.Location = new System.Drawing.Point(244, 63);
-            this.cb_EResultadosAnio.Name = "cb_EResultadosAnio";
-            this.cb_EResultadosAnio.Size = new System.Drawing.Size(50, 21);
-            this.cb_EResultadosAnio.TabIndex = 10;
-            this.cb_EResultadosAnio.Text = "Año";
-            this.cb_EResultadosAnio.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-            // 
-            // cb_EResultadosMes
-            // 
-            this.cb_EResultadosMes.FormattingEnabled = true;
-            this.cb_EResultadosMes.Items.AddRange(new object[] {
+            this.Cbo_EResultadosMes.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Cbo_EResultadosMes.FormattingEnabled = true;
+            this.Cbo_EResultadosMes.Items.AddRange(new object[] {
             "1",
             "2",
             "3",
@@ -288,30 +202,94 @@ namespace Capa_Vista_EstadosFinancieros
             "10",
             "11",
             "12"});
-            this.cb_EResultadosMes.Location = new System.Drawing.Point(176, 63);
-            this.cb_EResultadosMes.Name = "cb_EResultadosMes";
-            this.cb_EResultadosMes.Size = new System.Drawing.Size(50, 21);
-            this.cb_EResultadosMes.TabIndex = 9;
-            this.cb_EResultadosMes.Text = "Mes";
-            this.cb_EResultadosMes.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
+            this.Cbo_EResultadosMes.Location = new System.Drawing.Point(204, 63);
+            this.Cbo_EResultadosMes.Name = "Cbo_EResultadosMes";
+            this.Cbo_EResultadosMes.Size = new System.Drawing.Size(62, 27);
+            this.Cbo_EResultadosMes.TabIndex = 9;
+            this.Cbo_EResultadosMes.Text = "Mes";
+            this.Cbo_EResultadosMes.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
-            // cb_FEfectivoAnio
+            // Txt_EstadoDeResultadosHistorico
             // 
-            this.cb_FEfectivoAnio.FormattingEnabled = true;
-            this.cb_FEfectivoAnio.Items.AddRange(new object[] {
+            this.Txt_EstadoDeResultadosHistorico.AutoSize = true;
+            this.Txt_EstadoDeResultadosHistorico.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_EstadoDeResultadosHistorico.Location = new System.Drawing.Point(183, 41);
+            this.Txt_EstadoDeResultadosHistorico.Name = "Txt_EstadoDeResultadosHistorico";
+            this.Txt_EstadoDeResultadosHistorico.Size = new System.Drawing.Size(187, 19);
+            this.Txt_EstadoDeResultadosHistorico.TabIndex = 9;
+            this.Txt_EstadoDeResultadosHistorico.Text = "E. de Resultados Historico";
+            // 
+            // Btn_Ver_EResultadosHistorico
+            // 
+            this.Btn_Ver_EResultadosHistorico.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(55)))), ((int)(((byte)(62)))));
+            this.Btn_Ver_EResultadosHistorico.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Btn_Ver_EResultadosHistorico.BackgroundImage")));
+            this.Btn_Ver_EResultadosHistorico.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Btn_Ver_EResultadosHistorico.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Ver_EResultadosHistorico.Location = new System.Drawing.Point(248, 96);
+            this.Btn_Ver_EResultadosHistorico.Name = "Btn_Ver_EResultadosHistorico";
+            this.Btn_Ver_EResultadosHistorico.Size = new System.Drawing.Size(40, 40);
+            this.Btn_Ver_EResultadosHistorico.TabIndex = 8;
+            this.Btn_Ver_EResultadosHistorico.UseVisualStyleBackColor = false;
+            this.Btn_Ver_EResultadosHistorico.Click += new System.EventHandler(this.btn_Ver_EResultadosHistorico_Click);
+            // 
+            // Txt_EstadoDeResultadosActual
+            // 
+            this.Txt_EstadoDeResultadosActual.AutoSize = true;
+            this.Txt_EstadoDeResultadosActual.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_EstadoDeResultadosActual.Location = new System.Drawing.Point(6, 48);
+            this.Txt_EstadoDeResultadosActual.Name = "Txt_EstadoDeResultadosActual";
+            this.Txt_EstadoDeResultadosActual.Size = new System.Drawing.Size(168, 19);
+            this.Txt_EstadoDeResultadosActual.TabIndex = 7;
+            this.Txt_EstadoDeResultadosActual.Text = "E. de Resultados Actual";
+            // 
+            // Btn_Ver_EstadoResultados
+            // 
+            this.Btn_Ver_EstadoResultados.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(55)))), ((int)(((byte)(62)))));
+            this.Btn_Ver_EstadoResultados.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Btn_Ver_EstadoResultados.BackgroundImage")));
+            this.Btn_Ver_EstadoResultados.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Btn_Ver_EstadoResultados.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Ver_EstadoResultados.Location = new System.Drawing.Point(67, 70);
+            this.Btn_Ver_EstadoResultados.Name = "Btn_Ver_EstadoResultados";
+            this.Btn_Ver_EstadoResultados.Size = new System.Drawing.Size(40, 40);
+            this.Btn_Ver_EstadoResultados.TabIndex = 1;
+            this.Btn_Ver_EstadoResultados.UseVisualStyleBackColor = false;
+            this.Btn_Ver_EstadoResultados.Click += new System.EventHandler(this.btn_VerEstadoResultados_Click);
+            // 
+            // Gbp_FlujoDeEfectivo
+            // 
+            this.Gbp_FlujoDeEfectivo.Controls.Add(this.Cbo_FEfectivoAnio);
+            this.Gbp_FlujoDeEfectivo.Controls.Add(this.Cbo_FEfectivoMes);
+            this.Gbp_FlujoDeEfectivo.Controls.Add(this.Txt_FlujoDeEfectivoHistorico);
+            this.Gbp_FlujoDeEfectivo.Controls.Add(this.Btn_Ver_FEfectivoHistorico);
+            this.Gbp_FlujoDeEfectivo.Controls.Add(this.Txt_FlujoDeEfectivoActual);
+            this.Gbp_FlujoDeEfectivo.Controls.Add(this.Btn_Ver_Flujo);
+            this.Gbp_FlujoDeEfectivo.Font = new System.Drawing.Font("Haettenschweiler", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Gbp_FlujoDeEfectivo.Location = new System.Drawing.Point(41, 304);
+            this.Gbp_FlujoDeEfectivo.Name = "Gbp_FlujoDeEfectivo";
+            this.Gbp_FlujoDeEfectivo.Size = new System.Drawing.Size(387, 145);
+            this.Gbp_FlujoDeEfectivo.TabIndex = 5;
+            this.Gbp_FlujoDeEfectivo.TabStop = false;
+            this.Gbp_FlujoDeEfectivo.Text = "Flujo de efectivo";
+            // 
+            // Cbo_FEfectivoAnio
+            // 
+            this.Cbo_FEfectivoAnio.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Cbo_FEfectivoAnio.FormattingEnabled = true;
+            this.Cbo_FEfectivoAnio.Items.AddRange(new object[] {
             "2024",
             "2023"});
-            this.cb_FEfectivoAnio.Location = new System.Drawing.Point(249, 59);
-            this.cb_FEfectivoAnio.Name = "cb_FEfectivoAnio";
-            this.cb_FEfectivoAnio.Size = new System.Drawing.Size(50, 21);
-            this.cb_FEfectivoAnio.TabIndex = 12;
-            this.cb_FEfectivoAnio.Text = "Año";
-            this.cb_FEfectivoAnio.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
+            this.Cbo_FEfectivoAnio.Location = new System.Drawing.Point(272, 61);
+            this.Cbo_FEfectivoAnio.Name = "Cbo_FEfectivoAnio";
+            this.Cbo_FEfectivoAnio.Size = new System.Drawing.Size(63, 27);
+            this.Cbo_FEfectivoAnio.TabIndex = 12;
+            this.Cbo_FEfectivoAnio.Text = "Año";
+            this.Cbo_FEfectivoAnio.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
             // 
-            // cb_FEfectivoMes
+            // Cbo_FEfectivoMes
             // 
-            this.cb_FEfectivoMes.FormattingEnabled = true;
-            this.cb_FEfectivoMes.Items.AddRange(new object[] {
+            this.Cbo_FEfectivoMes.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Cbo_FEfectivoMes.FormattingEnabled = true;
+            this.Cbo_FEfectivoMes.Items.AddRange(new object[] {
             "1",
             "2",
             "3",
@@ -324,58 +302,117 @@ namespace Capa_Vista_EstadosFinancieros
             "10",
             "11",
             "12"});
-            this.cb_FEfectivoMes.Location = new System.Drawing.Point(181, 59);
-            this.cb_FEfectivoMes.Name = "cb_FEfectivoMes";
-            this.cb_FEfectivoMes.Size = new System.Drawing.Size(50, 21);
-            this.cb_FEfectivoMes.TabIndex = 11;
-            this.cb_FEfectivoMes.Text = "Mes";
-            this.cb_FEfectivoMes.SelectedIndexChanged += new System.EventHandler(this.comboBox4_SelectedIndexChanged);
+            this.Cbo_FEfectivoMes.Location = new System.Drawing.Point(204, 61);
+            this.Cbo_FEfectivoMes.Name = "Cbo_FEfectivoMes";
+            this.Cbo_FEfectivoMes.Size = new System.Drawing.Size(62, 27);
+            this.Cbo_FEfectivoMes.TabIndex = 11;
+            this.Cbo_FEfectivoMes.Text = "Mes";
+            this.Cbo_FEfectivoMes.SelectedIndexChanged += new System.EventHandler(this.comboBox4_SelectedIndexChanged);
+            // 
+            // Txt_FlujoDeEfectivoHistorico
+            // 
+            this.Txt_FlujoDeEfectivoHistorico.AutoSize = true;
+            this.Txt_FlujoDeEfectivoHistorico.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_FlujoDeEfectivoHistorico.Location = new System.Drawing.Point(189, 38);
+            this.Txt_FlujoDeEfectivoHistorico.Name = "Txt_FlujoDeEfectivoHistorico";
+            this.Txt_FlujoDeEfectivoHistorico.Size = new System.Drawing.Size(165, 19);
+            this.Txt_FlujoDeEfectivoHistorico.TabIndex = 10;
+            this.Txt_FlujoDeEfectivoHistorico.Text = "F. de Efectivo Historico";
+            // 
+            // Btn_Ver_FEfectivoHistorico
+            // 
+            this.Btn_Ver_FEfectivoHistorico.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(55)))), ((int)(((byte)(62)))));
+            this.Btn_Ver_FEfectivoHistorico.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Btn_Ver_FEfectivoHistorico.BackgroundImage")));
+            this.Btn_Ver_FEfectivoHistorico.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Btn_Ver_FEfectivoHistorico.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Ver_FEfectivoHistorico.Location = new System.Drawing.Point(248, 94);
+            this.Btn_Ver_FEfectivoHistorico.Name = "Btn_Ver_FEfectivoHistorico";
+            this.Btn_Ver_FEfectivoHistorico.Size = new System.Drawing.Size(40, 40);
+            this.Btn_Ver_FEfectivoHistorico.TabIndex = 9;
+            this.Btn_Ver_FEfectivoHistorico.UseVisualStyleBackColor = false;
+            this.Btn_Ver_FEfectivoHistorico.Click += new System.EventHandler(this.btn_Ver_FEfectivoHistorico_Click);
+            // 
+            // Txt_FlujoDeEfectivoActual
+            // 
+            this.Txt_FlujoDeEfectivoActual.AutoSize = true;
+            this.Txt_FlujoDeEfectivoActual.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_FlujoDeEfectivoActual.Location = new System.Drawing.Point(17, 47);
+            this.Txt_FlujoDeEfectivoActual.Name = "Txt_FlujoDeEfectivoActual";
+            this.Txt_FlujoDeEfectivoActual.Size = new System.Drawing.Size(146, 19);
+            this.Txt_FlujoDeEfectivoActual.TabIndex = 8;
+            this.Txt_FlujoDeEfectivoActual.Text = "F. de Efectivo Actual";
+            // 
+            // Btn_Ver_Flujo
+            // 
+            this.Btn_Ver_Flujo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(55)))), ((int)(((byte)(62)))));
+            this.Btn_Ver_Flujo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Btn_Ver_Flujo.BackgroundImage")));
+            this.Btn_Ver_Flujo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Btn_Ver_Flujo.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Ver_Flujo.Location = new System.Drawing.Point(67, 69);
+            this.Btn_Ver_Flujo.Name = "Btn_Ver_Flujo";
+            this.Btn_Ver_Flujo.Size = new System.Drawing.Size(40, 40);
+            this.Btn_Ver_Flujo.TabIndex = 1;
+            this.Btn_Ver_Flujo.UseVisualStyleBackColor = false;
+            this.Btn_Ver_Flujo.Click += new System.EventHandler(this.btn_VerFlujo_Click);
+            // 
+            // Btn_Ver_Ayuda
+            // 
+            this.Btn_Ver_Ayuda.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(55)))), ((int)(((byte)(62)))));
+            this.Btn_Ver_Ayuda.BackgroundImage = global::Capa_Vista_EstadosFinancieros.Properties.Resources.AYUDA_V4;
+            this.Btn_Ver_Ayuda.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.Btn_Ver_Ayuda.Location = new System.Drawing.Point(445, 8);
+            this.Btn_Ver_Ayuda.Name = "Btn_Ver_Ayuda";
+            this.Btn_Ver_Ayuda.Size = new System.Drawing.Size(67, 65);
+            this.Btn_Ver_Ayuda.TabIndex = 7;
+            this.Btn_Ver_Ayuda.UseVisualStyleBackColor = false;
+            this.Btn_Ver_Ayuda.Click += new System.EventHandler(this.btn_Ver_Ayuda_Click);
             // 
             // EstadosFinancieros
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(140)))), ((int)(((byte)(140)))));
-            this.ClientSize = new System.Drawing.Size(469, 481);
-            this.Controls.Add(this.btn_Ver_Ayuda);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox1);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(152)))), ((int)(((byte)(151)))));
+            this.ClientSize = new System.Drawing.Size(529, 471);
+            this.Controls.Add(this.Btn_Ver_Ayuda);
+            this.Controls.Add(this.Gbp_EstadoDeResultados);
+            this.Controls.Add(this.Gbp_FlujoDeEfectivo);
+            this.Controls.Add(this.Gpb_Balance);
             this.Name = "EstadosFinancieros";
             this.Text = "EstadosFinancieros";
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
+            this.Load += new System.EventHandler(this.EstadosFinancieros_Load);
+            this.Gpb_Balance.ResumeLayout(false);
+            this.Gpb_Balance.PerformLayout();
+            this.Gbp_EstadoDeResultados.ResumeLayout(false);
+            this.Gbp_EstadoDeResultados.PerformLayout();
+            this.Gbp_FlujoDeEfectivo.ResumeLayout(false);
+            this.Gbp_FlujoDeEfectivo.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button btn_Ver_Balance;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Button btn_VerFlujo;
-        private System.Windows.Forms.Button btn_VerEstadoResultados;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btn_Ver_BalanceHistorico;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button btn_Ver_EResultadosHistorico;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button btn_Ver_FEfectivoHistorico;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button btn_Ver_Ayuda;
-        private System.Windows.Forms.ComboBox cb_BalanceAnio;
-        private System.Windows.Forms.ComboBox cb_BalanceMes;
-        private System.Windows.Forms.ComboBox cb_EResultadosAnio;
-        private System.Windows.Forms.ComboBox cb_EResultadosMes;
-        private System.Windows.Forms.ComboBox cb_FEfectivoAnio;
-        private System.Windows.Forms.ComboBox cb_FEfectivoMes;
+        private System.Windows.Forms.GroupBox Gpb_Balance;
+        private System.Windows.Forms.GroupBox Gbp_EstadoDeResultados;
+        private System.Windows.Forms.Button Btn_Ver_Balance;
+        private System.Windows.Forms.GroupBox Gbp_FlujoDeEfectivo;
+        private System.Windows.Forms.Button Btn_Ver_Flujo;
+        private System.Windows.Forms.Button Btn_Ver_EstadoResultados;
+        private System.Windows.Forms.Label Txt_BalanceActual;
+        private System.Windows.Forms.Button Btn_Ver_BalanceHistorico;
+        private System.Windows.Forms.Label Txt_BalanceHistorico;
+        private System.Windows.Forms.Label Txt_EstadoDeResultadosHistorico;
+        private System.Windows.Forms.Button Btn_Ver_EResultadosHistorico;
+        private System.Windows.Forms.Label Txt_EstadoDeResultadosActual;
+        private System.Windows.Forms.Label Txt_FlujoDeEfectivoHistorico;
+        private System.Windows.Forms.Button Btn_Ver_FEfectivoHistorico;
+        private System.Windows.Forms.Label Txt_FlujoDeEfectivoActual;
+        private System.Windows.Forms.ComboBox Cbo_BalanceAnio;
+        private System.Windows.Forms.ComboBox Cbo_BalanceMes;
+        private System.Windows.Forms.ComboBox Cbo_EResultadosAnio;
+        private System.Windows.Forms.ComboBox Cbo_EResultadosMes;
+        private System.Windows.Forms.ComboBox Cbo_FEfectivoAnio;
+        private System.Windows.Forms.ComboBox Cbo_FEfectivoMes;
+        private System.Windows.Forms.Button Btn_Ver_Ayuda;
     }
 }
