@@ -47,6 +47,7 @@ namespace Capa_Vista_PercepcionesDeducciones
             this.Gbo_filtros.Controls.Add(this.Btn_generar);
             this.Gbo_filtros.Controls.Add(this.label1);
             this.Gbo_filtros.Controls.Add(this.Cbo_reportesdeducciones);
+            this.Gbo_filtros.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Gbo_filtros.Location = new System.Drawing.Point(74, 261);
             this.Gbo_filtros.Name = "Gbo_filtros";
             this.Gbo_filtros.Size = new System.Drawing.Size(666, 211);
@@ -56,11 +57,14 @@ namespace Capa_Vista_PercepcionesDeducciones
             // 
             // Btn_generar
             // 
-            this.Btn_generar.Location = new System.Drawing.Point(481, 99);
+            this.Btn_generar.BackgroundImage = global::Capa_Vista_PercepcionesDeducciones.Properties.Resources.reporte;
+            this.Btn_generar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Btn_generar.FlatAppearance.BorderSize = 0;
+            this.Btn_generar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_generar.Location = new System.Drawing.Point(517, 77);
             this.Btn_generar.Name = "Btn_generar";
-            this.Btn_generar.Size = new System.Drawing.Size(122, 48);
+            this.Btn_generar.Size = new System.Drawing.Size(75, 69);
             this.Btn_generar.TabIndex = 5;
-            this.Btn_generar.Text = "Generar";
             this.Btn_generar.UseVisualStyleBackColor = true;
             this.Btn_generar.Click += new System.EventHandler(this.Btn_generar_Click);
             // 
@@ -69,7 +73,7 @@ namespace Capa_Vista_PercepcionesDeducciones
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(121, 77);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(189, 17);
+            this.label1.Size = new System.Drawing.Size(231, 22);
             this.label1.TabIndex = 4;
             this.label1.Text = "Seleccione un departamento";
             // 
@@ -78,13 +82,14 @@ namespace Capa_Vista_PercepcionesDeducciones
             this.Cbo_reportesdeducciones.FormattingEnabled = true;
             this.Cbo_reportesdeducciones.Location = new System.Drawing.Point(69, 112);
             this.Cbo_reportesdeducciones.Name = "Cbo_reportesdeducciones";
-            this.Cbo_reportesdeducciones.Size = new System.Drawing.Size(323, 24);
+            this.Cbo_reportesdeducciones.Size = new System.Drawing.Size(323, 30);
             this.Cbo_reportesdeducciones.TabIndex = 3;
             // 
             // Gbo_sinfiltros
             // 
             this.Gbo_sinfiltros.Controls.Add(this.label2);
             this.Gbo_sinfiltros.Controls.Add(this.Btn_general);
+            this.Gbo_sinfiltros.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Gbo_sinfiltros.Location = new System.Drawing.Point(74, 33);
             this.Gbo_sinfiltros.Name = "Gbo_sinfiltros";
             this.Gbo_sinfiltros.Size = new System.Drawing.Size(666, 136);
@@ -97,26 +102,30 @@ namespace Capa_Vista_PercepcionesDeducciones
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(152, 60);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(121, 17);
+            this.label2.Size = new System.Drawing.Size(155, 22);
             this.label2.TabIndex = 9;
             this.label2.Text = "Generar sin filtros";
             // 
             // Btn_general
             // 
-            this.Btn_general.Location = new System.Drawing.Point(379, 44);
+            this.Btn_general.BackgroundImage = global::Capa_Vista_PercepcionesDeducciones.Properties.Resources.reporte;
+            this.Btn_general.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Btn_general.FlatAppearance.BorderSize = 0;
+            this.Btn_general.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_general.Location = new System.Drawing.Point(517, 37);
             this.Btn_general.Name = "Btn_general";
-            this.Btn_general.Size = new System.Drawing.Size(122, 48);
+            this.Btn_general.Size = new System.Drawing.Size(75, 69);
             this.Btn_general.TabIndex = 8;
-            this.Btn_general.Text = "Generar";
             this.Btn_general.UseVisualStyleBackColor = true;
             this.Btn_general.Click += new System.EventHandler(this.Btn_general_Click);
             // 
             // Chk_filtros
             // 
             this.Chk_filtros.AutoSize = true;
+            this.Chk_filtros.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Chk_filtros.Location = new System.Drawing.Point(121, 206);
             this.Chk_filtros.Name = "Chk_filtros";
-            this.Chk_filtros.Size = new System.Drawing.Size(93, 21);
+            this.Chk_filtros.Size = new System.Drawing.Size(117, 26);
             this.Chk_filtros.TabIndex = 11;
             this.Chk_filtros.Text = "Con filtros";
             this.Chk_filtros.UseVisualStyleBackColor = true;
