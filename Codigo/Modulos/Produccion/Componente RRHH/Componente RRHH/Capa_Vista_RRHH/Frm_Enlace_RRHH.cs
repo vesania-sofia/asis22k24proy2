@@ -35,6 +35,12 @@ namespace Capa_Vista_RRHH
             cbo_Horas_Extras.KeyPress += txt_Numeros_KeyPress;
             cbo_Salario.KeyPress += txt_Numeros_KeyPress;
 
+            cbo_Dias.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbo_Empleado.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbo_Salario.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbo_Horas.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbo_Horas_Extras.DropDownStyle = ComboBoxStyle.DropDownList;
+
             // Agregar tooltips a los botones y campos
             ToolTip toolTip = new ToolTip();
 

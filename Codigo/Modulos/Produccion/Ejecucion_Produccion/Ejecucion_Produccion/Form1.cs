@@ -7,19 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Capa_Vista_Produccion;
 
-namespace Capa_Vista_Contabilidad
+namespace Ejecucion_Produccion
 {
-    public partial class FormCierre : Form
+    public partial class Form1 : Form
     {
-        public FormCierre()
+        public Form1()
         {
             InitializeComponent();
-        }
-
-        private void cierre1_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

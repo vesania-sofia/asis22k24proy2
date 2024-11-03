@@ -45,13 +45,11 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Polizas_Produccion\Capa_Vista_Polizas_Prod\bin\Debug\Capa_Vista_Polizas_Prod.dll</HintPath>
     </Reference>
-    <Reference Include="Capa_Vista_Receta, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Componente Receta\Componente Receta\Capa_Vista_Receta\bin\Debug\Capa_Vista_Receta.dll</HintPath>
+    <Reference Include="Capa_Vista_Receta">
+      <HintPath>..\Componente Receta\Componente Receta\Capa_Vista_Receta\bin\Debug\Capa_Vista_Receta.dll</HintPath>
     </Reference>
-    <Reference Include="Capa_Vista_RRHH, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Componente RRHH\Componente RRHH\Capa_Vista_RRHH\bin\Debug\Capa_Vista_RRHH.dll</HintPath>
+    <Reference Include="Capa_Vista_RRHH">
+      <HintPath>..\Componente RRHH\Componente RRHH\Capa_Vista_RRHH\bin\Debug\Capa_Vista_RRHH.dll</HintPath>
     </Reference>
     <Reference Include="Interfac_V3">
       <HintPath>..\..\..\Menus\ModernGUI_V3\bin\Debug\Interfac_V3.exe</HintPath>

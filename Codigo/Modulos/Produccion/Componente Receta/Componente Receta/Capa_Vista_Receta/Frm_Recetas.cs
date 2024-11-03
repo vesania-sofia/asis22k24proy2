@@ -42,6 +42,11 @@ namespace Capa_Vista_Receta
             cbo_Producto_Detalle.KeyPress += txt_Numeros_KeyPress;
             cbo_Receta_Detalle.KeyPress += txt_Numeros_KeyPress;
 
+            cbo_Producto.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbo_Producto_Detalle.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbo_Receta_Detalle.DropDownStyle = ComboBoxStyle.DropDownList;
+
+
             // Agregar tooltips a los botones y campos
             ToolTip toolTip = new ToolTip();
 
