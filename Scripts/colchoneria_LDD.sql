@@ -1571,6 +1571,14 @@ CREATE TABLE IF NOT EXISTS Tbl_caja_proveedor (
     FOREIGN KEY (Fk_id_deuda) REFERENCES Tbl_Deudas_Proveedores (Pk_id_deuda)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+-- Tabla nueva Transacciones_cuentas
+CREATE TABLE IF NOT EXISTS Tbl_transaccion_cuentas (
+	Pk_id_tran_cue INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    tran_nombre VARCHAR(150) NOT NULL,
+    tran_efecto VARCHAR(15) NOT NULL,
+    estado TINYINT DEFAULT 1 NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci; 
+
 -- FIN TABLAS MAESTRAS CUENTAS CORRIENTES
 
 -- INICIA CREACIÓN DE TABLAS PRODUCCIÓN
