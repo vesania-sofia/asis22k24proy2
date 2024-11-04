@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Capa_Controlador_Movimiento
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Capa_Modelo_Movimientos", "Capa_Modelo_Movimientos\Capa_Modelo_Movimientos.csproj", "{B3F108CF-054F-489A-8374-913A6461897F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test_Movimientos_Bancarios", "Test_Movimientos_Bancarios\Test_Movimientos_Bancarios.csproj", "{C7BB4399-F012-416D-805C-C029B89EA779}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{B3F108CF-054F-489A-8374-913A6461897F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B3F108CF-054F-489A-8374-913A6461897F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B3F108CF-054F-489A-8374-913A6461897F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7BB4399-F012-416D-805C-C029B89EA779}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7BB4399-F012-416D-805C-C029B89EA779}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7BB4399-F012-416D-805C-C029B89EA779}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7BB4399-F012-416D-805C-C029B89EA779}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
