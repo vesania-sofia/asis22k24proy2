@@ -23,7 +23,7 @@ namespace Capa_Vista_Contabilidad
             navegador1.AsignarSalida(this);
             navegador1.AsignarColorFondo(Color.LightBlue);
             navegador1.AsignarColorFuente(Color.BlueViolet);
-            navegador1.ObtenerIdAplicacion("1000"); // Ajusta el ID de la aplicación
+            navegador1.ObtenerIdAplicacion("8000"); // Ajusta el ID de la aplicación
             navegador1.AsignarAyuda("1");
             navegador1.ObtenerIdUsuario(idusuario);
             navegador1.AsignarTabla("tbl_activofijo");
