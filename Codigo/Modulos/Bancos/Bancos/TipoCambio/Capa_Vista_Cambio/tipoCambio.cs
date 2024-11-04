@@ -15,7 +15,7 @@ namespace Capa_Vista_Cambio
     {
 
         public DataTable tiposDeCambio;
-        private Controlador capaControlador = new Controlador();
+        public Controlador capaControlador = new Controlador();
         private ToolTip toolTip;
 
         public tipoCambio()
@@ -42,14 +42,14 @@ namespace Capa_Vista_Cambio
             }
         }
 
-        private void tipoCambio_Load(object sender, EventArgs e)
+        public void tipoCambio_Load(object sender, EventArgs e)
         {
             tiposDeCambio = capaControlador.ObtenerTipoCambio();
             dgvTipoCambio.DataSource = tiposDeCambio;
             dgvTipoCambio.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
         }
 
-        private void btnBuscar_Click(object sender, EventArgs e)
+        public void btnBuscar_Click(object sender, EventArgs e)
         {
             string nombreMonedaSeleccionada = cboMonedas.SelectedItem.ToString();
             int filaEncontrada = capaControlador.BuscarMoneda(tiposDeCambio, nombreMonedaSeleccionada);

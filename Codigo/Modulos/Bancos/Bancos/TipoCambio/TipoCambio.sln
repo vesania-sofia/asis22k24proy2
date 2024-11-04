@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Capa_Modelo_Cambio", "Capa_
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Capa_Controlador_Cambio", "Capa_Controlador_Cambio\Capa_Controlador_Cambio.csproj", "{A2BAD01A-88E5-4BFD-B15A-F4A6FF3DE0A2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test_TipoCambio", "Test_TipoCambio\Test_TipoCambio.csproj", "{CA46B62B-AF82-4FE2-BFDB-7EBA8A35C1F8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{A2BAD01A-88E5-4BFD-B15A-F4A6FF3DE0A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A2BAD01A-88E5-4BFD-B15A-F4A6FF3DE0A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A2BAD01A-88E5-4BFD-B15A-F4A6FF3DE0A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA46B62B-AF82-4FE2-BFDB-7EBA8A35C1F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA46B62B-AF82-4FE2-BFDB-7EBA8A35C1F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA46B62B-AF82-4FE2-BFDB-7EBA8A35C1F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA46B62B-AF82-4FE2-BFDB-7EBA8A35C1F8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
