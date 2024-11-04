@@ -3,32 +3,28 @@ using System.Data;
 using System.Windows.Forms;
 using Capa_Controlador_Movimientos;
 
+
 namespace Capa_Vista_Movimientos
 {
     public partial class frm_movimiento_bancario : Form
     {
         public DataTable tiposDeCambio;
-        private Controlador Capa_Controlador_Movimientos = new Controlador();
+        private readonly Controlador _controlador; // Cambiar el nombre para seguir las convenciones
 
-        public frm_movimiento_bancario()
+        public frm_movimiento_bancario(Controlador controlador)
         {
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.None;
-            // Cambiar el tamaño del formulario para simular la ventana completa
             this.WindowState = FormWindowState.Maximized;
+            _controlador = controlador; // Asignar el controlador a la variable
             CargarDatos();
         }
 
-        private void frm_movimiento_bancario_Load(object sender, EventArgs e)
-        {
-            CargarDatos();
-        }
-
-        private void CargarDatos()
+        public void CargarDatos() // Cambiar a público para facilitar las pruebas
         {
             try
             {
-                tiposDeCambio = Capa_Controlador_Movimientos.ObtenerMovi();
+                tiposDeCambio = _controlador.ObtenerMovi();
                 Dgv_Mov.DataSource = tiposDeCambio;
                 Dgv_Mov.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             }
@@ -38,9 +34,12 @@ namespace Capa_Vista_Movimientos
             }
         }
 
+
+
         private void label1_Click(object sender, EventArgs e)
         {
             // Lógica adicional si es necesaria
         }
     }
 }
+

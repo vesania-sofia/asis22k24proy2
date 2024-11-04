@@ -12,6 +12,13 @@ namespace Capa_Controlador_Movimientos
     {
         private Modelo Capa_Modelo_Movimientos = new Modelo();
 
+        // Cambiar el constructor para usar la interfaz
+        public Controlador(Modelo modelo)
+        {
+            Capa_Modelo_Movimientos = modelo;
+        }
+
+
         public DataTable ObtenerMovi()
         {
             DataTable tiposDeCambio = Capa_Modelo_Movimientos.ObtenerMov();
