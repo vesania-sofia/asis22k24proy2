@@ -526,7 +526,9 @@ namespace Capa_Vista_Receta
             this.Controls.Add(this.lbl_descripcion);
             this.Controls.Add(this.lbl_producto);
             this.Controls.Add(this.lbl_id_receta);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "Frm_Recetas";
             this.Text = "Recetas";
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Recetas)).EndInit();
