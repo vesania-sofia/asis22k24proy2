@@ -1,7 +1,7 @@
 --
 -- Volcado de datos para la tabla `ayuda`
 --
-
+SET SQL_SAFE_UPDATES = 0; -- desactivar el modo seguro
 INSERT INTO `ayuda` (`Id_ayuda`, `Ruta`, `indice`, `estado`) VALUES
 (1, 'AyudaNavegador.chm', 'AyudaNav.html', 1),
 (2, 'AyudaReportes.chm', 'AyudaRep.html', 1),
@@ -637,3 +637,5 @@ VALUES
 (116, 2, 5, 'Otros Gastos', 0, 0, 0, 0, 0, 0, 101, 1, 1);
 
 -- LMD DE CONTABILIDAD FINAL
+
+SET SQL_SAFE_UPDATES = 1; -- activar el modo seguro
