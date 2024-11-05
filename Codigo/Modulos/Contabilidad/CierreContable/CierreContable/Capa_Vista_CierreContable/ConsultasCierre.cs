@@ -25,10 +25,10 @@ namespace Capa_Vista_CierreContable
 
         private void btn_mensual_Click_1(object sender, EventArgs e)
         {
-            string sMes = cbo_mes.Text;
-            string sAnio = cbo_consultaAño.Text; // Año de interés
+            string sMes = Cbo_mes.Text;
+            string sAnio = Cbo_consultaaño.Text; // Año de interés
             int iPeriodo = 0; // Variable para el periodo
-            string ssCuenta = cbo_cuenta.Text;
+            string ssCuenta = Cbo_cuenta.Text;
 
             if (string.IsNullOrEmpty(sMes))
             {
@@ -49,20 +49,20 @@ namespace Capa_Vista_CierreContable
                 if (ssCuenta == "Todas las sCuentas")
                 {
                     // Llama a la consulta sin aplicar filtro de sCuenta
-                    ConsultarCierreG(iPeriodo, sAnio, null, dgv_cargos, dgv_abonos);
+                    ConsultarCierreG(iPeriodo, sAnio, null, Dgv_cargos, Dgv_abonos);
                 }
                 else
                 {
                     // Llama a la consulta con el filtro de sCuenta
-                    ConsultarCierreG(iPeriodo, sAnio, ssCuenta, dgv_cargos, dgv_abonos);
+                    ConsultarCierreG(iPeriodo, sAnio, ssCuenta, Dgv_cargos, Dgv_abonos);
                 }
 
                 // Calcular totales
-                Totales(dgv_cargos, dgv_abonos, txt_saldoD, txt_saldoH);
+                Totales(Dgv_cargos, Dgv_abonos, Txt_saldoD, Txt_saldoH);
             }
 
             // Actualizar los saldos
-            cn.ActualizarSumasSaldos(txt_saldoant, txt_saldofinal, iPeriodo, ssCuenta == "Todas las sCuentas" ? null : ssCuenta);
+            cn.ActualizarSumasSaldos(Txt_saldoant, Txt_saldofinal, iPeriodo, ssCuenta == "Todas las sCuentas" ? null : ssCuenta);
             LogicaSeg.funinsertarabitacora(idUsuario, $"Se consultó un Cierre", "ConsultasCierre", "8000");
 
         }
@@ -148,15 +148,15 @@ namespace Capa_Vista_CierreContable
             DataTable sCuentas = cn.ObtenerCuentas();
 
             // Limpiar y agregar "Todas las sCuentas" al ComboBox
-            cbo_cuenta.Items.Clear();
-            cbo_cuenta.Items.Add("Todas las sCuentas");
+            Cbo_cuenta.Items.Clear();
+            Cbo_cuenta.Items.Add("Todas las cuentas");
 
             foreach (DataRow row in sCuentas.Rows)
             {
-                cbo_cuenta.Items.Add(row["nombre_cuenta"]); // Ajustar según el nombre de la columna en tu DataTable
+                Cbo_cuenta.Items.Add(row["nombre_cuenta"]); // Ajustar según el nombre de la columna en tu DataTable
             }
 
-            cbo_cuenta.SelectedIndex = 0; // Seleccionar "Todas las sCuentas" como predeterminada
+            Cbo_cuenta.SelectedIndex = 0; // Seleccionar "Todas las sCuentas" como predeterminada
         }
 
         public void LlenarCboAnio()
@@ -165,17 +165,17 @@ namespace Capa_Vista_CierreContable
             int iAnioactual = DateTime.Now.Year;
 
             // Limpiar el ComboBox
-            cbo_consultaAño.Items.Clear();
+            Cbo_consultaaño.Items.Clear();
 
             // Llenar el ComboBox con los próximos 10 años desde el año actual
             for (int i = 0; i <= 10; i++)
             {
                 int iAnio = iAnioactual + i;
-                cbo_consultaAño.Items.Add(iAnio.ToString());
+                Cbo_consultaaño.Items.Add(iAnio.ToString());
             }
 
             // Seleccionar el año actual como predeterminado
-            cbo_consultaAño.SelectedIndex = 0;
+            Cbo_consultaaño.SelectedIndex = 0;
         }
 
         private void PartidaCierre_Load(object sender, EventArgs e)
@@ -189,10 +189,10 @@ namespace Capa_Vista_CierreContable
             };
 
             // Asignar texto a los botones
-            toolTip.SetToolTip(btn_consultar, "Muestra los cargos, abonos y el saldo de cada consulta.");
-            toolTip.SetToolTip(btn_Actualizar, "Limpia los DataGridView y los Textbox de las sumas.");
-            toolTip.SetToolTip(btn_Ayuda1, "Muestra la Ayuda del formulario actual."); 
-            toolTip.SetToolTip(btn_Reporte, "Imprime el Reporte General de los Cierres.");
+            toolTip.SetToolTip(Btn_consultar, "Muestra los cargos, abonos y el saldo de cada consulta.");
+            toolTip.SetToolTip(Btn_actualizar, "Limpia los DataGridView y los Textbox de las sumas.");
+            toolTip.SetToolTip(Btn_ayuda1, "Muestra la Ayuda del formulario actual."); 
+            toolTip.SetToolTip(Btn_reporte, "Imprime el Reporte General de los Cierres.");
 
         }
 
@@ -207,15 +207,15 @@ namespace Capa_Vista_CierreContable
         private void ReiniciarFormulario()
         {
             // Limpiar los TextBoxes
-            txt_saldoant.Text = string.Empty;
-            txt_saldofinal.Text = string.Empty;
-            txt_saldoD.Text = string.Empty;
-            txt_saldoH.Text = string.Empty;
+            Txt_saldoant.Text = string.Empty;
+            Txt_saldofinal.Text = string.Empty;
+            Txt_saldoD.Text = string.Empty;
+            Txt_saldoH.Text = string.Empty;
 
 
             // Limpiar los DataGridViews
-            dgv_cargos.DataSource = null; // Limpiar el DataSource
-            dgv_abonos.DataSource = null; // Limpiar el DataSource
+            Dgv_cargos.DataSource = null; // Limpiar el DataSource
+            Dgv_abonos.DataSource = null; // Limpiar el DataSource
 
             // Volver a llenar el ComboBox de años
             LlenarCboAnio();
