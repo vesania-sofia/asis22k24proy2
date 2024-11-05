@@ -272,3 +272,8 @@ ADD CONSTRAINT fk_factura_caja FOREIGN KEY (Fk_id_factura) REFERENCES Tbl_factur
 ALTER TABLE Tbl_caja_proveedor
 DROP COLUMN caja_deuda_monto, 
 DROP COLUMN caja_transaccion_monto;
+
+
+-- ALTER MODULO LOGISTICA 04/11/2024
+ALTER TABLE tbl_productos ADD CONSTRAINT UQ_codigoProducto UNIQUE
+(codigoProducto);
