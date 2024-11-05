@@ -31,7 +31,7 @@ namespace Capa_Vista_Presupuesto
             toolTip.SetToolTip(Btn_Aceptar, "Haz clic para aceptar");
             toolTip.SetToolTip(Btn_cancelar, "Haz clic para cancelar");
             toolTip.SetToolTip(Btn_ayuda, "Haz clic para ver ayuda");
-            toolTip.SetToolTip(Txtbx_incremento, "Campo para incrementar/decrementar. Si desea decrementar utilize '-' --> Ejemplo :'-50'");
+            toolTip.SetToolTip(Txt_incrementoB, "Campo para incrementar/decrementar. Si desea decrementar utilize '-' --> Ejemplo :'-50'");
         }
         private void Incremento_Load(object sender, EventArgs e)
         {
@@ -71,7 +71,7 @@ namespace Capa_Vista_Presupuesto
             if (e.KeyChar == '-')
             {
                 // Verifica si el texto ya tiene un signo negativo o si no es el primer carácter
-                if (Txtbx_incremento.Text.Length > 0 || Txtbx_incremento.Text == "-")
+                if (Txt_incrementoB.Text.Length > 0 || Txt_incrementoB.Text == "-")
                 {
                     e.Handled = true;
                     // Cancelar la entrada del carácter
@@ -93,19 +93,19 @@ namespace Capa_Vista_Presupuesto
         private void button1_Click(object sender, EventArgs e)
         {
 
-            if (string.IsNullOrWhiteSpace(Txtbx_incremento.Text))
+            if (string.IsNullOrWhiteSpace(Txt_incrementoB.Text))
             {
                 MessageBox.Show("Por favor, ingresa un valor.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return; // Detenemos la ejecución si el campo está vacío
             }
 
-            if (Txtbx_incremento.Text == "-")
+            if (Txt_incrementoB.Text == "-")
             {
                 MessageBox.Show("Por favor, ingresa un valor valido.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            iDato = Convert.ToInt32(Txtbx_incremento.Text);
+            iDato = Convert.ToInt32(Txt_incrementoB.Text);
             bIncrementar = Chb_todos.Checked;
             bAnual = Chb_anual.Checked;
 

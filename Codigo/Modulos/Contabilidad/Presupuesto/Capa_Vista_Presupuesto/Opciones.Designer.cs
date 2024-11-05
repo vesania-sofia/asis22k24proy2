@@ -32,7 +32,7 @@ namespace Capa_Vista_Presupuesto
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Opciones));
             this.Btn_crear = new System.Windows.Forms.Button();
             this.Cb_ejercicio = new System.Windows.Forms.ComboBox();
-            this.Txtbx_nombre = new System.Windows.Forms.TextBox();
+            this.Txt_nombreB = new System.Windows.Forms.TextBox();
             this.Btn_Modificar = new System.Windows.Forms.Button();
             this.Cb_modificar = new System.Windows.Forms.ComboBox();
             this.Btn_ver = new System.Windows.Forms.Button();
@@ -78,11 +78,11 @@ namespace Capa_Vista_Presupuesto
             // 
             // Txtbx_nombre
             // 
-            this.Txtbx_nombre.Location = new System.Drawing.Point(10, 76);
-            this.Txtbx_nombre.MaxLength = 25;
-            this.Txtbx_nombre.Name = "Txtbx_nombre";
-            this.Txtbx_nombre.Size = new System.Drawing.Size(157, 26);
-            this.Txtbx_nombre.TabIndex = 1;
+            this.Txt_nombreB.Location = new System.Drawing.Point(10, 76);
+            this.Txt_nombreB.MaxLength = 25;
+            this.Txt_nombreB.Name = "Txtbx_nombre";
+            this.Txt_nombreB.Size = new System.Drawing.Size(157, 26);
+            this.Txt_nombreB.TabIndex = 1;
             // 
             // Btn_Modificar
             // 
@@ -179,7 +179,7 @@ namespace Capa_Vista_Presupuesto
             this.Gpb_presupuesto.Controls.Add(this.Cb_LlenadoCrear);
             this.Gpb_presupuesto.Controls.Add(this.Txt_nombre);
             this.Gpb_presupuesto.Controls.Add(this.Chb_plantilla);
-            this.Gpb_presupuesto.Controls.Add(this.Txtbx_nombre);
+            this.Gpb_presupuesto.Controls.Add(this.Txt_nombreB);
             this.Gpb_presupuesto.Controls.Add(this.Txt_ejercicio);
             this.Gpb_presupuesto.Controls.Add(this.Cb_Base);
             this.Gpb_presupuesto.Controls.Add(this.Cb_ejercicio);
@@ -293,6 +293,7 @@ namespace Capa_Vista_Presupuesto
             this.Controls.Add(this.Gpb_ver);
             this.Controls.Add(this.Gpb_modificar);
             this.Controls.Add(this.Gpb_presupuesto);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Opciones";
             this.Text = "Opciones de Presupuesto";
             this.Load += new System.EventHandler(this.Opciones_Load);
@@ -310,7 +311,7 @@ namespace Capa_Vista_Presupuesto
 
         private System.Windows.Forms.Button Btn_crear;
         private System.Windows.Forms.ComboBox Cb_ejercicio;
-        private System.Windows.Forms.TextBox Txtbx_nombre;
+        private System.Windows.Forms.TextBox Txt_nombreB;
         private System.Windows.Forms.Button Btn_Modificar;
         private System.Windows.Forms.ComboBox Cb_modificar;
         private System.Windows.Forms.Button Btn_ver;

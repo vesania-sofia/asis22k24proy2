@@ -32,7 +32,7 @@ namespace Capa_Vista_Presupuesto
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Incremento));
             this.Btn_Aceptar = new System.Windows.Forms.Button();
             this.Btn_cancelar = new System.Windows.Forms.Button();
-            this.Txtbx_incremento = new System.Windows.Forms.TextBox();
+            this.Txt_incrementoB = new System.Windows.Forms.TextBox();
             this.Txt_texto = new System.Windows.Forms.Label();
             this.Chb_todos = new System.Windows.Forms.CheckBox();
             this.Cb_meses = new System.Windows.Forms.ComboBox();
@@ -65,14 +65,14 @@ namespace Capa_Vista_Presupuesto
             // 
             // Txtbx_incremento
             // 
-            this.Txtbx_incremento.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txtbx_incremento.Location = new System.Drawing.Point(101, 98);
-            this.Txtbx_incremento.MaxLength = 3;
-            this.Txtbx_incremento.Name = "Txtbx_incremento";
-            this.Txtbx_incremento.Size = new System.Drawing.Size(131, 26);
-            this.Txtbx_incremento.TabIndex = 1;
-            this.Txtbx_incremento.TextChanged += new System.EventHandler(this.Txtbx_incremento_TextChanged);
-            this.Txtbx_incremento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
+            this.Txt_incrementoB.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_incrementoB.Location = new System.Drawing.Point(101, 98);
+            this.Txt_incrementoB.MaxLength = 3;
+            this.Txt_incrementoB.Name = "Txtbx_incremento";
+            this.Txt_incrementoB.Size = new System.Drawing.Size(131, 26);
+            this.Txt_incrementoB.TabIndex = 1;
+            this.Txt_incrementoB.TextChanged += new System.EventHandler(this.Txtbx_incremento_TextChanged);
+            this.Txt_incrementoB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             // 
             // Txt_texto
             // 
@@ -167,9 +167,10 @@ namespace Capa_Vista_Presupuesto
             this.Controls.Add(this.Cb_meses);
             this.Controls.Add(this.Chb_todos);
             this.Controls.Add(this.Txt_texto);
-            this.Controls.Add(this.Txtbx_incremento);
+            this.Controls.Add(this.Txt_incrementoB);
             this.Controls.Add(this.Btn_cancelar);
             this.Controls.Add(this.Btn_Aceptar);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Incremento";
             this.Text = "Incremento";
             this.Load += new System.EventHandler(this.Incremento_Load);
@@ -182,7 +183,7 @@ namespace Capa_Vista_Presupuesto
 
         private System.Windows.Forms.Button Btn_Aceptar;
         private System.Windows.Forms.Button Btn_cancelar;
-        private System.Windows.Forms.TextBox Txtbx_incremento;
+        private System.Windows.Forms.TextBox Txt_incrementoB;
         private System.Windows.Forms.Label Txt_texto;
         private System.Windows.Forms.CheckBox Chb_todos;
         private System.Windows.Forms.ComboBox Cb_meses;

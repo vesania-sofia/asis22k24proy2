@@ -48,7 +48,7 @@ namespace Capa_Vista_Presupuesto
 
         private void Btn_crear_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(Txtbx_nombre.Text))
+            if (string.IsNullOrWhiteSpace(Txt_nombreB.Text))
             {
                 MessageBox.Show("Por favor, ingresa un nombre para el presupuesto.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return; // Detenemos la ejecución si el campo está vacío
@@ -87,14 +87,14 @@ namespace Capa_Vista_Presupuesto
             {
                 if (Chb_plantilla.Checked)
                 {
-                    iIdPresupuesto = control.CrearPresupuesto(Txtbx_nombre.Text, Convert.ToInt32(Cb_ejercicio.Text));
+                    iIdPresupuesto = control.CrearPresupuesto(Txt_nombreB.Text, Convert.ToInt32(Cb_ejercicio.Text));
                     //MessageBox.Show("Id Creado: " + Convert.ToString(iIdPresupuesto));----Bandera
                     sOperacion = "crearPlantilla";
                     AbrirFormularioPresupuestoLlenado(sOperacion,iIdPresupuesto,PresupuestoLlenado(Cb_Base));
                 }
                 else
                 {
-                    iIdPresupuesto = control.CrearPresupuesto(Txtbx_nombre.Text, Convert.ToInt32(Cb_ejercicio.Text));
+                    iIdPresupuesto = control.CrearPresupuesto(Txt_nombreB.Text, Convert.ToInt32(Cb_ejercicio.Text));
                     //MessageBox.Show("Id Creado: " + Convert.ToString(iIdPresupuesto));---Bandera
                     sOperacion = "crear";
                     AbrirFormularioPresupuestoCREAR(sOperacion, iIdPresupuesto);
@@ -111,7 +111,7 @@ namespace Capa_Vista_Presupuesto
         {
             sOperacion = sOperacionF;
             iIdPresupuesto = iIdPresupuestoF;
-            sNombre = Txtbx_nombre.Text;
+            sNombre = Txt_nombreB.Text;
             sLlenado = Cb_LlenadoCrear.Text;
             iEjercicio = control.ObtenerEjercicioPresupuesto(iIdPresupuestoF);
             this.DialogResult = DialogResult.OK;
@@ -122,7 +122,7 @@ namespace Capa_Vista_Presupuesto
         {
             sOperacion = sOperacionF;
             iIdPresupuesto = iIdPresupuestoF;
-            sNombre = Txtbx_nombre.Text;
+            sNombre = Txt_nombreB.Text;
             sLlenado = Cb_LlenadoCrear.Text;
             sPrellenado = iIdPrepLlenado;
             iEjercicio = control.ObtenerEjercicioPresupuesto(iIdPresupuestoF);

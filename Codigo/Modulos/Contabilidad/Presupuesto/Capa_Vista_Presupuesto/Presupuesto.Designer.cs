@@ -32,30 +32,30 @@ namespace Capa_Vista_Presupuesto
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Presupuesto));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.Txtbx_diciembre = new System.Windows.Forms.TextBox();
+            this.Txt_diciembreB = new System.Windows.Forms.TextBox();
             this.Txt_diciembre = new System.Windows.Forms.Label();
-            this.Txtbx_noviembre = new System.Windows.Forms.TextBox();
+            this.Txt_noviembreB = new System.Windows.Forms.TextBox();
             this.Txt_noviembre = new System.Windows.Forms.Label();
-            this.Txtbx_octubre = new System.Windows.Forms.TextBox();
+            this.Txt_octubreB = new System.Windows.Forms.TextBox();
             this.Txt_octubre = new System.Windows.Forms.Label();
-            this.Txtbx_septiembre = new System.Windows.Forms.TextBox();
+            this.Txt_septiembreB = new System.Windows.Forms.TextBox();
             this.Txt_septiembre = new System.Windows.Forms.Label();
-            this.Txtbx_anual = new System.Windows.Forms.TextBox();
-            this.Txtbx_julio = new System.Windows.Forms.TextBox();
+            this.Txt_anualB = new System.Windows.Forms.TextBox();
+            this.Txt_julioB = new System.Windows.Forms.TextBox();
             this.Txt_julio = new System.Windows.Forms.Label();
-            this.Txtbx_junio = new System.Windows.Forms.TextBox();
+            this.Txt_junioB = new System.Windows.Forms.TextBox();
             this.Txt_junio = new System.Windows.Forms.Label();
-            this.Txtbx_mayo = new System.Windows.Forms.TextBox();
+            this.Txt_mayoB = new System.Windows.Forms.TextBox();
             this.Txt_mayo = new System.Windows.Forms.Label();
-            this.Txtbx_abril = new System.Windows.Forms.TextBox();
+            this.Txb_abrilB = new System.Windows.Forms.TextBox();
             this.Txt_abril = new System.Windows.Forms.Label();
             this.Txt_marzo = new System.Windows.Forms.Label();
-            this.Txtbx_febrero = new System.Windows.Forms.TextBox();
+            this.Txt_febreroB = new System.Windows.Forms.TextBox();
             this.Txt_febrero = new System.Windows.Forms.Label();
-            this.Txtbx_enero = new System.Windows.Forms.TextBox();
+            this.Txt_eneroB = new System.Windows.Forms.TextBox();
             this.Txt_Enero = new System.Windows.Forms.Label();
             this.Txt_Descripcion = new System.Windows.Forms.Label();
-            this.Txtbx_Descripcion = new System.Windows.Forms.TextBox();
+            this.Txt_descripcionB = new System.Windows.Forms.TextBox();
             this.Txt_totalAnual = new System.Windows.Forms.Label();
             this.Txt_totalDiciembre = new System.Windows.Forms.Label();
             this.Txt_totalNoviembre = new System.Windows.Forms.Label();
@@ -69,11 +69,11 @@ namespace Capa_Vista_Presupuesto
             this.Txt_totalMarzo = new System.Windows.Forms.Label();
             this.Txt_totalFebrero = new System.Windows.Forms.Label();
             this.Txt_totalEnero = new System.Windows.Forms.Label();
-            this.Txtbx_agosto = new System.Windows.Forms.TextBox();
+            this.Txt_agostoB = new System.Windows.Forms.TextBox();
             this.Txt_agosto = new System.Windows.Forms.Label();
             this.Txt_cuenta = new System.Windows.Forms.Label();
-            this.Txtbx_Cuenta = new System.Windows.Forms.TextBox();
-            this.Txtbx_marzo = new System.Windows.Forms.TextBox();
+            this.Txt_cuentaB = new System.Windows.Forms.TextBox();
+            this.Txt_marzoB = new System.Windows.Forms.TextBox();
             this.Btn_eliminar = new System.Windows.Forms.Button();
             this.Btn_modificar = new System.Windows.Forms.Button();
             this.Btn_Informe = new System.Windows.Forms.Button();
@@ -107,17 +107,17 @@ namespace Capa_Vista_Presupuesto
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_presupuesto)).BeginInit();
             this.SuspendLayout();
             // 
-            // Txtbx_diciembre
+            // Txt_diciembreB
             // 
-            this.Txtbx_diciembre.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txtbx_diciembre.Location = new System.Drawing.Point(12, 681);
-            this.Txtbx_diciembre.MaxLength = 16;
-            this.Txtbx_diciembre.Name = "Txtbx_diciembre";
-            this.Txtbx_diciembre.Size = new System.Drawing.Size(109, 26);
-            this.Txtbx_diciembre.TabIndex = 14;
-            this.Txtbx_diciembre.TextChanged += new System.EventHandler(this.Txtbx_diciembre_TextChanged);
-            this.Txtbx_diciembre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtbx_diciembre_KeyPress);
-            this.Txtbx_diciembre.Leave += new System.EventHandler(this.Txtbx_diciembre_Leave);
+            this.Txt_diciembreB.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_diciembreB.Location = new System.Drawing.Point(12, 681);
+            this.Txt_diciembreB.MaxLength = 16;
+            this.Txt_diciembreB.Name = "Txt_diciembreB";
+            this.Txt_diciembreB.Size = new System.Drawing.Size(109, 26);
+            this.Txt_diciembreB.TabIndex = 14;
+            this.Txt_diciembreB.TextChanged += new System.EventHandler(this.Txtbx_diciembre_TextChanged);
+            this.Txt_diciembreB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtbx_diciembre_KeyPress);
+            this.Txt_diciembreB.Leave += new System.EventHandler(this.Txtbx_diciembre_Leave);
             // 
             // Txt_diciembre
             // 
@@ -130,17 +130,17 @@ namespace Capa_Vista_Presupuesto
             this.Txt_diciembre.TabIndex = 103;
             this.Txt_diciembre.Text = "Diciembre";
             // 
-            // Txtbx_noviembre
+            // Txt_noviembreB
             // 
-            this.Txtbx_noviembre.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txtbx_noviembre.Location = new System.Drawing.Point(12, 635);
-            this.Txtbx_noviembre.MaxLength = 16;
-            this.Txtbx_noviembre.Name = "Txtbx_noviembre";
-            this.Txtbx_noviembre.Size = new System.Drawing.Size(109, 26);
-            this.Txtbx_noviembre.TabIndex = 13;
-            this.Txtbx_noviembre.TextChanged += new System.EventHandler(this.Txtbx_noviembre_TextChanged);
-            this.Txtbx_noviembre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtbx_noviembre_KeyPress);
-            this.Txtbx_noviembre.Leave += new System.EventHandler(this.Txtbx_noviembre_Leave);
+            this.Txt_noviembreB.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_noviembreB.Location = new System.Drawing.Point(12, 635);
+            this.Txt_noviembreB.MaxLength = 16;
+            this.Txt_noviembreB.Name = "Txt_noviembreB";
+            this.Txt_noviembreB.Size = new System.Drawing.Size(109, 26);
+            this.Txt_noviembreB.TabIndex = 13;
+            this.Txt_noviembreB.TextChanged += new System.EventHandler(this.Txtbx_noviembre_TextChanged);
+            this.Txt_noviembreB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtbx_noviembre_KeyPress);
+            this.Txt_noviembreB.Leave += new System.EventHandler(this.Txtbx_noviembre_Leave);
             // 
             // Txt_noviembre
             // 
@@ -153,17 +153,17 @@ namespace Capa_Vista_Presupuesto
             this.Txt_noviembre.TabIndex = 101;
             this.Txt_noviembre.Text = "Noviembre";
             // 
-            // Txtbx_octubre
+            // Txt_octubreB
             // 
-            this.Txtbx_octubre.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txtbx_octubre.Location = new System.Drawing.Point(12, 588);
-            this.Txtbx_octubre.MaxLength = 16;
-            this.Txtbx_octubre.Name = "Txtbx_octubre";
-            this.Txtbx_octubre.Size = new System.Drawing.Size(109, 26);
-            this.Txtbx_octubre.TabIndex = 12;
-            this.Txtbx_octubre.TextChanged += new System.EventHandler(this.Txtbx_octubre_TextChanged);
-            this.Txtbx_octubre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtbx_octubre_KeyPress);
-            this.Txtbx_octubre.Leave += new System.EventHandler(this.Txtbx_octubre_Leave);
+            this.Txt_octubreB.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_octubreB.Location = new System.Drawing.Point(12, 588);
+            this.Txt_octubreB.MaxLength = 16;
+            this.Txt_octubreB.Name = "Txt_octubreB";
+            this.Txt_octubreB.Size = new System.Drawing.Size(109, 26);
+            this.Txt_octubreB.TabIndex = 12;
+            this.Txt_octubreB.TextChanged += new System.EventHandler(this.Txtbx_octubre_TextChanged);
+            this.Txt_octubreB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtbx_octubre_KeyPress);
+            this.Txt_octubreB.Leave += new System.EventHandler(this.Txtbx_octubre_Leave);
             // 
             // Txt_octubre
             // 
@@ -176,17 +176,17 @@ namespace Capa_Vista_Presupuesto
             this.Txt_octubre.TabIndex = 99;
             this.Txt_octubre.Text = "Octubre";
             // 
-            // Txtbx_septiembre
+            // Txt_septiembreB
             // 
-            this.Txtbx_septiembre.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txtbx_septiembre.Location = new System.Drawing.Point(12, 544);
-            this.Txtbx_septiembre.MaxLength = 16;
-            this.Txtbx_septiembre.Name = "Txtbx_septiembre";
-            this.Txtbx_septiembre.Size = new System.Drawing.Size(109, 26);
-            this.Txtbx_septiembre.TabIndex = 11;
-            this.Txtbx_septiembre.TextChanged += new System.EventHandler(this.Txtbx_septiembre_TextChanged);
-            this.Txtbx_septiembre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtbx_septiembre_KeyPress);
-            this.Txtbx_septiembre.Leave += new System.EventHandler(this.Txtbx_septiembre_Leave);
+            this.Txt_septiembreB.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_septiembreB.Location = new System.Drawing.Point(12, 544);
+            this.Txt_septiembreB.MaxLength = 16;
+            this.Txt_septiembreB.Name = "Txt_septiembreB";
+            this.Txt_septiembreB.Size = new System.Drawing.Size(109, 26);
+            this.Txt_septiembreB.TabIndex = 11;
+            this.Txt_septiembreB.TextChanged += new System.EventHandler(this.Txtbx_septiembre_TextChanged);
+            this.Txt_septiembreB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtbx_septiembre_KeyPress);
+            this.Txt_septiembreB.Leave += new System.EventHandler(this.Txtbx_septiembre_Leave);
             // 
             // Txt_septiembre
             // 
@@ -199,30 +199,30 @@ namespace Capa_Vista_Presupuesto
             this.Txt_septiembre.TabIndex = 97;
             this.Txt_septiembre.Text = "Septiembre";
             // 
-            // Txtbx_anual
+            // Txt_anualB
             // 
-            this.Txtbx_anual.BackColor = System.Drawing.Color.LightBlue;
-            this.Txtbx_anual.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txtbx_anual.Location = new System.Drawing.Point(12, 732);
-            this.Txtbx_anual.MaxLength = 16;
-            this.Txtbx_anual.Name = "Txtbx_anual";
-            this.Txtbx_anual.Size = new System.Drawing.Size(109, 26);
-            this.Txtbx_anual.TabIndex = 15;
-            this.Txtbx_anual.TextChanged += new System.EventHandler(this.Txtbx_anual_TextChanged);
-            this.Txtbx_anual.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtbx_anual_KeyPress);
-            this.Txtbx_anual.Leave += new System.EventHandler(this.Txtbx_anual_Leave);
+            this.Txt_anualB.BackColor = System.Drawing.Color.LightBlue;
+            this.Txt_anualB.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_anualB.Location = new System.Drawing.Point(12, 732);
+            this.Txt_anualB.MaxLength = 16;
+            this.Txt_anualB.Name = "Txt_anualB";
+            this.Txt_anualB.Size = new System.Drawing.Size(109, 26);
+            this.Txt_anualB.TabIndex = 15;
+            this.Txt_anualB.TextChanged += new System.EventHandler(this.Txtbx_anual_TextChanged);
+            this.Txt_anualB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtbx_anual_KeyPress);
+            this.Txt_anualB.Leave += new System.EventHandler(this.Txtbx_anual_Leave);
             // 
-            // Txtbx_julio
+            // Txt_julioB
             // 
-            this.Txtbx_julio.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txtbx_julio.Location = new System.Drawing.Point(12, 456);
-            this.Txtbx_julio.MaxLength = 16;
-            this.Txtbx_julio.Name = "Txtbx_julio";
-            this.Txtbx_julio.Size = new System.Drawing.Size(109, 26);
-            this.Txtbx_julio.TabIndex = 9;
-            this.Txtbx_julio.TextChanged += new System.EventHandler(this.Txtbx_julio_TextChanged);
-            this.Txtbx_julio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtbx_julio_KeyPress);
-            this.Txtbx_julio.Leave += new System.EventHandler(this.Txtbx_julio_Leave);
+            this.Txt_julioB.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_julioB.Location = new System.Drawing.Point(12, 456);
+            this.Txt_julioB.MaxLength = 16;
+            this.Txt_julioB.Name = "Txt_julioB";
+            this.Txt_julioB.Size = new System.Drawing.Size(109, 26);
+            this.Txt_julioB.TabIndex = 9;
+            this.Txt_julioB.TextChanged += new System.EventHandler(this.Txtbx_julio_TextChanged);
+            this.Txt_julioB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtbx_julio_KeyPress);
+            this.Txt_julioB.Leave += new System.EventHandler(this.Txtbx_julio_Leave);
             // 
             // Txt_julio
             // 
@@ -235,17 +235,17 @@ namespace Capa_Vista_Presupuesto
             this.Txt_julio.TabIndex = 91;
             this.Txt_julio.Text = "Julio";
             // 
-            // Txtbx_junio
+            // Txt_junioB
             // 
-            this.Txtbx_junio.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txtbx_junio.Location = new System.Drawing.Point(12, 407);
-            this.Txtbx_junio.MaxLength = 16;
-            this.Txtbx_junio.Name = "Txtbx_junio";
-            this.Txtbx_junio.Size = new System.Drawing.Size(109, 26);
-            this.Txtbx_junio.TabIndex = 8;
-            this.Txtbx_junio.TextChanged += new System.EventHandler(this.Txtbx_junio_TextChanged);
-            this.Txtbx_junio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtbx_junio_KeyPress);
-            this.Txtbx_junio.Leave += new System.EventHandler(this.Txtbx_junio_Leave);
+            this.Txt_junioB.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_junioB.Location = new System.Drawing.Point(12, 407);
+            this.Txt_junioB.MaxLength = 16;
+            this.Txt_junioB.Name = "Txt_junioB";
+            this.Txt_junioB.Size = new System.Drawing.Size(109, 26);
+            this.Txt_junioB.TabIndex = 8;
+            this.Txt_junioB.TextChanged += new System.EventHandler(this.Txtbx_junio_TextChanged);
+            this.Txt_junioB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtbx_junio_KeyPress);
+            this.Txt_junioB.Leave += new System.EventHandler(this.Txtbx_junio_Leave);
             // 
             // Txt_junio
             // 
@@ -258,17 +258,17 @@ namespace Capa_Vista_Presupuesto
             this.Txt_junio.TabIndex = 89;
             this.Txt_junio.Text = "Junio";
             // 
-            // Txtbx_mayo
+            // Txt_mayoB
             // 
-            this.Txtbx_mayo.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txtbx_mayo.Location = new System.Drawing.Point(12, 362);
-            this.Txtbx_mayo.MaxLength = 16;
-            this.Txtbx_mayo.Name = "Txtbx_mayo";
-            this.Txtbx_mayo.Size = new System.Drawing.Size(109, 26);
-            this.Txtbx_mayo.TabIndex = 7;
-            this.Txtbx_mayo.TextChanged += new System.EventHandler(this.Txtbx_mayo_TextChanged);
-            this.Txtbx_mayo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtbx_mayo_KeyPress);
-            this.Txtbx_mayo.Leave += new System.EventHandler(this.Txtbx_mayo_Leave);
+            this.Txt_mayoB.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_mayoB.Location = new System.Drawing.Point(12, 362);
+            this.Txt_mayoB.MaxLength = 16;
+            this.Txt_mayoB.Name = "Txt_mayoB";
+            this.Txt_mayoB.Size = new System.Drawing.Size(109, 26);
+            this.Txt_mayoB.TabIndex = 7;
+            this.Txt_mayoB.TextChanged += new System.EventHandler(this.Txtbx_mayo_TextChanged);
+            this.Txt_mayoB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtbx_mayo_KeyPress);
+            this.Txt_mayoB.Leave += new System.EventHandler(this.Txtbx_mayo_Leave);
             // 
             // Txt_mayo
             // 
@@ -281,17 +281,17 @@ namespace Capa_Vista_Presupuesto
             this.Txt_mayo.TabIndex = 87;
             this.Txt_mayo.Text = "Mayo";
             // 
-            // Txtbx_abril
+            // Txb_abrilB
             // 
-            this.Txtbx_abril.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txtbx_abril.Location = new System.Drawing.Point(12, 317);
-            this.Txtbx_abril.MaxLength = 16;
-            this.Txtbx_abril.Name = "Txtbx_abril";
-            this.Txtbx_abril.Size = new System.Drawing.Size(109, 26);
-            this.Txtbx_abril.TabIndex = 6;
-            this.Txtbx_abril.TextChanged += new System.EventHandler(this.Txtbx_abril_TextChanged);
-            this.Txtbx_abril.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtbx_abril_KeyPress);
-            this.Txtbx_abril.Leave += new System.EventHandler(this.Txtbx_abril_Leave);
+            this.Txb_abrilB.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txb_abrilB.Location = new System.Drawing.Point(12, 317);
+            this.Txb_abrilB.MaxLength = 16;
+            this.Txb_abrilB.Name = "Txb_abrilB";
+            this.Txb_abrilB.Size = new System.Drawing.Size(109, 26);
+            this.Txb_abrilB.TabIndex = 6;
+            this.Txb_abrilB.TextChanged += new System.EventHandler(this.Txtbx_abril_TextChanged);
+            this.Txb_abrilB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtbx_abril_KeyPress);
+            this.Txb_abrilB.Leave += new System.EventHandler(this.Txtbx_abril_Leave);
             // 
             // Txt_abril
             // 
@@ -315,17 +315,17 @@ namespace Capa_Vista_Presupuesto
             this.Txt_marzo.TabIndex = 83;
             this.Txt_marzo.Text = "Marzo";
             // 
-            // Txtbx_febrero
+            // Txt_febreroB
             // 
-            this.Txtbx_febrero.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txtbx_febrero.Location = new System.Drawing.Point(12, 224);
-            this.Txtbx_febrero.MaxLength = 16;
-            this.Txtbx_febrero.Name = "Txtbx_febrero";
-            this.Txtbx_febrero.Size = new System.Drawing.Size(109, 26);
-            this.Txtbx_febrero.TabIndex = 4;
-            this.Txtbx_febrero.TextChanged += new System.EventHandler(this.Txtbx_febrero_TextChanged);
-            this.Txtbx_febrero.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtbx_febrero_KeyPress);
-            this.Txtbx_febrero.Leave += new System.EventHandler(this.Txtbx_febrero_Leave);
+            this.Txt_febreroB.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_febreroB.Location = new System.Drawing.Point(12, 224);
+            this.Txt_febreroB.MaxLength = 16;
+            this.Txt_febreroB.Name = "Txt_febreroB";
+            this.Txt_febreroB.Size = new System.Drawing.Size(109, 26);
+            this.Txt_febreroB.TabIndex = 4;
+            this.Txt_febreroB.TextChanged += new System.EventHandler(this.Txtbx_febrero_TextChanged);
+            this.Txt_febreroB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtbx_febrero_KeyPress);
+            this.Txt_febreroB.Leave += new System.EventHandler(this.Txtbx_febrero_Leave);
             // 
             // Txt_febrero
             // 
@@ -338,17 +338,17 @@ namespace Capa_Vista_Presupuesto
             this.Txt_febrero.TabIndex = 81;
             this.Txt_febrero.Text = "Febrero";
             // 
-            // Txtbx_enero
+            // Txt_eneroB
             // 
-            this.Txtbx_enero.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txtbx_enero.Location = new System.Drawing.Point(12, 177);
-            this.Txtbx_enero.MaxLength = 16;
-            this.Txtbx_enero.Name = "Txtbx_enero";
-            this.Txtbx_enero.Size = new System.Drawing.Size(107, 26);
-            this.Txtbx_enero.TabIndex = 3;
-            this.Txtbx_enero.TextChanged += new System.EventHandler(this.Txtbx_enero_TextChanged);
-            this.Txtbx_enero.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtbx_enero_KeyPress);
-            this.Txtbx_enero.Leave += new System.EventHandler(this.Txtbx_enero_Leave);
+            this.Txt_eneroB.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_eneroB.Location = new System.Drawing.Point(12, 177);
+            this.Txt_eneroB.MaxLength = 16;
+            this.Txt_eneroB.Name = "Txt_eneroB";
+            this.Txt_eneroB.Size = new System.Drawing.Size(107, 26);
+            this.Txt_eneroB.TabIndex = 3;
+            this.Txt_eneroB.TextChanged += new System.EventHandler(this.Txtbx_enero_TextChanged);
+            this.Txt_eneroB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtbx_enero_KeyPress);
+            this.Txt_eneroB.Leave += new System.EventHandler(this.Txtbx_enero_Leave);
             // 
             // Txt_Enero
             // 
@@ -372,21 +372,21 @@ namespace Capa_Vista_Presupuesto
             this.Txt_Descripcion.TabIndex = 78;
             this.Txt_Descripcion.Text = "Descripcion";
             // 
-            // Txtbx_Descripcion
+            // Txt_descripcionB
             // 
-            this.Txtbx_Descripcion.Enabled = false;
-            this.Txtbx_Descripcion.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txtbx_Descripcion.Location = new System.Drawing.Point(12, 129);
-            this.Txtbx_Descripcion.Name = "Txtbx_Descripcion";
-            this.Txtbx_Descripcion.Size = new System.Drawing.Size(107, 26);
-            this.Txtbx_Descripcion.TabIndex = 2;
+            this.Txt_descripcionB.Enabled = false;
+            this.Txt_descripcionB.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_descripcionB.Location = new System.Drawing.Point(12, 129);
+            this.Txt_descripcionB.Name = "Txt_descripcionB";
+            this.Txt_descripcionB.Size = new System.Drawing.Size(107, 26);
+            this.Txt_descripcionB.TabIndex = 2;
             // 
             // Txt_totalAnual
             // 
             this.Txt_totalAnual.AutoSize = true;
             this.Txt_totalAnual.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(152)))), ((int)(((byte)(151)))));
             this.Txt_totalAnual.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txt_totalAnual.Location = new System.Drawing.Point(1217, 739);
+            this.Txt_totalAnual.Location = new System.Drawing.Point(1218, 739);
             this.Txt_totalAnual.Name = "Txt_totalAnual";
             this.Txt_totalAnual.Size = new System.Drawing.Size(44, 19);
             this.Txt_totalAnual.TabIndex = 118;
@@ -397,7 +397,7 @@ namespace Capa_Vista_Presupuesto
             this.Txt_totalDiciembre.AutoSize = true;
             this.Txt_totalDiciembre.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(152)))), ((int)(((byte)(151)))));
             this.Txt_totalDiciembre.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txt_totalDiciembre.Location = new System.Drawing.Point(1134, 739);
+            this.Txt_totalDiciembre.Location = new System.Drawing.Point(1144, 739);
             this.Txt_totalDiciembre.Name = "Txt_totalDiciembre";
             this.Txt_totalDiciembre.Size = new System.Drawing.Size(30, 19);
             this.Txt_totalDiciembre.TabIndex = 117;
@@ -485,7 +485,7 @@ namespace Capa_Vista_Presupuesto
             this.Txt_totalAbril.AutoSize = true;
             this.Txt_totalAbril.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(152)))), ((int)(((byte)(151)))));
             this.Txt_totalAbril.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txt_totalAbril.Location = new System.Drawing.Point(559, 739);
+            this.Txt_totalAbril.Location = new System.Drawing.Point(554, 739);
             this.Txt_totalAbril.Name = "Txt_totalAbril";
             this.Txt_totalAbril.Size = new System.Drawing.Size(39, 19);
             this.Txt_totalAbril.TabIndex = 109;
@@ -524,17 +524,17 @@ namespace Capa_Vista_Presupuesto
             this.Txt_totalEnero.TabIndex = 106;
             this.Txt_totalEnero.Text = "Enero";
             // 
-            // Txtbx_agosto
+            // Txt_agostoB
             // 
-            this.Txtbx_agosto.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txtbx_agosto.Location = new System.Drawing.Point(12, 500);
-            this.Txtbx_agosto.MaxLength = 16;
-            this.Txtbx_agosto.Name = "Txtbx_agosto";
-            this.Txtbx_agosto.Size = new System.Drawing.Size(109, 26);
-            this.Txtbx_agosto.TabIndex = 10;
-            this.Txtbx_agosto.TextChanged += new System.EventHandler(this.Txtbx_agosto_TextChanged);
-            this.Txtbx_agosto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtbx_agosto_KeyPress);
-            this.Txtbx_agosto.Leave += new System.EventHandler(this.Txtbx_agosto_Leave);
+            this.Txt_agostoB.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_agostoB.Location = new System.Drawing.Point(12, 500);
+            this.Txt_agostoB.MaxLength = 16;
+            this.Txt_agostoB.Name = "Txt_agostoB";
+            this.Txt_agostoB.Size = new System.Drawing.Size(109, 26);
+            this.Txt_agostoB.TabIndex = 10;
+            this.Txt_agostoB.TextChanged += new System.EventHandler(this.Txtbx_agosto_TextChanged);
+            this.Txt_agostoB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtbx_agosto_KeyPress);
+            this.Txt_agostoB.Leave += new System.EventHandler(this.Txtbx_agosto_Leave);
             // 
             // Txt_agosto
             // 
@@ -558,27 +558,27 @@ namespace Capa_Vista_Presupuesto
             this.Txt_cuenta.TabIndex = 93;
             this.Txt_cuenta.Text = "Cuenta";
             // 
-            // Txtbx_Cuenta
+            // Txt_cuentaB
             // 
-            this.Txtbx_Cuenta.Enabled = false;
-            this.Txtbx_Cuenta.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txtbx_Cuenta.Location = new System.Drawing.Point(12, 83);
-            this.Txtbx_Cuenta.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Txtbx_Cuenta.Name = "Txtbx_Cuenta";
-            this.Txtbx_Cuenta.Size = new System.Drawing.Size(109, 26);
-            this.Txtbx_Cuenta.TabIndex = 1;
+            this.Txt_cuentaB.Enabled = false;
+            this.Txt_cuentaB.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_cuentaB.Location = new System.Drawing.Point(12, 83);
+            this.Txt_cuentaB.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Txt_cuentaB.Name = "Txt_cuentaB";
+            this.Txt_cuentaB.Size = new System.Drawing.Size(109, 26);
+            this.Txt_cuentaB.TabIndex = 1;
             // 
-            // Txtbx_marzo
+            // Txt_marzoB
             // 
-            this.Txtbx_marzo.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txtbx_marzo.Location = new System.Drawing.Point(12, 269);
-            this.Txtbx_marzo.MaxLength = 16;
-            this.Txtbx_marzo.Name = "Txtbx_marzo";
-            this.Txtbx_marzo.Size = new System.Drawing.Size(109, 26);
-            this.Txtbx_marzo.TabIndex = 5;
-            this.Txtbx_marzo.TextChanged += new System.EventHandler(this.Txtbx_marzo_TextChanged);
-            this.Txtbx_marzo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtbx_marzo_KeyPress);
-            this.Txtbx_marzo.Leave += new System.EventHandler(this.Txtbx_marzo_Leave);
+            this.Txt_marzoB.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_marzoB.Location = new System.Drawing.Point(12, 269);
+            this.Txt_marzoB.MaxLength = 16;
+            this.Txt_marzoB.Name = "Txt_marzoB";
+            this.Txt_marzoB.Size = new System.Drawing.Size(109, 26);
+            this.Txt_marzoB.TabIndex = 5;
+            this.Txt_marzoB.TextChanged += new System.EventHandler(this.Txtbx_marzo_TextChanged);
+            this.Txt_marzoB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtbx_marzo_KeyPress);
+            this.Txt_marzoB.Leave += new System.EventHandler(this.Txtbx_marzo_Leave);
             // 
             // Btn_eliminar
             // 
@@ -715,32 +715,32 @@ namespace Capa_Vista_Presupuesto
             // 
             this.Panel_panel1.AutoScroll = true;
             this.Panel_panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(152)))), ((int)(((byte)(151)))));
-            this.Panel_panel1.Controls.Add(this.Txtbx_junio);
-            this.Panel_panel1.Controls.Add(this.Txtbx_agosto);
+            this.Panel_panel1.Controls.Add(this.Txt_junioB);
+            this.Panel_panel1.Controls.Add(this.Txt_agostoB);
             this.Panel_panel1.Controls.Add(this.Txt_junio);
             this.Panel_panel1.Controls.Add(this.Txt_anioPres);
-            this.Panel_panel1.Controls.Add(this.Txtbx_mayo);
+            this.Panel_panel1.Controls.Add(this.Txt_mayoB);
             this.Panel_panel1.Controls.Add(this.Txt_agosto);
             this.Panel_panel1.Controls.Add(this.Txt_mayo);
             this.Panel_panel1.Controls.Add(this.Txt_ejercicioPres);
-            this.Panel_panel1.Controls.Add(this.Txtbx_abril);
-            this.Panel_panel1.Controls.Add(this.Txtbx_septiembre);
+            this.Panel_panel1.Controls.Add(this.Txb_abrilB);
+            this.Panel_panel1.Controls.Add(this.Txt_septiembreB);
             this.Panel_panel1.Controls.Add(this.Txt_abril);
-            this.Panel_panel1.Controls.Add(this.Txtbx_noviembre);
+            this.Panel_panel1.Controls.Add(this.Txt_noviembreB);
             this.Panel_panel1.Controls.Add(this.Txt_marzo);
             this.Panel_panel1.Controls.Add(this.Txt_septiembre);
-            this.Panel_panel1.Controls.Add(this.Txtbx_febrero);
-            this.Panel_panel1.Controls.Add(this.Txtbx_diciembre);
+            this.Panel_panel1.Controls.Add(this.Txt_febreroB);
+            this.Panel_panel1.Controls.Add(this.Txt_diciembreB);
             this.Panel_panel1.Controls.Add(this.Txt_febrero);
-            this.Panel_panel1.Controls.Add(this.Txtbx_julio);
-            this.Panel_panel1.Controls.Add(this.Txtbx_enero);
+            this.Panel_panel1.Controls.Add(this.Txt_julioB);
+            this.Panel_panel1.Controls.Add(this.Txt_eneroB);
             this.Panel_panel1.Controls.Add(this.Txt_julio);
             this.Panel_panel1.Controls.Add(this.Txt_Enero);
             this.Panel_panel1.Controls.Add(this.Txt_noviembre);
-            this.Panel_panel1.Controls.Add(this.Txtbx_Descripcion);
+            this.Panel_panel1.Controls.Add(this.Txt_descripcionB);
             this.Panel_panel1.Controls.Add(this.Txt_Descripcion);
             this.Panel_panel1.Controls.Add(this.Txt_diciembre);
-            this.Panel_panel1.Controls.Add(this.Txtbx_octubre);
+            this.Panel_panel1.Controls.Add(this.Txt_octubreB);
             this.Panel_panel1.Controls.Add(this.Txt_octubre);
             this.Panel_panel1.Controls.Add(this.Txt_totalNoviembre);
             this.Panel_panel1.Controls.Add(this.Txt_totalDiciembre);
@@ -750,7 +750,7 @@ namespace Capa_Vista_Presupuesto
             this.Panel_panel1.Controls.Add(this.Txt_nombrePresupuesto);
             this.Panel_panel1.Controls.Add(this.Txt_totalAgosto);
             this.Panel_panel1.Controls.Add(this.Btn_ajustar);
-            this.Panel_panel1.Controls.Add(this.Txtbx_anual);
+            this.Panel_panel1.Controls.Add(this.Txt_anualB);
             this.Panel_panel1.Controls.Add(this.Txt_totalJulio);
             this.Panel_panel1.Controls.Add(this.Btn_opciones);
             this.Panel_panel1.Controls.Add(this.Txt_totalJunio);
@@ -766,8 +766,8 @@ namespace Capa_Vista_Presupuesto
             this.Panel_panel1.Controls.Add(this.Txt_totalEnero);
             this.Panel_panel1.Controls.Add(this.Btn_modificar);
             this.Panel_panel1.Controls.Add(this.Btn_eliminar);
-            this.Panel_panel1.Controls.Add(this.Txtbx_marzo);
-            this.Panel_panel1.Controls.Add(this.Txtbx_Cuenta);
+            this.Panel_panel1.Controls.Add(this.Txt_marzoB);
+            this.Panel_panel1.Controls.Add(this.Txt_cuentaB);
             this.Panel_panel1.Controls.Add(this.Txt_cuenta);
             this.Panel_panel1.Controls.Add(this.Dgv_presupuesto);
             this.Panel_panel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -924,6 +924,7 @@ namespace Capa_Vista_Presupuesto
             this.ClientSize = new System.Drawing.Size(1309, 811);
             this.Controls.Add(this.Panel_panel1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Presupuesto";
             this.Text = "Presupuesto";
             this.Load += new System.EventHandler(this.Presupuesto_Load);
@@ -935,30 +936,30 @@ namespace Capa_Vista_Presupuesto
         }
 
         #endregion
-        private System.Windows.Forms.TextBox Txtbx_diciembre;
+        private System.Windows.Forms.TextBox Txt_diciembreB;
         private System.Windows.Forms.Label Txt_diciembre;
-        private System.Windows.Forms.TextBox Txtbx_noviembre;
+        private System.Windows.Forms.TextBox Txt_noviembreB;
         private System.Windows.Forms.Label Txt_noviembre;
-        private System.Windows.Forms.TextBox Txtbx_octubre;
+        private System.Windows.Forms.TextBox Txt_octubreB;
         private System.Windows.Forms.Label Txt_octubre;
-        private System.Windows.Forms.TextBox Txtbx_septiembre;
+        private System.Windows.Forms.TextBox Txt_septiembreB;
         private System.Windows.Forms.Label Txt_septiembre;
-        private System.Windows.Forms.TextBox Txtbx_anual;
-        private System.Windows.Forms.TextBox Txtbx_julio;
+        private System.Windows.Forms.TextBox Txt_anualB;
+        private System.Windows.Forms.TextBox Txt_julioB;
         private System.Windows.Forms.Label Txt_julio;
-        private System.Windows.Forms.TextBox Txtbx_junio;
+        private System.Windows.Forms.TextBox Txt_junioB;
         private System.Windows.Forms.Label Txt_junio;
-        private System.Windows.Forms.TextBox Txtbx_mayo;
+        private System.Windows.Forms.TextBox Txt_mayoB;
         private System.Windows.Forms.Label Txt_mayo;
-        private System.Windows.Forms.TextBox Txtbx_abril;
+        private System.Windows.Forms.TextBox Txb_abrilB;
         private System.Windows.Forms.Label Txt_abril;
         private System.Windows.Forms.Label Txt_marzo;
-        private System.Windows.Forms.TextBox Txtbx_febrero;
+        private System.Windows.Forms.TextBox Txt_febreroB;
         private System.Windows.Forms.Label Txt_febrero;
-        private System.Windows.Forms.TextBox Txtbx_enero;
+        private System.Windows.Forms.TextBox Txt_eneroB;
         private System.Windows.Forms.Label Txt_Enero;
         private System.Windows.Forms.Label Txt_Descripcion;
-        private System.Windows.Forms.TextBox Txtbx_Descripcion;
+        private System.Windows.Forms.TextBox Txt_descripcionB;
         private System.Windows.Forms.Label Txt_totalAnual;
         private System.Windows.Forms.Label Txt_totalDiciembre;
         private System.Windows.Forms.Label Txt_totalNoviembre;
@@ -972,11 +973,11 @@ namespace Capa_Vista_Presupuesto
         private System.Windows.Forms.Label Txt_totalMarzo;
         private System.Windows.Forms.Label Txt_totalFebrero;
         private System.Windows.Forms.Label Txt_totalEnero;
-        private System.Windows.Forms.TextBox Txtbx_agosto;
+        private System.Windows.Forms.TextBox Txt_agostoB;
         private System.Windows.Forms.Label Txt_agosto;
         private System.Windows.Forms.Label Txt_cuenta;
-        private System.Windows.Forms.TextBox Txtbx_Cuenta;
-        private System.Windows.Forms.TextBox Txtbx_marzo;
+        private System.Windows.Forms.TextBox Txt_cuentaB;
+        private System.Windows.Forms.TextBox Txt_marzoB;
         private System.Windows.Forms.Button Btn_eliminar;
         private System.Windows.Forms.Button Btn_modificar;
         private System.Windows.Forms.Button Btn_Informe;

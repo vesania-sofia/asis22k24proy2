@@ -176,6 +176,7 @@ namespace Capa_Vista_Presupuesto
             this.Controls.Add(this.Gpb_opcion1);
             this.Controls.Add(this.Gpb_Opcion2);
             this.Controls.Add(this.Gpb_Opcion3);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ReportesPresupuesto";
             this.Text = "Reportes Presupuesto";
             this.Load += new System.EventHandler(this.ReportesPresupuesto_Load);
