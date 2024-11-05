@@ -391,6 +391,7 @@ namespace Capa_Vista_EstadosFinancieros
             this.Controls.Add(this.Gbp_EstadoDeResultados);
             this.Controls.Add(this.Gbp_FlujoDeEfectivo);
             this.Controls.Add(this.Gpb_Balance);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "EstadosFinancieros";
             this.Text = "EstadosFinancieros";
             this.Load += new System.EventHandler(this.EstadosFinancieros_Load);
