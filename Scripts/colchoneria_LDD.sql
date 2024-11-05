@@ -28,7 +28,7 @@ DELIMITER $$
 --
 -- Procedimientos
 --
-CREATE DEFINER=`root`@`localhost` PROCEDURE `cambiarContraModulo` (IN `p_usuario` INT, IN `p_nueva_contrasenia` VARCHAR(100))   BEGIN
+CREATE   PROCEDURE `cambiarContraModulo` (IN `p_usuario` INT, IN `p_nueva_contrasenia` VARCHAR(100))   BEGIN
     -- Actualizar la contraseña del usuario
     UPDATE tbl_usuarios
     SET password_usuario = p_nueva_contrasenia
@@ -43,7 +43,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `cambiarContraModulo` (IN `p_usuario
 END$$
 
 -- Cambio de contraseña procedimiento ----------------------------------------------------------------------
-CREATE DEFINER=`root`@`localhost` PROCEDURE `cambioContrasenia` (IN `p_usuario` VARCHAR(20))   BEGIN
+CREATE   PROCEDURE `cambioContrasenia` (IN `p_usuario` VARCHAR(20))   BEGIN
     DECLARE usuario_existe INT;
 
     SELECT COUNT(*) INTO usuario_existe
@@ -58,7 +58,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `cambioContrasenia` (IN `p_usuario` 
     END IF;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `cambiarContrasenia` (IN `usuario` VARCHAR(255), IN `nuevaContrasenia` VARCHAR(255), IN `respuestaSeguridad` VARCHAR(255))   BEGIN
+CREATE   PROCEDURE `cambiarContrasenia` (IN `usuario` VARCHAR(255), IN `nuevaContrasenia` VARCHAR(255), IN `respuestaSeguridad` VARCHAR(255))   BEGIN
     DECLARE respuestaGuardada VARCHAR(255);
     DECLARE usuarioExiste INT;
 
@@ -92,7 +92,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `cambiarContrasenia` (IN `usuario` V
     END IF;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `procedimientoLogin` (IN `p_usuario` VARCHAR(20), IN `p_clave` VARCHAR(100))   BEGIN
+CREATE   PROCEDURE `procedimientoLogin` (IN `p_usuario` VARCHAR(20), IN `p_clave` VARCHAR(100))   BEGIN
     DECLARE usuario_existe INT;
 
     SELECT COUNT(*) INTO usuario_existe
@@ -127,84 +127,6 @@ CREATE TABLE `ayuda` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
-
-
---
--- Estructura de tabla para la tabla `detallefactura`
---
-
-CREATE TABLE `detallefactura` (
-  `Pk_id_detalle_factura` int(11) NOT NULL,
-  `fk_id_factura` int(11) DEFAULT NULL,
-  `descripcion_factura` varchar(255) DEFAULT NULL,
-  `cantidad` int(11) DEFAULT NULL,
-  `monto_factura` decimal(10,2) DEFAULT NULL,
-  `estado` tinyint(1) DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `empleados`
---
-
-CREATE TABLE `empleados` (
-  `codigo_empleado` int(11) NOT NULL,
-  `nombre_completo` varchar(75) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `puesto` varchar(75) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `departamento` varchar(75) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `estado` tinyint(1) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `factura`
---
-
-CREATE TABLE `factura` (
-  `Pk_id_factura` int(11) NOT NULL,
-  `fecha_factura` date DEFAULT NULL,
-  `monto_factura` decimal(10,2) DEFAULT NULL,
-  `estado` tinyint(1) DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `pagos`
---
-
-CREATE TABLE `pagos` (
-  `Pk_id_pago` int(11) NOT NULL,
-  `fk_id_factura` int(11) DEFAULT NULL,
-  `fecha_pago` date DEFAULT NULL,
-  `monto_factura` decimal(10,2) DEFAULT NULL,
-  `estado` tinyint(1) DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `registro_empleados`
---
-
-CREATE TABLE `registro_empleados` (
-  `codigo_registro` int(11) NOT NULL,
-  `codigo_empleado` int(11) NOT NULL,
-  `fecha_registro` date NOT NULL,
-  `hora_entrada` time NOT NULL,
-  `hora_salida` time DEFAULT NULL,
-  `total_de_horas` time DEFAULT NULL,
-  `estado` tinyint(4) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
--- --------------------------------------------------------
-
 --
 -- Estructura de tabla para la tabla `tbl_aplicaciones`
 --
@@ -464,7 +386,7 @@ CREATE TABLE `vwperfilusuario` (
 --
 DROP TABLE IF EXISTS `vwaplicacionperfil`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vwaplicacionperfil`  AS SELECT `b`.`Fk_id_perfil` AS `ID`, `a`.`nombre_perfil` AS `Perfil`, `b`.`Fk_id_aplicacion` AS `Aplicacion`, `b`.`guardar_permiso` AS `Insertar`, `b`.`modificar_permiso` AS `Modificar`, `b`.`eliminar_permiso` AS `Eliminar`, `b`.`buscar_permiso` AS `Buscar`, `b`.`imprimir_permiso` AS `Reporte` FROM (`tbl_permisos_aplicacion_perfil` `b` join `tbl_perfiles` `a` on(`a`.`Pk_id_perfil` = `b`.`Fk_id_perfil`)) ;
+CREATE ALGORITHM=UNDEFINED   SQL SECURITY DEFINER VIEW `vwaplicacionperfil`  AS SELECT `b`.`Fk_id_perfil` AS `ID`, `a`.`nombre_perfil` AS `Perfil`, `b`.`Fk_id_aplicacion` AS `Aplicacion`, `b`.`guardar_permiso` AS `Insertar`, `b`.`modificar_permiso` AS `Modificar`, `b`.`eliminar_permiso` AS `Eliminar`, `b`.`buscar_permiso` AS `Buscar`, `b`.`imprimir_permiso` AS `Reporte` FROM (`tbl_permisos_aplicacion_perfil` `b` join `tbl_perfiles` `a` on(`a`.`Pk_id_perfil` = `b`.`Fk_id_perfil`)) ;
 
 -- --------------------------------------------------------
 
@@ -473,7 +395,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `vwaplicacionusuario`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vwaplicacionusuario`  AS SELECT `b`.`Fk_id_aplicacion` AS `Aplicacion`, `b`.`Fk_id_usuario` AS `ID`, `a`.`nombre_usuario` AS `Usuario`, `b`.`guardar_permiso` AS `Insertar`, `b`.`modificar_permiso` AS `Editar`, `b`.`eliminar_permiso` AS `Eliminar`, `b`.`buscar_permiso` AS `Buscar`, `b`.`imprimir_permiso` AS `Reporte` FROM (`tbl_permisos_aplicaciones_usuario` `b` join `tbl_usuarios` `a` on(`a`.`Pk_id_usuario` = `b`.`Fk_id_usuario`)) ;
+CREATE ALGORITHM=UNDEFINED   SQL SECURITY DEFINER VIEW `vwaplicacionusuario`  AS SELECT `b`.`Fk_id_aplicacion` AS `Aplicacion`, `b`.`Fk_id_usuario` AS `ID`, `a`.`nombre_usuario` AS `Usuario`, `b`.`guardar_permiso` AS `Insertar`, `b`.`modificar_permiso` AS `Editar`, `b`.`eliminar_permiso` AS `Eliminar`, `b`.`buscar_permiso` AS `Buscar`, `b`.`imprimir_permiso` AS `Reporte` FROM (`tbl_permisos_aplicaciones_usuario` `b` join `tbl_usuarios` `a` on(`a`.`Pk_id_usuario` = `b`.`Fk_id_usuario`)) ;
 
 -- --------------------------------------------------------
 
@@ -482,7 +404,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `vwmoduloaplicacion`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vwmoduloaplicacion`  AS SELECT `b`.`Fk_id_modulos` AS `ID`, `a`.`nombre_modulo` AS `Modulo`, `b`.`Fk_id_aplicacion` AS `Aplicacion`, `c`.`nombre_aplicacion` AS `Nombre`, `c`.`descripcion_aplicacion` AS `Descripcion` FROM ((`tbl_asignacion_modulo_aplicacion` `b` join `tbl_modulos` `a` on(`a`.`Pk_id_modulos` = `b`.`Fk_id_modulos`)) join `tbl_aplicaciones` `c` on(`c`.`Pk_id_aplicacion` = `b`.`Fk_id_aplicacion`)) ;
+CREATE ALGORITHM=UNDEFINED   SQL SECURITY DEFINER VIEW `vwmoduloaplicacion`  AS SELECT `b`.`Fk_id_modulos` AS `ID`, `a`.`nombre_modulo` AS `Modulo`, `b`.`Fk_id_aplicacion` AS `Aplicacion`, `c`.`nombre_aplicacion` AS `Nombre`, `c`.`descripcion_aplicacion` AS `Descripcion` FROM ((`tbl_asignacion_modulo_aplicacion` `b` join `tbl_modulos` `a` on(`a`.`Pk_id_modulos` = `b`.`Fk_id_modulos`)) join `tbl_aplicaciones` `c` on(`c`.`Pk_id_aplicacion` = `b`.`Fk_id_aplicacion`)) ;
 
 -- --------------------------------------------------------
 
@@ -491,7 +413,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `vwperfilusuario`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vwperfilusuario`  AS SELECT `b`.`Fk_id_usuario` AS `ID`, `a`.`nombre_usuario` AS `Usuario`, `a`.`username_usuario` AS `nickName`, `b`.`Fk_id_perfil` AS `perfil`, `c`.`nombre_perfil` AS `Nombre` FROM ((`tbl_asignaciones_perfils_usuario` `b` join `tbl_usuarios` `a` on(`a`.`Pk_id_usuario` = `b`.`Fk_id_usuario`)) join `tbl_perfiles` `c` on(`c`.`Pk_id_perfil` = `b`.`Fk_id_perfil`)) ;
+CREATE ALGORITHM=UNDEFINED   SQL SECURITY DEFINER VIEW `vwperfilusuario`  AS SELECT `b`.`Fk_id_usuario` AS `ID`, `a`.`nombre_usuario` AS `Usuario`, `a`.`username_usuario` AS `nickName`, `b`.`Fk_id_perfil` AS `perfil`, `c`.`nombre_perfil` AS `Nombre` FROM ((`tbl_asignaciones_perfils_usuario` `b` join `tbl_usuarios` `a` on(`a`.`Pk_id_usuario` = `b`.`Fk_id_usuario`)) join `tbl_perfiles` `c` on(`c`.`Pk_id_perfil` = `b`.`Fk_id_perfil`)) ;
 
 --
 -- Índices para tablas volcadas
@@ -502,42 +424,6 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 ALTER TABLE `ayuda`
   ADD PRIMARY KEY (`Id_ayuda`);
-
---
--- Indices de la tabla `detallefactura`
---
-ALTER TABLE `detallefactura`
-  ADD PRIMARY KEY (`Pk_id_detalle_factura`),
-  ADD KEY `fk_id_factura` (`fk_id_factura`);
-
---
--- Indices de la tabla `empleados`
---
-ALTER TABLE `empleados`
-  ADD PRIMARY KEY (`codigo_empleado`);
-
---
--- Indices de la tabla `factura`
---
-ALTER TABLE `factura`
-  ADD PRIMARY KEY (`Pk_id_factura`);
-
---
--- Indices de la tabla `pagos`
---
-ALTER TABLE `pagos`
-  ADD PRIMARY KEY (`Pk_id_pago`),
-  ADD KEY `fk_id_factura` (`fk_id_factura`);
-
-
--- Indices de la tabla `registro_empleados`
---
-ALTER TABLE `registro_empleados`
-  ADD PRIMARY KEY (`codigo_registro`),
-  ADD KEY `fk_codigo_empleado` (`codigo_empleado`);
-
-
---
 
 --
 -- Indices de la tabla `tbl_asignaciones_perfils_usuario`
@@ -618,37 +504,6 @@ ALTER TABLE `venta`
 --
 ALTER TABLE `ayuda`
   MODIFY `Id_ayuda` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT de la tabla `detallefactura`
---
-ALTER TABLE `detallefactura`
-  MODIFY `Pk_id_detalle_factura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
-
---
--- AUTO_INCREMENT de la tabla `empleados`
---
-ALTER TABLE `empleados`
-  MODIFY `codigo_empleado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=123;
-
---
--- AUTO_INCREMENT de la tabla `factura`
---
-ALTER TABLE `factura`
-  MODIFY `Pk_id_factura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
---
--- AUTO_INCREMENT de la tabla `pagos`
---
-ALTER TABLE `pagos`
-  MODIFY `Pk_id_pago` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
---
--- AUTO_INCREMENT de la tabla `registro_empleados`
---
-ALTER TABLE `registro_empleados`
-  MODIFY `codigo_registro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
-
 --
 -- AUTO_INCREMENT de la tabla `tbl_asignaciones_perfils_usuario`
 --
@@ -705,26 +560,6 @@ ALTER TABLE `venta`
 
 --
 -- Restricciones para tablas volcadas
---
-
---
--- Filtros para la tabla `detallefactura`
---
-ALTER TABLE `detallefactura`
-  ADD CONSTRAINT `detallefactura_ibfk_1` FOREIGN KEY (`fk_id_factura`) REFERENCES `factura` (`Pk_id_factura`);
-
---
--- Filtros para la tabla `pagos`
---
-ALTER TABLE `pagos`
-  ADD CONSTRAINT `pagos_ibfk_1` FOREIGN KEY (`fk_id_factura`) REFERENCES `factura` (`Pk_id_factura`);
-
---
--- Filtros para la tabla `registro_empleados`
---
-ALTER TABLE `registro_empleados`
-  ADD CONSTRAINT `fk_codigo_empleado` FOREIGN KEY (`codigo_empleado`) REFERENCES `empleados` (`codigo_empleado`) ON DELETE CASCADE ON UPDATE CASCADE;
-
 --
 -- Filtros para la tabla `tbl_asignaciones_perfils_usuario`
 --
@@ -1736,6 +1571,14 @@ CREATE TABLE IF NOT EXISTS Tbl_caja_proveedor (
     FOREIGN KEY (Fk_id_deuda) REFERENCES Tbl_Deudas_Proveedores (Pk_id_deuda)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+-- Tabla nueva Transacciones_cuentas
+CREATE TABLE IF NOT EXISTS Tbl_transaccion_cuentas (
+	Pk_id_tran_cue INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    tran_nombre VARCHAR(150) NOT NULL,
+    tran_efecto VARCHAR(15) NOT NULL,
+    estado TINYINT DEFAULT 1 NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci; 
+
 -- FIN TABLAS MAESTRAS CUENTAS CORRIENTES
 
 -- INICIA CREACIÓN DE TABLAS PRODUCCIÓN
@@ -1855,3 +1698,78 @@ CREATE TABLE IF NOT EXISTS `tbl_rrhh_produccion` (
   `estado` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 -- FIN DE CREACIÓN DE TABLA DE PRODUCCIÓN
+
+
+-- Nueva tabla creada por parte de producción 03-11-2024 aprobado por Brandon Boch
+-- 1. Creación de tabla maquinaria, hablada con el ingeniero.
+CREATE TABLE IF NOT EXISTS `tbl_maquinaria` (
+  `pk_id_maquina` int(11) AUTO_INCREMENT PRIMARY KEY,
+  `nombre_maquina` varchar(100) NOT NULL,
+  `tipo_maquina` varchar(50) NOT NULL,
+  `capacidad_produccion` decimal(10,2) NOT NULL,
+  `estado` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Fin
+
+--  CREACIÓN DE NUEVAS TABLAS PARA EL MODULO DE CONTABILIDAD - ACTIVOS FIJOS APROBADO POR BRANDON BOCH 03-11-2024
+
+DROP TABLE IF EXISTS `tbl_ActivoFijo`;
+
+-- Creación de la tabla `tbl_TipoActivoFijo`
+CREATE TABLE IF NOT EXISTS `tbl_TipoActivoFijo` (
+  `Pk_Id_TipoActivoFijo` INT(11) NOT NULL AUTO_INCREMENT,
+  `Nombre_Tipo` VARCHAR(50) NOT NULL,
+  `Estado` TINYINT(4) NOT NULL,
+  PRIMARY KEY (`Pk_Id_TipoActivoFijo`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE IF NOT EXISTS `tbl_IdentidadActivo` (
+  `Pk_Id_Identidad` INT(11) NOT NULL AUTO_INCREMENT,
+  `Nombre_Identidad` VARCHAR(50) NOT NULL,
+  `Estado` TINYINT(4) NOT NULL,
+  PRIMARY KEY (`Pk_Id_Identidad`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE IF NOT EXISTS `tbl_ActivoFijo` (
+  `Pk_Id_ActivoFijo` INT(11) NOT NULL AUTO_INCREMENT,
+  `Codigo_Activo` VARCHAR(50) NOT NULL UNIQUE,
+  `Pk_Id_TipoActivoFijo` INT(11) DEFAULT NULL,
+  `Descripcion` VARCHAR(255) NOT NULL,
+  `Pk_Id_Identidad` INT(11) DEFAULT NULL,
+  `Modelo` VARCHAR(100) DEFAULT NULL,
+  `Fecha_Adquisicion` DATE DEFAULT NULL,
+  `Costo_Adquisicion` DECIMAL(10,2) DEFAULT NULL,
+  `Vida_Util` DECIMAL(5,2) DEFAULT NULL,
+  `Valor_Residual` DECIMAL(10,2) DEFAULT NULL,
+  `Estado` TINYINT(4) DEFAULT NULL,
+  `Pk_Id_Cuenta` INT(11) NOT NULL,
+  PRIMARY KEY (`Pk_Id_ActivoFijo`),
+  KEY `Fk_TipoActivoFijo` (`Pk_Id_TipoActivoFijo`),
+  KEY `Fk_Identidad` (`Pk_Id_Identidad`),
+  KEY `Fk_Cuenta` (`Pk_Id_Cuenta`),
+  CONSTRAINT `Fk_TipoActivoFijo_New` FOREIGN KEY (`Pk_Id_TipoActivoFijo`) REFERENCES `tbl_TipoActivoFijo` (`Pk_Id_TipoActivoFijo`) ON DELETE SET NULL,
+  CONSTRAINT `Fk_Identidad_New` FOREIGN KEY (`Pk_Id_Identidad`) REFERENCES `tbl_IdentidadActivo` (`Pk_Id_Identidad`) ON DELETE SET NULL,
+  CONSTRAINT `Fk_Cuenta_New` FOREIGN KEY (`Pk_Id_Cuenta`) REFERENCES `tbl_Cuentas` (`Pk_Id_Cuenta`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Creación de la tabla `tbl_Depreciacion_ActivoFijo`
+CREATE TABLE IF NOT EXISTS `tbl_Depreciacion_ActivoFijo` (
+  `Pk_Id_Depreciacion` INT(11) NOT NULL AUTO_INCREMENT,
+  `Pk_Id_ActivoFijo` INT(11) NOT NULL,
+  `Nombre_Activo` VARCHAR(100) NOT NULL,
+  `Tipo_Activo` VARCHAR(50) NOT NULL,
+  `Encargado` VARCHAR(100) DEFAULT NULL,
+  `Departamento` VARCHAR(100) DEFAULT NULL,
+  `Fecha_Depreciacion` DATE DEFAULT NULL,
+  `Depreciacion` DECIMAL(10,2) DEFAULT NULL,
+  `Depreciacion_Fiscal` DECIMAL(10,2) DEFAULT NULL,
+  `Descripcion` VARCHAR(255) DEFAULT NULL,
+  `Estado` TINYINT(4) DEFAULT NULL,
+  `Pk_Id_Cuenta` INT(11) NOT NULL,
+  PRIMARY KEY (`Pk_Id_Depreciacion`),
+  CONSTRAINT `Fk_IdActivoFijo_Depreciacion` FOREIGN KEY (`Pk_Id_ActivoFijo`) REFERENCES `tbl_ActivoFijo` (`Pk_Id_ActivoFijo`) ON DELETE CASCADE,
+  CONSTRAINT `Fk_Cuenta_Depreciacion_New` FOREIGN KEY (`Pk_Id_Cuenta`) REFERENCES `tbl_Cuentas` (`Pk_Id_Cuenta`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- FIN

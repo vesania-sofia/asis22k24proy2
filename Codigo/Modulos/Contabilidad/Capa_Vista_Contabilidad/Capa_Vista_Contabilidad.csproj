@@ -234,5 +234,8 @@
   <ItemGroup>
     <None Include="Resources\SalirMDI.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ayudamdi.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
