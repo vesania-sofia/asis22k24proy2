@@ -15,7 +15,7 @@ using Capa_Vista_Banco;
 using Capa_Vista_Contabilidad;
 using Capa_Vista_Produccion;
 using Capa_Vista_Banco;
-//using Capa_Vista_CompraVenta;
+using Capa_Vista_CompraVenta;
 
 namespace Interfac_V3
 {
