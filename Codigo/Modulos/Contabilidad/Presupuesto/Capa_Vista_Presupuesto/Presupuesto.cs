@@ -114,21 +114,23 @@ namespace Capa_Vista_Presupuesto
                     break;
             }
             //Llenado
-            switch (sLlenadoP)
-            {
-                case "Mensual":
-                    LiberarTextBox();
-                    Txt_anualB.Enabled = false;
-                    frmIncremento.sLlenado = this.sLlenadoP;
-                    Btn_ajustar.Enabled = false;
-                    break;
-                case "Anual":
-                    BloquearTextBox();
-                    frmIncremento.sLlenado = this.sLlenadoP;
-                    Btn_ajustar.Visible = true; //Cambiar O nome
-                    Btn_ajustar.Enabled = true;
-                    Txt_anualB.Enabled = true;
-                    break;
+            if (sOperacionP == "crearPlantilla" || sOperacionP=="crear" || sOperacionP == "modificar") { 
+                switch (sLlenadoP)
+                {
+                    case "Mensual":
+                        LiberarTextBox();
+                        Txt_anualB.Enabled = false;
+                        frmIncremento.sLlenado = this.sLlenadoP;
+                        Btn_ajustar.Enabled = false;
+                        break;
+                    case "Anual":
+                        BloquearTextBox();
+                        frmIncremento.sLlenado = this.sLlenadoP;
+                        Btn_ajustar.Visible = true; //Cambiar O nome
+                        Btn_ajustar.Enabled = true;
+                        Txt_anualB.Enabled = true;
+                        break;
+                }
             }
 
             //Todo
