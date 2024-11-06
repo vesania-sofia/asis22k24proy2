@@ -26,6 +26,8 @@ namespace Capa_Vista_Produccion
         // Variables para almacenar la referencia a los formularios de cierre y pólizas
         private Frm_Cierre cierreForm;
         private Frm_Polizas_Prod polizasForm;
+        private Frm_Enlace_RRHH rrhhForm;
+        private Frm_Recetas recetasForm;
 
         public MDI_Produccion(string idUsuario)
         {
@@ -131,8 +133,27 @@ namespace Capa_Vista_Produccion
         // Botón de empleados (enlace a RRHH)
         private void btnEmpleados_Click(object sender, EventArgs e)
         {
-            Frm_Enlace_RRHH rrhh = new Frm_Enlace_RRHH();
-            rrhh.Show();
+            
+               // Verifica si el formulario de cierre ya está abierto
+            if (rrhhForm == null || rrhhForm.IsDisposed)
+            {
+                pb_Fondo.Visible = false;
+
+                // Crea el formulario de cierre y configura sus propiedades
+                rrhhForm = new Frm_Enlace_RRHH();
+                rrhhForm.MdiParent = this;
+                rrhhForm.StartPosition = FormStartPosition.CenterScreen;
+
+                // Maneja el evento FormClosing para volver a mostrar pb_Fondo al cerrar el formulario
+                rrhhForm.FormClosing += (s, args) => { pb_Fondo.Visible = true; };
+
+                // Muestra el formulario de cierre
+                rrhhForm.Show();
+            }
+            else
+            {
+                rrhhForm.BringToFront(); // Si el formulario ya está abierto, lo trae al frente
+            }
         }
 
         // Botón de cierre
@@ -261,8 +282,27 @@ namespace Capa_Vista_Produccion
 
         private void Btn_Recetas_Click_1(object sender, EventArgs e)
         {
-            Frm_Recetas receta = new Frm_Recetas();
-            receta.Show();
+            
+            // Verifica si el formulario de pólizas ya está abierto
+            if (recetasForm == null || recetasForm.IsDisposed)
+            {
+                pb_Fondo.Visible = false;
+
+                // Crea el formulario de pólizas y configura sus propiedades
+                recetasForm = new Frm_Recetas();
+                recetasForm.MdiParent = this;
+                recetasForm.StartPosition = FormStartPosition.CenterScreen;
+
+                // Maneja el evento FormClosing para volver a mostrar pb_Fondo al cerrar el formulario
+                recetasForm.FormClosing += (s, args) => { pb_Fondo.Visible = true; };
+
+                // Muestra el formulario de pólizas
+                recetasForm.Show();
+            }
+            else
+            {
+                recetasForm.BringToFront(); // Si el formulario ya está abierto, lo trae al frente
+            }
         }
 
         // Restaurar el tamaño original de la ventana
