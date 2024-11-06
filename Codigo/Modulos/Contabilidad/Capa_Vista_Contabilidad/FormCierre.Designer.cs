@@ -54,6 +54,6 @@ namespace Capa_Vista_Contabilidad
 
         #endregion
 
-        private Capa_Vista_CierreContable.Cierre cierre1;
+        private Capa_Vista_CierreContable.Cierre cierre;
     }
 }
