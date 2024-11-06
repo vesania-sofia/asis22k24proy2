@@ -27,10 +27,11 @@ namespace Capa_Vista_CierreContable
 
         private void ConsultasCierre_Load(object sender, EventArgs e)
         {
-            LlenarCuentas();
+            
             
             LlenarCboAnio();
             LlenarCboMes();
+            LlenarCuentas();
             // Configuración del ToolTip
             ToolTip toolTip = new ToolTip
             {
@@ -84,24 +85,14 @@ namespace Capa_Vista_CierreContable
             // Verificar si hay un año seleccionado
             if (int.TryParse(Cbo_año.Text, out int iAnio))
             {
-                // Obtener todas las cuentas
-                DataTable cuentas = cn.ObtenerCuentas();
-                HashSet<int> idsCuentas = new HashSet<int>();
-
-                // Agregar los IDs de las cuentas a un HashSet para fácil verificación
-                foreach (DataRow row in cuentas.Rows)
-                {
-                    idsCuentas.Add(Convert.ToInt32(row["Pk_id_cuenta"])); // Asegúrate de que el nombre de la columna sea correcto
-                }
-
-                // Obtener el último mes con datos
-                int iUltimomescondatos = cn.ObtenerUltimoMesConDatos(iAnio);
-
-                // Limpiar el ComboBox
+                // Limpiar el ComboBox de meses
                 Cbo_mes.Items.Clear();
 
-                // Llamar al método del controlador para obtener los meses válidos
-                DataTable mesesValidos = cn.ObtenerMesesSinDatos(iUltimomescondatos, idsCuentas);
+                // Obtener el último mes con estado = 0 para el año seleccionado
+                int iUltimoMesConEstadoCero = cn.ObtenerUltimoMesConEstadoCero(iAnio);
+
+                // Obtener los meses válidos a partir del primer mes con estado = 1 después de iUltimoMesConEstadoCero
+                DataTable mesesValidos = cn.ObtenerMesesSinDatos(iUltimoMesConEstadoCero, new HashSet<int>());
 
                 // Llenar el ComboBox con los meses obtenidos
                 foreach (DataRow row in mesesValidos.Rows)
@@ -109,13 +100,22 @@ namespace Capa_Vista_CierreContable
                     Cbo_mes.Items.Add(row["Mes"]);
                 }
 
-                // Si no hay meses disponibles, puedes mostrar un mensaje
+                // Si no se encontraron meses válidos, agregar "Enero" como predeterminado
                 if (Cbo_mes.Items.Count == 0)
                 {
-                    MessageBox.Show("No hay meses disponibles para seleccionar.");
+                    Cbo_mes.Items.Add("enero");
+                }
+
+                // Establecer el índice de selección (si hay al menos un item)
+                if (Cbo_mes.Items.Count > 0)
+                {
+                    Cbo_mes.SelectedIndex = 0; // Selecciona el primer mes válido o "Enero" si no hay meses disponibles
                 }
             }
         }
+
+
+
 
 
 

@@ -46,7 +46,7 @@ namespace Capa_Vista_CierreContable
                 iPeriodo = cn.ObtenerPeriodoPorMes(sMes);
 
                 // Verifica si se seleccionó "Todas las sCuentas" y ajusta la consulta
-                if (ssCuenta == "Todas las sCuentas")
+                if (ssCuenta == "Todas las cuentas")
                 {
                     // Llama a la consulta sin aplicar filtro de sCuenta
                     ConsultarCierreG(iPeriodo, sAnio, null, Dgv_cargos, Dgv_abonos);
@@ -62,7 +62,7 @@ namespace Capa_Vista_CierreContable
             }
 
             // Actualizar los saldos
-            cn.ActualizarSumasSaldos(Txt_saldoant, Txt_saldofinal, iPeriodo, ssCuenta == "Todas las sCuentas" ? null : ssCuenta);
+            cn.ActualizarSumasSaldos(Txt_saldoant, Txt_saldofinal, iPeriodo, ssCuenta == "Todas las cuentas" ? null : ssCuenta);
             LogicaSeg.funinsertarabitacora(idUsuario, $"Se consultó un Cierre", "ConsultasCierre", "8000");
 
         }
@@ -108,7 +108,7 @@ namespace Capa_Vista_CierreContable
                 DataTable dt2 = new DataTable();
 
                 // Verificar si se seleccionó "Todas las sCuentas"
-                if (sCuenta == "Todas las sCuentas")
+                if (sCuenta == "Todas las cuentas")
                 {
                     sCuenta = null; // Pasar null para no aplicar filtro por sCuenta
                 }
