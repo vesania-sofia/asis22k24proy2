@@ -11,6 +11,8 @@ using Capa_Vista_Cierre_Produccion;
 using Capa_Vista_Polizas_Prod;
 using Capa_Vista_Receta;
 using Capa_Vista_RRHH;
+using Capa_Vista_Sistema_Produccion;
+using Capa_Vista_Ordenes;
 
 namespace Capa_Vista_Produccion
 {
@@ -28,6 +30,8 @@ namespace Capa_Vista_Produccion
         private Frm_Polizas_Prod polizasForm;
         private Frm_Enlace_RRHH rrhhForm;
         private Frm_Recetas recetasForm;
+        private Frm_Ordenes_De_Produccion opForm;
+        private Frm_Sistema_Produccion spForm;
 
         public MDI_Produccion(string idUsuario)
         {
@@ -117,9 +121,26 @@ namespace Capa_Vista_Produccion
         // Botón de órdenes de producción
         private void btnOrdenesProduccion_Click(object sender, EventArgs e)
         {
-            /*
-              * Acá va la lógica para abrir el formulario de Órdenes de Producción
-            */
+            // Verifica si el formulario de pólizas ya está abierto
+            if (opForm == null || opForm.IsDisposed)
+            {
+                pb_Fondo.Visible = false;
+
+                // Crea el formulario de pólizas y configura sus propiedades
+                opForm = new Frm_Ordenes_De_Produccion();
+                opForm.MdiParent = this;
+                opForm.StartPosition = FormStartPosition.CenterScreen;
+
+                // Maneja el evento FormClosing para volver a mostrar pb_Fondo al cerrar el formulario
+                opForm.FormClosing += (s, args) => { pb_Fondo.Visible = true; };
+
+                // Muestra el formulario de pólizas
+                opForm.Show();
+            }
+            else
+            {
+                opForm.BringToFront(); // Si el formulario ya está abierto, lo trae al frente
+            }
         }
 
         // Botón de maquinaria
@@ -217,9 +238,26 @@ namespace Capa_Vista_Produccion
         // Botón de sistema de producción
         private void btnProduccion_Click(object sender, EventArgs e)
         {
-            /*
-              * Acá va la lógica para abrir el formulario de Producción
-            */
+            // Verifica si el formulario de pólizas ya está abierto
+            if (spForm == null || spForm.IsDisposed)
+            {
+                pb_Fondo.Visible = false;
+
+                // Crea el formulario de pólizas y configura sus propiedades
+                spForm = new Frm_Sistema_Produccion();
+                spForm.MdiParent = this;
+                spForm.StartPosition = FormStartPosition.CenterScreen;
+
+                // Maneja el evento FormClosing para volver a mostrar pb_Fondo al cerrar el formulario
+                spForm.FormClosing += (s, args) => { pb_Fondo.Visible = true; };
+
+                // Muestra el formulario de pólizas
+                spForm.Show();
+            }
+            else
+            {
+                spForm.BringToFront(); // Si el formulario ya está abierto, lo trae al frente
+            }
         }
 
         // Botón de conversiones
