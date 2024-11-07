@@ -34,25 +34,27 @@
     <Reference Include="Capa_Controlador_Produccion">
       <HintPath>..\Capa_Controlador_Produccion\bin\Debug\Capa_Controlador_Produccion.dll</HintPath>
     </Reference>
-    <Reference Include="Capa_Vista_Cierre_Produccion">
-      <HintPath>..\..\Cierre_Produccion\Capa_Vista_Cierre_Produccion\bin\Debug\Capa_Vista_Cierre_Produccion.dll</HintPath>
-    </Reference>
-    <Reference Include="Capa_Vista_Navegador, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Capa_Vista_Cierre_Produccion, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Componentes\Navegador\Capa_Vista_Navegador\bin\Debug\Capa_Vista_Navegador.dll</HintPath>
+      <HintPath>..\Cierre_Produccion\Capa_Vista_Cierre_Produccion\bin\Debug\Capa_Vista_Cierre_Produccion.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_Navegador">
+      <HintPath>..\..\..\..\..\..\1. AS Todo junto\asis22k24proy2\Codigo\Componentes\Navegador\Capa_Vista_Navegador\bin\Debug\Capa_Vista_Navegador.dll</HintPath>
     </Reference>
     <Reference Include="Capa_Vista_Polizas_Prod, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Polizas_Produccion\Capa_Vista_Polizas_Prod\bin\Debug\Capa_Vista_Polizas_Prod.dll</HintPath>
+      <HintPath>..\Polizas_Produccion\Capa_Vista_Polizas_Prod\bin\Debug\Capa_Vista_Polizas_Prod.dll</HintPath>
     </Reference>
-    <Reference Include="Capa_Vista_Receta">
+    <Reference Include="Capa_Vista_Receta, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Componente Receta\Componente Receta\Capa_Vista_Receta\bin\Debug\Capa_Vista_Receta.dll</HintPath>
     </Reference>
-    <Reference Include="Capa_Vista_RRHH">
+    <Reference Include="Capa_Vista_RRHH, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Componente RRHH\Componente RRHH\Capa_Vista_RRHH\bin\Debug\Capa_Vista_RRHH.dll</HintPath>
     </Reference>
     <Reference Include="Interfac_V3">
-      <HintPath>..\..\..\Menus\ModernGUI_V3\bin\Debug\Interfac_V3.exe</HintPath>
+      <HintPath>..\..\..\..\..\..\1. AS Todo junto\asis22k24proy2\Codigo\Modulos\Menus\ModernGUI_V3\bin\Debug\Interfac_V3.exe</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

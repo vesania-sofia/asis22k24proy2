@@ -30,8 +30,8 @@ namespace Capa_Vista_Presupuesto
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Presupuesto));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.Txt_diciembreB = new System.Windows.Forms.TextBox();
             this.Txt_diciembre = new System.Windows.Forms.Label();
             this.Txt_noviembreB = new System.Windows.Forms.TextBox();
@@ -47,7 +47,6 @@ namespace Capa_Vista_Presupuesto
             this.Txt_junio = new System.Windows.Forms.Label();
             this.Txt_mayoB = new System.Windows.Forms.TextBox();
             this.Txt_mayo = new System.Windows.Forms.Label();
-            this.Txb_abrilB = new System.Windows.Forms.TextBox();
             this.Txt_abril = new System.Windows.Forms.Label();
             this.Txt_marzo = new System.Windows.Forms.Label();
             this.Txt_febreroB = new System.Windows.Forms.TextBox();
@@ -87,6 +86,7 @@ namespace Capa_Vista_Presupuesto
             this.Txt_ejercicioPres = new System.Windows.Forms.Label();
             this.Txt_anioPres = new System.Windows.Forms.Label();
             this.Panel_panel1 = new System.Windows.Forms.Panel();
+            this.Txt_abrilB = new System.Windows.Forms.TextBox();
             this.Dgv_presupuesto = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -280,18 +280,6 @@ namespace Capa_Vista_Presupuesto
             this.Txt_mayo.Size = new System.Drawing.Size(49, 19);
             this.Txt_mayo.TabIndex = 87;
             this.Txt_mayo.Text = "Mayo";
-            // 
-            // Txb_abrilB
-            // 
-            this.Txb_abrilB.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txb_abrilB.Location = new System.Drawing.Point(12, 317);
-            this.Txb_abrilB.MaxLength = 16;
-            this.Txb_abrilB.Name = "Txb_abrilB";
-            this.Txb_abrilB.Size = new System.Drawing.Size(109, 26);
-            this.Txb_abrilB.TabIndex = 6;
-            this.Txb_abrilB.TextChanged += new System.EventHandler(this.Txtbx_abril_TextChanged);
-            this.Txb_abrilB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtbx_abril_KeyPress);
-            this.Txb_abrilB.Leave += new System.EventHandler(this.Txtbx_abril_Leave);
             // 
             // Txt_abril
             // 
@@ -715,6 +703,7 @@ namespace Capa_Vista_Presupuesto
             // 
             this.Panel_panel1.AutoScroll = true;
             this.Panel_panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(152)))), ((int)(((byte)(151)))));
+            this.Panel_panel1.Controls.Add(this.Txt_abrilB);
             this.Panel_panel1.Controls.Add(this.Txt_junioB);
             this.Panel_panel1.Controls.Add(this.Txt_agostoB);
             this.Panel_panel1.Controls.Add(this.Txt_junio);
@@ -723,7 +712,6 @@ namespace Capa_Vista_Presupuesto
             this.Panel_panel1.Controls.Add(this.Txt_agosto);
             this.Panel_panel1.Controls.Add(this.Txt_mayo);
             this.Panel_panel1.Controls.Add(this.Txt_ejercicioPres);
-            this.Panel_panel1.Controls.Add(this.Txb_abrilB);
             this.Panel_panel1.Controls.Add(this.Txt_septiembreB);
             this.Panel_panel1.Controls.Add(this.Txt_abril);
             this.Panel_panel1.Controls.Add(this.Txt_noviembreB);
@@ -777,6 +765,18 @@ namespace Capa_Vista_Presupuesto
             this.Panel_panel1.Size = new System.Drawing.Size(1309, 811);
             this.Panel_panel1.TabIndex = 129;
             // 
+            // Txt_abrilB
+            // 
+            this.Txt_abrilB.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_abrilB.Location = new System.Drawing.Point(12, 315);
+            this.Txt_abrilB.MaxLength = 16;
+            this.Txt_abrilB.Name = "Txt_abrilB";
+            this.Txt_abrilB.Size = new System.Drawing.Size(109, 26);
+            this.Txt_abrilB.TabIndex = 6;
+            this.Txt_abrilB.TextChanged += new System.EventHandler(this.Txt_abrilB_TextChanged);
+            this.Txt_abrilB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_abrilB_KeyPress);
+            this.Txt_abrilB.Leave += new System.EventHandler(this.Txt_abrilB_Leave);
+            // 
             // Dgv_presupuesto
             // 
             this.Dgv_presupuesto.AllowUserToAddRows = false;
@@ -784,14 +784,14 @@ namespace Capa_Vista_Presupuesto
             this.Dgv_presupuesto.AllowUserToResizeColumns = false;
             this.Dgv_presupuesto.AllowUserToResizeRows = false;
             this.Dgv_presupuesto.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Dgv_presupuesto.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Dgv_presupuesto.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
             this.Dgv_presupuesto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Dgv_presupuesto.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -809,14 +809,14 @@ namespace Capa_Vista_Presupuesto
             this.Column13,
             this.Column14,
             this.Column15});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.LightBlue;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.Dgv_presupuesto.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.LightBlue;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.Dgv_presupuesto.DefaultCellStyle = dataGridViewCellStyle12;
             this.Dgv_presupuesto.Location = new System.Drawing.Point(146, 99);
             this.Dgv_presupuesto.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Dgv_presupuesto.Name = "Dgv_presupuesto";
@@ -951,7 +951,6 @@ namespace Capa_Vista_Presupuesto
         private System.Windows.Forms.Label Txt_junio;
         private System.Windows.Forms.TextBox Txt_mayoB;
         private System.Windows.Forms.Label Txt_mayo;
-        private System.Windows.Forms.TextBox Txb_abrilB;
         private System.Windows.Forms.Label Txt_abril;
         private System.Windows.Forms.Label Txt_marzo;
         private System.Windows.Forms.TextBox Txt_febreroB;
@@ -1007,5 +1006,6 @@ namespace Capa_Vista_Presupuesto
         private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column14;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column15;
+        private System.Windows.Forms.TextBox Txt_abrilB;
     }
 }

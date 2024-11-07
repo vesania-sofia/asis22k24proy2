@@ -575,7 +575,7 @@ namespace Capa_Vista_Produccion
             this.panelIdentificacion.Controls.Add(this.lbl_user);
             this.panelIdentificacion.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelIdentificacion.Location = new System.Drawing.Point(217, 749);
-            this.panelIdentificacion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelIdentificacion.Margin = new System.Windows.Forms.Padding(4);
             this.panelIdentificacion.Name = "panelIdentificacion";
             this.panelIdentificacion.Size = new System.Drawing.Size(1238, 37);
             this.panelIdentificacion.TabIndex = 8;
@@ -606,7 +606,7 @@ namespace Capa_Vista_Produccion
             this.Controls.Add(this.panelBarraTitulo);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MDI_Produccion";
             this.Text = "MDI_Produccion";
             this.panelBarraTitulo.ResumeLayout(false);

@@ -114,21 +114,23 @@ namespace Capa_Vista_Presupuesto
                     break;
             }
             //Llenado
-            switch (sLlenadoP)
-            {
-                case "Mensual":
-                    LiberarTextBox();
-                    Txt_anualB.Enabled = false;
-                    frmIncremento.sLlenado = this.sLlenadoP;
-                    Btn_ajustar.Enabled = false;
-                    break;
-                case "Anual":
-                    BloquearTextBox();
-                    frmIncremento.sLlenado = this.sLlenadoP;
-                    Btn_ajustar.Visible = true; //Cambiar O nome
-                    Btn_ajustar.Enabled = true;
-                    Txt_anualB.Enabled = true;
-                    break;
+            if (sOperacionP == "crearPlantilla" || sOperacionP=="crear" || sOperacionP == "modificar") { 
+                switch (sLlenadoP)
+                {
+                    case "Mensual":
+                        LiberarTextBox();
+                        Txt_anualB.Enabled = false;
+                        frmIncremento.sLlenado = this.sLlenadoP;
+                        Btn_ajustar.Enabled = false;
+                        break;
+                    case "Anual":
+                        BloquearTextBox();
+                        frmIncremento.sLlenado = this.sLlenadoP;
+                        Btn_ajustar.Visible = true; //Cambiar O nome
+                        Btn_ajustar.Enabled = true;
+                        Txt_anualB.Enabled = true;
+                        break;
+                }
             }
 
             //Todo
@@ -167,7 +169,7 @@ namespace Capa_Vista_Presupuesto
             Txt_eneroB.Enabled = true;
             Txt_febreroB.Enabled = true;
             Txt_marzoB.Enabled = true;
-            Txb_abrilB.Enabled = true;
+            Txt_abrilB.Enabled = true;
             Txt_mayoB.Enabled = true;
             Txt_junioB.Enabled = true;
             Txt_julioB.Enabled = true;
@@ -192,7 +194,7 @@ namespace Capa_Vista_Presupuesto
             Txt_eneroB.Enabled = false;
             Txt_febreroB.Enabled = false;
             Txt_marzoB.Enabled = false;
-            Txb_abrilB.Enabled = false;
+            Txt_abrilB.Enabled = false;
             Txt_mayoB.Enabled = false;
             Txt_junioB.Enabled = false;
             Txt_julioB.Enabled = false;
@@ -289,7 +291,7 @@ namespace Capa_Vista_Presupuesto
                 Txt_eneroB.Text = Convert.ToString(DgvrFilaSeleccionada.Cells["Column3"].Value ?? "0.00");
                 Txt_febreroB.Text = Convert.ToString(DgvrFilaSeleccionada.Cells["Column4"].Value ?? "0.00");
                 Txt_marzoB.Text = Convert.ToString(DgvrFilaSeleccionada.Cells["Column5"].Value ?? "0.00");
-                Txb_abrilB.Text = Convert.ToString(DgvrFilaSeleccionada.Cells["Column6"].Value ?? "0.00");
+                Txt_abrilB.Text = Convert.ToString(DgvrFilaSeleccionada.Cells["Column6"].Value ?? "0.00");
                 Txt_mayoB.Text = Convert.ToString(DgvrFilaSeleccionada.Cells["Column7"].Value ?? "0.00");
                 Txt_junioB.Text = Convert.ToString(DgvrFilaSeleccionada.Cells["Column8"].Value ?? "0.00");
                 Txt_julioB.Text = Convert.ToString(DgvrFilaSeleccionada.Cells["Column9"].Value ?? "0.00");
@@ -315,7 +317,7 @@ namespace Capa_Vista_Presupuesto
                 deSuma += Convert.ToDecimal(Txt_eneroB.Text);
                 deSuma += Convert.ToDecimal(Txt_febreroB.Text);
                 deSuma += Convert.ToDecimal(Txt_marzoB.Text);
-                deSuma += Convert.ToDecimal(Txb_abrilB.Text);
+                deSuma += Convert.ToDecimal(Txt_abrilB.Text);
                 deSuma += Convert.ToDecimal(Txt_mayoB.Text);
                 deSuma += Convert.ToDecimal(Txt_junioB.Text);
                 deSuma += Convert.ToDecimal(Txt_julioB.Text);
@@ -366,13 +368,6 @@ namespace Capa_Vista_Presupuesto
         {
             CambioDinamico("Column5", Txt_marzoB);
             //VerificacionVacio(Txtbx_marzo);
-            SumaDeValores();
-        }
-
-        private void Txtbx_abril_TextChanged(object sender, EventArgs e)
-        {
-            CambioDinamico("Column6", Txb_abrilB);
-            //VerificacionVacio(Txtbx_abril);
             SumaDeValores();
         }
 
@@ -440,7 +435,7 @@ namespace Capa_Vista_Presupuesto
         private void Btn_modificar_Click(object sender, EventArgs e)
         {
             control.ActualizarPresupuesto(iIdPresupuestoP, Dgv_presupuesto);
-            MessageBox.Show("Datos guardados exitosamente.", "Éxito");
+
             control.ActualizarTblPresupuesto(iIdPresupuestoP);
             MessageBox.Show("Datos actualizados exitosamente.", "Éxito");
 
@@ -505,7 +500,7 @@ namespace Capa_Vista_Presupuesto
                 Txt_eneroB.Text = deMontoMensual.ToString("F2");
                 Txt_febreroB.Text = deMontoMensual.ToString("F2");
                 Txt_marzoB.Text = deMontoMensual.ToString("F2");
-                Txb_abrilB.Text = deMontoMensual.ToString("F2");
+                Txt_abrilB.Text = deMontoMensual.ToString("F2");
                 Txt_mayoB.Text = deMontoMensual.ToString("F2");
                 Txt_junioB.Text = deMontoMensual.ToString("F2");
                 Txt_julioB.Text = deMontoMensual.ToString("F2");
@@ -550,6 +545,8 @@ namespace Capa_Vista_Presupuesto
                 }
                 else
                 {
+                    //MessageBox.Show($"Mes seleccionado: {frmIncremento.sMesSelec}");
+                    //MessageBox.Show(Convert.ToString(ObtenerTextBoxPorNombre(frmIncremento.sMesSelec)));
                     IncrementarMesEspecifico(dePorcentaje, frmIncremento.sMesSelec);
                 }
             }
@@ -598,13 +595,14 @@ namespace Capa_Vista_Presupuesto
         {
             return new List<TextBox>
             {
-                Txt_eneroB, Txt_febreroB, Txt_marzoB, Txb_abrilB,Txt_mayoB, Txt_junioB, Txt_julioB, Txt_agostoB,Txt_septiembreB, Txt_octubreB, Txt_noviembreB, Txt_diciembreB
+                Txt_eneroB, Txt_febreroB, Txt_marzoB, Txt_abrilB ,Txt_mayoB, Txt_junioB, Txt_julioB, Txt_agostoB,Txt_septiembreB, Txt_octubreB, Txt_noviembreB, Txt_diciembreB
             };
         }
 
         private TextBox ObtenerTextBoxPorNombre(string sNombreMes)
         {
-            string sNombreTextBox = $"Txtbx_{sNombreMes.ToLower()}";
+            string sNombreTextBox = $"Txt_{sNombreMes.ToLower()}B";
+            //MessageBox.Show($"Buscando TextBox con nombre: {sNombreTextBox}"); //Comando
             return ObtenerTextBoxesDeMeses().FirstOrDefault(txt => txt.Name == sNombreTextBox);
         }
 
@@ -648,7 +646,7 @@ namespace Capa_Vista_Presupuesto
                         Txt_eneroB.Text = Dgv_presupuesto.Rows[iFila].Cells["Column3"].Value.ToString();
                         Txt_febreroB.Text = Dgv_presupuesto.Rows[iFila].Cells["Column4"].Value.ToString();
                         Txt_marzoB.Text = Dgv_presupuesto.Rows[iFila].Cells["Column5"].Value.ToString();
-                        Txb_abrilB.Text = Dgv_presupuesto.Rows[iFila].Cells["Column6"].Value.ToString();
+                        Txt_abrilB.Text = Dgv_presupuesto.Rows[iFila].Cells["Column6"].Value.ToString(); //Mod
                         Txt_mayoB.Text = Dgv_presupuesto.Rows[iFila].Cells["Column7"].Value.ToString();
                         Txt_junioB.Text = Dgv_presupuesto.Rows[iFila].Cells["Column8"].Value.ToString();
                         Txt_julioB.Text = Dgv_presupuesto.Rows[iFila].Cells["Column9"].Value.ToString();
@@ -718,11 +716,6 @@ namespace Capa_Vista_Presupuesto
         private void Txtbx_marzo_KeyPress(object sender, KeyPressEventArgs e)
         {
             VerificacionText(e, Txt_marzoB);
-        }
-
-        private void Txtbx_abril_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            VerificacionText(e, Txb_abrilB);
         }
 
         private void Txtbx_mayo_KeyPress(object sender, KeyPressEventArgs e)
@@ -811,25 +804,6 @@ namespace Capa_Vista_Presupuesto
 
         private void Btn_ayuda_Click(object sender, EventArgs e)
         {
-            //AyudaFuncional
-            //try
-            //{
-            //    //Ruta para que se ejecute desde la ejecucion de Interfac3
-            //    string sAyudaPath = Path.Combine(sRutaProyectoAyuda, "Ayuda", "Modulos", "Contabilidad", "AyudaPresupuesto", "AyudaModPresupuesto.chm");
-            //    //string sIndiceAyuda = Path.Combine(sRutaProyecto, "EstadosFinancieros", "ReportesEstados", "Htmlayuda.hmtl");
-            //    //MessageBox.Show("Ruta del reporte: " + sAyudaPath, "Ruta Generada", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            //    Help.ShowHelp(this, sAyudaPath, "AyudaPresupuesto.html");
-
-            //    //Bitacora--------------!!!
-            //    logicaSeg.funinsertarabitacora(sIdUsuario, $"Se presiono Ayuda", "Presupuesto", "8000");
-            //}
-            //catch (Exception ex)
-            //{
-            //    // Mostrar un mensaje de error en caso de una excepción
-            //    MessageBox.Show("Ocurrió un error al abrir la ayuda: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    Console.WriteLine("Error al abrir la ayuda: " + ex.ToString());
-            //}
 
             try
             {
@@ -916,11 +890,6 @@ namespace Capa_Vista_Presupuesto
             VerificacionVacio(Txt_marzoB);
         }
 
-        private void Txtbx_abril_Leave(object sender, EventArgs e)
-        {
-            VerificacionVacio(Txb_abrilB);
-        }
-
         private void Txtbx_mayo_Leave(object sender, EventArgs e)
         {
             VerificacionVacio(Txt_mayoB);
@@ -964,6 +933,23 @@ namespace Capa_Vista_Presupuesto
         private void Txtbx_anual_Leave(object sender, EventArgs e)
         {
             VerificacionVacio(Txt_febreroB);
+        }
+
+        private void Txt_abrilB_TextChanged(object sender, EventArgs e)
+        {
+            CambioDinamico("Column6", Txt_abrilB);
+            //VerificacionVacio(Txtbx_abril);
+            SumaDeValores();
+        }
+
+        private void Txt_abrilB_Leave(object sender, EventArgs e)
+        {
+            VerificacionVacio(Txt_abrilB);
+        }
+
+        private void Txt_abrilB_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            VerificacionText(e, Txt_abrilB);
         }
     }
 }

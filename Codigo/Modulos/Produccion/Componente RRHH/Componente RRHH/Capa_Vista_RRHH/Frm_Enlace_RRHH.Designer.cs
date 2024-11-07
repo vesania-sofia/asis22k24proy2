@@ -403,7 +403,9 @@ namespace Capa_Vista_RRHH
             this.Controls.Add(this.btn_Guardar);
             this.Controls.Add(this.btn_Calcular);
             this.Controls.Add(this.btn_Nuevo);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "Frm_Enlace_RRHH";
             this.Text = "Mano de obra";
             ((System.ComponentModel.ISupportInitialize)(this.dgv_empleados)).EndInit();

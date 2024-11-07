@@ -38,7 +38,8 @@
     <Reference Include="Capa_Vista_AmmyCatun">
       <HintPath>..\MVC_AmmyCatun\Capa_Vista_AmmyCatun\bin\Debug\Capa_Vista_AmmyCatun.dll</HintPath>
     </Reference>
-    <Reference Include="Capa_Vista_JDSC">
+    <Reference Include="Capa_Vista_JDSC, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\MVC_JoseDanielSierra\Capa_Vista_JDSC\bin\Debug\Capa_Vista_JDSC.dll</HintPath>
     </Reference>
     <Reference Include="Capa_Vista_MiguelCrisostomo">
