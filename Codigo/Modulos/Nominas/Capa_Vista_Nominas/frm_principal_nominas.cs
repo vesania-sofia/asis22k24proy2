@@ -264,7 +264,7 @@ namespace Capa_Vista_Nominas
 
         private void Btn_generaciondeduc_Click(object sender, EventArgs e)
         {
-           AbrirFormulario<Capa_Vista_PercepcionesDeducciones.frm_generaciondeducciones>(); // Pasa el idUsuario
+            AbrirFormulario<Capa_Vista_PercepcionesDeducciones.frm_generaciondeducciones>(); // Pasa el idUsuario
             Btn_puesto.BackColor = Color.FromArgb(12, 61, 92);
             ocultaSubMenu();
         }
@@ -322,6 +322,9 @@ namespace Capa_Vista_Nominas
 
         private void Btn_prochorasextra_Click(object sender, EventArgs e)
         {
+            
+            AbrirFormulario<Capa_Vista_HorasExtras.frm_horasextra>(); // Pasa el idUsuario
+            Btn_puesto.BackColor = Color.FromArgb(12, 61, 92);
             ocultaSubMenu();
         }
 
