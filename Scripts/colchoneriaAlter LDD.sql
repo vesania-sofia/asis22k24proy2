@@ -295,6 +295,7 @@ ALTER TABLE TBL_LOCALES
 MODIFY FECHA_REGISTRO DATE NOT NULL;
 
 -- ALTER MODULO COMERCIAL 06/11/2024
+
 CREATE TABLE Tbl_clasificacionLista (
     pk_id_clasificacion INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     nombre_clasificacion VARCHAR(50) NOT NULL,  
@@ -537,3 +538,32 @@ CREATE TABLE IF NOT EXISTS Tbl_DetalleOrdenesCompra (
     FOREIGN KEY (FK_codigoProducto) REFERENCES Tbl_Productos(codigoProducto),
     PRIMARY KEY ( FK_encOrCom_numeroOC, FK_codigoProducto)
 );
+
+
+-- CREACION DE TABLAS DEL MODULO DE PRODUCCION  06/11/2024
+CREATE TABLE IF NOT EXISTS tbl_implosion ( 
+    pk_id_implosion INT(11) NOT NULL AUTO_INCREMENT,
+    fk_id_orden INT(11) DEFAULT NULL, -- Relacionado con la orden de producción
+    fk_id_producto_final INT(11) DEFAULT NULL, -- Producto final que se construye
+    id_componente VARCHAR(50) DEFAULT NULL, -- Componente utilizado en la consolidación, ahora como string
+    cantidad_componente INT(11) DEFAULT NULL, -- Cantidad de cada componente
+    costo_componente INT(11) DEFAULT NULL, -- Costo de cada componente
+    duracion_horas INT(11) DEFAULT NULL, -- Duración en horas para consolidar el componente
+    fk_id_proceso INT(11) DEFAULT NULL, -- Relación con el proceso de producción
+    fecha_implosion DATETIME DEFAULT NULL, -- Fecha de la implosión
+    PRIMARY KEY (pk_id_implosion)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE IF NOT EXISTS tbl_explosion (
+pk_id_explosion INT(11) NOT NULL AUTO_INCREMENT,
+fk_id_orden INT(11) DEFAULT NULL, -- Relacionado con la orden de producción
+fk_id_producto INT(11) DEFAULT NULL, -- Producto que se descompone
+cantidad INT(11) DEFAULT NULL, -- Cantidad de producto a descomponer
+costo_total DECIMAL(10,2) DEFAULT NULL, -- Costo total de la descomposición
+duracion_horas INT(11) DEFAULT NULL, -- Duración en horas
+fk_id_proceso INT(11) DEFAULT NULL, -- Relación con el proceso
+fecha_explosion DATE DEFAULT NULL, -- Fecha de la explosión
+PRIMARY KEY (pk_id_explosion),
+FOREIGN KEY (fk_id_producto) REFERENCES tbl_productos(pk_id_producto),
+FOREIGN KEY (fk_id_proceso) REFERENCES tbl_proceso_produccion_encabezado(pk_id_proceso)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
