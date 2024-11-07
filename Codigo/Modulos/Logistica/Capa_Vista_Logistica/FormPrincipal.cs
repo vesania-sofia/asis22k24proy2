@@ -251,8 +251,8 @@ namespace Capa_Vista_Logistica
 
         private void Btn_MenuProcesosOpcion6_Click(object sender, EventArgs e)
         {
-            /*AbrirFormulario<Capa_Vista_JDSC.MonitoreoAlmacen>();
-            ocultaSubMenu();*/
+            AbrirFormulario<Capa_Vista_JDSC.MonitoreoAlmacen>();
+            ocultaSubMenu();
         }
 
         private void Btn_MenuProcesosOpcion7_Click(object sender, EventArgs e)
