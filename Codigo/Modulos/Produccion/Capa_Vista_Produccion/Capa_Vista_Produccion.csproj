@@ -39,7 +39,10 @@
       <HintPath>..\Cierre_Produccion\Capa_Vista_Cierre_Produccion\bin\Debug\Capa_Vista_Cierre_Produccion.dll</HintPath>
     </Reference>
     <Reference Include="Capa_Vista_Navegador">
-      <HintPath>..\..\..\..\..\..\1. AS Todo junto\asis22k24proy2\Codigo\Componentes\Navegador\Capa_Vista_Navegador\bin\Debug\Capa_Vista_Navegador.dll</HintPath>
+      <HintPath>..\..\..\Componentes\Navegador\Capa_Vista_Navegador\bin\Debug\Capa_Vista_Navegador.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_Ordenes">
+      <HintPath>..\Ordenes de Produccion\Capa_Vista_Ordenes\bin\Debug\Capa_Vista_Ordenes.dll</HintPath>
     </Reference>
     <Reference Include="Capa_Vista_Polizas_Prod, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -53,8 +56,11 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Componente RRHH\Componente RRHH\Capa_Vista_RRHH\bin\Debug\Capa_Vista_RRHH.dll</HintPath>
     </Reference>
+    <Reference Include="Capa_Vista_Sistema_Produccion">
+      <HintPath>..\Sistema_Produccion\Capa_Vista_Sistema_Produccion\bin\Debug\Capa_Vista_Sistema_Produccion.dll</HintPath>
+    </Reference>
     <Reference Include="Interfac_V3">
-      <HintPath>..\..\..\..\..\..\1. AS Todo junto\asis22k24proy2\Codigo\Modulos\Menus\ModernGUI_V3\bin\Debug\Interfac_V3.exe</HintPath>
+      <HintPath>..\..\Menus\ModernGUI_V3\bin\Debug\Interfac_V3.exe</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

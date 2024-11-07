@@ -236,15 +236,15 @@ namespace Capa_Vista_Nominas
 
         private void Btn_planilla_Click(object sender, EventArgs e)
         {
-            /*AbrirFormulario<frm_genplanilla>(); // Pasa el idUsuario
-            Btn_puesto.BackColor = Color.FromArgb(12, 61, 92);*/
+            AbrirFormulario<Capa_Vista_Planilla.Frm_GenPlanilla>(); // Pasa el idUsuario
+            Btn_puesto.BackColor = Color.FromArgb(12, 61, 92);
             ocultaSubMenu();
         }
 
         private void Btn_anticipo_Click(object sender, EventArgs e)
         {
             AbrirFormulario<frm_genanticipo>(); // Pasa el idUsuario
-            Btn_puesto.BackColor = Color.FromArgb(12, 61, 92);
+            Btn_planilla.BackColor = Color.FromArgb(12, 61, 92);
             ocultaSubMenu();
         }
 
