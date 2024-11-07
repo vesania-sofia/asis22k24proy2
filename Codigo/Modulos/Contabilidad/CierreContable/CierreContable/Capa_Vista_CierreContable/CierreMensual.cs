@@ -37,12 +37,12 @@ namespace Capa_Vista_CierreContable
             {
                 IsBalloon = true // Hacer que el tooltip tenga forma de globo
             };
-            toolTip.SetToolTip(Btn_guardarcierre, "Guarda el cierre contable, no se podrá modificar nada luego de esto.");
-            toolTip.SetToolTip(Btn_cancelar, "Cancela el guardado del cierre actual");
-            toolTip.SetToolTip(Btn_nuevocierre, "Genera el cierre del mes actual");
-            toolTip.SetToolTip(Btn_actualizar, "Limpia los DataGridView y los Textbox de las sumas.");
-            toolTip.SetToolTip(Btn_ayuda2, "Muestra la Ayuda del formulario actual.");
-            toolTip.SetToolTip(Btn_reporte, "Muestra el Reporte del los datos del Mes Actual.");
+            toolTip.SetToolTip(btn_GuardarCierre, "Guarda el cierre contable, no se podrá modificar nada luego de esto.");
+            toolTip.SetToolTip(btn_cancelar, "Cancela el guardado del cierre actual");
+            toolTip.SetToolTip(btn_nuevocierre, "Genera el cierre del mes actual");
+            toolTip.SetToolTip(btn_Actualizar, "Limpia los DataGridView y los Textbox de las sumas.");
+            toolTip.SetToolTip(btn_Ayuda2, "Muestra la Ayuda del formulario actual.");
+            toolTip.SetToolTip(btn_Reporte, "Muestra el Reporte del los datos del Mes Actual.");
         }
 
         public void LlenarCboAnio()
@@ -51,13 +51,13 @@ namespace Capa_Vista_CierreContable
             int iAnioactual = DateTime.Now.Year;
 
             // Limpiar el ComboBox
-            Cbo_año.Items.Clear();
+            cbo_año.Items.Clear();
 
             // Agregar el año actual al ComboBox
-            Cbo_año.Items.Add(iAnioactual.ToString());
+            cbo_año.Items.Add(iAnioactual.ToString());
 
             // Seleccionar el año actual como predeterminado
-            Cbo_año.SelectedIndex = 0;
+            cbo_año.SelectedIndex = 0;
         }
 
 
@@ -66,15 +66,15 @@ namespace Capa_Vista_CierreContable
             DataTable cuentas = cn.ObtenerCuentas();
 
             // Limpiar y agregar "Todas las cuentas" al ComboBox
-            Cbo_cuenta.Items.Clear();
-            Cbo_cuenta.Items.Add("Todas las cuentas");
+            cbo_cuenta.Items.Clear();
+            cbo_cuenta.Items.Add("Todas las cuentas");
 
             foreach (DataRow row in cuentas.Rows)
             {
-                Cbo_cuenta.Items.Add(row["nombre_cuenta"]); // Ajustar según el nombre de la columna en tu DataTable
+                cbo_cuenta.Items.Add(row["nombre_cuenta"]); // Ajustar según el nombre de la columna en tu DataTable
             }
 
-            Cbo_cuenta.SelectedIndex = 0; // Seleccionar "Todas las cuentas" como predeterminada
+            cbo_cuenta.SelectedIndex = 0; // Seleccionar "Todas las cuentas" como predeterminada
         }
 
 
@@ -83,16 +83,26 @@ namespace Capa_Vista_CierreContable
         public void LlenarCboMes()
         {
             // Verificar si hay un año seleccionado
-            if (int.TryParse(Cbo_año.Text, out int iAnio))
+            if (int.TryParse(cbo_año.Text, out int anio))
             {
-                // Limpiar el ComboBox de meses
+                // Obtener todas las cuentas
+                DataTable cuentas = cn.ObtenerCuentas();
+                HashSet<int> idsCuentas = new HashSet<int>();
+
+                // Agregar los IDs de las cuentas a un HashSet para fácil verificación
+                foreach (DataRow row in cuentas.Rows)
+                {
+                    idsCuentas.Add(Convert.ToInt32(row["Pk_id_cuenta"])); // Asegúrate de que el nombre de la columna sea correcto
+                }
+
+                // Obtener el último mes con datos
+                int ultimoMesConDatos = cn.ObtenerUltimoMesConDatos(anio);
+
+                // Limpiar el ComboBox
                 Cbo_mes.Items.Clear();
 
-                // Obtener el último mes con estado = 0 para el año seleccionado
-                int iUltimoMesConEstadoCero = cn.ObtenerUltimoMesConEstadoCero(iAnio);
-
-                // Obtener los meses válidos a partir del primer mes con estado = 1 después de iUltimoMesConEstadoCero
-                DataTable mesesValidos = cn.ObtenerMesesSinDatos(iUltimoMesConEstadoCero, new HashSet<int>());
+                // Llamar al método del controlador para obtener los meses válidos
+                DataTable mesesValidos = cn.ObtenerMesesSinDatos(ultimoMesConDatos, idsCuentas);
 
                 // Llenar el ComboBox con los meses obtenidos
                 foreach (DataRow row in mesesValidos.Rows)
@@ -100,16 +110,10 @@ namespace Capa_Vista_CierreContable
                     Cbo_mes.Items.Add(row["Mes"]);
                 }
 
-                // Si no se encontraron meses válidos, agregar "Enero" como predeterminado
+                // Si no hay meses disponibles, puedes mostrar un mensaje
                 if (Cbo_mes.Items.Count == 0)
                 {
-                    Cbo_mes.Items.Add("enero");
-                }
-
-                // Establecer el índice de selección (si hay al menos un item)
-                if (Cbo_mes.Items.Count > 0)
-                {
-                    Cbo_mes.SelectedIndex = 0; // Selecciona el primer mes válido o "Enero" si no hay meses disponibles
+                    MessageBox.Show("No hay meses disponibles para seleccionar.");
                 }
             }
         }
@@ -137,12 +141,12 @@ namespace Capa_Vista_CierreContable
             // Verificar si se obtuvieron datos
             if (datosCierre != null && datosCierre.Rows.Count > 0)
             {
-                Dgv_cierre.DataSource = datosCierre; // Asignar el DataTable al DataGridView
+                dgv_cierre.DataSource = datosCierre; // Asignar el DataTable al DataGridView
             }
             else
             {
                 MessageBox.Show("No se encontraron datos para la cuenta seleccionada.");
-                Dgv_cierre.DataSource = null; // Limpiar el DataGridView si no hay datos
+                dgv_cierre.DataSource = null; // Limpiar el DataGridView si no hay datos
             }
         }
 
@@ -152,8 +156,8 @@ namespace Capa_Vista_CierreContable
         private void btn_nuevocierre_Click(object sender, EventArgs e)
         {
             string sMes = Cbo_mes.Text; // Obtener el mes desde el ComboBox
-            string sAnio = Cbo_año.Text; // Año de interés
-            string sCuentaSeleccionada = Cbo_cuenta.Text;
+            string sAnio = cbo_año.Text; // Año de interés
+            string sCuentaSeleccionada = cbo_cuenta.Text;
             int iPeriodo = 0;
             int iAniov = 0;
 
@@ -184,20 +188,20 @@ namespace Capa_Vista_CierreContable
             if (sCuentaSeleccionada == "Todas las cuentas")
             {
                 // Llama a la consulta sin aplicar filtro de cuenta
-                cn.ConsultarCierreG(null, Txt_cargomes, Txt_abonomes, Txt_saldoantmes, Txt_saldoactmes);
+                cn.ConsultarCierreG(null, txt_cargomes, txt_abonomes, txt_saldoantmes, txt_saldoactmes);
             }
             else
             {
                 // Llama a la consulta con el filtro de cuenta
-                cn.ConsultarCierreG(sCuentaSeleccionada, Txt_cargomes, Txt_abonomes, Txt_saldoantmes, Txt_saldoactmes);
+                cn.ConsultarCierreG(sCuentaSeleccionada, txt_cargomes, txt_abonomes, txt_saldoantmes, txt_saldoactmes);
             }
 
             // Aquí puedes continuar con cualquier lógica que necesites, 
             // como habilitar otros controles o realizar otras acciones.
 
-            Btn_nuevocierre.Enabled = false;
-            Btn_cancelar.Enabled = true;
-            Btn_guardarcierre.Enabled = true;
+            btn_nuevocierre.Enabled = false;
+            btn_cancelar.Enabled = true;
+            btn_GuardarCierre.Enabled = true;
             LogicaSeg.funinsertarabitacora(idUsuario, $"Se consultó las polizas del mes actual", "Cierre Mensual", "8000");
 
         }
@@ -207,33 +211,33 @@ namespace Capa_Vista_CierreContable
         {
 
             // Limpiar el DataGridView
-            Dgv_cierre.DataSource = null; // O puedes usar dgv_cierre.Rows.Clear(); para eliminar filas
-            Dgv_cierre.Columns.Clear(); // Opcional: si deseas eliminar también las columnas
+            dgv_cierre.DataSource = null; // O puedes usar dgv_cierre.Rows.Clear(); para eliminar filas
+            dgv_cierre.Columns.Clear(); // Opcional: si deseas eliminar también las columnas
 
             // Activa el botón Nuevocierre y desactiva el botón Cancelar
-            Btn_nuevocierre.Enabled = true;
-            Btn_cancelar.Enabled = false;
-            Btn_guardarcierre.Enabled = false;
+            btn_nuevocierre.Enabled = true;
+            btn_cancelar.Enabled = false;
+            btn_GuardarCierre.Enabled = false;
             LogicaSeg.funinsertarabitacora(idUsuario, $"Se canceló la operación de cierre", "Cierre Mensual", "8000");
 
         }
 
         // Método para incrementar el año si el año actual tiene cierres completos
-        private void IncrementarAnioSiEsNecesario(int iAnio)
+        private void IncrementarAnioSiEsNecesario(int anio)
         {
             // Verificar si el año tiene cierres completos
-            if (cn.VerificarCierresCompletos(iAnio))
+            if (cn.VerificarCierresCompletos(anio))
             {
                 // Incrementar el año y  en el ComboBox
-                int iNuevoanio = iAnio + 1;
-                Cbo_año.Items.Clear();
-                Cbo_año.Items.Add(iNuevoanio.ToString());
-                Cbo_año.SelectedIndex = 0;
+                int nuevoAnio = anio + 1;
+                cbo_año.Items.Clear();
+                cbo_año.Items.Add(nuevoAnio.ToString());
+                cbo_año.SelectedIndex = 0;
 
-                MessageBox.Show("Se ha completado el año. Ahora se procederá al año " + iNuevoanio);
+                MessageBox.Show("Se ha completado el año. Ahora se procederá al año " + nuevoAnio);
 
                 // Actualizar el año en tbl_historico_cuentas
-                cn.ActualizarAnioHistorico(iAnio, iNuevoanio);
+                cn.ActualizarAnioHistorico(anio, nuevoAnio);
             }
         }
 
@@ -241,54 +245,67 @@ namespace Capa_Vista_CierreContable
         private void btn_GuardarCierre_Click(object sender, EventArgs e)
         {
             // Obtener el año del ComboBox
-            int iAnio = int.Parse(Cbo_año.Text);
+            int anio = int.Parse(cbo_año.Text);
 
             // Verificar si hay un mes seleccionado
             if (Cbo_mes.Items.Count > 0 && Cbo_mes.SelectedIndex != -1)
             {
                 // Obtener el mes como texto y convertir a mayúsculas para otros usos
-                string sMes = Cbo_mes.Text.ToUpper();
+                string mes = Cbo_mes.Text.ToUpper();
 
                 // Obtener el índice seleccionado y calcular el mes
-                int iMesi = Cbo_mes.SelectedIndex + 1; // El índice se traduce correctamente al mes
+                int mesi = Cbo_mes.SelectedIndex + 1; // El índice se traduce correctamente al mes
 
-                int iPeriodo = cn.ObtenerPeriodoPorMes(sMes); // Obtener periodo a partir del mes en mayúsculas
+                int periodo = cn.ObtenerPeriodoPorMes(mes); // Obtener periodo a partir del mes en mayúsculas
 
                 // Confirmar la operación
                 var confirmacion = MessageBox.Show("¿Estás seguro de realizar esta operación?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (confirmacion == DialogResult.Yes)
                 {
-                    if (iPeriodo == 0)
+                    if (periodo == 0)
                     {
                         MessageBox.Show("Error: el mes seleccionado no es válido.");
                         return; // Salir si el mes no es válido
                     }
 
                     // Lógica para guardar los datos usando el periodo y año
-                    cn.GenerarNuevoCierre(iPeriodo, iAnio); // Usar el periodo obtenido
+                    cn.GenerarNuevoCierre(periodo, anio); // Usar el periodo obtenido
 
                     // Verifica y actualiza el año completo
-                    cn.VerificarYActualizarAnoCompleto(iAnio);
+                    cn.VerificarYActualizarAnoCompleto(anio);
 
                     // Llama a IncrementarAnioSiEsNecesario para incrementar el año si es necesario
-                    IncrementarAnioSiEsNecesario(iAnio);
+                    IncrementarAnioSiEsNecesario(anio);
 
                     // Limpiar el DataGridView y restaurar botones a su estado inicial
-                    Dgv_cierre.DataSource = null;  // Desvincular el DataGridView de su fuente de datos
-                    Dgv_cierre.Rows.Clear();       // Limpiar las filas
+                    dgv_cierre.DataSource = null;  // Desvincular el DataGridView de su fuente de datos
+                    dgv_cierre.Rows.Clear();       // Limpiar las filas
 
-                    Btn_nuevocierre.Enabled = true;
-                    Btn_guardarcierre.Enabled = false;
+                    btn_nuevocierre.Enabled = true;
+                    btn_GuardarCierre.Enabled = false;
                     LlenarCboMes();
 
                     // Actualizar ComboBox de meses
                     cn.ActualizarComboBoxMeses();
-                    Txt_cargomes.Clear();
-                    Txt_abonomes.Clear();
-                    Txt_saldoactmes.Clear();
-                    Txt_saldoantmes.Clear();
-                    Btn_cancelar.Enabled = false;
+                    txt_cargomes.Clear();
+                    txt_abonomes.Clear();
+                    txt_saldoactmes.Clear();
+                    txt_saldoantmes.Clear();
+                    btn_cancelar.Enabled = false;
+
+                    // Si es diciembre (mes 12), incrementa el año y restablece los meses a enero
+                    if (mesi == 12)
+                    {
+                        // Incrementar año
+                        int nuevoAnio = anio + 1;
+                        cbo_año.Items.Clear();
+                        cbo_año.Items.Add(nuevoAnio.ToString());
+                        cbo_año.SelectedIndex = 0;  // Seleccionar el nuevo año
+
+                        // Restablecer ComboBox de meses a enero
+                        Cbo_mes.SelectedIndex = -1; // Seleccionar ningún mes (esto hará que se muestre "enero" cuando el ComboBox se actualice)
+                    }
                 }
                 else
                 {
@@ -300,8 +317,8 @@ namespace Capa_Vista_CierreContable
                 MessageBox.Show("No se puede ingresar datos. No hay meses disponibles.");
             }
             LogicaSeg.funinsertarabitacora(idUsuario, $"Se guardó un nuevo Cierre Mensual", "Cierre Mensual", "8000");
-
         }
+
 
         private void btn_Actualizar_Click(object sender, EventArgs e)
         {
@@ -313,14 +330,14 @@ namespace Capa_Vista_CierreContable
         private void ReiniciarFormulario()
         {
             // Limpiar los TextBoxes
-            Txt_abonomes.Text = string.Empty;
-            Txt_cargomes.Text = string.Empty;
-            Txt_saldoactmes.Text = string.Empty;
-            Txt_saldoantmes.Text = string.Empty;
+            txt_abonomes.Text = string.Empty;
+            txt_cargomes.Text = string.Empty;
+            txt_saldoactmes.Text = string.Empty;
+            txt_saldoantmes.Text = string.Empty;
 
 
             // Limpiar los DataGridViews
-            Dgv_cierre.DataSource = null; // Limpiar el DataSource
+            dgv_cierre.DataSource = null; // Limpiar el DataSource
 
             // Volver a llenar el ComboBox de años
             LlenarCboAnio();

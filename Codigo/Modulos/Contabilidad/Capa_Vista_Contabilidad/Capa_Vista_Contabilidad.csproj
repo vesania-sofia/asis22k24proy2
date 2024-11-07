@@ -34,7 +34,9 @@
     <Reference Include="Capa_Controlador_Contabilidad">
       <HintPath>..\Capa_Controlador_Contabilidad\bin\Debug\Capa_Controlador_Contabilidad.dll</HintPath>
     </Reference>
-    <Reference Include="Capa_Controlador_Seguridad, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+    <Reference Include="Capa_Controlador_Seguridad">
+      <HintPath>..\..\..\Componentes\Seguridad\Capa_Controlador_Seguridad\bin\Debug\Capa_Controlador_Seguridad.dll</HintPath>
+    </Reference>
     <Reference Include="Capa_Vista_CierreContable">
       <HintPath>..\CierreContable\CierreContable\Capa_Vista_CierreContable\bin\Debug\Capa_Vista_CierreContable.dll</HintPath>
     </Reference>

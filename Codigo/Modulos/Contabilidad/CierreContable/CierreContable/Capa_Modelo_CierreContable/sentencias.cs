@@ -68,7 +68,7 @@ namespace Capa_Modelo_CierreContable
 
             using (OdbcConnection con = ObtenerConexion())
             {
-                string query = "SELECT COUNT(*) FROM tbl_historico_cuentas WHERE mes = ? AND Pk_id_cuenta = ? AND estado = 1";
+                string query = "SELECT COUNT(*) FROM tbl_historico_cuentas WHERE mes = ? AND Pk_id_cuenta = ?";
                 OdbcCommand cmd = new OdbcCommand(query, con);
                 cmd.Parameters.AddWithValue("?", mes);
                 cmd.Parameters.AddWithValue("?", idCuenta);
