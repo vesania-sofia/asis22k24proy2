@@ -9,13 +9,14 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Capa_Vista_Nominas;
+//using Capa_Vista_Nominas;
 
 using Capa_Vista_Banco;
 using Capa_Vista_Contabilidad;
 using Capa_Vista_Produccion;
 using Capa_Vista_Banco;
-//using Capa_Vista_CompraVenta;
+using Capa_Vista_CompraVenta;
+
 
 namespace Interfac_V3
 {
@@ -81,16 +82,16 @@ namespace Interfac_V3
             Aqui debe de agregarse la referencia a nominas
             */
 
-            frm_principal_nominas nominas = new frm_principal_nominas(UsuarioSesion.GetIdUsuario());
-           nominas.Show();
+            //frm_principal_nominas nominas = new frm_principal_nominas(UsuarioSesion.GetIdUsuario());
+           //nominas.Show();
 
 
         }
 
         private void Btn_Logistica_Click(object sender, EventArgs e)
         {
-            /*Capa_Vista_Logistica.FormPrincipal logistica = new Capa_Vista_Logistica.FormPrincipal(UsuarioSesion.GetIdUsuario());
-            logistica.Show();*/
+            Capa_Vista_Logistica.FormPrincipal logistica = new Capa_Vista_Logistica.FormPrincipal(UsuarioSesion.GetIdUsuario());
+            logistica.Show();
         }
 
         private void Btn_Contabilidad_Click(object sender, EventArgs e)
