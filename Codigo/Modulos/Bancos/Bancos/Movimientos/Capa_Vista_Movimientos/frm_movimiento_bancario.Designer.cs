@@ -205,7 +205,7 @@ namespace Capa_Vista_Movimientos
             // cboEstado
             // 
             this.cboEstado.FormattingEnabled = true;
-            this.cboEstado.Location = new System.Drawing.Point(487, 132);
+            this.cboEstado.Location = new System.Drawing.Point(493, 131);
             this.cboEstado.Name = "cboEstado";
             this.cboEstado.Size = new System.Drawing.Size(121, 21);
             this.cboEstado.TabIndex = 20;
