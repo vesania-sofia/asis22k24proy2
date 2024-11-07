@@ -29,6 +29,7 @@ namespace Capa_Vista_Faltas
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_calculo_faltas));
             this.Btn_Calculo_Falta = new System.Windows.Forms.Button();
             this.Cbo_Empleados = new System.Windows.Forms.ComboBox();
             this.Dgv_Faltas = new System.Windows.Forms.DataGridView();
@@ -148,8 +149,9 @@ namespace Capa_Vista_Faltas
             this.Controls.Add(this.Dgv_Faltas);
             this.Controls.Add(this.Cbo_Empleados);
             this.Controls.Add(this.Btn_Calculo_Falta);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frm_calculo_faltas";
-            this.Text = "frm_calculo_faltas";
+            this.Text = "Calculo de Faltas";
             this.Load += new System.EventHandler(this.frm_calculo_faltas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Faltas)).EndInit();
             this.ResumeLayout(false);
