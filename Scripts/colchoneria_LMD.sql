@@ -730,3 +730,8 @@ INSERT INTO Tbl_aplicaciones (Pk_id_aplicacion,nombre_aplicacion,descripcion_apl
 VALUES (6107,'Cálculo liquidaciones','PARA NÓMINAS',1);
 
 SET SQL_SAFE_UPDATES = 1; -- activar el modo seguro
+
+-- CONTABILIDAD 07/11/2024
+UPDATE tbl_cuentas
+SET Pk_id_tipocuenta = 1
+WHERE Pk_id_cuenta = 8;
