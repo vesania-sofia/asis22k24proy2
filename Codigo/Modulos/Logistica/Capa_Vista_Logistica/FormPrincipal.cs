@@ -216,12 +216,6 @@ namespace Capa_Vista_Logistica
 
         private void Btn_MenuCatalogosOpcion6_Click(object sender, EventArgs e)
         {
-            AbrirFormulario<Movimientos>();
-            ocultaSubMenu();
-        }
-
-        private void Btn_MenuCatalogosOpcion7_Click(object sender, EventArgs e)
-        {
             /*AbrirFormulario<Capa_Vista_AmmyCatun.frm_Chofer>();
             ocultaSubMenu();*/
         }
