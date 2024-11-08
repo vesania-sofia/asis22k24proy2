@@ -53,11 +53,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="tipoCambio.cs">
+    <Compile Include="frm_tipoCambio.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="tipoCambio.Designer.cs">
-      <DependentUpon>tipoCambio.cs</DependentUpon>
+    <Compile Include="frm_tipoCambio.Designer.cs">
+      <DependentUpon>frm_tipoCambio.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -65,8 +65,8 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="tipoCambio.resx">
-      <DependentUpon>tipoCambio.cs</DependentUpon>
+    <EmbeddedResource Include="frm_tipoCambio.resx">
+      <DependentUpon>frm_tipoCambio.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

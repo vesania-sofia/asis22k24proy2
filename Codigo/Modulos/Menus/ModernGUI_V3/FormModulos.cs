@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Capa_Vista_Nominas;
 
-//using Capa_Vista_Banco;
+using Capa_Vista_Banco;
 //using Capa_Vista_Contabilidad;
 //using Capa_Vista_Produccion;
 //using Capa_Vista_Banco;
@@ -50,12 +50,12 @@ namespace Interfac_V3
         private void btnSeguridad_Click(object sender, EventArgs e)
         {
             var usuario = new Capa_Vista_Seguridad.frm_login();
-           string idUsuario= usuario.Txt_usuario.ToString();
+            string idUsuario = usuario.Txt_usuario.ToString();
 
-           frm_login login = new frm_login();
-           login.ShowDialog();
+            frm_login login = new frm_login();
+            login.ShowDialog();
 
-           MDI_Seguridad formMDI = new MDI_Seguridad(idUsuario);
+            MDI_Seguridad formMDI = new MDI_Seguridad(idUsuario);
             formMDI.Show();
             this.Hide();
         }
@@ -83,27 +83,28 @@ namespace Interfac_V3
             */
 
             frm_principal_nominas nominas = new frm_principal_nominas(UsuarioSesion.GetIdUsuario());
-           nominas.Show();
+            nominas.Show();
 
 
         }
 
         private void Btn_Logistica_Click(object sender, EventArgs e)
         {
-            Capa_Vista_Logistica.FormPrincipal logistica = new Capa_Vista_Logistica.FormPrincipal(UsuarioSesion.GetIdUsuario());
-            logistica.Show();
+            //Capa_Vista_Logistica.FormPrincipal logistica = new Capa_Vista_Logistica.FormPrincipal(UsuarioSesion.GetIdUsuario());
+            //logistica.Show();
         }
 
         private void Btn_Contabilidad_Click(object sender, EventArgs e)
         {
-          /* Contabilidad_MDI conta = new Contabilidad_MDI(UsuarioSesion.GetIdUsuario());
-          conta.Show();*/
+            /*Contabilidad_MDI conta = new Contabilidad_MDI(UsuarioSesion.GetIdUsuario());
+            conta.Show();*/
         }
 
         private void Btn_Compras_Click(object sender, EventArgs e)
         {
-            Frm_MDI_general_CompraVenta Cv = new Frm_MDI_general_CompraVenta(UsuarioSesion.GetIdUsuario());
-            Cv.Show();
+            //Frm_MDI_general_CompraVenta Cv = new Frm_MDI_general_CompraVenta(UsuarioSesion.GetIdUsuario());
+            //Cv.Show();
+
         }
 
         private void Btn_Bancos_Click(object sender, EventArgs e)
@@ -115,14 +116,14 @@ namespace Interfac_V3
 
         private void Btn_Produccion_Click(object sender, EventArgs e)
         {
-            MDI_Produccion produccion = new MDI_Produccion(UsuarioSesion.GetIdUsuario());
-            produccion.Show();
+            /*MDI_Produccion produccion = new MDI_Produccion(UsuarioSesion.GetIdUsuario());
+            produccion.Show();*/
         }
 
         private void Btn_CuentasCorrientes_Click(object sender, EventArgs e)
         {
-            Capa_Vista_Cuentas_Corrientes.FormPrincipal cc = new Capa_Vista_Cuentas_Corrientes.FormPrincipal(UsuarioSesion.GetIdUsuario());
-            cc.Show();
+            //Capa_Vista_Cuentas_Corrientes.FormPrincipal cc = new Capa_Vista_Cuentas_Corrientes.FormPrincipal(UsuarioSesion.GetIdUsuario());
+            //cc.Show();
         }
     }
 }
