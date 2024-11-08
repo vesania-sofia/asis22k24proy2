@@ -4,13 +4,13 @@ using System.Data.Odbc;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-//using Capa_Modelo_MiguelCrisostomo;
-
 
 namespace Capa_Modelo_MiguelCrisostomo
 {
     public class conexion
     {
+        public static string CadenaConexion { get; set; }
+
         public OdbcConnection Conexion()
         {
             OdbcConnection conexion = new OdbcConnection("Dsn=colchoneria");
@@ -18,10 +18,15 @@ namespace Capa_Modelo_MiguelCrisostomo
             {
                 conexion.Open();
             }
-            catch (OdbcException)
+            //catch (OdbcException)
+            //{
+            //    Console.WriteLine("No Conectó");
+            //}
+            catch (OdbcException ex)
             {
-                Console.WriteLine("No Conectó");
+                Console.WriteLine("Error al conectar: " + ex.Message);
             }
+
             return conexion;
         }
 

@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Capa_Modelo_MiguelCrisostom
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Capa_Vista_MiguelCrisostomo", "Capa_Vista_MiguelCrisostomo\Capa_Vista_MiguelCrisostomo.csproj", "{1B561A3F-A58F-4E6E-BA96-3C5BFA4203BC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prueba_MiguelCrisostomo", "Prueba_MiguelCrisostomo\Prueba_MiguelCrisostomo.csproj", "{7857870E-02BF-42B5-990C-6EFDEE79BCB6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{1B561A3F-A58F-4E6E-BA96-3C5BFA4203BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1B561A3F-A58F-4E6E-BA96-3C5BFA4203BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1B561A3F-A58F-4E6E-BA96-3C5BFA4203BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7857870E-02BF-42B5-990C-6EFDEE79BCB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7857870E-02BF-42B5-990C-6EFDEE79BCB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7857870E-02BF-42B5-990C-6EFDEE79BCB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7857870E-02BF-42B5-990C-6EFDEE79BCB6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

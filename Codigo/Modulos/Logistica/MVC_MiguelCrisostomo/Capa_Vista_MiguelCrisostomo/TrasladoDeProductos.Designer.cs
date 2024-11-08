@@ -29,194 +29,204 @@ namespace Capa_Vista_MiguelCrisostomo
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TrasladoDeProductos));
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.Pic_Img = new System.Windows.Forms.PictureBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.Btn_Quitar = new System.Windows.Forms.Button();
-            this.Btn_Salir = new System.Windows.Forms.Button();
-            this.Btn_Cancelar = new System.Windows.Forms.Button();
-            this.Btn_Guardar = new System.Windows.Forms.Button();
-            this.Btn_Editar = new System.Windows.Forms.Button();
-            this.Btn_Ingresar = new System.Windows.Forms.Button();
-            this.Txt_PrecioTotalG = new System.Windows.Forms.TextBox();
-            this.Txt_CostoTG = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
+            this.Pic_Ayuda = new System.Windows.Forms.PictureBox();
+            this.Pic_Reporte = new System.Windows.Forms.PictureBox();
+            this.Pic_Salir = new System.Windows.Forms.PictureBox();
+            this.Pic_Editar = new System.Windows.Forms.PictureBox();
+            this.Pic_Guardar = new System.Windows.Forms.PictureBox();
+            this.Pic_Ingresar = new System.Windows.Forms.PictureBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.Btn_Actualizar = new System.Windows.Forms.Button();
+            this.Txt_Actualizar = new System.Windows.Forms.Label();
+            this.Pic_Actualizar = new System.Windows.Forms.PictureBox();
             this.Dgv_TrasladoDProductos = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.Txt_FchTraslado = new System.Windows.Forms.TextBox();
-            this.Txt_FchEmision = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.Txt_Id = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
+            this.Txt_PV = new System.Windows.Forms.Label();
+            this.Txt_PesoTotalV = new System.Windows.Forms.TextBox();
+            this.Dtp_Fecha_Traslado = new System.Windows.Forms.DateTimePicker();
+            this.Txt_FechaT = new System.Windows.Forms.Label();
+            this.Txt_Veh = new System.Windows.Forms.Label();
+            this.Txt_Id1 = new System.Windows.Forms.TextBox();
+            this.Txt_idGia = new System.Windows.Forms.Label();
             this.Txt_Vehiculo = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.Cbo_Destino = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.Productos = new System.Windows.Forms.GroupBox();
-            this.Lbl_CostoTProd = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.Txt_Stock = new System.Windows.Forms.TextBox();
-            this.Txt_PesoProd = new System.Windows.Forms.TextBox();
-            this.Txt_NombreProd = new System.Windows.Forms.TextBox();
-            this.Btn_Aceptar = new System.Windows.Forms.Button();
-            this.label9 = new System.Windows.Forms.Label();
-            this.Txt_CostoTotal = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.Txt_Cantidad = new System.Windows.Forms.TextBox();
-            this.Txt_PrecioU = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.Txt_Destino = new System.Windows.Forms.Label();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.Cbo_CodigoProd = new System.Windows.Forms.ComboBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.Txt_Id2 = new System.Windows.Forms.TextBox();
+            this.Txt_NombreProd = new System.Windows.Forms.TextBox();
+            this.Txt_PesoProd = new System.Windows.Forms.TextBox();
+            this.Txt_IdProd2 = new System.Windows.Forms.Label();
+            this.Txt_Sck = new System.Windows.Forms.Label();
+            this.Txt_PesoPto = new System.Windows.Forms.Label();
+            this.Txt_Prod = new System.Windows.Forms.Label();
+            this.Txt_Codigo = new System.Windows.Forms.Label();
+            this.Txt_Stock = new System.Windows.Forms.TextBox();
+            this.Lbl_CostoTProd = new System.Windows.Forms.Label();
+            this.Txt_CostU = new System.Windows.Forms.Label();
+            this.Txt_CostTtal = new System.Windows.Forms.Label();
+            this.Txt_Cant = new System.Windows.Forms.Label();
+            this.Txt_PrecioU = new System.Windows.Forms.TextBox();
+            this.Txt_Cantidad = new System.Windows.Forms.TextBox();
+            this.Pic_Aceptar = new System.Windows.Forms.PictureBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip2 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip3 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip4 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip5 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip6 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip7 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip8 = new System.Windows.Forms.ToolTip(this.components);
+            this.Txt_Datos = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.Pic_Img)).BeginInit();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Pic_Ayuda)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pic_Reporte)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pic_Salir)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pic_Editar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pic_Guardar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pic_Ingresar)).BeginInit();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Pic_Actualizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_TrasladoDProductos)).BeginInit();
             this.groupBox1.SuspendLayout();
-            this.Productos.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Pic_Aceptar)).BeginInit();
             this.SuspendLayout();
             // 
-            // pictureBox1
+            // Pic_Img
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(43, 30);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(122, 100);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 26;
-            this.pictureBox1.TabStop = false;
+            this.Pic_Img.Image = ((System.Drawing.Image)(resources.GetObject("Pic_Img.Image")));
+            this.Pic_Img.Location = new System.Drawing.Point(41, 57);
+            this.Pic_Img.Name = "Pic_Img";
+            this.Pic_Img.Size = new System.Drawing.Size(100, 91);
+            this.Pic_Img.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.Pic_Img.TabIndex = 26;
+            this.Pic_Img.TabStop = false;
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.Btn_Quitar);
-            this.groupBox3.Controls.Add(this.Btn_Salir);
-            this.groupBox3.Controls.Add(this.Btn_Cancelar);
-            this.groupBox3.Controls.Add(this.Btn_Guardar);
-            this.groupBox3.Controls.Add(this.Btn_Editar);
-            this.groupBox3.Controls.Add(this.Btn_Ingresar);
-            this.groupBox3.Location = new System.Drawing.Point(193, 30);
+            this.groupBox3.Controls.Add(this.Pic_Ayuda);
+            this.groupBox3.Controls.Add(this.Pic_Reporte);
+            this.groupBox3.Controls.Add(this.Pic_Salir);
+            this.groupBox3.Controls.Add(this.Pic_Editar);
+            this.groupBox3.Controls.Add(this.Pic_Guardar);
+            this.groupBox3.Controls.Add(this.Pic_Ingresar);
+            this.groupBox3.Location = new System.Drawing.Point(175, 57);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(541, 100);
+            this.groupBox3.Size = new System.Drawing.Size(606, 100);
             this.groupBox3.TabIndex = 25;
             this.groupBox3.TabStop = false;
             // 
-            // Btn_Quitar
+            // Pic_Ayuda
             // 
-            this.Btn_Quitar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(210)))), ((int)(((byte)(197)))));
-            this.Btn_Quitar.Location = new System.Drawing.Point(365, 21);
-            this.Btn_Quitar.Name = "Btn_Quitar";
-            this.Btn_Quitar.Size = new System.Drawing.Size(79, 59);
-            this.Btn_Quitar.TabIndex = 6;
-            this.Btn_Quitar.Text = "Quitar";
-            this.Btn_Quitar.UseVisualStyleBackColor = false;
+            this.Pic_Ayuda.Image = ((System.Drawing.Image)(resources.GetObject("Pic_Ayuda.Image")));
+            this.Pic_Ayuda.Location = new System.Drawing.Point(404, 15);
+            this.Pic_Ayuda.Name = "Pic_Ayuda";
+            this.Pic_Ayuda.Size = new System.Drawing.Size(74, 65);
+            this.Pic_Ayuda.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.Pic_Ayuda.TabIndex = 27;
+            this.Pic_Ayuda.TabStop = false;
+            this.toolTip5.SetToolTip(this.Pic_Ayuda, "Ayuda");
+            this.Pic_Ayuda.Click += new System.EventHandler(this.Pic_Ayuda_Click);
             // 
-            // Btn_Salir
+            // Pic_Reporte
             // 
-            this.Btn_Salir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(210)))), ((int)(((byte)(197)))));
-            this.Btn_Salir.Location = new System.Drawing.Point(450, 21);
-            this.Btn_Salir.Name = "Btn_Salir";
-            this.Btn_Salir.Size = new System.Drawing.Size(79, 59);
-            this.Btn_Salir.TabIndex = 4;
-            this.Btn_Salir.Text = "Salir";
-            this.Btn_Salir.UseVisualStyleBackColor = false;
+            this.Pic_Reporte.Image = ((System.Drawing.Image)(resources.GetObject("Pic_Reporte.Image")));
+            this.Pic_Reporte.Location = new System.Drawing.Point(327, 15);
+            this.Pic_Reporte.Name = "Pic_Reporte";
+            this.Pic_Reporte.Size = new System.Drawing.Size(74, 65);
+            this.Pic_Reporte.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.Pic_Reporte.TabIndex = 28;
+            this.Pic_Reporte.TabStop = false;
+            this.toolTip4.SetToolTip(this.Pic_Reporte, "Reportes");
+            this.Pic_Reporte.Click += new System.EventHandler(this.Pic_Reporte_Click);
             // 
-            // Btn_Cancelar
+            // Pic_Salir
             // 
-            this.Btn_Cancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(210)))), ((int)(((byte)(197)))));
-            this.Btn_Cancelar.Location = new System.Drawing.Point(270, 21);
-            this.Btn_Cancelar.Name = "Btn_Cancelar";
-            this.Btn_Cancelar.Size = new System.Drawing.Size(89, 59);
-            this.Btn_Cancelar.TabIndex = 3;
-            this.Btn_Cancelar.Text = "Cancerlar";
-            this.Btn_Cancelar.UseVisualStyleBackColor = false;
+            this.Pic_Salir.Image = ((System.Drawing.Image)(resources.GetObject("Pic_Salir.Image")));
+            this.Pic_Salir.Location = new System.Drawing.Point(526, 15);
+            this.Pic_Salir.Name = "Pic_Salir";
+            this.Pic_Salir.Size = new System.Drawing.Size(74, 65);
+            this.Pic_Salir.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.Pic_Salir.TabIndex = 27;
+            this.Pic_Salir.TabStop = false;
+            this.toolTip6.SetToolTip(this.Pic_Salir, "Salir");
+            this.Pic_Salir.Click += new System.EventHandler(this.Pic_Salir_Click);
             // 
-            // Btn_Guardar
+            // Pic_Editar
             // 
-            this.Btn_Guardar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(210)))), ((int)(((byte)(197)))));
-            this.Btn_Guardar.Location = new System.Drawing.Point(185, 21);
-            this.Btn_Guardar.Name = "Btn_Guardar";
-            this.Btn_Guardar.Size = new System.Drawing.Size(79, 59);
-            this.Btn_Guardar.TabIndex = 2;
-            this.Btn_Guardar.Text = "Guardar";
-            this.Btn_Guardar.UseVisualStyleBackColor = false;
-            this.Btn_Guardar.Click += new System.EventHandler(this.Btn_Guardar_Click);
+            this.Pic_Editar.Image = ((System.Drawing.Image)(resources.GetObject("Pic_Editar.Image")));
+            this.Pic_Editar.Location = new System.Drawing.Point(112, 15);
+            this.Pic_Editar.Name = "Pic_Editar";
+            this.Pic_Editar.Size = new System.Drawing.Size(74, 65);
+            this.Pic_Editar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.Pic_Editar.TabIndex = 27;
+            this.Pic_Editar.TabStop = false;
+            this.toolTip2.SetToolTip(this.Pic_Editar, "Modificar");
+            this.Pic_Editar.Click += new System.EventHandler(this.Pic_Editar_Click);
             // 
-            // Btn_Editar
+            // Pic_Guardar
             // 
-            this.Btn_Editar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(210)))), ((int)(((byte)(197)))));
-            this.Btn_Editar.Location = new System.Drawing.Point(100, 21);
-            this.Btn_Editar.Name = "Btn_Editar";
-            this.Btn_Editar.Size = new System.Drawing.Size(79, 59);
-            this.Btn_Editar.TabIndex = 1;
-            this.Btn_Editar.Text = "Editar";
-            this.Btn_Editar.UseVisualStyleBackColor = false;
+            this.Pic_Guardar.Image = ((System.Drawing.Image)(resources.GetObject("Pic_Guardar.Image")));
+            this.Pic_Guardar.Location = new System.Drawing.Point(192, 15);
+            this.Pic_Guardar.Name = "Pic_Guardar";
+            this.Pic_Guardar.Size = new System.Drawing.Size(74, 65);
+            this.Pic_Guardar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.Pic_Guardar.TabIndex = 27;
+            this.Pic_Guardar.TabStop = false;
+            this.toolTip3.SetToolTip(this.Pic_Guardar, "Guardar");
+            this.Pic_Guardar.Click += new System.EventHandler(this.Pic_Guardar_Click);
             // 
-            // Btn_Ingresar
+            // Pic_Ingresar
             // 
-            this.Btn_Ingresar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(210)))), ((int)(((byte)(197)))));
-            this.Btn_Ingresar.Location = new System.Drawing.Point(19, 21);
-            this.Btn_Ingresar.Name = "Btn_Ingresar";
-            this.Btn_Ingresar.Size = new System.Drawing.Size(75, 59);
-            this.Btn_Ingresar.TabIndex = 0;
-            this.Btn_Ingresar.Text = "Ingresar";
-            this.Btn_Ingresar.UseVisualStyleBackColor = false;
-            // 
-            // Txt_PrecioTotalG
-            // 
-            this.Txt_PrecioTotalG.Location = new System.Drawing.Point(472, 633);
-            this.Txt_PrecioTotalG.Name = "Txt_PrecioTotalG";
-            this.Txt_PrecioTotalG.Size = new System.Drawing.Size(100, 22);
-            this.Txt_PrecioTotalG.TabIndex = 24;
-            // 
-            // Txt_CostoTG
-            // 
-            this.Txt_CostoTG.Location = new System.Drawing.Point(220, 633);
-            this.Txt_CostoTG.Name = "Txt_CostoTG";
-            this.Txt_CostoTG.Size = new System.Drawing.Size(100, 22);
-            this.Txt_CostoTG.TabIndex = 23;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(382, 633);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(84, 17);
-            this.label11.TabIndex = 22;
-            this.label11.Text = "Precio Total";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(134, 633);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(80, 17);
-            this.label10.TabIndex = 21;
-            this.label10.Text = "Costo Total";
+            this.Pic_Ingresar.Image = ((System.Drawing.Image)(resources.GetObject("Pic_Ingresar.Image")));
+            this.Pic_Ingresar.Location = new System.Drawing.Point(32, 15);
+            this.Pic_Ingresar.Name = "Pic_Ingresar";
+            this.Pic_Ingresar.Size = new System.Drawing.Size(74, 65);
+            this.Pic_Ingresar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.Pic_Ingresar.TabIndex = 27;
+            this.Pic_Ingresar.TabStop = false;
+            this.toolTip1.SetToolTip(this.Pic_Ingresar, "Agregar");
+            this.Pic_Ingresar.Click += new System.EventHandler(this.Pic_Ingresar_Click);
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.Btn_Actualizar);
+            this.groupBox2.Controls.Add(this.Txt_Actualizar);
+            this.groupBox2.Controls.Add(this.Pic_Actualizar);
             this.groupBox2.Controls.Add(this.Dgv_TrasladoDProductos);
-            this.groupBox2.Location = new System.Drawing.Point(25, 343);
+            this.groupBox2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Location = new System.Drawing.Point(22, 395);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(709, 275);
+            this.groupBox2.Size = new System.Drawing.Size(791, 288);
             this.groupBox2.TabIndex = 20;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Detalle De Movimientos";
             // 
-            // Btn_Actualizar
+            // Txt_Actualizar
             // 
-            this.Btn_Actualizar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(210)))), ((int)(((byte)(197)))));
-            this.Btn_Actualizar.Location = new System.Drawing.Point(612, 40);
-            this.Btn_Actualizar.Name = "Btn_Actualizar";
-            this.Btn_Actualizar.Size = new System.Drawing.Size(85, 69);
-            this.Btn_Actualizar.TabIndex = 1;
-            this.Btn_Actualizar.Text = "Actualizar";
-            this.Btn_Actualizar.UseVisualStyleBackColor = false;
+            this.Txt_Actualizar.AutoSize = true;
+            this.Txt_Actualizar.Location = new System.Drawing.Point(675, 98);
+            this.Txt_Actualizar.Name = "Txt_Actualizar";
+            this.Txt_Actualizar.Size = new System.Drawing.Size(98, 23);
+            this.Txt_Actualizar.TabIndex = 28;
+            this.Txt_Actualizar.Text = "Actualizar";
+            // 
+            // Pic_Actualizar
+            // 
+            this.Pic_Actualizar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.Pic_Actualizar.Image = ((System.Drawing.Image)(resources.GetObject("Pic_Actualizar.Image")));
+            this.Pic_Actualizar.Location = new System.Drawing.Point(690, 30);
+            this.Pic_Actualizar.Name = "Pic_Actualizar";
+            this.Pic_Actualizar.Size = new System.Drawing.Size(74, 65);
+            this.Pic_Actualizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.Pic_Actualizar.TabIndex = 27;
+            this.Pic_Actualizar.TabStop = false;
+            this.toolTip8.SetToolTip(this.Pic_Actualizar, "Actualizar");
+            this.Pic_Actualizar.Click += new System.EventHandler(this.Pic_Actualizar_Click);
             // 
             // Dgv_TrasladoDProductos
             // 
@@ -226,284 +236,347 @@ namespace Capa_Vista_MiguelCrisostomo
             this.Dgv_TrasladoDProductos.Name = "Dgv_TrasladoDProductos";
             this.Dgv_TrasladoDProductos.RowHeadersWidth = 51;
             this.Dgv_TrasladoDProductos.RowTemplate.Height = 24;
-            this.Dgv_TrasladoDProductos.Size = new System.Drawing.Size(587, 228);
+            this.Dgv_TrasladoDProductos.Size = new System.Drawing.Size(650, 239);
             this.Dgv_TrasladoDProductos.TabIndex = 0;
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.Txt_FchTraslado);
-            this.groupBox1.Controls.Add(this.Txt_FchEmision);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.Txt_Id);
-            this.groupBox1.Controls.Add(this.label12);
+            this.groupBox1.Controls.Add(this.Txt_PV);
+            this.groupBox1.Controls.Add(this.Txt_PesoTotalV);
+            this.groupBox1.Controls.Add(this.Dtp_Fecha_Traslado);
+            this.groupBox1.Controls.Add(this.Txt_FechaT);
+            this.groupBox1.Controls.Add(this.Txt_Veh);
+            this.groupBox1.Controls.Add(this.Txt_Id1);
+            this.groupBox1.Controls.Add(this.Txt_idGia);
             this.groupBox1.Controls.Add(this.Txt_Vehiculo);
-            this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.Cbo_Destino);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Location = new System.Drawing.Point(25, 136);
+            this.groupBox1.Controls.Add(this.Txt_Destino);
+            this.groupBox1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(22, 163);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(709, 71);
+            this.groupBox1.Size = new System.Drawing.Size(791, 100);
             this.groupBox1.TabIndex = 19;
             this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Transporte";
             // 
-            // label8
+            // Txt_PV
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(487, 48);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(95, 17);
-            this.label8.TabIndex = 19;
-            this.label8.Text = "Fch. Traslado";
+            this.Txt_PV.AutoSize = true;
+            this.Txt_PV.Location = new System.Drawing.Point(485, 29);
+            this.Txt_PV.Name = "Txt_PV";
+            this.Txt_PV.Size = new System.Drawing.Size(71, 23);
+            this.Txt_PV.TabIndex = 22;
+            this.Txt_PV.Text = "Peso V.";
             // 
-            // Txt_FchTraslado
+            // Txt_PesoTotalV
             // 
-            this.Txt_FchTraslado.Location = new System.Drawing.Point(586, 43);
-            this.Txt_FchTraslado.Name = "Txt_FchTraslado";
-            this.Txt_FchTraslado.Size = new System.Drawing.Size(100, 22);
-            this.Txt_FchTraslado.TabIndex = 18;
+            this.Txt_PesoTotalV.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_PesoTotalV.Location = new System.Drawing.Point(490, 55);
+            this.Txt_PesoTotalV.Name = "Txt_PesoTotalV";
+            this.Txt_PesoTotalV.Size = new System.Drawing.Size(54, 30);
+            this.Txt_PesoTotalV.TabIndex = 21;
             // 
-            // Txt_FchEmision
+            // Dtp_Fecha_Traslado
             // 
-            this.Txt_FchEmision.Location = new System.Drawing.Point(586, 21);
-            this.Txt_FchEmision.Name = "Txt_FchEmision";
-            this.Txt_FchEmision.Size = new System.Drawing.Size(100, 22);
-            this.Txt_FchEmision.TabIndex = 17;
+            this.Dtp_Fecha_Traslado.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Dtp_Fecha_Traslado.Location = new System.Drawing.Point(596, 55);
+            this.Dtp_Fecha_Traslado.Name = "Dtp_Fecha_Traslado";
+            this.Dtp_Fecha_Traslado.Size = new System.Drawing.Size(168, 30);
+            this.Dtp_Fecha_Traslado.TabIndex = 20;
             // 
-            // label5
+            // Txt_FechaT
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(301, 33);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(62, 17);
-            this.label5.TabIndex = 16;
-            this.label5.Text = "Vehiculo";
+            this.Txt_FechaT.AutoSize = true;
+            this.Txt_FechaT.Location = new System.Drawing.Point(618, 29);
+            this.Txt_FechaT.Name = "Txt_FechaT";
+            this.Txt_FechaT.Size = new System.Drawing.Size(123, 23);
+            this.Txt_FechaT.TabIndex = 19;
+            this.Txt_FechaT.Text = "Fch. Traslado";
             // 
-            // Txt_Id
+            // Txt_Veh
             // 
-            this.Txt_Id.Location = new System.Drawing.Point(40, 32);
-            this.Txt_Id.Name = "Txt_Id";
-            this.Txt_Id.ReadOnly = true;
-            this.Txt_Id.Size = new System.Drawing.Size(36, 22);
-            this.Txt_Id.TabIndex = 15;
+            this.Txt_Veh.AutoSize = true;
+            this.Txt_Veh.Location = new System.Drawing.Point(365, 29);
+            this.Txt_Veh.Name = "Txt_Veh";
+            this.Txt_Veh.Size = new System.Drawing.Size(81, 23);
+            this.Txt_Veh.TabIndex = 16;
+            this.Txt_Veh.Text = "Vehiculo";
             // 
-            // label12
+            // Txt_Id1
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(22, 33);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(21, 17);
-            this.label12.TabIndex = 14;
-            this.label12.Text = "ID";
+            this.Txt_Id1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_Id1.Location = new System.Drawing.Point(96, 55);
+            this.Txt_Id1.Name = "Txt_Id1";
+            this.Txt_Id1.ReadOnly = true;
+            this.Txt_Id1.Size = new System.Drawing.Size(36, 30);
+            this.Txt_Id1.TabIndex = 15;
+            // 
+            // Txt_idGia
+            // 
+            this.Txt_idGia.AutoSize = true;
+            this.Txt_idGia.Location = new System.Drawing.Point(54, 29);
+            this.Txt_idGia.Name = "Txt_idGia";
+            this.Txt_idGia.Size = new System.Drawing.Size(136, 23);
+            this.Txt_idGia.TabIndex = 14;
+            this.Txt_idGia.Text = "Id_GuiaDpcho.";
+            this.Txt_idGia.Click += new System.EventHandler(this.label12_Click);
             // 
             // Txt_Vehiculo
             // 
-            this.Txt_Vehiculo.Location = new System.Drawing.Point(369, 30);
+            this.Txt_Vehiculo.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_Vehiculo.Location = new System.Drawing.Point(359, 55);
             this.Txt_Vehiculo.Name = "Txt_Vehiculo";
-            this.Txt_Vehiculo.Size = new System.Drawing.Size(100, 22);
+            this.Txt_Vehiculo.Size = new System.Drawing.Size(100, 30);
             this.Txt_Vehiculo.TabIndex = 5;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(487, 21);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(88, 17);
-            this.label6.TabIndex = 4;
-            this.label6.Text = "Fch. Emision";
             // 
             // Cbo_Destino
             // 
+            this.Cbo_Destino.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Cbo_Destino.FormattingEnabled = true;
-            this.Cbo_Destino.Location = new System.Drawing.Point(163, 28);
+            this.Cbo_Destino.Location = new System.Drawing.Point(185, 54);
             this.Cbo_Destino.Name = "Cbo_Destino";
-            this.Cbo_Destino.Size = new System.Drawing.Size(121, 24);
+            this.Cbo_Destino.Size = new System.Drawing.Size(147, 31);
             this.Cbo_Destino.TabIndex = 1;
             // 
-            // label4
+            // Txt_Destino
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(101, 33);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(56, 17);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "Destino";
+            this.Txt_Destino.AutoSize = true;
+            this.Txt_Destino.Location = new System.Drawing.Point(224, 29);
+            this.Txt_Destino.Name = "Txt_Destino";
+            this.Txt_Destino.Size = new System.Drawing.Size(74, 23);
+            this.Txt_Destino.TabIndex = 0;
+            this.Txt_Destino.Text = "Destino";
             // 
-            // Productos
+            // groupBox4
             // 
-            this.Productos.Controls.Add(this.Lbl_CostoTProd);
-            this.Productos.Controls.Add(this.label13);
-            this.Productos.Controls.Add(this.Txt_Stock);
-            this.Productos.Controls.Add(this.Txt_PesoProd);
-            this.Productos.Controls.Add(this.Txt_NombreProd);
-            this.Productos.Controls.Add(this.Btn_Aceptar);
-            this.Productos.Controls.Add(this.label9);
-            this.Productos.Controls.Add(this.Txt_CostoTotal);
-            this.Productos.Controls.Add(this.label7);
-            this.Productos.Controls.Add(this.Txt_Cantidad);
-            this.Productos.Controls.Add(this.Txt_PrecioU);
-            this.Productos.Controls.Add(this.label3);
-            this.Productos.Controls.Add(this.label2);
-            this.Productos.Controls.Add(this.label1);
-            this.Productos.Controls.Add(this.Cbo_CodigoProd);
-            this.Productos.Location = new System.Drawing.Point(25, 213);
-            this.Productos.Name = "Productos";
-            this.Productos.Size = new System.Drawing.Size(709, 109);
-            this.Productos.TabIndex = 18;
-            this.Productos.TabStop = false;
-            this.Productos.Text = "Productos";
+            this.groupBox4.Controls.Add(this.Cbo_CodigoProd);
+            this.groupBox4.Controls.Add(this.Txt_Id2);
+            this.groupBox4.Controls.Add(this.Txt_NombreProd);
+            this.groupBox4.Controls.Add(this.Txt_PesoProd);
+            this.groupBox4.Controls.Add(this.Txt_IdProd2);
+            this.groupBox4.Controls.Add(this.Txt_Sck);
+            this.groupBox4.Controls.Add(this.Txt_PesoPto);
+            this.groupBox4.Controls.Add(this.Txt_Prod);
+            this.groupBox4.Controls.Add(this.Txt_Codigo);
+            this.groupBox4.Controls.Add(this.Txt_Stock);
+            this.groupBox4.Controls.Add(this.Lbl_CostoTProd);
+            this.groupBox4.Controls.Add(this.Txt_CostU);
+            this.groupBox4.Controls.Add(this.Txt_CostTtal);
+            this.groupBox4.Controls.Add(this.Txt_Cant);
+            this.groupBox4.Controls.Add(this.Txt_PrecioU);
+            this.groupBox4.Controls.Add(this.Txt_Cantidad);
+            this.groupBox4.Controls.Add(this.Pic_Aceptar);
+            this.groupBox4.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox4.Location = new System.Drawing.Point(22, 269);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(791, 120);
+            this.groupBox4.TabIndex = 27;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Productos";
+            // 
+            // Cbo_CodigoProd
+            // 
+            this.Cbo_CodigoProd.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Cbo_CodigoProd.FormattingEnabled = true;
+            this.Cbo_CodigoProd.Location = new System.Drawing.Point(87, 56);
+            this.Cbo_CodigoProd.Name = "Cbo_CodigoProd";
+            this.Cbo_CodigoProd.Size = new System.Drawing.Size(81, 31);
+            this.Cbo_CodigoProd.TabIndex = 36;
+            // 
+            // Txt_Id2
+            // 
+            this.Txt_Id2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_Id2.Location = new System.Drawing.Point(43, 57);
+            this.Txt_Id2.Name = "Txt_Id2";
+            this.Txt_Id2.Size = new System.Drawing.Size(38, 30);
+            this.Txt_Id2.TabIndex = 35;
+            // 
+            // Txt_NombreProd
+            // 
+            this.Txt_NombreProd.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_NombreProd.Location = new System.Drawing.Point(174, 57);
+            this.Txt_NombreProd.Name = "Txt_NombreProd";
+            this.Txt_NombreProd.Size = new System.Drawing.Size(100, 30);
+            this.Txt_NombreProd.TabIndex = 34;
+            // 
+            // Txt_PesoProd
+            // 
+            this.Txt_PesoProd.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_PesoProd.Location = new System.Drawing.Point(280, 57);
+            this.Txt_PesoProd.Name = "Txt_PesoProd";
+            this.Txt_PesoProd.Size = new System.Drawing.Size(130, 30);
+            this.Txt_PesoProd.TabIndex = 33;
+            // 
+            // Txt_IdProd2
+            // 
+            this.Txt_IdProd2.AutoSize = true;
+            this.Txt_IdProd2.Location = new System.Drawing.Point(50, 31);
+            this.Txt_IdProd2.Name = "Txt_IdProd2";
+            this.Txt_IdProd2.Size = new System.Drawing.Size(31, 23);
+            this.Txt_IdProd2.TabIndex = 32;
+            this.Txt_IdProd2.Text = "ID";
+            this.Txt_IdProd2.UseWaitCursor = true;
+            // 
+            // Txt_Sck
+            // 
+            this.Txt_Sck.AutoSize = true;
+            this.Txt_Sck.Location = new System.Drawing.Point(416, 29);
+            this.Txt_Sck.Name = "Txt_Sck";
+            this.Txt_Sck.Size = new System.Drawing.Size(58, 23);
+            this.Txt_Sck.TabIndex = 31;
+            this.Txt_Sck.Text = "Stock";
+            this.Txt_Sck.UseWaitCursor = true;
+            // 
+            // Txt_PesoPto
+            // 
+            this.Txt_PesoPto.AutoSize = true;
+            this.Txt_PesoPto.Location = new System.Drawing.Point(279, 31);
+            this.Txt_PesoPto.Name = "Txt_PesoPto";
+            this.Txt_PesoPto.Size = new System.Drawing.Size(131, 23);
+            this.Txt_PesoPto.TabIndex = 30;
+            this.Txt_PesoPto.Text = "Peso Producto";
+            this.Txt_PesoPto.UseWaitCursor = true;
+            // 
+            // Txt_Prod
+            // 
+            this.Txt_Prod.AutoSize = true;
+            this.Txt_Prod.Location = new System.Drawing.Point(181, 31);
+            this.Txt_Prod.Name = "Txt_Prod";
+            this.Txt_Prod.Size = new System.Drawing.Size(86, 23);
+            this.Txt_Prod.TabIndex = 29;
+            this.Txt_Prod.Text = "Producto";
+            this.Txt_Prod.UseWaitCursor = true;
+            // 
+            // Txt_Codigo
+            // 
+            this.Txt_Codigo.AutoSize = true;
+            this.Txt_Codigo.Location = new System.Drawing.Point(92, 31);
+            this.Txt_Codigo.Name = "Txt_Codigo";
+            this.Txt_Codigo.Size = new System.Drawing.Size(69, 23);
+            this.Txt_Codigo.TabIndex = 28;
+            this.Txt_Codigo.Text = "Codigo";
+            this.Txt_Codigo.UseWaitCursor = true;
+            this.Txt_Codigo.Click += new System.EventHandler(this.label21_Click);
+            // 
+            // Txt_Stock
+            // 
+            this.Txt_Stock.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_Stock.Location = new System.Drawing.Point(422, 57);
+            this.Txt_Stock.Name = "Txt_Stock";
+            this.Txt_Stock.Size = new System.Drawing.Size(47, 30);
+            this.Txt_Stock.TabIndex = 16;
             // 
             // Lbl_CostoTProd
             // 
             this.Lbl_CostoTProd.AutoSize = true;
-            this.Lbl_CostoTProd.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_CostoTProd.Location = new System.Drawing.Point(519, 69);
+            this.Lbl_CostoTProd.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_CostoTProd.Location = new System.Drawing.Point(597, 89);
             this.Lbl_CostoTProd.Name = "Lbl_CostoTProd";
-            this.Lbl_CostoTProd.Size = new System.Drawing.Size(40, 18);
-            this.Lbl_CostoTProd.TabIndex = 2;
+            this.Lbl_CostoTProd.Size = new System.Drawing.Size(45, 23);
+            this.Lbl_CostoTProd.TabIndex = 12;
             this.Lbl_CostoTProd.Text = "0.00";
+            this.Lbl_CostoTProd.UseWaitCursor = true;
             // 
-            // label13
+            // Txt_CostU
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(362, 43);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(43, 17);
-            this.label13.TabIndex = 18;
-            this.label13.Text = "Stock";
+            this.Txt_CostU.AutoSize = true;
+            this.Txt_CostU.Location = new System.Drawing.Point(517, 60);
+            this.Txt_CostU.Name = "Txt_CostU";
+            this.Txt_CostU.Size = new System.Drawing.Size(73, 23);
+            this.Txt_CostU.TabIndex = 15;
+            this.Txt_CostU.Text = "CostoU";
+            this.Txt_CostU.UseWaitCursor = true;
             // 
-            // Txt_Stock
+            // Txt_CostTtal
             // 
-            this.Txt_Stock.Location = new System.Drawing.Point(362, 63);
-            this.Txt_Stock.Name = "Txt_Stock";
-            this.Txt_Stock.Size = new System.Drawing.Size(47, 22);
-            this.Txt_Stock.TabIndex = 17;
+            this.Txt_CostTtal.AutoSize = true;
+            this.Txt_CostTtal.Location = new System.Drawing.Point(484, 89);
+            this.Txt_CostTtal.Name = "Txt_CostTtal";
+            this.Txt_CostTtal.Size = new System.Drawing.Size(107, 23);
+            this.Txt_CostTtal.TabIndex = 14;
+            this.Txt_CostTtal.Text = "Costo Total";
+            this.Txt_CostTtal.UseWaitCursor = true;
             // 
-            // Txt_PesoProd
+            // Txt_Cant
             // 
-            this.Txt_PesoProd.Location = new System.Drawing.Point(258, 63);
-            this.Txt_PesoProd.Name = "Txt_PesoProd";
-            this.Txt_PesoProd.Size = new System.Drawing.Size(98, 22);
-            this.Txt_PesoProd.TabIndex = 14;
-            // 
-            // Txt_NombreProd
-            // 
-            this.Txt_NombreProd.Location = new System.Drawing.Point(152, 63);
-            this.Txt_NombreProd.Name = "Txt_NombreProd";
-            this.Txt_NombreProd.Size = new System.Drawing.Size(100, 22);
-            this.Txt_NombreProd.TabIndex = 13;
-            // 
-            // Btn_Aceptar
-            // 
-            this.Btn_Aceptar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(210)))), ((int)(((byte)(197)))));
-            this.Btn_Aceptar.Location = new System.Drawing.Point(612, 26);
-            this.Btn_Aceptar.Name = "Btn_Aceptar";
-            this.Btn_Aceptar.Size = new System.Drawing.Size(85, 58);
-            this.Btn_Aceptar.TabIndex = 12;
-            this.Btn_Aceptar.Text = "Aceptar";
-            this.Btn_Aceptar.UseVisualStyleBackColor = false;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(458, 46);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(58, 17);
-            this.label9.TabIndex = 11;
-            this.label9.Text = "PrecioU";
-            // 
-            // Txt_CostoTotal
-            // 
-            this.Txt_CostoTotal.AutoSize = true;
-            this.Txt_CostoTotal.Location = new System.Drawing.Point(438, 67);
-            this.Txt_CostoTotal.Name = "Txt_CostoTotal";
-            this.Txt_CostoTotal.Size = new System.Drawing.Size(80, 17);
-            this.Txt_CostoTotal.TabIndex = 10;
-            this.Txt_CostoTotal.Text = "Costo Total";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(452, 26);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(64, 17);
-            this.label7.TabIndex = 9;
-            this.label7.Text = "Cantidad";
-            // 
-            // Txt_Cantidad
-            // 
-            this.Txt_Cantidad.Location = new System.Drawing.Point(522, 21);
-            this.Txt_Cantidad.Name = "Txt_Cantidad";
-            this.Txt_Cantidad.Size = new System.Drawing.Size(65, 22);
-            this.Txt_Cantidad.TabIndex = 8;
+            this.Txt_Cant.AutoSize = true;
+            this.Txt_Cant.Location = new System.Drawing.Point(504, 29);
+            this.Txt_Cant.Name = "Txt_Cant";
+            this.Txt_Cant.Size = new System.Drawing.Size(86, 23);
+            this.Txt_Cant.TabIndex = 13;
+            this.Txt_Cant.Text = "Cantidad";
+            this.Txt_Cant.UseWaitCursor = true;
             // 
             // Txt_PrecioU
             // 
-            this.Txt_PrecioU.Location = new System.Drawing.Point(522, 43);
+            this.Txt_PrecioU.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_PrecioU.Location = new System.Drawing.Point(596, 56);
             this.Txt_PrecioU.Name = "Txt_PrecioU";
-            this.Txt_PrecioU.Size = new System.Drawing.Size(65, 22);
-            this.Txt_PrecioU.TabIndex = 6;
+            this.Txt_PrecioU.Size = new System.Drawing.Size(65, 30);
+            this.Txt_PrecioU.TabIndex = 2;
             // 
-            // label3
+            // Txt_Cantidad
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(255, 43);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(101, 17);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Peso Producto";
+            this.Txt_Cantidad.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_Cantidad.Location = new System.Drawing.Point(596, 22);
+            this.Txt_Cantidad.Name = "Txt_Cantidad";
+            this.Txt_Cantidad.Size = new System.Drawing.Size(65, 30);
+            this.Txt_Cantidad.TabIndex = 1;
             // 
-            // label2
+            // Pic_Aceptar
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(174, 43);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(65, 17);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Producto";
+            this.Pic_Aceptar.Image = ((System.Drawing.Image)(resources.GetObject("Pic_Aceptar.Image")));
+            this.Pic_Aceptar.Location = new System.Drawing.Point(688, 31);
+            this.Pic_Aceptar.Name = "Pic_Aceptar";
+            this.Pic_Aceptar.Size = new System.Drawing.Size(76, 72);
+            this.Pic_Aceptar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.Pic_Aceptar.TabIndex = 0;
+            this.Pic_Aceptar.TabStop = false;
+            this.toolTip7.SetToolTip(this.Pic_Aceptar, "Aceptar Traslado");
+            this.Pic_Aceptar.Click += new System.EventHandler(this.Pic_Aceptar_Click);
             // 
-            // label1
+            // Txt_Datos
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(77, 43);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(52, 17);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Codigo";
-            // 
-            // Cbo_CodigoProd
-            // 
-            this.Cbo_CodigoProd.FormattingEnabled = true;
-            this.Cbo_CodigoProd.Location = new System.Drawing.Point(65, 63);
-            this.Cbo_CodigoProd.Name = "Cbo_CodigoProd";
-            this.Cbo_CodigoProd.Size = new System.Drawing.Size(81, 24);
-            this.Cbo_CodigoProd.TabIndex = 0;
+            this.Txt_Datos.AutoSize = true;
+            this.Txt_Datos.Font = new System.Drawing.Font("Haettenschweiler", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_Datos.Location = new System.Drawing.Point(279, 10);
+            this.Txt_Datos.Name = "Txt_Datos";
+            this.Txt_Datos.Size = new System.Drawing.Size(315, 44);
+            this.Txt_Datos.TabIndex = 28;
+            this.Txt_Datos.Text = "Traslado De Productos";
             // 
             // TrasladoDeProductos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(247)))), ((int)(((byte)(245)))));
-            this.ClientSize = new System.Drawing.Size(757, 666);
-            this.Controls.Add(this.pictureBox1);
+            this.ClientSize = new System.Drawing.Size(832, 695);
+            this.Controls.Add(this.Txt_Datos);
+            this.Controls.Add(this.groupBox4);
+            this.Controls.Add(this.Pic_Img);
             this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.Txt_PrecioTotalG);
-            this.Controls.Add(this.Txt_CostoTG);
-            this.Controls.Add(this.label11);
-            this.Controls.Add(this.label10);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.Productos);
             this.Name = "TrasladoDeProductos";
             this.Text = "TrasladoDeProductos";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.Load += new System.EventHandler(this.TrasladoDeProductos_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.Pic_Img)).EndInit();
             this.groupBox3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.Pic_Ayuda)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pic_Reporte)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pic_Salir)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pic_Editar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pic_Guardar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pic_Ingresar)).EndInit();
             this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Pic_Actualizar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_TrasladoDProductos)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.Productos.ResumeLayout(false);
-            this.Productos.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Pic_Aceptar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -511,47 +584,55 @@ namespace Capa_Vista_MiguelCrisostomo
 
         #endregion
 
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox Pic_Img;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Button Btn_Quitar;
-        private System.Windows.Forms.Button Btn_Salir;
-        private System.Windows.Forms.Button Btn_Cancelar;
-        private System.Windows.Forms.Button Btn_Guardar;
-        private System.Windows.Forms.Button Btn_Editar;
-        private System.Windows.Forms.Button Btn_Ingresar;
-        private System.Windows.Forms.TextBox Txt_PrecioTotalG;
-        private System.Windows.Forms.TextBox Txt_CostoTG;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button Btn_Actualizar;
         private System.Windows.Forms.DataGridView Dgv_TrasladoDProductos;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox Txt_Id;
-        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox Txt_Id1;
+        private System.Windows.Forms.Label Txt_idGia;
         private System.Windows.Forms.TextBox Txt_Vehiculo;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox Cbo_Destino;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.GroupBox Productos;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label Txt_CostoTotal;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox Txt_Cantidad;
-        private System.Windows.Forms.TextBox Txt_PrecioU;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label Txt_Destino;
+        private System.Windows.Forms.Label Txt_Veh;
+        private System.Windows.Forms.Label Txt_FechaT;
+        private System.Windows.Forms.DateTimePicker Dtp_Fecha_Traslado;
+        private System.Windows.Forms.Label Txt_PV;
+        private System.Windows.Forms.TextBox Txt_PesoTotalV;
+        private System.Windows.Forms.PictureBox Pic_Ingresar;
+        private System.Windows.Forms.PictureBox Pic_Guardar;
+        private System.Windows.Forms.PictureBox Pic_Editar;
+        private System.Windows.Forms.PictureBox Pic_Salir;
+        private System.Windows.Forms.Label Txt_Actualizar;
+        private System.Windows.Forms.PictureBox Pic_Actualizar;
+        private System.Windows.Forms.PictureBox Pic_Ayuda;
+        private System.Windows.Forms.PictureBox Pic_Reporte;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.PictureBox Pic_Aceptar;
         private System.Windows.Forms.ComboBox Cbo_CodigoProd;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox Txt_FchTraslado;
-        private System.Windows.Forms.TextBox Txt_FchEmision;
+        private System.Windows.Forms.TextBox Txt_Id2;
         private System.Windows.Forms.TextBox Txt_NombreProd;
         private System.Windows.Forms.TextBox Txt_PesoProd;
+        private System.Windows.Forms.Label Txt_IdProd2;
+        private System.Windows.Forms.Label Txt_Sck;
+        private System.Windows.Forms.Label Txt_PesoPto;
+        private System.Windows.Forms.Label Txt_Prod;
+        private System.Windows.Forms.Label Txt_Codigo;
         private System.Windows.Forms.TextBox Txt_Stock;
-        private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label Lbl_CostoTProd;
-        private System.Windows.Forms.Button Btn_Aceptar;
+        private System.Windows.Forms.Label Txt_CostU;
+        private System.Windows.Forms.Label Txt_CostTtal;
+        private System.Windows.Forms.Label Txt_Cant;
+        private System.Windows.Forms.TextBox Txt_PrecioU;
+        private System.Windows.Forms.TextBox Txt_Cantidad;
+        private System.Windows.Forms.ToolTip toolTip5;
+        private System.Windows.Forms.ToolTip toolTip4;
+        private System.Windows.Forms.ToolTip toolTip6;
+        private System.Windows.Forms.ToolTip toolTip2;
+        private System.Windows.Forms.ToolTip toolTip3;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.ToolTip toolTip8;
+        private System.Windows.Forms.ToolTip toolTip7;
+        private System.Windows.Forms.Label Txt_Datos;
     }
 }
