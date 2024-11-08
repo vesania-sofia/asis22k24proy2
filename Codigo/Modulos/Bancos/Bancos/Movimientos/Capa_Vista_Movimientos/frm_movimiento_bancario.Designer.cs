@@ -39,12 +39,12 @@ namespace Capa_Vista_Movimientos
             this.txtMonto = new System.Windows.Forms.TextBox();
             this.txtDescripcion = new System.Windows.Forms.TextBox();
             this.txtMetodoPago = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.Txt_fecha = new System.Windows.Forms.Label();
+            this.Txt_tipo = new System.Windows.Forms.Label();
+            this.Txt_monto = new System.Windows.Forms.Label();
+            this.Txt_desc = new System.Windows.Forms.Label();
+            this.Txt_metodo = new System.Windows.Forms.Label();
+            this.Txt_estado = new System.Windows.Forms.Label();
             this.dtpFecha = new System.Windows.Forms.DateTimePicker();
             this.cboEstado = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Mov)).BeginInit();
@@ -135,65 +135,65 @@ namespace Capa_Vista_Movimientos
             this.txtMetodoPago.Size = new System.Drawing.Size(100, 20);
             this.txtMetodoPago.TabIndex = 10;
             // 
-            // label1
+            // Txt_fecha
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(35, 137);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(39, 15);
-            this.label1.TabIndex = 12;
-            this.label1.Text = "Fecha";
+            this.Txt_fecha.AutoSize = true;
+            this.Txt_fecha.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_fecha.Location = new System.Drawing.Point(35, 137);
+            this.Txt_fecha.Name = "Txt_fecha";
+            this.Txt_fecha.Size = new System.Drawing.Size(39, 15);
+            this.Txt_fecha.TabIndex = 12;
+            this.Txt_fecha.Text = "Fecha";
             // 
-            // label2
+            // Txt_tipo
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(204, 91);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(32, 15);
-            this.label2.TabIndex = 13;
-            this.label2.Text = "Tipo";
+            this.Txt_tipo.AutoSize = true;
+            this.Txt_tipo.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_tipo.Location = new System.Drawing.Point(204, 91);
+            this.Txt_tipo.Name = "Txt_tipo";
+            this.Txt_tipo.Size = new System.Drawing.Size(32, 15);
+            this.Txt_tipo.TabIndex = 13;
+            this.Txt_tipo.Text = "Tipo";
             // 
-            // label3
+            // Txt_monto
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(204, 139);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(44, 15);
-            this.label3.TabIndex = 14;
-            this.label3.Text = "Monto";
+            this.Txt_monto.AutoSize = true;
+            this.Txt_monto.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_monto.Location = new System.Drawing.Point(204, 139);
+            this.Txt_monto.Name = "Txt_monto";
+            this.Txt_monto.Size = new System.Drawing.Size(44, 15);
+            this.Txt_monto.TabIndex = 14;
+            this.Txt_monto.Text = "Monto";
             // 
-            // label4
+            // Txt_desc
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(375, 91);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(71, 15);
-            this.label4.TabIndex = 15;
-            this.label4.Text = "Descripcion";
+            this.Txt_desc.AutoSize = true;
+            this.Txt_desc.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_desc.Location = new System.Drawing.Point(375, 91);
+            this.Txt_desc.Name = "Txt_desc";
+            this.Txt_desc.Size = new System.Drawing.Size(71, 15);
+            this.Txt_desc.TabIndex = 15;
+            this.Txt_desc.Text = "Descripcion";
             // 
-            // label5
+            // Txt_metodo
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(375, 139);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(96, 15);
-            this.label5.TabIndex = 16;
-            this.label5.Text = "Método de pago";
+            this.Txt_metodo.AutoSize = true;
+            this.Txt_metodo.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_metodo.Location = new System.Drawing.Point(375, 139);
+            this.Txt_metodo.Name = "Txt_metodo";
+            this.Txt_metodo.Size = new System.Drawing.Size(96, 15);
+            this.Txt_metodo.TabIndex = 16;
+            this.Txt_metodo.Text = "Método de pago";
             // 
-            // label6
+            // Txt_estado
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(521, 114);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(44, 15);
-            this.label6.TabIndex = 17;
-            this.label6.Text = "Estado";
+            this.Txt_estado.AutoSize = true;
+            this.Txt_estado.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_estado.Location = new System.Drawing.Point(521, 114);
+            this.Txt_estado.Name = "Txt_estado";
+            this.Txt_estado.Size = new System.Drawing.Size(44, 15);
+            this.Txt_estado.TabIndex = 17;
+            this.Txt_estado.Text = "Estado";
             // 
             // dtpFecha
             // 
@@ -218,12 +218,12 @@ namespace Capa_Vista_Movimientos
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.cboEstado);
             this.Controls.Add(this.dtpFecha);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.Txt_estado);
+            this.Controls.Add(this.Txt_metodo);
+            this.Controls.Add(this.Txt_desc);
+            this.Controls.Add(this.Txt_monto);
+            this.Controls.Add(this.Txt_tipo);
+            this.Controls.Add(this.Txt_fecha);
             this.Controls.Add(this.txtMetodoPago);
             this.Controls.Add(this.txtDescripcion);
             this.Controls.Add(this.txtMonto);
@@ -254,12 +254,12 @@ namespace Capa_Vista_Movimientos
         private System.Windows.Forms.TextBox txtMonto;
         private System.Windows.Forms.TextBox txtDescripcion;
         private System.Windows.Forms.TextBox txtMetodoPago;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label Txt_fecha;
+        private System.Windows.Forms.Label Txt_tipo;
+        private System.Windows.Forms.Label Txt_monto;
+        private System.Windows.Forms.Label Txt_desc;
+        private System.Windows.Forms.Label Txt_metodo;
+        private System.Windows.Forms.Label Txt_estado;
         private System.Windows.Forms.DateTimePicker dtpFecha;
         private System.Windows.Forms.ComboBox cboEstado;
     }
