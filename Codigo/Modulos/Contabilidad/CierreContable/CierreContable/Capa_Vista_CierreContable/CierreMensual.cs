@@ -51,15 +51,58 @@ namespace Capa_Vista_CierreContable
 
         public void LlenarCboAnio()
         {
-            // Limpiar el ComboBox
+            // Limpiar el ComboBox de año
             cbo_año.Items.Clear();
 
-            // Agregar la variable global como el único valor del ComboBox
-            cbo_año.Items.Add(anioSeleccionado.ToString());
+            // Rango de años a verificar (2024 a 2034)
+            int anioInicial = 2024;
+            int anioFinal = 2034;
 
-            // Seleccionar el año guardado como predeterminado
-            cbo_año.SelectedIndex = 0;
+            // Variable para saber si se encontró un año con meses incompletos
+            bool anioEncontrado = false;
+
+            // Iterar sobre los años en el rango
+            for (int anio = anioInicial; anio <= anioFinal; anio++)
+            {
+                // Usar un switch para verificar si el año tiene todos los meses con datos
+                int mesesConDatos = 0;
+
+                for (int mes = 1; mes <= 12; mes++)
+                {
+                    // Verificar si el mes tiene datos en tbl_historico_cuentas
+                    bool tieneDatos = cn.VerificarMesConDatos(anio, mes);
+                    if (tieneDatos)
+                    {
+                        mesesConDatos++;
+                    }
+                }
+
+                switch (mesesConDatos)
+                {
+                    case 12:
+                        // Si todos los meses (12) tienen datos, continuar al siguiente año
+                        continue;
+
+                    default:
+                        // Si el año no tiene todos los meses con datos, agregarlo al ComboBox
+                        cbo_año.Items.Add(anio.ToString());
+                        cbo_año.SelectedIndex = 0;  // Seleccionar el primer año sin datos completos
+                        anioEncontrado = true;
+                        break;
+                }
+
+                // Salir del bucle si se encontró un año incompleto
+                if (anioEncontrado)
+                    break;
+            }
+
+            // Si no se encontró ningún año incompleto dentro del rango, mostrar mensaje o manejar el caso
+            if (!anioEncontrado)
+            {
+                MessageBox.Show("Todos los años entre 2024 y 2034 están completos.");
+            }
         }
+
 
 
 
