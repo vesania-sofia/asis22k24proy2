@@ -11,6 +11,8 @@ using Capa_Vista_Cierre_Produccion;
 using Capa_Vista_Polizas_Prod;
 using Capa_Vista_Receta;
 using Capa_Vista_RRHH;
+using Capa_Vista_Sistema_Produccion;
+using Capa_Vista_Ordenes;
 
 namespace Capa_Vista_Produccion
 {
@@ -26,6 +28,10 @@ namespace Capa_Vista_Produccion
         // Variables para almacenar la referencia a los formularios de cierre y pólizas
         private Frm_Cierre cierreForm;
         private Frm_Polizas_Prod polizasForm;
+        private Frm_Enlace_RRHH rrhhForm;
+        private Frm_Recetas recetasForm;
+        private Frm_Ordenes_De_Produccion opForm;
+        private Frm_Sistema_Produccion spForm;
 
         public MDI_Produccion(string idUsuario)
         {
@@ -115,9 +121,26 @@ namespace Capa_Vista_Produccion
         // Botón de órdenes de producción
         private void btnOrdenesProduccion_Click(object sender, EventArgs e)
         {
-            /*
-              * Acá va la lógica para abrir el formulario de Órdenes de Producción
-            */
+            // Verifica si el formulario de pólizas ya está abierto
+            if (opForm == null || opForm.IsDisposed)
+            {
+                pb_Fondo.Visible = false;
+
+                // Crea el formulario de pólizas y configura sus propiedades
+                opForm = new Frm_Ordenes_De_Produccion();
+                opForm.MdiParent = this;
+                opForm.StartPosition = FormStartPosition.CenterScreen;
+
+                // Maneja el evento FormClosing para volver a mostrar pb_Fondo al cerrar el formulario
+                opForm.FormClosing += (s, args) => { pb_Fondo.Visible = true; };
+
+                // Muestra el formulario de pólizas
+                opForm.Show();
+            }
+            else
+            {
+                opForm.BringToFront(); // Si el formulario ya está abierto, lo trae al frente
+            }
         }
 
         // Botón de maquinaria
@@ -131,8 +154,27 @@ namespace Capa_Vista_Produccion
         // Botón de empleados (enlace a RRHH)
         private void btnEmpleados_Click(object sender, EventArgs e)
         {
-            Frm_Enlace_RRHH rrhh = new Frm_Enlace_RRHH();
-            rrhh.Show();
+            
+               // Verifica si el formulario de cierre ya está abierto
+            if (rrhhForm == null || rrhhForm.IsDisposed)
+            {
+                pb_Fondo.Visible = false;
+
+                // Crea el formulario de cierre y configura sus propiedades
+                rrhhForm = new Frm_Enlace_RRHH();
+                rrhhForm.MdiParent = this;
+                rrhhForm.StartPosition = FormStartPosition.CenterScreen;
+
+                // Maneja el evento FormClosing para volver a mostrar pb_Fondo al cerrar el formulario
+                rrhhForm.FormClosing += (s, args) => { pb_Fondo.Visible = true; };
+
+                // Muestra el formulario de cierre
+                rrhhForm.Show();
+            }
+            else
+            {
+                rrhhForm.BringToFront(); // Si el formulario ya está abierto, lo trae al frente
+            }
         }
 
         // Botón de cierre
@@ -196,9 +238,26 @@ namespace Capa_Vista_Produccion
         // Botón de sistema de producción
         private void btnProduccion_Click(object sender, EventArgs e)
         {
-            /*
-              * Acá va la lógica para abrir el formulario de Producción
-            */
+            // Verifica si el formulario de pólizas ya está abierto
+            if (spForm == null || spForm.IsDisposed)
+            {
+                pb_Fondo.Visible = false;
+
+                // Crea el formulario de pólizas y configura sus propiedades
+                spForm = new Frm_Sistema_Produccion();
+                spForm.MdiParent = this;
+                spForm.StartPosition = FormStartPosition.CenterScreen;
+
+                // Maneja el evento FormClosing para volver a mostrar pb_Fondo al cerrar el formulario
+                spForm.FormClosing += (s, args) => { pb_Fondo.Visible = true; };
+
+                // Muestra el formulario de pólizas
+                spForm.Show();
+            }
+            else
+            {
+                spForm.BringToFront(); // Si el formulario ya está abierto, lo trae al frente
+            }
         }
 
         // Botón de conversiones
@@ -261,8 +320,27 @@ namespace Capa_Vista_Produccion
 
         private void Btn_Recetas_Click_1(object sender, EventArgs e)
         {
-            Frm_Recetas receta = new Frm_Recetas();
-            receta.Show();
+            
+            // Verifica si el formulario de pólizas ya está abierto
+            if (recetasForm == null || recetasForm.IsDisposed)
+            {
+                pb_Fondo.Visible = false;
+
+                // Crea el formulario de pólizas y configura sus propiedades
+                recetasForm = new Frm_Recetas();
+                recetasForm.MdiParent = this;
+                recetasForm.StartPosition = FormStartPosition.CenterScreen;
+
+                // Maneja el evento FormClosing para volver a mostrar pb_Fondo al cerrar el formulario
+                recetasForm.FormClosing += (s, args) => { pb_Fondo.Visible = true; };
+
+                // Muestra el formulario de pólizas
+                recetasForm.Show();
+            }
+            else
+            {
+                recetasForm.BringToFront(); // Si el formulario ya está abierto, lo trae al frente
+            }
         }
 
         // Restaurar el tamaño original de la ventana
