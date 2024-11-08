@@ -251,6 +251,8 @@ DROP COLUMN caja_mora_monto,
 DROP COLUMN caja_transaccion_monto;
 
 -- TBL_Deuda_Proveedores
+ALTER TABLE Tbl_Deudas_Proveedores MODIFY COLUMN deuda_fecha_inicio VARCHAR(150) NOT NULL;
+ALTER TABLE Tbl_Deudas_Proveedores MODIFY COLUMN deuda_fecha_vencimiento VARCHAR(150) NOT NULL;
 ALTER TABLE Tbl_Deudas_Proveedores
 ADD COLUMN transaccion_tipo VARCHAR(150) NOT NULL;
 
@@ -595,5 +597,11 @@ FOREIGN KEY (fk_id_proceso) REFERENCES tbl_proceso_produccion_encabezado(pk_id_p
 
 DROP TABLE Tbl_paises;
 Drop table Tbl_Formadepago;
+
+-- PRODUCCION 08/11/024
+ALTER TABLE tbl_recetas
+ADD COLUMN `dias` INT(11) NULL,
+ADD COLUMN `horas` DECIMAL(10,2) NULL;
+
 
 
