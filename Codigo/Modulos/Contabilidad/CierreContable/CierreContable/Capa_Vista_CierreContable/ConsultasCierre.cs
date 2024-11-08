@@ -250,8 +250,17 @@ namespace Capa_Vista_CierreContable
 
         private void btn_Reporte_Click(object sender, EventArgs e)
         {
+            LogicaSeg.funinsertarabitacora(idUsuario, $"se mostró reporte de los cierres ya existentes", "Cierre Contable", "8000");
+
             ReporteCierre frm = new ReporteCierre();
             frm.Show();
+        }
+
+        private void Btn_salir_Click(object sender, EventArgs e)
+        {
+            LogicaSeg.funinsertarabitacora(idUsuario, $"Se cerro Formulario CierreContable", "Cierre Contable", "8000");
+
+            this.Hide();
         }
     }
 }

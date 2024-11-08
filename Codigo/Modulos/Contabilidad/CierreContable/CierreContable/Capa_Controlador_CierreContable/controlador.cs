@@ -319,7 +319,19 @@ namespace Capa_Controlador_CierreContable
             }
         }
 
+        public bool VerificarMesConDatos(int anio, int mes)
+        {
+            using (OdbcConnection con = sn.ObtenerConexion())
+            {
+                string query = "SELECT COUNT(*) FROM tbl_historico_cuentas WHERE anio = ? AND mes = ?";
+                OdbcCommand cmd = new OdbcCommand(query, con);
+                cmd.Parameters.AddWithValue("?", anio);
+                cmd.Parameters.AddWithValue("?", mes);
 
+                int count = Convert.ToInt32(cmd.ExecuteScalar());
+                return count > 0;  // Retorna true si hay datos, false si no
+            }
+        }
 
 
 

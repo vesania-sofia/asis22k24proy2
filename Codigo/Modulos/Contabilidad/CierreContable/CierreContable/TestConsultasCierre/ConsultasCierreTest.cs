@@ -80,7 +80,7 @@ namespace TestConsultasCierre
             // Arrange
             var form = new ConsultasCierre();
             int periodo = 1;
-            string anio = "2023";
+            string anio = "2024";
             string cuenta = "NoExistente";
 
             // Usar DataTables simuladas
