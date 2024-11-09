@@ -1,4 +1,4 @@
-﻿using Capa_Vista_Seguridad;
+using Capa_Vista_Seguridad;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,7 +12,7 @@ using System.Windows.Forms;
 using Capa_Vista_Nominas;
 
 using Capa_Vista_Banco;
-//using Capa_Vista_Contabilidad;
+using Capa_Vista_Contabilidad;
 //using Capa_Vista_Produccion;
 //using Capa_Vista_Banco;
 //using Capa_Vista_CompraVenta;
@@ -96,8 +96,8 @@ namespace Interfac_V3
 
         private void Btn_Contabilidad_Click(object sender, EventArgs e)
         {
-            /*Contabilidad_MDI conta = new Contabilidad_MDI(UsuarioSesion.GetIdUsuario());
-            conta.Show();*/
+         Contabilidad_MDI conta = new Contabilidad_MDI(UsuarioSesion.GetIdUsuario());
+          conta.Show();
         }
 
         private void Btn_Compras_Click(object sender, EventArgs e)
@@ -112,7 +112,6 @@ namespace Interfac_V3
             // Redirige a Modulo Bancos
             frm_principal_bancos banco = new frm_principal_bancos(UsuarioSesion.GetIdUsuario());
             banco.Show();
-
         }
 
         private void Btn_Produccion_Click(object sender, EventArgs e)

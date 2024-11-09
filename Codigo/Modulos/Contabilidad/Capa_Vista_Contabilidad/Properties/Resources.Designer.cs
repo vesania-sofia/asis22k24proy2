@@ -63,6 +63,16 @@ namespace Capa_Vista_Contabilidad.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ayudamdi {
+            get {
+                object obj = ResourceManager.GetObject("ayudamdi", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Mant {
             get {
                 object obj = ResourceManager.GetObject("Mant", resourceCulture);
@@ -106,6 +116,16 @@ namespace Capa_Vista_Contabilidad.Properties {
         internal static System.Drawing.Bitmap ProcCOnta {
             get {
                 object obj = ResourceManager.GetObject("ProcCOnta", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap SALIR_V4 {
+            get {
+                object obj = ResourceManager.GetObject("SALIR_V4", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
