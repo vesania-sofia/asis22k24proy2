@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Capa_Vista_Movimientos;
+using Capa_Vista_Cambio;
 
 namespace Capa_Vista_Banco   
 {
@@ -190,6 +191,13 @@ namespace Capa_Vista_Banco
         }
 
         private void button1_Click_1(object sender, EventArgs e)
+        {
+            AbrirFormulario<Capa_Vista_Cambio.frm_tipoCambio>();
+            btnMenuCatalogosOpcion2.BackColor = Color.FromArgb(12, 61, 92);
+            ocultaSubMenu();
+        }
+
+        private void panelBarraTitulo_Paint(object sender, PaintEventArgs e)
         {
 
         }
