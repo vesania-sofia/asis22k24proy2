@@ -2,6 +2,9 @@
 using System.Data;
 using System.Data.Odbc;
 
+
+
+
 namespace Capa_Modelo_Movimientos
 {
     public class Modelo
@@ -81,6 +84,49 @@ namespace Capa_Modelo_Movimientos
                 }
             }
         }
+
+        public string modIndice(string idAyuda)
+        {
+            string indice = "";
+            string query = "SELECT indice FROM ayuda WHERE id_ayuda = ?"; // Parámetro seguro
+
+            using (OdbcCommand command = new OdbcCommand(query, this.conn.connection()))
+            {
+                command.Parameters.AddWithValue("Id_ayuda", idAyuda);
+                using (OdbcDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        indice = reader.GetString(0); // Asignamos el valor de la columna Indice
+                    }
+                }
+            }
+
+            return indice;
+        }
+
+        public string modRuta(string idAyuda)
+        {
+            string ruta = "";
+            string query = "SELECT Ruta FROM ayuda WHERE Id_ayuda = ?"; // Parámetro seguro
+
+            using (OdbcCommand command = new OdbcCommand(query, this.conn.connection()))
+            {
+                command.Parameters.AddWithValue("id_ayuda", idAyuda);
+                using (OdbcDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        ruta = reader.GetString(0); // Asignamos el valor de la columna Ruta
+                    }
+                }
+            }
+
+            return ruta;
+        }
+
+
+
 
     }
 }

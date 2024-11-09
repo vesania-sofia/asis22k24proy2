@@ -55,5 +55,19 @@ namespace Capa_Controlador_Movimientos
         }
 
 
+        public string MIndice(string Indice1)
+        {
+            string indice = Capa_Modelo_Movimientos.modIndice(Indice1);
+
+            return indice;
+        }
+
+        public string MRuta(string Ruta1)
+        {
+            string ruta = Capa_Modelo_Movimientos.modRuta(Ruta1);
+
+            return ruta;
+        }
+
     }
 }
