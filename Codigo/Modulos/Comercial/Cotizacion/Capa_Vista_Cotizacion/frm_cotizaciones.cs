@@ -28,6 +28,10 @@ namespace Capa_Vista_Cotizacion
             Txt_ClienteB.Enabled = true;
             Cbo_cliente.Enabled = true;
             Cbo_vendedor.Enabled = true;
+            Txt_total.Enabled = false;
+            Txt_ClienteB.Enabled = false;
+            Txt_precio.Enabled = false;
+            Cbo_producto.Enabled = false;
 
 
 
@@ -365,8 +369,8 @@ namespace Capa_Vista_Cotizacion
                 }
 
             }
+            Cbo_producto.Enabled = true;
 
-           
         }
 
 
@@ -376,26 +380,17 @@ namespace Capa_Vista_Cotizacion
         }
 
 
+
         private void Cbo_producto_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-            // Verifica que el cliente esté seleccionado
-            if (Cbo_cliente.SelectedItem == null)
-            {
-                MessageBox.Show("Por favor, selecciona un cliente antes de elegir un producto.", "Validación", MessageBoxButtons.OK);
-                limpiar();
-                return; // Sale de la función si no hay un cliente seleccionado
-
-            }
-
             if (Cbo_producto.SelectedItem != null)
             {
 
                 var selectedItem = (ComboBoxItem)Cbo_producto.SelectedItem;
                 valorSeleccionadoProducto = selectedItem.Value;
-               
-                string idcliente = valorSeleccionadoclientes;  // Asegúrate de que `valorSeleccionadoclientes` contenga el idCliente
-                string idProducto = valorSeleccionadoProducto; // Asegúrate de que `valorSeleccionadoProducto` contenga el idProducto
+
+                string idcliente = valorSeleccionadoclientes;  // Asegúrate de que valorSeleccionadoclientes contenga el idCliente
+                string idProducto = valorSeleccionadoProducto; // Asegúrate de que valorSeleccionadoProducto contenga el idProducto
 
                 //opcion uno
                 // Llamar a la función que obtiene los datos del producto con el cliente específico
@@ -415,14 +410,14 @@ namespace Capa_Vista_Cotizacion
                     {
                         // Suponiendo que el precio está en la columna "ListDetalle_preVenta"
                         Txt_precio.Text = tableProducto2.Rows[0]["precioUnitario"].ToString();
-                       
+
                     }
                     else
                     {
                         Txt_precio.Text = "Precio no encontrado"; // Mensaje o acción en caso de que no se encuentre el precio
                     }
                 }
-                
+
             }
         }
 
@@ -647,9 +642,6 @@ namespace Capa_Vista_Cotizacion
             {
                 // Ruta para el archivo de ayuda dentro de la estructura del proyecto
                 string sAyudaPath = Path.Combine(sRutaProyectoAyuda, "Ayuda", "Modulos", "Comercial", "ayudasC", "CotizacionAyuda.chm");
-
-                // Muestra la ruta generada para verificarla
-                MessageBox.Show("Ruta generada para el archivo de ayuda: " + sAyudaPath);
 
                 // Verifica si el archivo existe antes de intentar abrirlo
                 if (File.Exists(sAyudaPath))

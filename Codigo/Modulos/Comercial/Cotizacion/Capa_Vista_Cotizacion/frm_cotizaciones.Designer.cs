@@ -115,6 +115,7 @@ namespace Capa_Vista_Cotizacion
             // 
             this.Btn_cancelar.BackColor = System.Drawing.Color.Transparent;
             this.Btn_cancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Btn_cancelar.Cursor = System.Windows.Forms.Cursors.Default;
             this.Btn_cancelar.FlatAppearance.BorderSize = 0;
             this.Btn_cancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_cancelar.Image = ((System.Drawing.Image)(resources.GetObject("Btn_cancelar.Image")));
@@ -124,7 +125,6 @@ namespace Capa_Vista_Cotizacion
             this.Btn_cancelar.Size = new System.Drawing.Size(61, 53);
             this.Btn_cancelar.TabIndex = 312;
             this.Btn_cancelar.UseVisualStyleBackColor = false;
-            this.Btn_cancelar.UseWaitCursor = true;
             this.Btn_cancelar.Click += new System.EventHandler(this.Btn_cancelar_Click_1);
             // 
             // Dtp_fechaV
@@ -144,7 +144,6 @@ namespace Capa_Vista_Cotizacion
             this.label2.Size = new System.Drawing.Size(123, 19);
             this.label2.TabIndex = 30;
             this.label2.Text = "Fecha Vencimiento";
-            this.label2.UseWaitCursor = true;
             // 
             // Txt_tipCliente
             // 
@@ -154,7 +153,6 @@ namespace Capa_Vista_Cotizacion
             this.Txt_tipCliente.Size = new System.Drawing.Size(36, 19);
             this.Txt_tipCliente.TabIndex = 29;
             this.Txt_tipCliente.Text = "Tipo";
-            this.Txt_tipCliente.UseWaitCursor = true;
             // 
             // Txt_ClienteB
             // 
@@ -188,13 +186,13 @@ namespace Capa_Vista_Cotizacion
             // 
             // Cbo_vendedor
             // 
+            this.Cbo_vendedor.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.Cbo_vendedor.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Cbo_vendedor.FormattingEnabled = true;
             this.Cbo_vendedor.Location = new System.Drawing.Point(257, 30);
             this.Cbo_vendedor.Name = "Cbo_vendedor";
             this.Cbo_vendedor.Size = new System.Drawing.Size(121, 23);
             this.Cbo_vendedor.TabIndex = 4;
-            this.Cbo_vendedor.UseWaitCursor = true;
             this.Cbo_vendedor.SelectedIndexChanged += new System.EventHandler(this.Cbo_vendedor_SelectedIndexChanged);
             // 
             // Txt_Clienten
@@ -205,7 +203,6 @@ namespace Capa_Vista_Cotizacion
             this.Txt_Clienten.Size = new System.Drawing.Size(51, 19);
             this.Txt_Clienten.TabIndex = 2;
             this.Txt_Clienten.Text = "Cliente";
-            this.Txt_Clienten.UseWaitCursor = true;
             // 
             // Txt_total
             // 
@@ -224,7 +221,6 @@ namespace Capa_Vista_Cotizacion
             this.Txt_totaln.Size = new System.Drawing.Size(39, 19);
             this.Txt_totaln.TabIndex = 27;
             this.Txt_totaln.Text = "Total";
-            this.Txt_totaln.UseWaitCursor = true;
             this.Txt_totaln.Click += new System.EventHandler(this.Txt_totaln_Click_1);
             // 
             // Txt_Vendedorn
@@ -235,7 +231,6 @@ namespace Capa_Vista_Cotizacion
             this.Txt_Vendedorn.Size = new System.Drawing.Size(68, 19);
             this.Txt_Vendedorn.TabIndex = 1;
             this.Txt_Vendedorn.Text = "Vendedor";
-            this.Txt_Vendedorn.UseWaitCursor = true;
             // 
             // Txt_idE
             // 
@@ -245,7 +240,6 @@ namespace Capa_Vista_Cotizacion
             this.Txt_idE.Size = new System.Drawing.Size(25, 19);
             this.Txt_idE.TabIndex = 0;
             this.Txt_idE.Text = "ID";
-            this.Txt_idE.UseWaitCursor = true;
             // 
             // Gpb_detalle
             // 
@@ -273,6 +267,7 @@ namespace Capa_Vista_Cotizacion
             // 
             this.Btn_agregar.BackColor = System.Drawing.Color.Transparent;
             this.Btn_agregar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Btn_agregar.Cursor = System.Windows.Forms.Cursors.Default;
             this.Btn_agregar.FlatAppearance.BorderSize = 0;
             this.Btn_agregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_agregar.Image = ((System.Drawing.Image)(resources.GetObject("Btn_agregar.Image")));
@@ -282,7 +277,6 @@ namespace Capa_Vista_Cotizacion
             this.Btn_agregar.Size = new System.Drawing.Size(61, 53);
             this.Btn_agregar.TabIndex = 324;
             this.Btn_agregar.UseVisualStyleBackColor = false;
-            this.Btn_agregar.UseWaitCursor = true;
             this.Btn_agregar.Click += new System.EventHandler(this.Btn_agregar_Click);
             // 
             // Btn_borrar
@@ -298,7 +292,6 @@ namespace Capa_Vista_Cotizacion
             this.Btn_borrar.Size = new System.Drawing.Size(61, 53);
             this.Btn_borrar.TabIndex = 315;
             this.Btn_borrar.UseVisualStyleBackColor = false;
-            this.Btn_borrar.UseWaitCursor = true;
             this.Btn_borrar.Click += new System.EventHandler(this.Btn_borrar_Click);
             // 
             // Dgv_cotizacion
@@ -310,11 +303,11 @@ namespace Capa_Vista_Cotizacion
             this.Cantidad,
             this.Precio,
             this.SubTotal});
+            this.Dgv_cotizacion.Cursor = System.Windows.Forms.Cursors.Default;
             this.Dgv_cotizacion.Location = new System.Drawing.Point(138, 74);
             this.Dgv_cotizacion.Name = "Dgv_cotizacion";
             this.Dgv_cotizacion.Size = new System.Drawing.Size(447, 216);
             this.Dgv_cotizacion.TabIndex = 10;
-            this.Dgv_cotizacion.UseWaitCursor = true;
             // 
             // Producto
             // 
@@ -342,7 +335,6 @@ namespace Capa_Vista_Cotizacion
             this.Txt_cantidad.Name = "Txt_cantidad";
             this.Txt_cantidad.Size = new System.Drawing.Size(76, 26);
             this.Txt_cantidad.TabIndex = 11;
-            this.Txt_cantidad.UseWaitCursor = true;
             // 
             // Txt_precion
             // 
@@ -352,7 +344,6 @@ namespace Capa_Vista_Cotizacion
             this.Txt_precion.Size = new System.Drawing.Size(48, 19);
             this.Txt_precion.TabIndex = 31;
             this.Txt_precion.Text = "Precio";
-            this.Txt_precion.UseWaitCursor = true;
             this.Txt_precion.Click += new System.EventHandler(this.Txt_precion_Click);
             // 
             // Txt_precio
@@ -372,7 +363,6 @@ namespace Capa_Vista_Cotizacion
             this.Txt_cantidadn.Size = new System.Drawing.Size(64, 19);
             this.Txt_cantidadn.TabIndex = 29;
             this.Txt_cantidadn.Text = "Cantidad";
-            this.Txt_cantidadn.UseWaitCursor = true;
             // 
             // Cbo_producto
             // 
@@ -401,19 +391,17 @@ namespace Capa_Vista_Cotizacion
             this.Txt_producton.Size = new System.Drawing.Size(65, 19);
             this.Txt_producton.TabIndex = 9;
             this.Txt_producton.Text = "Producto";
-            this.Txt_producton.UseWaitCursor = true;
             this.Txt_producton.Click += new System.EventHandler(this.Txt_producton_Click_1);
             // 
             // Txt_titulo
             // 
             this.Txt_titulo.AutoSize = true;
             this.Txt_titulo.Font = new System.Drawing.Font("Haettenschweiler", 26F);
-            this.Txt_titulo.Location = new System.Drawing.Point(269, 7);
+            this.Txt_titulo.Location = new System.Drawing.Point(305, 14);
             this.Txt_titulo.Name = "Txt_titulo";
             this.Txt_titulo.Size = new System.Drawing.Size(190, 37);
             this.Txt_titulo.TabIndex = 305;
             this.Txt_titulo.Text = "C O T I Z A C I Ó N";
-            this.Txt_titulo.UseWaitCursor = true;
             // 
             // Btn_ayuda
             // 
@@ -443,7 +431,6 @@ namespace Capa_Vista_Cotizacion
             this.Btn_reporte.Size = new System.Drawing.Size(43, 44);
             this.Btn_reporte.TabIndex = 309;
             this.Btn_reporte.UseVisualStyleBackColor = false;
-            this.Btn_reporte.UseWaitCursor = true;
             this.Btn_reporte.Click += new System.EventHandler(this.Btn_reporte_Click);
             // 
             // frm_cotizaciones
