@@ -109,9 +109,9 @@ namespace Interfac_V3
 
         private void Btn_Bancos_Click(object sender, EventArgs e)
         {
-            /*frm_principal_bancos banco = new frm_principal_bancos(UsuarioSesion.GetIdUsuario());
-            banco.Show();*/
-
+            // Redirige a Modulo Bancos
+            frm_principal_bancos banco = new frm_principal_bancos(UsuarioSesion.GetIdUsuario());
+            banco.Show();
         }
 
         private void Btn_Produccion_Click(object sender, EventArgs e)
