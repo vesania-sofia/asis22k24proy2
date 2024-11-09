@@ -11,10 +11,10 @@ using Capa_Controlador_CompraVenta;
 using Capa_Vista_Cotizacion;
 using Capa_Vista_Factura;
 using Interfac_V3;
+using Capa_Vista_OrdenCompra;
 /*using Capa_Vista_ListaPrecios;
 using Capa_Vista_Polizas;
 using Capa_vista_pedido;
-using Capa_Vista_OrdenCompra;
 using Capa_Vista;*/
 namespace Capa_Vista_CompraVenta
 {
@@ -214,9 +214,9 @@ namespace Capa_Vista_CompraVenta
 
         private void Btn_compra_Click_1(object sender, EventArgs e)
         {
-            /*frm_compra Ven = new frm_compra();
+            frm_compra Ven = new frm_compra();
             Ven.MdiParent = this;
-            Ven.Show();*/
+            Ven.Show();
 
         }
 
