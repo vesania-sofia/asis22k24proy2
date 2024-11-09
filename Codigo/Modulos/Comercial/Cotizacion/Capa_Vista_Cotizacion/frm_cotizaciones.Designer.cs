@@ -30,7 +30,7 @@ namespace Capa_Vista_Cotizacion
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_cotizaciones));
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.Gpb_Enacabezado = new System.Windows.Forms.GroupBox();
             this.Btn_nuevoCE = new System.Windows.Forms.Button();
             this.Btn_cancelar = new System.Windows.Forms.Button();
             this.Dtp_fechaV = new System.Windows.Forms.DateTimePicker();
@@ -45,7 +45,7 @@ namespace Capa_Vista_Cotizacion
             this.Txt_totaln = new System.Windows.Forms.Label();
             this.Txt_Vendedorn = new System.Windows.Forms.Label();
             this.Txt_idE = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.Gpb_detalle = new System.Windows.Forms.GroupBox();
             this.Btn_agregar = new System.Windows.Forms.Button();
             this.Btn_borrar = new System.Windows.Forms.Button();
             this.Dgv_cotizacion = new System.Windows.Forms.DataGridView();
@@ -63,37 +63,38 @@ namespace Capa_Vista_Cotizacion
             this.Txt_titulo = new System.Windows.Forms.Label();
             this.Btn_ayuda = new System.Windows.Forms.Button();
             this.Btn_reporte = new System.Windows.Forms.Button();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.Gpb_Enacabezado.SuspendLayout();
+            this.Gpb_detalle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_cotizacion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Txt_cantidad)).BeginInit();
             this.SuspendLayout();
             // 
-            // groupBox1
+            // Gpb_Enacabezado
             // 
-            this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(242)))), ((int)(((byte)(137)))));
-            this.groupBox1.Controls.Add(this.Btn_nuevoCE);
-            this.groupBox1.Controls.Add(this.Btn_cancelar);
-            this.groupBox1.Controls.Add(this.Dtp_fechaV);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.Txt_tipCliente);
-            this.groupBox1.Controls.Add(this.Txt_ClienteB);
-            this.groupBox1.Controls.Add(this.Txt_idEncezado);
-            this.groupBox1.Controls.Add(this.Cbo_cliente);
-            this.groupBox1.Controls.Add(this.Cbo_vendedor);
-            this.groupBox1.Controls.Add(this.Txt_Clienten);
-            this.groupBox1.Controls.Add(this.Txt_total);
-            this.groupBox1.Controls.Add(this.Txt_totaln);
-            this.groupBox1.Controls.Add(this.Txt_Vendedorn);
-            this.groupBox1.Controls.Add(this.Txt_idE);
-            this.groupBox1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(19, 77);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(755, 137);
-            this.groupBox1.TabIndex = 302;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Encabezado";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            this.Gpb_Enacabezado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(242)))), ((int)(((byte)(137)))));
+            this.Gpb_Enacabezado.Controls.Add(this.Btn_nuevoCE);
+            this.Gpb_Enacabezado.Controls.Add(this.Btn_cancelar);
+            this.Gpb_Enacabezado.Controls.Add(this.Dtp_fechaV);
+            this.Gpb_Enacabezado.Controls.Add(this.label2);
+            this.Gpb_Enacabezado.Controls.Add(this.Txt_tipCliente);
+            this.Gpb_Enacabezado.Controls.Add(this.Txt_ClienteB);
+            this.Gpb_Enacabezado.Controls.Add(this.Txt_idEncezado);
+            this.Gpb_Enacabezado.Controls.Add(this.Cbo_cliente);
+            this.Gpb_Enacabezado.Controls.Add(this.Cbo_vendedor);
+            this.Gpb_Enacabezado.Controls.Add(this.Txt_Clienten);
+            this.Gpb_Enacabezado.Controls.Add(this.Txt_total);
+            this.Gpb_Enacabezado.Controls.Add(this.Txt_totaln);
+            this.Gpb_Enacabezado.Controls.Add(this.Txt_Vendedorn);
+            this.Gpb_Enacabezado.Controls.Add(this.Txt_idE);
+            this.Gpb_Enacabezado.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Gpb_Enacabezado.Location = new System.Drawing.Point(19, 77);
+            this.Gpb_Enacabezado.Name = "Gpb_Enacabezado";
+            this.Gpb_Enacabezado.Size = new System.Drawing.Size(755, 137);
+            this.Gpb_Enacabezado.TabIndex = 302;
+            this.Gpb_Enacabezado.TabStop = false;
+            this.Gpb_Enacabezado.Text = "Encabezado";
+            this.Gpb_Enacabezado.UseWaitCursor = true;
+            this.Gpb_Enacabezado.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // Btn_nuevoCE
             // 
@@ -108,6 +109,7 @@ namespace Capa_Vista_Cotizacion
             this.Btn_nuevoCE.Size = new System.Drawing.Size(61, 53);
             this.Btn_nuevoCE.TabIndex = 311;
             this.Btn_nuevoCE.UseVisualStyleBackColor = false;
+            this.Btn_nuevoCE.UseWaitCursor = true;
             this.Btn_nuevoCE.Click += new System.EventHandler(this.Btn_nuevoCE_Click);
             // 
             // Btn_cancelar
@@ -123,6 +125,7 @@ namespace Capa_Vista_Cotizacion
             this.Btn_cancelar.Size = new System.Drawing.Size(61, 53);
             this.Btn_cancelar.TabIndex = 312;
             this.Btn_cancelar.UseVisualStyleBackColor = false;
+            this.Btn_cancelar.UseWaitCursor = true;
             this.Btn_cancelar.Click += new System.EventHandler(this.Btn_cancelar_Click_1);
             // 
             // Dtp_fechaV
@@ -132,6 +135,7 @@ namespace Capa_Vista_Cotizacion
             this.Dtp_fechaV.Name = "Dtp_fechaV";
             this.Dtp_fechaV.Size = new System.Drawing.Size(200, 22);
             this.Dtp_fechaV.TabIndex = 31;
+            this.Dtp_fechaV.UseWaitCursor = true;
             // 
             // label2
             // 
@@ -141,6 +145,7 @@ namespace Capa_Vista_Cotizacion
             this.label2.Size = new System.Drawing.Size(123, 19);
             this.label2.TabIndex = 30;
             this.label2.Text = "Fecha Vencimiento";
+            this.label2.UseWaitCursor = true;
             // 
             // Txt_tipCliente
             // 
@@ -150,6 +155,7 @@ namespace Capa_Vista_Cotizacion
             this.Txt_tipCliente.Size = new System.Drawing.Size(36, 19);
             this.Txt_tipCliente.TabIndex = 29;
             this.Txt_tipCliente.Text = "Tipo";
+            this.Txt_tipCliente.UseWaitCursor = true;
             // 
             // Txt_ClienteB
             // 
@@ -158,6 +164,7 @@ namespace Capa_Vista_Cotizacion
             this.Txt_ClienteB.Name = "Txt_ClienteB";
             this.Txt_ClienteB.Size = new System.Drawing.Size(85, 22);
             this.Txt_ClienteB.TabIndex = 29;
+            this.Txt_ClienteB.UseWaitCursor = true;
             // 
             // Txt_idEncezado
             // 
@@ -166,6 +173,7 @@ namespace Capa_Vista_Cotizacion
             this.Txt_idEncezado.Name = "Txt_idEncezado";
             this.Txt_idEncezado.Size = new System.Drawing.Size(121, 22);
             this.Txt_idEncezado.TabIndex = 9;
+            this.Txt_idEncezado.UseWaitCursor = true;
             this.Txt_idEncezado.TextChanged += new System.EventHandler(this.Txt_idEncezado_TextChanged);
             // 
             // Cbo_cliente
@@ -176,6 +184,7 @@ namespace Capa_Vista_Cotizacion
             this.Cbo_cliente.Name = "Cbo_cliente";
             this.Cbo_cliente.Size = new System.Drawing.Size(121, 23);
             this.Cbo_cliente.TabIndex = 5;
+            this.Cbo_cliente.UseWaitCursor = true;
             this.Cbo_cliente.SelectedIndexChanged += new System.EventHandler(this.Cbo_cliente_SelectedIndexChanged_1);
             // 
             // Cbo_vendedor
@@ -186,6 +195,7 @@ namespace Capa_Vista_Cotizacion
             this.Cbo_vendedor.Name = "Cbo_vendedor";
             this.Cbo_vendedor.Size = new System.Drawing.Size(121, 23);
             this.Cbo_vendedor.TabIndex = 4;
+            this.Cbo_vendedor.UseWaitCursor = true;
             this.Cbo_vendedor.SelectedIndexChanged += new System.EventHandler(this.Cbo_vendedor_SelectedIndexChanged);
             // 
             // Txt_Clienten
@@ -196,6 +206,7 @@ namespace Capa_Vista_Cotizacion
             this.Txt_Clienten.Size = new System.Drawing.Size(51, 19);
             this.Txt_Clienten.TabIndex = 2;
             this.Txt_Clienten.Text = "Cliente";
+            this.Txt_Clienten.UseWaitCursor = true;
             // 
             // Txt_total
             // 
@@ -204,6 +215,7 @@ namespace Capa_Vista_Cotizacion
             this.Txt_total.Name = "Txt_total";
             this.Txt_total.Size = new System.Drawing.Size(121, 22);
             this.Txt_total.TabIndex = 26;
+            this.Txt_total.UseWaitCursor = true;
             // 
             // Txt_totaln
             // 
@@ -213,6 +225,7 @@ namespace Capa_Vista_Cotizacion
             this.Txt_totaln.Size = new System.Drawing.Size(39, 19);
             this.Txt_totaln.TabIndex = 27;
             this.Txt_totaln.Text = "Total";
+            this.Txt_totaln.UseWaitCursor = true;
             this.Txt_totaln.Click += new System.EventHandler(this.Txt_totaln_Click_1);
             // 
             // Txt_Vendedorn
@@ -223,6 +236,7 @@ namespace Capa_Vista_Cotizacion
             this.Txt_Vendedorn.Size = new System.Drawing.Size(68, 19);
             this.Txt_Vendedorn.TabIndex = 1;
             this.Txt_Vendedorn.Text = "Vendedor";
+            this.Txt_Vendedorn.UseWaitCursor = true;
             // 
             // Txt_idE
             // 
@@ -232,27 +246,29 @@ namespace Capa_Vista_Cotizacion
             this.Txt_idE.Size = new System.Drawing.Size(25, 19);
             this.Txt_idE.TabIndex = 0;
             this.Txt_idE.Text = "ID";
+            this.Txt_idE.UseWaitCursor = true;
             // 
-            // groupBox2
+            // Gpb_detalle
             // 
-            this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(242)))), ((int)(((byte)(137)))));
-            this.groupBox2.Controls.Add(this.Btn_agregar);
-            this.groupBox2.Controls.Add(this.Btn_borrar);
-            this.groupBox2.Controls.Add(this.Dgv_cotizacion);
-            this.groupBox2.Controls.Add(this.Txt_cantidad);
-            this.groupBox2.Controls.Add(this.Txt_precion);
-            this.groupBox2.Controls.Add(this.Txt_precio);
-            this.groupBox2.Controls.Add(this.Txt_cantidadn);
-            this.groupBox2.Controls.Add(this.Cbo_producto);
-            this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Controls.Add(this.Txt_producton);
-            this.groupBox2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(19, 220);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(755, 317);
-            this.groupBox2.TabIndex = 304;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Detalle";
+            this.Gpb_detalle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(242)))), ((int)(((byte)(137)))));
+            this.Gpb_detalle.Controls.Add(this.Btn_agregar);
+            this.Gpb_detalle.Controls.Add(this.Btn_borrar);
+            this.Gpb_detalle.Controls.Add(this.Dgv_cotizacion);
+            this.Gpb_detalle.Controls.Add(this.Txt_cantidad);
+            this.Gpb_detalle.Controls.Add(this.Txt_precion);
+            this.Gpb_detalle.Controls.Add(this.Txt_precio);
+            this.Gpb_detalle.Controls.Add(this.Txt_cantidadn);
+            this.Gpb_detalle.Controls.Add(this.Cbo_producto);
+            this.Gpb_detalle.Controls.Add(this.label6);
+            this.Gpb_detalle.Controls.Add(this.Txt_producton);
+            this.Gpb_detalle.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Gpb_detalle.Location = new System.Drawing.Point(19, 220);
+            this.Gpb_detalle.Name = "Gpb_detalle";
+            this.Gpb_detalle.Size = new System.Drawing.Size(755, 317);
+            this.Gpb_detalle.TabIndex = 304;
+            this.Gpb_detalle.TabStop = false;
+            this.Gpb_detalle.Text = "Detalle";
+            this.Gpb_detalle.UseWaitCursor = true;
             // 
             // Btn_agregar
             // 
@@ -267,6 +283,7 @@ namespace Capa_Vista_Cotizacion
             this.Btn_agregar.Size = new System.Drawing.Size(61, 53);
             this.Btn_agregar.TabIndex = 324;
             this.Btn_agregar.UseVisualStyleBackColor = false;
+            this.Btn_agregar.UseWaitCursor = true;
             this.Btn_agregar.Click += new System.EventHandler(this.Btn_agregar_Click);
             // 
             // Btn_borrar
@@ -282,6 +299,7 @@ namespace Capa_Vista_Cotizacion
             this.Btn_borrar.Size = new System.Drawing.Size(61, 53);
             this.Btn_borrar.TabIndex = 315;
             this.Btn_borrar.UseVisualStyleBackColor = false;
+            this.Btn_borrar.UseWaitCursor = true;
             this.Btn_borrar.Click += new System.EventHandler(this.Btn_borrar_Click);
             // 
             // Dgv_cotizacion
@@ -297,6 +315,7 @@ namespace Capa_Vista_Cotizacion
             this.Dgv_cotizacion.Name = "Dgv_cotizacion";
             this.Dgv_cotizacion.Size = new System.Drawing.Size(447, 216);
             this.Dgv_cotizacion.TabIndex = 10;
+            this.Dgv_cotizacion.UseWaitCursor = true;
             // 
             // Producto
             // 
@@ -324,6 +343,7 @@ namespace Capa_Vista_Cotizacion
             this.Txt_cantidad.Name = "Txt_cantidad";
             this.Txt_cantidad.Size = new System.Drawing.Size(76, 26);
             this.Txt_cantidad.TabIndex = 11;
+            this.Txt_cantidad.UseWaitCursor = true;
             // 
             // Txt_precion
             // 
@@ -333,6 +353,7 @@ namespace Capa_Vista_Cotizacion
             this.Txt_precion.Size = new System.Drawing.Size(48, 19);
             this.Txt_precion.TabIndex = 31;
             this.Txt_precion.Text = "Precio";
+            this.Txt_precion.UseWaitCursor = true;
             this.Txt_precion.Click += new System.EventHandler(this.Txt_precion_Click);
             // 
             // Txt_precio
@@ -342,6 +363,7 @@ namespace Capa_Vista_Cotizacion
             this.Txt_precio.Name = "Txt_precio";
             this.Txt_precio.Size = new System.Drawing.Size(121, 22);
             this.Txt_precio.TabIndex = 30;
+            this.Txt_precio.UseWaitCursor = true;
             // 
             // Txt_cantidadn
             // 
@@ -351,6 +373,7 @@ namespace Capa_Vista_Cotizacion
             this.Txt_cantidadn.Size = new System.Drawing.Size(64, 19);
             this.Txt_cantidadn.TabIndex = 29;
             this.Txt_cantidadn.Text = "Cantidad";
+            this.Txt_cantidadn.UseWaitCursor = true;
             // 
             // Cbo_producto
             // 
@@ -360,6 +383,7 @@ namespace Capa_Vista_Cotizacion
             this.Cbo_producto.Name = "Cbo_producto";
             this.Cbo_producto.Size = new System.Drawing.Size(230, 23);
             this.Cbo_producto.TabIndex = 10;
+            this.Cbo_producto.UseWaitCursor = true;
             this.Cbo_producto.SelectedIndexChanged += new System.EventHandler(this.Cbo_producto_SelectedIndexChanged);
             // 
             // label6
@@ -369,6 +393,7 @@ namespace Capa_Vista_Cotizacion
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(0, 19);
             this.label6.TabIndex = 10;
+            this.label6.UseWaitCursor = true;
             // 
             // Txt_producton
             // 
@@ -378,6 +403,7 @@ namespace Capa_Vista_Cotizacion
             this.Txt_producton.Size = new System.Drawing.Size(65, 19);
             this.Txt_producton.TabIndex = 9;
             this.Txt_producton.Text = "Producto";
+            this.Txt_producton.UseWaitCursor = true;
             this.Txt_producton.Click += new System.EventHandler(this.Txt_producton_Click_1);
             // 
             // Txt_titulo
@@ -389,6 +415,7 @@ namespace Capa_Vista_Cotizacion
             this.Txt_titulo.Size = new System.Drawing.Size(190, 37);
             this.Txt_titulo.TabIndex = 305;
             this.Txt_titulo.Text = "C O T I Z A C I Ó N";
+            this.Txt_titulo.UseWaitCursor = true;
             // 
             // Btn_ayuda
             // 
@@ -403,6 +430,7 @@ namespace Capa_Vista_Cotizacion
             this.Btn_ayuda.Size = new System.Drawing.Size(42, 39);
             this.Btn_ayuda.TabIndex = 308;
             this.Btn_ayuda.UseVisualStyleBackColor = false;
+            this.Btn_ayuda.UseWaitCursor = true;
             this.Btn_ayuda.Click += new System.EventHandler(this.Btn_ayuda_Click);
             // 
             // Btn_reporte
@@ -418,6 +446,7 @@ namespace Capa_Vista_Cotizacion
             this.Btn_reporte.Size = new System.Drawing.Size(43, 44);
             this.Btn_reporte.TabIndex = 309;
             this.Btn_reporte.UseVisualStyleBackColor = false;
+            this.Btn_reporte.UseWaitCursor = true;
             this.Btn_reporte.Click += new System.EventHandler(this.Btn_reporte_Click);
             // 
             // frm_cotizaciones
@@ -429,15 +458,17 @@ namespace Capa_Vista_Cotizacion
             this.Controls.Add(this.Btn_reporte);
             this.Controls.Add(this.Btn_ayuda);
             this.Controls.Add(this.Txt_titulo);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.Gpb_detalle);
+            this.Controls.Add(this.Gpb_Enacabezado);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frm_cotizaciones";
-            this.Text = "frm_cotizaciones";
+            this.Text = "Cotizaciones";
+            this.UseWaitCursor = true;
             this.Load += new System.EventHandler(this.frm_cotizaciones_Load);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.Gpb_Enacabezado.ResumeLayout(false);
+            this.Gpb_Enacabezado.PerformLayout();
+            this.Gpb_detalle.ResumeLayout(false);
+            this.Gpb_detalle.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_cotizacion)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Txt_cantidad)).EndInit();
             this.ResumeLayout(false);
@@ -446,14 +477,14 @@ namespace Capa_Vista_Cotizacion
         }
 
         #endregion
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox Gpb_Enacabezado;
         private System.Windows.Forms.TextBox Txt_idEncezado;
         private System.Windows.Forms.ComboBox Cbo_cliente;
         private System.Windows.Forms.ComboBox Cbo_vendedor;
         private System.Windows.Forms.Label Txt_Clienten;
         private System.Windows.Forms.Label Txt_Vendedorn;
         private System.Windows.Forms.Label Txt_idE;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox Gpb_detalle;
         private System.Windows.Forms.DataGridView Dgv_cotizacion;
         private System.Windows.Forms.NumericUpDown Txt_cantidad;
         private System.Windows.Forms.Label Txt_precion;

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Capa_Controlador_CompraVenta;
 using Capa_Vista_Cotizacion;
-using Capa_Vista_Factura;
+//using Capa_Vista_Factura;
 using Interfac_V3;
 /*using Capa_Vista_ListaPrecios;
 using Capa_Vista_Polizas;
@@ -245,9 +245,9 @@ namespace Capa_Vista_CompraVenta
 
         private void button10_Click_1(object sender, EventArgs e)
         {
-            Frm_Factura Ven = new Frm_Factura();
+            /*Frm_Factura Ven = new Frm_Factura();
             Ven.MdiParent = this;
-            Ven.Show();
+            Ven.Show();*/
         }
 
         private void button9_Click_1(object sender, EventArgs e)

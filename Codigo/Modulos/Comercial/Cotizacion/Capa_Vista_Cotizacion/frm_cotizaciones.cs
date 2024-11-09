@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Capa_Controlador_Cotizacion;
@@ -638,14 +639,39 @@ namespace Capa_Vista_Cotizacion
                 MessageBox.Show($"Ocurrió un error: {ex.Message}");
             }
         }
+        public string sRutaProyectoAyuda { get; private set; } = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\"));
 
         private void Btn_ayuda_Click(object sender, EventArgs e)
         {
+            try
+            {
+                // Ruta para el archivo de ayuda dentro de la estructura del proyecto
+                string sAyudaPath = Path.Combine(sRutaProyectoAyuda,  "ayudasC", "CotizacionAyuda.chm");
 
-            
+                // Muestra la ruta generada para verificarla
+                MessageBox.Show("Ruta generada para el archivo de ayuda: " + sAyudaPath);
+
+                // Verifica si el archivo existe antes de intentar abrirlo
+                if (File.Exists(sAyudaPath))
+                {
+                    Help.ShowHelp(this, sAyudaPath, "Guia-Cotizacion.html");
+                }
+                else
+                {
+                    MessageBox.Show("El archivo de ayuda no se encontró en la ruta especificada: " + sAyudaPath, "Error de Ayuda", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                // Mostrar un mensaje de error en caso de una excepción
+                MessageBox.Show("Ocurrió un error al abrir la ayuda: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("Error al abrir la ayuda: " + ex.ToString());
+            }
         }
 
-        private void Cbo_vendedor_SelectedIndexChanged(object sender, EventArgs e)
+
+
+            private void Cbo_vendedor_SelectedIndexChanged(object sender, EventArgs e)
         {
 
             if (Cbo_vendedor.SelectedItem != null)
