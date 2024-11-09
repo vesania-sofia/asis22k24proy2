@@ -112,6 +112,7 @@ namespace Interfac_V3
             // Redirige a Modulo Bancos
             frm_principal_bancos banco = new frm_principal_bancos(UsuarioSesion.GetIdUsuario());
             banco.Show();
+
         }
 
         private void Btn_Produccion_Click(object sender, EventArgs e)
