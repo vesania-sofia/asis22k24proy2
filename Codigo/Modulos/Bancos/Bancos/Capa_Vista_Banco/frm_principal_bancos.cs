@@ -191,7 +191,7 @@ namespace Capa_Vista_Banco
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            AbrirFormulario<Capa_Vista_Cambio.tipoCambio>();
+            AbrirFormulario<Capa_Vista_Cambio.frm_tipoCambio>();
             btnMenuCatalogosOpcion2.BackColor = Color.FromArgb(12, 61, 92);
             ocultaSubMenu();
         }
