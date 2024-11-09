@@ -639,14 +639,14 @@ namespace Capa_Vista_Cotizacion
                 MessageBox.Show($"Ocurrió un error: {ex.Message}");
             }
         }
-        public string sRutaProyectoAyuda { get; private set; } = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\"));
+        public string sRutaProyectoAyuda { get; private set; } = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\..\..\..\"));
 
         private void Btn_ayuda_Click(object sender, EventArgs e)
         {
             try
             {
                 // Ruta para el archivo de ayuda dentro de la estructura del proyecto
-                string sAyudaPath = Path.Combine(sRutaProyectoAyuda,  "ayudasC", "CotizacionAyuda.chm");
+                string sAyudaPath = Path.Combine(sRutaProyectoAyuda, "Ayuda", "Modulos", "Comercial", "ayudasC", "CotizacionAyuda.chm");
 
                 // Muestra la ruta generada para verificarla
                 MessageBox.Show("Ruta generada para el archivo de ayuda: " + sAyudaPath);

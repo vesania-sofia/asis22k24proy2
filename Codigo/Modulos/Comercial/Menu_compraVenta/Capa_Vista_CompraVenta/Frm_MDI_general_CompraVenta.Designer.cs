@@ -573,6 +573,7 @@ namespace Capa_Vista_CompraVenta
             this.Controls.Add(this.Pnl_panelGeneral);
             this.Controls.Add(this.panelBarraTitulo);
             this.Controls.Add(this.panelIdentificacion);
+            this.Cursor = System.Windows.Forms.Cursors.Default;
             this.Name = "Frm_MDI_general_CompraVenta";
             this.panelIdentificacion.ResumeLayout(false);
             this.panelIdentificacion.PerformLayout();
