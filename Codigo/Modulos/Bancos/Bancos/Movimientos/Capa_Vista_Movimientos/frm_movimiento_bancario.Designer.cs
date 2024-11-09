@@ -32,7 +32,6 @@ namespace Capa_Vista_Movimientos
             this.Txt_mov = new System.Windows.Forms.Label();
             this.Dgv_Mov = new System.Windows.Forms.DataGridView();
             this.btn_eliminar = new System.Windows.Forms.Button();
-            this.btn_buscar = new System.Windows.Forms.Button();
             this.Txt_ID = new System.Windows.Forms.Label();
             this.txtCuentaId = new System.Windows.Forms.TextBox();
             this.txtTipo = new System.Windows.Forms.TextBox();
@@ -47,6 +46,7 @@ namespace Capa_Vista_Movimientos
             this.Txt_estado = new System.Windows.Forms.Label();
             this.dtpFecha = new System.Windows.Forms.DateTimePicker();
             this.cboEstado = new System.Windows.Forms.ComboBox();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Mov)).BeginInit();
             this.SuspendLayout();
             // 
@@ -72,23 +72,13 @@ namespace Capa_Vista_Movimientos
             // btn_eliminar
             // 
             this.btn_eliminar.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_eliminar.Location = new System.Drawing.Point(655, 132);
+            this.btn_eliminar.Location = new System.Drawing.Point(655, 157);
             this.btn_eliminar.Name = "btn_eliminar";
             this.btn_eliminar.Size = new System.Drawing.Size(108, 34);
             this.btn_eliminar.TabIndex = 2;
             this.btn_eliminar.Text = "Eliminar";
             this.btn_eliminar.UseVisualStyleBackColor = true;
             this.btn_eliminar.Click += new System.EventHandler(this.btn_eliminar_Click);
-            // 
-            // btn_buscar
-            // 
-            this.btn_buscar.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_buscar.Location = new System.Drawing.Point(655, 172);
-            this.btn_buscar.Name = "btn_buscar";
-            this.btn_buscar.Size = new System.Drawing.Size(108, 34);
-            this.btn_buscar.TabIndex = 3;
-            this.btn_buscar.Text = "Buscar";
-            this.btn_buscar.UseVisualStyleBackColor = true;
             // 
             // Txt_ID
             // 
@@ -210,12 +200,24 @@ namespace Capa_Vista_Movimientos
             this.cboEstado.Size = new System.Drawing.Size(121, 21);
             this.cboEstado.TabIndex = 20;
             // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(655, 95);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(108, 34);
+            this.button1.TabIndex = 21;
+            this.button1.Text = "Ayudas";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
             // frm_movimiento_bancario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(113)))), ((int)(((byte)(180)))), ((int)(((byte)(2)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.cboEstado);
             this.Controls.Add(this.dtpFecha);
             this.Controls.Add(this.Txt_estado);
@@ -230,7 +232,6 @@ namespace Capa_Vista_Movimientos
             this.Controls.Add(this.txtTipo);
             this.Controls.Add(this.txtCuentaId);
             this.Controls.Add(this.Txt_ID);
-            this.Controls.Add(this.btn_buscar);
             this.Controls.Add(this.btn_eliminar);
             this.Controls.Add(this.Dgv_Mov);
             this.Controls.Add(this.Txt_mov);
@@ -247,7 +248,6 @@ namespace Capa_Vista_Movimientos
         private System.Windows.Forms.Label Txt_mov;
         private System.Windows.Forms.DataGridView Dgv_Mov;
         private System.Windows.Forms.Button btn_eliminar;
-        private System.Windows.Forms.Button btn_buscar;
         private System.Windows.Forms.Label Txt_ID;
         private System.Windows.Forms.TextBox txtCuentaId;
         private System.Windows.Forms.TextBox txtTipo;
@@ -262,5 +262,6 @@ namespace Capa_Vista_Movimientos
         private System.Windows.Forms.Label Txt_estado;
         private System.Windows.Forms.DateTimePicker dtpFecha;
         private System.Windows.Forms.ComboBox cboEstado;
+        private System.Windows.Forms.Button button1;
     }
 }

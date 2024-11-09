@@ -2,6 +2,8 @@
 using System.Data;
 using System.Windows.Forms;
 using Capa_Controlador_Movimientos;
+using System.IO;
+
 
 namespace Capa_Vista_Movimientos
 {
@@ -126,6 +128,30 @@ namespace Capa_Vista_Movimientos
             {
                 MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            string idayuda = "11";
+            string Ruta = Capa_Controlador_Movimientos.MRuta(idayuda);
+            string sRutaProyecto = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\..\..\..\..\"));
+            string AsRuta = Path.Combine(sRutaProyecto, "Ayuda", "Modulos","Bancos","Movimientos Bancarios", Ruta);
+            string AsIndice = Capa_Controlador_Movimientos.MIndice(idayuda);
+
+            // Validar que la ruta y el índice no estén vacíos
+            if (!string.IsNullOrEmpty(AsRuta) && !string.IsNullOrEmpty(AsIndice))
+            {
+                // Mostrar la ayuda automáticamente cuando se llama a asignarAyuda
+                Help.ShowHelp(this, AsRuta, AsIndice);
+            }
+            else
+            {
+                MessageBox.Show("La Ruta o el índice de la ayuda están vacíos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
+
+
         }
     }
 }
