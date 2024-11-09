@@ -30,17 +30,6 @@ namespace Capa_Vista_CompraVenta
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_MDI_general_CompraVenta));
-            this.panelIdentificacion = new System.Windows.Forms.Panel();
-            this.Lbl_hora = new System.Windows.Forms.Label();
-            this.Lbl_usuario = new System.Windows.Forms.Label();
-            this.Lbl_fechaHora = new System.Windows.Forms.Label();
-            this.Lbl_usuario2 = new System.Windows.Forms.Label();
-            this.panelBarraTitulo = new System.Windows.Forms.Panel();
-            this.btnRestaurar = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.btnMinimizar = new System.Windows.Forms.PictureBox();
-            this.btnMaximizar = new System.Windows.Forms.PictureBox();
-            this.btnCerrar = new System.Windows.Forms.PictureBox();
             this.Pnl_panelGeneral = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.Pnl_Venta = new System.Windows.Forms.Panel();
@@ -60,158 +49,29 @@ namespace Capa_Vista_CompraVenta
             this.Btn_clientes = new System.Windows.Forms.Button();
             this.Btn_proveedores = new System.Windows.Forms.Button();
             this.Btn_compras = new System.Windows.Forms.Button();
-            this.panelIdentificacion.SuspendLayout();
+            this.panelBarraTitulo = new System.Windows.Forms.Panel();
+            this.btnRestaurar = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.btnMinimizar = new System.Windows.Forms.PictureBox();
+            this.btnMaximizar = new System.Windows.Forms.PictureBox();
+            this.btnCerrar = new System.Windows.Forms.PictureBox();
+            this.panelIdentificacion = new System.Windows.Forms.Panel();
+            this.Lbl_hora = new System.Windows.Forms.Label();
+            this.Lbl_usuario = new System.Windows.Forms.Label();
+            this.Lbl_fechaHora = new System.Windows.Forms.Label();
+            this.Lbl_usuario2 = new System.Windows.Forms.Label();
+            this.Pnl_panelGeneral.SuspendLayout();
+            this.Pnl_Venta.SuspendLayout();
+            this.Pnl_Compra.SuspendLayout();
+            this.Pnl_Mantenimiento.SuspendLayout();
             this.panelBarraTitulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnRestaurar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
-            this.Pnl_panelGeneral.SuspendLayout();
-            this.Pnl_Venta.SuspendLayout();
-            this.Pnl_Compra.SuspendLayout();
-            this.Pnl_Mantenimiento.SuspendLayout();
+            this.panelIdentificacion.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // panelIdentificacion
-            // 
-            this.panelIdentificacion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.panelIdentificacion.Controls.Add(this.Lbl_hora);
-            this.panelIdentificacion.Controls.Add(this.Lbl_usuario);
-            this.panelIdentificacion.Controls.Add(this.Lbl_fechaHora);
-            this.panelIdentificacion.Controls.Add(this.Lbl_usuario2);
-            this.panelIdentificacion.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelIdentificacion.Location = new System.Drawing.Point(0, 443);
-            this.panelIdentificacion.Margin = new System.Windows.Forms.Padding(2);
-            this.panelIdentificacion.Name = "panelIdentificacion";
-            this.panelIdentificacion.Size = new System.Drawing.Size(887, 35);
-            this.panelIdentificacion.TabIndex = 6;
-            // 
-            // Lbl_hora
-            // 
-            this.Lbl_hora.AutoSize = true;
-            this.Lbl_hora.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_hora.Location = new System.Drawing.Point(798, 10);
-            this.Lbl_hora.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.Lbl_hora.Name = "Lbl_hora";
-            this.Lbl_hora.Size = new System.Drawing.Size(18, 17);
-            this.Lbl_hora.TabIndex = 17;
-            this.Lbl_hora.Text = "--";
-            // 
-            // Lbl_usuario
-            // 
-            this.Lbl_usuario.AutoSize = true;
-            this.Lbl_usuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_usuario.Location = new System.Drawing.Point(601, 9);
-            this.Lbl_usuario.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.Lbl_usuario.Name = "Lbl_usuario";
-            this.Lbl_usuario.Size = new System.Drawing.Size(65, 17);
-            this.Lbl_usuario.TabIndex = 14;
-            this.Lbl_usuario.Text = "Usuario: ";
-            // 
-            // Lbl_fechaHora
-            // 
-            this.Lbl_fechaHora.AutoSize = true;
-            this.Lbl_fechaHora.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_fechaHora.Location = new System.Drawing.Point(738, 9);
-            this.Lbl_fechaHora.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.Lbl_fechaHora.Name = "Lbl_fechaHora";
-            this.Lbl_fechaHora.Size = new System.Drawing.Size(51, 17);
-            this.Lbl_fechaHora.TabIndex = 16;
-            this.Lbl_fechaHora.Text = "Fecha:";
-            // 
-            // Lbl_usuario2
-            // 
-            this.Lbl_usuario2.AutoSize = true;
-            this.Lbl_usuario2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_usuario2.Location = new System.Drawing.Point(663, 9);
-            this.Lbl_usuario2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.Lbl_usuario2.Name = "Lbl_usuario2";
-            this.Lbl_usuario2.Size = new System.Drawing.Size(18, 17);
-            this.Lbl_usuario2.TabIndex = 15;
-            this.Lbl_usuario2.Text = "--";
-            // 
-            // panelBarraTitulo
-            // 
-            this.panelBarraTitulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.panelBarraTitulo.Controls.Add(this.btnRestaurar);
-            this.panelBarraTitulo.Controls.Add(this.pictureBox2);
-            this.panelBarraTitulo.Controls.Add(this.btnMinimizar);
-            this.panelBarraTitulo.Controls.Add(this.btnMaximizar);
-            this.panelBarraTitulo.Controls.Add(this.btnCerrar);
-            this.panelBarraTitulo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelBarraTitulo.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panelBarraTitulo.Location = new System.Drawing.Point(0, 0);
-            this.panelBarraTitulo.Margin = new System.Windows.Forms.Padding(2);
-            this.panelBarraTitulo.Name = "panelBarraTitulo";
-            this.panelBarraTitulo.Size = new System.Drawing.Size(887, 40);
-            this.panelBarraTitulo.TabIndex = 7;
-            // 
-            // btnRestaurar
-            // 
-            this.btnRestaurar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRestaurar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnRestaurar.Image = ((System.Drawing.Image)(resources.GetObject("btnRestaurar.Image")));
-            this.btnRestaurar.Location = new System.Drawing.Point(848, 9);
-            this.btnRestaurar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnRestaurar.Name = "btnRestaurar";
-            this.btnRestaurar.Size = new System.Drawing.Size(12, 13);
-            this.btnRestaurar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnRestaurar.TabIndex = 3;
-            this.btnRestaurar.TabStop = false;
-            this.btnRestaurar.Click += new System.EventHandler(this.btnRestaurar_Click);
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(11, 9);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(29, 26);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 4;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
-            // 
-            // btnMinimizar
-            // 
-            this.btnMinimizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMinimizar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnMinimizar.Image = ((System.Drawing.Image)(resources.GetObject("btnMinimizar.Image")));
-            this.btnMinimizar.Location = new System.Drawing.Point(832, 9);
-            this.btnMinimizar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnMinimizar.Name = "btnMinimizar";
-            this.btnMinimizar.Size = new System.Drawing.Size(12, 13);
-            this.btnMinimizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnMinimizar.TabIndex = 2;
-            this.btnMinimizar.TabStop = false;
-            this.btnMinimizar.Click += new System.EventHandler(this.btnMinimizar_Click);
-            // 
-            // btnMaximizar
-            // 
-            this.btnMaximizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMaximizar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnMaximizar.Image = ((System.Drawing.Image)(resources.GetObject("btnMaximizar.Image")));
-            this.btnMaximizar.Location = new System.Drawing.Point(849, 9);
-            this.btnMaximizar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnMaximizar.Name = "btnMaximizar";
-            this.btnMaximizar.Size = new System.Drawing.Size(12, 13);
-            this.btnMaximizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnMaximizar.TabIndex = 1;
-            this.btnMaximizar.TabStop = false;
-            // 
-            // btnCerrar
-            // 
-            this.btnCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCerrar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCerrar.Image = ((System.Drawing.Image)(resources.GetObject("btnCerrar.Image")));
-            this.btnCerrar.Location = new System.Drawing.Point(865, 9);
-            this.btnCerrar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnCerrar.Name = "btnCerrar";
-            this.btnCerrar.Size = new System.Drawing.Size(12, 13);
-            this.btnCerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnCerrar.TabIndex = 0;
-            this.btnCerrar.TabStop = false;
             // 
             // Pnl_panelGeneral
             // 
@@ -230,9 +90,8 @@ namespace Capa_Vista_CompraVenta
             this.Pnl_panelGeneral.Location = new System.Drawing.Point(0, 40);
             this.Pnl_panelGeneral.Margin = new System.Windows.Forms.Padding(2);
             this.Pnl_panelGeneral.Name = "Pnl_panelGeneral";
-            this.Pnl_panelGeneral.Size = new System.Drawing.Size(156, 403);
-            this.Pnl_panelGeneral.TabIndex = 9;
-            this.Pnl_panelGeneral.Paint += new System.Windows.Forms.PaintEventHandler(this.Pnl_panelGeneral_Paint);
+            this.Pnl_panelGeneral.Size = new System.Drawing.Size(156, 375);
+            this.Pnl_panelGeneral.TabIndex = 12;
             // 
             // button1
             // 
@@ -254,7 +113,7 @@ namespace Capa_Vista_CompraVenta
             this.button1.Text = "Salir";
             this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click_2);
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Pnl_Venta
             // 
@@ -306,7 +165,7 @@ namespace Capa_Vista_CompraVenta
             this.button9.Text = "Lista de precios";
             this.button9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button9.UseVisualStyleBackColor = true;
-            this.button9.Click += new System.EventHandler(this.button9_Click_1);
+            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // button10
             // 
@@ -324,7 +183,7 @@ namespace Capa_Vista_CompraVenta
             this.button10.Text = "Factura";
             this.button10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button10.UseVisualStyleBackColor = true;
-            this.button10.Click += new System.EventHandler(this.button10_Click_1);
+            this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
             // button11
             // 
@@ -373,7 +232,7 @@ namespace Capa_Vista_CompraVenta
             this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button13.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button13.Image = ((System.Drawing.Image)(resources.GetObject("button13.Image")));
+            this.button13.Image = global::Capa_Vista_CompraVenta.Properties.Resources.VentaMDI;
             this.button13.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button13.Location = new System.Drawing.Point(0, 254);
             this.button13.Margin = new System.Windows.Forms.Padding(2);
@@ -414,7 +273,7 @@ namespace Capa_Vista_CompraVenta
             this.Btn_poliza.Text = "Poliza";
             this.Btn_poliza.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.Btn_poliza.UseVisualStyleBackColor = true;
-            this.Btn_poliza.Click += new System.EventHandler(this.Btn_poliza_Click_1);
+            this.Btn_poliza.Click += new System.EventHandler(this.Btn_poliza_Click);
             // 
             // Btn_compra
             // 
@@ -432,7 +291,7 @@ namespace Capa_Vista_CompraVenta
             this.Btn_compra.Text = "Compra";
             this.Btn_compra.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.Btn_compra.UseVisualStyleBackColor = true;
-            this.Btn_compra.Click += new System.EventHandler(this.Btn_compra_Click_1);
+            this.Btn_compra.Click += new System.EventHandler(this.Btn_compra_Click);
             // 
             // Btn_ventas
             // 
@@ -444,7 +303,7 @@ namespace Capa_Vista_CompraVenta
             this.Btn_ventas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_ventas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_ventas.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.Btn_ventas.Image = ((System.Drawing.Image)(resources.GetObject("Btn_ventas.Image")));
+            this.Btn_ventas.Image = global::Capa_Vista_CompraVenta.Properties.Resources.ComprasMDI;
             this.Btn_ventas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.Btn_ventas.Location = new System.Drawing.Point(0, 159);
             this.Btn_ventas.Margin = new System.Windows.Forms.Padding(2);
@@ -454,7 +313,7 @@ namespace Capa_Vista_CompraVenta
             this.Btn_ventas.Text = "Compra";
             this.Btn_ventas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.Btn_ventas.UseVisualStyleBackColor = false;
-            this.Btn_ventas.Click += new System.EventHandler(this.button3_Click);
+            this.Btn_ventas.Click += new System.EventHandler(this.Btn_ventas_Click);
             // 
             // Pnl_Mantenimiento
             // 
@@ -486,7 +345,7 @@ namespace Capa_Vista_CompraVenta
             this.button2.Text = "Clasificaciones";
             this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // Btn_vendedores
             // 
@@ -540,7 +399,7 @@ namespace Capa_Vista_CompraVenta
             this.Btn_proveedores.Text = "Proveedores";
             this.Btn_proveedores.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.Btn_proveedores.UseVisualStyleBackColor = true;
-            this.Btn_proveedores.Click += new System.EventHandler(this.button9_Click);
+            this.Btn_proveedores.Click += new System.EventHandler(this.Btn_proveedores_Click);
             // 
             // Btn_compras
             // 
@@ -552,7 +411,7 @@ namespace Capa_Vista_CompraVenta
             this.Btn_compras.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_compras.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_compras.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.Btn_compras.Image = ((System.Drawing.Image)(resources.GetObject("Btn_compras.Image")));
+            this.Btn_compras.Image = global::Capa_Vista_CompraVenta.Properties.Resources.M1;
             this.Btn_compras.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.Btn_compras.Location = new System.Drawing.Point(0, 0);
             this.Btn_compras.Margin = new System.Windows.Forms.Padding(2);
@@ -563,55 +422,178 @@ namespace Capa_Vista_CompraVenta
             this.Btn_compras.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.Btn_compras.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.Btn_compras.UseVisualStyleBackColor = false;
-            this.Btn_compras.Click += new System.EventHandler(this.button10_Click);
+            this.Btn_compras.Click += new System.EventHandler(this.Btn_compras_Click);
+            // 
+            // panelBarraTitulo
+            // 
+            this.panelBarraTitulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.panelBarraTitulo.Controls.Add(this.btnRestaurar);
+            this.panelBarraTitulo.Controls.Add(this.pictureBox2);
+            this.panelBarraTitulo.Controls.Add(this.btnMinimizar);
+            this.panelBarraTitulo.Controls.Add(this.btnMaximizar);
+            this.panelBarraTitulo.Controls.Add(this.btnCerrar);
+            this.panelBarraTitulo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelBarraTitulo.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panelBarraTitulo.Location = new System.Drawing.Point(0, 0);
+            this.panelBarraTitulo.Margin = new System.Windows.Forms.Padding(2);
+            this.panelBarraTitulo.Name = "panelBarraTitulo";
+            this.panelBarraTitulo.Size = new System.Drawing.Size(800, 40);
+            this.panelBarraTitulo.TabIndex = 11;
+            // 
+            // btnRestaurar
+            // 
+            this.btnRestaurar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRestaurar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRestaurar.Image = global::Capa_Vista_CompraVenta.Properties.Resources._2;
+            this.btnRestaurar.Location = new System.Drawing.Point(761, 9);
+            this.btnRestaurar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnRestaurar.Name = "btnRestaurar";
+            this.btnRestaurar.Size = new System.Drawing.Size(12, 13);
+            this.btnRestaurar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnRestaurar.TabIndex = 3;
+            this.btnRestaurar.TabStop = false;
+            this.btnRestaurar.Click += new System.EventHandler(this.btnRestaurar_Click);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(11, 9);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(29, 26);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 4;
+            this.pictureBox2.TabStop = false;
+            // 
+            // btnMinimizar
+            // 
+            this.btnMinimizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMinimizar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMinimizar.Image = global::Capa_Vista_CompraVenta.Properties.Resources._1_1;
+            this.btnMinimizar.Location = new System.Drawing.Point(745, 9);
+            this.btnMinimizar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnMinimizar.Name = "btnMinimizar";
+            this.btnMinimizar.Size = new System.Drawing.Size(12, 13);
+            this.btnMinimizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnMinimizar.TabIndex = 2;
+            this.btnMinimizar.TabStop = false;
+            this.btnMinimizar.Click += new System.EventHandler(this.btnMinimizar_Click);
+            // 
+            // btnMaximizar
+            // 
+            this.btnMaximizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMaximizar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMaximizar.Image = ((System.Drawing.Image)(resources.GetObject("btnMaximizar.Image")));
+            this.btnMaximizar.Location = new System.Drawing.Point(762, 9);
+            this.btnMaximizar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnMaximizar.Name = "btnMaximizar";
+            this.btnMaximizar.Size = new System.Drawing.Size(12, 13);
+            this.btnMaximizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnMaximizar.TabIndex = 1;
+            this.btnMaximizar.TabStop = false;
+            // 
+            // btnCerrar
+            // 
+            this.btnCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCerrar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCerrar.Image = global::Capa_Vista_CompraVenta.Properties.Resources._3;
+            this.btnCerrar.Location = new System.Drawing.Point(778, 9);
+            this.btnCerrar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCerrar.Name = "btnCerrar";
+            this.btnCerrar.Size = new System.Drawing.Size(12, 13);
+            this.btnCerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnCerrar.TabIndex = 0;
+            this.btnCerrar.TabStop = false;
+            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
+            // 
+            // panelIdentificacion
+            // 
+            this.panelIdentificacion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.panelIdentificacion.Controls.Add(this.Lbl_hora);
+            this.panelIdentificacion.Controls.Add(this.Lbl_usuario);
+            this.panelIdentificacion.Controls.Add(this.Lbl_fechaHora);
+            this.panelIdentificacion.Controls.Add(this.Lbl_usuario2);
+            this.panelIdentificacion.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelIdentificacion.Location = new System.Drawing.Point(0, 415);
+            this.panelIdentificacion.Margin = new System.Windows.Forms.Padding(2);
+            this.panelIdentificacion.Name = "panelIdentificacion";
+            this.panelIdentificacion.Size = new System.Drawing.Size(800, 35);
+            this.panelIdentificacion.TabIndex = 10;
+            // 
+            // Lbl_hora
+            // 
+            this.Lbl_hora.AutoSize = true;
+            this.Lbl_hora.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_hora.Location = new System.Drawing.Point(798, 10);
+            this.Lbl_hora.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Lbl_hora.Name = "Lbl_hora";
+            this.Lbl_hora.Size = new System.Drawing.Size(18, 17);
+            this.Lbl_hora.TabIndex = 17;
+            this.Lbl_hora.Text = "--";
+            // 
+            // Lbl_usuario
+            // 
+            this.Lbl_usuario.AutoSize = true;
+            this.Lbl_usuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_usuario.Location = new System.Drawing.Point(601, 9);
+            this.Lbl_usuario.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Lbl_usuario.Name = "Lbl_usuario";
+            this.Lbl_usuario.Size = new System.Drawing.Size(65, 17);
+            this.Lbl_usuario.TabIndex = 14;
+            this.Lbl_usuario.Text = "Usuario: ";
+            // 
+            // Lbl_fechaHora
+            // 
+            this.Lbl_fechaHora.AutoSize = true;
+            this.Lbl_fechaHora.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_fechaHora.Location = new System.Drawing.Point(738, 9);
+            this.Lbl_fechaHora.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Lbl_fechaHora.Name = "Lbl_fechaHora";
+            this.Lbl_fechaHora.Size = new System.Drawing.Size(51, 17);
+            this.Lbl_fechaHora.TabIndex = 16;
+            this.Lbl_fechaHora.Text = "Fecha:";
+            // 
+            // Lbl_usuario2
+            // 
+            this.Lbl_usuario2.AutoSize = true;
+            this.Lbl_usuario2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_usuario2.Location = new System.Drawing.Point(663, 9);
+            this.Lbl_usuario2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Lbl_usuario2.Name = "Lbl_usuario2";
+            this.Lbl_usuario2.Size = new System.Drawing.Size(18, 17);
+            this.Lbl_usuario2.TabIndex = 15;
+            this.Lbl_usuario2.Text = "--";
             // 
             // Frm_MDI_general_CompraVenta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(887, 478);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.Pnl_panelGeneral);
             this.Controls.Add(this.panelBarraTitulo);
             this.Controls.Add(this.panelIdentificacion);
-            this.Cursor = System.Windows.Forms.Cursors.Default;
             this.Name = "Frm_MDI_general_CompraVenta";
-            this.panelIdentificacion.ResumeLayout(false);
-            this.panelIdentificacion.PerformLayout();
+            this.Text = "COMPRAS Y VENTAS";
+            this.Pnl_panelGeneral.ResumeLayout(false);
+            this.Pnl_Venta.ResumeLayout(false);
+            this.Pnl_Compra.ResumeLayout(false);
+            this.Pnl_Mantenimiento.ResumeLayout(false);
             this.panelBarraTitulo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.btnRestaurar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).EndInit();
-            this.Pnl_panelGeneral.ResumeLayout(false);
-            this.Pnl_Venta.ResumeLayout(false);
-            this.Pnl_Compra.ResumeLayout(false);
-            this.Pnl_Mantenimiento.ResumeLayout(false);
+            this.panelIdentificacion.ResumeLayout(false);
+            this.panelIdentificacion.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.Panel panelIdentificacion;
-        private System.Windows.Forms.Panel panelBarraTitulo;
-        private System.Windows.Forms.PictureBox btnRestaurar;
-        private System.Windows.Forms.PictureBox btnMinimizar;
-        private System.Windows.Forms.PictureBox btnMaximizar;
-        private System.Windows.Forms.PictureBox btnCerrar;
+
         private System.Windows.Forms.Panel Pnl_panelGeneral;
-        private System.Windows.Forms.Panel Pnl_Compra;
-        private System.Windows.Forms.Button Btn_ventas;
-        private System.Windows.Forms.Panel Pnl_Mantenimiento;
-        private System.Windows.Forms.Button Btn_proveedores;
-        private System.Windows.Forms.Button Btn_compras;
-        private System.Windows.Forms.Button Btn_compra;
-        private System.Windows.Forms.Button Btn_vendedores;
-        private System.Windows.Forms.Button Btn_clientes;
-        private System.Windows.Forms.Label Lbl_hora;
-        private System.Windows.Forms.Label Lbl_usuario;
-        private System.Windows.Forms.Label Lbl_fechaHora;
-        private System.Windows.Forms.Label Lbl_usuario2;
+        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel Pnl_Venta;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button9;
@@ -619,8 +601,26 @@ namespace Capa_Vista_CompraVenta
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.Button button13;
+        private System.Windows.Forms.Panel Pnl_Compra;
         private System.Windows.Forms.Button Btn_poliza;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button Btn_compra;
+        private System.Windows.Forms.Button Btn_ventas;
+        private System.Windows.Forms.Panel Pnl_Mantenimiento;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button Btn_vendedores;
+        private System.Windows.Forms.Button Btn_clientes;
+        private System.Windows.Forms.Button Btn_proveedores;
+        private System.Windows.Forms.Button Btn_compras;
+        private System.Windows.Forms.Panel panelBarraTitulo;
+        private System.Windows.Forms.PictureBox btnRestaurar;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox btnMinimizar;
+        private System.Windows.Forms.PictureBox btnMaximizar;
+        private System.Windows.Forms.PictureBox btnCerrar;
+        private System.Windows.Forms.Panel panelIdentificacion;
+        private System.Windows.Forms.Label Lbl_hora;
+        private System.Windows.Forms.Label Lbl_usuario;
+        private System.Windows.Forms.Label Lbl_fechaHora;
+        private System.Windows.Forms.Label Lbl_usuario2;
     }
 }

@@ -123,16 +123,6 @@ namespace Capa_Vista_CompraVenta.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap logotipo1 {
-            get {
-                object obj = ResourceManager.GetObject("logotipo1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap M1 {
             get {
                 object obj = ResourceManager.GetObject("M1", resourceCulture);
