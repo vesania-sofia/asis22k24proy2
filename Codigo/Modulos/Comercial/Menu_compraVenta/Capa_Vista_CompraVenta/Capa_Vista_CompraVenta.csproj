@@ -40,6 +40,13 @@
     <Reference Include="Capa_Vista_Navegador">
       <HintPath>..\..\..\..\Componentes\Navegador\Capa_Vista_Navegador\bin\Debug\Capa_Vista_Navegador.dll</HintPath>
     </Reference>
+    <Reference Include="Capa_Vista_Polizas">
+      <HintPath>..\..\Capa_Vista_Polizas\Capa_Vista_Polizas\Capa_Vista_Polizas\bin\Debug\Capa_Vista_Polizas.dll</HintPath>
+    </Reference>
+    <Reference Include="Interfac_V3, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Menus\ModernGUI_V3\bin\Debug\Interfac_V3.exe</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -127,6 +134,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\VentaMDI.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Interfac_V3.exe" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
